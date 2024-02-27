@@ -1,0 +1,181 @@
+:root{
+    --main_color: #0D85CF;
+
+    /* --link-color: #6c757d ;
+    --active-link-color: #fff ;
+
+    --background-link-color:#002F65;
+    --background-active-link-color:#0c7dc2; */
+
+}
+
+/* style card code links */
+.card_codes .nav-item .nav-link{
+    color: #fff;
+    background-color: #0f9cf3;
+}
+
+.card_codes .nav-item:not(:first-child) .nav-link{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+
+.card_codes .nav-tabs .nav-link.active,
+.card_codes .nav-tabs .nav-link:focus,
+.card_codes .nav-tabs .nav-link:hover
+{
+    color: #fff;
+    background-color: #0c7dc2;
+    border-color: #0b75b6;
+    
+}
+
+
+@media (max-width: 767px) {
+    .card_codes .nav {
+    flex-direction: column;
+  }
+
+   .card_codes .nav-item .nav-link{
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+
+}
+
+
+
+.picker__select--month,
+.picker__select--year {
+    padding: 0 !important;
+}
+
+.picker__list {
+    list-style-type: none;
+}
+
+.card-naving h3{
+    color: #73879C !important;
+    font-family: 'DroidKufi-Regular', Arial, "Droid Sans", sans-serif;
+    font-size: 25px;
+    margin-bottom: 6px;
+
+}
+.card-naving ul{
+    padding: 0;
+    margin: 0;
+}
+.card-naving ul li,
+.card-naving ul li a{
+    color: #73879C !important;
+    font-family: 'DroidKufi-Regular', Arial, "Droid Sans", sans-serif;
+    font-size: 16px;
+}
+
+.card-naving ul li a:hover{
+    color:var(--main_color) !important;
+}
+
+.card-naving .chevron{
+    margin-right: 3px;
+    margin-left: 4px;
+    font-size: 12px;
+
+}
+
+@media(max-width:750px){
+    .card-naving h3{
+        font-size: 20px;
+        margin-bottom: 10px;
+    
+    }
+ 
+    .card-naving ul li,
+    .card-naving ul li a{
+        font-size: 16px;
+    }
+    
+    .card-naving ul li a:hover{
+        color:var(--main_color) !important;
+    }
+    
+    .card-naving .chevron{
+        margin-right: 3px;
+        margin-left: 4px;
+        font-size: 12px;
+    
+    }
+
+    .card-header a{
+        font-size: 12px;
+    }
+}
+
+
+.require.red {
+    color: red;
+}
+
+/* for image show  */
+.file-preview{
+    overflow: hidden;
+}
+
+/* for pignation setting */
+
+@media (max-width:560px
+    /* write what you need, for me it's 560px */
+) {
+    ul.pagination li:not(.show-mobile) {
+        display: none;
+    }
+}
+
+/* icon picker style  */
+
+/* @media (min-width:576px) {
+    .iconpicker-popover.popover.fade.show.bottomRight{
+        left: 436.2px !important;
+        width: 50vw !important;
+    }
+    .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback){
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) i{
+        font-size: 20px;
+    }
+    
+    .iconpicker .iconpicker-item{
+        width: 16px !important;
+        height: 16px !important;
+        padding: 16px !important;
+    }
+    .iconpicker .iconpicker-item i {
+        font-size: 18px;
+    }
+} */
+
+.iconpicker-popover.popover.fade.bottomRight.show{
+    left: auto !important;
+}
+
+.iconpicker-popover.popover{
+    width: auto !important;
+}
+
+.iconpicker-popover.popover.bottomRight > .arrow{
+    right: 20px !important;
+}
+
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) i{
+    font-size: 20px;
+}
+
+.iconpicker .iconpicker-item{
+    font-size: 18px;
+    padding: 16px !important;
+}
+

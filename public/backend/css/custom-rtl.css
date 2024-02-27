@@ -1,0 +1,4 @@
+.iconpicker-popover.popover.bottomRight > .arrow{
+    left: 20px !important;
+    right: auto !important;
+}

@@ -46,7 +46,8 @@
         {{-- body part  --}}
         <div class="card-body">
 
-            <form action="{{ route('admin.site_infos.update', 1) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.settings.site_main_infos.update', 1) }}" method="post"
+                enctype="multipart/form-data">
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">

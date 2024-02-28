@@ -43,7 +43,7 @@
         {{-- body part  --}}
         <div class="card-body">
 
-            <form action="{{ route('admin.site_payment_methods.update', 5) }}" method="post">
+            <form action="{{ route('admin.settings.site_payment_methods.update', 5) }}" method="post">
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">

@@ -241,25 +241,25 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         // Route::resource('site_infos' , SiteSettingsController::class);
-        Route::get('site_setting/site_infos', [SiteSettingsController::class, 'info_index'])->name('site_infos.info_index');
-        Route::post('site_setting/update_site_info/{id?}', [SiteSettingsController::class, 'info_update'])->name('site_infos.update');
+        Route::get('site_setting/site_infos', [SiteSettingsController::class, 'show_main_informations'])->name('settings.site_main_infos.show');
+        Route::post('site_setting/update_site_info/{id?}', [SiteSettingsController::class, 'update_main_informations'])->name('settings.site_main_infos.update');
         Route::post('site_setting/site_infos/remove-image', [SiteSettingsController::class, 'remove_image'])->name('site_infos.remove_image');
 
 
-        Route::get('site_setting/site_contacts', [SiteSettingsController::class, 'contact_index'])->name('site_contacts.contact_index');
-        Route::post('site_setting/update_site_contact/{id?}', [SiteSettingsController::class, 'contact_update'])->name('site_contacts.update');
+        Route::get('site_setting/site_contacts', [SiteSettingsController::class, 'show_contact_informations'])->name('settings.site_contacts.show');
+        Route::post('site_setting/update_site_contact/{id?}', [SiteSettingsController::class, 'update_contact_informations'])->name('settings.site_contacts.update');
 
-        Route::get('site_setting/site_socials', [SiteSettingsController::class, 'social_index'])->name('site_socials.social_index');
-        Route::post('site_setting/update_site_social/{id?}', [SiteSettingsController::class, 'social_update'])->name('site_socials.update');
+        Route::get('site_setting/site_socials', [SiteSettingsController::class, 'show_socail_informations'])->name('settings.site_socials.show');
+        Route::post('site_setting/update_site_social/{id?}', [SiteSettingsController::class, 'update_social_informations'])->name('settings.site_socials.update');
 
-        Route::get('site_setting/site_metas', [SiteSettingsController::class, 'meta_index'])->name('site_metas.meta_index');
-        Route::post('site_setting/update_site_meta/{id?}', [SiteSettingsController::class, 'meta_update'])->name('site_metas.update');
+        Route::get('site_setting/site_metas', [SiteSettingsController::class, 'show_meta_informations'])->name('settings.site_meta.show');
+        Route::post('site_setting/update_site_meta/{id?}', [SiteSettingsController::class, 'update_meta_informations'])->name('settings.site_meta.update');
 
-        Route::get('site_setting/site_payment_methods', [SiteSettingsController::class, 'payment_method_index'])->name('site_payment_methods.payment_method_index');
-        Route::post('site_setting/update_site_payment_method/{id?}', [SiteSettingsController::class, 'payment_method_update'])->name('site_payment_methods.update');
+        Route::get('site_setting/site_payment_methods', [SiteSettingsController::class, 'show_payment_method_informations'])->name('settings.site_payment_methods.show');
+        Route::post('site_setting/update_site_payment_method/{id?}', [SiteSettingsController::class, 'update_payment_method_informations'])->name('settings.site_payment_methods.update');
 
-        Route::get('site_setting/site_counters', [SiteSettingsController::class, 'counter_index'])->name('site_counters.counter_index');
-        Route::post('site_setting/update_site_counter/{id?}', [SiteSettingsController::class, 'counter_update'])->name('site_counters.update');
+        Route::get('site_setting/site_counters', [SiteSettingsController::class, 'show_site_counter_informations'])->name('settings.site_counters.show');
+        Route::post('site_setting/update_site_counter/{id?}', [SiteSettingsController::class, 'update_site_counter_informations'])->name('settings.site_counters.update');
 
         Route::resource('currencies', CurrenciesController::class);
         Route::post('update-currency-status', [CurrenciesController::class, 'updateCurrencyStatus'])->name('currencies.update_currency_status');

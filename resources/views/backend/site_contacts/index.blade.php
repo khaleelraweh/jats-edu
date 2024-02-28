@@ -45,7 +45,8 @@
         {{-- body part  --}}
         <div class="card-body">
 
-            <form action="{{ route('admin.site_contacts.update', 2) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.settings.site_contacts.update', 2) }}" method="post"
+                enctype="multipart/form-data">
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">

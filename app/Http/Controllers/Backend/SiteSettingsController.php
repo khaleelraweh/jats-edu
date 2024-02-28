@@ -13,12 +13,12 @@ class SiteSettingsController extends Controller
 {
 
     // =============== start info site ===============//
-    public function info_index()
+    public function show_main_informations()
     {
         return view('backend.site_infos.index');
     }
 
-    public function info_update(Request $request, $id)
+    public function update_main_informations(Request $request, $id)
     {
 
         $data = $request->except('_token', 'submit');
@@ -55,7 +55,7 @@ class SiteSettingsController extends Controller
             ]);
         }
 
-        return redirect()->route('admin.site_infos.info_index')->with([
+        return redirect()->route('admin.settings.site_main_infos.show')->with([
             'message' => __('panel.updated_successfully'),
             'alert-type' => 'success'
         ]);
@@ -81,12 +81,12 @@ class SiteSettingsController extends Controller
 
 
     // =============== start contact site ===============//
-    public function contact_index()
+    public function show_contact_informations()
     {
         return view('backend.site_contacts.index');
     }
 
-    public function contact_update(Request $request, $id)
+    public function update_contact_informations(Request $request, $id)
     {
 
         $data = $request->except('_token', 'submit');
@@ -101,7 +101,7 @@ class SiteSettingsController extends Controller
                 ]);
         }
 
-        return redirect()->route('admin.site_contacts.contact_index')->with([
+        return redirect()->route('admin.settings.site_contacts.show')->with([
             'message' => __('panel.updated_successfully'),
             'alert-type' => 'success'
         ]);
@@ -110,12 +110,12 @@ class SiteSettingsController extends Controller
 
 
     // =============== start social site ===============//
-    public function social_index()
+    public function show_socail_informations()
     {
         return view('backend.site_socials.index');
     }
 
-    public function social_update(Request $request, $id)
+    public function update_social_informations(Request $request, $id)
     {
 
         $data = $request->except('_token', 'submit');
@@ -130,7 +130,7 @@ class SiteSettingsController extends Controller
                 ]);
         }
 
-        return redirect()->route('admin.site_socials.social_index')->with([
+        return redirect()->route('admin.settings.site_socials.show')->with([
             'message' => __('panel.updated_successfully'),
             'alert-type' => 'success'
         ]);
@@ -139,12 +139,12 @@ class SiteSettingsController extends Controller
     // =============== end social site ===============//
 
     // =============== end meta site ===============//
-    public function meta_index()
+    public function show_meta_informations()
     {
         return view('backend.site_metas.index');
     }
 
-    public function meta_update(Request $request, $id)
+    public function update_meta_informations(Request $request, $id)
     {
 
         $data = $request->except('_token', 'submit');
@@ -159,7 +159,7 @@ class SiteSettingsController extends Controller
                 ]);
         }
 
-        return redirect()->route('admin.site_metas.meta_index')->with([
+        return redirect()->route('admin.settings.site_meta.show')->with([
             'message' => __('panel.updated_successfully'),
             'alert-type' => 'success'
         ]);
@@ -167,7 +167,7 @@ class SiteSettingsController extends Controller
     // =============== end meta site ===============//
 
     // =============== start payment method site ===============//
-    public function payment_method_index()
+    public function show_payment_method_informations()
     {
 
         $site_payment_setting = SiteSetting::whereNotNull('value')
@@ -177,10 +177,8 @@ class SiteSettingsController extends Controller
         return view('backend.site_payment_methods.index', compact('site_payment_setting'));
     }
 
-    public function payment_method_update(Request $request, $id)
+    public function update_payment_method_informations(Request $request, $id)
     {
-
-        // dd($request);
 
         $data = $request->except('_token', 'submit');
 
@@ -194,7 +192,7 @@ class SiteSettingsController extends Controller
                 ]);
         }
 
-        return redirect()->route('admin.site_payment_methods.payment_method_index')->with([
+        return redirect()->route('admin.settings.site_payment_methods.show')->with([
             'message' => __('panel.updated_successfully'),
             'alert-type' => 'success'
         ]);
@@ -203,7 +201,7 @@ class SiteSettingsController extends Controller
 
 
     // =============== start payment method site ===============//
-    public function counter_index()
+    public function show_site_counter_informations()
     {
 
         $site_counter_setting = SiteSetting::whereNotNull('value')
@@ -213,10 +211,8 @@ class SiteSettingsController extends Controller
         return view('backend.site_counters.index', compact('site_counter_setting'));
     }
 
-    public function counter_update(Request $request, $id)
+    public function update_site_counter_informations(Request $request, $id)
     {
-
-        // dd($request);
 
         $data = $request->except('_token', 'submit');
 
@@ -230,7 +226,7 @@ class SiteSettingsController extends Controller
                 ]);
         }
 
-        return redirect()->route('admin.site_counters.counter_index')->with([
+        return redirect()->route('admin.settings.site_counters.show')->with([
             'message' => __('panel.updated_successfully'),
             'alert-type' => 'success'
         ]);

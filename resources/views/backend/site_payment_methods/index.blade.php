@@ -3,8 +3,6 @@
 @section('content')
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
-
-
         {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
             <div class="card-naving">
@@ -54,9 +52,7 @@
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
-
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
-
 
                         @foreach ($site_payment_setting as $key => $value)
                             <div class="row">
@@ -78,10 +74,6 @@
                                         @error($key)
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-
-
-
-
 
                                     </div>
 

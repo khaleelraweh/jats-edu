@@ -112,7 +112,11 @@ class SiteSettingsController extends Controller
     // =============== start social site ===============//
     public function show_socail_informations()
     {
-        return view('backend.site_socials.index');
+        $site_socails = SiteSetting::whereNotNull('value')
+            ->where('section', 3)
+            ->pluck('value', 'key')->toArray();
+
+        return view('backend.site_socials.index', compact('site_socails'));
     }
 
     public function update_social_informations(Request $request, $id)

@@ -60,182 +60,33 @@
 
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_facebook')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}">
-                                        facebook <i class="fab fa-facebook"></i>
-                                        :
-                                    </label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+
+
+                        @foreach ($site_socails as $key => $value)
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 pt-3">
+                                    <div class="form-group">
+                                        <label for="{{ $key }}">
+                                            {{ explode('_', $key)[1] }} <i class="fab fa-{{ explode('_', $key)[1] }}"></i> :
+                                            {{-- {{ __('panel.site_pay_by') }} {{ __('panel.' . $key) }} --}}
+                                        </label>
+
+                                        <input type="text" id="{{ $key }}" name="{{ $key }}"
+                                            value="{{ old($key, $value) }}" class="form-control"
+                                            placeholder="{{ $key }}">
+
+
+                                        @error($key)
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+
+                                    </div>
+
                                 </div>
-
                             </div>
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_twitter')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}">
-                                        twitter <i class="fab fa-twitter"></i>
-                                        :</label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
+                        @endforeach
 
 
-                        <div class="row">
-
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_youtube')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}">
-                                        youtube <i class="fab fa-youtube"></i>
-                                        :</label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="row">
-
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_snapchat')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}">
-                                        snapchat <i class="fab fa-snapchat"></i>
-                                        :</label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="row">
-
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_instagram')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}">
-                                        instagram <i class="fab fa-instagram"></i>
-                                        :</label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_google')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}">
-                                        google <i class="fab fa-google"></i>
-                                        :</label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_vimeo')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}">
-                                        vimeo <i class="fab fa-vimeo"></i>
-                                        :</label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_pinterest')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}">
-                                        pinterest <i class="fab fa-pinterest"></i>
-                                        :</label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
 
                     </div>
 
@@ -246,7 +97,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group pt-3 mx-3">
-                                <button type="submit" name="submit" class="btn btn-primary">تعديل البيانات</button>
+                                <button type="submit" name="submit"
+                                    class="btn btn-primary">{{ __('panel.update_data') }}</button>
                             </div>
                         </div>
                     </div>

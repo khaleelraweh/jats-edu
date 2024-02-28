@@ -35,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
+        // if we make it with sampble way without key and value 
         // $siteSettings = SiteSetting::first();
         // View::share('siteSettings', $siteSettings);
 

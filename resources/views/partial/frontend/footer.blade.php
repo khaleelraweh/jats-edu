@@ -29,12 +29,14 @@
 
                 <!-- Social -->
                 <ul class="list-unstyled list-inline list-social mb-4 mb-md-0 mx-n2">
-                    <li class="list-inline-item list-social-item">
-                        <a href="#"
-                            class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </li>
+                    @if ($siteSettings['site_facebook']->value)
+                        <li class="list-inline-item list-social-item">
+                            <a href="{{ $siteSettings['site_facebook']->value }}"
+                                class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                    @endif
                     @if ($siteSettings['site_twitter']->value)
                         <li class="list-inline-item list-social-item">
                             <a href="{{ $siteSettings['site_twitter']->value }}"
@@ -44,18 +46,22 @@
                         </li>
                     @endif
 
-                    <li class="list-inline-item list-social-item">
-                        <a href="#"
-                            class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item list-social-item">
-                        <a href="#"
-                            class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </li>
+                    @if ($siteSettings['site_instagram']->value)
+                        <li class="list-inline-item list-social-item">
+                            <a href="{{ $siteSettings['site_instagram']->value }}"
+                                class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                    @endif
+                    @if ($siteSettings['site_linkedin']->value)
+                        <li class="list-inline-item list-social-item">
+                            <a href="{{ $siteSettings['site_linkedin']->value }}"
+                                class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
 

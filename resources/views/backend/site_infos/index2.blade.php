@@ -46,8 +46,7 @@
         {{-- body part  --}}
         <div class="card-body">
 
-            <form action="{{ route('admin.settings.site_main_infos.update', 1) }}" method="post"
-                enctype="multipart/form-data">
+            <form action="{{ route('admin.site_infos.update', 1) }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -65,57 +64,35 @@
 
                             <div class="col-md-7 col-sm-12 ">
 
-                                {{-- {{ dd($siteSettings['site_img']->status) }} --}}
-                                {{-- {{ dd($siteSettings['site_name']->value) }} --}}
-
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 pt-3">
+                                        @php
+                                            $site = SiteSetting::where('name', 'site_name')->get()->first();
+                                        @endphp
                                         <div class="form-group">
-                                            <label for="{{ $siteSettings['site_name']->key }}"> {{ __('panel.site_name') }}
-                                            </label>
-                                            <input type="text" id="{{ $siteSettings['site_name']->key }}"
-                                                name="{{ $siteSettings['site_name']->key }}"
-                                                value="{{ old($siteSettings['site_name']->key, $siteSettings['site_name']->value) }}"
-                                                class="form-control" placeholder="{{ $siteSettings['site_name']->key }}">
-                                            @error($siteSettings['site_name']->key)
+                                            <label for="{{ $site->name }}"> {{ __('panel.site_name') }} </label>
+                                            <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
+                                                value="{{ old($site->name, $site->value) }}" class="form-control"
+                                                placeholder="{{ $site->name }}">
+                                            @error('{{ $site->name }}')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
 
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 pt-3">
-                                        <div class="form-group">
-                                            <label for="{{ $siteSettings['site_short_name']->key }}">
-                                                {{ __('panel.site_short_name') }} </label>
-                                            <input type="text" id="{{ $siteSettings['site_short_name']->key }}"
-                                                name="{{ $siteSettings['site_short_name']->key }}"
-                                                value="{{ old($siteSettings['site_short_name']->key, $siteSettings['site_short_name']->value) }}"
-                                                class="form-control"
-                                                placeholder="{{ $siteSettings['site_short_name']->key }}">
-                                            @error($siteSettings['site_short_name']->key)
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 pt-3">
                                         @php
-                                            $site = SiteSetting::where('key', 'site_description')->get()->first();
+                                            $site = SiteSetting::where('name', 'site_short_name')->get()->first();
                                         @endphp
                                         <div class="form-group">
-                                            <label for="{{ $siteSettings['site_description']->key }}">
-                                                {{ __('panel.site_description') }} </label>
-                                            <input type="text" id="{{ $siteSettings['site_description']->key }}"
-                                                name="{{ $siteSettings['site_description']->key }}"
-                                                value="{{ old($siteSettings['site_description']->key, $siteSettings['site_description']->value) }}"
-                                                class="form-control"
-                                                placeholder="{{ $siteSettings['site_description']->key }}">
-                                            @error($siteSettings['site_description']->key)
+                                            <label for="{{ $site->name }}"> {{ __('panel.site_short_name') }} </label>
+                                            <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
+                                                value="{{ old($site->name, $site->value) }}" class="form-control"
+                                                placeholder="{{ $site->name }}">
+                                            @error('{{ $site->name }}')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -125,14 +102,33 @@
 
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 pt-3">
+                                        @php
+                                            $site = SiteSetting::where('name', 'site_description')->get()->first();
+                                        @endphp
                                         <div class="form-group">
-                                            <label for="{{ $siteSettings['site_link']->key }}">
-                                                {{ __('panel.site_link') }} </label>
-                                            <input type="text" id="{{ $siteSettings['site_link']->key }}"
-                                                name="{{ $siteSettings['site_link']->key }}"
-                                                value="{{ old($siteSettings['site_link']->key, $siteSettings['site_link']->value) }}"
-                                                class="form-control" placeholder="{{ $siteSettings['site_link']->key }}">
-                                            @error($siteSettings['site_link']->key)
+                                            <label for="{{ $site->name }}"> {{ __('panel.site_description') }} </label>
+                                            <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
+                                                value="{{ old($site->name, $site->value) }}" class="form-control"
+                                                placeholder="{{ $site->name }}">
+                                            @error('{{ $site->name }}')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 pt-3">
+                                        @php
+                                            $site = SiteSetting::where('name', 'site_link')->get()->first();
+                                        @endphp
+                                        <div class="form-group">
+                                            <label for="{{ $site->name }}"> {{ __('panel.site_link') }} </label>
+                                            <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
+                                                value="{{ old($site->name, $site->value) }}" class="form-control"
+                                                placeholder="{{ $site->name }}">
+                                            @error('{{ $site->name }}')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -144,22 +140,21 @@
 
                             <div class="col-md-5 col-sm-12">
                                 @php
-                                    $site_image = SiteSetting::where('key', 'site_img')->get()->first();
+                                    $site_image = SiteSetting::where('name', 'site_img')->get()->first();
                                 @endphp
 
-                                {{-- {{ dd($site_image->id) }} --}}
+
 
 
                                 <div class="row pt-4">
                                     <div class="col-12">
-                                        <label for="{{ $siteSettings['site_img']->key }}"> {{ __('panel.site_img') }}
-                                        </label>
+                                        <label for="site_img"> {{ __('panel.site_img') }} </label>
                                         <br>
                                         <div class="file-loading">
-                                            <input type="file" name="{{ $siteSettings['site_img']->key }}"
-                                                id="customer_image" class="file-input-overview ">
+                                            <input type="file" name="site_img" id="customer_image"
+                                                class="file-input-overview ">
                                             <span class="form-text text-muted">Image width should be 500px x 500px </span>
-                                            @error($siteSettings['site_img']->key)
+                                            @error('site_img')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -168,6 +163,8 @@
 
 
                             </div>
+
+
                         </div>
 
                     </div>
@@ -207,14 +204,14 @@
                 showUpload: false,
                 overwriteInitial: false,
                 initialPreview: [
-                    @if ($siteSettings['site_img']->value)
+                    @if ($site_image->value != '')
                         "{{ asset('assets/site_settings/' . $site_image->value) }}",
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($siteSettings['site_img']->value)
+                    @if ($site_image->value != '')
                         {
                             caption: "{{ $site_image->value }}",
                             size: '1111',

@@ -63,19 +63,17 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 pt-3">
                                 @php
-                                    $site = SiteSetting::where('name', 'site_facebook')
-                                        ->get()
-                                        ->first();
+                                    $site = SiteSetting::where('key', 'site_facebook')->get()->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}">
+                                    <label for="{{ $site->key }}">
                                         facebook <i class="fab fa-facebook"></i>
                                         :
                                     </label>
-                                    <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
-                                        value="{{ old($site->name, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->name }}">
-                                    @error('{{ $site->name }}')
+                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                        value="{{ old($site->key, $site->value) }}" class="form-control"
+                                        placeholder="{{ $site->key }}">
+                                    @error('{{ $site->key }}')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -87,18 +85,16 @@
 
                             <div class="col-md-12 col-sm-12 pt-3">
                                 @php
-                                    $site = SiteSetting::where('name', 'site_twitter')
-                                        ->get()
-                                        ->first();
+                                    $site = SiteSetting::where('key', 'site_twitter')->get()->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}">
+                                    <label for="{{ $site->key }}">
                                         twitter <i class="fab fa-twitter"></i>
                                         :</label>
-                                    <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
-                                        value="{{ old($site->name, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->name }}">
-                                    @error('{{ $site->name }}')
+                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                        value="{{ old($site->key, $site->value) }}" class="form-control"
+                                        placeholder="{{ $site->key }}">
+                                    @error('{{ $site->key }}')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -112,18 +108,16 @@
 
                             <div class="col-md-12 col-sm-12 pt-3">
                                 @php
-                                    $site = SiteSetting::where('name', 'site_youtube')
-                                        ->get()
-                                        ->first();
+                                    $site = SiteSetting::where('key', 'site_youtube')->get()->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}">
+                                    <label for="{{ $site->key }}">
                                         youtube <i class="fab fa-youtube"></i>
                                         :</label>
-                                    <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
-                                        value="{{ old($site->name, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->name }}">
-                                    @error('{{ $site->name }}')
+                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                        value="{{ old($site->key, $site->value) }}" class="form-control"
+                                        placeholder="{{ $site->key }}">
+                                    @error('{{ $site->key }}')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -137,18 +131,16 @@
 
                             <div class="col-md-12 col-sm-12 pt-3">
                                 @php
-                                    $site = SiteSetting::where('name', 'site_snapchat')
-                                        ->get()
-                                        ->first();
+                                    $site = SiteSetting::where('key', 'site_snapchat')->get()->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}">
+                                    <label for="{{ $site->key }}">
                                         snapchat <i class="fab fa-snapchat"></i>
                                         :</label>
-                                    <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
-                                        value="{{ old($site->name, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->name }}">
-                                    @error('{{ $site->name }}')
+                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                        value="{{ old($site->key, $site->value) }}" class="form-control"
+                                        placeholder="{{ $site->key }}">
+                                    @error('{{ $site->key }}')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -162,18 +154,16 @@
 
                             <div class="col-md-12 col-sm-12 pt-3">
                                 @php
-                                    $site = SiteSetting::where('name', 'site_instagram')
-                                        ->get()
-                                        ->first();
+                                    $site = SiteSetting::where('key', 'site_instagram')->get()->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}">
+                                    <label for="{{ $site->key }}">
                                         instagram <i class="fab fa-instagram"></i>
                                         :</label>
-                                    <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
-                                        value="{{ old($site->name, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->name }}">
-                                    @error('{{ $site->name }}')
+                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                        value="{{ old($site->key, $site->value) }}" class="form-control"
+                                        placeholder="{{ $site->key }}">
+                                    @error('{{ $site->key }}')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -186,18 +176,16 @@
 
                             <div class="col-md-12 col-sm-12 pt-3">
                                 @php
-                                    $site = SiteSetting::where('name', 'site_google')
-                                        ->get()
-                                        ->first();
+                                    $site = SiteSetting::where('key', 'site_google')->get()->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}">
+                                    <label for="{{ $site->key }}">
                                         google <i class="fab fa-google"></i>
                                         :</label>
-                                    <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
-                                        value="{{ old($site->name, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->name }}">
-                                    @error('{{ $site->name }}')
+                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                        value="{{ old($site->key, $site->value) }}" class="form-control"
+                                        placeholder="{{ $site->key }}">
+                                    @error('{{ $site->key }}')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -209,18 +197,16 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 pt-3">
                                 @php
-                                    $site = SiteSetting::where('name', 'site_vimeo')
-                                        ->get()
-                                        ->first();
+                                    $site = SiteSetting::where('key', 'site_vimeo')->get()->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}">
+                                    <label for="{{ $site->key }}">
                                         vimeo <i class="fab fa-vimeo"></i>
                                         :</label>
-                                    <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
-                                        value="{{ old($site->name, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->name }}">
-                                    @error('{{ $site->name }}')
+                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                        value="{{ old($site->key, $site->value) }}" class="form-control"
+                                        placeholder="{{ $site->key }}">
+                                    @error('{{ $site->key }}')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -233,18 +219,16 @@
 
                             <div class="col-md-12 col-sm-12 pt-3">
                                 @php
-                                    $site = SiteSetting::where('name', 'site_pinterest')
-                                        ->get()
-                                        ->first();
+                                    $site = SiteSetting::where('key', 'site_pinterest')->get()->first();
                                 @endphp
                                 <div class="form-group">
-                                    <label for="{{ $site->name }}">
+                                    <label for="{{ $site->key }}">
                                         pinterest <i class="fab fa-pinterest"></i>
                                         :</label>
-                                    <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
-                                        value="{{ old($site->name, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->name }}">
-                                    @error('{{ $site->name }}')
+                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                        value="{{ old($site->key, $site->value) }}" class="form-control"
+                                        placeholder="{{ $site->key }}">
+                                    @error('{{ $site->key }}')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

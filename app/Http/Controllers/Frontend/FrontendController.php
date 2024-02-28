@@ -27,7 +27,7 @@ class FrontendController extends Controller
             ->Active()
             ->take(
                 SiteSetting::whereNotNull('value')
-                    ->pluck('value', 'name')
+                    ->pluck('value', 'key')
                     ->toArray()['site_main_sliders']
             )
             ->get();

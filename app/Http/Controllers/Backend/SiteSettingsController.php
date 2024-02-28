@@ -15,8 +15,6 @@ class SiteSettingsController extends Controller
     // =============== start info site ===============//
     public function info_index()
     {
-        // $site_infos = SiteSetting::where('section',1)->get();
-        // return view('backend.site_settings.info_index' , compact('site_infos'));
         return view('backend.site_infos.index');
     }
 
@@ -26,7 +24,7 @@ class SiteSettingsController extends Controller
         $data = $request->except('_token', 'submit');
 
         foreach ($data as $key => $value) {
-            $site = SiteSetting::where('name', $key)
+            $site = SiteSetting::where('key', $key)
                 ->where('section', $id)
                 ->get()
                 ->first()
@@ -35,7 +33,7 @@ class SiteSettingsController extends Controller
                 ]);
         }
 
-        $site_image = SiteSetting::where('name', 'site_img')
+        $site_image = SiteSetting::where('key', 'site_img')
             ->where('section', $id)
             ->get()
             ->first();
@@ -48,9 +46,8 @@ class SiteSettingsController extends Controller
 
             $file_name = Str::slug($request->site_name) . "." . $image->getClientOriginalExtension();
             $path = public_path('assets/site_settings/' . $file_name);
-            Image::make($image->getRealPath())->resize(500, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($path);
+
+            Image::make($image)->save($path);
 
 
             $site_image->update([
@@ -80,8 +77,6 @@ class SiteSettingsController extends Controller
 
         return true;
     }
-
-
     // =============== end info site ===============//
 
 
@@ -97,7 +92,7 @@ class SiteSettingsController extends Controller
         $data = $request->except('_token', 'submit');
 
         foreach ($data as $key => $value) {
-            $site = SiteSetting::where('name', $key)
+            $site = SiteSetting::where('key', $key)
                 ->where('section', $id)
                 ->get()
                 ->first()
@@ -126,7 +121,7 @@ class SiteSettingsController extends Controller
         $data = $request->except('_token', 'submit');
 
         foreach ($data as $key => $value) {
-            $site = SiteSetting::where('name', $key)
+            $site = SiteSetting::where('key', $key)
                 ->where('section', $id)
                 ->get()
                 ->first()
@@ -155,7 +150,7 @@ class SiteSettingsController extends Controller
         $data = $request->except('_token', 'submit');
 
         foreach ($data as $key => $value) {
-            $site = SiteSetting::where('name', $key)
+            $site = SiteSetting::where('key', $key)
                 ->where('section', $id)
                 ->get()
                 ->first()
@@ -177,7 +172,7 @@ class SiteSettingsController extends Controller
 
         $site_payment_setting = SiteSetting::whereNotNull('value')
             ->where('section', 5)
-            ->pluck('value', 'name')->toArray();
+            ->pluck('value', 'key')->toArray();
 
         return view('backend.site_payment_methods.index', compact('site_payment_setting'));
     }
@@ -190,7 +185,7 @@ class SiteSettingsController extends Controller
         $data = $request->except('_token', 'submit');
 
         foreach ($data as $key => $value) {
-            $site = SiteSetting::where('name', $key)
+            $site = SiteSetting::where('key', $key)
                 ->where('section', $id)
                 ->get()
                 ->first()
@@ -213,7 +208,7 @@ class SiteSettingsController extends Controller
 
         $site_counter_setting = SiteSetting::whereNotNull('value')
             ->where('section', 6)
-            ->pluck('value', 'name')->toArray();
+            ->pluck('value', 'key')->toArray();
 
         return view('backend.site_counters.index', compact('site_counter_setting'));
     }
@@ -226,7 +221,7 @@ class SiteSettingsController extends Controller
         $data = $request->except('_token', 'submit');
 
         foreach ($data as $key => $value) {
-            $site = SiteSetting::where('name', $key)
+            $site = SiteSetting::where('key', $key)
                 ->where('section', $id)
                 ->get()
                 ->first()

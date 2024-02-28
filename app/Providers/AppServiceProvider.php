@@ -3,14 +3,17 @@
 namespace App\Providers;
 
 use App\Models\Currency;
+use App\Models\SiteSetting;
 use Carbon\Carbon;
 use GuzzleHttp\Cookie\SetCookie;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +34,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        // $appSettings = SiteSetting::first();
+        // View::share('appSettings', $appSettings);
+
+        // or 
+
+        $appSettings = Cache()->remember(
+            'appSettings',
+            3600,
+            fn () => SiteSetting::all()->keyBy('name')
+        );
+
+        View::share('appSettings', $appSettings);
 
         //start check currency 
         currency_load();
@@ -58,10 +74,6 @@ class AppServiceProvider extends ServiceProvider
         Carbon::setLocale($locale);
 
         // end check locale langugae 
-
-
-
-
 
 
         Paginator::useBootstrap();

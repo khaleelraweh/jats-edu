@@ -17,7 +17,6 @@
                             data-start-mheight="1000">
 
 
-                            {{-- {{ array_key_exists('site_twitter', $site_setting) ? $site_setting['site_twitter'] : '' }} --}}
                             @forelse ($main_sliders as $main_slider)
                                 <div class="bnslider-slide">
                                     <div class="bnslider-image-mobile lazyload"

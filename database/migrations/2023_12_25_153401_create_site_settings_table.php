@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('site_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('key')->nullable();
             $table->json('value');
-            $table->json('slug');
             $table->unsignedBigInteger('section')->default(1); // one means it related to any category except cards
 
             // will be use always

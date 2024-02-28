@@ -195,9 +195,6 @@
                                 </li>
                             @empty
                             @endforelse
-
-
-
                         </ul>
                     </div>
                 </div>

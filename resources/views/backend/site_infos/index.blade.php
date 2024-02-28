@@ -67,16 +67,14 @@
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 pt-3">
                                         @php
-                                            $site = SiteSetting::where('name', 'site_name')
-                                                ->get()
-                                                ->first();
+                                            $site = SiteSetting::where('key', 'site_name')->get()->first();
                                         @endphp
                                         <div class="form-group">
-                                            <label for="{{ $site->name }}"> {{ __('panel.site_name') }} </label>
-                                            <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
-                                                value="{{ old($site->name, $site->value) }}" class="form-control"
-                                                placeholder="{{ $site->name }}">
-                                            @error('{{ $site->name }}')
+                                            <label for="{{ $site->key }}"> {{ __('panel.site_name') }} </label>
+                                            <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                                value="{{ old($site->key, $site->value) }}" class="form-control"
+                                                placeholder="{{ $site->key }}">
+                                            @error('{{ $site->key }}')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -87,16 +85,14 @@
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 pt-3">
                                         @php
-                                            $site = SiteSetting::where('name', 'site_short_name')
-                                                ->get()
-                                                ->first();
+                                            $site = SiteSetting::where('key', 'site_short_name')->get()->first();
                                         @endphp
                                         <div class="form-group">
-                                            <label for="{{ $site->name }}"> {{ __('panel.site_short_name') }} </label>
-                                            <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
-                                                value="{{ old($site->name, $site->value) }}" class="form-control"
-                                                placeholder="{{ $site->name }}">
-                                            @error('{{ $site->name }}')
+                                            <label for="{{ $site->key }}"> {{ __('panel.site_short_name') }} </label>
+                                            <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                                value="{{ old($site->key, $site->value) }}" class="form-control"
+                                                placeholder="{{ $site->key }}">
+                                            @error('{{ $site->key }}')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -107,16 +103,14 @@
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 pt-3">
                                         @php
-                                            $site = SiteSetting::where('name', 'site_description')
-                                                ->get()
-                                                ->first();
+                                            $site = SiteSetting::where('key', 'site_description')->get()->first();
                                         @endphp
                                         <div class="form-group">
-                                            <label for="{{ $site->name }}"> {{ __('panel.site_description') }} </label>
-                                            <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
-                                                value="{{ old($site->name, $site->value) }}" class="form-control"
-                                                placeholder="{{ $site->name }}">
-                                            @error('{{ $site->name }}')
+                                            <label for="{{ $site->key }}"> {{ __('panel.site_description') }} </label>
+                                            <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                                value="{{ old($site->key, $site->value) }}" class="form-control"
+                                                placeholder="{{ $site->key }}">
+                                            @error('{{ $site->key }}')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -127,16 +121,14 @@
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 pt-3">
                                         @php
-                                            $site = SiteSetting::where('name', 'site_link')
-                                                ->get()
-                                                ->first();
+                                            $site = SiteSetting::where('key', 'site_link')->get()->first();
                                         @endphp
                                         <div class="form-group">
-                                            <label for="{{ $site->name }}"> {{ __('panel.site_link') }} </label>
-                                            <input type="text" id="{{ $site->name }}" name="{{ $site->name }}"
-                                                value="{{ old($site->name, $site->value) }}" class="form-control"
-                                                placeholder="{{ $site->name }}">
-                                            @error('{{ $site->name }}')
+                                            <label for="{{ $site->key }}"> {{ __('panel.site_link') }} </label>
+                                            <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                                value="{{ old($site->key, $site->value) }}" class="form-control"
+                                                placeholder="{{ $site->key }}">
+                                            @error('{{ $site->key }}')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -148,9 +140,7 @@
 
                             <div class="col-md-5 col-sm-12">
                                 @php
-                                    $site_image = SiteSetting::where('name', 'site_img')
-                                        ->get()
-                                        ->first();
+                                    $site_image = SiteSetting::where('key', 'site_img')->get()->first();
                                 @endphp
 
 

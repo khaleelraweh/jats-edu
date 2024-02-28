@@ -143,12 +143,6 @@
                             </div>
 
                             <div class="col-md-5 col-sm-12">
-                                @php
-                                    $site_image = SiteSetting::where('key', 'site_img')->get()->first();
-                                @endphp
-
-                                {{-- {{ dd($site_image->id) }} --}}
-
 
                                 <div class="row pt-4">
                                     <div class="col-12">
@@ -207,20 +201,20 @@
                 showUpload: false,
                 overwriteInitial: false,
                 initialPreview: [
-                    @if ($siteSettings['site_img']->value)
-                        "{{ asset('assets/site_settings/' . $site_image->value) }}",
+                    @if ($siteSettings['site_img']->value != null)
+                        "{{ asset('assets/site_settings/' . $siteSettings['site_img']->value) }}",
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($siteSettings['site_img']->value)
+                    @if ($siteSettings['site_img']->value != null)
                         {
-                            caption: "{{ $site_image->value }}",
+                            caption: "{{ $siteSettings['site_img']->value }}",
                             size: '1111',
                             width: "120px",
-                            url: "{{ route('admin.site_infos.remove_image', ['site_info_id' => $site_image->id, '_token' => csrf_token()]) }}",
-                            key: {{ $site_image->id }}
+                            url: "{{ route('admin.site_infos.remove_image', ['site_info_id' => $siteSettings['site_img']->id, '_token' => csrf_token()]) }}",
+                            key: {{ $siteSettings['site_img']->id }}
                         }
                     @endif
                 ]

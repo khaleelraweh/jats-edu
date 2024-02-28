@@ -19,20 +19,20 @@ class SiteSettingSeeder extends Seeder
         $faker = Factory::create();
 
         // site infos
-        SiteSetting::create(['key'    =>  'site_name',          'value' =>  ['ar' => 'جاتس', 'en' => 'Jats edu'],   'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_short_name',    'value' =>  ['ar' => 'جاتس', 'en' => 'Jats'],       'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_name',          'value' =>  ['ar' => 'جاتس', 'en' => 'Jats edu'],       'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_short_name',    'value' =>  ['ar' => 'جاتس', 'en' => 'Jats'],           'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_description',   'value' =>  ['ar' => 'التعليم كما تحلم به', 'en' => 'Education as your dreams'],   'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_link',          'value' =>  'https://jats-edu.com/',                 'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_img',           'value' =>  '1.jpg',   'status'    =>  true,         'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_link',          'value' =>  'https://jats-edu.com',                     'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_img',           'value' =>  '1.jpg',   'status'    =>  true,            'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
 
         // site contacts
         SiteSetting::create(['key'    =>  'site_address',   'value' =>  ['ar' => 'المملكة العربية السعودية', 'en' => 'Kingdom of Saudi Arabia'],   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_phone',     'value' =>  '772036131',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_mobile',    'value' =>  '436285',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_fax',       'value' =>  'fx',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_po_box',    'value' =>  '985',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_email1',    'value' =>  'jats-edu@gmail.com',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_email2',    'value' =>  'jats-edu2@gmail.com',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_phone',     'value' =>  '772036131',                    'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_mobile',    'value' =>  '436285',                       'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_fax',       'value' =>  'fx',                           'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_po_box',    'value' =>  '985',                          'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_email1',    'value' =>  'jats-edu@gmail.com',           'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_email2',    'value' =>  'jats-edu2@gmail.com',          'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_workTime',  'value' =>   ['ar' => 'طوال ايام الاسبوع', 'en' => 'Every Day In The Week'],   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
 
         // site socials
@@ -66,15 +66,15 @@ class SiteSettingSeeder extends Seeder
 
 
         // site counters 
-        SiteSetting::create(['key'    =>  'site_main_sliders',          'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_advertisor_sliders',    'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_card_categories',       'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_featured_cards',        'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_random_cards',          'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_related_cards',         'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]); // in card info page 
-        SiteSetting::create(['key'    =>  'site_more_like_cards',       'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]); // in cart page 
-        SiteSetting::create(['key'    =>  'site_posts',                 'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_questions',             'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_more_categories',       'value' =>  3,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_main_sliders',          'value' =>  10,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_advertisor_sliders',    'value' =>  10,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_card_categories',       'value' =>  10,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_featured_cards',        'value' =>  10,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_random_cards',          'value' =>  10,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_related_cards',         'value' =>  10,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]); // in card info page 
+        SiteSetting::create(['key'    =>  'site_more_like_cards',       'value' =>  10,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]); // in cart page 
+        SiteSetting::create(['key'    =>  'site_posts',                 'value' =>  10,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_questions',             'value' =>  10,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_more_categories',       'value' =>  10,   'status'    =>  true,   'section'   =>  6,   'published_on'  =>  $faker->dateTime()]);
     }
 }

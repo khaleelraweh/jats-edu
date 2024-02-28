@@ -19,7 +19,7 @@ class SiteSettingSeeder extends Seeder
         $faker = Factory::create();
 
         // site infos
-        SiteSetting::create(['key'    =>  'site_name',          'value' =>  ['ar' => 'جاتس', 'en' => 'Jats edu'],       'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_name',          'value' =>  ['ar' => 'اكاديمية جاتس', 'en' => 'Jats edu'],       'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_short_name',    'value' =>  ['ar' => 'جاتس', 'en' => 'Jats'],           'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_description',   'value' =>  ['ar' => 'التعليم كما تحلم به', 'en' => 'Education as your dreams'],   'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_link',          'value' =>  'https://jats-edu.com',                     'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);

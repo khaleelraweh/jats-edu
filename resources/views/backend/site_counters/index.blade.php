@@ -78,20 +78,12 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
 
-
-
-
-
                                     </div>
-
                                 </div>
                             </div>
                         @endforeach
 
-
                     </div>
-
-
                 </div>
 
                 @ability('admin', 'update_site_counters')

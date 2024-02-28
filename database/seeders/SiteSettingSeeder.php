@@ -19,21 +19,21 @@ class SiteSettingSeeder extends Seeder
         $faker = Factory::create();
 
         // site infos
-        SiteSetting::create(['key'    =>  'site_name',   'value' =>  ['ar' => 'جاتس', 'en' => 'Jats edu'],   'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_short_name',   'value' =>  ['ar' => 'جاتس', 'en' => 'Jats'],   'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_name',          'value' =>  ['ar' => 'جاتس', 'en' => 'Jats edu'],   'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_short_name',    'value' =>  ['ar' => 'جاتس', 'en' => 'Jats'],       'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_description',   'value' =>  ['ar' => 'التعليم كما تحلم به', 'en' => 'Education as your dreams'],   'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_link',   'value' =>  'https://jats-edu.com/',   'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_img',   'value' =>  '1.jpg',   'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_link',          'value' =>  'https://jats-edu.com/',                 'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_img',           'value' =>  '1.jpg',   'status'    =>  true,         'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
 
         // site contacts
-        SiteSetting::create(['key'    =>  'site_address',   'value' => ['ar' => 'المملكة العربية السعودية', 'en' => 'Kingdom of Saudi Arabia'],   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_phone',   'value' =>  '772036131',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_mobile',   'value' =>  '436285',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_fax',   'value' =>  'fx',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_po_box',   'value' =>  '985',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_email1',   'value' =>  'jats-edu@gmail.com',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_email2',   'value' =>  'jats-edu2@gmail.com',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_workTime',   'value' =>  ['ar' => 'طوال ايام الاسبوع', 'en' => 'Every Day In The Week'],   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_address',   'value' =>  ['ar' => 'المملكة العربية السعودية', 'en' => 'Kingdom of Saudi Arabia'],   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_phone',     'value' =>  '772036131',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_mobile',    'value' =>  '436285',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_fax',       'value' =>  'fx',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_po_box',    'value' =>  '985',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_email1',    'value' =>  'jats-edu@gmail.com',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_email2',    'value' =>  'jats-edu2@gmail.com',   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_workTime',  'value' =>   ['ar' => 'طوال ايام الاسبوع', 'en' => 'Every Day In The Week'],   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
 
         // site socials
         SiteSetting::create(['key'    =>  'site_facebook',      'value' =>  'facebook.com',     'status'    =>  true,   'section'   =>  3,   'published_on'  =>  $faker->dateTime()]);

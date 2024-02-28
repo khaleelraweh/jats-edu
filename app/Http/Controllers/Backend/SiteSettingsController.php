@@ -220,7 +220,6 @@ class SiteSettingsController extends Controller
     // =============== start payment method site ===============//
     public function show_site_counter_informations()
     {
-
         $site_counter_setting = SiteSetting::whereNotNull('value')
             ->where('section', 6)
             ->pluck('value', 'key')->toArray();
@@ -230,7 +229,6 @@ class SiteSettingsController extends Controller
 
     public function update_site_counter_informations(Request $request, $id)
     {
-
         $data = $request->except('_token', 'submit');
 
         foreach ($data as $key => $value) {

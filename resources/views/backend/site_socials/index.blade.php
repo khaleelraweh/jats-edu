@@ -60,8 +60,6 @@
 
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-
-
                         @foreach ($site_socails as $key => $value)
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 pt-3">
@@ -75,7 +73,6 @@
                                             value="{{ old($key, $value) }}" class="form-control"
                                             placeholder="{{ $key }}">
 
-
                                         @error($key)
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -85,12 +82,7 @@
                                 </div>
                             </div>
                         @endforeach
-
-
-
                     </div>
-
-
                 </div>
 
                 @ability('admin', 'update_site_socials')

@@ -35,18 +35,18 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        // $appSettings = SiteSetting::first();
-        // View::share('appSettings', $appSettings);
+        // $siteSettings = SiteSetting::first();
+        // View::share('siteSettings', $siteSettings);
 
         // or 
 
-        $appSettings = Cache()->remember(
-            'appSettings',
+        $siteSettings = Cache()->remember(
+            'siteSettings',
             3600,
-            fn () => SiteSetting::all()->keyBy('name')
+            fn () => SiteSetting::all()->keyBy('key')
         );
 
-        View::share('appSettings', $appSettings);
+        View::share('siteSettings', $siteSettings);
 
         //start check currency 
         currency_load();

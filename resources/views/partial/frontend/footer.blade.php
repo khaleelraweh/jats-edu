@@ -19,7 +19,8 @@
                 </p>
 
                 <div class="mb-4">
-                    <a href="tel:1234567890" class="text-gray-800 font-size-sm-alone">123 456 7890</a>
+                    <a href="tel:1234567890"
+                        class="text-gray-800 font-size-sm-alone">{{ $siteSettings['site_phone']->value ?? '' }}</a>
                 </div>
 
                 <div class="mb-4">
@@ -34,12 +35,15 @@
                             <i class="fab fa-facebook-f"></i>
                         </a>
                     </li>
-                    <li class="list-inline-item list-social-item">
-                        <a href="#"
-                            class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </li>
+                    @if ($siteSettings['site_twitter']->value)
+                        <li class="list-inline-item list-social-item">
+                            <a href="{{ $siteSettings['site_twitter']->value }}"
+                                class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                    @endif
+
                     <li class="list-inline-item list-social-item">
                         <a href="#"
                             class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">

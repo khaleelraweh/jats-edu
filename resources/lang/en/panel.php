@@ -582,6 +582,7 @@ return [
     'optional'                      =>  'Optional',
     'choose_icon'                   =>  'Choose an Icon',
     'type_to_filter'                =>  'Type To Filter',
+    'icon'                          =>  'Icon',
 
     // ======= display Add and Update Section =======// 
 

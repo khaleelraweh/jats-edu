@@ -50,7 +50,7 @@
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>{{ __('panel.image') }}</th>
+                            <th>{{ __('panel.icon') }}</th>
                             <th>{{ __('panel.title') }}</th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
                             <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
@@ -62,13 +62,15 @@
                         @forelse ($advertisorSliders as $slider)
                             <tr>
                                 <td>
-                                    @if ($slider->firstMedia)
+                                    {{-- @if ($slider->firstMedia)
                                         <img src="{{ asset('assets/advertisor_sliders/' . $slider->firstMedia->file_name) }}"
                                             width="60" height="60" alt="{{ $slider->title }}">
                                     @else
                                         <img src="{{ asset('assets/noImage.png') }}" width="60" height="60"
                                             alt="{{ $slider->title }}">
-                                    @endif
+                                    @endif --}}
+
+                                    <i class="{{ $slider->icon }}" style="font-size: 40px"></i>
 
                                 </td>
                                 <td>{{ $slider->title }}</td>

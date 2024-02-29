@@ -81,64 +81,63 @@
                             role="tabpanel" aria-labelledby="{{ $key }}">
                             <div class="row">
 
-                                {{-- البيانات الاساسية --}}
-                                <div class=" {{ $loop->index == 0 ? 'col-md-7' : '' }} col-sm-12 ">
+                                {{--  Icons --}}
 
-                                    {{-- slider title field --}}
+                                @if ($loop->first)
                                     <div class="row ">
                                         <div class="col-sm-12 pt-3">
                                             <div class="form-group">
-                                                <label for="title[{{ $key }}]">
-                                                    {{ __('panel.title') }}
-                                                    {{ __('panel.in') }} {{ __('panel.' . $key) }}
-                                                </label>
-                                                <input type="text" name="title[{{ $key }}]"
-                                                    id="title[{{ $key }}]" value="{{ old('title.' . $key) }}"
-                                                    class="form-control">
-                                                @error('title.' . $key)
+                                                <label for="icon"> {{ __('panel.choose_icon') }} </label>
+
+                                                <div class="input-group iconpicker-container ">
+                                                    <input data-placement="bottomRight"
+                                                        class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
+                                                        value="fas fa-archive" type="text" name="icon">
+                                                    <span class="input-group-addon btn btn-primary">
+                                                        <i class="fas fa-archive"></i>
+                                                    </span>
+                                                </div>
+
+                                                @error('icon')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
                                     </div>
+                                @endif
 
-                                    {{--  description field --}}
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 pt-4">
-                                            <label for="description[{{ $key }}]">
-                                                {{ __('panel.description') }}
+                                {{-- slider title field --}}
+                                <div class="row ">
+                                    <div class="col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="title[{{ $key }}]">
+                                                {{ __('panel.title') }}
                                                 {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                             </label>
-                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
+                                            <input type="text" name="title[{{ $key }}]"
+                                                id="title[{{ $key }}]" value="{{ old('title.' . $key) }}"
+                                                class="form-control">
+                                            @error('title.' . $key)
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{--  description field --}}
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 pt-4">
+                                        <label for="description[{{ $key }}]">
+                                            {{ __('panel.description') }}
+                                            {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                        </label>
+                                        <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
                                             {!! old('description.' . $key) !!}
                                         </textarea>
-                                        </div>
                                     </div>
                                 </div>
 
-                                {{-- مرفق الصور  --}}
-                                <div class=" {{ $loop->index == 0 ? 'col-md-5' : 'd-none' }}  col-sm-12 ">
 
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 pt-4">
-                                            <label for="images">
-                                                {{ __('panel.image') }}
-                                                /
-                                                {{ __('panel.images') }}
-                                            </label>
-                                            <span>(<small>w:750 , h:1550 </small>)</span>
-                                            <br>
-                                            <div class="file-loading">
-                                                <input type="file" name="images[]" id="slider_images"
-                                                    class="file-input-overview" multiple="multiple">
-                                                @error('images')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
 
                             </div>
                         </div>
@@ -267,16 +266,6 @@
 @section('script')
     <script>
         $(function() {
-
-            $("#slider_images").fileinput({
-                theme: "fa5",
-                maxFileCount: 5,
-                allowedFileTypes: ['image'],
-                showCancel: true,
-                showRemove: false,
-                showUpload: false,
-                overwriteInitial: false
-            });
 
 
             // ======= start pickadate codeing ===========

@@ -53,6 +53,7 @@ class AdvertisorSliderController extends Controller
             return redirect('admin/index');
         }
 
+        $input['icon']         =   $request->icon;
         $input['title']          =   $request->title;
         $input['description']        =   $request->description;
         $input['url']            =   $request->url;
@@ -70,31 +71,7 @@ class AdvertisorSliderController extends Controller
 
         $advertisorSlider->tags()->attach($request->tags);
 
-        if ($request->images && count($request->images) > 0) {
-            $i = 1;
-            foreach ($request->images as $image) {
-                $file_name = $advertisorSlider->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
-                $file_size = $image->getSize();
-                $file_type = $image->getMimeType();
-                $path = public_path('assets/advertisor_sliders/' . $file_name);
 
-                // Image::make($image->getRealPath())->resize(500,null,function($constraint){
-                //     $constraint->aspectRatio();
-                // })->save($path,100);
-
-                Image::make($image->getRealPath())->save($path);
-
-                $advertisorSlider->photos()->create([
-                    'file_name' => $file_name,
-                    'file_size' => $file_size,
-                    'file_type' => $file_type,
-                    'file_status' => 'true',
-                    'file_sort' => $i,
-                ]);
-
-                $i++;
-            }
-        }
 
         if ($advertisorSlider) {
             return redirect()->route('admin.advertisor_sliders.index')->with([
@@ -139,13 +116,12 @@ class AdvertisorSliderController extends Controller
         $advertisorSlider = Slider::where('id', $advertisorSlider)->first();
 
 
+        $input['icon']         =   $request->icon;
         $input['title']          =   $request->title;
         $input['description']        =   $request->description;
         $input['url']            =   $request->url;
         $input['target']         =   $request->target;
         $input['section']        =   2;
-        //  $input['start_date']        =   $request->start_date;
-        //  $input['expire_date']       =   $request->expire_date;
 
         $input['showInfo']            =   $request->showInfo;
         $input['status']            =   $request->status;
@@ -157,33 +133,7 @@ class AdvertisorSliderController extends Controller
         $advertisorSlider->update($input);
         $advertisorSlider->tags()->sync($request->tags);
 
-        if ($request->images && count($request->images) > 0) {
 
-            $i = $advertisorSlider->photos->count() + 1;
-
-            foreach ($request->images as $image) {
-
-                $file_name = $advertisorSlider->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
-                $file_size = $image->getSize();
-                $file_type = $image->getMimeType();
-                $path = public_path('assets/advertisor_sliders/' . $file_name);
-
-                // Image::make($image->getRealPath())->resize(500,null,function($constraint){
-                //     $constraint->aspectRatio();
-                // })->save($path,100);
-
-                Image::make($image->getRealPath())->save($path);
-                $advertisorSlider->photos()->create([
-                    'file_name' => $file_name,
-                    'file_size' => $file_size,
-                    'file_type' => $file_type,
-                    'file_status' => 'true',
-                    'file_sort' => $i,
-                ]);
-
-                $i++;
-            }
-        }
 
         if ($advertisorSlider) {
             return redirect()->route('admin.advertisor_sliders.index')->with([

@@ -87,61 +87,63 @@
                             role="tabpanel" aria-labelledby="{{ $key }}">
                             <div class="row">
 
-                                {{-- البيانات الاساسية --}}
-                                <div class=" {{ $loop->index == 0 ? 'col-md-7' : '' }} col-sm-12 ">
-
-                                    {{-- slider title field --}}
+                                @if ($loop->first)
                                     <div class="row ">
                                         <div class="col-sm-12 pt-3">
                                             <div class="form-group">
-                                                <label for="title[{{ $key }}]">
-                                                    {{ __('panel.title') }}
-                                                    {{ __('panel.in') }} {{ __('panel.' . $key) }}
-                                                </label>
-                                                <input type="text" name="title[{{ $key }}]"
-                                                    id="title[{{ $key }}]"
-                                                    value="{{ old('title.' . $key, $advertisorSlider->getTranslation('title', $key)) }}"
-                                                    class="form-control">
-                                                @error('title.' . $key)
+                                                <label for="icon"> {{ __('panel.choose_icon') }} </label>
+
+                                                <div class="input-group iconpicker-container ">
+                                                    <input data-placement="bottomRight"
+                                                        class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
+                                                        value=" {{ old('icon', $advertisorSlider->icon) ?? 'fas fa-archive' }}"
+                                                        type="text" name="icon">
+                                                    <span class="input-group-addon btn btn-primary">
+                                                        <i class="{{ $advertisorSlider->icon ?? 'fas fa-archive' }}"></i>
+                                                    </span>
+                                                </div>
+
+                                                @error('icon')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
                                     </div>
+                                @endif
 
-                                    {{--  description field --}}
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 pt-4">
-                                            <label for="description[{{ $key }}]">
-                                                {{ __('panel.description') }}
+
+                                {{-- slider title field --}}
+                                <div class="row ">
+                                    <div class="col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="title[{{ $key }}]">
+                                                {{ __('panel.title') }}
                                                 {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                             </label>
-                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
+                                            <input type="text" name="title[{{ $key }}]"
+                                                id="title[{{ $key }}]"
+                                                value="{{ old('title.' . $key, $advertisorSlider->getTranslation('title', $key)) }}"
+                                                class="form-control">
+                                            @error('title.' . $key)
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{--  description field --}}
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 pt-4">
+                                        <label for="description[{{ $key }}]">
+                                            {{ __('panel.description') }}
+                                            {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                        </label>
+                                        <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
                                             {!! old('description.' . $key, $advertisorSlider->getTranslation('description', $key)) !!}
                                         </textarea>
-                                        </div>
                                     </div>
                                 </div>
 
-                                {{-- مرفق الصور  --}}
-                                <div class=" {{ $loop->index == 0 ? 'col-md-5' : 'd-none' }}  col-sm-12 ">
-
-                                    <div class="row pt-4">
-                                        <div class="col-12">
-                                            <label for="images">{{ __('panel.image') }}/
-                                                {{ __('panel.images') }}</label>
-                                            <br>
-                                            <div class="file-loading">
-                                                <input type="file" name="images[]" id="slider_images"
-                                                    class="file-input-overview" multiple="multiple">
-                                                @error('images')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
 
                             </div>
                         </div>
@@ -281,44 +283,7 @@
     <script>
         $(function() {
 
-            $("#slider_images").fileinput({
-                theme: "fa5",
-                maxFileCount: 5,
-                allowedFileTypes: ['image'],
-                showCancel: true,
-                showRemove: false,
-                showUpload: false,
-                overwriteInitial: false,
-                // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
-                // delete images from photos and assets/sliders 
-                // because there are maybe more than one image we will go for each image and show them in the edit page 
-                initialPreview: [
-                    @if ($advertisorSlider->photos()->count() > 0)
-                        @foreach ($advertisorSlider->photos as $media)
-                            "{{ asset('assets/advertisor_sliders/' . $media->file_name) }}",
-                        @endforeach
-                    @endif
-                ],
-                initialPreviewAsData: true,
-                initialPreviewFileType: 'image',
-                initialPreviewConfig: [
-                    @if ($advertisorSlider->photos()->count() > 0)
-                        @foreach ($advertisorSlider->photos as $media)
-                            {
-                                caption: "{{ $media->file_name }}",
-                                size: '{{ $media->file_size }}',
-                                width: "120px",
-                                // url : الراوت المستخدم لحذف الصورة
-                                url: "{{ route('admin.advertisor_sliders.remove_image', ['image_id' => $media->id, 'slider_id' => $advertisorSlider->id, '_token' => csrf_token()]) }}",
-                                key: {{ $media->id }}
-                            },
-                        @endforeach
-                    @endif
 
-                ]
-            }).on('filesorted', function(event, params) {
-                console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
-            });
             // ======= start pickadate codeing  for start and end date ===========
 
             $('#published_on').pickadate({

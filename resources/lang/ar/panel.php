@@ -552,6 +552,8 @@ return [
     'optional'                      =>  'اختياري',
     'choose_icon'                   =>  'أختر ايقونة',
     'type_to_filter'                =>  'إكتب للتصفية',
+    'icon'                          =>  'الايقونة',
+
 
 
 

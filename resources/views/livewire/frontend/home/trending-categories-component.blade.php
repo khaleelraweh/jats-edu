@@ -12,9 +12,17 @@
                         <!-- Card -->
                         @php
                             if ($course_category->firstMedia?->file_name != null) {
-                                $course_category_img = asset('assets/course_categories/' . $course_category->firstMedia?->file_name);
+                                $course_category_img = asset(
+                                    'assets/course_categories/' . $course_category->firstMedia?->file_name,
+                                );
 
-                                if (!file_exists(public_path('assets/course_categories/' . $course_category->firstMedia?->file_name))) {
+                                if (
+                                    !file_exists(
+                                        public_path(
+                                            'assets/course_categories/' . $course_category->firstMedia?->file_name,
+                                        ),
+                                    )
+                                ) {
                                     $course_category_img = asset('assets/course_categories/no_image_found.webp');
                                 }
                             } else {

@@ -111,7 +111,6 @@ class Course extends Model
     }
 
 
-    // to get only first one media elemet
     public function firstMedia(): MorphOne
     {
         return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort', 'asc');

@@ -84,18 +84,10 @@
                                 </div>
 
                                 @php
-                                    if ($featured_course->photos->first()->file_name != null) {
-                                        $featured_course_img = asset(
-                                            'assets/courses/' . $featured_course->photos->first()->file_name,
-                                        );
+                                    if ($featured_course->firstMedia?->file_name != null) {
+                                        $featured_course_img = asset('assets/courses/' . $featured_course->firstMedia?->file_name);
 
-                                        if (
-                                            !file_exists(
-                                                public_path(
-                                                    'assets/courses/' . $featured_course->photos->first()->file_name,
-                                                ),
-                                            )
-                                        ) {
+                                        if (!file_exists(public_path('assets/courses/' . $featured_course->firstMedia?->file_name))) {
                                             $featured_course_img = asset('assets/courses/no_image_found.webp');
                                         }
                                     } else {
@@ -118,18 +110,10 @@
 
                             <!-- Footer -->
                             @php
-                                if ($featured_course->photos->last()->file_name != null) {
-                                    $featured_course_avator = asset(
-                                        'assets/courses/' . $featured_course->photos->last()->file_name,
-                                    );
+                                if ($featured_course->lastMedia?->file_name != null) {
+                                    $featured_course_avator = asset('assets/courses/' . $featured_course->lastMedia?->file_name);
 
-                                    if (
-                                        !file_exists(
-                                            public_path(
-                                                'assets/courses/' . $featured_course->photos->last()->file_name,
-                                            ),
-                                        )
-                                    ) {
+                                    if (!file_exists(public_path('assets/courses/' . $featured_course->lastMedia?->file_name))) {
                                         $featured_course_avator = asset('assets/courses/no_image_found.webp');
                                     }
                                 } else {

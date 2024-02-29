@@ -1,8 +1,8 @@
 <footer class="pt-8 pt-md-11 bg-white">
 
-    @php
+    {{-- @php
         $web_menus = App\Models\WebMenu::tree();
-    @endphp
+    @endphp --}}
 
 
     <div class="container">
@@ -15,7 +15,7 @@
 
                 <!-- Text -->
                 <p class="text-gray-800 mb-4 font-size-sm-alone">
-                    329 Queensberry Street, North Melbourne VIC 3051, Australia.
+                    {{ $siteSettings['site_address']->value ?? '' }}
                 </p>
 
                 <div class="mb-4">
@@ -24,7 +24,8 @@
                 </div>
 
                 <div class="mb-4">
-                    <a href="mailto:support@skola.com" class="text-gray-800 font-size-sm-alone">support@skola.com</a>
+                    <a href="mailto:support@skola.com"
+                        class="text-gray-800 font-size-sm-alone">{{ $siteSettings['site_email1']->value ?? '' }}</a>
                 </div>
 
                 <!-- Social -->

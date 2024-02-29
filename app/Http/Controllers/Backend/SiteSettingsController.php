@@ -119,11 +119,7 @@ class SiteSettingsController extends Controller
     // =============== start social site ===============//
     public function show_socail_informations()
     {
-        $site_socails = SiteSetting::whereNotNull('value')
-            ->where('section', 3)
-            ->pluck('value', 'key')->toArray();
-
-        return view('backend.site_socials.index', compact('site_socails'));
+        return view('backend.site_socials.index');
     }
 
     public function update_social_informations(Request $request, $id)
@@ -184,12 +180,7 @@ class SiteSettingsController extends Controller
     // =============== start payment method site ===============//
     public function show_payment_method_informations()
     {
-
-        $site_payment_setting = SiteSetting::whereNotNull('value')
-            ->where('section', 5)
-            ->pluck('value', 'key')->toArray();
-
-        return view('backend.site_payment_methods.index', compact('site_payment_setting'));
+        return view('backend.site_payment_methods.index');
     }
 
     public function update_payment_method_informations(Request $request, $id)
@@ -220,11 +211,7 @@ class SiteSettingsController extends Controller
     // =============== start payment method site ===============//
     public function show_site_counter_informations()
     {
-        $site_counter_setting = SiteSetting::whereNotNull('value')
-            ->where('section', 6)
-            ->pluck('value', 'key')->toArray();
-
-        return view('backend.site_counters.index', compact('site_counter_setting'));
+        return view('backend.site_counters.index');
     }
 
     public function update_site_counter_informations(Request $request, $id)

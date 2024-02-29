@@ -2,9 +2,9 @@
     class="navbar navbar-expand-xl {{ request()->routeIs('frontend.service') ? 'navbar-light bg-white border-bottom py-2 py-xl-4' : 'navbar-dark' }} ">
     <div class="container-fluid">
 
-        @php
+        {{-- @php
             $web_menus = App\Models\WebMenu::tree();
-        @endphp
+        @endphp --}}
 
         <!-- Brand -->
         <a class="navbar-brand me-0" href="index.html">

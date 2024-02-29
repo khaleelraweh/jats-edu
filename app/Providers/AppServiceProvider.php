@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Currency;
 use App\Models\SiteSetting;
+use App\Models\WebMenu;
 use Carbon\Carbon;
 use GuzzleHttp\Cookie\SetCookie;
 use Illuminate\Pagination\Paginator;
@@ -35,19 +36,18 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        // if we make it with sampble way without key and value 
-        // $siteSettings = SiteSetting::first();
-        // View::share('siteSettings', $siteSettings);
-
-        // or 
-
+        // Site setting calling to cache in 5 hours refresh
         $siteSettings = Cache()->remember(
             'siteSettings',
             3600,
             fn () => SiteSetting::all()->keyBy('key')
         );
-
         View::share('siteSettings', $siteSettings);
+
+        // web_menus in all pages 
+        $web_menus = WebMenu::tree();
+        View::share('web_menus', $web_menus);
+
 
         //start check currency 
         currency_load();

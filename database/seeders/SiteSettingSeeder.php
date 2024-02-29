@@ -31,8 +31,8 @@ class SiteSettingSeeder extends Seeder
         SiteSetting::create(['key'    =>  'site_mobile',    'value' =>  '436285',                       'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_fax',       'value' =>  'fx',                           'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_po_box',    'value' =>  '985',                          'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_email1',    'value' =>  'jats-edu@gmail.com',           'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_email2',    'value' =>  'jats-edu2@gmail.com',          'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_email1',    'value' =>  'support1.jats-edu@gmail.com',           'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_email2',    'value' =>  'support2.jats-edu2@gmail.com',          'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_workTime',  'value' =>   ['ar' => 'طوال ايام الاسبوع', 'en' => 'Every Day In The Week'],   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
 
         // site socials

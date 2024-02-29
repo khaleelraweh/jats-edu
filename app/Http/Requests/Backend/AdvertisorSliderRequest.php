@@ -26,14 +26,14 @@ class AdvertisorSliderRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
+                        'icon'        =>  'nullable',
                         'title.*'       =>  'required|max:255|unique_translation:sliders',
                         'description.*'       =>  'nullable',
                         'url'           =>  'nullable',
                         'target'        =>  'required',
+                        'icon'        =>  'nullable',
                         'section'       =>  'nullable',
                         'showInfo'      => 'required',
-                        'images'        =>  'required',
-                        'images.*'      =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
 
                         // used always 
                         'status'             =>  'required',
@@ -48,14 +48,13 @@ class AdvertisorSliderRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
+                        'icon'        =>  'nullable',
                         'title.*'           =>  'required|max:255|unique_translation:sliders,title,' . $this->route()->advertisor_slider,
                         'description'           =>  'nullable',
                         'url'               =>  'nullable',
                         'target'            =>  'required',
                         'section'           =>  'nullable',
                         'showInfo'      => 'required',
-                        'images'            =>  'nullable',
-                        'images.*'          =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
 
                         // used always 
                         'status'             =>  'required',

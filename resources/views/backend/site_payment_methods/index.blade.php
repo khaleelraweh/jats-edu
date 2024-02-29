@@ -54,33 +54,34 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-                        @foreach ($site_payment_setting as $key => $value)
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12 pt-3">
-                                    <div class="form-group">
-                                        <label for="{{ $key }}">
-                                            {{-- {{ $key }} --}}
-                                            {{-- الدفع بواسطة {{ explode('_', $key)[2] }} : --}}
-                                            {{ __('panel.site_pay_by') }} {{ __('panel.' . $key) }}
-                                        </label>
-                                        <select name="{{ $key }}" class="form-control">
-                                            <option value="1" {{ old($key, $value) == '1' ? 'selected' : null }}>
-                                                {{ __('panel.status_active') }}
-                                            </option>
-                                            <option value="0" {{ old($key, $value) == '0' ? 'selected' : null }}>
-                                                {{ __('panel.status_inactive') }}
-                                            </option>
-                                        </select>
-                                        @error($key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                        @foreach ($siteSettings as $item)
+                            @if ($item->section == 5)
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="{{ $item->key }}">
+                                                {{ __('panel.site_pay_by') }} {{ __('panel.' . $item->key) }}
+                                            </label>
+                                            <select name="{{ $item->key }}" class="form-control">
+                                                <option value="1"
+                                                    {{ old($item->key, $item->value) == '1' ? 'selected' : null }}>
+                                                    {{ __('panel.status_active') }}
+                                                </option>
+                                                <option value="0"
+                                                    {{ old($item->key, $item->value) == '0' ? 'selected' : null }}>
+                                                    {{ __('panel.status_inactive') }}
+                                                </option>
+                                            </select>
+                                            @error($item->key)
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+
+                                        </div>
 
                                     </div>
-
                                 </div>
-                            </div>
+                            @endif
                         @endforeach
-
 
                     </div>
 

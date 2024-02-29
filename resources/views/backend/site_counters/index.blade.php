@@ -58,36 +58,29 @@
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
 
                         @foreach ($siteSettings as $item)
-                            @if ($item->section == 1)
-                                {{ $item->value }}
+                            @if ($item->section == 6)
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="{{ $item->key }}">
+                                                {{ __('panel.site_number_of_items_in') }}
+                                                {{ __('panel.' . $item->key) }}
+                                            </label>
+
+                                            <input type="number" name="{{ $item->key }}" id="{{ $item->key }}"
+                                                value="{{ old($item->key, $item->value) ?? '' }}" class="form-control"
+                                                min="0">
+
+                                            @error($item->key)
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+
+                                        </div>
+                                    </div>
+                                </div>
                             @endif
                         @endforeach
 
-
-                        @foreach ($site_counter_setting as $key => $value)
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12 pt-3">
-                                    <div class="form-group">
-                                        <label for="{{ $key }}">
-                                            {{-- عدد العناصر في --}}
-                                            {{-- {{ $key }} --}}
-                                            {{-- {{ implode(' ', [explode('_', $key)[1], explode('_', $key)[2] ?? '']) }} : --}}
-
-                                            {{ __('panel.site_number_of_items_in') }}
-                                            {{ __('panel.' . $key) }}
-                                        </label>
-
-                                        <input type="number" name="{{ $key }}" id="{{ $key }}"
-                                            value="{{ old($key, $value) }}" class="form-control" min="0">
-
-                                        @error($key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
 
                     </div>
                 </div>

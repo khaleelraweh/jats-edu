@@ -60,28 +60,31 @@
 
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-                        @foreach ($site_socails as $key => $value)
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12 pt-3">
-                                    <div class="form-group">
-                                        <label for="{{ $key }}">
-                                            {{ explode('_', $key)[1] }} <i class="fab fa-{{ explode('_', $key)[1] }}"></i> :
-                                            {{-- {{ __('panel.site_pay_by') }} {{ __('panel.' . $key) }} --}}
-                                        </label>
+                        @foreach ($siteSettings as $item)
+                            @if ($item->section == 3)
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="{{ $item->key }}">
+                                                {{ explode('_', $item->key)[1] }} <i
+                                                    class="fab fa-{{ explode('_', $item->key)[1] }}"></i> :
+                                            </label>
 
-                                        <input type="text" id="{{ $key }}" name="{{ $key }}"
-                                            value="{{ old($key, $value) }}" class="form-control"
-                                            placeholder="{{ $key }}">
+                                            <input type="text" id="{{ $item->key }}" name="{{ $item->key }}"
+                                                value="{{ old($item->key, $item->value) }}" class="form-control"
+                                                placeholder="{{ $item->key }}">
 
-                                        @error($key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                            @error($item->key)
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+
+                                        </div>
 
                                     </div>
-
                                 </div>
-                            </div>
+                            @endif
                         @endforeach
+
                     </div>
                 </div>
 
@@ -95,10 +98,7 @@
                         </div>
                     </div>
                 @endability
-
             </form>
-
         </div>
-
     </div>
 @endsection

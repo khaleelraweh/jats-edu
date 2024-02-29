@@ -60,149 +60,33 @@
 
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_address')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}"> {{ __('panel.site_address') }} </label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                        @php
+                            static $counter = 1;
+                        @endphp
+
+                        @foreach ($siteSettings as $item)
+                            @if ($item->section == 2)
+                                <div class="row">
+
+                                    <div class="col-md-12 col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="{{ $item->key }}"> {{ __('panel.' . $item->key) }} </label>
+                                            <input type="text" id="{{ $item->key }}" name="{{ $item->key }}"
+                                                value="{{ old($item->key, $item->value) }}" class="form-control"
+                                                placeholder="{{ $item->key }}">
+                                            @error('{{ $item->key }}')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
                                 </div>
+                            @endif
+                        @endforeach
 
-                            </div>
-                        </div>
 
-                        <div class="row">
 
-                            <div class="col-md-6 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_phone')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}"> {{ __('panel.site_phone') }} </label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
 
-                            </div>
-
-                            <div class="col-md-6 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_mobile')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}">{{ __('panel.site_mobile') }}</label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-md-6 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_fax')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}"> {{ __('panel.site_fax') }} </label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_po_box')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}"> {{ __('panel.site_po_box') }} </label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-md-6 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_email1')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}"> {{ __('panel.site_email1') }} </label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_email2')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}"> {{ __('panel.site_email2') }} </label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_workTime')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}"> {{ __('panel.site_workTime') }} </label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                            </div>
-                        </div>
 
                     </div>
 

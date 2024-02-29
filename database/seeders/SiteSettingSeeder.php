@@ -47,7 +47,7 @@ class SiteSettingSeeder extends Seeder
         SiteSetting::create(['key'    =>  'site_linkedin',      'value' =>  'linkedin.com',     'status'    =>  true,   'section'   =>  3,   'published_on'  =>  $faker->dateTime()]);
 
         // site seo
-        SiteSetting::create(['key'    =>  'site_name_meta',         'value' =>  ['ar' => 'اكاديمية جاتس', 'en' => 'Center Pay'],   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_name_meta',         'value' =>  ['ar' => 'اكاديمية جاتس', 'en' => 'Jats-edu'],   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_description_meta',  'value' =>  ['ar' => 'موقع يوفر اقوي كورسات رائعة في مختلف المجالات', 'en' => 'A site that provides multi courses in various fields '],   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_link_meta',         'value' =>  'jats-edu.com',   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_keywords_meta',     'value' =>  ['ar' => 'ورش عمل , دروس , دورات', 'en' => 'Courses , Lessons'],   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);

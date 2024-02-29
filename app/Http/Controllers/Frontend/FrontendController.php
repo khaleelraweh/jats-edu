@@ -21,18 +21,14 @@ class FrontendController extends Controller
     public function index()
     {
         $main_sliders = Slider::with('firstMedia')
-            ->MainSliders()
+            // ->MainSliders()
             // ->inRandomOrder()
             ->orderBy('published_on', 'desc')
             ->Active()
             ->take(
-                SiteSetting::whereNotNull('value')
-                    ->pluck('value', 'key')
-                    ->toArray()['site_main_sliders']
+                8
             )
             ->get();
-
-
 
         return view('frontend.index', compact('main_sliders'));
     }

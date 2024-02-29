@@ -29,7 +29,8 @@ class DatabaseSeeder extends Seeder
         $this->call(TagSeeder::class);
         // $this->call(ProductSeeder::class);
         $this->call(CardSeeder::class);
-        $this->call(SliderSeeder::class);
+        $this->call(MainSliderSeeder::class);
+        $this->call(AdvSliderSeeder::class);
         $this->call(PhotoSeeder::class);
         $this->call(ProductTagSeeder::class);
         $this->call(CouponSeeder::class);

@@ -237,7 +237,7 @@ class EntrustSeeder extends Seeder
         $deleteProducts  =  Permission::create(['name' => 'delete_products', 'display_name'  =>   ['ar'   =>  'حذف منتج',   'en'    =>  'Delete Product'], 'route' => 'products', 'module' => 'products', 'as' => 'products.destroy', 'icon' => null, 'parent' => $manageProducts->id, 'parent_original' => $manageProducts->id, 'parent_show' => $manageProducts->id, 'sidebar_link' => '0', 'appear' => '0']);
 
         //manage card categories
-        $manageCardCategories = Permission::create(['name' => 'manage_card_categories', 'display_name' => ['ar'    =>  'إدارة البطائق',   'en'    =>  'Card Category'], 'route' => 'card_categories', 'module' => 'card_categories', 'as' => 'card_categories.index', 'icon' => 'fas fa-file-archive', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '35',]);
+        $manageCardCategories = Permission::create(['name' => 'manage_card_categories', 'display_name' => ['ar'    =>  'إدارة البطائق',   'en'    =>  'Card Category'], 'route' => 'card_categories', 'module' => 'card_categories', 'as' => 'card_categories.index', 'icon' => 'fas fa-file-archive', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '0', 'appear' => '0', 'ordering' => '35',]);
         $manageCardCategories->parent_show = $manageCardCategories->id;
         $manageCardCategories->save();
         $showcard_categories    =  Permission::create(['name' => 'show_card_categories', 'display_name'  =>    ['ar'   =>  'تصنيف البطائق',   'en'    =>  'Card Categories'],   'route' => 'card_categories', 'module' => 'card_categories', 'as' => 'card_categories.index', 'icon' => 'fas fa-file-archive', 'parent' => $manageCardCategories->id, 'parent_original' => $manageCardCategories->id, 'parent_show' => $manageCardCategories->id, 'sidebar_link' => '1', 'appear' => '1']);
@@ -258,7 +258,7 @@ class EntrustSeeder extends Seeder
 
 
         //Manage cards 
-        $manageCards = Permission::create(['name' => 'manage_cards', 'display_name' => ['ar'    =>  'الباقات', 'en'    =>  'Cards'], 'route' => 'cards', 'module' => 'cards', 'as' => 'cards.index', 'icon' => 'fas fa-file-archive', 'parent' => $manageCardCategories->id, 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '40',]);
+        $manageCards = Permission::create(['name' => 'manage_cards', 'display_name' => ['ar'    =>  'الباقات', 'en'    =>  'Cards'], 'route' => 'cards', 'module' => 'cards', 'as' => 'cards.index', 'icon' => 'fas fa-file-archive', 'parent' => $manageCardCategories->id, 'parent_original' => '0', 'sidebar_link' => '0', 'appear' => '0', 'ordering' => '40',]);
         $manageCards->parent_show = $manageCards->id;
         $manageCards->save();
         $showCards   =  Permission::create(['name' => 'show_cards',   'display_name'    =>  ['ar'   =>  'عرض الباقات',   'en'       =>  'Cards'],   'route'     => 'cards', 'module'   => 'cards', 'as' =>  'cards.index', 'icon' => 'fas fa-file-archive', 'parent' => $manageCards->id, 'parent_original' => $manageCards->id, 'parent_show' => $manageCards->id, 'sidebar_link' => '1', 'appear' => '1']);

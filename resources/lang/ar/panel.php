@@ -817,7 +817,7 @@ return [
 
     // Email reset password 
     'f_reset_password'                                  =>  'إعادة تعيين كلمة المرور',
-    'f_we_have_sent_you_a_reset_link_to_your_email'     =>  'ال رابط اعادة تعيين كلمة المرور الى بريدك الالكتروني',
+    'f_we_have_sent_you_a_reset_link_to_your_email'     =>  ' لقد قمنا بارسال رابط اعادة تعيين كلمة المرور الى بريدك الإلكتروني, الرجاء التحقق من بريدك الإلكتروني ',
     'f_send_reset_link'                                 =>  'إرسال رابط إعادة التعيين',
 
 

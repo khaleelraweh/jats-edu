@@ -1,0 +1,49 @@
+.modal-sidebar .modal-content{
+  overflow: auto !important;
+}
+/* style loged in panel */
+#collapseSignin .modal-header-content{
+  display: flex;
+  align-items: center;
+}
+
+@media(max-width:767px){
+  #collapseSignin  .modal-header-content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#collapseSignin .modal-header-content img{
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
+
+#collapseSignin  ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#collapseSignin   ul li{
+  padding: 5px 0;
+}
+#collapseSignin   ul li a{
+  display: inline-block;
+  width: 100%;
+  color: #2f2d51;
+}
+#collapseSignin   ul li a:hover{
+  color: black;
+}
+
+
+.hr{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid;
+}

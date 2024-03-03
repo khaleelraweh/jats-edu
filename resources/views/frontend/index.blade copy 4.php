@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- HERO
-                                                                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
     <section class="mt-n12">
         {{-- {{ dd($instructors) }} --}}
         <div class="flickity-page-dots-vertical flickity-page-dots-md flickity-page-dots-white position-static"
@@ -74,15 +74,15 @@
     </section>
 
     <!-- CATEGORIES
-                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
     @livewire('frontend.home.trending-categories-component')
 
     <!-- FEATURED PRODUCT
-                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
     @livewire('frontend.home.featured-courses-component')
 
     <!-- CALL ACTION
-                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
     <section class="py-6 py-md-12 jarallax" data-jarallax data-speed=".8"
         style="background-image: url({{ asset('frontend/assets/img/covers/cover-5.jpg') }})">
         <div class="container text-center py-xl-9 text-capitalize" data-aos="fade-up">
@@ -96,7 +96,7 @@
     </section>
 
     <!-- TESTIMONIAL
-                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
     <section class="py-8 py-md-11 pb-xl-12 bg-white">
         <div class="container px-xl-9">
             <div class="text-center mb-2">
@@ -246,7 +246,7 @@
     </section>
 
     <!-- EVENTS
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
     <section class="py-5 py-md-11 bg-catskill">
         <div class="container">
             <div class="text-center mb-8 pb-2">
@@ -683,7 +683,7 @@
     </section>
 
     <!-- BLOG
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
     <section class="py-5 py-md-11 bg-white">
         <div class="container">
             <div class="text-center mb-4 mb-md-7" data-aos="fade-up">
@@ -873,7 +873,7 @@
     </section>
 
     <!-- INSTRUCTORS
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
     <section class="py-5 py-md-11 bg-catskill">
         <div class="container">
             <div class="text-center mb-4 mb-md-7" data-aos="fade-up">
@@ -885,7 +885,7 @@
                 data-flickity='{"pageDots": false,"cellAlign": "left", "wrapAround": true, "imagesLoaded": true}'>
                 @foreach ($instructors as $instructor)
                     <div class="col-6 col-md-4 col-lg-3 text-center py-5 text-md-left px-3 px-md-4" data-aos="fade-up"
-                        data-aos-delay="{{ 50 * $loop->iteration }}">
+                        data-aos-delay="50">
                         <div class="card border shadow p-2 lift">
                             <!-- Image -->
                             <div class="card-zoom position-relative" style="max-width: 250px;">
@@ -947,7 +947,7 @@
     </section>
 
     <!-- COUNTUP
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
     <section class="py-5 py-md-12 jarallax" data-jarallax data-speed=".8"
         style="background-image: url({{ asset('frontend/assets/img/covers/cover-6.jpg') }})">
         <div class="container">
@@ -1033,7 +1033,7 @@
     </section>
 
     <!-- NEWSLETTER
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
     <section class="py-6 py-md-8 bg-coral">
         <div class="container">
             <div class="row align-items-center py-2">

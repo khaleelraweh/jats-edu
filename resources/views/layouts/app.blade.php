@@ -43,10 +43,12 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/libs/quill/dist/quill.core.css') }}" />
 
 
-    {{-- <link rel="stylesheet" href="{{ asset('frontend/assets/css/theme.min.css') }}"> --}}
 
     <link rel="stylesheet"
         href="{{ $rtl == 'rtl' ? asset('frontend/assets/css/theme-rtl.min.css') : asset('frontend/assets/css/theme.min.css') }}">
+
+    <link rel="stylesheet"
+        href="{{ $rtl == 'rtl' ? asset('frontend/assets/css/custom-rtl.css') : asset('frontend/assets/css/custom.css') }}">
 
     @livewireStyles
 </head>

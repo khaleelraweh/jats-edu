@@ -78,5 +78,33 @@ class InstructorSeeder extends Seeder
                 'linkedin'          =>  'www.linkedin.com',
             ]
         );
+        Instructor::create(
+            [
+                'name'              => ['ar' => 'محمد علي', 'en' => 'Mohamed ali'],
+                'email'             =>  'Mohamed@gmail.com',
+                'phone'             =>  $faker->phoneNumber(),
+                'specialization'    => ['ar' => 'مصمم', 'en' => 'Designer'],
+                'status'            =>  true,
+                'image'             => 'instructor-5.jpg',
+                'facebook'          =>  'www.facebook.com',
+                'twitter'           =>  'www.twitter.com',
+                'instagram'         =>  'www.instagram.com',
+                'linkedin'          =>  'www.linkedin.com',
+            ]
+        );
+        Instructor::create(
+            [
+                'name'              => ['ar' => 'طلال علي', 'en' => 'talal ali'],
+                'email'             =>  'talal@gmail.com',
+                'phone'             =>  $faker->phoneNumber(),
+                'specialization'    => ['ar' => 'مصمم', 'en' => 'Designer'],
+                'status'            =>  true,
+                'image'             => 'instructor-6.jpg',
+                'facebook'          =>  'www.facebook.com',
+                'twitter'           =>  'www.twitter.com',
+                'instagram'         =>  'www.instagram.com',
+                'linkedin'          =>  'www.linkedin.com',
+            ]
+        );
     }
 }

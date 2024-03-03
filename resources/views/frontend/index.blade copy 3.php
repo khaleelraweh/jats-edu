@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- HERO
-                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                                                                                                                                ================================================== -->
     <section class="mt-n12">
         {{-- {{ dd($instructors) }} --}}
         <div class="flickity-page-dots-vertical flickity-page-dots-md flickity-page-dots-white position-static"
@@ -74,15 +74,15 @@
     </section>
 
     <!-- CATEGORIES
-                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                                                                                                            ================================================== -->
     @livewire('frontend.home.trending-categories-component')
 
     <!-- FEATURED PRODUCT
-                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                                                                                                            ================================================== -->
     @livewire('frontend.home.featured-courses-component')
 
     <!-- CALL ACTION
-                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                                                                                                            ================================================== -->
     <section class="py-6 py-md-12 jarallax" data-jarallax data-speed=".8"
         style="background-image: url({{ asset('frontend/assets/img/covers/cover-5.jpg') }})">
         <div class="container text-center py-xl-9 text-capitalize" data-aos="fade-up">
@@ -96,7 +96,7 @@
     </section>
 
     <!-- TESTIMONIAL
-                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                                                                                                            ================================================== -->
     <section class="py-8 py-md-11 pb-xl-12 bg-white">
         <div class="container px-xl-9">
             <div class="text-center mb-2">
@@ -246,7 +246,7 @@
     </section>
 
     <!-- EVENTS
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
     <section class="py-5 py-md-11 bg-catskill">
         <div class="container">
             <div class="text-center mb-8 pb-2">
@@ -683,7 +683,7 @@
     </section>
 
     <!-- BLOG
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
     <section class="py-5 py-md-11 bg-white">
         <div class="container">
             <div class="text-center mb-4 mb-md-7" data-aos="fade-up">
@@ -873,7 +873,7 @@
     </section>
 
     <!-- INSTRUCTORS
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
     <section class="py-5 py-md-11 bg-catskill">
         <div class="container">
             <div class="text-center mb-4 mb-md-7" data-aos="fade-up">
@@ -883,63 +883,242 @@
 
             <div class="mx-n3 mx-md-n4"
                 data-flickity='{"pageDots": false,"cellAlign": "left", "wrapAround": true, "imagesLoaded": true}'>
-                @foreach ($instructors as $instructor)
-                    <div class="col-6 col-md-4 col-lg-3 text-center py-5 text-md-left px-3 px-md-4" data-aos="fade-up"
-                        data-aos-delay="50">
-                        <div class="card border shadow p-2 lift">
-                            <!-- Image -->
-                            <div class="card-zoom position-relative" style="max-width: 250px;">
-                                <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
-                                    <ul class="nav mx-n4 justify-content-center">
-                                        <li class="nav-item px-4">
-                                            <a href="{{ $instructor->facebook }}" class="d-block text-white">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="{{ $instructor->twitter }}" class="d-block text-white">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="{{ $instructor->instagram }}" class="d-block text-white">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="{{ $instructor->linkedin }}" class="d-block text-white">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <a href="instructors-single.html"
-                                    class="card-img sk-thumbnail img-ratio-4 card-hover-overlay coral d-block">
-                                    <img class="rounded shadow-light-lg img-fluid"
-                                        src="{{ asset('assets/instructors/' . $instructor->image) }}"
-                                        alt="{{ $instructor->name }}">
-                                </a>
+                <div class="col-6 col-md-4 col-lg-3 text-center py-5 text-md-left px-3 px-md-4" data-aos="fade-up"
+                    data-aos-delay="50">
+                    <div class="card border shadow p-2 lift">
+                        <!-- Image -->
+                        <div class="card-zoom position-relative" style="max-width: 250px;">
+                            <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
+                                <ul class="nav mx-n4 justify-content-center">
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
 
-                            <!-- Footer -->
-                            <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="instructors-single.html" class="d-block">
-                                    <h5 class="mb-0">{{ $instructor->name }}</h5>
-                                </a>
-                                <span class="font-size-d-sm">{{ $instructor->specialization }}</span>
-                            </div>
+                            <a href="instructors-single.html"
+                                class="card-img sk-thumbnail img-ratio-4 card-hover-overlay coral d-block"><img
+                                    class="rounded shadow-light-lg img-fluid"
+                                    src="{{ asset('frontend/assets/img/instructors/instructor-1.jpg') }}"
+                                    alt="..."></a>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="card-footer px-3 pt-4 pb-1">
+                            <a href="instructors-single.html" class="d-block">
+                                <h5 class="mb-0">Jack Wilson</h5>
+                            </a>
+                            <span class="font-size-d-sm">Developer</span>
                         </div>
                     </div>
-                @endforeach
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 text-center py-5 text-md-left px-3 px-md-4" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div class="card border shadow p-2 lift">
+                        <!-- Image -->
+                        <div class="card-zoom position-relative" style="max-width: 250px;">
+                            <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
+                                <ul class="nav mx-n4 justify-content-center">
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
 
+                            <a href="instructors-single.html"
+                                class="card-img sk-thumbnail img-ratio-4 card-hover-overlay coral d-block"><img
+                                    class="rounded shadow-light-lg img-fluid"
+                                    src="{{ asset('frontend/assets/img/instructors/instructor-2.jpg') }}"
+                                    alt="..."></a>
+                        </div>
 
+                        <!-- Footer -->
+                        <div class="card-footer px-3 pt-4 pb-1">
+                            <a href="instructors-single.html" class="d-block">
+                                <h5 class="mb-0">Anna Richard</h5>
+                            </a>
+                            <span class="font-size-d-sm">Travel Bloger</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 text-center py-5 text-md-left px-3 px-md-4" data-aos="fade-up"
+                    data-aos-delay="150">
+                    <div class="card border shadow p-2 lift">
+                        <!-- Image -->
+                        <div class="card-zoom position-relative" style="max-width: 250px;">
+                            <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
+                                <ul class="nav mx-n4 justify-content-center">
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <a href="instructors-single.html"
+                                class="card-img sk-thumbnail img-ratio-4 card-hover-overlay coral d-block"><img
+                                    class="rounded shadow-light-lg img-fluid"
+                                    src="{{ asset('frontend/assets/img/instructors/instructor-3.jpg') }}"
+                                    alt="..."></a>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="card-footer px-3 pt-4 pb-1">
+                            <a href="instructors-single.html" class="d-block">
+                                <h5 class="mb-0">Kathelen Monero</h5>
+                            </a>
+                            <span class="font-size-d-sm">Designer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 text-center py-5 text-md-left px-3 px-md-4" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <div class="card border shadow p-2 lift">
+                        <!-- Image -->
+                        <div class="card-zoom position-relative" style="max-width: 250px;">
+                            <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
+                                <ul class="nav mx-n4 justify-content-center">
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <a href="instructors-single.html"
+                                class="card-img sk-thumbnail img-ratio-4 card-hover-overlay coral d-block"><img
+                                    class="rounded shadow-light-lg img-fluid"
+                                    src="{{ asset('frontend/assets/img/instructors/instructor-4.jpg') }}"
+                                    alt="..."></a>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="card-footer px-3 pt-4 pb-1">
+                            <a href="instructors-single.html" class="d-block">
+                                <h5 class="mb-0">Kristen Pala</h5>
+                            </a>
+                            <span class="font-size-d-sm">User Experience Design</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 text-center py-5 text-md-left px-3 px-md-4" data-aos="fade-up"
+                    data-aos-delay="250">
+                    <div class="card border shadow p-2 lift">
+                        <!-- Image -->
+                        <div class="card-zoom position-relative" style="max-width: 250px;">
+                            <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
+                                <ul class="nav mx-n4 justify-content-center">
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item px-4">
+                                        <a href="#" class="d-block text-white">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <a href="instructors-single.html"
+                                class="card-img sk-thumbnail img-ratio-4 card-hover-overlay coral d-block"><img
+                                    class="rounded shadow-light-lg img-fluid"
+                                    src="{{ asset('frontend/assets/img/instructors/instructor-2.jpg') }}"
+                                    alt="..."></a>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="card-footer px-3 pt-4 pb-1">
+                            <a href="instructors-single.html" class="d-block">
+                                <h5 class="mb-0">Anna Richard</h5>
+                            </a>
+                            <span class="font-size-d-sm">Travel Bloger</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- COUNTUP
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
     <section class="py-5 py-md-12 jarallax" data-jarallax data-speed=".8"
         style="background-image: url({{ asset('frontend/assets/img/covers/cover-6.jpg') }})">
         <div class="container">
@@ -1025,7 +1204,7 @@
     </section>
 
     <!-- NEWSLETTER
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
     <section class="py-6 py-md-8 bg-coral">
         <div class="container">
             <div class="row align-items-center py-2">

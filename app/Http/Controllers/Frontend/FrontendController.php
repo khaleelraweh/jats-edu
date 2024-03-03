@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CommonQuestion;
 use App\Models\CourseCategory;
 use App\Models\Currency;
+use App\Models\Instructor;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\ProductCategory;
@@ -30,7 +31,9 @@ class FrontendController extends Controller
             )
             ->get();
 
-        return view('frontend.index', compact('main_sliders'));
+        $instructors = Instructor::with('courses')->Active()->take(8)->get();
+
+        return view('frontend.index', compact('main_sliders', 'instructors'));
     }
     public function home()
     {

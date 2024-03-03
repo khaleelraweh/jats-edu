@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Course;
 use App\Models\CourseCategory;
+use App\Models\Instructor;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,9 @@ class CourseSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
+
+        $instrustors = Instructor::active()->inRandomOrder()->take(3)->get();
+
 
 
         $categories = CourseCategory::query()->Active()->pluck('id');
@@ -46,6 +50,8 @@ class CourseSeeder extends Seeder
         $courses1['created_at']             =   now();
         $courses1['updated_at']             =   now();
         $courses1                           =   Course::create($courses1);
+
+        $courses1->instructors()->attach($instrustors->pluck('id')->toArray());
 
 
         $courses2['course_name']            =   ['ar' => 'دورة جافا سكريبت الكاملة 2020: بناء مشاريع حقيقية!', 'en' => 'The Complete JavaScript Course 2020: Build Real Projects!'];

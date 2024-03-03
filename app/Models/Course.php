@@ -141,4 +141,9 @@ class Course extends Model
     {
         return $this->belongsToMany(Order::class)->withPivot('quantity');
     }
+
+    public function instructors(): BelongsToMany
+    {
+        return $this->belongsToMany(Instructor::class);
+    }
 }

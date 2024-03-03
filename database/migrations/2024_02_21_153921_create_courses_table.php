@@ -33,6 +33,8 @@ return new class extends Migration
             $table->integer('max_order')->nullable()->default(-1); // اعلي كمية يمكن حجزها 
             $table->boolean('featured')->default(false);
             $table->foreignId('course_category_id')->constrained()->cascadeOnDelete();
+            // $table->foreignId('instructor_id')->constrained()->cascadeOnDelete();
+
             $table->integer('views')->default(0);
 
             // will be use always

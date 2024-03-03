@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(UserAddressSeeder::class); //This will be only for user khaleel user
         $this->call(ProductCategorySeeder::class);
         $this->call(CardCategorySeeder::class);
+        $this->call(InstructorSeeder::class);
         $this->call(CourseCategorySeeder::class);
         $this->call(CourseSeeder::class);
 

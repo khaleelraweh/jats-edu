@@ -78,7 +78,7 @@
 
         <!-- FOOTER
         ================================================== -->
-        @include('partial.frontend.footer')
+        {{-- @include('partial.frontend.footer') --}}
 
 
 

@@ -30,7 +30,7 @@
                             }
                         @endphp
 
-                        <a href="course-list-v4.html"
+                        <a href="{{ route('frontend.courses') }}"
                             class="card card-hover-image px-md-5 py-md-5 px-4 py-8 text-center position-relative h-180p"
                             style="background-image: url({{ $course_category_img }})">
                             <div class="my-auto">
@@ -57,14 +57,14 @@
                     <a wire:click="load_more"
                         class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_load_more_courses') }}
                     </a>
-                    <a href="#"
+                    <a href="{{ route('frontend.courses') }}"
                         class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_view_all_courses') }}
                     </a>
                 @else
                     <a wire:click="load_less"
                         class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_load_less_courses') }}
                     </a>
-                    <a href="#"
+                    <a href="{{ route('frontend.courses') }}"
                         class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_view_all_courses') }}
                     </a>
                 @endif

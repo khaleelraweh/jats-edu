@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\CommonQuestion;
+use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\Currency;
 use App\Models\Instructor;
@@ -14,9 +15,14 @@ use App\Models\ProductReview;
 use App\Models\SiteSetting;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Livewire\WithPagination;
 
 class FrontendController extends Controller
 {
+
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+    public $paginationLimit = 15;
 
 
     public function index()
@@ -38,6 +44,13 @@ class FrontendController extends Controller
     public function home()
     {
         return view('frontend.home');
+    }
+
+    public function courses()
+    {
+        $courses = Course::with('firstMedia', 'lastMedia', 'courseCategory')->inRandomOrder()->Active()->ActiveCourseCategory()
+            ->paginate($this->paginationLimit);
+        return view('frontend.course-list', compact('courses'));
     }
 
     public function service()

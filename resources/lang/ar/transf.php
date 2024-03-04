@@ -127,6 +127,9 @@ return [
     'lang_ar'                                       =>  'العربية',
     'lang_ca'                                       =>  'الاسبانية',
 
+    'txt_all_courses'                                   =>  'كل الدورات',
+
+    'lnk_home'                                          =>  'الرئيسية',
 
 
 

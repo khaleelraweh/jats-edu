@@ -126,4 +126,7 @@ return [
     'lang_ar'                                       =>  'Arabic',
     'lang_ca'                                       =>  'Spain',
 
+    'txt_all_courses'                                   =>  'All Courses',
+    'lnk_home'                                          =>  'Home',
+
 ];

@@ -1,5 +1,5 @@
 <header
-    class="navbar navbar-expand-xl {{ request()->routeIs('frontend.service') ? 'navbar-light bg-white border-bottom py-2 py-xl-4' : 'navbar-dark' }} ">
+    class="navbar navbar-expand-xl {{ !request()->routeIs('frontend.index') ? 'navbar-light bg-white border-bottom py-2 py-xl-4' : 'navbar-dark' }} ">
     <div class="container-fluid">
 
         {{-- @php
@@ -7,20 +7,20 @@
         @endphp --}}
 
         <!-- Brand -->
-        <a class="navbar-brand me-0" href="index.html">
+        <a class="navbar-brand me-0" href="{{ route('frontend.index') }}">
             <img src="{{ asset('frontend/assets/img/brand.svg') }}" class="navbar-brand-img" alt="...">
         </a>
 
         <!-- Vertical Menu -->
         {{-- <ul class="navbar-nav navbar-vertical ms-xl-4 d-none d-xl-flex"> --}}
-        <ul class="navbar-nav navbar-vertical ms-xl-4 d-none">
+        <ul class="navbar-nav navbar-vertical ms-xl-4 d-none ">
             <li class="nav-item dropdown">
                 <a class="nav-link pb-4 mb-n4 px-0 pt-0" id="navbarVerticalMenu" data-bs-toggle="dropdown" href="#"
                     aria-haspopup="true" aria-expanded="false">
                     <div
-                        class="  {{ request()->routeIs('frontend.service') ? 'bg-primary' : 'bg-white' }} rounded py-3 px-4 d-flex align-items-center">
+                        class="  {{ !request()->routeIs('frontend.index') ? 'bg-primary' : 'bg-white' }} rounded py-3 px-5 d-flex align-items-center">
                         <div
-                            class="me-3 ms-1 d-flex {{ request()->routeIs('frontend.service') ? 'text-white' : 'text-primary' }}">
+                            class="me-3 ms-1 d-flex {{ !request()->routeIs('frontend.index') ? 'text-white' : 'text-primary' }}">
                             <!-- Icon -->
                             <svg width="25" height="17" viewBox="0 0 25 17" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="25" height="1" fill="currentColor" />
@@ -30,19 +30,19 @@
 
                         </div>
                         <span
-                            class="{{ request()->routeIs('frontend.service') ? 'text-white' : 'text-primary' }} fw-medium me-1 text-uppercase">{{ __('transf.courses') }}</span>
+                            class="{{ !request()->routeIs('frontend.index') ? 'text-white' : 'text-primary' }} fw-medium me-1 text-uppercase">{{ __('transf.courses') }}</span>
                     </div>
                 </a>
 
 
-                <ul class="dropdown-menu dropdown-menu-md {{ request()->routeIs('frontend.service') ? 'bg-primary' : 'bg-white' }} rounded py-4 mt-4 "
+                <ul class="dropdown-menu dropdown-menu-md {{ !request()->routeIs('frontend.index') ? 'bg-primary' : 'bg-white' }} rounded py-4 mt-4 "
                     aria-labelledby="navbarVerticalMenu">
 
                     @foreach ($web_menus->where('section', 1) as $menu)
                         @if (count($menu->appearedChildren) == false)
                             <li class="dropdown-item dropright">
                                 <a href="#">
-                                    <div class="me-4 d-flex {{ request()->routeIs('frontend.service') ? 'text-white' : 'text-primary' }} icon-xs"
+                                    <div class="me-4 d-flex {{ !request()->routeIs('frontend.index') ? 'text-white' : 'text-primary' }} icon-xs"
                                         style="display: inline-block !important">
                                         <!-- Icon -->
                                         <i class="{{ $menu->icon }}"></i>
@@ -55,7 +55,7 @@
                             <li class="dropdown-item dropright">
                                 <a class="dropdown-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
                                     <div
-                                        class="me-4 d-flex {{ request()->routeIs('frontend.service') ? 'text-white' : 'text-primary' }} icon-xs">
+                                        class="me-4 d-flex {{ !request()->routeIs('frontend.index') ? 'text-white' : 'text-primary' }} icon-xs">
                                         <!-- Icon -->
                                         <i class="{{ $menu->icon }}"></i>
 
@@ -65,7 +65,7 @@
 
                                 <div class="dropdown-menu ps-3 top-0 pe-0 py-0 shadow-none bg-transparent">
                                     <div
-                                        class="dropdown-menu-md {{ request()->routeIs('frontend.service') ? 'bg-primary' : 'bg-white' }} rounded dropdown-menu-inner">
+                                        class="dropdown-menu-md {{ !request()->routeIs('frontend.index') ? 'bg-primary' : 'bg-white' }} rounded dropdown-menu-inner">
                                         @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
                                             @foreach ($menu->appearedChildren as $sub_menu)
                                                 <a class="dropdown-item" href="course-single-v1.html">

@@ -4,7 +4,7 @@
         $web_menus = App\Models\WebMenu::tree();
     @endphp --}}
 
-    {{ dd($siteSettings) }}
+    {{-- {{ dd($siteSettings) }} --}}
 
     <div class="container">
         <div class="row" id="accordionFooter">

@@ -51,7 +51,8 @@ app('debugbar')->disable();
 //Frontend 
 Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
 Route::get('/home', [FrontendController::class, 'home'])->name('frontend.home');
-Route::get('/courses', [FrontendController::class, 'courses'])->name('frontend.courses');
+// Route::get('/courses', [FrontendController::class, 'courses'])->name('frontend.courses');
+Route::get('/courses/{slug?}', [FrontendController::class, 'courses'])->name('frontend.courses');
 Route::get('/terms-of-service', [FrontendController::class, 'service'])->name('frontend.service');
 
 

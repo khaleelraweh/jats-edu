@@ -46,10 +46,21 @@ class FrontendController extends Controller
         return view('frontend.home');
     }
 
-    public function courses()
+    // public function courses()
+    // {
+    //     $courses = Course::with('firstMedia', 'lastMedia', 'courseCategory')->inRandomOrder()->Active()->ActiveCourseCategory()
+    //         ->paginate($this->paginationLimit);
+    //     return view('frontend.course-list', compact('courses'));
+    // }
+
+    public function courses($slug = null)
     {
-        $courses = Course::with('firstMedia', 'lastMedia', 'courseCategory')->inRandomOrder()->Active()->ActiveCourseCategory()
-            ->paginate($this->paginationLimit);
+        if ($slug == null) {
+            $courses = Course::with('firstMedia', 'lastMedia', 'courseCategory')->inRandomOrder()->Active()->ActiveCourseCategory()
+                ->paginate($this->paginationLimit);
+        } else {
+        }
+
         return view('frontend.course-list', compact('courses'));
     }
 

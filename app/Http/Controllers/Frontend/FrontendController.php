@@ -64,7 +64,10 @@ class FrontendController extends Controller
             ->inRandomOrder()
             ->paginate($this->paginationLimit);
 
-        return view('frontend.course-list', compact('courses'));
+        $course_categories_menu = CourseCategory::withCount('courses')->get();
+
+
+        return view('frontend.course-list', compact('courses', 'course_categories_menu'));
     }
 
     public function service()

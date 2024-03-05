@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- PAGE TITLE
-                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                ================================================== -->
     {{-- <header class="bg-white py-8 py-lg-12 position-relative mb-8" style="background-image: none;"> --}}
     <header class="bg-white py-3 py-lg-3 position-relative mb-3" style="background-image: none;">
         <div class="container text-center py-xl-5">
@@ -27,7 +27,7 @@
 
 
     <!-- CONTROL BAR
-                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                ================================================== -->
     <div class="container mb-6 mb-xl-8 z-index-2">
         <div class="d-lg-flex align-items-center mb-6 mb-xl-0">
             <p class="mb-lg-0">We found <span class="text-dark">834 courses</span> available for you</p>
@@ -50,12 +50,13 @@
     </div>
 
     <!-- COURSE
-                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                ================================================== -->
     <div class="container">
+
         <div class="row">
             <div class="col-xl-3 mb-5 mb-xl-0">
                 <!-- SIDEBAR FILTER
-                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                            ================================================== -->
                 <div class=" vertical-scroll" id="courseSidebar">
                     <div class="border rounded mb-6 bg-white">
                         <!-- Heading -->
@@ -87,36 +88,16 @@
                         <div id="coursefiltercollapse1" class="collapse show mt-n2 px-6 pb-6"
                             aria-labelledby="coursefilter1" data-parent="#courseSidebar">
                             <ul class="list-unstyled list-group list-checkbox">
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="categorycustomcheckone">
-                                    <label class="custom-control-label font-size-base" for="categorycustomcheckone">Art
-                                        (8)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="categorycustomcheck2">
-                                    <label class="custom-control-label font-size-base" for="categorycustomcheck2">Exercise
-                                        (8)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="categorycustomcheck3">
-                                    <label class="custom-control-label font-size-base" for="categorycustomcheck3">Material
-                                        Design (7)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="categorycustomcheck4">
-                                    <label class="custom-control-label font-size-base" for="categorycustomcheck4">Software
-                                        Development (6)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="categorycustomcheck5">
-                                    <label class="custom-control-label font-size-base" for="categorycustomcheck5">Music
-                                        (6)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="categorycustomcheck6">
-                                    <label class="custom-control-label font-size-base"
-                                        for="categorycustomcheck6">Photography (6)</label>
-                                </li>
+                                @foreach ($course_categories_menu as $category_item)
+                                    <li class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="{{ $category_item->slug }}">
+                                        <label class="custom-control-label font-size-base"
+                                            for="{{ $category_item->slug }}">{{ $category_item->category_name }}
+                                            ({{ $category_item->courses_count }})
+                                        </label>
+                                    </li>
+                                @endforeach
+
                             </ul>
                         </div>
                     </div>
@@ -518,7 +499,7 @@
                 </div>
 
                 <!-- PAGINATION
-                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                            ================================================== -->
                 <nav class="mb-11" aria-label="Page navigationa">
                     <ul class="pagination justify-content-center">
                         {!! $courses->appends(request()->all())->onEachSide(3)->links() !!}

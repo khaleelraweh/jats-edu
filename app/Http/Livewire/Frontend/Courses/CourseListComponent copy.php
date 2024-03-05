@@ -23,7 +23,11 @@ class CourseListComponent extends Component
     //to filter by categories choosen 
     public $categoryInputs = [];
 
-    protected $queryString = ['categoryInputs'];
+    protected $queryString = [
+        'categoryInputs'  => ['except' => '', 'as' => 'categories'],
+    ];
+
+
 
 
 

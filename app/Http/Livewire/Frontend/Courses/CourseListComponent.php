@@ -26,7 +26,10 @@ class CourseListComponent extends Component
     // To Filter by level choosen 
     public $courseLevels = [];
 
-    protected $queryString = ['categoryInputs', 'courseLevels'];
+    // To filter by price type 
+    public $priceInput;
+
+    protected $queryString = ['categoryInputs', 'courseLevels', 'priceInput'];
 
 
     public function render()
@@ -86,9 +89,18 @@ class CourseListComponent extends Component
         }
 
         $courses = $courses->active()
-            // ->whereHas('courseCategory', function ($query) {
-            //     $query->whereIn('slug->' . app()->getLocale(), $this->categoryInputs);
-            // })
+            ->when($this->priceInput, function ($query) {
+                $query
+                    ->when($this->priceInput == 'all', function ($query2) {
+                        $query2->where('price', '>=', 0);
+                    })
+                    ->when($this->priceInput == 'free', function ($query2) {
+                        $query2->where('price', '=', 0);
+                    })
+                    ->when($this->priceInput == 'paid', function ($query2) {
+                        $query2->where('price', '>', 0);
+                    });
+            })
             ->orderBy($sort_field, $sort_type)
             ->paginate($this->paginationLimit);
 

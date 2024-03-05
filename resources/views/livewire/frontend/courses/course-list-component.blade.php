@@ -215,22 +215,24 @@
                             <ul class="list-unstyled list-group list-checkbox">
 
                                 <li class="custom-control custom-radio">
-                                    <input type="radio" id="pricecustomradio1" name="customRadio"
-                                        class="custom-control-input">
+
+                                    <input type="radio" wire:model="priceInput" id="pricecustomradio1"
+                                        name="customRadio" value="all" class="custom-control-input">
+
                                     <label class="custom-control-label font-size-base" for="pricecustomradio1">All
                                         ({{ count($courses) ?? 0 }})
                                     </label>
                                 </li>
                                 <li class="custom-control custom-radio">
-                                    <input type="radio" id="pricecustomradio2" name="customRadio"
-                                        class="custom-control-input">
+                                    <input type="radio" wire:model="priceInput" id="pricecustomradio2"
+                                        name="customRadio" value="free" class="custom-control-input">
                                     <label class="custom-control-label font-size-base" for="pricecustomradio2">Free
                                         ({{ count($courses->where('price', '=', 0)) ?? 0 }})
                                     </label>
                                 </li>
                                 <li class="custom-control custom-radio">
-                                    <input type="radio" id="pricecustomradio3" name="customRadio"
-                                        class="custom-control-input">
+                                    <input type="radio" wire:model="priceInput" id="pricecustomradio3"
+                                        name="customRadio" value="paid" class="custom-control-input">
                                     <label class="custom-control-label font-size-base" for="pricecustomradio3">Paid
                                         ({{ count($courses->where('price', '>', 0)) ?? 0 }})
                                     </label>

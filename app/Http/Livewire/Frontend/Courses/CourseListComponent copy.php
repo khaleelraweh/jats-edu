@@ -57,27 +57,20 @@ class CourseListComponent extends Component
         $courses = Course::with('photos', 'firstMedia');
         if ($this->slug == null) {
             $courses = $courses->ActiveCourseCategory();
-            if ($this->categoryInputs != null) {
-                $courseCategoryIds = CourseCategory::whereIn('slug->' . app()->getLocale(), $this->categoryInputs)->pluck('id')->toArray();
-                $courses = $courses->whereIn('course_category_id', $courseCategoryIds);
-            }
         } else {
 
-            if ($this->categoryInputs == null) {
-                $courseCategoryIds = CourseCategory::whereIn('slug->' . app()->getLocale(), $this->slug)->pluck('id')->toArray();
-            } else {
-                $courseCategoryIds = CourseCategory::whereIn('slug->' . app()->getLocale(), $this->categoryInputs)->pluck('id')->toArray();
-            }
 
-            $courses = $courses->whereIn('course_category_id', $courseCategoryIds);
+            $course_category = CourseCategory::where('slug->' . app()->getLocale(), $this->slug)
+                ->whereStatus(true)
+                ->first();
 
-            // dd($courseCategoryIds);
+            $courses = $courses->where('course_category_id', $course_category->id);
         }
 
         $courses = $courses->active()
-            // ->whereHas('courseCategory', function ($query) {
-            //     $query->whereIn('slug->' . app()->getLocale(), $this->categoryInputs);
-            // })
+            ->whereHas('courseCategory', function ($query) {
+                $query->whereIn('slug->' . app()->getLocale(), $this->categoryInputs);
+            })
             ->orderBy($sort_field, $sort_type)
             ->paginate($this->paginationLimit);
 

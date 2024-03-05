@@ -74,11 +74,13 @@
                             <ul class="list-unstyled list-group list-checkbox">
                                 @foreach ($course_categories_menu as $category_item)
                                     <li class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input"
+
+                                        <input type="checkbox" wire:model="categoryInputs"
+                                            value="{{ $category_item->slug }}" class="custom-control-input"
                                             id="{{ $category_item->slug }}">
+
                                         <label class="custom-control-label font-size-base"
                                             for="{{ $category_item->slug }}">{{ $category_item->category_name }}
-                                            {{-- ({{ $category_item->courses_count }}) --}}
                                             ({{ $category_item->courses_count }})
                                         </label>
                                     </li>

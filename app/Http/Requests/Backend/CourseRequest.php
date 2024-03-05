@@ -37,16 +37,14 @@ class CourseRequest extends FormRequest
 
 
 
-                        'quantity'                      =>  'nullable|numeric',
-                        'price' => 'required|integer|min:1|digits_between: 1,5',
+                        'price' => 'required|integer|min:0|digits_between: 1,5',
                         'offer_price' => 'nullable|integer|lte:price|digits_between:1,5',
 
                         // 'offer_price' => 'required_with:price|integer|lte:price|digits_between:1,5',
 
 
                         'offer_ends'            =>  'nullable|date_format:Y-m-d',
-                        'sku'                   =>  'nullable',
-                        // 'max_order'             =>  'nullable|numeric',
+
                         'course_category_id'   =>  'required',
                         'tags.*'                =>  'required',
                         'featured'              =>  'required',
@@ -77,13 +75,11 @@ class CourseRequest extends FormRequest
                         'course_lessons_time'                      =>  'nullable',
 
 
-                        'quantity'              =>  'nullable|numeric',
-                        'price' => 'required|integer|min:1|digits_between: 1,5',
+                        'price' => 'required|integer|min:0|digits_between: 1,5',
                         'offer_price' => 'nullable|integer|lte:price|digits_between:1,5',
 
                         'offer_ends'            =>  'nullable|date_format:Y-m-d',
-                        'sku'                   =>  'nullable',
-                        'max_order' => 'nullable|numeric',
+
                         'course_category_id'   =>  'required',
                         'tags.*'                =>  'required',
                         'featured'              =>  'required',

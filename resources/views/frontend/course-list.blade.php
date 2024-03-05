@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- PAGE TITLE
-                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
     {{-- <header class="bg-white py-8 py-lg-12 position-relative mb-8" style="background-image: none;"> --}}
     <header class="bg-white py-3 py-lg-3 position-relative mb-3" style="background-image: none;">
         <div class="container text-center py-xl-5">
@@ -27,10 +27,11 @@
 
 
     <!-- CONTROL BAR
-                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
     <div class="container mb-6 mb-xl-8 z-index-2">
         <div class="d-lg-flex align-items-center mb-6 mb-xl-0">
-            <p class="mb-lg-0">We found <span class="text-dark">834 courses</span> available for you</p>
+
+            <p class="mb-lg-0">We found <span class="text-dark">{{ $courses->total() }} courses</span> available for you</p>
             <div class="ms-lg-auto d-lg-flex flex-wrap">
                 <div class="mb-4 mb-lg-0 ms-lg-6">
                     <div class="border rounded d-flex align-items-center choices-label h-50p">
@@ -50,13 +51,14 @@
     </div>
 
     <!-- COURSE
-                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
     <div class="container">
+
 
         <div class="row">
             <div class="col-xl-3 mb-5 mb-xl-0">
                 <!-- SIDEBAR FILTER
-                                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
                 <div class=" vertical-scroll" id="courseSidebar">
                     <div class="border rounded mb-6 bg-white">
                         <!-- Heading -->
@@ -85,6 +87,7 @@
                             </h4>
                         </div>
 
+
                         <div id="coursefiltercollapse1" class="collapse show mt-n2 px-6 pb-6"
                             aria-labelledby="coursefilter1" data-parent="#courseSidebar">
                             <ul class="list-unstyled list-group list-checkbox">
@@ -93,6 +96,7 @@
                                         <input type="checkbox" class="custom-control-input" id="{{ $category_item->slug }}">
                                         <label class="custom-control-label font-size-base"
                                             for="{{ $category_item->slug }}">{{ $category_item->category_name }}
+                                            {{-- ({{ $category_item->courses_count }}) --}}
                                             ({{ $category_item->courses_count }})
                                         </label>
                                     </li>
@@ -221,23 +225,29 @@
                         <div id="coursefiltercollapse3" class="collapse show mt-n2 px-6 pb-6"
                             aria-labelledby="coursefilter3" data-parent="#courseSidebar">
                             <ul class="list-unstyled list-group list-checkbox">
+                                {{-- @foreach ($course_categories_menu as $category_item)
+                                    {{ $category_item->courses->where('price', '>', 5)->count() }}
+                                @endforeach --}}
                                 <li class="custom-control custom-radio">
                                     <input type="radio" id="pricecustomradio1" name="customRadio"
                                         class="custom-control-input">
                                     <label class="custom-control-label font-size-base" for="pricecustomradio1">All
-                                        (18)</label>
+                                        ({{ count($courses) ?? 0 }})
+                                    </label>
                                 </li>
                                 <li class="custom-control custom-radio">
                                     <input type="radio" id="pricecustomradio2" name="customRadio"
                                         class="custom-control-input">
                                     <label class="custom-control-label font-size-base" for="pricecustomradio2">Free
-                                        (3)</label>
+                                        ({{ count($courses->where('price', '=', 0)) ?? 0 }})
+                                    </label>
                                 </li>
                                 <li class="custom-control custom-radio">
                                     <input type="radio" id="pricecustomradio3" name="customRadio"
                                         class="custom-control-input">
                                     <label class="custom-control-label font-size-base" for="pricecustomradio3">Paid
-                                        (15)</label>
+                                        ({{ count($courses->where('price', '>', 0)) ?? 0 }})
+                                    </label>
                                 </li>
                             </ul>
                         </div>
@@ -276,17 +286,21 @@
                                 <li class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="levelcustomcheck1">
                                     <label class="custom-control-label font-size-base" for="levelcustomcheck1">Beginner
-                                        (03)</label>
+                                        ({{ count($courses->where('course_level', 1)) ?? 0 }})
+                                    </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="levelcustomcheck2">
                                     <label class="custom-control-label font-size-base"
-                                        for="levelcustomcheck2">Intermediate (15)</label>
+                                        for="levelcustomcheck2">Intermediate
+                                        ({{ count($courses->where('course_level', 2)) ?? 0 }})
+                                    </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="levelcustomcheck3">
                                     <label class="custom-control-label font-size-base" for="levelcustomcheck3">Advanced
-                                        (126)</label>
+                                        ({{ count($courses->where('course_level', 3)) ?? 0 }})
+                                    </label>
                                 </li>
                             </ul>
                         </div>
@@ -499,7 +513,7 @@
                 </div>
 
                 <!-- PAGINATION
-                                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
                 <nav class="mb-11" aria-label="Page navigationa">
                     <ul class="pagination justify-content-center">
                         {!! $courses->appends(request()->all())->onEachSide(3)->links() !!}

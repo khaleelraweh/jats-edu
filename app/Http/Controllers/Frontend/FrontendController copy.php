@@ -64,12 +64,35 @@ class FrontendController extends Controller
             ->inRandomOrder()
             ->paginate($this->paginationLimit);
 
-        $course_categories_menu = CourseCategory::withCount('courses')->get();
+        $course_categories_menu = CourseCategory::get();
 
 
-        return view('frontend.course-list', compact('courses', 'course_categories_menu'));
+
+
+
+
+        $free_courses = self::free($course_categories_menu);
+        $paid_courses = self::paid($course_categories_menu);
+
+        return view('frontend.course-list', compact('courses', 'course_categories_menu', 'free_courses', 'paid_courses'));
     }
 
+    public function free($categories)
+    {
+        $free = 0;
+        foreach ($categories as $category) {
+            $free +=   $category->courses->where('price', '=', 0)->count();
+        }
+        return $free;
+    }
+    public function paid($categories)
+    {
+        $free = 0;
+        foreach ($categories as $category) {
+            $free +=   $category->courses->where('price', '>', 0)->count();
+        }
+        return $free;
+    }
 
     public function service()
     {

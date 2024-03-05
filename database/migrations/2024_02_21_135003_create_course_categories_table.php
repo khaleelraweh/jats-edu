@@ -20,7 +20,7 @@ return new class extends Migration
             $table->json('description')->nullable();
             $table->string('icon')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('product_categories')->nullOnDelete();
+            $table->foreign('parent_id')->references('id')->on('course_categories')->nullOnDelete();
             $table->boolean('featured')->default(false);
 
             // will be use always

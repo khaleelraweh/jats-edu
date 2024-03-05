@@ -30,7 +30,7 @@
                             }
                         @endphp
 
-                        <a href="{{ route('frontend.courses') }}"
+                        <a href="{{ route('frontend.courses', $course_category->slug) }}"
                             class="card card-hover-image px-md-5 py-md-5 px-4 py-8 text-center position-relative h-180p"
                             style="background-image: url({{ $course_category_img }})">
                             <div class="my-auto">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Currency;
 use App\Models\News;
 use App\Models\Post;
@@ -78,6 +79,8 @@ class LocaleController extends Controller
                         return $this->resolveModel(ProductCategory::class, $segments[1], $locale, $routeName);
                     } else if ($routeName === "frontend.blog.post") {
                         return $this->resolveModel(News::class, $segments[2], $locale, $routeName);
+                    } else if ($routeName === "frontend.courses") {
+                        return $this->resolveModel(Course::class, $segments[2], $locale, $routeName);
                     }
                 }
 

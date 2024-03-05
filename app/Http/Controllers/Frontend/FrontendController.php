@@ -48,26 +48,8 @@ class FrontendController extends Controller
 
     public function courses($slug = null)
     {
-        $courses = Course::with('photos', 'firstMedia');
-        if ($slug == null) {
-            $courses = $courses->ActiveCourseCategory();
-        } else {
-
-            $course_category = CourseCategory::where('slug->' . app()->getLocale(), $slug)
-                ->whereStatus(true)
-                ->first();
-
-            $courses = $courses->where('course_category_id', $course_category->id);
-        }
-
-        $courses = $courses->active()
-            ->inRandomOrder()
-            ->paginate($this->paginationLimit);
-
-        $course_categories_menu = CourseCategory::withCount('courses')->get();
-
-
-        return view('frontend.course-list', compact('courses', 'course_categories_menu'));
+        // return view('frontend.course-list', compact('courses', 'course_categories_menu'));
+        return view('frontend.course-list', compact('slug'));
     }
 
 

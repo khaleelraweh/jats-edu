@@ -7,17 +7,32 @@
             </p>
             <div class="ms-lg-auto d-lg-flex flex-wrap">
                 <div class="mb-4 mb-lg-0 ms-lg-6">
-                    <div class="border rounded d-flex align-items-center choices-label h-50p">
+                    {{-- <div class="border rounded d-flex align-items-center choices-label h-50p">
                         <span class="ps-5">Sort by:</span>
-                        <select
+                        <select wire:model="sortingBy"
                             class="form-select form-select-sm text-dark border-0 ps-1 bg-transparent flex-grow-1 shadow-none dropdown-menu-end"
                             data-choices>
-                            <option>Default</option>
-                            <option>New Courses</option>
-                            <option>Price Low to High</option>
-                            <option>Price High to low</option>
+                            <option value="default">Default</option>
+                            <option value="new-courses">New Courses</option>
+                            <option value="low-to-high">Price Low to High</option>
+                            <option value="high-to-low">Price High to low</option>
                         </select>
+
+
+                    </div> --}}
+
+                    <div wire:ignore class="list-inline-item">
+                        {{-- search is not working because of selectpicker try without it to see it working  --}}
+                        <select class="" wire:model="sortingBy" data-customclass="form-control form-control-sm">
+                            <option value="">Sort By </option>
+                            <option value="default">Default sorting </option>
+                            <option value="popularity">Popularity </option>
+                            <option value="low-high">Price: Low to High </option>
+                            <option value="high-low">Price: High to Low </option>
+                        </select>
+
                     </div>
+
                 </div>
             </div>
         </div>
@@ -439,7 +454,8 @@
                                 <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
                                     <!-- Preheading -->
                                     <a href="course-single-v5.html"><span
-                                            class="mb-1 d-inline-block text-gray-800">{{ $course->courseCategory->category_name }}</span></a>
+                                            class="mb-1 d-inline-block text-gray-800">{{ $course->courseCategory->category_name }}
+                                            {{ $course->price }}</span></a>
 
                                     <!-- Heading -->
                                     <div class="position-relative">

@@ -20,10 +20,13 @@ class CourseListComponent extends Component
     public $slug;
     public $sortingBy = "default";
 
-    //to filter by categories choosen 
+    //To filter by categories choosen 
     public $categoryInputs = [];
-    protected $queryString = ['categoryInputs'];
 
+    // To Filter by level choosen 
+    public $courseLevels = [];
+
+    protected $queryString = ['categoryInputs', 'courseLevels'];
 
 
     public function render()
@@ -67,7 +70,6 @@ class CourseListComponent extends Component
                 $course_category = CourseCategory::where('slug->' . app()->getLocale(), $this->slug)
                     ->whereStatus(true)
                     ->first();
-
                 $courses = $courses->where('course_category_id', $course_category->id);
             } else {
                 $courseCategoryIds = CourseCategory::whereIn('slug->' . app()->getLocale(), $this->categoryInputs)->pluck('id')->toArray();
@@ -79,13 +81,16 @@ class CourseListComponent extends Component
             // dd($courseCategoryIds);
         }
 
+        if ($this->courseLevels != null) {
+            $courses = $courses->whereIn('course_level', $this->courseLevels);
+        }
+
         $courses = $courses->active()
             // ->whereHas('courseCategory', function ($query) {
             //     $query->whereIn('slug->' . app()->getLocale(), $this->categoryInputs);
             // })
             ->orderBy($sort_field, $sort_type)
             ->paginate($this->paginationLimit);
-
 
 
 

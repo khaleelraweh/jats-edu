@@ -270,21 +270,30 @@
                             aria-labelledby="coursefilter4" data-parent="#courseSidebar">
                             <ul class="list-unstyled list-group list-checkbox">
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="levelcustomcheck1">
+
+                                    <input type="checkbox" wire:model="courseLevels" value="1"
+                                        class="custom-control-input" id="levelcustomcheck1">
+
                                     <label class="custom-control-label font-size-base"
                                         for="levelcustomcheck1">Beginner
                                         ({{ count($courses->where('course_level', 1)) ?? 0 }})
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="levelcustomcheck2">
+
+                                    <input type="checkbox" wire:model="courseLevels" value="2"
+                                        class="custom-control-input" id="levelcustomcheck2">
+
                                     <label class="custom-control-label font-size-base"
                                         for="levelcustomcheck2">Intermediate
                                         ({{ count($courses->where('course_level', 2)) ?? 0 }})
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="levelcustomcheck3">
+
+                                    <input type="checkbox" wire:model="courseLevels" value="3"
+                                        class="custom-control-input" id="levelcustomcheck3">
+
                                     <label class="custom-control-label font-size-base"
                                         for="levelcustomcheck3">Advanced
                                         ({{ count($courses->where('course_level', 3)) ?? 0 }})

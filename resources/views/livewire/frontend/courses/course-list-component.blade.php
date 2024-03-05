@@ -7,31 +7,25 @@
             </p>
             <div class="ms-lg-auto d-lg-flex flex-wrap">
                 <div class="mb-4 mb-lg-0 ms-lg-6">
-                    {{-- <div class="border rounded d-flex align-items-center choices-label h-50p">
-                        <span class="ps-5">Sort by:</span>
-                        <select wire:model="sortingBy"
-                            class="form-select form-select-sm text-dark border-0 ps-1 bg-transparent flex-grow-1 shadow-none dropdown-menu-end"
-                            data-choices>
+
+                    <div wire:ignore class="border rounded d-flex align-items-center choices-label h-50p">
+                        <span class="ps-5" style="width: 110px">Sort by:</span>
+                        <select
+                            class="form-select form-select-sm text-dark border-0 ps-3 flex-grow-1 shadow-none dropdown-menu-end"
+                            aria-label="Small select example" wire:model="sortingBy">
                             <option value="default">Default</option>
+                            <option value="popularity">Popularity</option>
                             <option value="new-courses">New Courses</option>
-                            <option value="low-to-high">Price Low to High</option>
-                            <option value="high-to-low">Price High to low</option>
-                        </select>
-
-
-                    </div> --}}
-
-                    <div wire:ignore class="list-inline-item">
-                        {{-- search is not working because of selectpicker try without it to see it working  --}}
-                        <select class="" wire:model="sortingBy" data-customclass="form-control form-control-sm">
-                            <option value="">Sort By </option>
-                            <option value="default">Default sorting </option>
-                            <option value="popularity">Popularity </option>
-                            <option value="low-high">Price: Low to High </option>
-                            <option value="high-low">Price: High to Low </option>
+                            <option value="low-high">Price Low to High</option>
+                            <option value="high-low">Price High to low</option>
                         </select>
 
                     </div>
+
+
+
+
+
 
                 </div>
             </div>

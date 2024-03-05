@@ -47,3 +47,7 @@
   margin-bottom: 10px;
   border-bottom: 1px solid;
 }
+
+select option{
+  /* background-color: red; */
+}

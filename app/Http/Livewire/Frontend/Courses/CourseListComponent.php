@@ -26,6 +26,10 @@ class CourseListComponent extends Component
                 $sort_field = "id";
                 $sort_type = "asc";
                 break;
+            case 'new-courses':
+                $sort_field = "created_at";
+                $sort_type = "asc";
+                break;
 
             case 'low-high':
                 $sort_field = "price";

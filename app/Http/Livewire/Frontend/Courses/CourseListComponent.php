@@ -64,12 +64,18 @@ class CourseListComponent extends Component
         } else {
 
             if ($this->categoryInputs == null) {
-                $courseCategoryIds = CourseCategory::whereIn('slug->' . app()->getLocale(), $this->slug)->pluck('id')->toArray();
+                // $courseCategoryIds = CourseCategory::whereIn('slug->' . app()->getLocale(), $this->slug)->pluck('id')->toArray();
+                $course_category = CourseCategory::where('slug->' . app()->getLocale(), $this->slug)
+                    ->whereStatus(true)
+                    ->first();
+
+                $courses = $courses->where('course_category_id', $course_category->id);
             } else {
                 $courseCategoryIds = CourseCategory::whereIn('slug->' . app()->getLocale(), $this->categoryInputs)->pluck('id')->toArray();
+                $courses = $courses->whereIn('course_category_id', $courseCategoryIds);
             }
 
-            $courses = $courses->whereIn('course_category_id', $courseCategoryIds);
+
 
             // dd($courseCategoryIds);
         }

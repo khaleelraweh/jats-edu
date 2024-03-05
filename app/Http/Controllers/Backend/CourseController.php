@@ -66,22 +66,9 @@ class CourseController extends Controller
         $input['course_lessons_time']               =   $request->course_lessons_time;
 
 
-        if (isset($request->Quantity_Unlimited)) {
-            $input['quantity']          =   $request->Quantity_Unlimited;
-        } else {
-            $input['quantity']          =   $request->quantity;
-        }
-
         $input['price']                 =   $request->price;
         $input['offer_price']           =   $request->offer_price;
         $input['offer_ends']            =   $request->offer_ends;
-        $input['sku']                   =   $request->sku;
-
-        if (isset($request->Quantity_Unlimited)) {
-            $input['quantity']      =   $request->Quantity_Unlimited;
-        } else {
-            $input['quantity']      =   $request->quantity;
-        }
 
         $input['course_category_id']   =   $request->course_category_id;
         $input['featured']              =   $request->featured;
@@ -182,23 +169,10 @@ class CourseController extends Controller
         $input['course_lessons_number']             =   $request->course_lessons_number;
         $input['course_lessons_time']               =   $request->course_lessons_time;
 
-
-        if (isset($request->Quantity_Unlimited)) {
-            $input['quantity']          =   $request->Quantity_Unlimited;
-        } else {
-            $input['quantity']          =   $request->quantity;
-        }
-
         $input['price']                 =   $request->price;
         $input['offer_price']           =   $request->offer_price;
         $input['offer_ends']            =   $request->offer_ends;
-        $input['sku']                   =   $request->sku;
 
-        if (isset($request->Quantity_Unlimited_max_order)) {
-            $input['max_order']          =   $request->Quantity_Unlimited_max_order;
-        } else {
-            $input['max_order']          =   $request->max_order;
-        }
 
         $input['course_category_id']   =   $request->course_category_id;
         $input['featured']              =   $request->featured;

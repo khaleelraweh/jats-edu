@@ -36,12 +36,10 @@ class CourseSeeder extends Seeder
         $courses1['course_lessons_time']            =  "8h  12m";
 
 
-        $courses1['quantity']               =   $faker->numberBetween(10, 100);
         $courses1['price']                  =   $faker->numberBetween(5, 200);
         $courses1['offer_price']            =   $faker->numberBetween(5, 100);
         $courses1['offer_ends']             =   $faker->dateTime();
-        $courses1['sku']                    =   $faker->realText(10);
-        $courses1['max_order']              =   $faker->numberBetween(5, 10);
+
         $courses1['featured']               =   rand(0, 1);
         $courses1['status']                 =   true;
         $courses1['course_category_id']     =   8;
@@ -62,12 +60,10 @@ class CourseSeeder extends Seeder
         $courses2['course_lessons_number']          =  5;
         $courses2['course_lessons_time']            =  "8h  12m";
 
-        $courses2['quantity']               =   $faker->numberBetween(10, 100);
         $courses2['price']                  =   $faker->numberBetween(5, 200);
         $courses2['offer_price']            =   $faker->numberBetween(5, 100);
         $courses2['offer_ends']             =   $faker->dateTime();
-        $courses2['sku']                    =   $faker->realText(10);
-        $courses2['max_order']              =   $faker->numberBetween(5, 10);
+
         $courses2['featured']               =   rand(0, 1);
         $courses2['status']                 =   true;
         $courses2['course_category_id']     =   2;
@@ -85,12 +81,10 @@ class CourseSeeder extends Seeder
         $courses3['course_lessons_number']          =  5;
         $courses3['course_lessons_time']            =  "8h  12m";
 
-        $courses3['quantity']               =   $faker->numberBetween(10, 100);
         $courses3['price']                  =   $faker->numberBetween(5, 200);
         $courses3['offer_price']            =   $faker->numberBetween(5, 100);
         $courses3['offer_ends']             =   $faker->dateTime();
-        $courses3['sku']                    =   $faker->realText(10);
-        $courses3['max_order']              =   $faker->numberBetween(5, 10);
+
         $courses3['featured']               =   rand(0, 1);
         $courses3['status']                 =   true;
         $courses3['course_category_id']     =   4;
@@ -108,12 +102,10 @@ class CourseSeeder extends Seeder
         $courses4['course_lessons_number']          =  5;
         $courses4['course_lessons_time']            =  "8h  12m";
 
-        $courses4['quantity']               =   $faker->numberBetween(10, 100);
         $courses4['price']                  =   $faker->numberBetween(5, 200);
         $courses4['offer_price']            =   $faker->numberBetween(5, 100);
         $courses4['offer_ends']             =   $faker->dateTime();
-        $courses4['sku']                    =   $faker->realText(10);
-        $courses4['max_order']              =   $faker->numberBetween(5, 10);
+
         $courses4['featured']               =   rand(0, 1);
         $courses4['status']                 =   true;
         $courses4['course_category_id']     =   4;
@@ -132,12 +124,10 @@ class CourseSeeder extends Seeder
         $courses5['course_lessons_number']          =  5;
         $courses5['course_lessons_time']            =  "8h  12m";
 
-        $courses5['quantity']               =   $faker->numberBetween(10, 100);
         $courses5['price']                  =   $faker->numberBetween(5, 200);
         $courses5['offer_price']            =   $faker->numberBetween(5, 100);
         $courses5['offer_ends']             =   $faker->dateTime();
-        $courses5['sku']                    =   $faker->realText(10);
-        $courses5['max_order']              =   $faker->numberBetween(5, 10);
+
         $courses5['featured']               =   rand(0, 1);
         $courses5['status']                 =   true;
         $courses5['course_category_id']     =   $categories->random();
@@ -156,12 +146,10 @@ class CourseSeeder extends Seeder
         $courses6['course_lessons_number']          =  5;
         $courses6['course_lessons_time']            =  "8h  12m";
 
-        $courses6['quantity']               =   $faker->numberBetween(10, 100);
         $courses6['price']                  =   $faker->numberBetween(5, 200);
         $courses6['offer_price']            =   $faker->numberBetween(5, 100);
         $courses6['offer_ends']             =   $faker->dateTime();
-        $courses6['sku']                    =   $faker->realText(10);
-        $courses6['max_order']              =   $faker->numberBetween(5, 10);
+
         $courses6['featured']               =   rand(0, 1);
         $courses6['status']                 =   true;
         $courses6['course_category_id']     =   $categories->random();

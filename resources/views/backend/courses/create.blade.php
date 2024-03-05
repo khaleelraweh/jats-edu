@@ -1,14 +1,13 @@
 @extends('layouts.admin')
 @section('style')
-    <link rel="stylesheet" href="{{ asset('backend/vendor/select2/css/select2.min.css') }}">
     <style>
-        .select2-container {
-            display: block !important;
-        }
-
         .note-editor.note-airframe,
         .note-editor.note-frame {
             margin-bottom: 0;
+        }
+
+        #offer_ends_group .picker--opened .picker__holder {
+            transform: translateY(-342px) perspective(600px) rotateX(0);
         }
     </style>
 @endsection
@@ -287,45 +286,11 @@
 
                     {{-- Pricing Tab --}}
                     <div class="tab-pane fade" id="price" role="tabpanel" aria-labelledby="price-tab">
-                        {{-- skeu and quantity fields --}}
-                        <div class="row">
-                            {{-- quantity field --}}
-                            <div class="col-md-6 col-sm-12 pt-3">
-                                <label for="sku">{{ __('panel.sku') }}</label>
-                                <input type="text" name="sku" id="sku" value="{{ old('sku') }}"
-                                    class="form-control">
-                                @error('sku')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
 
-                            {{-- quantity field --}}
-                            <div class="col-md-6 col-sm-12 pt-3">
-                                <label for="quantity">{{ __('panel.qty') }}</label>
-                                <input type="number" name="quantity" id="quantity" value="{{ old('quantity') }}"
-                                    min="0" class="form-control child">
-                                @error('quantity')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                                {{-- child class is used to make disabled and enabled to select part --}}
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label class="col-form-label col-md-12 col-sm-12 ">
-                                        <input class='child' type='checkbox' name="Quantity_Unlimited"
-                                            id="Quantity_Unlimited" value="-1"
-                                            {{ old('Quantity_Unlimited') ? 'checked' : '' }} />
-                                        {{ __('panel.qty_not_limited') }}
-                                    </label>
-                                </div>
-
-
-
-                            </div>
-
-                        </div>
 
                         {{-- course price and offer_price fields --}}
                         <div class="row">
-                            <div class="col-md-6 col-sm-12 pt-3">
+                            <div class="col-md-12 col-sm-12 pt-3">
                                 <label for="price"> {{ __('panel.price') }} </label>
                                 <input type="number" name="price" id="price" value="{{ old('price') }}"
                                     class="form-control" min="1">
@@ -333,8 +298,10 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
+                        </div>
 
-                            <div class="col-md-6 col-sm-12 pt-3">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 pt-3">
                                 <label for="offer_price"> {{ __('panel.offer_price') }} </label>
                                 <input type="number" name="offer_price" id="offer_price"
                                     value="{{ old('offer_price') }}" class="form-control" min="0">
@@ -346,10 +313,13 @@
 
                         {{-- offer_ends for price --}}
                         <div class="row">
-                            <div class="col-md-6 com-sm-12 pt-3">
-                                <label for="offer_ends" class="control-label"><span> {{ __('panel.offer_ends') }}
-                                    </span><span class="require red">*</span></label>
-                                <div class="form-group">
+                            <div class="col-md-12 com-sm-12 pt-3">
+                                <label for="offer_ends" class="control-label">
+                                    <span> {{ __('panel.offer_ends') }}
+                                    </span>
+                                    <span class="require red">*</span>
+                                </label>
+                                <div class="form-group" id="offer_ends_group">
                                     <input type="text" id="offer_ends" name="offer_ends"
                                         value="{{ old('offer_ends', now()->format('Y-m-d')) }}" class="form-control">
                                     @error('offer_ends')
@@ -357,31 +327,8 @@
                                     @enderror
                                 </div>
                             </div>
-
-                            {{-- max quentify accepted field --}}
-                            <div class="col-md-6 col-sm-12 pt-3">
-                                <label for="max_order"> {{ __('panel.max_order') }} </label>
-                                <input type="number" name="max_order" id="max_order" value="{{ old('max_order') }}"
-                                    min="0" class="form-control child2">
-                                @error('max_order')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                                {{-- child class is used to make disabled and enabled to select part --}}
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label class="col-form-label col-md-12 col-sm-12 ">
-                                        <input class='child2' type='checkbox' name="Quantity_Unlimited_max_order"
-                                            id="Quantity_Unlimited_max_order" value="-1"
-                                            {{ old('Quantity_Unlimited_max_order') ? 'checked' : '' }} />
-                                        {{ __('panel.qty_not_limited') }}
-                                    </label>
-                                </div>
-
-
-
-                            </div>
-
                         </div>
+
                     </div>
 
                     {{-- Published Tab --}}
@@ -549,86 +496,6 @@
             });
 
 
-            //select2: code to search in data 
-            function matchStart(params, data) {
-                // If there are no search terms, return all of the data
-                if ($.trim(params.term) === '') {
-                    return data;
-                }
-
-                // Skip if there is no 'children' property
-                if (typeof data.children === 'undefined') {
-                    return null;
-                }
-
-                // `data.children` contains the actual options that we are matching against
-                var filteredChildren = [];
-                $.each(data.children, function(idx, child) {
-                    if (child.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
-                        filteredChildren.push(child);
-                    }
-                });
-
-                // If we matched any of the timezone group's children, then set the matched children on the group
-                // and return the group object
-                if (filteredChildren.length) {
-                    var modifiedData = $.extend({}, data, true);
-                    modifiedData.children = filteredChildren;
-
-                    // You can return modified objects from here
-                    // This includes matching the `children` how you want in nested data sets
-                    return modifiedData;
-                }
-
-                // Return `null` if the term should not be displayed
-                return null;
-            }
-
-            // select2 : .select2 : is  identifier used with element to be effected
-            $(".select2").select2({
-                tags: true,
-                colseOnSelect: false,
-                minimumResultsForSearch: Infinity,
-                matcher: matchStart
-            });
-
-        });
-    </script>
-
-
-    {{-- is related to select permision disable and enable by child class --}}
-    <script language="javascript">
-        var $cbox = $('.child').change(function() {
-            if (this.checked) {
-                $cbox.not(this).attr('disabled', 'disabled');
-            } else {
-                $cbox.removeAttr('disabled');
-            }
-        });
-
-        var $cbox2 = $('.child2').change(function() {
-            if (this.checked) {
-                $cbox2.not(this).attr('disabled', 'disabled');
-            } else {
-                $cbox2.removeAttr('disabled');
-            }
-        });
-    </script>
-
-
-    <script>
-        $(document).ready(function() {
-
-            if ($("#Quantity_Unlimited").attr("checked"))
-                $("#quantity").attr('disabled', 'disabled');
-            else
-                $("#quantity").removeAttr('disabled');
-
-
-            if ($("#Quantity_Unlimited_max_order").attr("checked"))
-                $("#max_order").attr('disabled', 'disabled');
-            else
-                $("#max_order").removeAttr('disabled');
         });
     </script>
 @endsection

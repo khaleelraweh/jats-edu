@@ -25,12 +25,9 @@ return new class extends Migration
             $table->tinyInteger('course_lessons_number')->nullable();
             $table->string('course_lessons_time')->nullable();
 
-            $table->integer('quantity')->nullable()->default(-1); // سالب واحد تعني ان الكمية غير محدودة
             $table->double('price')->default(0.0);
             $table->double('offer_price')->nullable()->default(0.0); // سعر العرض
             $table->date('offer_ends')->nullable(); // تاريخ انتهاء العرض 
-            $table->string('sku')->nullable();
-            $table->integer('max_order')->nullable()->default(-1); // اعلي كمية يمكن حجزها 
             $table->boolean('featured')->default(false);
             $table->foreignId('course_category_id')->constrained()->cascadeOnDelete();
             // $table->foreignId('instructor_id')->constrained()->cascadeOnDelete();

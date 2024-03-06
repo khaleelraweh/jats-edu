@@ -13,7 +13,6 @@
                         <div wire:ignore class="col-md-auto mb-4 mb-lg-0">
                             <select wire:model="categoryInputs" {{-- class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices> --}}
                                 class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
-
                                 <option value="">{{ __('transf.chose_categories') }}</option>
                                 @foreach ($course_categories_menu as $category_item)
                                     <option value="{{ $category_item->id }}">{{ $category_item->category_name }}
@@ -22,19 +21,18 @@
 
                             </select>
                         </div>
-                        <div class="col-md-auto mb-4 mb-lg-0">
+                        <div wire:ignore class="col-md-auto mb-4 mb-lg-0">
                             <select wire:model="courseLevels"
                                 class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
-                                <option>{{ __('transf.chose_levels') }}</option>
+                                <option value="">{{ __('transf.chose_levels') }}</option>
                                 <option value="1">Beginner</option>
                                 <option value="2">Intermediate</option>
                                 <option value="3">Advanced</option>
                             </select>
                         </div>
-                        <div class="col-md-auto mb-4 mb-lg-0">
+                        <div wire:ignore class="col-md-auto mb-4 mb-lg-0">
                             <select wire:model="priceInput"
                                 class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
-                                <option>{{ __('transf.chose_price') }}</option>
                                 <option value="all">All</option>
                                 <option value="free">Free</option>
                                 <option value="paid">Paid</option>

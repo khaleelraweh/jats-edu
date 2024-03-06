@@ -1,4 +1,6 @@
 <div>
+
+
     <section class="pt-5 pb-9 py-md-11 bg-white">
         <div class="container">
             <div class="text-center mb-5 mb-md-8">
@@ -11,13 +13,18 @@
                     <label class="me-lg-4 mb-lg-0">{{ __('transf.txt_filter_by') }}</label>
                     <div class="row">
                         <div class="col-md-auto mb-4 mb-lg-0">
-                            <select class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
-                                <option>{{ __('transf.chose_categories') }}</option>
-                                <option>Another option</option>
-                                <option>Something else here</option>
+                            <select wire:model="categoryInputs"
+                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
+
+                                <option value="default">{{ __('transf.chose_categories') }}</option>
+                                @foreach ($course_categories_menu as $category_item)
+                                    <option value="{{ $category_item->id }}">{{ $category_item->category_name }}
+                                    </option>
+                                @endforeach
+
                             </select>
                         </div>
-                        <div class="col-md-auto mb-4 mb-lg-0">
+                        <div class="col-md-auto mb-4 mb-lg-0 d-none">
                             <select class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
                                 <option>{{ __('transf.chose_progress') }}</option>
                                 <option>Another option</option>

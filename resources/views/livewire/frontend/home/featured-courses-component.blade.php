@@ -58,8 +58,8 @@
 
 
             <div class="row">
-                @forelse ($featured_courses as $featured_course)
-                    <div class="col-12 col-md-6 col-xl-4 pb-4 pb-md-7" style="padding-right:15px;padding-left:15px;">
+                @forelse ($featured_courses->take($amount) as $featured_course)
+                    <div class="col-12 col-md-6 col-xl-3 pb-4 pb-md-7" style="padding-right:15px;padding-left:15px;">
                         <!-- Card -->
                         <div class="card border shadow p-2 sk-fade">
                             <!-- Image -->
@@ -247,7 +247,7 @@
             </div>
 
             <div class="text-center">
-                @if (count($featured_courses) >= $amount)
+                @if (count($featured_courses) > $amount)
                     <a wire:click="load_more"
                         class="btn btn-outline-sienna btn-x-wide lift d-inline-block ">{{ __('transf.btn_load_more_courses') }}
                     </a>

@@ -9,7 +9,7 @@ use Livewire\Component;
 class FeaturedCoursesComponent extends Component
 {
 
-    public  $amount = 3;
+    public  $amount = 8;
 
     //To filter by categories choosen 
     public $categoryInputs;
@@ -74,18 +74,18 @@ class FeaturedCoursesComponent extends Component
                         $query2->orderBy('price', 'DESC');
                     });
             })
-            ->take($this->amount)
+            // ->take($this->amount)
             ->get();
         return view('livewire.frontend.home.featured-courses-component', compact('featured_courses', 'course_categories_menu'));
     }
 
     public function load_more()
     {
-        $this->amount += 3;
+        $this->amount += 8;
     }
 
     public function load_less()
     {
-        $this->amount = 3;
+        $this->amount = 8;
     }
 }

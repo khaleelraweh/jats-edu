@@ -2,11 +2,15 @@
 
 @section('content')
     <!-- PAGE TITLE
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
     {{-- <header class="bg-white py-8 py-lg-12 position-relative mb-8" style="background-image: none;"> --}}
     <header class="bg-white py-3 py-lg-3 position-relative mb-3" style="background-image: none;">
         <div class="container text-center py-xl-5">
-            <h1 class="display-4 fw-semi-bold mb-0">{{ __('transf.txt_all_courses') }}</h1>
+            <h1 class="display-4 fw-semi-bold mb-0">
+                <a href="{{ route('frontend.courses') }}">
+                    {{ __('transf.txt_all_courses') }}
+                </a>
+            </h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-scroll justify-content-center">
                     <li class="breadcrumb-item">
@@ -15,7 +19,10 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item text-gray-800 active" aria-current="page">
-                        {{ __('transf.courses') }}
+                        <a href="{{ route('frontend.courses') }}">
+                            {{ __('transf.courses') }}
+                        </a>
+
                     </li>
                 </ol>
             </nav>

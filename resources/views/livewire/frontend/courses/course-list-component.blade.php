@@ -409,7 +409,10 @@
                         </div>
                     </div>
 
-                    <a href="#" class="btn btn-primary btn-block mb-10">FILTER RESULTS</a>
+                    {{-- <a class="d-none" href="#" class="btn btn-primary btn-block mb-10">FILTER RESULTS</a> --}}
+                    <a href="{{ route('frontend.courses') }}" class="btn btn-primary btn-block mb-10">
+                        Resit Filter
+                    </a>
                 </div>
 
             </div>

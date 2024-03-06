@@ -47,3 +47,16 @@
   margin-bottom: 10px;
   border-bottom: 1px solid;
 }
+
+@media (min-width: 992px) {
+  .mw-300p {
+    max-width: 220px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .mw-xl-450p {
+    max-width: 300px !important;
+  }
+}
+

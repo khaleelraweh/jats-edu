@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-md-auto mb-4 mb-lg-0">
                             <select wire:model="categoryInputs" {{-- class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices> --}}
-                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium">
+                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
 
                                 <option value="">{{ __('transf.chose_categories') }}</option>
                                 @foreach ($course_categories_menu as $category_item)
@@ -22,18 +22,23 @@
 
                             </select>
                         </div>
-                        <div class="col-md-auto mb-4 mb-lg-0 d-none">
-                            <select class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
-                                <option>{{ __('transf.chose_progress') }}</option>
-                                <option>Another option</option>
-                                <option>Something else here</option>
+                        <div class="col-md-auto mb-4 mb-lg-0">
+                            <select wire:model="courseLevels"
+                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
+                                <option>{{ __('transf.chose_levels') }}</option>
+                                <option value="1">Beginner</option>
+                                <option value="2">Intermediate</option>
+                                <option value="3">Advanced</option>
                             </select>
                         </div>
                         <div class="col-md-auto mb-4 mb-lg-0">
-                            <select class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
-                                <option>{{ __('transf.chose_instructor') }}</option>
-                                <option>Another option</option>
-                                <option>Something else here</option>
+                            <select wire:model="priceInput"
+                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
+                                <option>{{ __('transf.chose_price') }}</option>
+                                <option value="all">All</option>
+                                <option value="free">Free</option>
+                                <option value="paid">Paid</option>
+
                             </select>
                         </div>
                     </div>
@@ -41,10 +46,14 @@
 
                 <div class="col-md-auto d-lg-flex align-items-center">
                     <label class="me-lg-4 mb-lg-0">{{ __('transf.txt_sort_by') }}</label>
-                    <select class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
-                        <option>{{ __('transf.chose_recently_accessed') }}</option>
-                        <option>Another option</option>
-                        <option>Something else here</option>
+                    <select wire:model="sortingBy" class="form-select form-select-sm ps-5 text-primary shadow fw-medium"
+                        data-choices>
+                        {{-- <option>{{ __('transf.chose_recently_accessed') }}</option> --}}
+                        <option value="default">Default</option>
+                        <option value="popularity">Popularity</option>
+                        <option value="new-courses">New Courses</option>
+                        <option value="low-high">Price Low to High</option>
+                        <option value="high-low">Price High to low</option>
                     </select>
                 </div>
             </div>

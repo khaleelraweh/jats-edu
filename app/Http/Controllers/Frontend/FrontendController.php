@@ -52,9 +52,16 @@ class FrontendController extends Controller
         return view('frontend.course-list', compact('slug'));
     }
 
-    public function course_single()
+    public function course_single($slug)
     {
-        return view('frontend.course-single');
+        $course  = Course::with('courseCategory', 'photos')
+            ->where('slug->' . app()->getLocale(), $slug)
+            ->Active()
+            ->ActiveCourseCategory()
+            ->firstOrFail();
+
+
+        return view('frontend.course-single', compact('course'));
     }
 
 

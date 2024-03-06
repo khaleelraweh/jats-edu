@@ -56,7 +56,7 @@
                             <!-- Image -->
                             <div class="card-zoom position-relative">
                                 <div class="badge-float sk-fade-top top-0 right-0 mt-4 me-4">
-                                    <a href="course-single-v2.html"
+                                    <a href="{{ route('frontend.course_single', $featured_course->slug) }}"
                                         class="btn btn-xs btn-dark text-white rounded-circle lift opacity-dot-7 me-1 p-2 d-inline-flex justify-content-center align-items-center w-36 h-36">
                                         <!-- Icon -->
                                         <svg width="18" height="18" viewBox="0 0 18 18"
@@ -70,7 +70,7 @@
                                         </svg>
 
                                     </a>
-                                    <a href="course-single-v2.html"
+                                    <a href="{{ route('frontend.course_single', $featured_course->slug) }}"
                                         class="btn btn-xs btn-dark text-white rounded-circle lift opacity-dot-7 p-2 d-inline-flex justify-content-center align-items-center w-36 h-36">
                                         <!-- Icon -->
                                         <svg width="16" height="16" viewBox="0 0 16 16"
@@ -103,7 +103,8 @@
                                     }
                                 @endphp
 
-                                <a href="course-single-v2.html" class="card-img sk-thumbnail d-block">
+                                <a href="{{ route('frontend.course_single', $featured_course->slug) }}"
+                                    class="card-img sk-thumbnail d-block">
                                     {{-- this is the image part  --}}
                                     <img class="rounded shadow-light-lg" src="{{ $featured_course_img }}"
                                         alt="...">
@@ -147,13 +148,14 @@
                                 </a>
 
                                 <!-- Preheading -->
-                                <a href="course-single-v2.html"><span
+                                <a href="{{ route('frontend.courses', $featured_course->courseCategory->slug) }}"><span
                                         class="mb-1 d-inline-block text-gray-800">{{ $featured_course->courseCategory->category_name }}</span></a>
 
 
                                 <!-- Heading -->
                                 <div class="position-relative">
-                                    <a href="course-single-v2.html" class="d-block stretched-link">
+                                    <a href="{{ route('frontend.course_single', $featured_course->slug) }}"
+                                        class="d-block stretched-link">
                                         <h4 class="line-clamp-2 h-md-48 h-lg-58 me-md-6 me-lg-10 me-xl-4 mb-2">
                                             {{ $featured_course->course_name }}
                                         </h4>

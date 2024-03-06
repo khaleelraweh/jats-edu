@@ -53,6 +53,7 @@ Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
 Route::get('/index', [FrontendController::class, 'index'])->name('frontend.index');
 Route::get('/home', [FrontendController::class, 'home'])->name('frontend.home');
 Route::get('/courses/{slug?}', [FrontendController::class, 'courses'])->name('frontend.courses');
+Route::get('/course-single', [FrontendController::class, 'course_single'])->name('frontend.course_single');
 
 Route::get('/terms-of-service', [FrontendController::class, 'service'])->name('frontend.service');
 

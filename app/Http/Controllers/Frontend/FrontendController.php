@@ -52,6 +52,11 @@ class FrontendController extends Controller
         return view('frontend.course-list', compact('slug'));
     }
 
+    public function course_single()
+    {
+        return view('frontend.course-single');
+    }
+
 
     public function service()
     {

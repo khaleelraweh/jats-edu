@@ -191,8 +191,8 @@
         <!-- Search, Account & Cart -->
         <ul class="navbar-nav flex-row ms-auto ms-xl-0 me-n2 me-md-n4">
             <li class="nav-item border-0 px-0 d-none d-370-block d-xl-none">
-                <a class="nav-link d-flex px-3 px-md-4 search-mobile text-white-all icon-xs" data-bs-toggle="collapse"
-                    href="#collapseSearchMobile" role="button" aria-expanded="false"
+                <a class="nav-link d-flex px-3 px-md-4 search-mobile {{ !request()->routeIs('frontend.index') ? 'text-secondary' : 'text-white-all' }}   icon-xs"
+                    data-bs-toggle="collapse" href="#collapseSearchMobile" role="button" aria-expanded="false"
                     aria-controls="collapseSearchMobile">
                     <!-- Icon -->
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -238,7 +238,8 @@
                                     </button>
                                 </div>
                                 <input class="form-control form-control-sm border-0 ps-0" type="search"
-                                    placeholder="What do you want to learn ?" aria-label="Search">
+                                    placeholder="{{ __('transf.txt_what_do_you_want_to_learn?') }}"
+                                    aria-label="Search">
                             </div>
                         </form>
                     </div>
@@ -247,8 +248,9 @@
 
             <li class="nav-item border-0 px-0">
                 <!-- Button trigger account modal -->
-                <a href="#" class="nav-link d-flex px-3 px-md-4 text-white-all icon-xs" data-bs-toggle="modal"
-                    data-bs-target="#accountModal">
+                <a href="#"
+                    class="nav-link d-flex px-3 px-md-4 {{ !request()->routeIs('frontend.index') ? 'text-secondary' : 'text-white-all' }} icon-xs"
+                    data-bs-toggle="modal" data-bs-target="#accountModal">
                     <!-- Icon -->
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -262,7 +264,8 @@
 
             <li class="nav-item border-0 px-0">
                 <!-- Button trigger cart modal -->
-                <a href="#" class="nav-link d-flex px-3 px-md-4 position-relative text-white-all icon-xs"
+                <a href="#"
+                    class="nav-link d-flex px-3 px-md-4 position-relative {{ !request()->routeIs('frontend.index') ? 'text-secondary' : 'text-white-all' }}  icon-xs"
                     data-bs-toggle="modal" data-bs-target="#cartModal">
                     <span class="badge badge-coral text-white rounded-circle fw-bold badge-float mt-n1 ms-n2 px-0 w-16"
                         style="font-size: 8px;">2</span>

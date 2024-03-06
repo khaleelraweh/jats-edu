@@ -1,4 +1,11 @@
-<footer class="pt-8 pt-md-11 {{ !request()->routeIs('frontend.index') ? 'bg-gray-100' : 'bg-white' }} ">
+<footer class="pt-8 pt-md-11 bg-white">
+
+    {{-- @php
+        $web_menus = App\Models\WebMenu::tree();
+    @endphp --}}
+
+    {{-- {{ dd($siteSettings) }} --}}
+
 
     <div class="container">
         <div class="row" id="accordionFooter">

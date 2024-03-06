@@ -10,8 +10,10 @@ class FeaturedCoursesComponent extends Component
 {
 
     //To filter by categories choosen 
-    public $categoryInputs = [];
+    public $categoryInputs;
     protected $queryString = ['categoryInputs'];
+
+    public  $amount = 3;
 
 
     public function render()
@@ -26,8 +28,18 @@ class FeaturedCoursesComponent extends Component
             ->when($this->categoryInputs, function ($query) {
                 $query->where('course_category_id', $this->categoryInputs);
             })
-            ->take(8)
+            ->take($this->amount)
             ->get();
         return view('livewire.frontend.home.featured-courses-component', compact('featured_courses', 'course_categories_menu'));
+    }
+
+    public function load_more()
+    {
+        $this->amount += 3;
+    }
+
+    public function load_less()
+    {
+        $this->amount = 3;
     }
 }

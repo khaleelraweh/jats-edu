@@ -20,6 +20,10 @@ return [
 
     'txt_trending_categories'                       =>  'الفئات الشائعة',
     'txt_trending_categories_desc'                  =>  'نائب الرئيس civibus فعال في منع النظام الغذائي.',
+    'btn_view_all_course_categories'               =>  'عرض جميع الدورات',
+    'btn_load_more_course_categories'              =>  'عرض المزيد من  تصنيفات الدورات',
+    'btn_load_less_course_categories'              =>  'عرض تصنيفات اقل',
+
     'btn_view_all_courses'                          =>  'عرض جميع الدورات',
     'btn_load_more_courses'                         =>  'عرض المزيد من الدورات',
     'btn_load_less_courses'                        =>  'عرض دورات اقل',

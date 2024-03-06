@@ -20,9 +20,14 @@ return [
 
     'txt_trending_categories'                       =>  'Trending Categories',
     'txt_trending_categories_desc'                  =>  'Cum doctus civibus efficiantur in imperdiet deterruisset.',
+
+    'btn_view_all_course_categories'                =>  'View All Courses',
+    'btn_load_more_course_categories'               =>  'Load More Course Categories',
+    'btn_load_less_course_categories'               =>  'Load Less Courses Categories',
+
     'btn_view_all_courses'                          =>  'View All Courses',
     'btn_load_more_courses'                         =>  'Load More Courses',
-    'btn_load_less_courses'                        =>  'Load Less Courses',
+    'btn_load_less_courses'                         =>  'Load Less Courses',
 
     'txt_featured_courses'                          =>  'FEATURED COURSES',
     'txt_featured_courses_desc'                     =>  'Discover your perfect program in our courses.',

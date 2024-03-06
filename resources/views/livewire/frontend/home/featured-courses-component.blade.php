@@ -1,6 +1,4 @@
-<div>
-
-
+<div wire:ignore.self>
     <section class="pt-5 pb-9 py-md-11 bg-white">
         <div class="container">
             <div class="text-center mb-5 mb-md-8">
@@ -13,10 +11,10 @@
                     <label class="me-lg-4 mb-lg-0">{{ __('transf.txt_filter_by') }}</label>
                     <div class="row">
                         <div class="col-md-auto mb-4 mb-lg-0">
-                            <select wire:model="categoryInputs"
-                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
+                            <select wire:model="categoryInputs" {{-- class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices> --}}
+                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium">
 
-                                <option value="default">{{ __('transf.chose_categories') }}</option>
+                                <option value="">{{ __('transf.chose_categories') }}</option>
                                 @foreach ($course_categories_menu as $category_item)
                                     <option value="{{ $category_item->id }}">{{ $category_item->category_name }}
                                     </option>
@@ -51,11 +49,8 @@
                 </div>
             </div>
 
-            <div class="mx-n4 mb-3"
-                data-flickity='{"pageDots": true, "prevNextButtons": false, "cellAlign": "left", "wrapAround": true, "imagesLoaded": true}'>
 
-
-
+            <div class="row">
                 @forelse ($featured_courses as $featured_course)
                     <div class="col-12 col-md-6 col-xl-4 pb-4 pb-md-7" style="padding-right:15px;padding-left:15px;">
                         <!-- Card -->
@@ -242,8 +237,28 @@
                     </div>
                 @empty
                 @endforelse
+            </div>
+
+            <div class="text-center">
+                @if (count($featured_courses) >= $amount)
+                    <a wire:click="load_more"
+                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_load_more_courses') }}
+                    </a>
+                    <a href="{{ route('frontend.courses') }}"
+                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_view_all_courses') }}
+                    </a>
+                @else
+                    <a wire:click="load_less"
+                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_load_less_courses') }}
+                    </a>
+                    <a href="{{ route('frontend.courses') }}"
+                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_view_all_courses') }}
+                    </a>
+                @endif
 
             </div>
+
+
         </div>
     </section>
 </div>

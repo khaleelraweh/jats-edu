@@ -1,4 +1,4 @@
-<footer class="pt-8 pt-md-11 {{ !request()->routeIs('frontend.index') ? 'bg-gray-100' : 'bg-white' }} ">
+<footer class="pt-8 pt-md-11 {{ request()->routeIs('frontend.course_single') ? 'bg-gray-100' : 'bg-white' }} ">
 
     <div class="container">
         <div class="row" id="accordionFooter">

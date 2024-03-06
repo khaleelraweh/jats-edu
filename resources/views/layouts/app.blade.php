@@ -53,6 +53,8 @@
     @livewireStyles
 </head>
 
+{{-- <body class="bg-white"> --}}
+
 <body>
 
     <div id="app">

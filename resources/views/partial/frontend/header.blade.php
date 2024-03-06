@@ -108,7 +108,9 @@
 
                     </button>
                 </div>
-                <input class="form-control placeholder-white text-white bg-transparent form-control-sm border-0 ps-0"
+
+                <input
+                    class="form-control form-control-sm border-0 ps-0 {{ !request()->routeIs('frontend.index') ? '' : 'placeholder-white text-white bg-transparent' }}"
                     type="search" placeholder="{{ __('transf.txt_what_do_you_want_to_learn?') }}" aria-label="Search">
             </div>
         </form>

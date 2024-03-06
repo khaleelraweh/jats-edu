@@ -10,7 +10,7 @@
                 <div class="col-md mb-4 mb-md-0 d-lg-flex align-items-center">
                     <label class="me-lg-4 mb-lg-0">{{ __('transf.txt_filter_by') }}</label>
                     <div class="row">
-                        <div class="col-md-auto mb-4 mb-lg-0">
+                        <div wire:ignore class="col-md-auto mb-4 mb-lg-0">
                             <select wire:model="categoryInputs" {{-- class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices> --}}
                                 class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
 
@@ -44,7 +44,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-auto d-lg-flex align-items-center">
+                <div wire:ignore class="col-md-auto d-lg-flex align-items-center">
                     <label class="me-lg-4 mb-lg-0">{{ __('transf.txt_sort_by') }}</label>
                     <select wire:model="sortingBy" class="form-select form-select-sm ps-5 text-primary shadow fw-medium"
                         data-choices>
@@ -251,17 +251,17 @@
             <div class="text-center">
                 @if (count($featured_courses) >= $amount)
                     <a wire:click="load_more"
-                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_load_more_courses') }}
+                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block ">{{ __('transf.btn_load_more_courses') }}
                     </a>
                     <a href="{{ route('frontend.courses') }}"
-                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_view_all_courses') }}
+                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block d-none">{{ __('transf.btn_view_all_courses') }}
                     </a>
                 @else
                     <a wire:click="load_less"
                         class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_load_less_courses') }}
                     </a>
                     <a href="{{ route('frontend.courses') }}"
-                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_view_all_courses') }}
+                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block d-none">{{ __('transf.btn_view_all_courses') }}
                     </a>
                 @endif
 

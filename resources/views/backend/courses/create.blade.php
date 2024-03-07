@@ -579,7 +579,7 @@
 
                 $('#invoice_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
-                    '<td>' + '<?php echo $key; ?>' +
+                    '<td>' + '<?php echo __('panel.' . $key); ?>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
                     '<td><input type="text" name="course_topic[' + numberIncr +
                     '][<?php echo $key; ?>]" class="course_topic form-control"></td>' +

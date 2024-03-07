@@ -86,13 +86,6 @@
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="what_to_learn-tab" data-bs-toggle="tab" data-bs-target="#what_to_learn"
-                            type="button" role="tab" aria-controls="what_to_learn"
-                            aria-selected="true">{{ __('panel.course_topics_tab') }}
-                        </button>
-                    </li>
-
-                    <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
                             type="button" role="tab" aria-controls="published"
                             aria-selected="false">{{ __('panel.published_tab') }}
@@ -332,57 +325,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    {{-- what to learn Tab --}}
-
-                    {{-- what to learn  --}}
-                    <div class="tab-pane fade" id="what_to_learn" role="tabpanel" aria-labelledby="what_to_learn-tab">
-
-
-                        <div class="table-responsive">
-                            <table class="table" id="invoice_details">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>{{ __('panel.txt_what_is_course_topics') }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($course->topics as $item)
-                                        <tr class="cloning_row" id="{{ $loop->index }}">
-                                            <td style="width: 30px !important;">
-                                                @if ($loop->index == 0)
-                                                    {{ '#' }}
-                                                @else
-                                                    <button type="button" class="btn btn-danger btn-sm delegated-btn"><i
-                                                            class="fa fa-minus"></i></button>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <input type="text" name="course_topic[{{ $loop->index }}]"
-                                                    id="course_topic"
-                                                    value="{{ old('course_topic', $item->course_topic) }}"
-                                                    class="course_topic form-control">
-                                                @error('course_topic')
-                                                    <span class="help-block text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="2" class="text-end">
-                                            <button type="button"
-                                                class="btn_add btn btn-primary">{{ __('panel.btn_add_another_topic') }}</button>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-
                     </div>
 
                     {{-- Published Tab --}}
@@ -689,30 +631,6 @@
                 $("#max_order").attr('disabled', 'disabled');
             else
                 $("#max_order").removeAttr('disabled');
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            $(document).on('click', '.btn_add', function() {
-                let trCount = $('#invoice_details').find('tr.cloning_row:last').length;
-                let numberIncr = trCount > 0 ? parseInt($('#invoice_details').find('tr.cloning_row:last')
-                    .attr('id')) + 1 : 0;
-
-                $('#invoice_details').find('tbody').append($('' +
-                    '<tr class="cloning_row" id="' + numberIncr + '">' +
-                    '<td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
-                    '<td><input type="text" name="course_topic[' + numberIncr +
-                    ']" class="course_topic form-control"></td>' +
-                    '</tr>'));
-            });
-
-        });
-
-        $(document).on('click', '.delegated-btn', function(e) {
-            e.preventDefault();
-            $(this).parent().parent().remove();
-
         });
     </script>
 @endsection

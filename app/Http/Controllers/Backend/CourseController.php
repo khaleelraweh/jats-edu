@@ -90,7 +90,6 @@ class CourseController extends Controller
         for ($i = 0; $i < count($request->course_topic); $i++) {
             $topics_list[$i]['course_topic'] = $request->course_topic[$i];
         }
-
         $topics = $course->topics()->createMany($topics_list);
         // course topics start 
 
@@ -200,6 +199,16 @@ class CourseController extends Controller
         $course->update($input);
 
         $course->tags()->sync($request->tags);
+
+        // course topics start 
+        $course->topics()->delete();
+
+        $topics_list = [];
+        for ($i = 0; $i < count($request->course_topic); $i++) {
+            $topics_list[$i]['course_topic'] = $request->course_topic[$i];
+        }
+        $topics = $course->topics()->createMany($topics_list);
+        // course topics start 
 
 
         if ($request->images && count($request->images) > 0) {

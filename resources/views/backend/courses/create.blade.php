@@ -371,7 +371,7 @@
                                 </thead>
                                 <tbody>
                                     <tr class="cloning_row" id="0">
-                                        <td>#</td>
+                                        <td style="width: 30px !important;">#</td>
                                         <td>
                                             <input type="text" name="course_topic[0]" id="course_topic"
                                                 class="course_topic form-control">
@@ -385,13 +385,11 @@
 
                                 <tfoot>
                                     <tr>
-                                        <td colspan="2">
+                                        <td colspan="2" class="text-end">
                                             <button type="button"
                                                 class="btn_add btn btn-primary">{{ __('panel.btn_add_another_topic') }}</button>
                                         </td>
                                     </tr>
-
-
                                 </tfoot>
                             </table>
                         </div>

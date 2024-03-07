@@ -55,7 +55,7 @@ class CourseController extends Controller
             return redirect('admin/index');
         }
 
-        $input['course_name']                  =   $request->course_name;
+        $input['title']                  =   $request->title;
         $input['description']           =   $request->description;
         // $input['quantity']              =   $request->quantity;
 
@@ -159,7 +159,7 @@ class CourseController extends Controller
 
 
         // get Input from create.blade.php form request using CourseRequest to validate fields
-        $input['course_name']                   =   $request->course_name;
+        $input['title']                   =   $request->title;
         $input['description']                   =   $request->description;
         // $input['quantity']                   =   $request->quantity;
 

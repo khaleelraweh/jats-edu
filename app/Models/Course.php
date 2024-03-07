@@ -23,13 +23,13 @@ class Course extends Model
     protected $guarded = [];
 
     // for translatable field 
-    public $translatable = ['course_name', 'slug', 'description'];
+    public $translatable = ['title', 'slug', 'description'];
 
 
     // searchable lab 
     protected $searchable = [
         'columns' => [
-            'courses.course_name' => 10,
+            'courses.title' => 10,
         ]
     ];
 
@@ -37,7 +37,7 @@ class Course extends Model
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('course_name')
+            ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
 

@@ -26,7 +26,7 @@ class CourseRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'course_name.*'                 =>  'required|max:255',
+                        'title.*'                 =>  'required|max:255',
                         'description.*'                 =>  'nullable',
 
                         'course_level'                      =>  'nullable|numeric',
@@ -65,7 +65,7 @@ class CourseRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'course_name.*'                  =>  'required|max:255',
+                        'title.*'                  =>  'required|max:255',
                         'description.*'           =>  'nullable',
 
                         'course_level'                      =>  'nullable|numeric',
@@ -113,7 +113,7 @@ class CourseRequest extends FormRequest
         ];
 
         foreach (config('locales.languages') as $key => $val) {
-            $attr += ['course_name.' . $key       =>  "( " . __('panel.card_name')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+            $attr += ['title.' . $key       =>  "( " . __('panel.card_name')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
             $attr += ['description.' . $key       =>  "( " . __('panel.description')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
         }
 

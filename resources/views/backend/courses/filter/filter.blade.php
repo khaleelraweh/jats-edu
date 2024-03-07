@@ -30,7 +30,7 @@
                         </option>
                         <option value="name"
                             {{ old('sort_by', request()->input('sort_by')) == 'name' ? 'selected' : '' }}>
-                            {{ __('panel.course_name') }}
+                            {{ __('panel.title') }}
                         </option>
                         <option value="created_at"
                             {{ old('sort_by', request()->input('sort_by')) == 'created_at' ? 'selected' : '' }}>

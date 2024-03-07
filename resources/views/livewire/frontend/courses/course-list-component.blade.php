@@ -471,7 +471,7 @@
                                     <div class="position-relative">
                                         <a href="course-single-v5.html" class="d-block stretched-link">
                                             <h5 class="line-clamp-2 h-md-48 h-lg-58 me-md-8 me-lg-10 me-xl-4 mb-2">
-                                                {{ $course->course_name }}
+                                                {{ $course->title }}
                                             </h5>
                                         </a>
 

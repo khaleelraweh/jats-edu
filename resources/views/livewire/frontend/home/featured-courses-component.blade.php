@@ -166,7 +166,7 @@
                                     <a href="{{ route('frontend.course_single', $featured_course->slug) }}"
                                         class="d-block stretched-link">
                                         <h4 class="line-clamp-2 h-md-48 h-lg-58 me-md-6 me-lg-10 me-xl-4 mb-2">
-                                            {{ $featured_course->course_name }}
+                                            {{ $featured_course->title }}
                                         </h4>
                                     </a>
 

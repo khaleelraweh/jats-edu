@@ -116,7 +116,7 @@ return [
 
 
     // ........... commons in Coruse   ....... //
-    'course_name'                  => 'Course Name',
+    'title'                  => 'Course Name',
     'sku'                           =>  'SKU',
     'offer_price'                   =>  'Offer Price',
     'offer_ends'                    =>  'Offer Ends',

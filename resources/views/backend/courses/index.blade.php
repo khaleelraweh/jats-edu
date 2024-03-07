@@ -49,7 +49,7 @@
                     <thead>
                         <tr>
                             <th>{{ __('panel.image') }}</th>
-                            <th>{{ __('panel.course_name') }}</th>
+                            <th>{{ __('panel.title') }}</th>
                             <th>{{ __('panel.qty') }}</th>
                             <th>{{ __('panel.price') }}</th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
@@ -67,14 +67,14 @@
                                     @if ($course->firstMedia)
                                         {{-- <td><img src="{{asset('assets/cards/'.$course->photos()->first()->file_name)}}" width="60" alt="product Image"> </td> --}}
                                         <img src="{{ asset('assets/courses/' . $course->firstMedia->file_name) }}"
-                                            width="60" height="60" alt="{{ $course->course_name }}">
+                                            width="60" height="60" alt="{{ $course->title }}">
                                     @else
                                         <img src="{{ asset('assets/No-Image-Found.png') }}" width="60" height="60"
-                                            alt="{{ $course->course_name }}">
+                                            alt="{{ $course->title }}">
                                     @endif
 
                                 </td>
-                                <td>{{ $course->course_name }}</td>
+                                <td>{{ $course->title }}</td>
                                 <td>{{ $course->quantity >= 0 ? $course->quantity : 'غير محدودة' }}</td>
                                 <td>{{ $course->price }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $course->created_by }}</td>

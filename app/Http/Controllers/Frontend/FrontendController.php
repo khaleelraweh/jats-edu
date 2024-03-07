@@ -54,6 +54,7 @@ class FrontendController extends Controller
 
     public function course_single($slug)
     {
+        // Retrieve the text from the database
         $course  = Course::with('courseCategory', 'photos')
             ->where('slug->' . app()->getLocale(), $slug)
             ->Active()
@@ -61,7 +62,17 @@ class FrontendController extends Controller
             ->firstOrFail();
 
 
-        return view('frontend.course-single', compact('course'));
+        // Trim the text to remove leading and trailing spaces
+        $course->description = trim($course->description);
+
+        // Get the first 200 characters
+        $exposedText = substr($course->description, 0, 200);
+
+        // Get the rest of the text
+        $hiddenText = substr($course->description, 200);
+
+
+        return view('frontend.course-single', compact('course', 'exposedText', 'hiddenText'));
     }
 
 

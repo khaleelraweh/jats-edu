@@ -27,7 +27,7 @@
                 </div>
 
                 <!-- COURSE META
-                                        ================================================== -->
+                                                                            ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -61,7 +61,7 @@
                 </div>
 
                 <!-- COURSE INFO TAB
-                                        ================================================== -->
+                                                                            ================================================== -->
                 <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 my-8 pt-1" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview"
@@ -86,31 +86,35 @@
                         aria-labelledby="pills-overview-tab">
                         <h3 class="">Course Description</h3>
                         <p class="mb-6 line-height-md">
-                            {{ $course->description }}
+                            {!! $exposedText !!}
                         </p>
-                        <p class="collapse mb-6 line-height-md" id="readcollapseExample">Anim pariatur cliche reprehenderit,
-                            enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft
-                            beer labore wes anderson cred nesciunt sapiente I will help you learn and master Figma app
-                            comprehensively from scratch. Figma is an innovative and brilliant tool for User Interface
-                            design. It's used by everyone from entrepreneurs ea proident.</p>
-                        <a class="text-teal read-more h6 d-inline-block mb-8" data-bs-toggle="collapse"
-                            href="#readcollapseExample" role="button" aria-expanded="false"
-                            aria-controls="readcollapseExample">
-                            <span class="d-inline-flex align-items-center more">
-                                Read More
-                                <span
-                                    class="d-flex align-items-center justify-content-center bg-teal rounded-circle ms-2 p-2 w-26p">
-                                    <i class="fas fa-plus font-size-10 text-white"></i>
+                        <p class="collapse mb-6 line-height-md" id="readcollapseExample">
+                            {!! $hiddenText !!}
+                        </p>
+
+                        @if (strlen($hiddenText) > 0)
+                            <a class="text-teal read-more h6 d-inline-block mb-8" data-bs-toggle="collapse"
+                                href="#readcollapseExample" role="button" aria-expanded="false"
+                                aria-controls="readcollapseExample">
+                                <span class="d-inline-flex align-items-center more">
+                                    Read More
+                                    <span
+                                        class="d-flex align-items-center justify-content-center bg-teal rounded-circle ms-2 p-2 w-26p">
+                                        <i class="fas fa-plus font-size-10 text-white"></i>
+                                    </span>
                                 </span>
-                            </span>
-                            <span class="d-inline-flex align-items-center less">
-                                Read Less
-                                <span
-                                    class="d-flex align-items-center justify-content-center bg-teal rounded-circle ms-2 p-2 w-26p">
-                                    <i class="fas fa-minus font-size-10 text-white"></i>
+                                <span class="d-inline-flex align-items-center less">
+                                    Read Less
+                                    <span
+                                        class="d-flex align-items-center justify-content-center bg-teal rounded-circle ms-2 p-2 w-26p">
+                                        <i class="fas fa-minus font-size-10 text-white"></i>
+                                    </span>
                                 </span>
-                            </span>
-                        </a>
+                            </a>
+                        @endif
+
+
+
 
                         <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-8"
                             data-fancybox>
@@ -1544,7 +1548,7 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR FILTER
-                                        ================================================== -->
+                                                                            ================================================== -->
                 <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
                     <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-1"
                         data-fancybox>

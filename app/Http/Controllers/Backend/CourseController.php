@@ -55,6 +55,8 @@ class CourseController extends Controller
             return redirect('admin/index');
         }
 
+        // dd($request);
+
         $input['title']                  =   $request->title;
         $input['subtitle']                  =   $request->subtitle;
         $input['description']           =   $request->description;

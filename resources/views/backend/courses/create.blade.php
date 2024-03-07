@@ -370,17 +370,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="cloning_row" id="0">
-                                        <td style="width: 30px !important;">#</td>
-                                        <td>
-                                            <input type="text" name="course_topic[0]" id="course_topic"
-                                                class="course_topic form-control">
-                                            @error('course_topic')
-                                                <span class="help-block text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </td>
+                                    @foreach (config('locales.languages') as $key => $val)
+                                        <tr class="cloning_row" id="0">
+                                            <td style="width: 30px !important;">#</td>
+                                            <td>
+                                                <input type="text" name="course_topic[0][{{ $key }}]"
+                                                    id="course_topic" class="course_topic form-control">
+                                                @error('course_topic')
+                                                    <span class="help-block text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </td>
 
-                                    </tr>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
 
                                 <tfoot>
@@ -565,6 +567,7 @@
         });
     </script>
 
+
     <script>
         $(document).ready(function() {
             $(document).on('click', '.btn_add', function() {
@@ -572,12 +575,16 @@
                 let numberIncr = trCount > 0 ? parseInt($('#invoice_details').find('tr.cloning_row:last')
                     .attr('id')) + 1 : 0;
 
+                <?php foreach (config('locales.languages') as $key => $val){ ?>
+
                 $('#invoice_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
-                    '<td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
+                    '<td>' + '<?php echo $key; ?>' +
+                    '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
                     '<td><input type="text" name="course_topic[' + numberIncr +
-                    ']" class="course_topic form-control"></td>' +
+                    '][<?php echo $key; ?>]" class="course_topic form-control"></td>' +
                     '</tr>'));
+                <?php } ?>
             });
 
         });

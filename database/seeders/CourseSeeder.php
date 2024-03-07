@@ -28,6 +28,8 @@ class CourseSeeder extends Seeder
 
 
         $courses1['title']            =   ['ar' => 'تصوير الأزياء من المحترفين', 'en' => 'Fashion Photography From Professional'];
+        $courses1['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
+
         $courses1['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
 
         $courses1['course_level']            =  1;
@@ -53,6 +55,8 @@ class CourseSeeder extends Seeder
 
 
         $courses2['title']            =   ['ar' => 'دورة جافا سكريبت الكاملة 2020: بناء مشاريع حقيقية!', 'en' => 'The Complete JavaScript Course 2020: Build Real Projects!'];
+        $courses2['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
+
         $courses2['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
 
         $courses2['course_level']            =  1;
@@ -74,6 +78,8 @@ class CourseSeeder extends Seeder
         $courses2                           =   Course::create($courses2);
 
         $courses3['title']            =   ['ar' => 'دورة جافا سكريبت الكاملة 2020: بناء مشاريع حقيقية!', 'en' => 'The Complete JavaScript Course 2020: Build Real Projects!'];
+        $courses3['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
+
         $courses3['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
 
         $courses3['course_level']            =  1;
@@ -95,6 +101,7 @@ class CourseSeeder extends Seeder
         $courses3                           =   Course::create($courses3);
 
         $courses4['title']            =   ['ar' => 'تعلم الشكل: أساسيات تصميم واجهة المستخدم - تصميم UI/UX', 'en' => 'Learn Figma: User Interface Design Essentials - UI/UX Design'];
+        $courses4['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
         $courses4['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
 
         $courses4['course_level']            =  1;
@@ -117,6 +124,7 @@ class CourseSeeder extends Seeder
 
 
         $courses5['title']            =   ['ar' => 'دورة المحلل المالي الكاملة 2020', 'en' => 'The Complete Financial Analyst Course 2020'];
+        $courses5['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
         $courses5['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
 
         $courses5['course_level']            =  1;
@@ -139,6 +147,7 @@ class CourseSeeder extends Seeder
 
 
         $courses6['title']            =   ['ar' => 'تصوير الأزياء من المحترفين', 'en' => 'Fashion Photography From Professional'];
+        $courses6['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
         $courses6['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
 
         $courses6['course_level']            =  1;

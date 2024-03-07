@@ -90,7 +90,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="what_to_learn-tab" data-bs-toggle="tab" data-bs-target="#what_to_learn"
                             type="button" role="tab" aria-controls="what_to_learn"
-                            aria-selected="true">{{ __('panel.course_topics_tab') }}
+                            aria-selected="true">{{ __('panel.what_to_learn_tab') }}
                         </button>
                     </li>
 
@@ -347,29 +347,27 @@
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        <th>{{ __('panel.txt_what_is_course_topics') }}</th>
-
+                                        <th>{{ __('product name') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="cloning_row" id="0">
-                                        <td>#</td>
-                                        <td>
-                                            <input type="text" name="course_topic[0]" id="course_topic"
-                                                class="course_topic form-control">
-                                            @error('course_topic')
+                                        <td class="col-2">#</td>
+                                        <td class="col-10">
+                                            <input type="text" name="product_name[0]" id="product_name"
+                                                class="product_name form-control">
+                                            @error('product_name')
                                                 <span class="help-block text-danger">{{ $message }}</span>
                                             @enderror
                                         </td>
-
                                     </tr>
                                 </tbody>
 
                                 <tfoot>
                                     <tr>
-                                        <td colspan="2">
+                                        <td colspan="6">
                                             <button type="button"
-                                                class="btn_add btn btn-primary">{{ __('panel.btn_add_another_topic') }}</button>
+                                                class="btn_add btn btn-primary">{{ __('add another') }}</button>
                                         </td>
                                     </tr>
 
@@ -468,7 +466,6 @@
 @section('script')
     {{-- Call select2 plugin --}}
     <script src="{{ asset('backend/vendor/select2/js/select2.full.min.js') }}"></script>
-
     <script>
         $(function() {
             $("#course_images").fileinput({
@@ -559,8 +556,8 @@
                 $('#invoice_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
-                    '<td><input type="text" name="course_topic[' + numberIncr +
-                    ']" class="course_topic form-control"></td>' +
+                    '<td><input type="text" name="product_name[' + numberIncr +
+                    ']" class="product_name form-control"></td>' +
                     '</tr>'));
             });
 
@@ -569,7 +566,9 @@
         $(document).on('click', '.delegated-btn', function(e) {
             e.preventDefault();
             $(this).parent().parent().remove();
-
+            $('#sub_total').val(sum_total('.row_sub_total'));
+            $('#vat_value').val(calculate_vat());
+            $('#total_due').val(sum_due_total());
         });
     </script>
 @endsection

@@ -137,6 +137,12 @@ return [
     'course_lessons_time'                =>  'إجمالي وقت الدورة',
 
 
+    // another 
+    'course_topics_tab'               =>  'محاور الدورة',
+    'txt_what_is_course_topics'               =>  'ما الذي سوف يتعلمة الطالب',
+    'btn_add_another_topic'                 =>  'إضافة محور جديد',
+
+
 
 
 

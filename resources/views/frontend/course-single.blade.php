@@ -14,10 +14,11 @@
             <div class="col-lg-8 mb-6 mb-lg-0 position-relative">
                 <div class="course-single-white">
                     <h1 class="me-xl-14 text-white">
-                        Learn Figma: User Interface Design Essentials - UI/UX Design
+                        {{ $course->title }}
                     </h1>
-                    <p class="me-xl-13 mb-5 text-white">Master Figma app to get a job in UI Design, User Interface, User
-                        Experience design, Web Design & UX design.</p>
+                    <p class="me-xl-13 mb-5 text-white">
+                        {{ $course->subtitle }}
+                    </p>
 
                     <a href="#"
                         class="badge badge-lg badge-rounded-circle badge-secondary font-size-base badge-float badge-float-inside top-0 text-white">
@@ -26,7 +27,7 @@
                 </div>
 
                 <!-- COURSE META
-                        ================================================== -->
+                                        ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -60,7 +61,7 @@
                 </div>
 
                 <!-- COURSE INFO TAB
-                        ================================================== -->
+                                        ================================================== -->
                 <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 my-8 pt-1" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview"
@@ -84,13 +85,9 @@
                     <div class="tab-pane fade show active" id="pills-overview" role="tabpanel"
                         aria-labelledby="pills-overview-tab">
                         <h3 class="">Course Description</h3>
-                        <p class="mb-6 line-height-md">Do you want to become a UI/UX designer but you don't know where to
-                            start? This course will allow you to develop your user interface design skills and you can add
-                            UI designer to your CV and start getting clients for your skills.</p>
-                        <p class="mb-6 line-height-md">Hi everyone. I'm Arash and I'm a UI/UX designer. In this course, I
-                            will help you learn and master Figma app comprehensively from scratch. Figma is an innovative
-                            and brilliant tool for User Interface design. It's used by everyone from entrepreneurs and
-                            start-ups to Apple, Airbnb, Facebook, etc.</p>
+                        <p class="mb-6 line-height-md">
+                            {{ $course->description }}
+                        </p>
                         <p class="collapse mb-6 line-height-md" id="readcollapseExample">Anim pariatur cliche reprehenderit,
                             enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft
                             beer labore wes anderson cred nesciunt sapiente I will help you learn and master Figma app
@@ -1445,7 +1442,7 @@
                         <ul class="list-unstyled pt-2">
                             <li class="media d-flex">
                                 <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                                    <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg')}}" alt="..."
+                                    <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
                                         class="avatar-img rounded-circle">
                                 </div>
                                 <div class="media-body flex-grow-1">
@@ -1467,7 +1464,7 @@
                             </li>
                             <li class="media d-flex">
                                 <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                                    <img src="{{ asset('frontend/assets/img/avatars/avatar-2.jpg')}}" alt="..."
+                                    <img src="{{ asset('frontend/assets/img/avatars/avatar-2.jpg') }}" alt="..."
                                         class="avatar-img rounded-circle">
                                 </div>
                                 <div class="media-body flex-grow-1">
@@ -1547,7 +1544,7 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR FILTER
-                        ================================================== -->
+                                        ================================================== -->
                 <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
                     <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-1"
                         data-fancybox>
@@ -1561,7 +1558,8 @@
                             </svg>
 
                         </div>
-                        <img class="rounded shadow-light-lg" src="{{ asset('frontend/assets/img/products/product-2.jpg')}}" alt="...">
+                        <img class="rounded shadow-light-lg"
+                            src="{{ asset('frontend/assets/img/products/product-2.jpg') }}" alt="...">
                     </a>
 
                     <div class="pt-5 pb-4 px-5 px-lg-3 px-xl-5">
@@ -1771,7 +1769,7 @@
                         <ul class="list-unstyled mb-0">
                             <li class="media mb-6 d-flex">
                                 <a href="course-single-v5.html" class="w-100p d-block me-5">
-                                    <img src="{{ asset('frontend/assets/img/photos/photo-1.jpg')}}" alt="..."
+                                    <img src="{{ asset('frontend/assets/img/photos/photo-1.jpg') }}" alt="..."
                                         class="avatar-img rounded-lg h-90p w-100p">
                                 </a>
                                 <div class="media-body flex-grow-1">
@@ -1785,7 +1783,7 @@
 
                             <li class="media mb-6 d-flex">
                                 <a href="course-single-v5.html" class="w-100p d-block me-5">
-                                    <img src="{{ asset('frontend/assets/img/photos/photo-2.jpg')}}" alt="..."
+                                    <img src="{{ asset('frontend/assets/img/photos/photo-2.jpg') }}" alt="..."
                                         class="avatar-img rounded-lg h-90p w-100p">
                                 </a>
                                 <div class="media-body flex-grow-1">
@@ -1799,7 +1797,7 @@
 
                             <li class="media mb-6 d-flex">
                                 <a href="course-single-v5.html" class="w-100p d-block me-5">
-                                    <img src="{{ asset('frontend/assets/img/photos/photo-14.jpg')}}" alt="..."
+                                    <img src="{{ asset('frontend/assets/img/photos/photo-14.jpg') }}" alt="..."
                                         class="avatar-img rounded-lg h-90p w-100p">
                                 </a>
                                 <div class="media-body flex-grow-1">
@@ -1813,7 +1811,7 @@
 
                             <li class="media mb-6 d-flex">
                                 <a href="course-single-v5.html" class="w-100p d-block me-5">
-                                    <img src="{{ asset('frontend/assets/img/photos/photo-16.jpg')}}" alt="..."
+                                    <img src="{{ asset('frontend/assets/img/photos/photo-16.jpg') }}" alt="..."
                                         class="avatar-img rounded-lg h-90p w-100p">
                                 </a>
                                 <div class="media-body flex-grow-1">
@@ -1844,8 +1842,8 @@
                     <!-- Image -->
                     <div class="card-zoom position-relative">
                         <a href="course-single-v5.html" class="card-img sk-thumbnail img-ratio-3 d-block">
-                            <img class="rounded shadow-light-lg" src="{{ asset('frontend/assets/img/products/product-15.jpg')}}"
-                                alt="...">
+                            <img class="rounded shadow-light-lg"
+                                src="{{ asset('frontend/assets/img/products/product-15.jpg') }}" alt="...">
                         </a>
 
                         <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
@@ -1903,8 +1901,8 @@
                     <!-- Image -->
                     <div class="card-zoom position-relative">
                         <a href="course-single-v5.html" class="card-img sk-thumbnail img-ratio-3 d-block">
-                            <img class="rounded shadow-light-lg" src="{{ asset('frontend/assets/img/products/product-14.jpg')}}"
-                                alt="...">
+                            <img class="rounded shadow-light-lg"
+                                src="{{ asset('frontend/assets/img/products/product-14.jpg') }}" alt="...">
                         </a>
 
                         <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
@@ -1963,8 +1961,8 @@
                     <!-- Image -->
                     <div class="card-zoom position-relative">
                         <a href="course-single-v5.html" class="card-img sk-thumbnail img-ratio-3 d-block">
-                            <img class="rounded shadow-light-lg" src="{{ asset('frontend/assets/img/products/product-16.jpg')}}"
-                                alt="...">
+                            <img class="rounded shadow-light-lg"
+                                src="{{ asset('frontend/assets/img/products/product-16.jpg') }}" alt="...">
                         </a>
 
                         <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
@@ -2023,8 +2021,8 @@
                     <!-- Image -->
                     <div class="card-zoom position-relative">
                         <a href="course-single-v5.html" class="card-img sk-thumbnail img-ratio-3 d-block">
-                            <img class="rounded shadow-light-lg" src="{{ asset('frontend/assets/img/products/product-12.jpg')}}"
-                                alt="...">
+                            <img class="rounded shadow-light-lg"
+                                src="{{ asset('frontend/assets/img/products/product-12.jpg') }}" alt="...">
                         </a>
 
                         <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
@@ -2082,8 +2080,8 @@
                     <!-- Image -->
                     <div class="card-zoom position-relative">
                         <a href="course-single-v5.html" class="card-img sk-thumbnail img-ratio-3 d-block">
-                            <img class="rounded shadow-light-lg" src="{{ asset('frontend/assets/img/products/product-13.jpg')}}"
-                                alt="...">
+                            <img class="rounded shadow-light-lg"
+                                src="{{ asset('frontend/assets/img/products/product-13.jpg') }}" alt="...">
                         </a>
 
                         <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
@@ -2142,8 +2140,8 @@
                     <!-- Image -->
                     <div class="card-zoom position-relative">
                         <a href="course-single-v5.html" class="card-img sk-thumbnail img-ratio-3 d-block">
-                            <img class="rounded shadow-light-lg" src="{{ asset('frontend/assets/img/products/product-11.jpg')}}"
-                                alt="...">
+                            <img class="rounded shadow-light-lg"
+                                src="{{ asset('frontend/assets/img/products/product-11.jpg') }}" alt="...">
                         </a>
 
                         <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
@@ -2201,8 +2199,8 @@
                     <!-- Image -->
                     <div class="card-zoom position-relative">
                         <a href="course-single-v5.html" class="card-img sk-thumbnail img-ratio-3 d-block">
-                            <img class="rounded shadow-light-lg" src="{{ asset('frontend/assets/img/products/product-10.jpg')}}"
-                                alt="...">
+                            <img class="rounded shadow-light-lg"
+                                src="{{ asset('frontend/assets/img/products/product-10.jpg') }}" alt="...">
                         </a>
 
                         <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">

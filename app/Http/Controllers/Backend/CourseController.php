@@ -56,6 +56,7 @@ class CourseController extends Controller
         }
 
         $input['title']                  =   $request->title;
+        $input['subtitle']                  =   $request->subtitle;
         $input['description']           =   $request->description;
         // $input['quantity']              =   $request->quantity;
 
@@ -83,6 +84,17 @@ class CourseController extends Controller
         $course = Course::create($input);
 
         $course->tags()->attach($request->tags);
+
+        // course topics start 
+        $topics_list = [];
+        for ($i = 0; $i < count($request->course_topic); $i++) {
+            $topics_list[$i]['course_topic'] = $request->course_topic[$i];
+        }
+
+        $topics = $course->topics()->createMany($topics_list);
+        // course topics start 
+
+
 
         if ($request->images && count($request->images) > 0) {
 
@@ -160,6 +172,7 @@ class CourseController extends Controller
 
         // get Input from create.blade.php form request using CourseRequest to validate fields
         $input['title']                   =   $request->title;
+        $input['subtitle']                  =   $request->subtitle;
         $input['description']                   =   $request->description;
         // $input['quantity']                   =   $request->quantity;
 

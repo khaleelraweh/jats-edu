@@ -27,6 +27,7 @@ class CourseRequest extends FormRequest
             case 'POST': {
                     return [
                         'title.*'                 =>  'required|max:255',
+                        'subtitle.*'                 =>  'nullable|max:255',
                         'description.*'                 =>  'nullable',
 
                         'course_level'                      =>  'nullable|numeric',
@@ -66,6 +67,7 @@ class CourseRequest extends FormRequest
             case 'PATCH': {
                     return [
                         'title.*'                  =>  'required|max:255',
+                        'subtitle.*'                 =>  'nullable|max:255',
                         'description.*'           =>  'nullable',
 
                         'course_level'                      =>  'nullable|numeric',

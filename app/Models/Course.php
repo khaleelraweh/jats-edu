@@ -146,4 +146,9 @@ class Course extends Model
     {
         return $this->belongsToMany(Instructor::class);
     }
+
+    public function topics()
+    {
+        return $this->hasMany(CourseTopics::class, 'course_id', 'id');
+    }
 }

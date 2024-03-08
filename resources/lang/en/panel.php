@@ -142,6 +142,8 @@ return [
     'course_topics_tab'                         =>  'Course Topics',
     'txt_what_is_course_topics'                 =>  'What you will learn',
     'btn_add_another_topic'                     =>  'Add another topic',
+    'topic_in_ar'                               =>  'Topic in arabic',
+    'topic_in_en'                               =>  'Topic in english',
 
 
     ##############################################################

@@ -141,6 +141,8 @@ return [
     'course_topics_tab'               =>  'محاور الدورة',
     'txt_what_is_course_topics'               =>  'ما الذي سوف يتعلمة الطالب',
     'btn_add_another_topic'                 =>  'إضافة محور جديد',
+    'topic_in_ar'                               =>  'المحور بالعربي',
+    'topic_in_en'                               =>  'المحور بالانجليزي',
 
 
 

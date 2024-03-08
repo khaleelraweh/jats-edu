@@ -350,48 +350,25 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($course->topics as $item)
-                                        @if ($loop->index == 0)
-                                            @foreach (config('locales.languages') as $key => $val)
-                                                {{-- {{ dd($item->getTranslation('course_topic', $key)) }} --}}
-                                                <tr class="cloning_row" id="{{ $loop->index }}">
-                                                    <td style="width: 30px !important;">
-                                                        {{ '#' }}
-
-                                                    </td>
-                                                    <td>
-                                                        <input type="text"
-                                                            name="course_topic[{{ $loop->index }}][{{ $key }}]"
-                                                            id="course_topic"
-                                                            value="{{ old('course_topic' . $key, $item->getTranslation('course_topic', $key)) }}"
-                                                            class="course_topic form-control">
-                                                        @error('course_topic')
-                                                            <span class="help-block text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @else
-                                            @foreach (config('locales.languages') as $key => $val)
-                                                {{-- {{ dd($item->getTranslation('course_topic', $key)) }} --}}
-                                                <tr class="cloning_row" id="{{ $loop->index }}">
-                                                    <td style="width: 30px !important;">
-                                                        <button type="button"
-                                                            class="btn btn-danger btn-sm delegated-btn"><i
-                                                                class="fa fa-minus"></i></button>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text"
-                                                            name="course_topic[{{ $loop->index }}][{{ $key }}]"
-                                                            id="course_topic"
-                                                            value="{{ old('course_topic' . $key, $item->getTranslation('course_topic', $key)) }}"
-                                                            class="course_topic form-control">
-                                                        @error('course_topic')
-                                                            <span class="help-block text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @endif
+                                        <tr class="cloning_row" id="{{ $loop->index }}">
+                                            <td style="width: 30px !important;">
+                                                @if ($loop->index == 0)
+                                                    {{ '#' }}
+                                                @else
+                                                    <button type="button" class="btn btn-danger btn-sm delegated-btn"><i
+                                                            class="fa fa-minus"></i></button>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <input type="text" name="course_topic[{{ $loop->index }}]"
+                                                    id="course_topic"
+                                                    value="{{ old('course_topic', $item->course_topic) }}"
+                                                    class="course_topic form-control">
+                                                @error('course_topic')
+                                                    <span class="help-block text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
 

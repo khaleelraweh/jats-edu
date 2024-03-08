@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     {
 
 
-        $this->call(WorldSeeder::class);
-        $this->call(WorldStatusSeeder::class);
+        // $this->call(WorldSeeder::class);
+        // $this->call(WorldStatusSeeder::class);
         $this->call(EntrustSeeder::class);
         // $this->call(UserAddressSeeder::class); //This will be only for user khaleel user
         $this->call(ProductCategorySeeder::class);

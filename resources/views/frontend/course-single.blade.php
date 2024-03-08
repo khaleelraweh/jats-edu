@@ -27,7 +27,7 @@
                 </div>
 
                 <!-- COURSE META
-                                                                            ================================================== -->
+                                                                                                ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -61,7 +61,7 @@
                 </div>
 
                 <!-- COURSE INFO TAB
-                                                                            ================================================== -->
+                                                                                                ================================================== -->
                 <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 my-8 pt-1" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview"
@@ -133,26 +133,12 @@
                         </a>
 
                         <h3 class="mb-5">What you'll learn</h3>
-                        <div class="row row-cols-lg-2 mb-8">
-                            <div class="col-md">
-                                <ul class="list-style-v1 list-unstyled">
-                                    <li>Become a UI/UX designer.</li>
-                                    <li>You will be able to start earning money skills.</li>
-                                    <li>Build a UI project from beginning to end.</li>
-                                    <li>Work with colors & fonts.</li>
-                                    <li>You will create your own UI Kit.</li>
-                                </ul>
-                            </div>
+                        <div class="row row-cols-lg-2 mb-8 list-style-v1 list-unstyled ">
+                            @foreach ($course->topics as $topic)
+                                <li class="col-sm-6">{{ $topic->course_topic }}</li>
+                            @endforeach
 
-                            <div class="col-md">
-                                <ul class="list-style-v1 list-unstyled ms-xl-6">
-                                    <li>Build & test a complete mobile app.</li>
-                                    <li>Learn to design mobile apps & websites.</li>
-                                    <li>Design 3 different logos.</li>
-                                    <li>Create low-fidelity wireframe.</li>
-                                    <li>Downloadable exercise files.</li>
-                                </ul>
-                            </div>
+
                         </div>
 
                         <h3 class="mb-5">Requirements</h3>
@@ -1548,7 +1534,7 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR FILTER
-                                                                            ================================================== -->
+                                                                                                ================================================== -->
                 <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
                     <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-1"
                         data-fancybox>

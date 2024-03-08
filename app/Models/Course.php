@@ -151,4 +151,9 @@ class Course extends Model
     {
         return $this->hasMany(CourseTopics::class, 'course_id', 'id');
     }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
+    }
 }

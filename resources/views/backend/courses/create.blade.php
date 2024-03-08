@@ -573,20 +573,25 @@
 
     <script>
         $(document).ready(function() {
-            // Attach a submit event handler to the form
-            $('#your_form_id').submit(function(event) {
-                // Prevent the form from being submitted
-                event.preventDefault();
 
-                // Check if the first field is empty
-                let firstFieldVal = $('#invoice_details').find('input.course_topic:first').val().trim();
-                if (firstFieldVal === '') {
-                    alert('Please fill in the first field before submitting the form.');
-                    return; // Exit the function if the first field is empty
+            // Submit event handler for the form
+            $('#your_form_id').on('submit', function(event) {
+                // Flag to track whether there are empty fields
+                let isEmpty = false;
+
+                // Loop through each input field and check if it's empty
+                $('input.course_topic').each(function() {
+                    if ($(this).val() === '') {
+                        isEmpty = true;
+                        return false; // Exit the loop if any field is empty
+                    }
+                });
+
+                // If any field is empty, prevent the form submission
+                if (isEmpty) {
+                    alert('{{ __('panel.msg_one_or_more_topic_field_empty') }}.');
+                    event.preventDefault(); // Prevent form submission
                 }
-
-                // If the first field is not empty, submit the form
-                this.submit();
             });
 
             // Add row functionality remains unchanged

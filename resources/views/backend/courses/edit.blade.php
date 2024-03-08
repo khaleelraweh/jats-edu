@@ -703,44 +703,6 @@
     </script>
 
     <script>
-        // add new course topic field 
-        // $(document).ready(function() {
-        //     $(document).on('click', '.btn_add', function() {
-        //         let trCount = $('#invoice_details').find('tr.cloning_row:last').length;
-        //         let numberIncr = trCount > 0 ? parseInt($('#invoice_details').find('tr.cloning_row:last')
-        //             .attr('id')) + 1 : 0;
-
-        //         // Create a flag to check if any field is empty
-        //         let isEmpty = false;
-
-        //         // Loop through each input field and check if it's empty
-        //         $('#invoice_details').find('input.course_topic').each(function() {
-        //             if ($(this).val() === '') {
-        //                 isEmpty = true;
-        //                 return false; // Exit the loop if any field is empty
-        //             }
-        //         });
-
-        //         // If any field is empty, display an alert
-        //         if (isEmpty) {
-        //             alert('Please fill in all fields before adding another row.');
-        //             return false; // Prevent the form from submitting
-        //         }
-
-        //         <?php foreach (config('locales.languages') as $key => $val){ ?>
-        //         $('#invoice_details').find('tbody').append($('' +
-        //             '<tr class="cloning_row" id="' + numberIncr + '">' +
-        //             '<td>' +
-        //             '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
-        //             '<td>' +
-        //             '<span>{{ __('panel.topic_in_' . $key) }} (' + numberIncr + ')</span></td>' +
-        //             '<td><input type="text" name="course_topic[' + numberIncr +
-        //             '][<?php echo $key; ?>]" class="course_topic form-control"></td>' +
-        //             '</tr>'));
-        //         <?php } ?>
-        //     });
-        // });
-
         // check if topic field is not empty before sending form 
         $(document).ready(function() {
             // Submit event handler for the form

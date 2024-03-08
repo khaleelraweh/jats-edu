@@ -343,61 +343,48 @@
                         <div class="table-responsive">
                             <table class="table" id="invoice_details">
                                 <thead>
-                                    <tr>
-                                        <th></th>
+                                    <tr class="pt-4">
+                                        <th width="30px">Act</th>
+                                        <th width="146px">Type</th>
                                         <th>{{ __('panel.txt_what_is_course_topics') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($course->topics as $item)
-                                        @if ($loop->index == 0)
-                                            @foreach (config('locales.languages') as $key => $val)
-                                                {{-- {{ dd($item->getTranslation('course_topic', $key)) }} --}}
-                                                <tr class="cloning_row" id="{{ $loop->index }}">
-                                                    <td style="width: 30px !important;">
+                                        <?php
+                                        $loopIndex = $loop->index;
+                                        ?>
+                                        @foreach (config('locales.languages') as $key => $val)
+                                            {{-- {{ dd($item->getTranslation('course_topic', $key)) }} --}}
+                                            <tr class="cloning_row" id="{{ $loop->index }}">
+                                                <td style="width: 30px !important;">
+                                                    @if ($loopIndex == 0)
                                                         {{ '#' }}
-
-                                                    </td>
-                                                    <td>
-                                                        <input type="text"
-                                                            name="course_topic[{{ $loop->index }}][{{ $key }}]"
-                                                            id="course_topic"
-                                                            value="{{ old('course_topic' . $key, $item->getTranslation('course_topic', $key)) }}"
-                                                            class="course_topic form-control">
-                                                        @error('course_topic')
-                                                            <span class="help-block text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @else
-                                            @foreach (config('locales.languages') as $key => $val)
-                                                {{-- {{ dd($item->getTranslation('course_topic', $key)) }} --}}
-                                                <tr class="cloning_row" id="{{ $loop->index }}">
-                                                    <td style="width: 30px !important;">
+                                                    @else
                                                         <button type="button"
                                                             class="btn btn-danger btn-sm delegated-btn"><i
                                                                 class="fa fa-minus"></i></button>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text"
-                                                            name="course_topic[{{ $loop->index }}][{{ $key }}]"
-                                                            id="course_topic"
-                                                            value="{{ old('course_topic' . $key, $item->getTranslation('course_topic', $key)) }}"
-                                                            class="course_topic form-control">
-                                                        @error('course_topic')
-                                                            <span class="help-block text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @endif
+                                                    @endif
+                                                </td>
+                                                <td>{{ __('panel.topic_in_' . $key) }} ({{ $loopIndex }})</td>
+                                                <td>
+                                                    <input type="text"
+                                                        name="course_topic[{{ $loopIndex }}][{{ $key }}]"
+                                                        id="course_topic"
+                                                        value="{{ old('course_topic' . $key, $item->getTranslation('course_topic', $key)) }}"
+                                                        class="course_topic form-control">
+                                                    @error('course_topic')
+                                                        <span class="help-block text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     @endforeach
                                 </tbody>
 
                                 <tfoot>
                                     <tr>
-                                        <td colspan="2" class="text-end">
+                                        <td colspan="3" class="text-end">
                                             <button type="button"
                                                 class="btn_add btn btn-primary">{{ __('panel.btn_add_another_topic') }}</button>
                                         </td>
@@ -722,12 +709,31 @@
                 let numberIncr = trCount > 0 ? parseInt($('#invoice_details').find('tr.cloning_row:last')
                     .attr('id')) + 1 : 0;
 
+                // <?php foreach (config('locales.languages') as $key => $val){ ?>
+
+                // $('#invoice_details').find('tbody').append($('' +
+                //     '<tr class="cloning_row" id="' + numberIncr + '">' +
+                //     '<td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
+                //     '<td><input type="text" name="course_topic[' + numberIncr +
+                //     '][<?php echo $key; ?>]" class="course_topic form-control"></td>' +
+                //     '</tr>'));
+
+                // <?php } ?>
+
+
+                <?php foreach (config('locales.languages') as $key => $val){ ?>
+
                 $('#invoice_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
-                    '<td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
+                    '<td>' +
+                    '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
+                    '<td>' +
+                    '<span>{{ __('panel.topic_in_' . $key) }} (' + numberIncr + ')</span></td>' +
                     '<td><input type="text" name="course_topic[' + numberIncr +
-                    ']" class="course_topic form-control"></td>' +
+                    '][<?php echo $key; ?>]" class="course_topic form-control"></td>' +
                     '</tr>'));
+                <?php } ?>
+
             });
 
         });

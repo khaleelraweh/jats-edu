@@ -374,7 +374,7 @@
                                     @foreach (config('locales.languages') as $key => $val)
                                         <tr class="cloning_row" id="0">
                                             <td>#</td>
-                                            <td>{{ __('panel.topic_in_' . $key) }}</td>
+                                            <td>{{ __('panel.topic_in_' . $key) }} (0)</td>
                                             <td>
                                                 <input type="text" name="course_topic[0][{{ $key }}]"
                                                     id="course_topic" class="course_topic form-control">

@@ -355,7 +355,6 @@
                                         $loopIndex = $loop->index;
                                         ?>
                                         @foreach (config('locales.languages') as $key => $val)
-                                            {{-- {{ dd($item->getTranslation('course_topic', $key)) }} --}}
                                             <tr class="cloning_row" id="{{ $loop->index }}">
                                                 <td style="width: 30px !important;">
                                                     @if ($loopIndex == 0)
@@ -706,6 +705,7 @@
         $(document).ready(function() {
             $(document).on('click', '.btn_add', function() {
                 let trCount = $('#invoice_details').find('tr.cloning_row:last').length;
+                console.log($trCount);
                 let numberIncr = trCount > 0 ? parseInt($('#invoice_details').find('tr.cloning_row:last')
                     .attr('id')) + 1 : 0;
 

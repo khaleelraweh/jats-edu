@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="{{ asset('backend/vendor/bootstrap-fileinput/css/fileinput.min.css') }}">
 
     <!-- Plugins css -->
-    <link href="{{ asset('backend/css/bootstrap-editable.css') }}" rel="stylesheet" type="text/css">
+    {{-- <link href="{{ asset('backend/css/bootstrap-editable.css') }}" rel="stylesheet" type="text/css"> --}}
 
     <!-- Bootstrap Css -->
     <link href="<?php echo asset('backend/css/bootstrap' . $dark . $rtl . '.min.css'); ?>" id="bootstrap-style" rel="stylesheet" type="text/css">
@@ -143,10 +143,10 @@
     <script src="{{ asset('backend/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('backend/libs/metismenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('backend/libs/simplebar/simplebar.min.js') }}"></script>
-    <script src="{{ asset('backend/libs/node-waves/waves.min.js') }}"></script>
+    {{-- <script src="{{ asset('backend/libs/node-waves/waves.min.js') }}"></script> --}}
 
     <!-- apexcharts -->
-    <script src="{{ asset('backend/libs/apexcharts/apexcharts.min.js') }}"></script>
+    {{-- <script src="{{ asset('backend/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
 
     <!-- jquery.vectormap map -->
     <script src="{{ asset('backend/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
@@ -170,7 +170,7 @@
 
 
     <!-- Datatable init js -->
-    <script src="{{ asset('backend/js/pages/dashboard.init.js') }}"></script>
+    {{-- <script src="{{ asset('backend/js/pages/dashboard.init.js') }}"></script> --}}
 
     {{-- outer lab  --}}
     {{-- summernote for description note field --}}

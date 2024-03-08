@@ -50,7 +50,6 @@
                         <tr>
                             <th>{{ __('panel.image') }}</th>
                             <th>{{ __('panel.title') }}</th>
-                            <th>{{ __('panel.qty') }}</th>
                             <th>{{ __('panel.price') }}</th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
                             <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
@@ -75,7 +74,6 @@
 
                                 </td>
                                 <td>{{ $course->title }}</td>
-                                <td>{{ $course->quantity >= 0 ? $course->quantity : 'غير محدودة' }}</td>
                                 <td>{{ $course->price }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $course->created_by }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $course->created_at }}</td>

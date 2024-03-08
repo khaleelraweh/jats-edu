@@ -143,6 +143,9 @@ return [
     'btn_add_another_topic'                 =>  'إضافة محور جديد',
     'topic_in_ar'                               =>  'المحور بالعربي',
     'topic_in_en'                               =>  'المحور بالانجليزي',
+    'msg_one_or_more_topic_field_empty'         =>  'واحد او اكثر من محاور الدورة فارغ , الرجاء تعبئتها قبل اكمال عملية الحفظ',
+    'msg_please_fill_in_all_fields_before_adding_another_row'  => 'الرجاء ادخال بيانات الحقول قبل اضافة حقول جديدة ',
+
 
 
 

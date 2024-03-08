@@ -144,6 +144,9 @@ return [
     'btn_add_another_topic'                     =>  'Add another topic',
     'topic_in_ar'                               =>  'Topic in arabic',
     'topic_in_en'                               =>  'Topic in english',
+    'msg_one_or_more_topic_field_empty'         =>  'One or more topic field is empty please fill them before saving',
+    'msg_please_fill_in_all_fields_before_adding_another_row'  => 'Please fill in all  fields before adding another row',
+
 
 
     ##############################################################

@@ -56,7 +56,8 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form action="{{ route('admin.courses.update', $course->id) }}" method="post" enctype="multipart/form-data">
+            <form id="your_form_id" action="{{ route('admin.courses.update', $course->id) }}" method="post"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -372,7 +373,7 @@
                                                         id="course_topic"
                                                         value="{{ old('course_topic' . $key, $item->getTranslation('course_topic', $key)) }}"
                                                         class="course_topic form-control">
-                                                    @error('course_topic')
+                                                    @error('course_topic[{{ $loopIndex }}]' . $key)
                                                         <span class="help-block text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </td>
@@ -702,19 +703,91 @@
     </script>
 
     <script>
+        // add new course topic field 
+        // $(document).ready(function() {
+        //     $(document).on('click', '.btn_add', function() {
+        //         let trCount = $('#invoice_details').find('tr.cloning_row:last').length;
+        //         let numberIncr = trCount > 0 ? parseInt($('#invoice_details').find('tr.cloning_row:last')
+        //             .attr('id')) + 1 : 0;
+
+        //         // Create a flag to check if any field is empty
+        //         let isEmpty = false;
+
+        //         // Loop through each input field and check if it's empty
+        //         $('#invoice_details').find('input.course_topic').each(function() {
+        //             if ($(this).val() === '') {
+        //                 isEmpty = true;
+        //                 return false; // Exit the loop if any field is empty
+        //             }
+        //         });
+
+        //         // If any field is empty, display an alert
+        //         if (isEmpty) {
+        //             alert('Please fill in all fields before adding another row.');
+        //             return false; // Prevent the form from submitting
+        //         }
+
+        //         <?php foreach (config('locales.languages') as $key => $val){ ?>
+        //         $('#invoice_details').find('tbody').append($('' +
+        //             '<tr class="cloning_row" id="' + numberIncr + '">' +
+        //             '<td>' +
+        //             '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
+        //             '<td>' +
+        //             '<span>{{ __('panel.topic_in_' . $key) }} (' + numberIncr + ')</span></td>' +
+        //             '<td><input type="text" name="course_topic[' + numberIncr +
+        //             '][<?php echo $key; ?>]" class="course_topic form-control"></td>' +
+        //             '</tr>'));
+        //         <?php } ?>
+        //     });
+        // });
+
+        // check if topic field is not empty before sending form 
         $(document).ready(function() {
+            // Submit event handler for the form
+            $('#your_form_id').on('submit', function(event) {
+                // Flag to track whether there are empty fields
+                let isEmpty = false;
+
+                // Loop through each input field and check if it's empty
+                $('input.course_topic').each(function() {
+                    if ($(this).val() === '') {
+                        isEmpty = true;
+                        return false; // Exit the loop if any field is empty
+                    }
+                });
+
+                // If any field is empty, prevent the form submission
+                if (isEmpty) {
+                    alert('{{ __('panel.msg_one_or_more_topic_field_empty') }}.');
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+
+            // Click event handler for adding new rows
             $(document).on('click', '.btn_add', function() {
                 let trCount = $('#invoice_details').find('tr.cloning_row:last').length;
-
-
                 let numberIncr = trCount > 0 ? parseInt($('#invoice_details').find('tr.cloning_row:last')
                     .attr('id')) + 1 : 0;
 
+                // Create a flag to check if any field is empty
+                let isEmpty = false;
 
+                // Loop through each input field and check if it's empty
+                $('#invoice_details').find('input.course_topic').each(function() {
+                    if ($(this).val() === '') {
+                        isEmpty = true;
+                        return false; // Exit the loop if any field is empty
+                    }
+                });
 
+                // If any field is empty, display an alert
+                if (isEmpty) {
+                    alert(
+                        '{{ __('panel.msg_please_fill_in_all_fields_before_adding_another_row') }}.');
+                    return false; // Prevent the form from submitting
+                }
 
                 <?php foreach (config('locales.languages') as $key => $val){ ?>
-
                 $('#invoice_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
@@ -725,10 +798,10 @@
                     '][<?php echo $key; ?>]" class="course_topic form-control"></td>' +
                     '</tr>'));
                 <?php } ?>
-
             });
-
         });
+
+
 
         $(document).on('click', '.delegated-btn', function(e) {
             e.preventDefault();

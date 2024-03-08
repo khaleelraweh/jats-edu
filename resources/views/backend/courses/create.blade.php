@@ -59,7 +59,8 @@
 
 
             {{-- enctype used cause we will save images  --}}
-            <form action="{{ route('admin.courses.store') }}" method="post" enctype="multipart/form-data">
+            <form id="your_form_id" action="{{ route('admin.courses.store') }}" method="post"
+                enctype="multipart/form-data">
                 @csrf
 
                 {{-- links of tabs --}}
@@ -572,13 +573,44 @@
 
     <script>
         $(document).ready(function() {
+            // Attach a submit event handler to the form
+            $('#your_form_id').submit(function(event) {
+                // Prevent the form from being submitted
+                event.preventDefault();
+
+                // Check if the first field is empty
+                let firstFieldVal = $('#invoice_details').find('input.course_topic:first').val().trim();
+                if (firstFieldVal === '') {
+                    alert('Please fill in the first field before submitting the form.');
+                    return; // Exit the function if the first field is empty
+                }
+
+                // If the first field is not empty, submit the form
+                this.submit();
+            });
+
+            // Add row functionality remains unchanged
             $(document).on('click', '.btn_add', function() {
                 let trCount = $('#invoice_details').find('tr.cloning_row:last').length;
                 let numberIncr = trCount > 0 ? parseInt($('#invoice_details').find('tr.cloning_row:last')
                     .attr('id')) + 1 : 0;
+                let isValid = true;
 
+                // Check if any of the existing fields are empty
+                $('#invoice_details').find('input.course_topic').each(function() {
+                    if ($(this).val() === '') {
+                        isValid = false;
+                        return false; // Exit the loop if any field is empty
+                    }
+                });
+
+                if (!isValid) {
+                    alert('Please fill in all existing fields before adding a new row.');
+                    return false; // Prevent adding a new row if existing fields are empty
+                }
+
+                // Add new row
                 <?php foreach (config('locales.languages') as $key => $val){ ?>
-
                 $('#invoice_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
@@ -589,10 +621,9 @@
                     '][<?php echo $key; ?>]" class="course_topic form-control"></td>' +
                     '</tr>'));
                 <?php } ?>
-
             });
-
         });
+
 
         $(document).on('click', '.delegated-btn', function(e) {
             e.preventDefault();

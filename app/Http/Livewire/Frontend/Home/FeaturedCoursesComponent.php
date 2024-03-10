@@ -42,7 +42,7 @@ class FeaturedCoursesComponent extends Component
                 $query->where('course_category_id', $this->categoryInputs);
             })
             ->when($this->courseLevels, function ($query) {
-                $query->where('course_level', $this->courseLevels);
+                $query->where('skill_level', $this->courseLevels);
             })
             ->when($this->priceInput, function ($query) {
                 $query

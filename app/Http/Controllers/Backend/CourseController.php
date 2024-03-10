@@ -62,11 +62,11 @@ class CourseController extends Controller
         $input['description']           =   $request->description;
         // $input['quantity']              =   $request->quantity;
 
-        $input['course_level']                      =   $request->course_level;
-        $input['course_lang']                       =   $request->course_lang;
-        $input['course_evaluation']                 =   $request->course_evaluation;
-        $input['course_lessons_number']             =   $request->course_lessons_number;
-        $input['course_lessons_time']               =   $request->course_lessons_time;
+        $input['skill_level']                      =   $request->skill_level;
+        $input['language']                       =   $request->language;
+        $input['evaluation']                 =   $request->evaluation;
+        $input['Lecture_numbers']             =   $request->Lecture_numbers;
+        $input['Duration']               =   $request->Duration;
 
 
         $input['price']                 =   $request->price;
@@ -186,11 +186,11 @@ class CourseController extends Controller
         $input['description']                   =   $request->description;
         // $input['quantity']                   =   $request->quantity;
 
-        $input['course_level']                      =   $request->course_level;
-        $input['course_lang']                       =   $request->course_lang;
-        $input['course_evaluation']                 =   $request->course_evaluation;
-        $input['course_lessons_number']             =   $request->course_lessons_number;
-        $input['course_lessons_time']               =   $request->course_lessons_time;
+        $input['skill_level']                      =   $request->skill_level;
+        $input['language']                       =   $request->language;
+        $input['evaluation']                 =   $request->evaluation;
+        $input['Lecture_numbers']             =   $request->Lecture_numbers;
+        $input['Duration']               =   $request->Duration;
 
         $input['price']                 =   $request->price;
         $input['offer_price']           =   $request->offer_price;

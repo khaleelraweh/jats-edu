@@ -224,22 +224,22 @@
 
                         <div class="row">
                             <div class="col-sm-12 pt-3">
-                                <label for="course_level">{{ __('panel.course_level') }}</label>
-                                <select name="course_level" class="form-control">
+                                <label for="skill_level">{{ __('panel.skill_level') }}</label>
+                                <select name="skill_level" class="form-control">
                                     <option value="1"
-                                        {{ old('course_level', $course->course_level) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.course_level_beginner') }}
+                                        {{ old('skill_level', $course->skill_level) == '1' ? 'selected' : null }}>
+                                        {{ __('panel.skill_level_beginner') }}
                                     </option>
                                     <option value="2"
-                                        {{ old('course_level', $course->course_level) == '2' ? 'selected' : null }}>
-                                        {{ __('panel.course_level_intermediate') }}
+                                        {{ old('skill_level', $course->skill_level) == '2' ? 'selected' : null }}>
+                                        {{ __('panel.skill_level_intermediate') }}
                                     </option>
                                     <option value="3"
-                                        {{ old('course_level', $course->course_level) == '3' ? 'selected' : null }}>
-                                        {{ __('panel.course_level_advance') }}
+                                        {{ old('skill_level', $course->skill_level) == '3' ? 'selected' : null }}>
+                                        {{ __('panel.skill_level_advance') }}
                                     </option>
                                 </select>
-                                @error('course_level')
+                                @error('skill_level')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 
@@ -248,19 +248,19 @@
 
                         <div class="row">
                             <div class="col-sm-12 pt-3">
-                                <label for="course_lang">{{ __('panel.course_lang') }}</label>
-                                <select name="course_lang" class="form-control">
+                                <label for="language">{{ __('panel.language') }}</label>
+                                <select name="language" class="form-control">
                                     <option value="1"
-                                        {{ old('course_lang', $course->course_lang) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.course_lang_ar') }}
+                                        {{ old('language', $course->language) == '1' ? 'selected' : null }}>
+                                        {{ __('panel.language_ar') }}
                                     </option>
                                     <option value="2"
-                                        {{ old('course_lang', $course->course_lang) == '2' ? 'selected' : null }}>
-                                        {{ __('panel.course_lang_en') }}
+                                        {{ old('language', $course->language) == '2' ? 'selected' : null }}>
+                                        {{ __('panel.language_en') }}
                                     </option>
 
                                 </select>
-                                @error('course_lang')
+                                @error('language')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 
@@ -269,23 +269,23 @@
 
                         <div class="row">
                             <div class="col-sm-12 pt-3">
-                                <label for="course_evaluation">{{ __('panel.course_evaluation') }}</label>
-                                <select name="course_evaluation" class="form-control">
+                                <label for="evaluation">{{ __('panel.evaluation') }}</label>
+                                <select name="evaluation" class="form-control">
                                     <option value="1"
-                                        {{ old('course_evaluation', $course->course_evaluation) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.course_evaluation_normal') }}
+                                        {{ old('evaluation', $course->evaluation) == '1' ? 'selected' : null }}>
+                                        {{ __('panel.evaluation_normal') }}
                                     </option>
                                     <option value="2"
-                                        {{ old('course_evaluation', $course->course_evaluation) == '2' ? 'selected' : null }}>
-                                        {{ __('panel.course_evaluation_featured') }}
+                                        {{ old('evaluation', $course->evaluation) == '2' ? 'selected' : null }}>
+                                        {{ __('panel.evaluation_featured') }}
                                     </option>
                                     <option value="3"
-                                        {{ old('course_evaluation', $course->course_evaluation) == '3' ? 'selected' : null }}>
-                                        {{ __('panel.course_evaluation_best_seller') }}
+                                        {{ old('evaluation', $course->evaluation) == '3' ? 'selected' : null }}>
+                                        {{ __('panel.evaluation_best_seller') }}
                                     </option>
 
                                 </select>
-                                @error('course_evaluation')
+                                @error('evaluation')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 
@@ -294,11 +294,10 @@
 
                         <div class="row">
                             <div class="col-sm-12 pt-3">
-                                <label for="course_lessons_number">{{ __('panel.course_lessons_number') }}</label>
-                                <input type="number" name="course_lessons_number" id="course_lessons_number"
-                                    value="{{ old('course_lessons_number', $course->course_lessons_number) }}"
-                                    class="form-control">
-                                @error('course_lessons_number')
+                                <label for="Lecture_numbers">{{ __('panel.Lecture_numbers') }}</label>
+                                <input type="number" name="Lecture_numbers" id="Lecture_numbers"
+                                    value="{{ old('Lecture_numbers', $course->Lecture_numbers) }}" class="form-control">
+                                @error('Lecture_numbers')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 
@@ -307,11 +306,11 @@
 
                         <div class="row">
                             <div class="col-sm-12 pt-3">
-                                <label for="course_lessons_time">{{ __('panel.course_lessons_time') }}</label>
-                                <input type="text" name="course_lessons_time" id="course_lessons_time"
-                                    value="{{ old('course_lessons_time', $course->course_lessons_time) }}"
-                                    class="form-control" placeholder="8h 17m">
-                                @error('course_lessons_time')
+                                <label for="Duration">{{ __('panel.Duration') }}</label>
+                                <input type="text" name="Duration" id="Duration"
+                                    value="{{ old('Duration', $course->Duration) }}" class="form-control"
+                                    placeholder="8h 17m">
+                                @error('Duration')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 

@@ -32,15 +32,15 @@ class CourseSeeder extends Seeder
 
         $courses1['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
 
-        $courses1['course_level']            =  1;
-        $courses1['course_lang']             =  1;
-        $courses1['course_lessons_number']          =  5;
-        $courses1['course_lessons_time']            =  "8h  12m";
+        $courses1['skill_level']            =  1;
+        $courses1['language']             =  1;
+        $courses1['Lecture_numbers']          =  5;
+        $courses1['Duration']            =  "8h  12m";
 
         // by alyamany
-        $courses1['course_video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
-        $courses1['course_video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
-        $courses1['course_type']            =  1;
+        $courses1['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
+        $courses1['video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
+        $courses1['type']            =  1;
 
 
         $courses1['price']                  =   $faker->numberBetween(5, 200);
@@ -64,15 +64,15 @@ class CourseSeeder extends Seeder
 
         $courses2['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
 
-        $courses2['course_level']            =  1;
-        $courses2['course_lang']             =  1;
-        $courses2['course_lessons_number']          =  5;
-        $courses2['course_lessons_time']            =  "8h  12m";
+        $courses2['skill_level']            =  1;
+        $courses2['language']             =  1;
+        $courses2['Lecture_numbers']          =  5;
+        $courses2['Duration']            =  "8h  12m";
 
         // by alyamany
-        $courses2['course_video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
-        $courses2['course_video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
-        $courses2['course_type']            =  1;
+        $courses2['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
+        $courses2['video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
+        $courses2['type']            =  1;
 
         $courses2['price']                  =   $faker->numberBetween(5, 200);
         $courses2['offer_price']            =   $faker->numberBetween(5, 100);
@@ -92,15 +92,15 @@ class CourseSeeder extends Seeder
 
         $courses3['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
 
-        $courses3['course_level']            =  1;
-        $courses3['course_lang']             =  1;
-        $courses3['course_lessons_number']          =  5;
-        $courses3['course_lessons_time']            =  "8h  12m";
+        $courses3['skill_level']            =  1;
+        $courses3['language']             =  1;
+        $courses3['Lecture_numbers']          =  5;
+        $courses3['Duration']            =  "8h  12m";
 
         // by alyamany
-        $courses3['course_video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
-        $courses3['course_video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
-        $courses3['course_type']            =  1;
+        $courses3['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
+        $courses3['video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
+        $courses3['type']            =  1;
 
         $courses3['price']                  =   $faker->numberBetween(5, 200);
         $courses3['offer_price']            =   $faker->numberBetween(5, 100);
@@ -119,15 +119,15 @@ class CourseSeeder extends Seeder
         $courses4['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
         $courses4['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
 
-        $courses4['course_level']            =  1;
-        $courses4['course_lang']             =  1;
-        $courses4['course_lessons_number']          =  5;
-        $courses4['course_lessons_time']            =  "8h  12m";
+        $courses4['skill_level']            =  1;
+        $courses4['language']             =  1;
+        $courses4['Lecture_numbers']          =  5;
+        $courses4['Duration']            =  "8h  12m";
 
         // by alyamany
-        $courses4['course_video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
-        $courses4['course_video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
-        $courses4['course_type']            =  1;
+        $courses4['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
+        $courses4['video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
+        $courses4['type']            =  1;
 
         $courses4['price']                  =   $faker->numberBetween(5, 200);
         $courses4['offer_price']            =   $faker->numberBetween(5, 100);
@@ -147,15 +147,15 @@ class CourseSeeder extends Seeder
         $courses5['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
         $courses5['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
 
-        $courses5['course_level']            =  1;
-        $courses5['course_lang']             =  1;
-        $courses5['course_lessons_number']          =  5;
-        $courses5['course_lessons_time']            =  "8h  12m";
+        $courses5['skill_level']            =  1;
+        $courses5['language']             =  1;
+        $courses5['Lecture_numbers']          =  5;
+        $courses5['Duration']            =  "8h  12m";
 
         // by alyamany
-        $courses5['course_video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
-        $courses5['course_video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
-        $courses5['course_type']            =  1;
+        $courses5['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
+        $courses5['video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
+        $courses5['type']            =  1;
 
         $courses5['price']                  =   $faker->numberBetween(5, 200);
         $courses5['offer_price']            =   $faker->numberBetween(5, 100);
@@ -175,15 +175,15 @@ class CourseSeeder extends Seeder
         $courses6['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
         $courses6['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
 
-        $courses6['course_level']            =  1;
-        $courses6['course_lang']             =  1;
-        $courses6['course_lessons_number']          =  5;
-        $courses6['course_lessons_time']            =  "8h  12m";
+        $courses6['skill_level']            =  1;
+        $courses6['language']             =  1;
+        $courses6['Lecture_numbers']          =  5;
+        $courses6['Duration']            =  "8h  12m";
 
         // by alyamany
-        $courses6['course_video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
-        $courses6['course_video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
-        $courses6['course_type']            =  1;
+        $courses6['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
+        $courses6['video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
+        $courses6['type']            =  1;
 
         $courses6['price']                  =   $faker->numberBetween(5, 200);
         $courses6['offer_price']            =   $faker->numberBetween(5, 100);

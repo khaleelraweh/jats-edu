@@ -30,11 +30,11 @@ class CourseRequest extends FormRequest
                         'subtitle.*'                 =>  'nullable|max:255',
                         'description.*'                 =>  'nullable',
 
-                        'course_level'                      =>  'nullable|numeric',
-                        'course_lang'                      =>  'nullable|numeric',
-                        'course_evaluation'                      =>  'nullable|numeric',
-                        'course_lessons_number'                      =>  'nullable|numeric',
-                        'course_lessons_time'                      =>  'nullable',
+                        'skill_level'                      =>  'nullable|numeric',
+                        'language'                      =>  'nullable|numeric',
+                        'evaluation'                      =>  'nullable|numeric',
+                        'Lecture_numbers'                      =>  'nullable|numeric',
+                        'Duration'                      =>  'nullable',
 
 
 
@@ -70,11 +70,11 @@ class CourseRequest extends FormRequest
                         'subtitle.*'                 =>  'nullable|max:255',
                         'description.*'           =>  'nullable',
 
-                        'course_level'                      =>  'nullable|numeric',
-                        'course_lang'                      =>  'nullable|numeric',
-                        'course_evaluation'                      =>  'nullable|numeric',
-                        'course_lessons_number'                      =>  'nullable|numeric',
-                        'course_lessons_time'                      =>  'nullable',
+                        'skill_level'                      =>  'nullable|numeric',
+                        'language'                      =>  'nullable|numeric',
+                        'evaluation'                      =>  'nullable|numeric',
+                        'Lecture_numbers'                      =>  'nullable|numeric',
+                        'Duration'                      =>  'nullable',
 
 
                         'price' => 'required|integer|min:0|digits_between: 1,5',

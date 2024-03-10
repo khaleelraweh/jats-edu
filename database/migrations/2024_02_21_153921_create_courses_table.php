@@ -20,16 +20,16 @@ return new class extends Migration
             $table->json('description');
             $table->json('subtitle');
 
-            $table->tinyInteger('course_level')->nullable()->default(1); // واحد مبتدي اثنين متوسط ثلاثة متقدم
-            $table->tinyInteger('course_lang')->nullable()->default(1); // واحد عربي اثنين إنجليزي ثلاثة اسباني
-            $table->tinyInteger('course_evaluation')->nullable()->default(1); // 1 : is normal , 2 : is featured  , 3 : is best seller
-            $table->tinyInteger('course_lessons_number')->nullable();
-            $table->string('course_lessons_time')->nullable();
+            $table->tinyInteger('skill_level')->nullable()->default(1); // واحد مبتدي اثنين متوسط ثلاثة متقدم
+            $table->tinyInteger('language')->nullable()->default(1); // واحد عربي اثنين إنجليزي ثلاثة اسباني
+            $table->tinyInteger('evaluation')->nullable()->default(1); // 1 : is normal , 2 : is featured  , 3 : is best seller
+            $table->tinyInteger('Lecture_numbers')->nullable();
+            $table->string('Duration')->nullable();
 
             // added by alyamany
-            $table->string('course_video_promo')->nullable();
-            $table->string('course_video_description')->nullable();
-            $table->tinyInteger('course_type')->nullable();   //  1: mean presence 2 : enrolled
+            $table->string('video_promo')->nullable();
+            $table->string('video_description')->nullable();
+            $table->tinyInteger('type')->nullable();   //  1: mean presence 2 : enrolled
 
 
             $table->double('price')->default(0.0);

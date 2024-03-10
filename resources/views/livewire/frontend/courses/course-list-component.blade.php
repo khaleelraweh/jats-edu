@@ -278,7 +278,7 @@
 
                                     <label class="custom-control-label font-size-base"
                                         for="levelcustomcheck1">Beginner
-                                        ({{ count($courses->where('course_level', 1)) ?? 0 }})
+                                        ({{ count($courses->where('skill_level', 1)) ?? 0 }})
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
@@ -288,7 +288,7 @@
 
                                     <label class="custom-control-label font-size-base"
                                         for="levelcustomcheck2">Intermediate
-                                        ({{ count($courses->where('course_level', 2)) ?? 0 }})
+                                        ({{ count($courses->where('skill_level', 2)) ?? 0 }})
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
@@ -298,7 +298,7 @@
 
                                     <label class="custom-control-label font-size-base"
                                         for="levelcustomcheck3">Advanced
-                                        ({{ count($courses->where('course_level', 3)) ?? 0 }})
+                                        ({{ count($courses->where('skill_level', 3)) ?? 0 }})
                                     </label>
                                 </li>
                             </ul>
@@ -492,7 +492,7 @@
 
                                                             </div>
                                                             <div class="font-size-sm">
-                                                                {{ $course->course_lessons_number }}
+                                                                {{ $course->Lecture_numbers }}
                                                                 {{ __('transf.lessons') }}
                                                             </div>
                                                         </div>

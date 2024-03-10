@@ -85,12 +85,12 @@ class CourseListComponent extends Component
         }
 
         // if ($this->courseLevels != null) {
-        //     $courses = $courses->whereIn('course_level', $this->courseLevels);
+        //     $courses = $courses->whereIn('skill_level', $this->courseLevels);
         // }
 
         $courses = $courses->active()
             ->when($this->courseLevels, function ($query) {
-                $query->whereIn('course_level', $this->courseLevels);
+                $query->whereIn('skill_level', $this->courseLevels);
             })
             ->when($this->priceInput, function ($query) {
                 $query

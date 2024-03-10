@@ -150,7 +150,7 @@
 
                                                     </div>
                                                     <div class="font-size-sm">
-                                                        {{ $featured_course->course_lessons_number }}
+                                                        {{ $featured_course->Lecture_numbers }}
                                                         {{ __('transf.lessons') }}
                                                     </div>
                                                 </div>
@@ -166,7 +166,7 @@
 
                                                     </div>
                                                     <div class="font-size-sm">
-                                                        {{ $featured_course->course_lessons_time }}
+                                                        {{ $featured_course->Duration }}
                                                     </div>
                                                 </div>
                                             </li>

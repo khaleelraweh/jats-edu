@@ -351,12 +351,12 @@
 
 
                         <div class="table-responsive">
-                            <table class="table" id="invoice_details">
+                            <table class="table" id="course_topics_details">
                                 <thead>
                                     <tr class="pt-4">
-                                        <th width="30px">Act</th>
-                                        <th width="146px">Type</th>
-                                        <th>{{ __('panel.txt_what_is_course_topics') }}</th>
+                                        <th width="30px">{{ __('panel.act') }}</th>
+                                        <th width="160px">{{ __('panel.type') }}</th>
+                                        <th>{{ __('panel.txt_course_topics') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -410,12 +410,12 @@
 
 
                         <div class="table-responsive">
-                            <table class="table" id="course_details">
+                            <table class="table" id="course_requirements_details">
                                 <thead>
                                     <tr class="pt-4">
-                                        <th width="30px">Act</th>
-                                        <th width="146px">Type</th>
-                                        <th>{{ __('panel.txt_what_is_course_requirements') }}</th>
+                                        <th width="30px">{{ __('panel.act') }}</th>
+                                        <th width="160px">{{ __('panel.type') }}</th>
+                                        <th>{{ __('panel.txt_course_requirements') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -434,7 +434,7 @@
                                                                 class="fa fa-minus"></i></button>
                                                     @endif
                                                 </td>
-                                                <td>{{ __('panel.topic_in_' . $key) }} ({{ $loopIndex }})</td>
+                                                <td>{{ __('panel.requirement_in_' . $key) }} ({{ $loopIndex }})</td>
                                                 <td>
                                                     <input type="text"
                                                         name="course_requirement[{{ $loopIndex }}][{{ $key }}]"
@@ -454,7 +454,7 @@
                                     <tr>
                                         <td colspan="3" class="text-end">
                                             <button type="button"
-                                                class="btn_add_requirement btn btn-primary">{{ __('panel.btn_add_requirement_another_topic') }}</button>
+                                                class="btn_add_requirement btn btn-primary">{{ __('panel.btn_add_another_requirement') }}</button>
                                         </td>
                                     </tr>
                                 </tfoot>
@@ -795,15 +795,16 @@
 
             // Click event handler for adding new rows
             $(document).on('click', '.btn_add', function() {
-                let trCount = $('#invoice_details').find('tr.cloning_row:last').length;
-                let numberIncr = trCount > 0 ? parseInt($('#invoice_details').find('tr.cloning_row:last')
+                let trCount = $('#course_topics_details').find('tr.cloning_row:last').length;
+                let numberIncr = trCount > 0 ? parseInt($('#course_topics_details').find(
+                        'tr.cloning_row:last')
                     .attr('id')) + 1 : 0;
 
                 // Create a flag to check if any field is empty
                 let isEmpty = false;
 
                 // Loop through each input field and check if it's empty
-                $('#invoice_details').find('input.course_topic').each(function() {
+                $('#course_topics_details').find('input.course_topic').each(function() {
                     if ($(this).val() === '') {
                         isEmpty = true;
                         return false; // Exit the loop if any field is empty
@@ -813,12 +814,12 @@
                 // If any field is empty, display an alert
                 if (isEmpty) {
                     alert(
-                        '{{ __('panel.msg_please_fill_in_all_fields_before_adding_another_row') }}.');
+                        '{{ __('panel.msg_please_fill_in_all_topic_fields_before_adding_new') }}.');
                     return false; // Prevent the form from submitting
                 }
 
                 <?php foreach (config('locales.languages') as $key => $val){ ?>
-                $('#invoice_details').find('tbody').append($('' +
+                $('#course_topics_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
@@ -841,7 +842,7 @@
     </script>
 
     <script>
-        // check if topic field is not empty before sending form 
+        //  check if topic field is not empty before sending form 
         $(document).ready(function() {
             // Submit event handler for the form
             $('#your_form_id').on('submit', function(event) {
@@ -858,22 +859,23 @@
 
                 // If any field is empty, prevent the form submission
                 if (isEmpty) {
-                    alert('{{ __('panel.msg_one_or_more_topic_field_empty') }}.');
+                    alert('{{ __('panel.msg_one_or_more_requirement_field_empty') }}.');
                     event.preventDefault(); // Prevent form submission
                 }
             });
 
             // Click event handler for adding new rows
             $(document).on('click', '.btn_add_requirement', function() {
-                let trCount = $('#course_details').find('tr.cloning_row:last').length;
-                let numberIncr = trCount > 0 ? parseInt($('#course_details').find('tr.cloning_row:last')
+                let trCount = $('#course_requirements_details').find('tr.cloning_row:last').length;
+                let numberIncr = trCount > 0 ? parseInt($('#course_requirements_details').find(
+                        'tr.cloning_row:last')
                     .attr('id')) + 1 : 0;
 
                 // Create a flag to check if any field is empty
                 let isEmpty = false;
 
                 // Loop through each input field and check if it's empty
-                $('#course_details').find('input.course_requirement').each(function() {
+                $('#course_requirements_details').find('input.course_requirement').each(function() {
                     if ($(this).val() === '') {
                         isEmpty = true;
                         return false; // Exit the loop if any field is empty
@@ -883,17 +885,19 @@
                 // If any field is empty, display an alert
                 if (isEmpty) {
                     alert(
-                        '{{ __('panel.msg_please_fill_in_all_fields_before_adding_another_row') }}.');
+                        '{{ __('panel.msg_please_fill_in_all_requirement_fields_before_adding_new') }}.'
+                    );
                     return false; // Prevent the form from submitting
                 }
 
                 <?php foreach (config('locales.languages') as $key => $val){ ?>
-                $('#course_details').find('tbody').append($('' +
+                $('#course_requirements_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
                     '<td>' +
-                    '<span>{{ __('panel.topic_in_' . $key) }} (' + numberIncr + ')</span></td>' +
+                    '<span>{{ __('panel.requirement_in_' . $key) }} (' + numberIncr +
+                    ')</span></td>' +
                     '<td><input type="text" name="course_requirement[' + numberIncr +
                     '][<?php echo $key; ?>]" class="course_requirement form-control"></td>' +
                     '</tr>'));

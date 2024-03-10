@@ -138,15 +138,27 @@ return [
     'course_lessons_number'              =>  'Course Lessons Number',
     'course_lessons_time'                =>  'Course Lessons Time',
 
-    // another 
+    // Course Topics  
     'course_topics_tab'                         =>  'Course Topics',
-    'txt_what_is_course_topics'                 =>  'What you will learn',
+    'txt_course_topics'                         =>  'Course Topics',
     'btn_add_another_topic'                     =>  'Add another topic',
     'topic_in_ar'                               =>  'Topic in arabic',
     'topic_in_en'                               =>  'Topic in english',
     'msg_one_or_more_topic_field_empty'         =>  'One or more topic field is empty please fill them before saving',
-    'msg_please_fill_in_all_fields_before_adding_another_row'  => 'Please fill in all  fields before adding another row',
+    'msg_please_fill_in_all_topic_fields_before_adding_new'  => 'Please fill out all the fields in the Course topics tab before adding a new topic.',
 
+
+    // Course Requirements
+    'course_requirements_tab'                                   =>  'Course Requirements',
+    'txt_course_requiremnts'                                    =>  'Course Requirements',
+    'btn_add_another_requirement'                               =>  'Add another Requirement',
+    'requirement_in_ar'                                         =>  'Requirement in arabic',
+    'requirement_in_en'                                         =>  'Requirement in english',
+    'msg_one_or_more_requirement_field_empty'                   =>  'One or more requirement field is empty please fill them before saving',
+    'msg_please_fill_in_all_requirement_fields_before_adding_new'  => 'Please fill out all the fields in the Course requirement tab before adding a new requirement.',
+
+    'act'                                                       =>  'Act',
+    'type'                                                      =>  'Type',
 
 
     ##############################################################

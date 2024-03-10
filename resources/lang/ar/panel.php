@@ -137,14 +137,26 @@ return [
     'course_lessons_time'                =>  'إجمالي وقت الدورة',
 
 
-    // another 
-    'course_topics_tab'               =>  'محاور الدورة',
-    'txt_what_is_course_topics'               =>  'ما الذي سوف يتعلمة الطالب',
-    'btn_add_another_topic'                 =>  'إضافة محور جديد',
-    'topic_in_ar'                               =>  'المحور بالعربي',
-    'topic_in_en'                               =>  'المحور بالانجليزي',
-    'msg_one_or_more_topic_field_empty'         =>  'واحد او اكثر من محاور الدورة فارغ , الرجاء تعبئتها قبل اكمال عملية الحفظ',
-    'msg_please_fill_in_all_fields_before_adding_another_row'  => 'الرجاء ادخال بيانات الحقول قبل اضافة حقول جديدة ',
+    // course topics  
+    'course_topics_tab'                         =>  'مواضيع الدورة',
+    'txt_course_topics'                         =>  'مواضيع الدورة',
+    'btn_add_another_topic'                     =>  'إضافة موضوع جديد',
+    'topic_in_ar'                               =>  'الموضوع بالعربي',
+    'topic_in_en'                               =>  'الموضوع بالانجليزي',
+    'msg_one_or_more_topic_field_empty'         =>  'واحد او اكثر من موضوعات الدورة فارغ , الرجاء تعبئتها قبل اكمال عملية الحفظ',
+    'msg_please_fill_in_all_topic_fields_before_adding_new'  => 'يرجى ملء جميع الحقول في علامة التبويب موضوعات الدورة قبل إضافة موضوع جديد.',
+
+    // course requirement  
+    'course_requirements_tab'                         =>  'متطلبات الدورة',
+    'txt_course_requirements'                         =>  'متطلبات الدورة',
+    'btn_add_another_requirement'                     =>  'إضافة متطلب جديد',
+    'requirement_in_ar'                               =>  'المتطلب بالعربي',
+    'requirement_in_en'                               =>  'المتطلب بالانجليزي',
+    'msg_one_or_more_requirement_field_empty'         =>  'واحد او اكثر من متطلبات الدورة فارغ , الرجاء تعبئتها قبل اكمال عملية الحفظ',
+    'msg_please_fill_in_all_requirement_fields_before_adding_new'  => 'يرجى ملء جميع الحقول في علامة التبويب متطلبات الدورة قبل إضافة متطلب جديد.',
+
+    'act'                                               =>  'Act',
+    'type'                                              =>  'التعريف',
 
 
 

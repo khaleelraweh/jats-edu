@@ -369,12 +369,12 @@
                     <div class="tab-pane fade" id="course_topics" role="tabpanel" aria-labelledby="course_topics-tab">
 
                         <div class="table-responsive">
-                            <table class="table" id="invoice_details">
+                            <table class="table" id="course_topics_details">
                                 <thead>
                                     <tr class="pt-4">
-                                        <th width="30px">Act</th>
-                                        <th width="146px">Type</th>
-                                        <th>{{ __('panel.txt_what_is_course_topics') }}</th>
+                                        <th width="30px">{{ __('panel.act') }}</th>
+                                        <th width="160px">{{ __('panel.type') }}</th>
+                                        <th>{{ __('panel.txt_course_topics') }}</th>
 
                                     </tr>
                                 </thead>
@@ -412,12 +412,12 @@
                     <div class="tab-pane fade" id="course_requirements" role="tabpanel"
                         aria-labelledby="course_requirements-tab">
                         <div class="table-responsive">
-                            <table class="table" id="course_details">
+                            <table class="table" id="course_requirements_details">
                                 <thead>
                                     <tr class="pt-4">
-                                        <th width="30px">Act</th>
-                                        <th width="146px">Type</th>
-                                        <th>{{ __('panel.txt_what_is_course_requirements') }}</th>
+                                        <th width="30px">{{ __('panel.act') }}</th>
+                                        <th width="160px">{{ __('panel.type') }}</th>
+                                        <th>{{ __('panel.txt_course_requirements') }}</th>
 
                                     </tr>
                                 </thead>
@@ -425,7 +425,7 @@
                                     @foreach (config('locales.languages') as $key => $val)
                                         <tr class="cloning_row" id="0">
                                             <td>#</td>
-                                            <td>{{ __('panel.topic_in_' . $key) }} (0)</td>
+                                            <td>{{ __('panel.requirement_in_' . $key) }} (0)</td>
                                             <td>
                                                 <input type="text" name="course_requirement[0][{{ $key }}]"
                                                     id="course_requirement" class="course_requirement form-control">
@@ -442,7 +442,7 @@
                                     <tr>
                                         <td colspan="3" class="text-end">
                                             <button type="button"
-                                                class="btn_add_requirement btn btn-primary">{{ __('panel.btn_add_another_topic') }}</button>
+                                                class="btn_add_requirement btn btn-primary">{{ __('panel.btn_add_another_requirement') }}</button>
                                         </td>
                                     </tr>
                                 </tfoot>
@@ -621,6 +621,7 @@
     </script>
 
 
+
     <script>
         $(document).ready(function() {
 
@@ -646,13 +647,14 @@
 
             // Add row functionality remains unchanged
             $(document).on('click', '.btn_add', function() {
-                let trCount = $('#invoice_details').find('tr.cloning_row:last').length;
-                let numberIncr = trCount > 0 ? parseInt($('#invoice_details').find('tr.cloning_row:last')
+                let trCount = $('#course_topics_details').find('tr.cloning_row:last').length;
+                let numberIncr = trCount > 0 ? parseInt($('#course_topics_details').find(
+                        'tr.cloning_row:last')
                     .attr('id')) + 1 : 0;
                 let isValid = true;
 
                 // Check if any of the existing fields are empty
-                $('#invoice_details').find('input.course_topic').each(function() {
+                $('#course_topics_details').find('input.course_topic').each(function() {
                     if ($(this).val() === '') {
                         isValid = false;
                         return false; // Exit the loop if any field is empty
@@ -660,13 +662,13 @@
                 });
 
                 if (!isValid) {
-                    alert('Please fill in all existing fields before adding a new row.');
+                    alert('{{ __('panel.msg_please_fill_in_all_topic_fields_before_adding_new') }}');
                     return false; // Prevent adding a new row if existing fields are empty
                 }
 
                 // Add new row
                 <?php foreach (config('locales.languages') as $key => $val){ ?>
-                $('#invoice_details').find('tbody').append($('' +
+                $('#course_topics_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
@@ -687,6 +689,8 @@
         });
     </script>
 
+
+    // script course requirements
     <script>
         $(document).ready(function() {
 
@@ -705,20 +709,21 @@
 
                 // If any field is empty, prevent the form submission
                 if (isEmpty) {
-                    alert('{{ __('panel.msg_one_or_more_topic_field_empty') }}.');
+                    alert('{{ __('panel.msg_one_or_more_requirement_field_empty') }}.');
                     event.preventDefault(); // Prevent form submission
                 }
             });
 
             // Add row functionality remains unchanged
             $(document).on('click', '.btn_add_requirement', function() {
-                let trCount = $('#course_details').find('tr.cloning_row:last').length;
-                let numberIncr = trCount > 0 ? parseInt($('#course_details').find('tr.cloning_row:last')
+                let trCount = $('#course_requirements_details').find('tr.cloning_row:last').length;
+                let numberIncr = trCount > 0 ? parseInt($('#course_requirements_details').find(
+                        'tr.cloning_row:last')
                     .attr('id')) + 1 : 0;
                 let isValid = true;
 
                 // Check if any of the existing fields are empty
-                $('#course_details').find('input.course_requirement').each(function() {
+                $('#course_requirements_details').find('input.course_requirement').each(function() {
                     if ($(this).val() === '') {
                         isValid = false;
                         return false; // Exit the loop if any field is empty
@@ -726,13 +731,15 @@
                 });
 
                 if (!isValid) {
-                    alert('Please fill in all existing fields before adding a new row.');
+                    alert(
+                        '{{ __('panel.msg_please_fill_in_all_requirement_fields_before_adding_new') }}'
+                    );
                     return false; // Prevent adding a new row if existing fields are empty
                 }
 
                 // Add new row
                 <?php foreach (config('locales.languages') as $key => $val){ ?>
-                $('#course_details').find('tbody').append($('' +
+                $('#course_requirements_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +

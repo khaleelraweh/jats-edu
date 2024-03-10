@@ -87,8 +87,8 @@
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="what_to_learn-tab" data-bs-toggle="tab" data-bs-target="#what_to_learn"
-                            type="button" role="tab" aria-controls="what_to_learn"
+                        <button class="nav-link" id="course_topics-tab" data-bs-toggle="tab" data-bs-target="#course_topics"
+                            type="button" role="tab" aria-controls="course_topics"
                             aria-selected="true">{{ __('panel.course_topics_tab') }}
                         </button>
                     </li>
@@ -338,7 +338,7 @@
                     {{-- what to learn Tab --}}
 
                     {{-- what to learn  --}}
-                    <div class="tab-pane fade" id="what_to_learn" role="tabpanel" aria-labelledby="what_to_learn-tab">
+                    <div class="tab-pane fade" id="course_topics" role="tabpanel" aria-labelledby="course_topics-tab">
 
 
                         <div class="table-responsive">

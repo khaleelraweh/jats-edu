@@ -27,7 +27,7 @@
                 </div>
 
                 <!-- COURSE META
-                                                                                                            ================================================== -->
+                                                                                                                                                        ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -43,7 +43,8 @@
 
                     <div class="mb-4 mb-md-0 me-md-8 me-lg-4 me-xl-8">
                         <h6 class="mb-0 text-white">Categories</h6>
-                        <a href="#" class="font-size-sm text-white">Design</a>
+                        <a href="{{ route('frontend.courses', $course->courseCategory->slug) }}"
+                            class="font-size-sm text-white">{{ $course->courseCategory->category_name }}</a>
                     </div>
 
                     <div class="mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6">
@@ -61,7 +62,7 @@
                 </div>
 
                 <!-- COURSE INFO TAB
-                                                                                                            ================================================== -->
+                                                                                                                                                        ================================================== -->
                 <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 my-8 pt-1" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview"
@@ -1535,7 +1536,7 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR FILTER
-                                                                                                            ================================================== -->
+                                                                                                                                                        ================================================== -->
                 <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
                     <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-1"
                         data-fancybox>
@@ -1549,15 +1550,37 @@
                             </svg>
 
                         </div>
-                        <img class="rounded shadow-light-lg"
-                            src="{{ asset('frontend/assets/img/products/product-2.jpg') }}" alt="...">
+                        @php
+                            if ($course->photos->first()->file_name != null) {
+                                $course_img = asset('assets/courses/' . $course->photos->first()->file_name);
+
+                                if (
+                                    !file_exists(public_path('assets/courses/' . $course->photos->first()->file_name))
+                                ) {
+                                    $course_img = asset('assets/courses/no_image_found.webp');
+                                }
+                            } else {
+                                $course_img = asset('assets/courses/no_image_found.webp');
+                            }
+                        @endphp
+                        <img class="rounded shadow-light-lg" src="{{ $course_img }}" alt="...">
                     </a>
 
                     <div class="pt-5 pb-4 px-5 px-lg-3 px-xl-5">
                         <div class="d-flex align-items-center mb-2">
-                            <ins class="h2 mb-0">$89.99</ins>
-                            <del class="ms-3">339.99</del>
-                            <div class="badge badge-lg badge-purple text-white ms-auto fw-normal">91% Off</div>
+                            @if ($course->offer_price > 0)
+                                <ins class="h2 mb-0">{{ currency_converter($course->price - $course->offer_price) }}</ins>
+                                <del class="ms-3">{{ currency_converter($course->price) }}</del>
+                                <div class="badge badge-lg badge-purple text-white ms-auto fw-normal">
+                                    {{ number_format(($course->offer_price / $course->price) * 100, 0, '.', ',') }}% Off
+                                </div>
+                            @else
+                                <ins class="h2 mb-0">{{ currency_converter($course->price) }}</ins>
+                                <ins class="h4 mb-0 d-block mb-lg-n1">
+                                    {{ currency_converter($course->price) }}
+                                </ins>
+                            @endif
+
                         </div>
 
                         <div class="d-flex align-items-center text-alizarin mb-6">

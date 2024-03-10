@@ -140,7 +140,7 @@
                                         </div>
                                     @endif
 
-                                    {{-- product name field --}}
+                                    {{-- course name field --}}
                                     <div class="row ">
                                         <div class="col-sm-12 pt-3">
                                             <div class="form-group">
@@ -153,6 +153,25 @@
                                                     value="{{ old('title.' . $key, $course->getTranslation('title', $key)) }}"
                                                     class="form-control">
                                                 @error('title.' . $key)
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{-- course subtitle field --}}
+                                    <div class="row ">
+                                        <div class="col-sm-12 pt-3">
+                                            <div class="form-group">
+                                                <label for="subtitle[{{ $key }}]">
+                                                    {{ __('panel.subtitle') }}
+                                                    {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                                </label>
+                                                <input type="text" name="subtitle[{{ $key }}]"
+                                                    id="subtitle[{{ $key }}]"
+                                                    value="{{ old('subtitle.' . $key, $course->getTranslation('title', $key)) }}"
+                                                    class="form-control">
+                                                @error('subtitle.' . $key)
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>

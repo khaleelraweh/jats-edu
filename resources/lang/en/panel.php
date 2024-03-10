@@ -116,7 +116,8 @@ return [
 
 
     // ........... commons in Coruse   ....... //
-    'title'                         => 'Course Name',
+    'title'                         =>  'Course Title',
+    'subtitle'                      =>  'Course Subtitle',
     'sku'                           =>  'SKU',
     'offer_price'                   =>  'Offer Price',
     'offer_ends'                    =>  'Offer Ends',
@@ -137,6 +138,7 @@ return [
     'course_evaluation_best_seller'      =>  'Best Seller',
     'course_lessons_number'              =>  'Course Lessons Number',
     'course_lessons_time'                =>  'Course Lessons Time',
+
 
     // Course Topics  
     'course_topics_tab'                         =>  'Course Topics',

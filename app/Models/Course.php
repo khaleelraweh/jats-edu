@@ -151,6 +151,10 @@ class Course extends Model
     {
         return $this->hasMany(CourseTopics::class, 'course_id', 'id');
     }
+    public function requirements()
+    {
+        return $this->hasMany(CourseRequirement::class, 'course_id', 'id');
+    }
 
     public function lessons()
     {

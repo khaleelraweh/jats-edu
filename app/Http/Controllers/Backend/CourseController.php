@@ -95,6 +95,15 @@ class CourseController extends Controller
         $topics = $course->topics()->createMany($topics_list);
         // course topics start 
 
+        // course requirement start 
+        $requirements_list = [];
+        for ($i = 0; $i < count($request->course_requirement); $i++) {
+            $requirements_list[$i]['course_requirement'] = $request->course_requirement[$i];
+        }
+        // dd($requirements_list);
+        $requirements = $course->requirements()->createMany($requirements_list);
+        // course topics start 
+
 
 
         if ($request->images && count($request->images) > 0) {

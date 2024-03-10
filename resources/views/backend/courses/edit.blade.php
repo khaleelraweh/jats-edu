@@ -56,7 +56,7 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form id="your_form_id" action="{{ route('admin.courses.update', $course->id) }}" method="post"
+            <form id="my_form_id" action="{{ route('admin.courses.update', $course->id) }}" method="post"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
@@ -559,14 +559,6 @@
 @endsection
 
 @section('script')
-    {{-- Call select2 plugin --}}
-    <script src="{{ asset('backend/vendor/select2/js/select2.full.min.js') }}"></script>
-
-    {{-- pickadate calling js --}}
-    <script src="{{ asset('backend/vendor/datepicker/picker.js') }}"></script>
-    <script src="{{ asset('backend/vendor/datepicker/picker.date.js') }}"></script>
-    <script src="{{ asset('backend/vendor/datepicker/picker.time.js') }}"></script>
-
     <script>
         $(function() {
             const link = document.getElementById('checkIn');
@@ -754,27 +746,13 @@
     </script>
 
 
-    <script>
-        $(document).ready(function() {
 
-            if ($("#Quantity_Unlimited").attr("checked"))
-                $("#quantity").attr('disabled', 'disabled');
-            else
-                $("#quantity").removeAttr('disabled');
-
-
-            if ($("#Quantity_Unlimited_max_order").attr("checked"))
-                $("#max_order").attr('disabled', 'disabled');
-            else
-                $("#max_order").removeAttr('disabled');
-        });
-    </script>
 
     <script>
         // check if topic field is not empty before sending form 
         $(document).ready(function() {
             // Submit event handler for the form
-            $('#your_form_id').on('submit', function(event) {
+            $('#my_form_id').on('submit', function(event) {
                 // Flag to track whether there are empty fields
                 let isEmpty = false;
 
@@ -845,7 +823,7 @@
         //  check if topic field is not empty before sending form 
         $(document).ready(function() {
             // Submit event handler for the form
-            $('#your_form_id').on('submit', function(event) {
+            $('#my_form_id').on('submit', function(event) {
                 // Flag to track whether there are empty fields
                 let isEmpty = false;
 

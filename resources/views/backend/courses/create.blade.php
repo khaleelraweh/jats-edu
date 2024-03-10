@@ -59,8 +59,7 @@
 
 
             {{-- enctype used cause we will save images  --}}
-            <form id="your_form_id" action="{{ route('admin.courses.store') }}" method="post"
-                enctype="multipart/form-data">
+            <form id="my_form_id" action="{{ route('admin.courses.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 {{-- links of tabs --}}
@@ -626,7 +625,7 @@
         $(document).ready(function() {
 
             // Submit event handler for the form
-            $('#your_form_id').on('submit', function(event) {
+            $('#my_form_id').on('submit', function(event) {
                 // Flag to track whether there are empty fields
                 let isEmpty = false;
 
@@ -695,7 +694,7 @@
         $(document).ready(function() {
 
             // Submit event handler for the form
-            $('#your_form_id').on('submit', function(event) {
+            $('#my_form_id').on('submit', function(event) {
                 // Flag to track whether there are empty fields
                 let isEmpty = false;
 

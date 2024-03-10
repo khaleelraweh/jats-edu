@@ -26,6 +26,12 @@ return new class extends Migration
             $table->tinyInteger('course_lessons_number')->nullable();
             $table->string('course_lessons_time')->nullable();
 
+            // added by alyamany
+            $table->string('course_video_promo')->nullable();
+            $table->string('course_video_description')->nullable();
+            $table->tinyInteger('course_type')->nullable();   //  1: mean presence 2 : enrolled
+
+
             $table->double('price')->default(0.0);
             $table->double('offer_price')->nullable()->default(0.0); // سعر العرض
             $table->date('offer_ends')->nullable(); // تاريخ انتهاء العرض 

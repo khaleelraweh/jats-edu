@@ -134,4 +134,8 @@ return [
     'txt_all_courses'                                   =>  'All Courses',
     'lnk_home'                                          =>  'Home',
 
+    //course single 
+    'btn_buy_now'                                       =>   'Buy Now',
+    'btn_enroll'                                        =>  'Enroll',
+
 ];

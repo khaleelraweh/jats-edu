@@ -136,9 +136,9 @@ return [
     'lnk_home'                                          =>  'الرئيسية',
 
 
-
-
-
+    //course single 
+    'btn_buy_now'                                       =>  'اشتري الآن',
+    'btn_enroll'                                        =>  'سجل الآن'
 
 
 

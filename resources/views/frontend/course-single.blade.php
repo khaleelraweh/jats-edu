@@ -27,7 +27,7 @@
                 </div>
 
                 <!-- COURSE META
-                                                                                                                                                            ================================================== -->
+                                                                                                                                                                        ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -62,7 +62,7 @@
                 </div>
 
                 <!-- COURSE INFO TAB
-                                                                                                                                                            ================================================== -->
+                                                                                                                                                                        ================================================== -->
                 <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 my-8 pt-1" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview"
@@ -1536,7 +1536,7 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR FILTER
-                                                                                                                                                            ================================================== -->
+                                                                                                                                                                        ================================================== -->
                 <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
                     {{-- <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-1" --}}
                     <a href="https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO"
@@ -1577,14 +1577,11 @@
                                 </div>
                             @else
                                 <ins class="h2 mb-0">{{ currency_converter($course->price) }}</ins>
-                                <ins class="h4 mb-0 d-block mb-lg-n1">
-                                    {{ currency_converter($course->price) }}
-                                </ins>
                             @endif
 
                         </div>
 
-                        <div class="d-flex align-items-center text-alizarin mb-6">
+                        <div class="d-flex align-items-center text-alizarin mb-6 d-none">
                             <!-- Icon -->
                             <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -1607,11 +1604,13 @@
                                     fill="currentColor" />
                             </svg>
 
-                            <span class="ms-2">2 days left at this price!</span>
+                            <span class="ms-2 ">2 days left at this price!</span>
                         </div>
 
-                        <button class="btn btn-primary btn-block mb-3" type="button" name="button">BUY NOW</button>
-                        <button class="btn btn-orange btn-block mb-6" type="button" name="button">ENROLL</button>
+                        <button class="btn btn-primary btn-block mb-3" type="button"
+                            name="button">{{ __('transf.btn_buy_now') }}</button>
+                        <button class="btn btn-orange btn-block mb-6" type="button"
+                            name="button">{{ __('transf.btn_enroll') }}</button>
 
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex align-items-center py-3">

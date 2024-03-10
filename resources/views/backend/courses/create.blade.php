@@ -96,6 +96,14 @@
                     </li>
 
                     <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="course_requirements-tab" data-bs-toggle="tab"
+                            data-bs-target="#course_requirements" type="button" role="tab"
+                            aria-controls="course_requirements"
+                            aria-selected="true">{{ __('panel.course_requirements_tab') }}
+                        </button>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
                             type="button" role="tab" aria-controls="published"
                             aria-selected="false">{{ __('panel.published_tab') }}
@@ -357,7 +365,7 @@
 
                     </div>
 
-                    {{-- what to learn  --}}
+                    {{-- course topics contents   --}}
                     <div class="tab-pane fade" id="course_topics" role="tabpanel" aria-labelledby="course_topics-tab">
 
 
@@ -401,31 +409,73 @@
 
                     </div>
 
-                    {{-- Published Tab --}}
-                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
+                    {{-- course requirements contents   --}}
+                    <div class="tab-pane fade" id="course_requirements" role="tabpanel"
+                        aria-labelledby="course_requirements-tab">
 
-                        {{-- publish_start publish time field --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <div class="form-group">
-                                    <label for="published_on">{{ __('panel.published_date') }}</label>
-                                    <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
-                                    @error('published_on')
+
+                        {{-- Published Tab --}}
+                        <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
+
+                            {{-- publish_start publish time field --}}
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 pt-3">
+                                    <div class="form-group">
+                                        <label for="published_on">{{ __('panel.published_date') }}</label>
+                                        <input type="text" id="published_on" name="published_on"
+                                            value="{{ old('published_on', now()->format('Y-m-d')) }}"
+                                            class="form-control">
+                                        @error('published_on')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 pt-3">
+                                    <div class="form-group">
+                                        <label for="published_on_time">{{ __('panel.published_time') }}</label>
+                                        <input type="text" id="published_on_time" name="published_on_time"
+                                            value="{{ old('published_on_time', now()->format('h:m A')) }}"
+                                            class="form-control">
+                                        @error('published_on_time')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            {{-- status and featured field --}}
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 pt-3">
+                                    <label for="status">{{ __('panel.status') }}</label>
+                                    <select name="status" class="form-control">
+                                        <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
+                                            {{ __('panel.status_active') }}
+                                        </option>
+                                        <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
+                                            {{ __('panel.status_inactive') }}
+                                        </option>
+                                    </select>
+                                    @error('status')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <div class="form-group">
-                                    <label for="published_on_time">{{ __('panel.published_time') }}</label>
-                                    <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', now()->format('h:m A')) }}"
-                                        class="form-control">
-                                    @error('published_on_time')
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 pt-3">
+                                    <label for="featured">{{ __('panel.featured') }}</label>
+                                    <select name="featured" class="form-control">
+                                        <option value="1" {{ old('featured') == '1' ? 'selected' : null }}>
+                                            {{ __('panel.yes') }}
+                                        </option>
+                                        <option value="0" {{ old('featured') == '0' ? 'selected' : null }}>
+                                            {{ __('panel.no') }}
+                                        </option>
+                                    </select>
+                                    @error('featured')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -433,48 +483,12 @@
 
                         </div>
 
-                        {{-- status and featured field --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <label for="status">{{ __('panel.status') }}</label>
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
-                                        {{ __('panel.status_active') }}
-                                    </option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
-                                        {{ __('panel.status_inactive') }}
-                                    </option>
-                                </select>
-                                @error('status')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <label for="featured">{{ __('panel.featured') }}</label>
-                                <select name="featured" class="form-control">
-                                    <option value="1" {{ old('featured') == '1' ? 'selected' : null }}>
-                                        {{ __('panel.yes') }}
-                                    </option>
-                                    <option value="0" {{ old('featured') == '0' ? 'selected' : null }}>
-                                        {{ __('panel.no') }}
-                                    </option>
-                                </select>
-                                @error('featured')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
+                        <div class="form-group pt-3">
+                            <button type="submit" name="submit" class="btn btn-primary">
+                                {{ __('panel.save_data') }}</button>
                         </div>
 
                     </div>
-
-                    <div class="form-group pt-3">
-                        <button type="submit" name="submit" class="btn btn-primary">
-                            {{ __('panel.save_data') }}</button>
-                    </div>
-
-                </div>
 
 
             </form>

@@ -143,6 +143,11 @@ return [
     'lecture_numbers'                                   =>  'عدد المحاضرات',
     'language'                                          =>  'لغة الدورة',
     'skill_level'                                       =>  'مستوي الدورة',
+    'deadline'                                          =>  'موعد الانتهاء',
+    'certificate'                                       =>  'الشهادة',
+
+
+
 
 
 

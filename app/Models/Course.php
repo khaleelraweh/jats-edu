@@ -76,6 +76,11 @@ class Course extends Model
         return $this->status ? __('panel.status_active') : __('panel.status_inactive');
     }
 
+    public function certificate()
+    {
+        return $this->status ? __('panel.certificate_yes') : __('panel.certificate_no');
+    }
+
     public function language()
     {
         if ($this->language == 1)

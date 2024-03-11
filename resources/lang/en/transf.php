@@ -141,5 +141,7 @@ return [
     'lecture_numbers'                                   =>  'Lectures',
     'language'                                          =>  'Language',
     'skill_level'                                       =>  'Skill Level',
+    'deadline'                                          =>  'DeadLine',
+    'certificate'                                          =>  'Certificate',
 
 ];

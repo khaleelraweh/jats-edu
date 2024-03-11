@@ -54,7 +54,7 @@
                 </div>
 
                 <!-- COURSE META
-                                                                                                                                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                                                                                                                                            ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -64,18 +64,18 @@
                     </div>
 
                     <div class="mb-4 mb-md-0 me-md-8 me-lg-4 me-xl-8">
-                        <h6 class="mb-0 text-white">Created by</h6>
+                        <h6 class="mb-0 text-white">{{ __('transf.created_by') }}</h6>
                         <a href="#" class="font-size-sm text-white">Alison Dawn</a>
                     </div>
 
                     <div class="mb-4 mb-md-0 me-md-8 me-lg-4 me-xl-8">
-                        <h6 class="mb-0 text-white">Categories</h6>
+                        <h6 class="mb-0 text-white">{{ __('transf.categories') }}</h6>
                         <a href="{{ route('frontend.courses', $course->courseCategory->slug) }}"
                             class="font-size-sm text-white">{{ $course->courseCategory->category_name }}</a>
                     </div>
 
                     <div class="mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6">
-                        <h6 class="mb-0 text-white">Review</h6>
+                        <h6 class="mb-0 text-white">{{ __('transf.review') }}</h6>
                         <div class="d-lg-flex align-items-center">
                             <div class="star-rating mb-2 mb-lg-0">
                                 <div class="rating" style="width:100%;"></div>
@@ -89,30 +89,34 @@
                 </div>
 
                 <!-- COURSE INFO TAB
-                                                                                                                                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                                                                                                                                            ================================================== -->
                 <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 my-8 pt-1" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview"
-                            role="tab" aria-controls="pills-overview" aria-selected="true">Overview</a>
+                            role="tab" aria-controls="pills-overview"
+                            aria-selected="true">{{ __('transf.overview') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="pills-curriculum-tab" data-bs-toggle="pill" href="#pills-curriculum"
-                            role="tab" aria-controls="pills-curriculum" aria-selected="false">Curriculum</a>
+                            role="tab" aria-controls="pills-curriculum"
+                            aria-selected="false">{{ __('transf.curriculum') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="pills-instructor-tab" data-bs-toggle="pill" href="#pills-instructor"
-                            role="tab" aria-controls="pills-instructor" aria-selected="false">Curriculum</a>
+                            role="tab" aria-controls="pills-instructor"
+                            aria-selected="false">{{ __('transf.instructor') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="pills-reviews-tab" data-bs-toggle="pill" href="#pills-reviews"
-                            role="tab" aria-controls="pills-reviews" aria-selected="false">Reviews</a>
+                            role="tab" aria-controls="pills-reviews"
+                            aria-selected="false">{{ __('transf.reviews') }}</a>
                     </li>
                 </ul>
 
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-overview" role="tabpanel"
                         aria-labelledby="pills-overview-tab">
-                        <h3 class="">Course Description</h3>
+                        <h3 class="">{{ __('transf.txt_course_description') }}</h3>
                         <p class="mb-6 line-height-md">
                             {!! $exposedText !!}
                         </p>
@@ -125,14 +129,14 @@
                                 href="#readcollapseExample" role="button" aria-expanded="false"
                                 aria-controls="readcollapseExample">
                                 <span class="d-inline-flex align-items-center more">
-                                    Read More
+                                    {{ __('transf.txt_read_more') }}
                                     <span
                                         class="d-flex align-items-center justify-content-center bg-teal rounded-circle ms-2 p-2 w-26p">
                                         <i class="fas fa-plus font-size-10 text-white"></i>
                                     </span>
                                 </span>
                                 <span class="d-inline-flex align-items-center less">
-                                    Read Less
+                                    {{ __('transf.txt_read_less') }}
                                     <span
                                         class="d-flex align-items-center justify-content-center bg-teal rounded-circle ms-2 p-2 w-26p">
                                         <i class="fas fa-minus font-size-10 text-white"></i>
@@ -159,7 +163,7 @@
                             <img class="rounded shadow-light-lg" src="{{ $course_img }}" alt="...">
                         </a>
 
-                        <h3 class="mb-5">What you'll learn</h3>
+                        <h3 class="mb-5">{{ __('transf.txt_what_you_will_learn') }}</h3>
                         <div class="row row-cols-lg-2 mb-8 list-style-v1 list-unstyled ">
                             @foreach ($course->topics as $topic)
                                 <li class="col-sm-6">{{ $topic->course_topic }}</li>
@@ -168,7 +172,7 @@
 
                         </div>
 
-                        <h3 class="mb-5">Requirements</h3>
+                        <h3 class="mb-5">{{ __('transf.txt_requirements') }}</h3>
                         {{-- {{ dd($course->requirements) }} --}}
                         <ul class="list-style-v2 list-unstyled">
                             @foreach ($course->requirements as $requirement)
@@ -1274,7 +1278,7 @@
 
                     <div class="tab-pane fade" id="pills-instructor" role="tabpanel"
                         aria-labelledby="pills-instructor-tab">
-                        <h3 class="mb-6">About the instructor</h3>
+                        <h3 class="mb-6">{{ __('transf.txt_about_this_instructor') }}</h3>
 
                         <div class="d-flex align-items-center mb-6">
                             <div class="d-inline-block rounded-circle border me-6 p-2">
@@ -1301,7 +1305,7 @@
                                         </svg>
 
                                     </div>
-                                    4.87 Instructor rating
+                                    4.87 {{ __('transf.txt_instructor_rating') }}
                                 </div>
                             </div>
 
@@ -1317,7 +1321,7 @@
                                         </svg>
 
                                     </div>
-                                    1,533 reviews
+                                    1,533 {{ __('transf.txt_reviews') }}
                                 </div>
                             </div>
 
@@ -1332,7 +1336,7 @@
                                         </svg>
 
                                     </div>
-                                    23,912 students
+                                    23,912 {{ __('transf.txt_students') }}
                                 </div>
                             </div>
 
@@ -1348,7 +1352,7 @@
                                         </svg>
 
                                     </div>
-                                    29 courses
+                                    29 {{ __('transf.txt_courses') }}
                                 </div>
                             </div>
                         </div>
@@ -1364,14 +1368,14 @@
                     </div>
 
                     <div class="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
-                        <h3 class="mb-6">Student feedback</h3>
+                        <h3 class="mb-6">{{ __('transf.txt_student_feedback') }}</h3>
                         <div class="row align-items-center mb-8">
                             <div class="col-md-auto mb-5 mb-md-0">
                                 <div
                                     class="border rounded shadow d-flex align-items-center justify-content-center px-9 py-8">
                                     <div class="m-2 text-center">
                                         <h1 class="display-2 mb-0 fw-medium mb-n1">4.93</h1>
-                                        <h5 class="mb-0">Course rating</h5>
+                                        <h5 class="mb-0">{{ __('transf.txt_course_rating') }}</h5>
                                         <div class="star-rating">
                                             <div class="rating" style="width:100%;"></div>
                                         </div>
@@ -1505,8 +1509,8 @@
                         </ul>
 
                         <div class="border shadow rounded p-6 p-md-9">
-                            <h3 class="mb-2">Add Reviews & Rate</h3>
-                            <div class="">What is it like to Course?</div>
+                            <h3 class="mb-2">{{ __('transf.txt_add_reviews_rate') }}</h3>
+                            <div class="">{{ __('transf.txt_what_is_it_like_to_course') }}</div>
                             <form>
                                 <div class="clearfix">
                                     <fieldset class="slect-rating mb-3">
@@ -1543,17 +1547,19 @@
                                 </div>
 
                                 <div class="form-group mb-6">
-                                    <label for="exampleInputTitle1">Review Title</label>
+                                    <label for="exampleInputTitle1">{{ __('transf.txt_review_title') }}</label>
                                     <input type="text" class="form-control placeholder-1" id="exampleInputTitle1"
-                                        placeholder="Courses">
+                                        placeholder="{{ __('transf.txt_courses') }}">
                                 </div>
 
                                 <div class="form-group mb-6">
-                                    <label for="exampleFormControlTextarea1">Review Content</label>
-                                    <textarea class="form-control placeholder-1" id="exampleFormControlTextarea1" rows="6" placeholder="Content"></textarea>
+                                    <label for="exampleFormControlTextarea1">{{ __('transf.txt_review_content') }}</label>
+                                    <textarea class="form-control placeholder-1" id="exampleFormControlTextarea1" rows="6"
+                                        placeholder="{{ __('transf.txt_content') }}"></textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary btn-block mw-md-300p">SUBMIT REVIEW</button>
+                                <button type="submit"
+                                    class="btn btn-primary btn-block mw-md-300p">{{ __('transf.txt_submit_review') }}</button>
                             </form>
                         </div>
                     </div>
@@ -1562,7 +1568,7 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR FILTER
-                                                                                                                                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                                                                                                                                            ================================================== -->
                 <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
                     {{-- <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-1" --}}
                     <a href="{{ $course->video_promo }}" class="d-block sk-thumbnail rounded mb-1" data-fancybox>
@@ -1783,7 +1789,7 @@
                                             fill="currentColor" />
                                     </svg>
 
-                                    <span class="ms-3">Share this course</span>
+                                    <span class="ms-3">{{__('transf.btn_share_this_course')}}</span>
                                 </a>
                             </li>
                         </ul>
@@ -1857,8 +1863,8 @@
         </div>
 
         <div class="text-center mb-5 mb-md-8">
-            <h1>Related Courses</h1>
-            <p class="font-size-lg text-capitalize">Discover your perfect program in our courses.</p>
+            <h1>{{ __('transf.txt_related_courses') }}</h1>
+            <p class="font-size-lg text-capitalize">{{ __('transf.txt_related_courses_desc') }}</p>
         </div>
 
         <div class="mx-n4 mb-12"

@@ -142,6 +142,42 @@ return [
     'language'                                          =>  'Language',
     'skill_level'                                       =>  'Skill Level',
     'deadline'                                          =>  'DeadLine',
-    'certificate'                                          =>  'Certificate',
+    'certificate'                                       =>  'Certificate',
+    'created_by'                                        =>  'Created by',
+    'categories'                                        =>  'Categories',
+    'review'                                            =>  'Review',
+
+    'overview'                                          =>  'Overview',
+    'curriculum'                                        =>  'Curriculum',
+    'instructor'                                        =>  'Instructor',
+    'reviews'                                           =>  'Reviews',
+
+    'txt_course_description'                            =>  'Course Description',
+    'txt_read_more'                                     =>  'Read More',
+    'txt_read_less'                                     =>  'Read Less',
+    'txt_what_you_will_learn'                           =>  'What you\'ll learn',
+    'txt_requirements'                                  =>  'Requirements',
+    'txt_related_courses'                               =>  'Related Courses',
+    'txt_related_courses_desc'                          =>  'Discover your perfect program in our courses.',
+    'txt_about_this_instructor'                         =>  'About the instructor',
+    'txt_instructor_rating'                             =>  'Instructor rating',
+    'txt_reviews'                                       =>  'Reviews',
+    'txt_students'                                      =>  'Students',
+    'txt_courses'                                       =>  'Courses',
+    'txt_student_feedback'                              =>  'Student feedback',
+    'txt_course_rating'                                 =>  'Course rating',
+    'txt_add_reviews_rate'                              =>  'Add Reviews & Rate',
+    'txt_what_is_it_like_to_course'                     =>  'What is it like to Course?',
+    'txt_review_title'                                  =>  'Review Title',
+    'txt_review_content'                                =>  'Review Content',
+    'txt_content'                                       =>  'Content',
+    'txt_submit_review'                                 =>  'Submit Review',
+    'btn_share_this_course'                             =>  'Share this course',
+
+
+
+
+
+
 
 ];

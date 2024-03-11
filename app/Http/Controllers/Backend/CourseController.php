@@ -60,7 +60,6 @@ class CourseController extends Controller
         $input['title']                  =   $request->title;
         $input['subtitle']                  =   $request->subtitle;
         $input['description']           =   $request->description;
-        // $input['quantity']              =   $request->quantity;
 
         $input['skill_level']                      =   $request->skill_level;
         $input['language']                       =   $request->language;
@@ -95,20 +94,25 @@ class CourseController extends Controller
         $course->tags()->attach($request->tags);
 
         // course topics start 
-        $topics_list = [];
-        for ($i = 0; $i < count($request->course_topic); $i++) {
-            $topics_list[$i]['course_topic'] = $request->course_topic[$i];
+        if ($request->course_topic != null) {
+            $topics_list = [];
+            for ($i = 0; $i < count($request->course_topic); $i++) {
+                $topics_list[$i]['course_topic'] = $request->course_topic[$i];
+            }
+            $topics = $course->topics()->createMany($topics_list);
         }
-        $topics = $course->topics()->createMany($topics_list);
         // course topics start 
 
+
         // course requirement start 
-        $requirements_list = [];
-        for ($i = 0; $i < count($request->course_requirement); $i++) {
-            $requirements_list[$i]['course_requirement'] = $request->course_requirement[$i];
+        if ($request->course_requirement != null) {
+            $requirements_list = [];
+            for ($i = 0; $i < count($request->course_requirement); $i++) {
+                $requirements_list[$i]['course_requirement'] = $request->course_requirement[$i];
+            }
+            // dd($requirements_list);
+            $requirements = $course->requirements()->createMany($requirements_list);
         }
-        // dd($requirements_list);
-        $requirements = $course->requirements()->createMany($requirements_list);
         // course topics start 
 
 
@@ -191,7 +195,6 @@ class CourseController extends Controller
         $input['title']                   =   $request->title;
         $input['subtitle']                  =   $request->subtitle;
         $input['description']                   =   $request->description;
-        // $input['quantity']                   =   $request->quantity;
 
         $input['skill_level']                      =   $request->skill_level;
         $input['language']                       =   $request->language;
@@ -235,7 +238,6 @@ class CourseController extends Controller
             }
             $topics = $course->topics()->createMany($topics_list);
         }
-
         // course topics start 
 
 

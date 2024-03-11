@@ -291,6 +291,7 @@
                             </div>
                         </div>
 
+                        {{-- lecture numbers and course duration --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="lecture_numbers">{{ __('panel.lecture_numbers') }}</label>
@@ -312,6 +313,110 @@
                                 @enderror
 
                             </div>
+                        </div>
+
+                        {{-- video promo and description  --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="video_promo">{{ __('panel.video_promo') }}</label>
+                                <input type="text" name="video_promo" id="video_promo"
+                                    value="{{ old('video_promo', $course->video_promo) }}" class="form-control">
+                                @error('video_promo')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="video_description">{{ __('panel.video_description') }}</label>
+                                <input type="text" name="video_description" id="video_description"
+                                    value="{{ old('video_description', $course->video_description) }}"
+                                    class="form-control" placeholder="https://video-link">
+                                @error('video_description')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+
+                        </div>
+
+                        {{-- course type and evaluation --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="course_type">{{ __('panel.course_type') }}</label>
+                                <select name="course_type" class="form-control">
+                                    <option value="1"
+                                        {{ old('course_type', $course->course_type) == '1' ? 'selected' : null }}>
+                                        {{ __('panel.course_type_presence') }}
+                                    </option>
+                                    <option value="2"
+                                        {{ old('course_type', $course->course_type) == '2' ? 'selected' : null }}>
+                                        {{ __('panel.course_type_enrolled') }}
+                                    </option>
+
+                                </select>
+                                @error('coruse_type')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="evaluation">{{ __('panel.evaluation') }}</label>
+                                <select name="evaluation" class="form-control">
+                                    <option value="1"
+                                        {{ old('evaluation', $course->evaluation) == '1' ? 'selected' : null }}>
+                                        {{ __('panel.evaluation_normal') }}
+                                    </option>
+                                    <option value="2"
+                                        {{ old('evaluation', $course->evaluation) == '2' ? 'selected' : null }}>
+                                        {{ __('panel.evaluation_featured') }}
+                                    </option>
+                                    <option value="3"
+                                        {{ old('evaluation', $course->evaluation) == '3' ? 'selected' : null }}>
+                                        {{ __('panel.evaluation_best_seller') }}
+                                    </option>
+
+                                </select>
+                                @error('evaluation')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+
+                        </div>
+
+                        {{-- course deadline and certificate --}}
+                        <div class="row deadline">
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <div class="form-group">
+                                    <label for="deadline">{{ __('panel.deadline') }}</label>
+                                    <input type="text" id="deadline" name="deadline"
+                                        value="{{ old('deadline', \Carbon\Carbon::parse($course->deadline)->Format('Y-m-d')) }}"
+                                        class="form-control">
+                                    @error('deadline')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="certificate">{{ __('panel.certificate') }}</label>
+                                <select name="certificate" class="form-control">
+                                    <option value="1"
+                                        {{ old('certificate', $course->certificate) == '1' ? 'selected' : null }}>
+                                        {{ __('panel.certificate_yes') }}
+                                    </option>
+                                    <option value="2"
+                                        {{ old('certificate', $course->certificate) == '0' ? 'selected' : null }}>
+                                        {{ __('panel.certificate_no') }}
+                                    </option>
+
+                                </select>
+                                @error('coruse_type')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+
+
                         </div>
 
 
@@ -648,6 +753,29 @@
             $('#published_on_time').pickatime({
                 clear: ''
             });
+
+            // deadline start 
+
+            $('#deadline').pickadate({
+                format: 'yyyy-mm-dd',
+                min: new Date(),
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: true, // creates a dropdown to control years
+                clear: 'Clear',
+                close: 'OK',
+                colseOnSelect: true // Close Upon Selecting a date
+            });
+            var deadline = $('#deadline').pickadate(
+                'picker'); // set startdate in the picker to the start date in the #start_date elemet
+            $('#deadline').change(function() {
+                selected_ci_date = "";
+                selected_ci_date = now() // make selected start date in picker = start_date value  
+
+            });
+
+
+
+            //deadline end 
 
 
 

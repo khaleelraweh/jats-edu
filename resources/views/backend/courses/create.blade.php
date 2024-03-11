@@ -355,6 +355,38 @@
 
                         </div>
 
+                        {{-- course deadline and certificate --}}
+                        <div class="row deadline">
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <div class="form-group">
+                                    <label for="deadline">{{ __('panel.deadline') }}</label>
+                                    <input type="text" id="deadline" name="deadline"
+                                        value="{{ old('deadline', now()->format('Y-m-d')) }}" class="form-control">
+                                    @error('deadline')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="certificate">{{ __('panel.certificate') }}</label>
+                                <select name="certificate" class="form-control">
+                                    <option value="1" {{ old('certificate') == '1' ? 'selected' : null }}>
+                                        {{ __('panel.certificate_yes') }}
+                                    </option>
+                                    <option value="2" {{ old('certificate') == '0' ? 'selected' : null }}>
+                                        {{ __('panel.certificate_no') }}
+                                    </option>
+
+                                </select>
+                                @error('coruse_type')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+
+
+                        </div>
+
 
 
                     </div>
@@ -622,6 +654,35 @@
             $('#published_on_time').pickatime({
                 clear: ''
             });
+
+            // start deadline 
+
+            $('#deadline').pickadate({
+                format: 'yyyy-mm-dd',
+                min: new Date(),
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: true, // creates a dropdown to control years
+                clear: 'Clear',
+                close: 'OK',
+                colseOnSelect: true // Close Upon Selecting a date
+            });
+            var publishedOn = $('#deadline').pickadate(
+                'picker'); // set startdate in the picker to the start date in the #start_date elemet
+            // when change date 
+            $('#deadline').change(function() {
+                selected_ci_date = "";
+                selected_ci_date = $('#deadline').val();
+                if (selected_ci_date != null) {
+                    var cidate = new Date(selected_ci_date);
+                    min_codate = "";
+                    min_codate = new Date();
+                    min_codate.setDate(cidate.getDate() + 1);
+                    enddate.set('min', min_codate);
+                }
+
+            });
+
+            // end deadline 
 
             // ======= start pickadate codeing ===========
             $('#publish_date').pickadate({

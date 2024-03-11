@@ -142,6 +142,10 @@ return [
     'course_type'               =>  'نوع الكورس',
     'course_type_presence'      =>  'حضوري',
     'course_type_enrolled'      =>  'مسجل',
+    'deadline'                  =>  'موعد انتهاء الدورة',
+    'certificate'               =>  'الشهادة',
+    'certificate_yes'           =>  'نعم',
+    'certificate_no'            =>  'لا',
 
 
     // course topics  

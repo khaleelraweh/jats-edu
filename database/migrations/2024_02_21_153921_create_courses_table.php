@@ -31,6 +31,9 @@ return new class extends Migration
             $table->string('video_description')->nullable();
             $table->tinyInteger('course_type')->nullable();   //  1: mean presence 2 : enrolled
 
+            $table->date('deadline')->nullable();
+            $table->boolean('certificate')->default(true);
+
 
             $table->double('price')->default(0.0);
             $table->double('offer_price')->nullable()->default(0.0); // سعر العرض

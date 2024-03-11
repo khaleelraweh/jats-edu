@@ -141,6 +141,9 @@ return [
     'btn_enroll'                                        =>  'سجل الآن',
     'course_duration'                                   =>  'مدة الكورس',
     'lecture_numbers'                                   =>  'عدد المحاضرات',
+    'language'                                          =>  'لغة الدورة',
+    'skill_level'                                       =>  'مستوي الدورة',
+
 
 
 

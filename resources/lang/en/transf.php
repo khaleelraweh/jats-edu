@@ -139,5 +139,7 @@ return [
     'btn_enroll'                                        =>  'Enroll',
     'course_duration'                                   =>  'Duration',
     'lecture_numbers'                                   =>  'Lectures',
+    'language'                                          =>  'Language',
+    'skill_level'                                       =>  'Skill Level',
 
 ];

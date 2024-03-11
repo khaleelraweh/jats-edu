@@ -76,6 +76,28 @@ class Course extends Model
         return $this->status ? __('panel.status_active') : __('panel.status_inactive');
     }
 
+    public function language()
+    {
+        if ($this->language == 1)
+            return __('panel.language_ar');
+        else if ($this->language == 2)
+            return __('panel.language_en');
+        else {
+            return __('panel.language_ar');
+        }
+    }
+
+    public function skill_level()
+    {
+        if ($this->skill_level == 1)
+            return __('panel.skill_level_beginner');
+        else if ($this->skill_level == 2)
+            return __('panel.skill_level_intermediate');
+        else if ($this->skill_level == 3) {
+            return __('panel.skill_level_advance');
+        }
+    }
+
     public function featured()
     {
         return $this->featured ? __('panel.yes') : __('panel.no');

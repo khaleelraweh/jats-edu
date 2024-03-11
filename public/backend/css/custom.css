@@ -179,5 +179,9 @@
     padding: 16px !important;
 }
 
+.deadline .picker--opened .picker__holder{
+    transform: translateY(-335px) perspective(500px) rotateX(0) !important;
+}
+
 
 

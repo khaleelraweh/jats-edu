@@ -143,6 +143,10 @@ return [
     'course_type'               =>  'Course Type',
     'course_type_presence'      =>  'Presence',
     'course_type_enrolled'      =>  'Enrolled',
+    'deadline'                  =>  'DeadLine',
+    'certificate'               =>  'Certificate',
+    'certificate_yes'           =>  'Yes',
+    'certificate_no'           =>  'No',
 
 
     // Course Topics  

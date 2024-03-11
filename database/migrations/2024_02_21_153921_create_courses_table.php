@@ -23,7 +23,7 @@ return new class extends Migration
             $table->tinyInteger('skill_level')->nullable()->default(1); // واحد مبتدي اثنين متوسط ثلاثة متقدم
             $table->tinyInteger('language')->nullable()->default(1); // واحد عربي اثنين إنجليزي ثلاثة اسباني
             $table->tinyInteger('evaluation')->nullable()->default(1); // 1 : is normal , 2 : is featured  , 3 : is best seller
-            $table->tinyInteger('Lecture_numbers')->nullable();
+            $table->tinyInteger('lecture_numbers')->nullable();
             $table->string('course_duration')->nullable();
 
             // added by alyamany

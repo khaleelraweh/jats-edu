@@ -33,7 +33,7 @@ class CourseRequest extends FormRequest
                         'skill_level'                      =>  'nullable|numeric',
                         'language'                      =>  'nullable|numeric',
                         'evaluation'                      =>  'nullable|numeric',
-                        'Lecture_numbers'                      =>  'nullable|numeric',
+                        'lecture_numbers'                      =>  'nullable|numeric',
                         'Duration'                      =>  'nullable',
 
 
@@ -73,7 +73,7 @@ class CourseRequest extends FormRequest
                         'skill_level'                      =>  'nullable|numeric',
                         'language'                      =>  'nullable|numeric',
                         'evaluation'                      =>  'nullable|numeric',
-                        'Lecture_numbers'                      =>  'nullable|numeric',
+                        'lecture_numbers'                      =>  'nullable|numeric',
                         'Duration'                      =>  'nullable',
 
 

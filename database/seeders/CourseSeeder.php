@@ -34,7 +34,7 @@ class CourseSeeder extends Seeder
 
         $courses1['skill_level']            =  1;
         $courses1['language']             =  1;
-        $courses1['Lecture_numbers']          =  5;
+        $courses1['lecture_numbers']          =  5;
         $courses1['course_duration']            =  "8h  12m";
 
         // by alyamany
@@ -66,7 +66,7 @@ class CourseSeeder extends Seeder
 
         $courses2['skill_level']            =  1;
         $courses2['language']             =  1;
-        $courses2['Lecture_numbers']          =  5;
+        $courses2['lecture_numbers']          =  5;
         $courses2['course_duration']            =  "8h  12m";
 
         // by alyamany
@@ -94,7 +94,7 @@ class CourseSeeder extends Seeder
 
         $courses3['skill_level']            =  1;
         $courses3['language']             =  1;
-        $courses3['Lecture_numbers']          =  5;
+        $courses3['lecture_numbers']          =  5;
         $courses3['course_duration']            =  "8h  12m";
 
         // by alyamany
@@ -121,7 +121,7 @@ class CourseSeeder extends Seeder
 
         $courses4['skill_level']            =  1;
         $courses4['language']             =  1;
-        $courses4['Lecture_numbers']          =  5;
+        $courses4['lecture_numbers']          =  5;
         $courses4['course_duration']            =  "8h  12m";
 
         // by alyamany
@@ -149,7 +149,7 @@ class CourseSeeder extends Seeder
 
         $courses5['skill_level']            =  1;
         $courses5['language']             =  1;
-        $courses5['Lecture_numbers']          =  5;
+        $courses5['lecture_numbers']          =  5;
         $courses5['course_duration']            =  "8h  12m";
 
         // by alyamany
@@ -177,7 +177,7 @@ class CourseSeeder extends Seeder
 
         $courses6['skill_level']            =  1;
         $courses6['language']             =  1;
-        $courses6['Lecture_numbers']          =  5;
+        $courses6['lecture_numbers']          =  5;
         $courses6['course_duration']            =  "8h  12m";
 
         // by alyamany

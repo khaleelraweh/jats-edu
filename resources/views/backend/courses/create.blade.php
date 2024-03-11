@@ -271,10 +271,10 @@
                         {{-- lecture numbers and course_duration --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="Lecture_numbers">{{ __('panel.Lecture_numbers') }}</label>
-                                <input type="number" name="Lecture_numbers" min="1" value="1"
-                                    id="Lecture_numbers" value="{{ old('Lecture_numbers') }}" class="form-control">
-                                @error('Lecture_numbers')
+                                <label for="lecture_numbers">{{ __('panel.lecture_numbers') }}</label>
+                                <input type="number" name="lecture_numbers" min="1" value="1"
+                                    id="lecture_numbers" value="{{ old('lecture_numbers') }}" class="form-control">
+                                @error('lecture_numbers')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 

@@ -137,5 +137,7 @@ return [
     //course single 
     'btn_buy_now'                                       =>   'Buy Now',
     'btn_enroll'                                        =>  'Enroll',
+    'course_duration'                                   =>  'Duration',
+    'lecture_numbers'                                   =>  'Lectures',
 
 ];

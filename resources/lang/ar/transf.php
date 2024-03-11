@@ -138,7 +138,9 @@ return [
 
     //course single 
     'btn_buy_now'                                       =>  'اشتري الآن',
-    'btn_enroll'                                        =>  'سجل الآن'
+    'btn_enroll'                                        =>  'سجل الآن',
+    'course_duration'                                   =>  'مدة الكورس',
+    'lecture_numbers'                                   =>  'عدد المحاضرات',
 
 
 

@@ -134,7 +134,7 @@ return [
     'evaluation_normal'      =>  'عادي',
     'evaluation_featured'         =>  'مفضل',
     'evaluation_best_seller'      =>  'الاكثر مبيعا',
-    'Lecture_numbers'              =>  'عدد دروس الدورة',
+    'lecture_numbers'              =>  'عدد دروس الدورة',
     'Duration'                =>  'إجمالي وقت الدورة',
 
     'video_promo'               =>  'فيديو ترويجي',

@@ -65,7 +65,7 @@ class CourseController extends Controller
         $input['skill_level']                      =   $request->skill_level;
         $input['language']                       =   $request->language;
         $input['evaluation']                 =   $request->evaluation;
-        $input['Lecture_numbers']             =   $request->Lecture_numbers;
+        $input['lecture_numbers']             =   $request->lecture_numbers;
         $input['course_duration']               =   $request->course_duration;
 
         // by alyemeni
@@ -193,7 +193,7 @@ class CourseController extends Controller
         $input['skill_level']                      =   $request->skill_level;
         $input['language']                       =   $request->language;
         $input['evaluation']                 =   $request->evaluation;
-        $input['Lecture_numbers']             =   $request->Lecture_numbers;
+        $input['lecture_numbers']             =   $request->lecture_numbers;
         $input['course_duration']               =   $request->course_duration;
 
         $input['video_promo']           =  $request->video_promo;

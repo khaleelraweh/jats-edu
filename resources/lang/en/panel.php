@@ -136,7 +136,7 @@ return [
     'evaluation_normal'      =>  'Normal',
     'evaluation_featured'         =>  'Featured',
     'evaluation_best_seller'      =>  'Best Seller',
-    'Lecture_numbers'              =>  'Course Lessons Number',
+    'lecture_numbers'              =>  'Course Lessons Number',
     'Duration'                =>  'Course Lessons Time',
     'video_promo'               =>  'Video Promo',
     'video_description'               =>  'Video Description',

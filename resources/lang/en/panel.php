@@ -138,6 +138,11 @@ return [
     'evaluation_best_seller'      =>  'Best Seller',
     'Lecture_numbers'              =>  'Course Lessons Number',
     'Duration'                =>  'Course Lessons Time',
+    'video_promo'               =>  'Video Promo',
+    'video_description'               =>  'Video Description',
+    'course_type'               =>  'Course Type',
+    'course_type_presence'      =>  'Presence',
+    'course_type_enrolled'      =>  'Enrolled',
 
 
     // Course Topics  

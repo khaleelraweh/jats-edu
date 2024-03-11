@@ -137,6 +137,12 @@ return [
     'Lecture_numbers'              =>  'عدد دروس الدورة',
     'Duration'                =>  'إجمالي وقت الدورة',
 
+    'video_promo'               =>  'فيديو ترويجي',
+    'video_description'               =>  'فيديو الشرح',
+    'course_type'               =>  'نوع الكورس',
+    'course_type_presence'      =>  'حضوري',
+    'course_type_enrolled'      =>  'مسجل',
+
 
     // course topics  
     'course_topics_tab'                         =>  'مواضيع الدورة',

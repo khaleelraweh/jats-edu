@@ -68,6 +68,10 @@ class CourseController extends Controller
         $input['Lecture_numbers']             =   $request->Lecture_numbers;
         $input['Duration']               =   $request->Duration;
 
+        // by alyemeni
+        $input['video_promo']           =  $request->video_promo;
+        $input['video_description']           =  $request->video_description;
+        $input['course_type']           =  $request->course_type;
 
         $input['price']                 =   $request->price;
         $input['offer_price']           =   $request->offer_price;
@@ -191,6 +195,10 @@ class CourseController extends Controller
         $input['evaluation']                 =   $request->evaluation;
         $input['Lecture_numbers']             =   $request->Lecture_numbers;
         $input['Duration']               =   $request->Duration;
+
+        $input['video_promo']           =  $request->video_promo;
+        $input['video_description']           =  $request->video_description;
+        $input['course_type']           =  $request->course_type;
 
         $input['price']                 =   $request->price;
         $input['offer_price']           =   $request->offer_price;

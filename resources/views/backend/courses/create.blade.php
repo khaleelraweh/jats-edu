@@ -184,7 +184,6 @@
                                     </div>
 
                                     {{-- course description field --}}
-                                    {{--  description field --}}
                                     <div class="row">
                                         <div class="col-sm-12 col-md-12 pt-3">
                                             <label for="description[{{ $key }}]">
@@ -230,7 +229,7 @@
                     <div class="tab-pane fade" id="course_info" role="tabpanel" aria-labelledby="course_info-tab">
 
                         <div class="row">
-                            <div class="col-sm-12 pt-3">
+                            <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="skill_level">{{ __('panel.skill_level') }}</label>
                                 <select name="skill_level" class="form-control">
                                     <option value="1" {{ old('skill_level') == '1' ? 'selected' : null }}>
@@ -248,10 +247,7 @@
                                 @enderror
 
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 pt-3">
+                            <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="language">{{ __('panel.language') }}</label>
                                 <select name="language" class="form-control">
                                     <option value="1" {{ old('language') == '1' ? 'selected' : null }}>
@@ -269,8 +265,75 @@
                             </div>
                         </div>
 
+
+
+
+                        {{-- lecture numbers and duration --}}
                         <div class="row">
-                            <div class="col-sm-12 pt-3">
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="Lecture_numbers">{{ __('panel.Lecture_numbers') }}</label>
+                                <input type="number" name="Lecture_numbers" min="1" value="1"
+                                    id="Lecture_numbers" value="{{ old('Lecture_numbers') }}" class="form-control">
+                                @error('Lecture_numbers')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="Duration">{{ __('panel.Duration') }}</label>
+                                <input type="text" name="Duration" id="Duration" value="{{ old('Duration') }}"
+                                    class="form-control" placeholder="8h 17m">
+                                @error('Duration')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+
+                        </div>
+
+                        {{-- video promo and description  --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="video_promo">{{ __('panel.video_promo') }}</label>
+                                <input type="text" name="video_promo" id="video_promo"
+                                    value="{{ old('video_promo') }}" class="form-control">
+                                @error('video_promo')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="video_description">{{ __('panel.video_description') }}</label>
+                                <input type="text" name="video_description" id="video_description"
+                                    value="{{ old('video_description') }}" class="form-control"
+                                    placeholder="https://video-link">
+                                @error('video_description')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+
+                        </div>
+
+                        {{-- course type and evaluation --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="course_type">{{ __('panel.course_type') }}</label>
+                                <select name="course_type" class="form-control">
+                                    <option value="1" {{ old('course_type') == '1' ? 'selected' : null }}>
+                                        {{ __('panel.course_type_presence') }}
+                                    </option>
+                                    <option value="2" {{ old('course_type') == '2' ? 'selected' : null }}>
+                                        {{ __('panel.course_type_enrolled') }}
+                                    </option>
+
+                                </select>
+                                @error('coruse_type')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                            <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="evaluation">{{ __('panel.evaluation') }}</label>
                                 <select name="evaluation" class="form-control">
                                     <option value="1" {{ old('evaluation') == '1' ? 'selected' : null }}>
@@ -289,31 +352,10 @@
                                 @enderror
 
                             </div>
+
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm-12 pt-3">
-                                <label for="Lecture_numbers">{{ __('panel.Lecture_numbers') }}</label>
-                                <input type="number" name="Lecture_numbers" id="Lecture_numbers"
-                                    value="{{ old('Lecture_numbers') }}" class="form-control">
-                                @error('Lecture_numbers')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
 
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 pt-3">
-                                <label for="Duration">{{ __('panel.Duration') }}</label>
-                                <input type="text" name="Duration" id="Duration" value="{{ old('Duration') }}"
-                                    class="form-control" placeholder="8h 17m">
-                                @error('Duration')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                            </div>
-                        </div>
 
                     </div>
 

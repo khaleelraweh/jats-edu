@@ -1,12 +1,39 @@
 @extends('layouts.app')
 
+
+
 @section('content')
+    {{-- image set --}}
+    @php
+        if ($course->photos->first()->file_name != null) {
+            $course_img = asset('assets/courses/' . $course->photos->first()->file_name);
+
+            if (!file_exists(public_path('assets/courses/' . $course->photos->first()->file_name))) {
+                $course_img = asset('assets/courses/no_image_found.webp');
+            }
+        } else {
+            $course_img = asset('assets/courses/no_image_found.webp');
+        }
+
+        if ($course->photos->last()->file_name != null) {
+            $course_cover = asset('assets/courses/' . $course->photos->last()->file_name);
+
+            if (!file_exists(public_path('assets/courses/' . $course->photos->last()->file_name))) {
+                $course_cover = asset('assets/courses/no_image_found.webp');
+            }
+        } else {
+            $course_cover = asset('assets/courses/no_image_found.webp');
+        }
+    @endphp
+
     <!-- PAGE HEADER -->
     <div class="position-relative pt-8 pt-xl-11">
         <div class="position-absolute top-0 right-0 left-0 overlay overlay-custom-left d-none d-xl-block">
-            <img class="img-fluid" src="{{ asset('frontend/assets/img/covers/cover-19.jpg') }}" alt="...">
+            {{-- <img class="img-fluid" src="{{ $course_cover }}" alt="..."> --}}
+            {{-- <img class="img-fluid" src="{{ asset('frontend/assets/img/covers/cover-19.jpg') }}" alt="..."> --}}
         </div>
     </div>
+
 
     <!-- COURSE -->
     <div class="container">
@@ -27,7 +54,7 @@
                 </div>
 
                 <!-- COURSE META
-                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                    ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -62,7 +89,7 @@
                 </div>
 
                 <!-- COURSE INFO TAB
-                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                    ================================================== -->
                 <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 my-8 pt-1" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview"
@@ -117,8 +144,8 @@
 
 
 
-                        <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-8"
-                            data-fancybox>
+                        {{-- <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-8" --}}
+                        <a href="{{ $course->video_description }}" class="d-block sk-thumbnail rounded mb-8" data-fancybox>
                             <div
                                 class="h-90p w-90p rounded-circle bg-white size-30-all d-inline-flex align-items-center justify-content-center position-absolute center z-index-1">
                                 <!-- Icon -->
@@ -129,8 +156,7 @@
                                 </svg>
 
                             </div>
-                            <img class="rounded shadow-light-lg"
-                                src="{{ asset('frontend/assets/img/products/product-2.jpg') }}" alt="...">
+                            <img class="rounded shadow-light-lg" src="{{ $course_img }}" alt="...">
                         </a>
 
                         <h3 class="mb-5">What you'll learn</h3>
@@ -1536,11 +1562,10 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR FILTER
-                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                    ================================================== -->
                 <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
                     {{-- <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-1" --}}
-                    <a href="https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO"
-                        class="d-block sk-thumbnail rounded mb-1" data-fancybox>
+                    <a href="{{ $course->video_promo }}" class="d-block sk-thumbnail rounded mb-1" data-fancybox>
                         <div
                             class="h-60p w-60p rounded-circle bg-white size-20-all d-inline-flex align-items-center justify-content-center position-absolute center z-index-1">
                             <!-- Icon -->
@@ -1551,19 +1576,7 @@
                             </svg>
 
                         </div>
-                        @php
-                            if ($course->photos->first()->file_name != null) {
-                                $course_img = asset('assets/courses/' . $course->photos->first()->file_name);
 
-                                if (
-                                    !file_exists(public_path('assets/courses/' . $course->photos->first()->file_name))
-                                ) {
-                                    $course_img = asset('assets/courses/no_image_found.webp');
-                                }
-                            } else {
-                                $course_img = asset('assets/courses/no_image_found.webp');
-                            }
-                        @endphp
                         <img class="rounded shadow-light-lg" src="{{ $course_img }}" alt="...">
                     </a>
 

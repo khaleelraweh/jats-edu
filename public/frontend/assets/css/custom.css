@@ -62,3 +62,21 @@
   }
 }
 
+
+/* course single  */
+.overlay-custom-left{
+  height: 325px;
+}
+.overlay-custom-left::before{
+    background: -webkit-gradient(linear,left bottom,left top,from(rgba(9,7,97,.6)),to(rgba(9,7,97,.6))),-webkit-gradient(linear,right top,left top,color-stop(17.76%,#090761),to(rgba(255,255,255,0)));
+    background: linear-gradient(0deg,rgba(9,7,97,.6),rgba(9,7,97,.6)),linear-gradient(270deg,#090761 17.76%,rgba(255,255,255,0) 100%);
+    background-color: rgba(0, 0, 0, 0);
+    background-position-x: 0%, 0%;
+    background-position-y: 0%, 0%;
+    background-repeat: repeat, repeat;
+    background-attachment: scroll, scroll;
+    background-image: linear-gradient(0deg, rgba(9, 7, 97, 0.6), rgba(9, 7, 97, 0.6)), linear-gradient(270deg, rgb(9, 7, 97) 17.76%, rgba(255, 255, 255, 0) 100%);
+    background-size: auto, auto;
+    background-origin: padding-box, padding-box;
+    background-clip: border-box, border-box;
+}

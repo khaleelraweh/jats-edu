@@ -99,6 +99,8 @@ class CourseController extends Controller
             for ($i = 0; $i < count($request->course_topic); $i++) {
                 $topics_list[$i]['course_topic'] = $request->course_topic[$i];
             }
+
+            dd($topics_list);
             $topics = $course->topics()->createMany($topics_list);
         }
         // course topics start 
@@ -236,6 +238,7 @@ class CourseController extends Controller
             for ($i = 0; $i < count($request->course_topic); $i++) {
                 $topics_list[$i]['course_topic'] = $request->course_topic[$i];
             }
+            dd($topics_list);
             $topics = $course->topics()->createMany($topics_list);
         }
         // course topics start 

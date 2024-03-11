@@ -6,7 +6,6 @@ use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\Instructor;
 use Faker\Factory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CourseSeeder extends Seeder
@@ -20,200 +19,124 @@ class CourseSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        $instrustors = Instructor::active()->inRandomOrder()->take(3)->get();
+        // Get active instructors
+        $instructors = Instructor::active()->inRandomOrder()->take(3)->get();
 
+        // Get active course categories
+        $categories = CourseCategory::active()->pluck('id');
 
+        // Topics list for courses
+        $topicsList = [
+            [
+                "course_topic" => [
+                    "ar" => "كن مصممًا لواجهة المستخدم/UX.",
+                    "en" => "Become a UI/UX designer."
+                ],
+            ],
+            [
+                "course_topic" => [
+                    "ar" => "ستكون قادرًا على البدء في كسب مهارات المال.",
+                    "en" => "You will be able to start earning money skills."
+                ],
+            ],
+            [
+                "course_topic" => [
+                    "ar" => "بناء مشروع واجهة المستخدم من البداية إلى النهاية.",
+                    "en" => "Build a UI project from beginning to end."
+                ],
+            ],
+            [
+                "course_topic" => [
+                    "ar" => "العمل مع الألوان والخطوط.",
+                    "en" => "Work with colors & fonts."
+                ],
+            ],
+        ];
 
-        $categories = CourseCategory::query()->Active()->pluck('id');
+        // requirements list for courses
+        $requirementsList = [
+            [
+                "course_requirement" => [
+                    "ar" => "لا نطلب أي خبرة سابقة أو مهارات محددة مسبقًا لحضور هذه الدورة. سيكون التوجيه الجيد كافيًا لإتقان تصميم واجهة المستخدم/تجربة المستخدم.",
+                    "en" => "We do not require any previous experience or pre-defined skills to take this course. A great orientation would be enough to master UI/UX design."
+                ],
+            ],
+            [
+                "course_requirement" => [
+                    "ar" => "جهاز كمبيوتر مع اتصال جيد بالإنترنت.",
+                    "en" => "A computer with a good internet connection."
+                ],
+            ],
+            [
+                "course_requirement" => [
+                    "ar" => "أدوبي فوتوشوب (اختياري)",
+                    "en" => "Adobe Photoshop (OPTIONAL)"
+                ],
+            ],
+        ];
 
+        // Loop through courses data
+        $coursesData = [
+            [
+                'title' => ['ar' => 'تصوير الأزياء من المحترفين', 'en' => 'Fashion Photography From Professional'],
+                'course_category_id' => 8, // Assuming category ID 8 is for photography
+            ],
+            [
+                'title' => ['ar' => 'دورة جافا سكريبت الكاملة 2020: بناء مشاريع حقيقية!', 'en' => 'The Complete JavaScript Course 2020: Build Real Projects!'],
+                'course_category_id' => 2, // Assuming category ID 2 is for JavaScript
+            ],
+            [
+                'title' => ['ar' => 'دورة جافا سكريبت الكاملة 2020: بناء مشاريع حقيقية!', 'en' => 'The Complete JavaScript Course 2020: Build Real Projects!'],
+                'course_category_id' => 4, // Assuming category ID 4 is for programming
+            ],
+            [
+                'title' => ['ar' => 'تعلم الشكل: أساسيات تصميم واجهة المستخدم - تصميم UI/UX', 'en' => 'Learn Figma: User Interface Design Essentials - UI/UX Design'],
+                'course_category_id' => 4, // Assuming category ID 4 is for design
+            ],
+            [
+                'title' => ['ar' => 'دورة المحلل المالي الكاملة 2020', 'en' => 'The Complete Financial Analyst Course 2020'],
+                'course_category_id' => $categories->random(), // Random category
+            ],
+            [
+                'title' => ['ar' => 'تصوير الأزياء من المحترفين', 'en' => 'Fashion Photography From Professional'],
+                'course_category_id' => $categories->random(), // Random category
+            ],
+        ];
 
-        $courses1['title']            =   ['ar' => 'تصوير الأزياء من المحترفين', 'en' => 'Fashion Photography From Professional'];
-        $courses1['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
+        // Loop through each course data and create courses
+        foreach ($coursesData as $courseData) {
+            $course = Course::create([
+                'title' => $courseData['title'],
+                'subtitle' => ['ar' => 'عنوان فرعي', 'en' => 'subtitle'],
+                'description' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
+                'skill_level' => 1,
+                'language' => 1,
+                'lecture_numbers' => 5,
+                'course_duration' => "8h 12m",
+                'video_promo' => "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO",
+                'video_description' => "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4",
+                'course_type' => 1,
+                'deadline' => "2024-03-11",
+                'certificate' => 1,
+                'price' => $faker->numberBetween(5, 200),
+                'offer_price' => $faker->numberBetween(5, 100),
+                'offer_ends' => $faker->dateTime(),
+                'featured' => rand(0, 1),
+                'status' => true,
+                'course_category_id' => $courseData['course_category_id'],
+                'published_on' => $faker->dateTime(),
+                'created_by' => $faker->realTextBetween(10, 20),
+                'updated_by' => $faker->realTextBetween(10, 20), // Assuming you want this as well
+            ]);
 
-        $courses1['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
+            // Attach instructors
+            $course->instructors()->attach($instructors->pluck('id')->toArray());
 
-        $courses1['skill_level']            =  1;
-        $courses1['language']             =  1;
-        $courses1['lecture_numbers']          =  5;
-        $courses1['course_duration']            =  "8h  12m";
+            // Create topics for the course
+            $course->topics()->createMany($topicsList);
 
-        // by alyamany
-        $courses1['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
-        $courses1['video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
-        $courses1['course_type']            =  1;
-
-        $courses1['deadline']            =  "2024-03-11";
-        $courses1['certificate']            =  1;
-
-
-        $courses1['price']                  =   $faker->numberBetween(5, 200);
-        $courses1['offer_price']            =   $faker->numberBetween(5, 100);
-        $courses1['offer_ends']             =   $faker->dateTime();
-
-        $courses1['featured']               =   rand(0, 1);
-        $courses1['status']                 =   true;
-        $courses1['course_category_id']     =   8;
-        $courses1['published_on']           =   $faker->dateTime();
-        $courses1['created_by']             =   $faker->realTextBetween(10, 20);
-        $courses1['created_at']             =   now();
-        $courses1['updated_at']             =   now();
-        $courses1                           =   Course::create($courses1);
-
-        $courses1->instructors()->attach($instrustors->pluck('id')->toArray());
-
-
-        $courses2['title']            =   ['ar' => 'دورة جافا سكريبت الكاملة 2020: بناء مشاريع حقيقية!', 'en' => 'The Complete JavaScript Course 2020: Build Real Projects!'];
-        $courses2['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
-
-        $courses2['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
-
-        $courses2['skill_level']            =  1;
-        $courses2['language']             =  1;
-        $courses2['lecture_numbers']          =  5;
-        $courses2['course_duration']            =  "8h  12m";
-
-        // by alyamany
-        $courses2['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
-        $courses2['video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
-        $courses2['course_type']            =  1;
-
-        $courses2['deadline']            =  "2024-03-11";
-        $courses2['certificate']            =  1;
-
-        $courses2['price']                  =   $faker->numberBetween(5, 200);
-        $courses2['offer_price']            =   $faker->numberBetween(5, 100);
-        $courses2['offer_ends']             =   $faker->dateTime();
-
-        $courses2['featured']               =   rand(0, 1);
-        $courses2['status']                 =   true;
-        $courses2['course_category_id']     =   2;
-        $courses2['published_on']           =   $faker->dateTime();
-        $courses2['created_by']             =   $faker->realTextBetween(10, 20);
-        $courses2['created_at']             =   now();
-        $courses2['updated_at']             =   now();
-        $courses2                           =   Course::create($courses2);
-
-        $courses3['title']            =   ['ar' => 'دورة جافا سكريبت الكاملة 2020: بناء مشاريع حقيقية!', 'en' => 'The Complete JavaScript Course 2020: Build Real Projects!'];
-        $courses3['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
-
-        $courses3['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
-
-        $courses3['skill_level']            =  1;
-        $courses3['language']             =  1;
-        $courses3['lecture_numbers']          =  5;
-        $courses3['course_duration']            =  "8h  12m";
-
-        // by alyamany
-        $courses3['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
-        $courses3['video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
-        $courses3['course_type']            =  1;
-
-        $courses3['deadline']            =  "2024-03-11";
-        $courses3['certificate']            =  1;
-
-        $courses3['price']                  =   $faker->numberBetween(5, 200);
-        $courses3['offer_price']            =   $faker->numberBetween(5, 100);
-        $courses3['offer_ends']             =   $faker->dateTime();
-
-        $courses3['featured']               =   rand(0, 1);
-        $courses3['status']                 =   true;
-        $courses3['course_category_id']     =   4;
-        $courses3['published_on']           =   $faker->dateTime();
-        $courses3['created_by']             =   $faker->realTextBetween(10, 20);
-        $courses3['created_at']             =   now();
-        $courses3['updated_at']             =   now();
-        $courses3                           =   Course::create($courses3);
-
-        $courses4['title']            =   ['ar' => 'تعلم الشكل: أساسيات تصميم واجهة المستخدم - تصميم UI/UX', 'en' => 'Learn Figma: User Interface Design Essentials - UI/UX Design'];
-        $courses4['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
-        $courses4['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
-
-        $courses4['skill_level']            =  1;
-        $courses4['language']             =  1;
-        $courses4['lecture_numbers']          =  5;
-        $courses4['course_duration']            =  "8h  12m";
-
-        // by alyamany
-        $courses4['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
-        $courses4['video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
-        $courses4['course_type']            =  1;
-
-        $courses4['deadline']            =  "2024-03-11";
-        $courses4['certificate']            =  1;
-
-        $courses4['price']                  =   $faker->numberBetween(5, 200);
-        $courses4['offer_price']            =   $faker->numberBetween(5, 100);
-        $courses4['offer_ends']             =   $faker->dateTime();
-
-        $courses4['featured']               =   rand(0, 1);
-        $courses4['status']                 =   true;
-        $courses4['course_category_id']     =   4;
-        $courses4['published_on']           =   $faker->dateTime();
-        $courses4['created_by']             =   $faker->realTextBetween(10, 20);
-        $courses4['created_at']             =   now();
-        $courses4['updated_at']             =   now();
-        $courses4                           =   Course::create($courses4);
-
-
-        $courses5['title']            =   ['ar' => 'دورة المحلل المالي الكاملة 2020', 'en' => 'The Complete Financial Analyst Course 2020'];
-        $courses5['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
-        $courses5['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
-
-        $courses5['skill_level']            =  1;
-        $courses5['language']             =  1;
-        $courses5['lecture_numbers']          =  5;
-        $courses5['course_duration']            =  "8h  12m";
-
-        // by alyamany
-        $courses5['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
-        $courses5['video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
-        $courses5['course_type']            =  1;
-
-        $courses5['deadline']            =  "2024-03-11";
-        $courses5['certificate']            =  1;
-
-        $courses5['price']                  =   $faker->numberBetween(5, 200);
-        $courses5['offer_price']            =   $faker->numberBetween(5, 100);
-        $courses5['offer_ends']             =   $faker->dateTime();
-
-        $courses5['featured']               =   rand(0, 1);
-        $courses5['status']                 =   true;
-        $courses5['course_category_id']     =   $categories->random();
-        $courses5['published_on']           =   $faker->dateTime();
-        $courses5['created_by']             =   $faker->realTextBetween(10, 20);
-        $courses5['created_at']             =   now();
-        $courses5['updated_at']             =   now();
-        $courses5                           =   Course::create($courses5);
-
-
-        $courses6['title']            =   ['ar' => 'تصوير الأزياء من المحترفين', 'en' => 'Fashion Photography From Professional'];
-        $courses6['subtitle']            =   ['ar' => 'عنوان فرعي', 'en' => 'subtitle'];
-        $courses6['description']            =   ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)];
-
-        $courses6['skill_level']            =  1;
-        $courses6['language']             =  1;
-        $courses6['lecture_numbers']          =  5;
-        $courses6['course_duration']            =  "8h  12m";
-
-        // by alyamany
-        $courses6['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
-        $courses6['video_description']            =  "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4";
-        $courses6['course_type']            =  1;
-
-        $courses6['deadline']            =  "2024-03-11";
-        $courses6['certificate']            =  1;
-
-        $courses6['price']                  =   $faker->numberBetween(5, 200);
-        $courses6['offer_price']            =   $faker->numberBetween(5, 100);
-        $courses6['offer_ends']             =   $faker->dateTime();
-
-        $courses6['featured']               =   rand(0, 1);
-        $courses6['status']                 =   true;
-        $courses6['course_category_id']     =   $categories->random();
-        $courses6['published_on']           =   $faker->dateTime();
-        $courses6['created_by']             =   $faker->realTextBetween(10, 20);
-        $courses6['created_at']             =   now();
-        $courses6['updated_at']             =   now();
-        $courses6                           =   Course::create($courses6);
+            // Create requirements for the course
+            $course->requirements()->createMany($requirementsList);
+        }
     }
 }

@@ -223,7 +223,7 @@
                     <div class="tab-pane fade" id="course_info" role="tabpanel" aria-labelledby="course_info-tab">
 
                         <div class="row">
-                            <div class="col-sm-12 pt-3">
+                            <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="skill_level">{{ __('panel.skill_level') }}</label>
                                 <select name="skill_level" class="form-control">
                                     <option value="1"
@@ -244,10 +244,7 @@
                                 @enderror
 
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 pt-3">
+                            <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="language">{{ __('panel.language') }}</label>
                                 <select name="language" class="form-control">
                                     <option value="1"
@@ -267,7 +264,9 @@
                             </div>
                         </div>
 
-                        <div class="row">
+
+
+                        <div class="row d-none">
                             <div class="col-sm-12 pt-3">
                                 <label for="evaluation">{{ __('panel.evaluation') }}</label>
                                 <select name="evaluation" class="form-control">
@@ -293,7 +292,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-12 pt-3">
+                            <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="lecture_numbers">{{ __('panel.lecture_numbers') }}</label>
                                 <input type="number" name="lecture_numbers" id="lecture_numbers"
                                     value="{{ old('lecture_numbers', $course->lecture_numbers) }}" class="form-control">
@@ -302,10 +301,8 @@
                                 @enderror
 
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-sm-12 pt-3">
+                            <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="course_duration">{{ __('panel.course_duration') }}</label>
                                 <input type="text" name="course_duration" id="course_duration"
                                     value="{{ old('course_duration', $course->course_duration) }}" class="form-control"
@@ -316,6 +313,8 @@
 
                             </div>
                         </div>
+
+
 
                     </div>
 

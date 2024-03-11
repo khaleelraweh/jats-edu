@@ -268,7 +268,7 @@
 
 
 
-                        {{-- lecture numbers and duration --}}
+                        {{-- lecture numbers and course_duration --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="Lecture_numbers">{{ __('panel.Lecture_numbers') }}</label>
@@ -280,10 +280,10 @@
 
                             </div>
                             <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="Duration">{{ __('panel.Duration') }}</label>
-                                <input type="text" name="Duration" id="Duration" value="{{ old('Duration') }}"
-                                    class="form-control" placeholder="8h 17m">
-                                @error('Duration')
+                                <label for="course_duration">{{ __('panel.course_duration') }}</label>
+                                <input type="text" name="course_duration" id="course_duration"
+                                    value="{{ old('course_duration') }}" class="form-control" placeholder="8h 17m">
+                                @error('course_duration')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 

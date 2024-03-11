@@ -35,7 +35,7 @@ class CourseSeeder extends Seeder
         $courses1['skill_level']            =  1;
         $courses1['language']             =  1;
         $courses1['Lecture_numbers']          =  5;
-        $courses1['Duration']            =  "8h  12m";
+        $courses1['course_duration']            =  "8h  12m";
 
         // by alyamany
         $courses1['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
@@ -67,7 +67,7 @@ class CourseSeeder extends Seeder
         $courses2['skill_level']            =  1;
         $courses2['language']             =  1;
         $courses2['Lecture_numbers']          =  5;
-        $courses2['Duration']            =  "8h  12m";
+        $courses2['course_duration']            =  "8h  12m";
 
         // by alyamany
         $courses2['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
@@ -95,7 +95,7 @@ class CourseSeeder extends Seeder
         $courses3['skill_level']            =  1;
         $courses3['language']             =  1;
         $courses3['Lecture_numbers']          =  5;
-        $courses3['Duration']            =  "8h  12m";
+        $courses3['course_duration']            =  "8h  12m";
 
         // by alyamany
         $courses3['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
@@ -122,7 +122,7 @@ class CourseSeeder extends Seeder
         $courses4['skill_level']            =  1;
         $courses4['language']             =  1;
         $courses4['Lecture_numbers']          =  5;
-        $courses4['Duration']            =  "8h  12m";
+        $courses4['course_duration']            =  "8h  12m";
 
         // by alyamany
         $courses4['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
@@ -150,7 +150,7 @@ class CourseSeeder extends Seeder
         $courses5['skill_level']            =  1;
         $courses5['language']             =  1;
         $courses5['Lecture_numbers']          =  5;
-        $courses5['Duration']            =  "8h  12m";
+        $courses5['course_duration']            =  "8h  12m";
 
         // by alyamany
         $courses5['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";
@@ -178,7 +178,7 @@ class CourseSeeder extends Seeder
         $courses6['skill_level']            =  1;
         $courses6['language']             =  1;
         $courses6['Lecture_numbers']          =  5;
-        $courses6['Duration']            =  "8h  12m";
+        $courses6['course_duration']            =  "8h  12m";
 
         // by alyamany
         $courses6['video_promo']             =  "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO";

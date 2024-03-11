@@ -24,7 +24,7 @@ return new class extends Migration
             $table->tinyInteger('language')->nullable()->default(1); // واحد عربي اثنين إنجليزي ثلاثة اسباني
             $table->tinyInteger('evaluation')->nullable()->default(1); // 1 : is normal , 2 : is featured  , 3 : is best seller
             $table->tinyInteger('Lecture_numbers')->nullable();
-            $table->string('Duration')->nullable();
+            $table->string('course_duration')->nullable();
 
             // added by alyamany
             $table->string('video_promo')->nullable();

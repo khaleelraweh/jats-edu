@@ -306,11 +306,11 @@
 
                         <div class="row">
                             <div class="col-sm-12 pt-3">
-                                <label for="Duration">{{ __('panel.Duration') }}</label>
-                                <input type="text" name="Duration" id="Duration"
-                                    value="{{ old('Duration', $course->Duration) }}" class="form-control"
+                                <label for="course_duration">{{ __('panel.course_duration') }}</label>
+                                <input type="text" name="course_duration" id="course_duration"
+                                    value="{{ old('course_duration', $course->course_duration) }}" class="form-control"
                                     placeholder="8h 17m">
-                                @error('Duration')
+                                @error('course_duration')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 

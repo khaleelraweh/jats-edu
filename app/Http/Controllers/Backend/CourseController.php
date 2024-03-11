@@ -73,6 +73,9 @@ class CourseController extends Controller
         $input['video_description']           =  $request->video_description;
         $input['course_type']           =  $request->course_type;
 
+        $input['deadline']           =  $request->deadline;
+        $input['certificate']           =  $request->certificate;
+
         $input['price']                 =   $request->price;
         $input['offer_price']           =   $request->offer_price;
         $input['offer_ends']            =   $request->offer_ends;
@@ -199,6 +202,9 @@ class CourseController extends Controller
         $input['video_promo']           =  $request->video_promo;
         $input['video_description']           =  $request->video_description;
         $input['course_type']           =  $request->course_type;
+
+        $input['deadline']           =  $request->deadline;
+        $input['certificate']           =  $request->certificate;
 
         $input['price']                 =   $request->price;
         $input['offer_price']           =   $request->offer_price;

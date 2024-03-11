@@ -20,12 +20,12 @@ class ProductCategory extends Model
 
     protected $guarded = [];
 
-    public $translatable = ['category_name', 'slug', 'description'];
+    public $translatable = ['title', 'slug', 'description'];
 
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('category_name')
+            ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
 
@@ -67,7 +67,7 @@ class ProductCategory extends Model
 
     protected $searchable = [
         'columns' => [
-            'product_categories.category_name' => 10,
+            'product_categories.title' => 10,
         ]
     ];
 

@@ -19,7 +19,7 @@ class CardCategorySeeder extends Seeder
         $faker = Factory::create();
 
 
-        $popgy['category_name'] = ['ar' => 'بوبجي', 'en' => 'PUBG', 'ca' => 'PUBG',];
+        $popgy['title'] = ['ar' => 'بوبجي', 'en' => 'PUBG', 'ca' => 'PUBG',];
         $popgy['description'] = ['ar' => 'معلومات اكثر عن البوبجي ', 'en' => 'More information about PUBG', 'ca' => 'Más información sobre PUBG',];
         $popgy['section'] = 2;
         $popgy['created_by'] = 'admin';
@@ -30,7 +30,7 @@ class CardCategorySeeder extends Seeder
 
 
 
-        $starWar['category_name'] = ['ar' => 'حرب النجوم', 'en' => 'star Wars', 'ca' => 'guerra de las Galaxias',];
+        $starWar['title'] = ['ar' => 'حرب النجوم', 'en' => 'star Wars', 'ca' => 'guerra de las Galaxias',];
         $starWar['description'] = ['ar' => 'معلومات اكثر عن حرب النجوز ', 'en' => 'More information about star Wars', 'ca' => 'guerra de las Galaxias',];
         $starWar['section'] = 2;
         $starWar['created_by'] = 'admin';
@@ -39,7 +39,7 @@ class CardCategorySeeder extends Seeder
         $starWar['parent_id'] = null;
         $starWar =  ProductCategory::create($starWar);
 
-        $legend['category_name'] = ['ar' => 'الاسطورة', 'en' => 'the legend', 'ca' => 'La leyenda',];
+        $legend['title'] = ['ar' => 'الاسطورة', 'en' => 'the legend', 'ca' => 'La leyenda',];
         $legend['description'] = ['ar' => 'معلومات اكثر عن حرب الاسطورة ', 'en' => 'More information about the legend', 'ca' => 'guerra de las La leyenda',];
         $legend['section'] = 2;
         $legend['created_by'] = 'admin';
@@ -49,7 +49,7 @@ class CardCategorySeeder extends Seeder
         $legend =  ProductCategory::create($legend);
 
 
-        $middleCenteries['category_name'] = ['ar' => 'القرون الوسطي ', 'en' => 'Middle Centries', 'ca' => 'el cuerno medio',];
+        $middleCenteries['title'] = ['ar' => 'القرون الوسطي ', 'en' => 'Middle Centries', 'ca' => 'el cuerno medio',];
         $middleCenteries['description'] = ['ar' => 'معلومات اكثر عن حرب القرون الوسطي  ', 'en' => 'More information about the Middle Centries', 'ca' => 'el cuerno medio',];
         $middleCenteries['section'] = 2;
         $middleCenteries['created_by'] = 'admin';

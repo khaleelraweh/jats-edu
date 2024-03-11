@@ -19,7 +19,7 @@ class CourseCategorySeeder extends Seeder
         $faker = Factory::create();
 
 
-        $Personal_development['category_name'] = ['ar' => 'تطوير الذات', 'en' => 'Personal Development'];
+        $Personal_development['title'] = ['ar' => 'تطوير الذات', 'en' => 'Personal Development'];
         $Personal_development['description'] = ['ar' => 'اكثر من 100 دورة ', 'en' => 'Over 100 Courses', 'ca' => 'el cuerno clothes',];
         $Personal_development['icon'] = 'far fa-file-alt';
         $Personal_development['created_by'] = 'admin';
@@ -29,7 +29,7 @@ class CourseCategorySeeder extends Seeder
         $Personal_development =  CourseCategory::create($Personal_development);
 
 
-        $Software_development['category_name'] = ['ar' => 'تطوير البرمجيات', 'en' => 'Software Development'];
+        $Software_development['title'] = ['ar' => 'تطوير البرمجيات', 'en' => 'Software Development'];
         $Software_development['description'] = ['ar' => 'اكثر من 250 دورة ', 'en' => 'Over 250 Courses', 'ca' => 'el cuerno clothes',];
         $Software_development['icon'] = 'fas fa-laptop-code';
         $Software_development['created_by'] = 'admin';
@@ -39,7 +39,7 @@ class CourseCategorySeeder extends Seeder
         $Software_development =  CourseCategory::create($Software_development);
 
 
-        $Business['category_name'] = ['ar' => 'إدارة اعمال', 'en' => 'Business'];
+        $Business['title'] = ['ar' => 'إدارة اعمال', 'en' => 'Business'];
         $Business['description'] = ['ar' => 'اكثر من 500 دورة ', 'en' => 'Over 500 Courses', 'ca' => 'el cuerno clothes',];
         $Business['icon'] = 'fas fa-briefcase';
         $Business['created_by'] = 'admin';
@@ -48,7 +48,7 @@ class CourseCategorySeeder extends Seeder
         $Business['parent_id'] = null;
         $Business =  CourseCategory::create($Business);
 
-        $Design['category_name'] = ['ar' => 'تصميم', 'en' => 'Design'];
+        $Design['title'] = ['ar' => 'تصميم', 'en' => 'Design'];
         $Design['description'] = ['ar' => 'اكثر من 960 دورة ', 'en' => 'Over 960 Courses', 'ca' => 'el cuerno clothes',];
         $Design['icon'] = 'fas fa-bezier-curve';
         $Design['created_by'] = 'admin';
@@ -57,7 +57,7 @@ class CourseCategorySeeder extends Seeder
         $Design['parent_id'] = null;
         $Design =  CourseCategory::create($Design);
 
-        $Finance_and_accounting['category_name'] = ['ar' => 'المالية والمحاسبة', 'en' => 'Finance and Accounting'];
+        $Finance_and_accounting['title'] = ['ar' => 'المالية والمحاسبة', 'en' => 'Finance and Accounting'];
         $Finance_and_accounting['description'] = ['ar' => 'اكثر من 320 دورة ', 'en' => 'Over 320 Courses', 'ca' => 'el cuerno clothes',];
         $Finance_and_accounting['icon'] = 'fas fa-wallet';
         $Finance_and_accounting['created_by'] = 'admin';
@@ -66,7 +66,7 @@ class CourseCategorySeeder extends Seeder
         $Finance_and_accounting['parent_id'] = null;
         $Finance_and_accounting =  CourseCategory::create($Finance_and_accounting);
 
-        $Marketing['category_name'] = ['ar' => 'تسويق', 'en' => 'Marketing'];
+        $Marketing['title'] = ['ar' => 'تسويق', 'en' => 'Marketing'];
         $Marketing['description'] = ['ar' => 'اكثر من 960 دورة ', 'en' => 'Over 960 Courses', 'ca' => 'el cuerno clothes',];
         $Marketing['icon'] = 'fas fa-bullhorn';
         $Marketing['created_by'] = 'admin';
@@ -75,7 +75,7 @@ class CourseCategorySeeder extends Seeder
         $Marketing['parent_id'] = null;
         $Marketing =  CourseCategory::create($Marketing);
 
-        $audio_and_music['category_name'] = ['ar' => 'الصوت والموسيقى', 'en' => 'Audio and Music'];
+        $audio_and_music['title'] = ['ar' => 'الصوت والموسيقى', 'en' => 'Audio and Music'];
         $audio_and_music['description'] = ['ar' => 'اكثر من 200 دورة ', 'en' => 'Over 200 Courses', 'ca' => 'el cuerno clothes',];
         $audio_and_music['icon'] = 'fas fa-music';
         $audio_and_music['created_by'] = 'admin';
@@ -85,7 +85,7 @@ class CourseCategorySeeder extends Seeder
         $audio_and_music =  CourseCategory::create($audio_and_music);
 
 
-        $photography['category_name'] = ['ar' => 'التصوير', 'en' => 'photography'];
+        $photography['title'] = ['ar' => 'التصوير', 'en' => 'photography'];
         $photography['description'] = ['ar' => 'اكثر من 120 دورة ', 'en' => 'Over 120 Courses', 'ca' => 'el cuerno clothes',];
         $photography['icon'] = 'fas fa-camera';
         $photography['created_by'] = 'admin';

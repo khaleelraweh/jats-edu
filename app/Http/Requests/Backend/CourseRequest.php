@@ -108,7 +108,7 @@ class CourseRequest extends FormRequest
     public function attributes(): array
     {
         $attr = [
-            'course_category_id'      => '( ' . __('panel.category_name') . ' )',
+            'course_category_id'      => '( ' . __('panel.title') . ' )',
             'status'    =>  '( ' . __('panel.status') . ' )',
             'images'    =>  '( ' . __('panel.images') . ' )',
             'price'    =>  '( ' . __('panel.price') . ' )',

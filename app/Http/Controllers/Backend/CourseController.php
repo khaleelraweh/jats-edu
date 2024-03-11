@@ -41,7 +41,7 @@ class CourseController extends Controller
             return redirect('admin/index');
         }
 
-        $course_categories = CourseCategory::whereStatus(1)->get(['id', 'category_name']);
+        $course_categories = CourseCategory::whereStatus(1)->get(['id', 'title']);
 
         $tags = Tag::whereStatus(1)->get(['id', 'name']);
 
@@ -170,7 +170,7 @@ class CourseController extends Controller
 
         $course = Course::where('id', $course)->first();
 
-        $course_categories = CourseCategory::whereStatus(1)->get(['id', 'category_name']);
+        $course_categories = CourseCategory::whereStatus(1)->get(['id', 'title']);
 
         $tags = Tag::whereStatus(1)->get(['id', 'name']);
 

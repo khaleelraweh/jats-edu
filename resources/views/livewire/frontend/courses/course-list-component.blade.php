@@ -80,7 +80,7 @@
                                             id="{{ $category_item->slug }}">
 
                                         <label class="custom-control-label font-size-base"
-                                            for="{{ $category_item->slug }}">{{ $category_item->category_name }}
+                                            for="{{ $category_item->slug }}">{{ $category_item->title }}
                                             ({{ $category_item->courses_count }})
                                         </label>
                                     </li>
@@ -464,7 +464,7 @@
                                 <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
                                     <!-- Preheading -->
                                     <a href="course-single-v5.html"><span
-                                            class="mb-1 d-inline-block text-gray-800">{{ $course->courseCategory->category_name }}
+                                            class="mb-1 d-inline-block text-gray-800">{{ $course->courseCategory->title }}
                                             {{ $course->price }}</span></a>
 
                                     <!-- Heading -->

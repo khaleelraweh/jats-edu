@@ -53,7 +53,7 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('panel.image') }}</th>
-                                    <th>{{ __('panel.category_name') }}</th>
+                                    <th>{{ __('panel.title') }}</th>
                                     <th>{{ __('panel.category_card-count') }} </th>
                                     <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
                                     <th class="d-none d-sm-table-cell">{{ __('panel.title') }}</th>
@@ -69,16 +69,16 @@
                                             @if ($category->firstMedia)
                                                 {{-- <td><img src="{{asset('assets/products/'.$product->photos()->first()->file_name)}}" width="60" alt="product Image"> </td> --}}
                                                 <img src="{{ asset('assets/card_categories/' . $category->firstMedia->file_name) }}"
-                                                    width="60" height="60" alt="{{ $category->category_name }}">
+                                                    width="60" height="60" alt="{{ $category->title }}">
                                             @else
                                                 <img src="{{ asset('assets/No-Image-Found.png') }}" width="60"
-                                                    height="60" alt="{{ $category->category_name }}">
+                                                    height="60" alt="{{ $category->title }}">
                                             @endif
 
                                         </td>
 
                                         <td>
-                                            {{ $category->category_name }}
+                                            {{ $category->title }}
                                         </td>
                                         <td>{{ $category->products_count }}</td>
                                         <td class="d-none d-sm-table-cell">{{ $category->created_by }}</td>

@@ -43,7 +43,7 @@ class CardController extends Controller
         }
 
         // get all categories that are active to choose one of them to be parent of product
-        $categories = ProductCategory::whereStatus(1)->whereSection(2)->get(['id', 'category_name']);
+        $categories = ProductCategory::whereStatus(1)->whereSection(2)->get(['id', 'title']);
         // get all tags to add some of them to product 
         $tags = Tag::whereStatus(1)->get(['id', 'name']);
 
@@ -164,7 +164,7 @@ class CardController extends Controller
         $card = Product::where('id', $card)->first();
 
         // get all categories that are active to choose one of them to be parent of product
-        $categories = ProductCategory::whereStatus(1)->whereSection(2)->get(['id', 'category_name']);
+        $categories = ProductCategory::whereStatus(1)->whereSection(2)->get(['id', 'title']);
         // get all tags to add some of them to product 
         $tags = Tag::whereStatus(1)->get(['id', 'name']);
 

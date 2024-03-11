@@ -49,7 +49,7 @@ class CardCategoriesController extends Controller
             return redirect('admin/index');
         }
 
-        $input['category_name'] = $request->category_name;
+        $input['title'] = $request->title;
         $input['description'] = $request->description;
         $input['views'] = 0;
         $input['created_by'] = auth()->user()->full_name;
@@ -138,7 +138,7 @@ class CardCategoriesController extends Controller
         $cardCategory = ProductCategory::where('id', $cardCategory)->first();
 
 
-        $input['category_name'] = $request->category_name;
+        $input['title'] = $request->title;
         $input['parent_id'] = $request->parent_id;
         $input['description'] = $request->description;
         $input['views'] = 0;

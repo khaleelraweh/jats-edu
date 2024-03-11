@@ -64,7 +64,7 @@ return [
     'edit_existing_card_category'      => 'Edit Existing Card Category',
 
     // ........... commons in Categories ....... //
-    'category_name'                     => 'Category Name',
+    'title'                     => 'Category Name',
     'category_card-count'               => 'Card Quintity',
 
 
@@ -104,7 +104,7 @@ return [
     'edit_existing_course_category'             => 'Edit Existing Course Category',
 
     // ........... commons in Categories ....... //
-    'course_category_name'                      => 'Course Category Name',
+    'course_title'                      => 'Course Category Name',
     'courses_count'                             =>  'Courses Count',
     'fontawesome_code'                          =>  'FontAwesome Code',
 
@@ -435,7 +435,7 @@ return [
     'edit_existing_payment_method'                  => 'Edit Existing Payment Method ',
 
     // ........... commons in payments   ....... //
-    'payment_category_name'                           =>  'Payment Category Name',
+    'payment_title'                           =>  'Payment Category Name',
 
     'payment_method_name'                           =>  'Payment Method Name',
     'payment_method_description'                    =>  'Payment Method Description',

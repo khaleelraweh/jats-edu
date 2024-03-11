@@ -26,7 +26,7 @@ class ProductCategoryRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'category_name.*'          => 'required|max:255|unique_translation:product_categories',
+                        'title.*'          => 'required|max:255|unique_translation:product_categories',
                         'description.*'   =>  'required',
                         'parent_id'     =>  'nullable',
                         'images'        =>  'nullable',
@@ -50,7 +50,7 @@ class ProductCategoryRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'category_name'          =>  'required|max:255|unique_translation:product_categories,category_name,' . $this->route()->product_category->id,
+                        'title'          =>  'required|max:255|unique_translation:product_categories,title,' . $this->route()->product_category->id,
                         'description'   =>  'required',
                         'parent_id'     =>  'nullable',
                         'images'        =>  'nullable',

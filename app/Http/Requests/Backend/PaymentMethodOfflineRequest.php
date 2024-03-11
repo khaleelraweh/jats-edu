@@ -92,7 +92,7 @@ class PaymentMethodOfflineRequest extends FormRequest
     public function attributes(): array
     {
         $attr = [
-            'payment_category_id'    =>  '( ' . __('panel.payment_category_name') . ' )',
+            'payment_category_id'    =>  '( ' . __('panel.payment_title') . ' )',
             'images'    =>  '( ' . __('panel.images') . ' )',
             'status'    =>  '( ' . __('panel.status') . ' )',
         ];

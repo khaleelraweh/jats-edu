@@ -109,14 +109,14 @@
                                     <div class="row ">
                                         <div class="col-sm-12 pt-3">
                                             <div class="form-group">
-                                                <label for="category_name[{{ $key }}]">
-                                                    {{ __('panel.course_category_name') }}
+                                                <label for="title[{{ $key }}]">
+                                                    {{ __('panel.course_title') }}
                                                     {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                                 </label>
-                                                <input type="text" name="category_name[{{ $key }}]"
-                                                    id="category_name[{{ $key }}]"
-                                                    value="{{ old('category_name.' . $key) }}" class="form-control">
-                                                @error('category_name.' . $key)
+                                                <input type="text" name="title[{{ $key }}]"
+                                                    id="title[{{ $key }}]" value="{{ old('title.' . $key) }}"
+                                                    class="form-control">
+                                                @error('title.' . $key)
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>

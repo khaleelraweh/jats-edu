@@ -15,7 +15,7 @@
                                 class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
                                 <option value="">{{ __('transf.chose_categories') }}</option>
                                 @foreach ($course_categories_menu as $category_item)
-                                    <option value="{{ $category_item->id }}">{{ $category_item->category_name }}
+                                    <option value="{{ $category_item->id }}">{{ $category_item->title }}
                                     </option>
                                 @endforeach
 
@@ -158,7 +158,7 @@
 
                                 <!-- Preheading -->
                                 <a href="{{ route('frontend.courses', $featured_course->courseCategory->slug) }}"><span
-                                        class="mb-1 d-inline-block text-gray-800">{{ $featured_course->courseCategory->category_name }}</span></a>
+                                        class="mb-1 d-inline-block text-gray-800">{{ $featured_course->courseCategory->title }}</span></a>
 
 
                                 <!-- Heading -->

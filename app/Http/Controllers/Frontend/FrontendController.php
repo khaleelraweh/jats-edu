@@ -72,7 +72,16 @@ class FrontendController extends Controller
         $hiddenText = substr($course->description, 200);
 
 
-        return view('frontend.course-single', compact('course', 'exposedText', 'hiddenText'));
+        //get all related course that are the same of courseCategory of the this choisen course
+        $related_courses = Course::with('firstMedia', 'photos', 'courseCategory')->whereHas('courseCategory', function ($query) use ($course) {
+            $query->whereId($course->course_category_id)->whereStatus(true);
+        })->inRandomOrder()
+            ->Active()
+            ->take(8)
+            ->get();
+
+
+        return view('frontend.course-single', compact('course', 'exposedText', 'hiddenText', 'related_courses'));
     }
 
 

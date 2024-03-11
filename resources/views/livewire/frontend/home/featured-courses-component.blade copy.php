@@ -116,7 +116,7 @@
                             </a>
 
                             <!-- Preheading -->
-                            <a href="course-single-v2.html"><span class="mb-1 d-inline-block text-gray-800">{{ $featured_course->courseCategory->category_name }}</span></a>
+                            <a href="course-single-v2.html"><span class="mb-1 d-inline-block text-gray-800">{{ $featured_course->courseCategory->title }}</span></a>
 
 
                             <!-- Heading -->

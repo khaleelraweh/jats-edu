@@ -41,7 +41,7 @@
 
                                 <!-- Footer -->
                                 <div class="card-footer p-0">
-                                    <h5 class="mb-0 line-clamp-1 text-white">{{ $course_category->category_name }}</h5>
+                                    <h5 class="mb-0 line-clamp-1 text-white">{{ $course_category->title }}</h5>
                                     <p class="mb-0 line-clamp-1 text-white">{!! $course_category->description !!}</p>
                                 </div>
                             </div>

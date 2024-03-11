@@ -26,7 +26,7 @@ class CourseCategoryRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'category_name.*' => 'required|max:255|unique_translation:course_categories',
+                        'title.*' => 'required|max:255|unique_translation:course_categories',
                         'parent_id'     =>  'nullable',
                         'description.*'   =>  'required',
                         'icon'     =>  'nullable',
@@ -49,7 +49,7 @@ class CourseCategoryRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'category_name.*' => 'required|max:255|unique_translation:course_categories,category_name,' . $this->route()->course_category,
+                        'title.*' => 'required|max:255|unique_translation:course_categories,title,' . $this->route()->course_category,
                         'parent_id.*'     =>  'nullable',
                         'description'   =>  'required',
                         'icon'     =>  'nullable',
@@ -85,7 +85,7 @@ class CourseCategoryRequest extends FormRequest
         ];
 
         foreach (config('locales.languages') as $key => $val) {
-            $attr += ['category_name.' . $key       =>  "( " . __('panel.category_name')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+            $attr += ['title.' . $key       =>  "( " . __('panel.title')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
             $attr += ['description.' . $key       =>  "( " . __('panel.description')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
         }
 

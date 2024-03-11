@@ -224,12 +224,12 @@
                                     <a href="{{ route('frontend.card_category', $card_category->slug) }}"
                                         class="image-hover-scale">
                                         <img src="{{ asset('assets/card_categories/' . $card_category->firstMedia?->file_name) }}"
-                                            alt="{{ $card_category->category_name }}" class="js-prd-img" />
+                                            alt="{{ $card_category->title }}" class="js-prd-img" />
                                     </a>
                                 </div>
                                 <div class="prd-info text-center">
                                     <h2 class="prd-title"><a
-                                            href="{{ route('frontend.card_category', $card_category->slug) }}">{{ $card_category->category_name }}</a>
+                                            href="{{ route('frontend.card_category', $card_category->slug) }}">{{ $card_category->title }}</a>
                                     </h2>
                                     <div class="prd-hover">
                                         <div class="mt-2">

@@ -113,7 +113,7 @@
                                                     @forelse ($categories as $category)
                                                         <option value="{{ $category->id }}"
                                                             {{ old('product_category_id', $card->product_category_id) == $category->id ? 'selected' : null }}>
-                                                            {{ $category->category_name }} </option>
+                                                            {{ $category->title }} </option>
                                                     @empty
                                                     @endforelse
                                                 </select>

@@ -17,12 +17,12 @@ class CourseCategory extends Model
     use HasFactory, HasTranslations, HasTranslatableSlug, SearchableTrait;
     protected $guarded = [];
 
-    public $translatable = ['category_name', 'slug', 'description'];
+    public $translatable = ['title', 'slug', 'description'];
 
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('category_name')
+            ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
 
@@ -61,7 +61,7 @@ class CourseCategory extends Model
 
     protected $searchable = [
         'columns' => [
-            'course_categories.category_name' => 10,
+            'course_categories.title' => 10,
         ]
     ];
 

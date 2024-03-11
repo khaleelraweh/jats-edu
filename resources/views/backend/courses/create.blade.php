@@ -126,14 +126,14 @@
                                     @if ($loop->first)
                                         <div class="row pt-3">
                                             <div class="col-12 ">
-                                                <label for="category_id">{{ __('panel.course_category_name') }}</label>
+                                                <label for="category_id">{{ __('panel.course_title') }}</label>
                                                 <select name="course_category_id" class="form-control"
                                                     id="course_category_id">
                                                     <option value="">{{ __('panel.main_category') }} __</option>
                                                     @forelse ($course_categories as $course_category)
                                                         <option value="{{ $course_category->id }}"
                                                             {{ old('course_category_id') == $course_category->id ? 'selected' : null }}>
-                                                            {{ $course_category->category_name }}
+                                                            {{ $course_category->title }}
                                                         </option>
 
                                                     @empty

@@ -49,7 +49,7 @@ class CourseCategoriesController extends Controller
 
 
 
-        $input['category_name'] = $request->category_name;
+        $input['title'] = $request->title;
         $input['description'] = $request->description;
         $input['icon']     = $request->icon;
         $input['created_by'] = auth()->user()->full_name;
@@ -135,7 +135,7 @@ class CourseCategoriesController extends Controller
         $courseCategory = CourseCategory::where('id', $courseCategory)->first();
 
 
-        $input['category_name'] = $request->category_name;
+        $input['title'] = $request->title;
         $input['description'] = $request->description;
         $input['icon'] = $request->icon;
         $input['updated_by'] = auth()->user()->full_name;

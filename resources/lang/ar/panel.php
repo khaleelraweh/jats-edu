@@ -63,7 +63,7 @@ return [
 
     // ........... commons in Categories ....... //
 
-    'category_name'                     => 'إسم الصنف',
+    'title'                     => 'إسم الصنف',
     'category_card-count'               => 'عدد الباقات',
 
 
@@ -101,7 +101,7 @@ return [
     'edit_existing_course_category'             => 'تحرير فئة الدورة التدريبية الموجودة',
 
     // ........... commons in Categories ....... //
-    'course_category_name'                      => 'اسم فئة الدورة',
+    'course_title'                      => 'اسم فئة الدورة',
     'courses_count'                             =>  'عدد الدورات',
     'fontawesome_code'                          =>  'كود FontAwesome',
 
@@ -409,7 +409,7 @@ return [
     'edit_existing_payment_method'  => 'التعديل على طريقة الدفع',
 
     // ........... commons in payments   ....... //
-    'payment_category_name'         =>  'تصنيف طريقة الدفع',
+    'payment_title'         =>  'تصنيف طريقة الدفع',
 
     'payment_method_name'           =>  'إسم طريقة الدفع',
     'payment_method_description'    =>  'شرح طريقة الدفع',

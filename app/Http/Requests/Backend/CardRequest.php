@@ -98,7 +98,7 @@ class CardRequest extends FormRequest
     public function attributes(): array
     {
         $attr = [
-            'product_category_id'      => '( ' . __('panel.category_name') . ' )',
+            'product_category_id'      => '( ' . __('panel.title') . ' )',
             'status'    =>  '( ' . __('panel.status') . ' )',
             'images'    =>  '( ' . __('panel.images') . ' )',
             'price'    =>  '( ' . __('panel.price') . ' )',

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('course_categories', function (Blueprint $table) {
             $table->id();
-            $table->json('category_name');
+            $table->json('title');
             $table->json('slug');
             $table->json('description')->nullable();
             $table->string('icon')->nullable();

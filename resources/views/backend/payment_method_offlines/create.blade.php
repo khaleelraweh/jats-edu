@@ -100,7 +100,7 @@
                                     {{-- category name  field --}}
                                     <div class="row {{ $loop->index == 0 ? 'd-block' : 'd-none' }}   ">
                                         <div class="col-12 pt-4">
-                                            <label for="category_id"> {{ __('panel.payment_category_name') }}</label>
+                                            <label for="category_id"> {{ __('panel.payment_title') }}</label>
                                             <select name="payment_category_id" class="form-control">
                                                 <option value="">---</option>
                                                 @forelse ($categories as $category)

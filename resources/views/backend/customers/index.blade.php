@@ -61,11 +61,11 @@
                             <tr>
                                 <td class="d-none d-sm-table-cell">
                                     @if ($customer->user_image != '')
-                                        <img src="{{ asset('assets/users/' . $customer->user_image) }}" width="60"
+                                        <img src="{{ asset('assets/customers/' . $customer->user_image) }}" width="60"
                                             height="60" alt="{{ $customer->full_name }}">
                                     @else
-                                        <img src="{{ asset('assets/users/avatar.svg') }}" width="60" height="60"
-                                            alt="{{ $customer->full_name }}">
+                                        <img src="{{ asset('assets/customers/noImage.png') }}" width="60"
+                                            height="60" alt="{{ $customer->full_name }}">
                                     @endif
                                 </td>
                                 <td>

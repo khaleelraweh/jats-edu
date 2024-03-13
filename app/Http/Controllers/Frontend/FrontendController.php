@@ -14,6 +14,7 @@ use App\Models\ProductCategory;
 use App\Models\ProductReview;
 use App\Models\SiteSetting;
 use App\Models\Slider;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Livewire\WithPagination;
 
@@ -37,7 +38,8 @@ class FrontendController extends Controller
             )
             ->get();
 
-        $instructors = Instructor::with('courses')->Active()->take(8)->get();
+        // $instructors = Instructor::with('courses')->Active()->take(8)->get();
+        $instructors = User::where('status', true)->take(8)->get();
 
         return view('frontend.index', compact('main_sliders', 'instructors'));
     }

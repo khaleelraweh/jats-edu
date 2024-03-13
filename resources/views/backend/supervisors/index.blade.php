@@ -61,10 +61,10 @@
                         <tr>
                             <td class="d-none d-sm-table-cell">
                                 @if ($supervisor->user_image != '')
-                                    <img src="{{ asset('assets/users/' . $supervisor->user_image) }}" width="60"
+                                    <img src="{{ asset('assets/supervisors/' . $supervisor->user_image) }}" width="60"
                                         height="60" alt="{{ $supervisor->full_name }}">
                                 @else
-                                    <img src="{{ asset('assets/users/avatar.svg') }}" width="60" height="60"
+                                    <img src="{{ asset('assets/supervisors/avatar.svg') }}" width="60" height="60"
                                         alt="{{ $supervisor->full_name }}">
                                 @endif
                             </td>

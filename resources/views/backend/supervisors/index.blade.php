@@ -60,13 +60,24 @@
                     @forelse ($supervisors as $supervisor)
                         <tr>
                             <td class="d-none d-sm-table-cell">
-                                @if ($supervisor->user_image != '')
-                                    <img src="{{ asset('assets/supervisors/' . $supervisor->user_image) }}" width="60"
-                                        height="60" alt="{{ $supervisor->full_name }}">
-                                @else
-                                    <img src="{{ asset('assets/supervisors/avatar.svg') }}" width="60" height="60"
-                                        alt="{{ $supervisor->full_name }}">
-                                @endif
+                                @php
+                                    if ($supervisor->user_image != null) {
+                                        $supervisor_img = asset('assets/supervisors/' . $supervisor->user_image);
+
+                                        if (
+                                            !file_exists(public_path('assets/supervisors/' . $supervisor->user_image))
+                                        ) {
+                                            $supervisor_img = asset('assets/supervisors/no_image_found.webp');
+                                        }
+                                    } else {
+                                        $supervisor_img = asset('assets/supervisors/no_image_found.webp');
+                                    }
+                                @endphp
+
+                                {{-- {{ dd($supervisor_img) }} --}}
+                                <img src="{{ $supervisor_img }}" width="60" height="60"
+                                    alt="{{ $supervisor->full_name }}">
+
                             </td>
                             <td>
                                 {{ $supervisor->full_name }} <br>

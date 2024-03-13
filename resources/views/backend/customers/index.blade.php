@@ -60,13 +60,22 @@
                         @forelse ($customers as $customer)
                             <tr>
                                 <td class="d-none d-sm-table-cell">
-                                    @if ($customer->user_image != '')
-                                        <img src="{{ asset('assets/customers/' . $customer->user_image) }}" width="60"
-                                            height="60" alt="{{ $customer->full_name }}">
-                                    @else
-                                        <img src="{{ asset('assets/customers/noImage.png') }}" width="60"
-                                            height="60" alt="{{ $customer->full_name }}">
-                                    @endif
+                                    @php
+                                        if ($customer->user_image != null) {
+                                            $customer_img = asset('assets/customers/' . $customer->user_image);
+
+                                            if (
+                                                !file_exists(public_path('assets/customers/' . $customer->user_image))
+                                            ) {
+                                                $customer_img = asset('assets/customers/no_image_found.webp');
+                                            }
+                                        } else {
+                                            $customer_img = asset('assets/customers/no_image_found.webp');
+                                        }
+                                    @endphp
+                                    <img src="{{ $customer_img }}" width="60" height="60"
+                                        alt="{{ $customer->full_name }}">
+
                                 </td>
                                 <td>
                                     {{ $customer->full_name }} <br>

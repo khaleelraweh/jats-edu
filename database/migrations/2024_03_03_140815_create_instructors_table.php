@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->json('specialization');
-            $table->string('image')->nullable();
 
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();

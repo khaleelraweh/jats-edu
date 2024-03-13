@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\backend\InstructorRequest;
 use App\Models\Instructor;
-use App\Models\Tag;
 use Intervention\Image\Facades\Image;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
@@ -39,9 +38,8 @@ class InstructorController extends Controller
             return redirect('admin/index');
         }
 
-        $tags = Tag::whereStatus(1)->get(['id', 'name']);
 
-        return view('backend.instructors.create', compact('tags'));
+        return view('backend.instructors.create');
     }
 
     public function store(InstructorRequest $request)
@@ -51,38 +49,32 @@ class InstructorController extends Controller
             return redirect('admin/index');
         }
 
-        $input['title']          =   $request->title;
-        $input['description']        =   $request->description;
-        $input['url']            =   $request->url;
-        $input['target']         =   $request->target;
-        $input['section']        =   1;
+        $input['name']          =   $request->name;
+        $input['specialization']        =   $request->specialization;
+        $input['email']            =   $request->email;
+        $input['phone']         =   $request->phone;
 
-        $input['showInfo']            =   $request->showInfo;
         $input['status']            =   $request->status;
         $input['created_by']        =   auth()->user()->full_name;
         $published_on = $request->published_on . ' ' . $request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        $mainSlider = Slider::create($input);
+        $instructor = Instructor::create($input);
 
-        $mainSlider->tags()->attach($request->tags);
 
         if ($request->images && count($request->images) > 0) {
             $i = 1;
             foreach ($request->images as $image) {
-                $file_name = $mainSlider->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $instructor->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
-                $path = public_path('assets/main_sliders/' . $file_name);
+                $path = public_path('assets/instructors/' . $file_name);
 
-                // Image::make($image->getRealPath())->resize(500,null,function($constraint){
-                //     $constraint->aspectRatio();
-                // })->save($path,100);
 
                 Image::make($image->getRealPath())->save($path);
 
-                $mainSlider->photos()->create([
+                $instructor->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -94,7 +86,7 @@ class InstructorController extends Controller
             }
         }
 
-        if ($mainSlider) {
+        if ($instructor) {
             return redirect()->route('admin.instructors.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
@@ -117,24 +109,23 @@ class InstructorController extends Controller
     }
 
 
-    public function edit($mainSlider)
+    public function edit($instructor)
     {
         if (!auth()->user()->ability('admin', 'update_instructors')) {
             return redirect('admin/index');
         }
 
-        $mainSlider =  Slider::where('id', $mainSlider)->first();
-        $tags = Tag::whereStatus(1)->get(['id', 'name']);
-        return view('backend.instructors.edit', compact('tags', 'mainSlider'));
+        $instructor =  Slider::where('id', $instructor)->first();
+        return view('backend.instructors.edit', compact('mainSlider'));
     }
 
-    public function update(InstructorRequest $request,  $mainSlider)
+    public function update(InstructorRequest $request,  $instructor)
     {
         if (!auth()->user()->ability('admin', 'update_instructors')) {
             return redirect('admin/index');
         }
 
-        $mainSlider = Slider::where('id', $mainSlider)->first();
+        $instructor = Slider::where('id', $instructor)->first();
 
 
         $input['title']          =   $request->title;
@@ -152,16 +143,15 @@ class InstructorController extends Controller
         $published_on = $request->published_on . ' ' . $request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
-        $mainSlider->update($input);
-        $mainSlider->tags()->sync($request->tags);
+        $instructor->update($input);
 
         if ($request->images && count($request->images) > 0) {
 
-            $i = $mainSlider->photos->count() + 1;
+            $i = $instructor->photos->count() + 1;
 
             foreach ($request->images as $image) {
 
-                $file_name = $mainSlider->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_name = $instructor->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/main_sliders/' . $file_name);
@@ -171,7 +161,7 @@ class InstructorController extends Controller
                 // })->save($path,100);
 
                 Image::make($image->getRealPath())->save($path);
-                $mainSlider->photos()->create([
+                $instructor->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -183,7 +173,7 @@ class InstructorController extends Controller
             }
         }
 
-        if ($mainSlider) {
+        if ($instructor) {
             return redirect()->route('admin.instructors.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -197,17 +187,17 @@ class InstructorController extends Controller
 
 
 
-    public function destroy($mainSlider)
+    public function destroy($instructor)
     {
         if (!auth()->user()->ability('admin', 'delete_instructors')) {
             return redirect('admin/index');
         }
 
-        $mainSlider = Slider::where('id', $mainSlider)->first();
+        $instructor = Slider::where('id', $instructor)->first();
 
 
-        if ($mainSlider->photos->count() > 0) {
-            foreach ($mainSlider->photos as $photo) {
+        if ($instructor->photos->count() > 0) {
+            foreach ($instructor->photos as $photo) {
                 if (File::exists('assets/main_sliders/' . $photo->file_name)) {
                     unlink('assets/main_sliders/' . $photo->file_name);
                 }
@@ -215,9 +205,9 @@ class InstructorController extends Controller
             }
         }
 
-        $mainSlider->delete();
+        $instructor->delete();
 
-        if ($mainSlider) {
+        if ($instructor) {
             return redirect()->route('admin.instructors.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'

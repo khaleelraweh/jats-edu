@@ -9,7 +9,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_slider') }}
+                    {{ __('panel.add_new_instructor') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -21,8 +21,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.main_sliders.index') }}">
-                            {{ __('panel.show_main_slider') }}
+                        <a href="{{ route('admin.instructors.index') }}">
+                            {{ __('panel.show_instructors') }}
                         </a>
                     </li>
                 </ul>
@@ -43,26 +43,19 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.main_sliders.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.instructors.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    @foreach (config('locales.languages') as $key => $val)
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link {{ $loop->index == 0 ? 'active' : '' }}" id="{{ $key }}-tab"
-                                data-bs-toggle="tab" data-bs-target="#{{ $key }}" type="button" role="tab"
-                                aria-controls="{{ $key }}" aria-selected="true">
-                                {{ __('panel.content_tab') }}({{ $key }})
-                            </button>
-                        </li>
-                    @endforeach
-
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="url-tab" data-bs-toggle="tab" data-bs-target="#url" type="button"
-                            role="tab" aria-controls="url" aria-selected="true">{{ __('panel.url_tab') }}
+                        <button class="nav-link active" id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
+                            type="button" role="tab" aria-controls="content"
+                            aria-selected="true">{{ __('panel.content_tab') }}
                         </button>
                     </li>
+
+
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
@@ -76,110 +69,112 @@
                 <div class="tab-content" id="myTabContent">
 
                     {{-- Content Tab --}}
-                    @foreach (config('locales.languages') as $key => $val)
-                        <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }}" id="{{ $key }}"
-                            role="tabpanel" aria-labelledby="{{ $key }}">
 
-                            <div class="row">
+                    <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-                                {{-- البيانات الاساسية --}}
-                                <div class=" {{ $loop->index == 0 ? 'col-md-7' : '' }} col-sm-12 ">
+                        <div class="row">
 
-                                    {{-- slider title field --}}
+                            {{-- البيانات الاساسية --}}
+                            <div class="col-md-7 col-sm-12 ">
+
+                                {{-- instructor name field --}}
+                                @foreach (config('locales.languages') as $key => $val)
                                     <div class="row ">
                                         <div class="col-sm-12 pt-3">
                                             <div class="form-group">
-                                                <label for="title[{{ $key }}]">
-                                                    {{ __('panel.title') }}
+                                                <label for="name[{{ $key }}]">
+                                                    {{ __('panel.name') }}
                                                     {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                                 </label>
-                                                <input type="text" name="title[{{ $key }}]"
-                                                    id="title[{{ $key }}]" value="{{ old('title.' . $key) }}"
+                                                <input type="text" name="name[{{ $key }}]"
+                                                    id="name[{{ $key }}]" value="{{ old('name.' . $key) }}"
                                                     class="form-control">
-                                                @error('title.' . $key)
+                                                @error('name.' . $key)
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
                                     </div>
+                                @endforeach
 
-                                    {{--  description field --}}
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 pt-4">
-                                            <label for="description[{{ $key }}]">
-                                                {{ __('panel.description') }}
-                                                {{ __('panel.in') }} {{ __('panel.' . $key) }}
-                                            </label>
-                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
-                                            {!! old('description.' . $key) !!}
-                                        </textarea>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {{-- مرفق الصور  --}}
-                                <div class=" {{ $loop->index == 0 ? 'col-md-5' : 'd-none' }}  col-sm-12 ">
-
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 pt-4">
-                                            <label for="images">
-                                                {{ __('panel.image') }}
-                                                /
-                                                {{ __('panel.images') }}
-                                            </label>
-                                            <span>(<small>w:750 , h:1550 </small>)</span>
-                                            <br>
-                                            <div class="file-loading">
-                                                <input type="file" name="images[]" id="slider_images"
-                                                    class="file-input-overview" multiple="multiple">
-                                                @error('images')
+                                {{-- instructor specialization field --}}
+                                @foreach (config('locales.languages') as $key => $val)
+                                    <div class="row ">
+                                        <div class="col-sm-12 pt-3">
+                                            <div class="form-group">
+                                                <label for="specialization[{{ $key }}]">
+                                                    {{ __('panel.specialization') }}
+                                                    {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                                </label>
+                                                <input type="text" name="specialization[{{ $key }}]"
+                                                    id="specialization[{{ $key }}]"
+                                                    value="{{ old('specialization.' . $key) }}" class="form-control">
+                                                @error('specialization.' . $key)
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
                                     </div>
+                                @endforeach
 
+                                {{-- email --}}
+                                <div class="row ">
+                                    <div class="col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="email">{{ __('panel.email') }}</label>
+                                            <input type="text" id="email" name="email" value="{{ old('email') }}"
+                                                class="form-control">
+                                            @error('email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- phone --}}
+                                <div class="row ">
+                                    <div class="col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="phone">{{ __('panel.phone') }}</label>
+                                            <input type="text" id="phone" name="phone" value="{{ old('phone') }}"
+                                                class="form-control">
+                                            @error('phone')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
-                        </div>
-                    @endforeach
 
-                    {{-- url Tab --}}
-                    <div class="tab-pane fade" id="url" role="tabpanel" aria-labelledby="url-tab">
+                            {{-- مرفق الصور  --}}
+                            <div class="col-md-5 col-sm-12 ">
 
-                        {{-- url fields --}}
-                        <div class="row">
-                            {{-- url field --}}
-                            <div class="col-md-12 col-sm-12 pt-4">
-                                <label for="url">{{ __('panel.url_link') }}</label>
-                                <input type="text" name="url" id="url" value="{{ old('url') }}"
-                                    class="form-control" placeholder="http://youtlinks.com ">
-                                @error('url')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 pt-4">
+                                        <label for="images">
+                                            {{ __('panel.image') }}
+                                            /
+                                            {{ __('panel.images') }}
+                                        </label>
+                                        <span>(<small>w:750 , h:1550 </small>)</span>
+                                        <br>
+                                        <div class="file-loading">
+                                            <input type="file" name="images[]" id="slider_images"
+                                                class="file-input-overview" multiple="multiple">
+                                            @error('images')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
 
-                        {{--  target  fields --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4 pt-4">
-                                <label for="target">{{ __('panel.url_target') }} </label>
-                                <select name="target" class="form-control">
-                                    <option value="_self" {{ old('target') == '1' ? 'selected' : null }}>
-                                        {{ __('panel.in_the_same_tab') }}
-                                    </option>
-                                    <option value="_blanck" {{ old('target') == '0' ? 'selected' : null }}>
-                                        {{ __('panel.in_new_tab') }}
-                                    </option>
-                                </select>
-                                @error('target')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
                         </div>
-
                     </div>
+
+
 
                     {{-- Published Tab --}}
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">

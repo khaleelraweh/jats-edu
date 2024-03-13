@@ -65,20 +65,13 @@
                         @forelse ($instructors as $instructor)
                             <tr>
                                 <td>
-                                    @php
-                                        if ($instructor->image != null) {
-                                            $instructor_img = asset('assets/instructors/' . $instructor->image);
-
-                                            if (!file_exists(public_path('assets/instructors/' . $instructor->image))) {
-                                                $instructor_img = asset('assets/instructors/no_image_found.webp');
-                                            }
-                                        } else {
-                                            $instructor_img = asset('assets/instructors/no_image_found.webp');
-                                        }
-                                    @endphp
-
-                                    <img src="{{ $instructor_img }}" width="60" height="60"
-                                        alt="{{ $instructor->name }}">
+                                    @if ($instructor->firstMedia)
+                                        <img src="{{ asset('assets/instructors/' . $instructor->firstMedia->file_name) }}"
+                                            width="60" height="60" alt="{{ $instructor->title }}">
+                                    @else
+                                        <img src="{{ asset('assets/noImage.png') }}" width="60" height="60"
+                                            alt="{{ $instructor->title }}">
+                                    @endif
                                 </td>
                                 <td>{{ $instructor->name }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $instructor->created_by ?? 'admin' }}</td>

@@ -576,6 +576,21 @@ return [
     // ........... commons in Account Settings   ....... //
 
 
+    ##############################################################
+
+    // =============  Manage Instructors  ===============//
+    'manage_instructors'                => 'Manage Instructors',
+
+    // --------------- Instructor Settings  --------------//
+    'show_instructors'                   => 'Instructors',
+    'add_new_instructor'                  => 'Add New Instructor',
+    'edit_existing_instructor'            => 'Edit Existing Instructor ',
+
+
+    // ........... commons in Insturctor   ....... //
+    'name'                              =>  'Name',
+
+
 
     ##############################################################
 

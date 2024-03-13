@@ -39,6 +39,7 @@ use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\PaymentController;
+use App\Http\Controllers\InstructorController;
 use App\Models\News;
 use Illuminate\Support\Facades\auth;
 use Illuminate\Support\Facades\Route;
@@ -223,8 +224,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('support_menus', SupportMenuController::class);
 
         Route::post('main_sliders/remove-image', [MainSliderController::class, 'remove_image'])->name('main_sliders.remove_image');
-        // Route::get('main_sliders/{main_slider}/edit', [MainSliderController::class, 'edit'])->name('main_sliders.edit');
         Route::resource('main_sliders', MainSliderController::class);
+
+        Route::post('instructor/remove-image', [InstructorController::class, 'remove_image'])->name('instructors.remove_image');
+        Route::resource('instructors', InstructorController::class);
 
 
         Route::post('advertisor_sliders/remove-image', [AdvertisorSliderController::class, 'remove_image'])->name('advertisor_sliders.remove_image');

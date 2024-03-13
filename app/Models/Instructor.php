@@ -6,6 +6,8 @@ use App\Helper\MySlugHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Nicolaslopezj\Searchable\SearchableTrait;
 use Spatie\Sluggable\HasTranslatableSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -77,5 +79,17 @@ class Instructor extends Model
     public function courses(): BelongsToMany
     {
         return $this->belongsToMany(Course::class);
+    }
+
+    // to get only first one media elemet
+    public function firstMedia(): MorphOne
+    {
+        return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort', 'asc');
+    }
+
+    // one product may have more than one photo
+    public function photos(): MorphMany
+    {
+        return $this->morphMany(Photo::class, 'imageable');
     }
 }

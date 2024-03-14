@@ -34,7 +34,7 @@ class FeaturedCoursesComponent extends Component
         $course_categories_menu = CourseCategory::withCount('courses')->get();
 
         // $featured_courses = Course::with('firstMedia', 'lastMedia', 'courseCategory')->inRandomOrder()->Active()->ActiveCourseCategory()
-        $featured_courses = Course::with('firstMedia', 'lastMedia', 'courseCategory')
+        $featured_courses = Course::with('firstMedia', 'lastMedia', 'courseCategory', 'users')
             ->inRandomOrder()
             ->Active()
             ->ActiveCourseCategory()

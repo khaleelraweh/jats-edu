@@ -58,6 +58,9 @@
 
 
             <div class="row">
+
+                {{-- {{ dd($featured_courses) }} --}}
+
                 @forelse ($featured_courses->take($amount) as $featured_course)
                     <div class="col-12 col-md-6 col-xl-3 pb-4 pb-md-7" style="padding-right:15px;padding-left:15px;">
                         <!-- Card -->
@@ -125,25 +128,24 @@
                                 </span>
                             </div>
 
+                            @php
+                                $lecturer = $featured_course->users->first();
+                            @endphp
+
+                            {{-- {{ $lecturer->first_name }} --}}
 
                             <!-- Footer -->
-                            @php
-                                if ($featured_course->photos->last()->file_name != null) {
-                                    $featured_course_avator = asset(
-                                        'assets/courses/' . $featured_course->photos->last()->file_name,
-                                    );
 
-                                    if (
-                                        !file_exists(
-                                            public_path(
-                                                'assets/courses/' . $featured_course->photos->last()->file_name,
-                                            ),
-                                        )
-                                    ) {
-                                        $featured_course_avator = asset('assets/courses/no_image_found.webp');
+
+                            @php
+                                if ($lecturer->user_image != null) {
+                                    $lecturer_img = asset('assets/lecturers/' . $lecturer->user_image);
+
+                                    if (!file_exists(public_path('assets/lecturers/' . $lecturer->user_image))) {
+                                        $lecturer_img = asset('assets/lecturers/no_image_found.webp');
                                     }
                                 } else {
-                                    $featured_course_avator = asset('assets/courses/no_image_found.webp');
+                                    $lecturer_img = asset('assets/lecturers/no_image_found.webp');
                                 }
                             @endphp
 
@@ -151,7 +153,7 @@
                                 <a href="#" class="d-block">
                                     <div
                                         class="avatar avatar-xl badge-float position-absolute top-0 right-0 mt-n6 me-5 rounded-circle shadow border border-white border-w-lg">
-                                        <img src="{{ $featured_course_avator }}" alt="..."
+                                        <img src="{{ $lecturer_img }}" alt="..."
                                             class="avatar-img rounded-circle">
                                     </div>
                                 </a>

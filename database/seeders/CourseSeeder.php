@@ -26,7 +26,8 @@ class CourseSeeder extends Seeder
         // Get active users
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', 'lecturer');
-        })->active()->inRandomOrder()->take(3)->get();
+        })->active()->inRandomOrder()->take(10)->get();
+
 
         // Get active course categories
         $categories = CourseCategory::active()->pluck('id');
@@ -138,8 +139,15 @@ class CourseSeeder extends Seeder
             // Attach instructors
             $course->instructors()->attach($instructors->pluck('id')->toArray());
 
+            // Shuffle the collection of users
+            $shuffledUsers = $users->shuffle();
+
+            // Take the first 3 users from the shuffled collection
+            $selectedUsers = $shuffledUsers->take(3);
+
             // Attach users
-            $course->users()->attach($users->pluck('id')->toArray());
+            $course->users()->attach($selectedUsers->pluck('id')->toArray());
+
 
             // Create topics for the course
             $course->topics()->createMany($topicsList);

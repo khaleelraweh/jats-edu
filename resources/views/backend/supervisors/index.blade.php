@@ -74,14 +74,20 @@
                                     }
                                 @endphp
 
-                                {{-- {{ dd($supervisor_img) }} --}}
                                 <img src="{{ $supervisor_img }}" width="60" height="60"
                                     alt="{{ $supervisor->full_name }}">
 
                             </td>
                             <td>
+
+
                                 {{ $supervisor->full_name }} <br>
-                                <strong>{{ $supervisor->username }}</strong>
+                                <small>
+                                    <span class="bg-info px-2 text-white rounded-pill">
+                                        {{ __('panel.username') }}:
+                                        <strong>{{ $supervisor->username }}</strong>
+                                    </span>
+                                </small>
 
                             </td>
                             <td class="d-none d-sm-table-cell">

@@ -56,12 +56,25 @@
                 </div>
 
                 <!-- COURSE META
-                                                                                                                                                                                                                                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
-                            <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
-                                class="rounded-circle" width="68" height="68">
+                            @php
+                                $lecturer = $course->users->first();
+
+                                if ($lecturer->user_image != null) {
+                                    $lecturer_img = asset('assets/lecturers/' . $lecturer->user_image);
+
+                                    if (!file_exists(public_path('assets/lecturers/' . $lecturer->user_image))) {
+                                        $lecturer_img = asset('assets/lecturers/no_image_found.webp');
+                                    }
+                                } else {
+                                    $lecturer_img = asset('assets/lecturers/no_image_found.webp');
+                                }
+                            @endphp
+                            <img src="{{ $lecturer_img }}" alt="..." class="rounded-circle" width="68"
+                                height="68">
                         </div>
                     </div>
 
@@ -91,7 +104,7 @@
                 </div>
 
                 <!-- COURSE INFO TAB
-                                                                                                                                                                                                                                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
                 <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 my-8 pt-1" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview"
@@ -170,8 +183,6 @@
                             @foreach ($course->topics as $topic)
                                 <li class="col-sm-6">{{ $topic->course_topic }}</li>
                             @endforeach
-
-
                         </div>
 
                         <h3 class="mb-5">{{ __('transf.txt_requirements') }}</h3>
@@ -1280,11 +1291,17 @@
 
                     <div class="tab-pane fade" id="pills-instructor" role="tabpanel"
                         aria-labelledby="pills-instructor-tab">
-                        <h3 class="mb-6">{{ __('transf.txt_about_this_instructor') }}</h3>
+                        <h3 class="mb-6">
+                            {{ __('transf.txt_about_this_instructor') }}
+                        </h3>
 
                         <div class="d-flex align-items-center mb-6">
                             <div class="d-inline-block rounded-circle border me-6 p-2">
                                 <div class="avatar avatar-size-120">
+
+
+
+
                                     <img src="{{ asset('frontend/assets/img/avatars/avatar-2.jpg') }}" alt="..."
                                         class="avatar-img rounded-circle">
                                 </div>
@@ -1466,8 +1483,7 @@
                         <ul class="list-unstyled pt-2">
                             <li class="media d-flex">
                                 <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                                    <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
-                                        class="avatar-img rounded-circle">
+                                    <img src="{{ $lecturer_img }}" alt="..." class="avatar-img rounded-circle">
                                 </div>
                                 <div class="media-body flex-grow-1">
                                     <div class="d-md-flex align-items-center mb-5">
@@ -1570,7 +1586,7 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR FILTER
-                                                                                                                                                                                                                                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
                 <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
                     {{-- <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-1" --}}
                     <a href="{{ $course->video_promo }}" class="d-block sk-thumbnail rounded mb-1" data-fancybox>

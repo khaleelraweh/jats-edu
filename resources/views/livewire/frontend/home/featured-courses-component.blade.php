@@ -128,14 +128,10 @@
                                 </span>
                             </div>
 
+                            <!-- Footer -->
                             @php
                                 $lecturer = $featured_course->users->first();
                             @endphp
-
-                            {{-- {{ $lecturer->first_name }} --}}
-
-                            <!-- Footer -->
-
 
                             @php
                                 if ($lecturer->user_image != null) {

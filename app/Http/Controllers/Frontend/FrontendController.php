@@ -57,7 +57,7 @@ class FrontendController extends Controller
     public function course_single($slug)
     {
         // Retrieve the text from the database
-        $course  = Course::with('courseCategory', 'photos', 'instructors')
+        $course  = Course::with('courseCategory', 'photos', 'users')
             ->where('slug->' . app()->getLocale(), $slug)
             ->Active()
             ->ActiveCourseCategory()

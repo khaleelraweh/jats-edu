@@ -10,7 +10,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_customer') }}
+                    {{ __('panel.edit_existing_lecturer') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -23,7 +23,7 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.lecturers.index') }}">
-                            {{ __('panel.show_customers') }}
+                            {{ __('panel.show_lecturers') }}
                         </a>
                     </li>
                 </ul>
@@ -163,8 +163,8 @@
                                         <br>
                                         <span class="form-text text-muted">{{ __('panel.user_image_size') }} </span>
                                         <div class="file-loading">
-                                            <input type="file" name="user_image" id="customer_image"
-                                                value="{{ old('customer_image') }}" class="file-input-overview ">
+                                            <input type="file" name="user_image" id="lecturer_image"
+                                                value="{{ old('lecturer_image') }}" class="file-input-overview ">
                                             <span class="form-text text-muted">{{ __('panel.user_image_size') }} </span>
                                             @error('user_image')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -253,7 +253,7 @@
     {{-- #user_image is the id in file input file above  --}}
     <script>
         $(function() {
-            $("#customer_image").fileinput({
+            $("#lecturer_image").fileinput({
                 theme: "fa5",
                 maxFileCount: 1,
                 allowedFileTypes: ['image'],
@@ -274,7 +274,7 @@
                             caption: "{{ $lecturer->user_image }}",
                             size: '1111',
                             width: "120px",
-                            url: "{{ route('admin.lecturers.remove_image', ['customer_id' => $lecturer->id, '_token' => csrf_token()]) }}",
+                            url: "{{ route('admin.lecturers.remove_image', ['lecturer_id' => $lecturer->id, '_token' => csrf_token()]) }}",
                             key: {{ $lecturer->id }}
                         }
                     @endif

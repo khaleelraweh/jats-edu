@@ -160,8 +160,8 @@
                                         <br>
                                         <span class="form-text text-muted">{{ __('panel.user_image_size') }} </span>
                                         <div class="file-loading">
-                                            <input type="file" name="user_image" id="customer_image"
-                                                value="{{ old('customer_image') }}" class="file-input-overview ">
+                                            <input type="file" name="user_image" id="lecturer_image"
+                                                value="{{ old('lecturer_image') }}" class="file-input-overview ">
                                             <span class="form-text text-muted">{{ __('panel.user_image_size') }} </span>
                                             @error('user_image')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -242,7 +242,7 @@
     {{-- #user_image is the id in file input file above  --}}
     <script>
         $(function() {
-            $("#customer_image").fileinput({
+            $("#lecturer_image").fileinput({
                 theme: "fa5",
                 maxFileCount: 1,
                 allowedFileTypes: ['image'],

@@ -76,9 +76,16 @@ class LecturersController extends Controller
         //Attach the new lecturer to role lecturer
         $lecturer->attachRole(Role::whereName('lecturer')->first()->id);
 
+        if ($lecturer) {
+            return redirect()->route('admin.lecturers.index')->with([
+                'message' => __('panel.created_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
         return redirect()->route('admin.lecturers.index')->with([
-            'message' => 'created successfully',
-            'alert-type' => 'success'
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
         ]);
     }
 
@@ -134,9 +141,16 @@ class LecturersController extends Controller
 
         $lecturer->update($input);
 
+        if ($lecturer) {
+            return redirect()->route('admin.lecturers.index')->with([
+                'message' => __('panel.updated_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
         return redirect()->route('admin.lecturers.index')->with([
-            'message' => 'Updated successfully',
-            'alert-type' => 'success'
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
         ]);
     }
 
@@ -157,9 +171,16 @@ class LecturersController extends Controller
         //second : delete customer from users table
         $lecturer->delete();
 
+        if ($lecturer) {
+            return redirect()->route('admin.lecturers.index')->with([
+                'message' => __('panel.deleted_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
         return redirect()->route('admin.lecturers.index')->with([
-            'message' => 'Deleted successfully',
-            'alert-type' => 'success'
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
         ]);
     }
 
@@ -170,7 +191,7 @@ class LecturersController extends Controller
             return redirect('admin/index');
         }
 
-        $lecturer = User::findOrFail($request->customer_id);
+        $lecturer = User::findOrFail($request->lecturer_id);
         if (File::exists('assets/lecturers/' . $lecturer->user_image)) {
             unlink('assets/lecturers/' . $lecturer->user_image);
             $lecturer->user_image = null;

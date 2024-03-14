@@ -100,7 +100,7 @@ class CourseController extends Controller
                 $topics_list[$i]['course_topic'] = $request->course_topic[$i];
             }
 
-            dd($topics_list);
+            // dd($topics_list);
             $topics = $course->topics()->createMany($topics_list);
         }
         // course topics start 

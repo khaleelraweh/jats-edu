@@ -159,7 +159,7 @@ return [
     'txt_requirements'                                  =>  'Requirements',
     'txt_related_courses'                               =>  'Related Courses',
     'txt_related_courses_desc'                          =>  'Discover your perfect program in our courses.',
-    'txt_about_this_instructor'                         =>  'About the instructor',
+    'txt_about_this_instructors'                         =>  'About the instructors',
     'txt_instructor_rating'                             =>  'Instructor rating',
     'txt_reviews'                                       =>  'Reviews',
     'txt_students'                                      =>  'Students',

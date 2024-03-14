@@ -22,7 +22,7 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.customers.index') }}">
+                        <a href="{{ route('admin.lecturers.index') }}">
                             {{ __('panel.show_customers') }}
                         </a>
                     </li>
@@ -45,7 +45,7 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form action="{{ route('admin.customers.update', $customer->id) }}" method="post"
+            <form action="{{ route('admin.lecturers.update', $lecturer->id) }}" method="post"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
@@ -82,7 +82,7 @@
                                         <div class="form-group">
                                             <label for="first_name"> {{ __('panel.first_name') }}</label>
                                             <input type="text" id="first_name" name="first_name"
-                                                value="{{ old('first_name', $customer->first_name) }}" class="form-control"
+                                                value="{{ old('first_name', $lecturer->first_name) }}" class="form-control"
                                                 placeholder="">
                                             @error('first_name')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -93,7 +93,7 @@
                                         <div class="form-group">
                                             <label for="last_name">{{ __('panel.last_name') }}</label>
                                             <input type="text" id="last_name" name="last_name"
-                                                value="{{ old('last_name', $customer->last_name) }}" class="form-control"
+                                                value="{{ old('last_name', $lecturer->last_name) }}" class="form-control"
                                                 placeholder="">
                                             @error('last_name')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -107,7 +107,7 @@
                                         <div class="form-group">
                                             <label for="username">{{ __('panel.user_name') }}</label>
                                             <input type="text" id="username" name="username"
-                                                value="{{ old('username', $customer->username) }}" class="form-control"
+                                                value="{{ old('username', $lecturer->username) }}" class="form-control"
                                                 placeholder="">
                                             @error('username')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -132,7 +132,7 @@
                                         <div class="form-group">
                                             <label for="email">{{ __('panel.email') }}</label>
                                             <input type="text" id="email" name="email"
-                                                value="{{ old('email', $customer->email) }}" class="form-control"
+                                                value="{{ old('email', $lecturer->email) }}" class="form-control"
                                                 placeholder="">
                                             @error('email')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -144,7 +144,7 @@
                                         <div class="form-group">
                                             <label for="mobile">{{ __('panel.mobile') }}</label>
                                             <input type="text" id="mobile" name="mobile"
-                                                value="{{ old('mobile', $customer->mobile) }}" class="form-control"
+                                                value="{{ old('mobile', $lecturer->mobile) }}" class="form-control"
                                                 placeholder="">
                                             @error('mobile')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -185,7 +185,7 @@
                                 <div class="form-group">
                                     <label for="published_on"> {{ __('panel.published_date') }}</label>
                                     <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', \Carbon\Carbon::parse($customer->published_on)->Format('Y-m-d')) }}"
+                                        value="{{ old('published_on', \Carbon\Carbon::parse($lecturer->published_on)->Format('Y-m-d')) }}"
                                         class="form-control">
                                     @error('published_on')
                                         <span class="text-danger">{{ $message }}</span>
@@ -199,7 +199,7 @@
                                 <div class="form-group">
                                     <label for="published_on_time">{{ __('panel.published_time') }}</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', \Carbon\Carbon::parse($customer->published_on)->Format('h:i A')) }}"
+                                        value="{{ old('published_on_time', \Carbon\Carbon::parse($lecturer->published_on)->Format('h:i A')) }}"
                                         class="form-control">
                                     @error('published_on_time')
                                         <span class="text-danger">{{ $message }}</span>
@@ -216,11 +216,11 @@
                                 </label>
                                 <select name="status" class="form-control">
                                     <option value="1"
-                                        {{ old('status', $customer->status) == '1' ? 'selected' : null }}>
+                                        {{ old('status', $lecturer->status) == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}
                                     </option>
                                     <option value="0"
-                                        {{ old('status', $customer->status) == '0' ? 'selected' : null }}>
+                                        {{ old('status', $lecturer->status) == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
@@ -262,20 +262,20 @@
                 showUpload: false,
                 overwriteInitial: false,
                 initialPreview: [
-                    @if ($customer->user_image != '')
-                        "{{ asset('assets/users/' . $customer->user_image) }}",
+                    @if ($lecturer->user_image != '')
+                        "{{ asset('assets/lecturers/' . $lecturer->user_image) }}",
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($customer->user_image != '')
+                    @if ($lecturer->user_image != '')
                         {
-                            caption: "{{ $customer->user_image }}",
+                            caption: "{{ $lecturer->user_image }}",
                             size: '1111',
                             width: "120px",
-                            url: "{{ route('admin.customers.remove_image', ['customer_id' => $customer->id, '_token' => csrf_token()]) }}",
-                            key: {{ $customer->id }}
+                            url: "{{ route('admin.lecturers.remove_image', ['customer_id' => $lecturer->id, '_token' => csrf_token()]) }}",
+                            key: {{ $lecturer->id }}
                         }
                     @endif
                 ]

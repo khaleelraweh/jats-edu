@@ -82,24 +82,24 @@ class LecturersController extends Controller
         ]);
     }
 
-    public function show(User $customer)
+    public function show(User $lecturer)
     {
         if (!auth()->user()->ability('admin', 'display_lecturers')) {
             return redirect('admin/index');
         }
-        return view('backend.lecturers.show', compact('customer'));
+        return view('backend.lecturers.show', compact('lecturer'));
     }
 
-    public function edit(User $customer)
+    public function edit(User $lecturer)
     {
         if (!auth()->user()->ability('admin', 'update_lecturers')) {
             return redirect('admin/index');
         }
 
-        return view('backend.lecturers.edit', compact('customer'));
+        return view('backend.lecturers.edit', compact('lecturer'));
     }
 
-    public function update(LecturerRequest $request, User $customer)
+    public function update(LecturerRequest $request, User $lecturer)
     {
         if (!auth()->user()->ability('admin', 'update_lecturers')) {
             return redirect('admin/index');
@@ -118,8 +118,8 @@ class LecturersController extends Controller
 
         if ($image = $request->file('user_image')) {
 
-            if ($customer->user_image != null && File::exists('assets/lecturers/' . $customer->user_image)) {
-                unlink('assets/lecturers/' . $customer->user_image);
+            if ($lecturer->user_image != null && File::exists('assets/lecturers/' . $lecturer->user_image)) {
+                unlink('assets/lecturers/' . $lecturer->user_image);
             }
 
             $file_name = Str::slug($request->username) . '_' . time() .  "." . $image->getClientOriginalExtension();
@@ -132,7 +132,7 @@ class LecturersController extends Controller
             $input['user_image'] = $file_name;
         }
 
-        $customer->update($input);
+        $lecturer->update($input);
 
         return redirect()->route('admin.lecturers.index')->with([
             'message' => 'Updated successfully',
@@ -140,22 +140,22 @@ class LecturersController extends Controller
         ]);
     }
 
-    public function destroy(User $customer)
+    public function destroy(User $lecturer)
     {
         if (!auth()->user()->ability('admin', 'delete_lecturers')) {
             return redirect('admin/index');
         }
 
         // first: delete image from users path 
-        if (File::exists('assets/lecturers/' . $customer->user_image)) {
-            unlink('assets/lecturers/' . $customer->user_image);
+        if (File::exists('assets/lecturers/' . $lecturer->user_image)) {
+            unlink('assets/lecturers/' . $lecturer->user_image);
         }
 
-        $customer->deleted_by = auth()->user()->full_name;
-        $customer->save();
+        $lecturer->deleted_by = auth()->user()->full_name;
+        $lecturer->save();
 
         //second : delete customer from users table
-        $customer->delete();
+        $lecturer->delete();
 
         return redirect()->route('admin.lecturers.index')->with([
             'message' => 'Deleted successfully',
@@ -170,15 +170,15 @@ class LecturersController extends Controller
             return redirect('admin/index');
         }
 
-        $customer = User::findOrFail($request->customer_id);
-        if (File::exists('assets/lecturers/' . $customer->user_image)) {
-            unlink('assets/lecturers/' . $customer->user_image);
-            $customer->user_image = null;
-            $customer->save();
+        $lecturer = User::findOrFail($request->customer_id);
+        if (File::exists('assets/lecturers/' . $lecturer->user_image)) {
+            unlink('assets/lecturers/' . $lecturer->user_image);
+            $lecturer->user_image = null;
+            $lecturer->save();
         }
-        if ($customer->user_image != null) {
-            $customer->user_image = null;
-            $customer->save();
+        if ($lecturer->user_image != null) {
+            $lecturer->user_image = null;
+            $lecturer->save();
         }
 
         return true;
@@ -187,14 +187,14 @@ class LecturersController extends Controller
     public function get_lecturers()
     {
         //get user where has relation with roles and this role its name is customer
-        $customers = User::whereHas('roles', function ($query) {
-            $query->where('name', 'customer');
+        $lecturers = User::whereHas('roles', function ($query) {
+            $query->where('name', 'lecturer');
         })
             ->when(\request()->input('query') != '', function ($query) {
                 $query->search(\request()->input('query'));
             })
             ->get(['id', 'first_name', 'last_name', 'email'])->toArray();
 
-        return response()->json($customers);
+        return response()->json($lecturers);
     }
 }

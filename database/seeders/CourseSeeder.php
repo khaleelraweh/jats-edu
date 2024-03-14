@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\Instructor;
+use App\Models\User;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 
@@ -21,6 +22,11 @@ class CourseSeeder extends Seeder
 
         // Get active instructors
         $instructors = Instructor::active()->inRandomOrder()->take(3)->get();
+
+        // Get active users
+        $users = User::whereHas('roles', function ($query) {
+            $query->where('name', 'lecturer');
+        })->active()->inRandomOrder()->take(3)->get();
 
         // Get active course categories
         $categories = CourseCategory::active()->pluck('id');
@@ -131,6 +137,9 @@ class CourseSeeder extends Seeder
 
             // Attach instructors
             $course->instructors()->attach($instructors->pluck('id')->toArray());
+
+            // Attach users
+            $course->users()->attach($users->pluck('id')->toArray());
 
             // Create topics for the course
             $course->topics()->createMany($topicsList);

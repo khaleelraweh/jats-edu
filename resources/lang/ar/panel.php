@@ -950,6 +950,10 @@ return [
     'f_paypal'                                          =>  'باي بال',
 
 
+    // added new 
+    'username'                                     => 'إسم المستخدم',
+
+
 
 
 

@@ -973,4 +973,9 @@ return [
     'f_paypal'                                           =>  'PayPal',
 
 
+
+    // added new 
+    'username'                                     => 'username',
+
+
 ];

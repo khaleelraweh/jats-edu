@@ -79,7 +79,12 @@
                                 </td>
                                 <td>
                                     {{ $customer->full_name }} <br>
-                                    <strong>{{ $customer->username }}</strong>
+                                    <small>
+                                        <span class="bg-info px-2 text-white rounded-pill">
+                                            {{ __('panel.username') }}:
+                                            <strong>{{ $customer->username }}</strong>
+                                        </span>
+                                    </small>
 
                                 </td>
                                 <td class="d-none d-sm-table-cell">

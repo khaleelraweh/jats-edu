@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Backend\CurrenciesController;
 use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\backend\LecturersController;
 use App\Http\Controllers\Backend\LocaleController;
 use App\Http\Controllers\Backend\MainSliderController;
 use App\Http\Controllers\Backend\NewsController;
@@ -170,6 +171,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::post('supervisors/remove-image', [SupervisorController::class, 'remove_image'])->name('supervisors.remove_image');
         Route::resource('supervisors', SupervisorController::class);
+
+        Route::post('lecturers/remove-image', [LecturersController::class, 'remove_image'])->name('lecturers.remove_image');
+        Route::resource('lecturers', LecturersController::class);
 
         Route::resource('customer_addresses', CustomerAddressController::class);
 

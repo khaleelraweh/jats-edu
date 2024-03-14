@@ -226,6 +226,12 @@ return [
     'add_new_supervisor'            => 'إضافة حساب مشرف جديد',
     'edit_existing_supervisor'      => 'تعديل بيانات حساب مشرف ',
 
+
+    // --------------- lecturers  --------------//
+    'show_lecturers'              => 'المحاضرين',
+    'add_new_lecturer'            => 'إضافة حساب محاضر جديد',
+    'edit_existing_lecturer'      => 'تعديل بيانات حساب محاضر ',
+
     // ........... commons in Users   ....... //
     'customer_name'                 =>  'إسم العميل ',
     'advertisor_name'               =>  'إسم المشرف',

@@ -59,12 +59,12 @@ class EntrustSeeder extends Seeder
 
 
         //LecturerRole
-        $lecturerRole = new Role();
-        $lecturerRole->name         = 'lecturer';
-        $lecturerRole->display_name = 'course lecturer'; // optional
-        $lecturerRole->description  = 'lecturer is the person who  lecture courses'; // optional
-        $lecturerRole->allowed_route = null;
-        $lecturerRole->save();
+        // $lecturerRole = new Role();
+        // $lecturerRole->name         = 'lecturer';
+        // $lecturerRole->display_name = 'course lecturer'; // optional
+        // $lecturerRole->description  = 'lecturer is the person who  lecture courses'; // optional
+        // $lecturerRole->allowed_route = null;
+        // $lecturerRole->save();
 
 
         //------------- 02- Users  ------------//
@@ -111,24 +111,24 @@ class EntrustSeeder extends Seeder
         ]);
 
         // Create lecturer
-        $lecturer = User::create([
-            'first_name' => 'lecturer',
-            'last_name' => 'person',
-            'username' => 'lecturer',
-            'email' => 'lecturer@gmail.com',
-            'email_verified_at' => now(),
-            'mobile' => '00967772036134',
-            'password' => bcrypt('123123123'),
-            'user_image' => 'avator.svg',
-            'status' => 1,
-            'remember_token' => Str::random(10),
-        ]);
+        // $lecturer = User::create([
+        //     'first_name' => 'lecturer',
+        //     'last_name' => 'person',
+        //     'username' => 'lecturer',
+        //     'email' => 'lecturer@gmail.com',
+        //     'email_verified_at' => now(),
+        //     'mobile' => '00967772036134',
+        //     'password' => bcrypt('123123123'),
+        //     'user_image' => 'avator.svg',
+        //     'status' => 1,
+        //     'remember_token' => Str::random(10),
+        // ]);
 
         //------------- 03- AttachRoles To  Users  ------------//
         $admin->attachRole($adminRole);
         $supervisor->attachRole($supervisorRole);
         $customer->attachRole($customerRole);
-        $lecturer->attachRole($lecturerRole);
+        // $lecturer->attachRole($lecturerRole);
 
 
         //------------- 04-  Create random customer and  AttachRole to customerRole  ------------//
@@ -153,24 +153,24 @@ class EntrustSeeder extends Seeder
 
 
         //------------- 04-2-  Create random lecturer and  AttachRole to lecturerRole  ------------//
-        for ($i = 1; $i <= 20; $i++) {
-            //Create random lecturer
-            $random_lecturer = User::create([
-                'first_name' => $faker->firstName,
-                'last_name' => $faker->lastName,
-                'username' => $faker->unique()->userName,
-                'email' => $faker->unique()->email,
-                'email_verified_at' => now(),
-                'mobile' => '0096777' . $faker->numberBetween(1000000, 9999999),
-                'password' => bcrypt('123123123'),
-                'user_image' => 'avator.svg',
-                'status' => 1,
-                'remember_token' => Str::random(10),
-            ]);
+        // for ($i = 1; $i <= 20; $i++) {
+        //     //Create random lecturer
+        //     $random_lecturer = User::create([
+        //         'first_name' => $faker->firstName,
+        //         'last_name' => $faker->lastName,
+        //         'username' => $faker->unique()->userName,
+        //         'email' => $faker->unique()->email,
+        //         'email_verified_at' => now(),
+        //         'mobile' => '0096777' . $faker->numberBetween(1000000, 9999999),
+        //         'password' => bcrypt('123123123'),
+        //         'user_image' => 'avator.svg',
+        //         'status' => 1,
+        //         'remember_token' => Str::random(10),
+        //     ]);
 
-            //Add lecturerRole to Randomlecturer
-            $random_lecturer->attachRole($lecturerRole);
-        } //end for
+        //     //Add lecturerRole to Randomlecturer
+        //     $random_lecturer->attachRole($lecturerRole);
+        // } 
 
 
         //------------- 05- Permission  ------------//

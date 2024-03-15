@@ -175,6 +175,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('lecturers/remove-image', [LecturersController::class, 'remove_image'])->name('lecturers.remove_image');
         Route::resource('lecturers', LecturersController::class);
 
+
         Route::resource('customer_addresses', CustomerAddressController::class);
 
         Route::resource('countries', CountryController::class);

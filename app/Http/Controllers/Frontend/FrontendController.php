@@ -36,10 +36,15 @@ class FrontendController extends Controller
             )
             ->get();
 
-        // $instructors = Instructor::with('courses')->Active()->take(8)->get();
-        $instructors = User::where('status', true)->take(8)->get();
+        $instructors = Instructor::with('courses')->Active()->take(8)->get();
+        // $instructors = User::where('status', true)->take(8)->get();
 
-        return view('frontend.index', compact('main_sliders', 'instructors'));
+        // Get lecturers
+        $lecturers = User::whereHas('roles', function ($query) {
+            $query->where('name', 'lecturer');
+        })->active()->inRandomOrder()->take(10)->get();
+
+        return view('frontend.index', compact('main_sliders', 'instructors', 'lecturers'));
     }
     public function home()
     {

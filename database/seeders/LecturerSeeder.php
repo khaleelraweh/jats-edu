@@ -65,6 +65,13 @@ class LecturerSeeder extends Seeder
                 'user_image' => 'avator.svg',
                 'status' => 1,
                 'remember_token' => Str::random(10),
+                //for lecturer info start
+                'description'          =>  $faker->text(),
+                'facebook'          =>  'www.facebook.com',
+                'twitter'           =>  'www.twitter.com',
+                'instagram'         =>  'www.instagram.com',
+                'linkedin'          =>  'www.linkedin.com',
+                //for lecturer info end 
             ]);
 
             //Add lecturerRole to Randomlecturer

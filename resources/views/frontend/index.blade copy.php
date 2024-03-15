@@ -941,7 +941,7 @@
                                 </a>
                                 <span class="font-size-d-sm">
                                     @if (count($lecturer->specializations) > 0)
-                                        @foreach ($lecturer->specializations->take(2) as $specialization)
+                                        @foreach ($lecturer->specializations as $specialization)
                                             {{ $specialization->name }}
 
                                             @if (!$loop->last)

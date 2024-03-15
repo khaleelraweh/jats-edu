@@ -27,12 +27,20 @@ return new class extends Migration
             $table->rememberToken();
             $table->boolean('receive_emails')->default(true);
 
-             // will be use always
-             $table->string('created_by')->nullable(); 
-             $table->string('updated_by')->nullable(); 
-             $table->string('deleted_by')->nullable();
-             $table->softDeletes();
-             // end of will be use always
+            // new info for lecturer start  
+            $table->string('description')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('linkedin')->nullable();
+            // new info for lecturer start  
+
+            // will be use always
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
+            $table->softDeletes();
+            // end of will be use always
 
             $table->timestamps();
         });

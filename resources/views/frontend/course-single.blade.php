@@ -53,7 +53,7 @@
                 </div>
 
                 <!-- COURSE META
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -101,7 +101,7 @@
                 </div>
 
                 <!-- COURSE INFO TAB
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
                 <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 my-8 pt-1" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview"
@@ -1502,55 +1502,62 @@
                             </div>
                         </div>
 
+                        {{-- course reviews  --}}
+
+
+
                         <ul class="list-unstyled pt-2">
-                            <li class="media d-flex">
-                                <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                                    <img src="{{ $lecturer_img }}" alt="..." class="avatar-img rounded-circle">
-                                </div>
-                                <div class="media-body flex-grow-1">
-                                    <div class="d-md-flex align-items-center mb-5">
-                                        <div class="me-auto mb-4 mb-md-0">
-                                            <h5 class="mb-0">Oscar Cafeo</h5>
-                                            <p class="font-size-sm font-italic">Beautiful courses</p>
-                                        </div>
-                                        <div class="star-rating">
-                                            <div class="rating" style="width:100%;"></div>
-                                        </div>
+                            @foreach ($course->reviews as $review)
+                                <li class="media d-flex">
+                                    <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
+                                        @php
+                                            if ($review->user->user_image != null) {
+                                                $review_user_image = asset(
+                                                    'assets/customers/' . $review->user->user_image,
+                                                );
+
+                                                if (
+                                                    !file_exists(
+                                                        public_path('assets/customers/' . $review->user->user_image),
+                                                    )
+                                                ) {
+                                                    $review_user_image = asset('assets/customers/no_image_found.webp');
+                                                }
+                                            } else {
+                                                $review_user_image = asset('assets/customers/no_image_found.webp');
+                                            }
+                                        @endphp
+
+                                        <img src="{{ $review_user_image }}" alt="..."
+                                            class="avatar-img rounded-circle">
                                     </div>
-                                    <p class="mb-6 line-height-md">This course was well organized and covered a lot more
-                                        details than any other Figma courses. I really enjoy it. One suggestion is that it
-                                        can be much better if we could complete the prototype together. Since we created 24
-                                        frames, I really want to test it on Figma mirror to see all the connections. Could
-                                        you please let me take a look at the complete prototype?</p>
-                                </div>
-                            </li>
-                            <li class="media d-flex">
-                                <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                                    <img src="{{ $lecturer_img }}" alt="..." class="avatar-img rounded-circle">
-                                </div>
-                                <div class="media-body flex-grow-1">
-                                    <div class="d-md-flex align-items-center mb-5">
-                                        <div class="me-auto mb-4 mb-md-0">
-                                            <h5 class="mb-0">Alex Morgan</h5>
-                                            <p class="font-size-sm font-italic">Beautiful courses</p>
+
+                                    <div class="media-body flex-grow-1">
+                                        <div class="d-md-flex align-items-center mb-5">
+                                            <div class="me-auto mb-4 mb-md-0">
+                                                <h5 class="mb-0">{{ $review->user->full_name }}</h5>
+                                                <p class="font-size-sm font-italic">{{ $review->title }}</p>
+                                            </div>
+                                            <div class="star-rating">
+                                                <div class="rating" style="width:100%;"></div>
+                                            </div>
                                         </div>
-                                        <div class="star-rating">
-                                            <div class="rating" style="width:100%;"></div>
-                                        </div>
+                                        <p class="mb-6 line-height-md">
+                                            {{ $review->message }}
+                                        </p>
                                     </div>
-                                    <p class="mb-6 line-height-md">This course was well organized and covered a lot more
-                                        details than any other Figma courses. I really enjoy it. One suggestion is that it
-                                        can be much better if we could complete the prototype together. Since we created 24
-                                        frames, I really want to test it on Figma mirror to see all the connections. Could
-                                        you please let me take a look at the complete prototype?</p>
-                                </div>
-                            </li>
+                                </li>
+                            @endforeach
+
+
                         </ul>
 
+                        {{-- course reviews --}}
                         <div class="border shadow rounded p-6 p-md-9">
                             <h3 class="mb-2">{{ __('transf.txt_add_reviews_rate') }}</h3>
                             <div class="">{{ __('transf.txt_what_is_it_like_to_course') }}</div>
-                            <form>
+                            <form action="{{ route('admin.course_reviews.store') }}" method="POST">
+                                @csrf
                                 <div class="clearfix">
                                     <fieldset class="slect-rating mb-3">
                                         <input type="radio" id="star5" name="rating" value="5" />
@@ -1587,13 +1594,13 @@
 
                                 <div class="form-group mb-6">
                                     <label for="exampleInputTitle1">{{ __('transf.txt_review_title') }}</label>
-                                    <input type="text" class="form-control placeholder-1" id="exampleInputTitle1"
-                                        placeholder="{{ __('transf.txt_courses') }}">
+                                    <input type="text" name="title" class="form-control placeholder-1"
+                                        id="exampleInputTitle1" placeholder="{{ __('transf.txt_courses') }}">
                                 </div>
 
                                 <div class="form-group mb-6">
                                     <label for="exampleFormControlTextarea1">{{ __('transf.txt_review_content') }}</label>
-                                    <textarea class="form-control placeholder-1" id="exampleFormControlTextarea1" rows="6"
+                                    <textarea name="message" class="form-control placeholder-1" id="exampleFormControlTextarea1" rows="6"
                                         placeholder="{{ __('transf.txt_content') }}"></textarea>
                                 </div>
 
@@ -1607,7 +1614,7 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR FILTER
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
                 <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
                     {{-- <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-1" --}}
                     <a href="{{ $course->video_promo }}" class="d-block sk-thumbnail rounded mb-1" data-fancybox>

@@ -26,7 +26,14 @@ class CourseReviewRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        //
+                        'name'      =>  'required|max:255',
+                        'user_id'   =>  'nullable',
+                        'course_id' =>  'required',
+                        'email'     =>  'required|email',
+                        'title'     =>  'required',
+                        'message'   =>  'required',
+                        'rating'    =>  'required|numeric',
+                        'status'    =>  'required',
                     ];
                 }
             case 'PUT':

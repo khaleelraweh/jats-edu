@@ -33,7 +33,6 @@ class CourseReviewController extends Controller
         if (!auth()->user()->ability('admin', 'create_course_reviews')) {
             return redirect('admin/index');
         }
-        //
     }
 
     public function store(CourseReviewRequest $request)
@@ -41,6 +40,9 @@ class CourseReviewController extends Controller
         if (!auth()->user()->ability('admin', 'create_course_reviews')) {
             return redirect('admin/index');
         }
+
+        $input['title']                  =   $request->title;
+
 
 
         return redirect()->route('admin.course_reviews.index')->with([

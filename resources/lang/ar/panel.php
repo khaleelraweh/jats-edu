@@ -567,6 +567,27 @@ return [
     // ........... commons in Insturctor   ....... //
     'name'                              =>  'الإسم',
 
+    ##############################################################
+
+    // =============  Managelecturers  ===============//
+    'managelecturers'                => 'إدارة المحاضرين',
+
+    // ---------------lecturer Settings  --------------//
+    'showlecturers'                   => 'المحاضرين',
+    'add_newlecturer'                  => 'إضافة محاضر جديد',
+    'edit_existinglecturer'            => 'تعديل بيانات المحاضر ',
+
+
+    // ........... commons in Insturctor   ....... //
+    'name'                              =>  'الإسم',
+    'lecturer_description'              =>  'لمحة عن المدرب ',
+    'lecturer_motavation'               =>  'كلمة تحفيزية للطلاب',
+    'motavation_tab'                    =>  'تحفيز',
+    'social_tab'                        =>  'روابط',
+    'facebook'                          =>  'فيسبوك',
+    'twitter'                           =>  'تويتر',
+    'instagram'                         =>  'إنستجرام',
+    'linkedin'                          =>  'لنكد إن',
 
 
 

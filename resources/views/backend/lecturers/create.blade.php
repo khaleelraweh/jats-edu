@@ -61,6 +61,24 @@
                         </button>
                     </li>
 
+
+                    {{-- motavation tab --}}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="motavation-tab" data-bs-toggle="tab" data-bs-target="#motavation"
+                            type="button" role="tab" aria-controls="motavation"
+                            aria-selected="false">{{ __('panel.motavation_tab') }}
+                        </button>
+                    </li>
+
+                    {{-- social tab --}}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="social-tab" data-bs-toggle="tab" data-bs-target="#social"
+                            type="button" role="tab" aria-controls="social"
+                            aria-selected="false">{{ __('panel.social_tab') }}
+                        </button>
+                    </li>
+
+                    {{-- publish tab --}}
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
                             type="button" role="tab" aria-controls="published"
@@ -130,8 +148,8 @@
                                     <div class="col-sm-12 col-md-6 pt-4">
                                         <div class="form-group">
                                             <label for="email">{{ __('panel.email') }}</label>
-                                            <input type="text" id="email" name="email" value="{{ old('email') }}"
-                                                class="form-control" placeholder="">
+                                            <input type="text" id="email" name="email"
+                                                value="{{ old('email') }}" class="form-control" placeholder="">
                                             @error('email')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -186,6 +204,94 @@
                                             @enderror
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- motavation content --}}
+                    <div class="tab-pane fade a" id="motavation" role="tabpanel" aria-labelledby="motavation-tab">
+
+                        {{-- lecturer description field --}}
+                        <div class="row">
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="col-sm-12 col-md-6 pt-3">
+                                    <label for="description[{{ $key }}]">
+                                        {{ __('panel.lecturer_description') }}
+                                        {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                    </label>
+                                    <textarea name="description[{{ $key }}]" style="height: 120px" class="form-control summernote">{!! old('description.' . $key) !!}</textarea>
+                                    @error('course_category_id')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            @endforeach
+                        </div>
+
+                        {{-- lecturer motavation field --}}
+                        <div class="row">
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="col-sm-12 col-md-6 pt-3">
+                                    <label for="motavation[{{ $key }}]">
+                                        {{ __('panel.lecturer_motavation') }}
+                                        {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                    </label>
+                                    <textarea name="motavation[{{ $key }}]" rows="10" style="height: 120px"
+                                        class="form-control summernote">{!! old('motavation.' . $key) !!}</textarea>
+                                    @error('course_category_id')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            @endforeach
+                        </div>
+
+                    </div>
+
+                    {{-- social content --}}
+                    <div class="tab-pane fade a" id="social" role="tabpanel" aria-labelledby="social-tab">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <div class="form-group">
+                                    <label for="facebook">{{ __('panel.facebook') }}</label>
+                                    <input type="text" id="facebook" name="facebook" value="{{ old('facebook') }}"
+                                        class="form-control">
+                                    @error('facebook')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <div class="form-group">
+                                    <label for="twitter">{{ __('panel.twitter') }}</label>
+                                    <input type="text" id="twitter" name="twitter" value="{{ old('twitter') }}"
+                                        class="form-control">
+                                    @error('twitter')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <div class="form-group">
+                                    <label for="instagram">{{ __('panel.instagram') }}</label>
+                                    <input type="text" id="instagram" name="instagram"
+                                        value="{{ old('instagram') }}" class="form-control">
+                                    @error('instagram')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <div class="form-group">
+                                    <label for="linkedin">{{ __('panel.linkedin') }}</label>
+                                    <input type="text" id="linkedin" name="linkedin" value="{{ old('linkedin') }}"
+                                        class="form-control">
+                                    @error('linkedin')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

@@ -28,8 +28,8 @@ return new class extends Migration
             $table->boolean('receive_emails')->default(true);
 
             // new info for lecturer start  
-            $table->string('description')->nullable();
-            $table->string('motavation')->nullable();
+            $table->json('description')->nullable();
+            $table->json('motavation')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();

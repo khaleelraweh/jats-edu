@@ -59,6 +59,14 @@ class LecturersController extends Controller
         $input['email_verified_at'] = now();
         $input['mobile'] = $request->mobile;
         $input['password'] = bcrypt($request->password);
+
+        $input['description'] = $request->description;
+        $input['motavation'] = $request->motavation;
+        $input['facebook'] = $request->facebook;
+        $input['twitter'] = $request->twitter;
+        $input['instagram'] = $request->instagram;
+        $input['linkedin'] = $request->linkedin;
+
         $input['status'] = $request->status;
         $input['created_by'] = auth()->user()->full_name;
 
@@ -130,6 +138,15 @@ class LecturersController extends Controller
         if (trim($request->password) != '') {
             $input['password'] = bcrypt($request->password);
         }
+
+        $input['description'] = $request->description;
+        $input['motavation'] = $request->motavation;
+        $input['facebook'] = $request->facebook;
+        $input['twitter'] = $request->twitter;
+        $input['instagram'] = $request->instagram;
+        $input['linkedin'] = $request->linkedin;
+
+
         $input['status'] = $request->status;
         $input['updated_by'] = auth()->user()->full_name;
 

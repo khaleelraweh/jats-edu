@@ -11,22 +11,34 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Mindscms\Entrust\Traits\EntrustUserWithPermissionsTrait;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Spatie\Translatable\HasTranslations;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, EntrustUserWithPermissionsTrait, SearchableTrait;
+    use HasApiTokens, HasFactory, Notifiable, EntrustUserWithPermissionsTrait, SearchableTrait, HasTranslations;
 
 
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'username',
-        'mobile',
-        'user_image',
-        'status',
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
+    public $translatable = ['description', 'motavation'];
+
+
+
+    protected function asJson($value)
+    {
+        return json_encode($value, JSON_UNESCAPED_UNICODE);
+    }
+
+    // protected $fillable = [
+    //     'first_name',
+    //     'last_name',
+    //     'username',
+    //     'mobile',
+    //     'user_image',
+    //     'status',
+    //     'email',
+    //     'password',
+
+    // ];
 
     protected $searchable = [
         'columns' => [

@@ -592,6 +592,28 @@ return [
     'name'                              =>  'Name',
 
 
+    ##############################################################
+
+    // =============  Manage lecturer  ===============//
+    'manage_lecturers'                => 'Manage Lecturers',
+
+    // --------------- lecturer Settings  --------------//
+    'show_lecturers'                   => 'Lecturers',
+    'add_new_lecturer'                  => 'Add New Lecturer',
+    'edit_existing_lecturer'            => 'Edit Existing Lecturer ',
+
+
+    // ........... commons in Insturctor   ....... //
+    'name'                              =>  'Name',
+    'lecturer_description'              =>  'Lecturer Description',
+    'lecturer_motavation'               =>  'Lecturer Motavation',
+    'motavation_tab'                    =>  'Motavation',
+    'social_tab'                        =>  'Social',
+    'facebook'                          =>  'Facebook',
+    'twitter'                           =>  'twitter',
+    'instagram'                         =>  'Instagram',
+    'linkedin'                          =>  'Linkedin',
+
 
     ##############################################################
 

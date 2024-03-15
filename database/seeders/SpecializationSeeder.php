@@ -17,20 +17,20 @@ class SpecializationSeeder extends Seeder
     public function run()
     {
         // Get active users
-        $users = User::whereHas('roles', function ($query) {
-            $query->where('name', 'lecturer');
-        })->pluck('id');
+        // $users = User::whereHas('roles', function ($query) {
+        //     $query->where('name', 'lecturer');
+        // })->pluck('id');
 
 
         $Desiner = Specialization::create(['name' => ['ar' => 'مصمم', 'en'    =>  'Desiner']]);
-        $Desiner->users()->sync($users->random(3));
+        // $Desiner->users()->sync($users->random(3));
 
 
         $Developer = Specialization::create(['name' => ['ar' => 'مبرمج', 'en'    =>  'Developer']]);
-        $Developer->users()->sync($users->random(3));
+        // $Developer->users()->sync($users->random(3));
 
 
         $softEngineer = Specialization::create(['name' => ['ar' => 'مهندس برمجيات', 'en'    =>  'SoftWare Engineer']]);
-        $softEngineer->users()->sync($users->random(3));
+        // $softEngineer->users()->sync($users->random(3));
     }
 }

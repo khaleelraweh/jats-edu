@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Role;
+use App\Models\Specialization;
 use App\Models\User;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -20,6 +21,8 @@ class LecturerSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
+
+        $specializations = Specialization::query()->pluck('id');
 
         //LecturerRole
         $lecturerRole = new Role();
@@ -45,6 +48,9 @@ class LecturerSeeder extends Seeder
 
         $lecturer->attachRole($lecturerRole);
 
+        // Add   specializations to lecturer
+        $lecturer->specializations()->sync($specializations->random(1, 3));
+
         //------------- 04-2-  Create random lecturer and  AttachRole to lecturerRole  ------------//
         for ($i = 1; $i <= 20; $i++) {
             //Create random lecturer
@@ -63,6 +69,9 @@ class LecturerSeeder extends Seeder
 
             //Add lecturerRole to Randomlecturer
             $random_lecturer->attachRole($lecturerRole);
+
+            // Add  specializations to Randomlecturer
+            $random_lecturer->specializations()->sync($specializations->random(rand(1, 3)));
         }
     }
 }

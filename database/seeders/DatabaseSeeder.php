@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
 
         // $this->call(WorldSeeder::class);
         // $this->call(WorldStatusSeeder::class);
+
         $this->call(EntrustSeeder::class);
+        $this->call(SpecializationSeeder::class);
         $this->call(LecturerSeeder::class);
         // $this->call(UserAddressSeeder::class); //This will be only for user khaleel user
         $this->call(ProductCategorySeeder::class);
@@ -58,7 +60,5 @@ class DatabaseSeeder extends Seeder
         $this->call(PostSeeder::class);
 
         $this->call(CardCodeSeeder::class);
-
-        $this->call(SpecializationSeeder::class);
     }
 }

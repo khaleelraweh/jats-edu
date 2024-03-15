@@ -53,7 +53,7 @@
                 </div>
 
                 <!-- COURSE META
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -101,7 +101,7 @@
                 </div>
 
                 <!-- COURSE INFO TAB
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
                 <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 my-8 pt-1" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview"
@@ -1398,16 +1398,11 @@
                                 </div>
                             </div>
 
-                            <p class="mb-6 line-height-md">I am a UI/UX designer and an iOS developer with having almost
-                                six
-                                years of experience in application development and also ten years of graphic design and User
-                                Interface design.</p>
-                            <p class="mb-6 line-height-md">My passion is helping people to learn new skills in a short-term
-                                course and achieve their goals. I've been designing for more than ten years and developing
-                                iOS
-                                apps for four years. It's my honor if I could help you learn to program in a simple word. I
-                                currently am teaching iOS 13, Swift 5, ARKit 3, Sketch 5, Illustrator, Photoshop, Cinema 4D,
-                                HTML, CSS, JavaScript, etc.
+                            <p class="mb-6 line-height-md">
+                                {!! $lecturer->description !!}
+                            </p>
+                            <p class="mb-6 line-height-md">
+                                {!! $lecturer->motavation !!}
                             </p>
                         @endforeach
                     </div>
@@ -1612,7 +1607,7 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR FILTER
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
                 <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
                     {{-- <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-1" --}}
                     <a href="{{ $course->video_promo }}" class="d-block sk-thumbnail rounded mb-1" data-fancybox>

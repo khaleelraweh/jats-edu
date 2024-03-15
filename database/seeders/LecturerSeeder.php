@@ -67,6 +67,7 @@ class LecturerSeeder extends Seeder
                 'remember_token' => Str::random(10),
                 //for lecturer info start
                 'description'          =>  $faker->text(),
+                'motavation'          =>  $faker->text(),
                 'facebook'          =>  'www.facebook.com',
                 'twitter'           =>  'www.twitter.com',
                 'instagram'         =>  'www.instagram.com',

@@ -29,6 +29,7 @@ return new class extends Migration
 
             // new info for lecturer start  
             $table->string('description')->nullable();
+            $table->string('motavation')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();

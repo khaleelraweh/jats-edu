@@ -150,6 +150,24 @@
                                     </div>
 
                                 </div>
+                                {{-- specialization row --}}
+                                <div class="row pt-4">
+
+                                    <div class="col-md-12 col-sm-12 ">
+
+                                        <label for="specializations"> {{ __('panel.specializations') }} </label>
+                                        <select name="specializations[]" class="form-control select2 child"
+                                            multiple="multiple">
+                                            @forelse ($specializations as $specialization)
+                                                <option value="{{ $specialization->id }}"
+                                                    {{ in_array($specialization->id, old('specializations', [])) ? 'selected' : null }}>
+                                                    {{ $specialization->name }}</option>
+                                            @empty
+                                            @endforelse
+                                        </select>
+                                    </div>
+
+                                </div>
                             </div>
 
                             <div class="col-sm-12 col-md-4">

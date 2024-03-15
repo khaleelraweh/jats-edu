@@ -7,6 +7,7 @@ use App\Http\Requests\backend\LecturerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\Role;
+use App\Models\Specialization;
 use App\Models\User;
 use Intervention\Image\Facades\Image;
 use illuminate\support\Str;
@@ -41,7 +42,8 @@ class LecturersController extends Controller
         if (!auth()->user()->ability('admin', 'create_lecturers')) {
             return redirect('admin/index');
         }
-        return view('backend.lecturers.create');
+        $specializations = Specialization::get(['id', 'name']);
+        return view('backend.lecturers.create', compact('specializations'));
     }
 
     public function store(LecturerRequest $request)
@@ -60,7 +62,6 @@ class LecturersController extends Controller
         $input['status'] = $request->status;
         $input['created_by'] = auth()->user()->full_name;
 
-
         if ($image = $request->file('user_image')) {
             $file_name = Str::slug($request->username) . '_' . time() .  "." . $image->getClientOriginalExtension();
             $path = public_path('assets/lecturers/' . $file_name);
@@ -75,6 +76,11 @@ class LecturersController extends Controller
 
         //Attach the new lecturer to role lecturer
         $lecturer->attachRole(Role::whereName('lecturer')->first()->id);
+
+        //add specifications
+        if (isset($request->specializations) && count($request->specializations) > 0) {
+            $lecturer->specializations()->sync($request->specializations);
+        }
 
         if ($lecturer) {
             return redirect()->route('admin.lecturers.index')->with([
@@ -103,7 +109,11 @@ class LecturersController extends Controller
             return redirect('admin/index');
         }
 
-        return view('backend.lecturers.edit', compact('lecturer'));
+        $specializations = Specialization::get(['id', 'name']);
+
+        $lecturerSpecializations = $lecturer->specializations->pluck(['id'])->toArray();
+
+        return view('backend.lecturers.edit', compact('lecturer', 'specializations', 'lecturerSpecializations'));
     }
 
     public function update(LecturerRequest $request, User $lecturer)
@@ -140,6 +150,11 @@ class LecturersController extends Controller
         }
 
         $lecturer->update($input);
+
+        //add specifications
+        if (isset($request->specializations) && count($request->specializations) > 0) {
+            $lecturer->specializations()->sync($request->specializations);
+        }
 
         if ($lecturer) {
             return redirect()->route('admin.lecturers.index')->with([

@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CourseCategoriesController;
 use App\Http\Controllers\Backend\CourseController;
+use App\Http\Controllers\Backend\CourseReviewController;
 use App\Http\Controllers\Backend\CurrenciesController;
 use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\CustomerController;
@@ -189,6 +190,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('shipping_companies', ShippingCompanyController::class);
 
         Route::resource('product_reviews', ProductReviewController::class);
+
+        Route::resource('course_reviews', CourseReviewController::class);
 
         Route::post('payment_methods/remove-image', [PaymentMethodController::class, 'remove_image'])->name('payment_methods.remove_image');
         Route::resource('payment_methods', PaymentMethodController::class);

@@ -163,7 +163,7 @@ class Course extends Model
 
     public function reviews(): HasMany
     {
-        return $this->hasMany(ProductReview::class);
+        return $this->hasMany(CourseReview::class);
     }
 
     public function orders(): BelongsToMany

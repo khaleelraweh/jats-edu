@@ -147,6 +147,7 @@ return [
     'certificate'               =>  'Certificate',
     'certificate_yes'           =>  'Yes',
     'certificate_no'           =>  'No',
+    'specializations'           =>  'Specializations',
 
 
     // Course Topics  

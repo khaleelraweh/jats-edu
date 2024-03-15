@@ -29,8 +29,6 @@ class FrontendController extends Controller
     public function index()
     {
         $main_sliders = Slider::with('firstMedia')
-            // ->MainSliders()
-            // ->inRandomOrder()
             ->orderBy('published_on', 'desc')
             ->Active()
             ->take(

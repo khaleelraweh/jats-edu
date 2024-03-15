@@ -146,6 +146,8 @@ return [
     'certificate'               =>  'الشهادة',
     'certificate_yes'           =>  'نعم',
     'certificate_no'            =>  'لا',
+    'specializations'           =>  'التخصصات',
+
 
 
     // course topics  

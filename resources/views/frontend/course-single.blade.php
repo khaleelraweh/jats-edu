@@ -34,8 +34,6 @@
         </div>
     </div>
 
-
-
     <!-- COURSE -->
     <div class="container">
         <div class="row mb-8">
@@ -55,7 +53,7 @@
                 </div>
 
                 <!-- COURSE META
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -103,7 +101,7 @@
                 </div>
 
                 <!-- COURSE INFO TAB
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
                 <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 my-8 pt-1" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview"
@@ -1602,7 +1600,7 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR FILTER
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
                 <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
                     {{-- <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-1" --}}
                     <a href="{{ $course->video_promo }}" class="d-block sk-thumbnail rounded mb-1" data-fancybox>

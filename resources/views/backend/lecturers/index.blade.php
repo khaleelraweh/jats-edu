@@ -49,6 +49,7 @@
                         <tr>
                             <th class="d-none d-sm-table-cell">{{ __('panel.image') }}</th>
                             <th>{{ __('panel.customer_name') }}</th>
+                            <th class="d-none d-sm-table-cell">{{ __('panel.specializations') }} </th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.email') }} {{ __('panel.and') }}
                                 {{ __('panel.mobile') }} </th>
                             <th>{{ __('panel.status') }}</th>
@@ -87,6 +88,20 @@
                                     </small>
 
                                 </td>
+                                <td>
+                                    @if (count($customer->specializations) > 0)
+                                        @foreach ($customer->specializations as $specialization)
+                                            {{ $specialization->name }}
+
+                                            @if (!$loop->last)
+                                                &
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        not set yet
+                                    @endif
+
+                                </td>
                                 <td class="d-none d-sm-table-cell">
                                     {{ $customer->email }} <br>
                                     {{ $customer->mobile }}
@@ -114,13 +129,13 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center">{{ __('panel.no_found_item') }}</td>
+                                <td colspan="7" class="text-center">{{ __('panel.no_found_item') }}</td>
                             </tr>
                         @endforelse
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="6">
+                            <td colspan="7">
                                 <div class="float-right">
                                     {!! $lecturers->appends(request()->all())->links() !!}
                                 </div>

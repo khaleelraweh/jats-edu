@@ -20,7 +20,7 @@ class LecturersController extends Controller
         }
 
         //get users where has roles 
-        $lecturers = User::whereHas('roles', function ($query) {
+        $lecturers = User::with('specializations')->whereHas('roles', function ($query) {
             //this roles its name is customer
             $query->where('name', 'lecturer');
         })

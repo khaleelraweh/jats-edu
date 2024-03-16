@@ -81,7 +81,7 @@ class CourseReviewComponent extends Component
         // Refresh the rating counts after adding a new review
         $this->mount();
 
-        // $this->emit('reviewAdded');
+        $this->emit('reviewAdded');
 
         $this->reset(['rating', 'title', 'message']);
 

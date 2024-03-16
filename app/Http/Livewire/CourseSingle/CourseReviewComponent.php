@@ -37,18 +37,11 @@ class CourseReviewComponent extends Component
 
     public function render()
     {
-
-        $course = Course::find($this->courseId);
-
-        // Generate WhatsApp share URL
-        $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($course->name . ': ' . route('frontend.course_single', $course->slug));
-
-
         $courseRating = CourseReview::where('course_id', $this->courseId)->pluck('rating');
         $averageRating = $courseRating->avg();
 
         $reviews = CourseReview::where('course_id', $this->courseId)->get();
-        return view('livewire.course-single.course-review-component', compact('reviews', 'averageRating', 'whatsappShareUrl'));
+        return view('livewire.course-single.course-review-component', compact('reviews', 'averageRating'));
     }
 
     public function storeReview()

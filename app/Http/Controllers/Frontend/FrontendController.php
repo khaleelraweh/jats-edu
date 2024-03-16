@@ -86,17 +86,7 @@ class FrontendController extends Controller
             ->get();
 
         // Generate WhatsApp share URL
-        // $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($course->name . ': ' . route('frontend.course_single', $course->slug));
-
-
-
-
-        $imageUrl = asset('https://jats-edu.com/assets/courses/1.jpg');
-
-        // Generate WhatsApp share URL with image and text
-        $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($course->name . ': ' . route('frontend.course_single', $course->slug)) . '&amp;image=' . urlencode($imageUrl);
-
-
+        $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($course->name . ': ' . route('frontend.course_single', $course->slug));
 
         return view('frontend.course-single', compact('course', 'exposedText', 'hiddenText', 'related_courses', 'whatsappShareUrl'));
     }

@@ -161,7 +161,7 @@ return [
     'txt_requirements'                                  =>  'متطلبات',
     'txt_related_courses'                               =>  'الدورات ذات الصلة',
     'txt_related_courses_desc'                          =>  'اكتشف برنامجك المثالي في دوراتنا.',
-    'txt_about_this_instructor'                         =>  'عن المدربين',
+    'txt_about_this_instructors'                         =>  'عن المدربين',
     'txt_instructor_rating'                             =>  'تقييم المدرب',
     'txt_reviews'                                       =>  'التعليقات',
     'txt_students'                                      =>  'طلاب',

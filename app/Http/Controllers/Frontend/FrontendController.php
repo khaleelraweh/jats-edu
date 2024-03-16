@@ -90,29 +90,8 @@ class FrontendController extends Controller
 
 
 
-        if ($course->photos->first()->file_name != null) {
-            $course_img = asset('assets/courses/' . $course->photos->first()->file_name);
 
-            if (!file_exists(public_path('assets/courses/' . $course->photos->first()->file_name))) {
-                $course_img = asset('assets/courses/no_image_found.webp');
-            }
-        } else {
-            $course_img = asset('assets/courses/no_image_found.webp');
-        }
-
-        if ($course->photos->last()->file_name != null) {
-            $course_cover = asset('assets/courses/' . $course->photos->last()->file_name);
-
-            if (!file_exists(public_path('assets/courses/' . $course->photos->last()->file_name))) {
-                $course_cover = asset('assets/courses/no_image_found.webp');
-            }
-        } else {
-            $course_cover = asset('assets/courses/no_image_found.webp');
-        }
-
-
-        // Get the URL of the image associated with the course
-        $imageUrl = $course_cover; // Replace with the actual path to your course image
+        $imageUrl = asset('https://jats-edu.com/assets/courses/1.jpg');
 
         // Generate WhatsApp share URL with image and text
         $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($course->name . ': ' . route('frontend.course_single', $course->slug)) . '&amp;image=' . urlencode($imageUrl);

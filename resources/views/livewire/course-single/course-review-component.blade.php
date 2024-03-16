@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class="col-md">
+        {{-- <div class="col-md">
             <div class="d-md-flex align-items-center my-3 my-md-4">
                 <div class="bg-gray-200 position-relative rounded-pill flex-grow-1 me-md-5 mb-2 mb-md-0 mw-md-260p"
                     style="height: 10px;">
@@ -85,6 +85,30 @@
                     <span>1</span>
                 </div>
             </div>
+        </div> --}}
+        <div class="col-md">
+            @php
+                $totalReviews = $totalReviews ?? 0;
+            @endphp
+            @foreach ($ratingCounts as $rating => $count)
+                {{ $rating }} => {{ $count }}
+                <div class="d-md-flex align-items-center my-3 my-md-4">
+                    <div class="bg-gray-200 position-relative rounded-pill flex-grow-1 me-md-5 mb-2 mb-md-0 mw-md-260p"
+                        style="height: 10px;">
+                        <div class="bg-teal rounded-pill position-absolute top-0 left-0 bottom-0" {{-- style="width: {{ $count ? ($count / $totalReviews) * 100 : 0 }}%;"></div> --}}
+                            style="width: {{ scaleToPercentage($rating, 5) }}%;"></div>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <div class="star-rating star-rating-lg secondary me-4">
+                            <div class="rating" style="width: {{ scaleToPercentage($rating, 5) }}%;">
+                            </div>
+                        </div>
+                        <span>{{ $count }}</span>
+                    </div>
+                </div>
+            @endforeach
+
         </div>
 
     </div>

@@ -13,11 +13,23 @@ class CourseReviewComponent extends Component
     public $rating;
     public $title;
     public $message;
+    public $ratingCounts = [];
+    public $totalReviews;
+
 
 
 
     public function  mount()
     {
+        // Fetch the count for each rating level
+        $this->ratingCounts = CourseReview::where('course_id', $this->courseId)
+            ->selectRaw('rating, count(*) as count')
+            ->groupBy('rating')
+            ->pluck('count', 'rating')
+            ->toArray();
+
+        // Calculate the total number of reviews
+        $this->totalReviews = array_sum($this->ratingCounts);
     }
 
     public function render()
@@ -52,6 +64,9 @@ class CourseReviewComponent extends Component
             'message' => $this->message,
             'rating' => $this->rating,
         ]);
+
+        // Refresh the rating counts after adding a new review
+        $this->mount();
 
         $this->emit('reviewAdded');
 

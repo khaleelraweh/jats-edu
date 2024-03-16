@@ -5,10 +5,12 @@ namespace App\Http\Livewire\CourseSingle;
 use App\Models\Course;
 use App\Models\CourseReview;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class CourseReviewComponent extends Component
 {
+    use LivewireAlert;
 
     public $courseId;
     public $rating;
@@ -84,6 +86,6 @@ class CourseReviewComponent extends Component
         $this->reset(['rating', 'title', 'message']);
 
 
-        session()->flash('message', 'Review submitted successfully!');
+        $this->alert('success', __('Review submitted successfully!'));
     }
 }

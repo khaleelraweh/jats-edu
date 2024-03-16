@@ -14,14 +14,19 @@ class CourseReviewComponent extends Component
     public $title;
     public $message;
 
+
+
     public function  mount()
     {
     }
 
     public function render()
     {
+        $courseRating = CourseReview::where('course_id', $this->courseId)->pluck('rating');
+        $averageRating = $courseRating->avg();
+
         $reviews = CourseReview::where('course_id', $this->courseId)->get();
-        return view('livewire.course-single.course-review-component', compact('reviews'));
+        return view('livewire.course-single.course-review-component', compact('reviews', 'averageRating'));
     }
 
     public function storeReview()

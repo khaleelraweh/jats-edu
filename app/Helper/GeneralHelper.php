@@ -125,7 +125,8 @@ function format_price($price)
     return  number_format($price, 2) . " " . currency_symbol();
 }
 
+// scale number to percentage 
 function scaleToPercentage($number, $maxInput)
 {
-    return ($number / $maxInput) * 100;
+    return round((($number / $maxInput) * 100), 2);
 }

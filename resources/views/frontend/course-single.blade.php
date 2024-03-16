@@ -53,7 +53,7 @@
                 </div>
 
                 <!-- COURSE META
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -101,7 +101,7 @@
                 </div>
 
                 <!-- COURSE INFO TAB
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
                 <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 my-8 pt-1" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview"
@@ -1410,101 +1410,6 @@
 
                     <div class="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
                         <h3 class="mb-6">{{ __('transf.txt_student_feedback') }}</h3>
-                        <div class="row align-items-center mb-8">
-                            <div class="col-md-auto mb-5 mb-md-0">
-                                <div
-                                    class="border rounded shadow d-flex align-items-center justify-content-center px-9 py-8">
-                                    <div class="m-2 text-center">
-                                        <h1 class="display-2 mb-0 fw-medium mb-n1">4.93</h1>
-                                        <h5 class="mb-0">{{ __('transf.txt_course_rating') }}</h5>
-                                        <div class="star-rating">
-                                            <div class="rating" style="width:100%;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md">
-                                <div class="d-md-flex align-items-center my-3 my-md-4">
-                                    <div class="bg-gray-200 position-relative rounded-pill flex-grow-1 me-md-5 mb-2 mb-md-0 mw-md-260p"
-                                        style="height: 10px;">
-                                        <div class="bg-teal rounded-pill position-absolute top-0 left-0 bottom-0"
-                                            style="width: 90%;"></div>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="star-rating star-rating-lg secondary me-4">
-                                            <div class="rating" style="width:90%;"></div>
-                                        </div>
-                                        <span>4132</span>
-                                    </div>
-                                </div>
-
-                                <div class="d-md-flex align-items-center my-3 my-md-4">
-                                    <div class="bg-gray-200 position-relative rounded-pill flex-grow-1 me-md-5 mb-2 mb-md-0 mw-md-260p"
-                                        style="height: 10px;">
-                                        <div class="bg-teal rounded-pill position-absolute top-0 left-0 bottom-0"
-                                            style="width: 60%;"></div>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="star-rating star-rating-lg secondary me-4">
-                                            <div class="rating" style="width:60%;"></div>
-                                        </div>
-                                        <span>150</span>
-                                    </div>
-                                </div>
-
-                                <div class="d-md-flex align-items-center my-3 my-md-4">
-                                    <div class="bg-gray-200 position-relative rounded-pill flex-grow-1 me-md-5 mb-2 mb-md-0 mw-md-260p"
-                                        style="height: 10px;">
-                                        <div class="bg-teal rounded-pill position-absolute top-0 left-0 bottom-0"
-                                            style="width: 50%;"></div>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="star-rating star-rating-lg secondary me-4">
-                                            <div class="rating" style="width:50%;"></div>
-                                        </div>
-                                        <span>50</span>
-                                    </div>
-                                </div>
-
-                                <div class="d-md-flex align-items-center my-3 my-md-4">
-                                    <div class="bg-gray-200 position-relative rounded-pill flex-grow-1 me-md-5 mb-2 mb-md-0 mw-md-260p"
-                                        style="height: 10px;">
-                                        <div class="bg-teal rounded-pill position-absolute top-0 left-0 bottom-0"
-                                            style="width: 35%;"></div>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="star-rating star-rating-lg secondary me-4">
-                                            <div class="rating" style="width:35%;"></div>
-                                        </div>
-                                        <span>32</span>
-                                    </div>
-                                </div>
-
-                                <div class="d-md-flex align-items-center my-3 my-md-4">
-                                    <div class="bg-gray-200 position-relative rounded-pill flex-grow-1 me-md-5 mb-2 mb-md-0 mw-md-260p"
-                                        style="height: 10px;">
-                                        <div class="bg-teal rounded-pill position-absolute top-0 left-0 bottom-0"
-                                            style="width: 15%;"></div>
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="star-rating star-rating-lg secondary me-4">
-                                            <div class="rating" style="width:15%;"></div>
-                                        </div>
-                                        <span>1</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- course reviews  --}}
-
-                        
 
                         {{-- course reviews --}}
                         @livewire('course-single.course-review-component', ['courseId' => $course->id])
@@ -1515,7 +1420,7 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR FILTER
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
                 <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
                     {{-- <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-1" --}}
                     <a href="{{ $course->video_promo }}" class="d-block sk-thumbnail rounded mb-1" data-fancybox>
@@ -1910,4 +1815,3 @@
         </div>
     </div>
 @endsection
-

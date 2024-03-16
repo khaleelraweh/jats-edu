@@ -41,7 +41,7 @@ class CourseReviewComponent extends Component
         $course = Course::find($this->courseId);
 
         // Generate WhatsApp share URL
-        $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($course->name . ': ' . route('frontend.course_single', $course->id));
+        $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($course->slug . ': ' . route('frontend.course_single', $course->id));
 
 
         $courseRating = CourseReview::where('course_id', $this->courseId)->pluck('rating');

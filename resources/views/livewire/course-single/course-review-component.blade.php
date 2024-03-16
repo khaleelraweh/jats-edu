@@ -25,7 +25,8 @@
                             <p class="font-size-sm font-italic">{{ $review->title }}</p>
                         </div>
                         <div class="star-rating">
-                            <div class="rating" style="width:100%;"></div>
+                            {{-- <div class="rating" style="width:100%;"></div> --}}
+                            <div class="rating" style="width:{{ scaleToPercentage($review->rating, 5) }}%;"></div>
                         </div>
                     </div>
                     <p class="mb-6 line-height-md">

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('message');
             $table->boolean('status')->default(false);
-            $table->unsignedTinyInteger('rating')->default(1);
+            $table->decimal('rating')->default(1);
             $table->timestamps();
         });
     }

@@ -124,3 +124,8 @@ function format_price($price)
     // return currency_symbol() . " " . number_format($price, 2);
     return  number_format($price, 2) . " " . currency_symbol();
 }
+
+function scaleToPercentage($number, $maxInput)
+{
+    return ($number / $maxInput) * 100;
+}

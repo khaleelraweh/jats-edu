@@ -9,6 +9,7 @@ use Livewire\Component;
 
 class CourseReviewComponent extends Component
 {
+
     public $courseId;
     public $rating;
     public $title;
@@ -21,7 +22,7 @@ class CourseReviewComponent extends Component
 
     public function  mount()
     {
-        // Fetch the count for each rating level
+        // Fetch the count for each rating level in descending order
         $this->ratingCounts = CourseReview::where('course_id', $this->courseId)
             ->selectRaw('rating, count(*) as count')
             ->groupBy('rating')
@@ -45,7 +46,17 @@ class CourseReviewComponent extends Component
     {
         // Check if the user is logged in
         if (!Auth::check()) {
-            session()->flash('review_error_check_login', __('transf.msg_reviewers_register_login'));
+            session()->flash('review_error', __('transf.msg_reviewers_register_login'));
+            return;
+        }
+
+        // Check if the user has already submitted a review for this course
+        $existingReview = CourseReview::where('user_id', auth()->user()->id)
+            ->where('course_id', $this->courseId)
+            ->first();
+
+        if ($existingReview) {
+            session()->flash('review_error', 'You have already submitted a review for this course.');
             return;
         }
 
@@ -68,9 +79,10 @@ class CourseReviewComponent extends Component
         // Refresh the rating counts after adding a new review
         $this->mount();
 
-        $this->emit('reviewAdded');
+        // $this->emit('reviewAdded');
 
         $this->reset(['rating', 'title', 'message']);
+
 
         session()->flash('message', 'Review submitted successfully!');
     }

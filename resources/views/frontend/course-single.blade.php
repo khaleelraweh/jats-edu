@@ -53,7 +53,7 @@
                 </div>
 
                 <!-- COURSE META
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -101,7 +101,7 @@
                 </div>
 
                 <!-- COURSE INFO TAB
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
                 <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 my-8 pt-1" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview"
@@ -1504,117 +1504,18 @@
 
                         {{-- course reviews  --}}
 
-
-
-                        <ul class="list-unstyled pt-2">
-                            @foreach ($course->reviews as $review)
-                                <li class="media d-flex">
-                                    <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                                        @php
-                                            if ($review->user->user_image != null) {
-                                                $review_user_image = asset(
-                                                    'assets/customers/' . $review->user->user_image,
-                                                );
-
-                                                if (
-                                                    !file_exists(
-                                                        public_path('assets/customers/' . $review->user->user_image),
-                                                    )
-                                                ) {
-                                                    $review_user_image = asset('assets/customers/no_image_found.webp');
-                                                }
-                                            } else {
-                                                $review_user_image = asset('assets/customers/no_image_found.webp');
-                                            }
-                                        @endphp
-
-                                        <img src="{{ $review_user_image }}" alt="..."
-                                            class="avatar-img rounded-circle">
-                                    </div>
-
-                                    <div class="media-body flex-grow-1">
-                                        <div class="d-md-flex align-items-center mb-5">
-                                            <div class="me-auto mb-4 mb-md-0">
-                                                <h5 class="mb-0">{{ $review->user->full_name }}</h5>
-                                                <p class="font-size-sm font-italic">{{ $review->title }}</p>
-                                            </div>
-                                            <div class="star-rating">
-                                                <div class="rating" style="width:100%;"></div>
-                                            </div>
-                                        </div>
-                                        <p class="mb-6 line-height-md">
-                                            {{ $review->message }}
-                                        </p>
-                                    </div>
-                                </li>
-                            @endforeach
-
-
-                        </ul>
+                        
 
                         {{-- course reviews --}}
-                        <div class="border shadow rounded p-6 p-md-9">
-                            <h3 class="mb-2">{{ __('transf.txt_add_reviews_rate') }}</h3>
-                            <div class="">{{ __('transf.txt_what_is_it_like_to_course') }}</div>
-                            <form action="{{ route('admin.course_reviews.store') }}" method="POST">
-                                @csrf
-                                <div class="clearfix">
-                                    <fieldset class="slect-rating mb-3">
-                                        <input type="radio" id="star5" name="rating" value="5" />
-                                        <label class="full" for="star5" title="Awesome - 5 stars"></label>
+                        @livewire('course-single.course-review-component', ['courseId' => $course->id])
 
-                                        <input type="radio" id="star4half" name="rating" value="4 and a half" />
-                                        <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-
-                                        <input type="radio" id="star4" name="rating" value="4" />
-                                        <label class="full" for="star4" title="Pretty good - 4 stars"></label>
-
-                                        <input type="radio" id="star3half" name="rating" value="3 and a half" />
-                                        <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-
-                                        <input type="radio" id="star3" name="rating" value="3" />
-                                        <label class="full" for="star3" title="Meh - 3 stars"></label>
-
-                                        <input type="radio" id="star2half" name="rating" value="2 and a half" />
-                                        <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-
-                                        <input type="radio" id="star2" name="rating" value="2" />
-                                        <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-
-                                        <input type="radio" id="star1half" name="rating" value="1 and a half" />
-                                        <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-
-                                        <input type="radio" id="star1" name="rating" value="1" />
-                                        <label class="full" for="star1" title="Sucks big time - 1 star"></label>
-
-                                        <input type="radio" id="starhalf" name="rating" value="half" />
-                                        <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                                    </fieldset>
-                                </div>
-
-                                <div class="form-group mb-6">
-                                    <label for="exampleInputTitle1">{{ __('transf.txt_review_title') }}</label>
-                                    <input type="text" name="title" class="form-control placeholder-1"
-                                        id="exampleInputTitle1" placeholder="{{ __('transf.txt_courses') }}">
-                                </div>
-
-                                <div class="form-group mb-6">
-                                    <label for="exampleFormControlTextarea1">{{ __('transf.txt_review_content') }}</label>
-                                    <textarea name="message" class="form-control placeholder-1" id="exampleFormControlTextarea1" rows="6"
-                                        placeholder="{{ __('transf.txt_content') }}"></textarea>
-                                </div>
-
-                                <button type="submit"
-                                    class="btn btn-primary btn-block mw-md-300p">{{ __('transf.txt_submit_review') }}</button>
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-4">
                 <!-- SIDEBAR FILTER
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
                 <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
                     {{-- <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-1" --}}
                     <a href="{{ $course->video_promo }}" class="d-block sk-thumbnail rounded mb-1" data-fancybox>
@@ -2009,3 +1910,4 @@
         </div>
     </div>
 @endsection
+

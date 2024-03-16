@@ -4,6 +4,7 @@ namespace App\Http\Livewire\CourseSingle;
 
 use App\Models\Course;
 use App\Models\CourseReview;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CourseReviewComponent extends Component
@@ -25,6 +26,12 @@ class CourseReviewComponent extends Component
 
     public function storeReview()
     {
+        // Check if the user is logged in
+        if (!Auth::check()) {
+            session()->flash('review_error_check_login', __('transf.msg_reviewers_register_login'));
+            return;
+        }
+
         $validatedData = $this->validate([
             'rating' => 'required|numeric|min:1|max:5',
             'title' => 'required|string|max:255',

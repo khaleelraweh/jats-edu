@@ -174,6 +174,8 @@ return [
     'txt_submit_review'                                 =>  'Submit Review',
     'btn_share_this_course'                             =>  'Share this course',
 
+    'msg_reviewers_register_login'                      =>  'You need to register or log in before making a review.',
+
 
 
 

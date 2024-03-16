@@ -38,11 +38,11 @@
 
 
     </ul>
+
     <div class="border shadow rounded p-6 p-md-9">
         <h3 class="mb-2">{{ __('transf.txt_add_reviews_rate') }}</h3>
         <div class="">{{ __('transf.txt_what_is_it_like_to_course') }}</div>
         <form wire:submit.prevent="storeReview">
-            {{-- @csrf --}}
             <div class="clearfix">
                 <fieldset class="slect-rating mb-3">
 
@@ -104,6 +104,13 @@
             <button type="submit" class="btn btn-primary btn-block mw-md-300p">
                 {{ __('transf.txt_submit_review') }}
             </button>
+
+            {{-- message if reviewer try to make review without login --}}
+            @if (session('review_error_check_login'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('review_error_check_login') }}
+                </div>
+            @endif
 
         </form>
     </div>

@@ -176,6 +176,7 @@ return [
     'txt_submit_review'                                 =>  'إرسال المراجعة',
     'btn_share_this_course'                             =>  'مشاركة هذه الدورة',
 
+    'msg_reviewers_register_login'                      =>  'تحتاج إلى التسجيل أو تسجيل الدخول قبل إجراء المراجعة.',
 
 
 

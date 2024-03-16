@@ -149,6 +149,10 @@
             <button type="submit" class="btn btn-primary btn-block mw-md-300p">
                 {{ __('transf.txt_submit_review') }}
             </button>
+            <a href="{{ $whatsappShareUrl }}" target="_blank" rel="noopener noreferrer">
+                Share on WhatsApp
+            </a>
+
 
             {{-- message if reviewer try to make review without login --}}
             @if (session('review_error'))

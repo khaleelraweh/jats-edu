@@ -28,6 +28,11 @@ class Specialization extends Model
         return json_encode($value, JSON_UNESCAPED_UNICODE);
     }
 
+    public function status()
+    {
+        return $this->status ? __('panel.status_active') : __('panel.status_inactive');
+    }
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);

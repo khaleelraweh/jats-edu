@@ -147,7 +147,6 @@ return [
     'certificate'               =>  'Certificate',
     'certificate_yes'           =>  'Yes',
     'certificate_no'           =>  'No',
-    'specializations'           =>  'Specializations',
     'lecturer_tab'              =>  'Lecturers',
     'lecturers'                 =>  'Lecturers',
     'lecturer'                  =>  'Lecturer',
@@ -617,6 +616,21 @@ return [
     'instagram'                         =>  'Instagram',
     'linkedin'                          =>  'Linkedin',
 
+
+    ##############################################################
+
+    // =============  Manage specialization  ===============//
+    'manage_specializations'                => 'Manage Specializations',
+
+    // --------------- specialization Settings  --------------//
+    'show_specializations'                   => 'Specializations',
+    'add_new_specialization'                  => 'Add New Specialization',
+    'edit_existing_specialization'            => 'Edit Existing Specialization ',
+
+
+    // ........... commons in specialization   ....... //
+    'specializations'           =>  'Specializations',
+    'specialization'            =>  'Specialization',
 
     ##############################################################
 

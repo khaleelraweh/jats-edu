@@ -29,6 +29,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductReviewController;
 use App\Http\Controllers\Backend\ShippingCompanyController;
 use App\Http\Controllers\Backend\SiteSettingsController;
+use App\Http\Controllers\Backend\SpecializationController;
 use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\SupportMenuController;
@@ -178,6 +179,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         Route::resource('customer_addresses', CustomerAddressController::class);
+
+        Route::resource('specializations', SpecializationController::class);
 
         Route::resource('countries', CountryController::class);
 

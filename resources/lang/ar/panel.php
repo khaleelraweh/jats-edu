@@ -146,7 +146,7 @@ return [
     'certificate'               =>  'الشهادة',
     'certificate_yes'           =>  'نعم',
     'certificate_no'            =>  'لا',
-    'specializations'           =>  'التخصصات',
+
     'lecturer_tab'              =>  'المحاضرون',
     'lecturers'                 =>  'المحاضرون',
     'lecturer'                  =>  'المحاضر',
@@ -237,7 +237,7 @@ return [
     'add_new_lecturer'            => 'إضافة حساب محاضر جديد',
     'edit_existing_lecturer'      => 'تعديل بيانات حساب محاضر ',
 
-    // ........... commons in Users   ....... //
+    // ........... commons in lecturers   ....... //
     'customer_name'                 =>  'إسم العميل ',
     'advertisor_name'               =>  'إسم المشرف',
     'permissions'                   =>  'الصلاحيات',
@@ -591,6 +591,20 @@ return [
     'twitter'                           =>  'تويتر',
     'instagram'                         =>  'إنستجرام',
     'linkedin'                          =>  'لنكد إن',
+
+
+    // =============  Manage specialization  ===============//
+    'manage_specializations'                => 'إدارة التخصصات',
+
+    // --------------- specialization Settings  --------------//
+    'show_specializations'                   => 'التخصصات',
+    'add_new_specialization'                  => 'إضافة تخصص جديد',
+    'edit_existing_specialization'            => 'تعديل تخصص موجود',
+
+
+    // ........... commons in specialization   ....... //
+    'specializations'           =>  'التخصصات',
+    'specialization'            =>  'التخصص',
 
 
 

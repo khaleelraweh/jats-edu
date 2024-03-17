@@ -179,6 +179,8 @@ return [
 
     'msg_reviewers_register_login'                      =>  'تحتاج إلى التسجيل أو تسجيل الدخول قبل إجراء المراجعة.',
 
+    // Instructors-single 
+    'Bio'                                              =>   'السيرة الذاتية',
 
 
 

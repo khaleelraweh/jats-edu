@@ -104,7 +104,18 @@ class FrontendController extends Controller
 
     public function instructors_single($slug)
     {
-        return view('frontend.instructors-single');
+
+        $lecturer = User::whereId($slug)->first();
+
+        // Trim the text to remove leading and trailing spaces
+        $lecturer->description = trim($lecturer->description);
+        // Get the first 200 characters
+        $exposedText = substr($lecturer->description, 0, 200);
+        // Get the rest of the text
+        $hiddenText = substr($lecturer->description, 200);
+
+
+        return view('frontend.instructors-single', compact('lecturer', 'exposedText', 'hiddenText'));
     }
 
     public function event_list($slug = null)

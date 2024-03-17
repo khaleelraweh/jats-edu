@@ -1,44 +1,62 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- INSTRUCTORS SINGLE
-        ================================================== -->
+    <!-- INSTRUCTORS SINGLE -->
     <div class="container pt-8 pt-md-11">
         <div class="row">
             <div class="col-xl-8 mx-xl-auto">
                 <div class="d-flex flex-wrap align-items-center justify-content-center mb-5 mb-md-3">
                     <!-- Social -->
                     <ul class="list-unstyled list-inline list-social mb-4 mb-md-0 mx-lg-4 order-1 order-md-0 font-size-sm">
-                        <li class="list-inline-item list-social-item">
-                            <a href="#"
-                                class="text-secondary w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item list-social-item">
-                            <a href="#"
-                                class="text-secondary w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item list-social-item">
-                            <a href="#"
-                                class="text-secondary w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item list-social-item">
-                            <a href="#"
-                                class="text-secondary w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </li>
+                        @if ($lecturer->facebook)
+                            <li class="list-inline-item list-social-item">
+                                <a href="{{ $lecturer->facebook }}"
+                                    class="text-secondary w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                        @endif
+                        @if ($lecturer->twitter)
+                            <li class="list-inline-item list-social-item">
+                                <a href="{{ $lecturer->twitter }}"
+                                    class="text-secondary w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                        @endif
+                        @if ($lecturer->instagram)
+                            <li class="list-inline-item list-social-item">
+                                <a href="{{ $lecturer->instagram }}"
+                                    class="text-secondary w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                        @endif
+                        @if ($lecturer->linkedin)
+                            <li class="list-inline-item list-social-item">
+                                <a href="{{ $lecturer->linkedin }}"
+                                    class="text-secondary w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
 
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 mx-lg-4 order-0">
                         <div class="p-4">
-                            <img src="assets/img/avatars/avatar-6.jpg" alt="..." class="rounded-circle img-fluid"
-                                width="170" height="170">
+                            @php
+                                if ($lecturer->user_image != null) {
+                                    $lecturer_img = asset('assets/lecturers/' . $lecturer->user_image);
+
+                                    if (!file_exists(public_path('assets/lecturers/' . $lecturer->user_image))) {
+                                        $lecturer_img = asset('assets/lecturers/user_not_found.webp');
+                                    }
+                                } else {
+                                    $lecturer_img = asset('assets/lecturers/user_not_found.webp');
+                                }
+                            @endphp
+                            <img src="{{ $lecturer_img }}" alt="{{ $lecturer->first_name }}"
+                                class="rounded-circle img-fluid" width="170" height="170">
                         </div>
                     </div>
 
@@ -66,8 +84,20 @@
                         <span class="ms-3">Report this author</span>
                     </a>
                 </div>
-                <h1 class="text-center mb-1">Kathelen Monero</h1>
-                <div class="text-center mb-7">UI Designer</div>
+                <h1 class="text-center mb-1">{{ $lecturer->first_name }} {{ $lecturer->last_name }}</h1>
+                <div class="text-center mb-7">
+                    @if (count($lecturer->specializations) > 0)
+                        @foreach ($lecturer->specializations->take(2) as $specialization)
+                            {{ $specialization->name }}
+
+                            @if (!$loop->last)
+                                &
+                            @endif
+                        @endforeach
+                    @else
+                        specification did not set yet
+                    @endif
+                </div>
 
                 <div class="row mb-7 justify-content-center align-items-center">
                     <div class="col-12 col-md-auto mb-3 mb-md-0">
@@ -226,7 +256,7 @@
                                 </svg>
 
                             </div>
-                            29 courses
+                            {{ count($lecturer->courses) }} courses
                         </div>
                     </div>
                 </div>
@@ -237,487 +267,173 @@
             </div>
 
             <div class="col-12">
-                <!-- COURSE INFO TAB
-                    ================================================== -->
+                <!-- COURSE INFO TAB -->
                 <div id="Overview" class="mb-8">
                     <ul class="nav course-tab-v1 border-bottom h4 mb-8">
                         <li class="nav-item">
                             <a class="nav-link active" href="#Overview" data-bs-toggle="smooth-scroll"
-                                data-bs-offset="0">Overview</a>
+                                data-bs-offset="0">{{ __('transf.overview') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#Curriculum" data-bs-toggle="smooth-scroll"
-                                data-bs-offset="0">Courses</a>
+                                data-bs-offset="0">{{ __('transf.courses') }}</a>
                         </li>
                     </ul>
 
-                    <h3 class="">Bio</h3>
-                    <p class="mb-6 line-height-md">Do you want to become a UI/UX designer but you don't know where to
-                        start? This course will allow you to develop your user interface design skills and you can add UI
-                        designer to your CV and start getting clients for your skills.</p>
-                    <p class="mb-6 line-height-md">Hi everyone. I'm Arash and I'm a UI/UX designer. In this course, I will
-                        help you learn and master Figma app comprehensively from scratch. Figma is an innovative and
-                        brilliant tool for User Interface design. It's used by everyone from entrepreneurs and start-ups to
-                        Apple, Airbnb, Facebook, etc.</p>
-                    <p class="collapse mb-6 line-height-md" id="readcollapseExample">Anim pariatur cliche reprehenderit,
-                        enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft
-                        beer labore wes anderson cred nesciunt sapiente I will help you learn and master Figma app
-                        comprehensively from scratch. Figma is an innovative and brilliant tool for User Interface design.
-                        It's used by everyone from entrepreneurs ea proident.</p>
-                    <a class="text-teal read-more h6 d-inline-block" data-bs-toggle="collapse"
-                        href="#readcollapseExample" role="button" aria-expanded="false"
-                        aria-controls="readcollapseExample">
-                        <span class="d-inline-flex align-items-center more">
-                            Read More
-                            <span
-                                class="d-flex align-items-center justify-content-center bg-teal rounded-circle ms-2 p-2 w-26p">
-                                <i class="fas fa-plus font-size-10 text-white"></i>
+                    <h3 class="">{{ __('transf.Bio') }}</h3>
+                    <p class="mb-6 line-height-md">
+                        {!! $lecturer->motavation !!}
+                    </p>
+                    <p class="mb-6 line-height-md">
+                        {!! $exposedText !!}
+                    </p>
+                    <p class="collapse mb-6 line-height-md" id="readcollapseExample">
+                        {!! $hiddenText !!}
+                    </p>
+                    @if (strlen($hiddenText) > 0)
+                        <a class="text-teal read-more h6 d-inline-block" data-bs-toggle="collapse"
+                            href="#readcollapseExample" role="button" aria-expanded="false"
+                            aria-controls="readcollapseExample">
+                            <span class="d-inline-flex align-items-center more">
+                                Read More
+                                <span
+                                    class="d-flex align-items-center justify-content-center bg-teal rounded-circle ms-2 p-2 w-26p">
+                                    <i class="fas fa-plus font-size-10 text-white"></i>
+                                </span>
                             </span>
-                        </span>
-                        <span class="d-inline-flex align-items-center less">
-                            Read Less
-                            <span
-                                class="d-flex align-items-center justify-content-center bg-teal rounded-circle ms-2 p-2 w-26p">
-                                <i class="fas fa-minus font-size-10 text-white"></i>
+                            <span class="d-inline-flex align-items-center less">
+                                Read Less
+                                <span
+                                    class="d-flex align-items-center justify-content-center bg-teal rounded-circle ms-2 p-2 w-26p">
+                                    <i class="fas fa-minus font-size-10 text-white"></i>
+                                </span>
                             </span>
-                        </span>
-                    </a>
+                        </a>
+                    @endif
                 </div>
 
                 <div id="Curriculum" class="mb-8">
                     <ul class="nav course-tab-v1 border-bottom h4 mb-8">
                         <li class="nav-item">
                             <a class="nav-link" href="#Overview" data-bs-toggle="smooth-scroll"
-                                data-bs-offset="0">Overview</a>
+                                data-bs-offset="0">{{ __('transf.overview') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#Curriculum" data-bs-toggle="smooth-scroll"
-                                data-bs-offset="0">Courses</a>
+                                data-bs-offset="0">{{ __('transf.courses') }}</a>
                         </li>
                     </ul>
 
                     <div class="mx-n4 mb-12"
                         data-flickity='{"pageDots": true, "prevNextButtons": false, "cellAlign": "left", "wrapAround": true, "imagesLoaded": true}'>
-                        <div class="col-md-6 col-lg-4 col-xl-3 pb-4 pb-md-5"
-                            style="padding-right:15px;padding-left:15px;">
-                            <!-- Card -->
-                            <div class="card border shadow p-2 lift sk-fade">
-                                <!-- Image -->
-                                <div class="card-zoom position-relative">
-                                    <a href="course-single-v2.html" class="card-img sk-thumbnail img-ratio-3 d-block">
-                                        <img class="rounded shadow-light-lg" src="assets/img/products/product-15.jpg"
-                                            alt="...">
-                                    </a>
+                        @foreach ($lecturer->courses as $course)
+                            <div class="col-md-6 col-lg-4 col-xl-3 pb-4 pb-md-5"
+                                style="padding-right:15px;padding-left:15px;">
+                                <!-- Card -->
+                                <div class="card border shadow p-2 lift sk-fade">
+                                    <!-- Image -->
+                                    <div class="card-zoom position-relative">
+                                        @php
+                                            if ($course->photos->first()->file_name != null) {
+                                                $course_img = asset(
+                                                    'assets/courses/' . $course->photos->first()->file_name,
+                                                );
 
-                                    <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
-                                        <ins class="h5 mb-0 text-white">$415.99</ins>
-                                    </span>
-                                </div>
+                                                if (
+                                                    !file_exists(
+                                                        public_path(
+                                                            'assets/courses/' . $course->photos->first()->file_name,
+                                                        ),
+                                                    )
+                                                ) {
+                                                    $course_img = asset('assets/courses/no_image_found.webp');
+                                                }
+                                            } else {
+                                                $course_img = asset('assets/courses/no_image_found.webp');
+                                            }
 
-                                <!-- Footer -->
-                                <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
-                                    <!-- Preheading -->
-                                    <a href="course-single-v2.html"><span
-                                            class="mb-1 d-inline-block text-gray-800">Photography</span></a>
+                                            if ($course->photos->last()->file_name != null) {
+                                                $course_cover = asset(
+                                                    'assets/courses/' . $course->photos->last()->file_name,
+                                                );
 
-                                    <!-- Heading -->
-                                    <div class="position-relative">
-                                        <a href="course-single-v2.html" class="d-block stretched-link">
-                                            <h5 class="line-clamp-2 h-md-48 h-lg-58 me-md-8 me-lg-10 me-xl-4 mb-2">Fashion
-                                                Photography From Professional</h5>
+                                                if (
+                                                    !file_exists(
+                                                        public_path(
+                                                            'assets/courses/' . $course->photos->last()->file_name,
+                                                        ),
+                                                    )
+                                                ) {
+                                                    $course_cover = asset('assets/courses/no_image_found.webp');
+                                                }
+                                            } else {
+                                                $course_cover = asset('assets/courses/no_image_found.webp');
+                                            }
+                                        @endphp
+                                        <a href="{{ route('frontend.course_single', $course->slug) }}"
+                                            class="card-img sk-thumbnail img-ratio-3 d-block">
+                                            <img class="rounded shadow-light-lg" src="{{ $course_cover }}"
+                                                alt="{{ $course->title }}">
                                         </a>
 
-                                        <div class="row mx-n2 align-items-end">
-                                            <div class="col px-2">
-                                                <ul class="nav mx-n3">
-                                                    <li class="nav-item px-3">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="me-2 d-flex icon-uxs text-secondary">
-                                                                <!-- Icon -->
-                                                                <svg width="20" height="20" viewBox="0 0 20 20"
-                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path
-                                                                        d="M17.1947 7.06802L14.6315 7.9985C14.2476 7.31186 13.712 6.71921 13.0544 6.25992C12.8525 6.11877 12.6421 5.99365 12.4252 5.88303C13.0586 5.25955 13.452 4.39255 13.452 3.43521C13.452 1.54098 11.9124 -1.90735e-06 10.0197 -1.90735e-06C8.12714 -1.90735e-06 6.58738 1.54098 6.58738 3.43521C6.58738 4.39255 6.98075 5.25955 7.61414 5.88303C7.39731 5.99365 7.1869 6.11877 6.98502 6.25992C6.32752 6.71921 5.79178 7.31186 5.40787 7.9985L2.8447 7.06802C2.33612 6.88339 1.79688 7.26044 1.79688 7.80243V16.5178C1.79688 16.8465 2.00256 17.14 2.31155 17.2522L9.75312 19.9536C9.93073 20.018 10.1227 20.0128 10.2863 19.9536L17.7278 17.2522C18.0368 17.14 18.2425 16.8465 18.2425 16.5178V7.80243C18.2425 7.26135 17.704 6.88309 17.1947 7.06802ZM10.0197 1.5625C11.0507 1.5625 11.8895 2.40265 11.8895 3.43521C11.8895 4.46777 11.0507 5.30792 10.0197 5.30792C8.98866 5.30792 8.14988 4.46777 8.14988 3.43521C8.14988 2.40265 8.98866 1.5625 10.0197 1.5625ZM9.23844 18.1044L3.35938 15.9703V8.91724L9.23844 11.0513V18.1044ZM10.0197 9.67255L6.90644 8.54248C7.58164 7.51892 8.75184 6.87042 10.0197 6.87042C11.2875 6.87042 12.4577 7.51892 13.1329 8.54248L10.0197 9.67255ZM16.68 15.9703L10.8009 18.1044V11.0513L16.68 8.91724V15.9703Z"
-                                                                        fill="currentColor" />
-                                                                </svg>
+                                        <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
+                                            <ins class="h5 mb-0 text-white">{{ currency_converter($course->price) }}</ins>
+                                        </span>
+                                    </div>
 
+                                    <!-- Footer -->
+                                    <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
+                                        <!-- Preheading -->
+                                        <a href="{{ route('frontend.courses', $course->courseCategory->slug) }}"><span
+                                                class="mb-1 d-inline-block text-gray-800">{{ $course->courseCategory->title }}</span></a>
+
+                                        <!-- Heading -->
+                                        <div class="position-relative">
+                                            <a href="{{ route('frontend.course_single', $course->slug) }}"
+                                                class="d-block stretched-link">
+                                                <h5 class="line-clamp-2 h-md-48 h-lg-58 me-md-8 me-lg-10 me-xl-4 mb-2">
+                                                    {{ $course->title }}
+                                                </h5>
+                                            </a>
+
+                                            <div class="row mx-n2 align-items-end">
+                                                <div class="col px-2">
+                                                    <ul class="nav mx-n3">
+                                                        <li class="nav-item px-3">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="me-2 d-flex icon-uxs text-secondary">
+                                                                    <!-- Icon -->
+                                                                    <svg width="20" height="20"
+                                                                        viewBox="0 0 20 20" fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M17.1947 7.06802L14.6315 7.9985C14.2476 7.31186 13.712 6.71921 13.0544 6.25992C12.8525 6.11877 12.6421 5.99365 12.4252 5.88303C13.0586 5.25955 13.452 4.39255 13.452 3.43521C13.452 1.54098 11.9124 -1.90735e-06 10.0197 -1.90735e-06C8.12714 -1.90735e-06 6.58738 1.54098 6.58738 3.43521C6.58738 4.39255 6.98075 5.25955 7.61414 5.88303C7.39731 5.99365 7.1869 6.11877 6.98502 6.25992C6.32752 6.71921 5.79178 7.31186 5.40787 7.9985L2.8447 7.06802C2.33612 6.88339 1.79688 7.26044 1.79688 7.80243V16.5178C1.79688 16.8465 2.00256 17.14 2.31155 17.2522L9.75312 19.9536C9.93073 20.018 10.1227 20.0128 10.2863 19.9536L17.7278 17.2522C18.0368 17.14 18.2425 16.8465 18.2425 16.5178V7.80243C18.2425 7.26135 17.704 6.88309 17.1947 7.06802ZM10.0197 1.5625C11.0507 1.5625 11.8895 2.40265 11.8895 3.43521C11.8895 4.46777 11.0507 5.30792 10.0197 5.30792C8.98866 5.30792 8.14988 4.46777 8.14988 3.43521C8.14988 2.40265 8.98866 1.5625 10.0197 1.5625ZM9.23844 18.1044L3.35938 15.9703V8.91724L9.23844 11.0513V18.1044ZM10.0197 9.67255L6.90644 8.54248C7.58164 7.51892 8.75184 6.87042 10.0197 6.87042C11.2875 6.87042 12.4577 7.51892 13.1329 8.54248L10.0197 9.67255ZM16.68 15.9703L10.8009 18.1044V11.0513L16.68 8.91724V15.9703Z"
+                                                                            fill="currentColor" />
+                                                                    </svg>
+
+                                                                </div>
+                                                                <div class="font-size-sm">{{ $course->lecture_numbers }}
+                                                                    {{ __('transf.lessons') }}</div>
                                                             </div>
-                                                            <div class="font-size-sm">5 lessons</div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
 
-                                            <div class="col-auto px-2 text-right">
-                                                <div class="star-rating mb-2 mb-lg-0">
-                                                    <div class="rating" style="width:100%;"></div>
+                                                <div class="col-auto px-2 text-right">
+                                                    <div class="star-rating mb-2 mb-lg-0">
+                                                        <div class="rating"
+                                                            style="width:{{ scaleToPercentage($course->reviews->pluck('rating')->avg(), 5) }}%;">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3 pb-4 pb-md-5"
-                            style="padding-right:15px;padding-left:15px;">
-                            <!-- Card -->
-                            <div class="card border shadow p-2 lift sk-fade">
-                                <!-- Image -->
-                                <div class="card-zoom position-relative">
-                                    <a href="course-single-v2.html" class="card-img sk-thumbnail img-ratio-3 d-block">
-                                        <img class="rounded shadow-light-lg" src="assets/img/products/product-14.jpg"
-                                            alt="...">
-                                    </a>
+                        @endforeach
 
-                                    <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
-                                        <ins class="h5 mb-0 text-white">$415.99</ins>
-                                    </span>
-                                </div>
 
-                                <!-- Footer -->
-                                <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
-                                    <!-- Preheading -->
-                                    <a href="course-single-v2.html"><span
-                                            class="mb-1 d-inline-block text-gray-800">Marketing</span></a>
-
-                                    <!-- Heading -->
-                                    <div class="position-relative">
-                                        <a href="course-single-v2.html" class="d-block stretched-link">
-                                            <h5 class="line-clamp-2 h-md-48 h-lg-58 me-md-8 me-lg-10 me-xl-4 mb-2">
-                                                Productivity and Time Management for workplace</h5>
-                                        </a>
-
-                                        <div class="row mx-n2 align-items-end">
-                                            <div class="col px-2">
-                                                <ul class="nav mx-n3">
-                                                    <li class="nav-item px-3">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="me-2 d-flex icon-uxs text-secondary">
-                                                                <!-- Icon -->
-                                                                <svg width="20" height="20" viewBox="0 0 20 20"
-                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path
-                                                                        d="M17.1947 7.06802L14.6315 7.9985C14.2476 7.31186 13.712 6.71921 13.0544 6.25992C12.8525 6.11877 12.6421 5.99365 12.4252 5.88303C13.0586 5.25955 13.452 4.39255 13.452 3.43521C13.452 1.54098 11.9124 -1.90735e-06 10.0197 -1.90735e-06C8.12714 -1.90735e-06 6.58738 1.54098 6.58738 3.43521C6.58738 4.39255 6.98075 5.25955 7.61414 5.88303C7.39731 5.99365 7.1869 6.11877 6.98502 6.25992C6.32752 6.71921 5.79178 7.31186 5.40787 7.9985L2.8447 7.06802C2.33612 6.88339 1.79688 7.26044 1.79688 7.80243V16.5178C1.79688 16.8465 2.00256 17.14 2.31155 17.2522L9.75312 19.9536C9.93073 20.018 10.1227 20.0128 10.2863 19.9536L17.7278 17.2522C18.0368 17.14 18.2425 16.8465 18.2425 16.5178V7.80243C18.2425 7.26135 17.704 6.88309 17.1947 7.06802ZM10.0197 1.5625C11.0507 1.5625 11.8895 2.40265 11.8895 3.43521C11.8895 4.46777 11.0507 5.30792 10.0197 5.30792C8.98866 5.30792 8.14988 4.46777 8.14988 3.43521C8.14988 2.40265 8.98866 1.5625 10.0197 1.5625ZM9.23844 18.1044L3.35938 15.9703V8.91724L9.23844 11.0513V18.1044ZM10.0197 9.67255L6.90644 8.54248C7.58164 7.51892 8.75184 6.87042 10.0197 6.87042C11.2875 6.87042 12.4577 7.51892 13.1329 8.54248L10.0197 9.67255ZM16.68 15.9703L10.8009 18.1044V11.0513L16.68 8.91724V15.9703Z"
-                                                                        fill="currentColor" />
-                                                                </svg>
-
-                                                            </div>
-                                                            <div class="font-size-sm">5 lessons</div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="col-auto px-2 text-right">
-                                                <div class="star-rating mb-2 mb-lg-0">
-                                                    <div class="rating" style="width:100%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3 pb-4 pb-md-5"
-                            style="padding-right:15px;padding-left:15px;">
-                            <!-- Card -->
-                            <div class="card border shadow p-2 lift sk-fade">
-                                <!-- Image -->
-                                <div class="card-zoom position-relative">
-                                    <a href="course-single-v2.html" class="card-img sk-thumbnail img-ratio-3 d-block">
-                                        <img class="rounded shadow-light-lg" src="assets/img/products/product-16.jpg"
-                                            alt="...">
-                                    </a>
-
-                                    <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
-                                        <ins class="h5 mb-0 text-white">$415.99</ins>
-                                    </span>
-                                </div>
-
-                                <!-- Footer -->
-                                <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
-                                    <!-- Preheading -->
-                                    <a href="course-single-v2.html"><span
-                                            class="mb-1 d-inline-block text-gray-800">Personal Development</span></a>
-
-                                    <!-- Heading -->
-                                    <div class="position-relative">
-                                        <a href="course-single-v2.html" class="d-block stretched-link">
-                                            <h5 class="line-clamp-2 h-md-48 h-lg-58 me-md-8 me-lg-10 me-xl-4 mb-2">Learn
-                                                Ethical Hacking From Scratch</h5>
-                                        </a>
-
-                                        <div class="row mx-n2 align-items-end">
-                                            <div class="col px-2">
-                                                <ul class="nav mx-n3">
-                                                    <li class="nav-item px-3">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="me-2 d-flex icon-uxs text-secondary">
-                                                                <!-- Icon -->
-                                                                <svg width="20" height="20" viewBox="0 0 20 20"
-                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path
-                                                                        d="M17.1947 7.06802L14.6315 7.9985C14.2476 7.31186 13.712 6.71921 13.0544 6.25992C12.8525 6.11877 12.6421 5.99365 12.4252 5.88303C13.0586 5.25955 13.452 4.39255 13.452 3.43521C13.452 1.54098 11.9124 -1.90735e-06 10.0197 -1.90735e-06C8.12714 -1.90735e-06 6.58738 1.54098 6.58738 3.43521C6.58738 4.39255 6.98075 5.25955 7.61414 5.88303C7.39731 5.99365 7.1869 6.11877 6.98502 6.25992C6.32752 6.71921 5.79178 7.31186 5.40787 7.9985L2.8447 7.06802C2.33612 6.88339 1.79688 7.26044 1.79688 7.80243V16.5178C1.79688 16.8465 2.00256 17.14 2.31155 17.2522L9.75312 19.9536C9.93073 20.018 10.1227 20.0128 10.2863 19.9536L17.7278 17.2522C18.0368 17.14 18.2425 16.8465 18.2425 16.5178V7.80243C18.2425 7.26135 17.704 6.88309 17.1947 7.06802ZM10.0197 1.5625C11.0507 1.5625 11.8895 2.40265 11.8895 3.43521C11.8895 4.46777 11.0507 5.30792 10.0197 5.30792C8.98866 5.30792 8.14988 4.46777 8.14988 3.43521C8.14988 2.40265 8.98866 1.5625 10.0197 1.5625ZM9.23844 18.1044L3.35938 15.9703V8.91724L9.23844 11.0513V18.1044ZM10.0197 9.67255L6.90644 8.54248C7.58164 7.51892 8.75184 6.87042 10.0197 6.87042C11.2875 6.87042 12.4577 7.51892 13.1329 8.54248L10.0197 9.67255ZM16.68 15.9703L10.8009 18.1044V11.0513L16.68 8.91724V15.9703Z"
-                                                                        fill="currentColor" />
-                                                                </svg>
-
-                                                            </div>
-                                                            <div class="font-size-sm">5 lessons</div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="col-auto px-2 text-right">
-                                                <div class="star-rating mb-2 mb-lg-0">
-                                                    <div class="rating" style="width:100%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3 pb-4 pb-md-5"
-                            style="padding-right:15px;padding-left:15px;">
-                            <!-- Card -->
-                            <div class="card border shadow p-2 lift sk-fade">
-                                <!-- Image -->
-                                <div class="card-zoom position-relative">
-                                    <a href="course-single-v2.html" class="card-img sk-thumbnail img-ratio-3 d-block">
-                                        <img class="rounded shadow-light-lg" src="assets/img/products/product-12.jpg"
-                                            alt="...">
-                                    </a>
-
-                                    <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
-                                        <ins class="h5 mb-0 text-white">$415.99</ins>
-                                    </span>
-                                </div>
-
-                                <!-- Footer -->
-                                <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
-                                    <!-- Preheading -->
-                                    <a href="course-single-v2.html"><span
-                                            class="mb-1 d-inline-block text-gray-800">Development</span></a>
-
-                                    <!-- Heading -->
-                                    <div class="position-relative">
-                                        <a href="course-single-v2.html" class="d-block stretched-link">
-                                            <h5 class="line-clamp-2 h-md-48 h-lg-58 me-md-8 me-lg-10 me-xl-4 mb-2">The
-                                                Complete JavaScript Course 2020: Real Projects!</h5>
-                                        </a>
-
-                                        <div class="row mx-n2 align-items-end">
-                                            <div class="col px-2">
-                                                <ul class="nav mx-n3">
-                                                    <li class="nav-item px-3">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="me-2 d-flex icon-uxs text-secondary">
-                                                                <!-- Icon -->
-                                                                <svg width="20" height="20" viewBox="0 0 20 20"
-                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path
-                                                                        d="M17.1947 7.06802L14.6315 7.9985C14.2476 7.31186 13.712 6.71921 13.0544 6.25992C12.8525 6.11877 12.6421 5.99365 12.4252 5.88303C13.0586 5.25955 13.452 4.39255 13.452 3.43521C13.452 1.54098 11.9124 -1.90735e-06 10.0197 -1.90735e-06C8.12714 -1.90735e-06 6.58738 1.54098 6.58738 3.43521C6.58738 4.39255 6.98075 5.25955 7.61414 5.88303C7.39731 5.99365 7.1869 6.11877 6.98502 6.25992C6.32752 6.71921 5.79178 7.31186 5.40787 7.9985L2.8447 7.06802C2.33612 6.88339 1.79688 7.26044 1.79688 7.80243V16.5178C1.79688 16.8465 2.00256 17.14 2.31155 17.2522L9.75312 19.9536C9.93073 20.018 10.1227 20.0128 10.2863 19.9536L17.7278 17.2522C18.0368 17.14 18.2425 16.8465 18.2425 16.5178V7.80243C18.2425 7.26135 17.704 6.88309 17.1947 7.06802ZM10.0197 1.5625C11.0507 1.5625 11.8895 2.40265 11.8895 3.43521C11.8895 4.46777 11.0507 5.30792 10.0197 5.30792C8.98866 5.30792 8.14988 4.46777 8.14988 3.43521C8.14988 2.40265 8.98866 1.5625 10.0197 1.5625ZM9.23844 18.1044L3.35938 15.9703V8.91724L9.23844 11.0513V18.1044ZM10.0197 9.67255L6.90644 8.54248C7.58164 7.51892 8.75184 6.87042 10.0197 6.87042C11.2875 6.87042 12.4577 7.51892 13.1329 8.54248L10.0197 9.67255ZM16.68 15.9703L10.8009 18.1044V11.0513L16.68 8.91724V15.9703Z"
-                                                                        fill="currentColor" />
-                                                                </svg>
-
-                                                            </div>
-                                                            <div class="font-size-sm">5 lessons</div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="col-auto px-2 text-right">
-                                                <div class="star-rating mb-2 mb-lg-0">
-                                                    <div class="rating" style="width:100%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3 pb-4 pb-md-5"
-                            style="padding-right:15px;padding-left:15px;">
-                            <!-- Card -->
-                            <div class="card border shadow p-2 lift sk-fade">
-                                <!-- Image -->
-                                <div class="card-zoom position-relative">
-                                    <a href="course-single-v2.html" class="card-img sk-thumbnail img-ratio-3 d-block">
-                                        <img class="rounded shadow-light-lg" src="assets/img/products/product-13.jpg"
-                                            alt="...">
-                                    </a>
-
-                                    <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
-                                        <ins class="h5 mb-0 text-white">$415.99</ins>
-                                    </span>
-                                </div>
-
-                                <!-- Footer -->
-                                <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
-                                    <!-- Preheading -->
-                                    <a href="course-single-v2.html"><span
-                                            class="mb-1 d-inline-block text-gray-800">Marketing</span></a>
-
-                                    <!-- Heading -->
-                                    <div class="position-relative">
-                                        <a href="course-single-v2.html" class="d-block stretched-link">
-                                            <h5 class="line-clamp-2 h-md-48 h-lg-58 me-md-8 me-lg-10 me-xl-4 mb-2">Learn
-                                                Ethical Hacking From Scratch</h5>
-                                        </a>
-
-                                        <div class="row mx-n2 align-items-end">
-                                            <div class="col px-2">
-                                                <ul class="nav mx-n3">
-                                                    <li class="nav-item px-3">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="me-2 d-flex icon-uxs text-secondary">
-                                                                <!-- Icon -->
-                                                                <svg width="20" height="20" viewBox="0 0 20 20"
-                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path
-                                                                        d="M17.1947 7.06802L14.6315 7.9985C14.2476 7.31186 13.712 6.71921 13.0544 6.25992C12.8525 6.11877 12.6421 5.99365 12.4252 5.88303C13.0586 5.25955 13.452 4.39255 13.452 3.43521C13.452 1.54098 11.9124 -1.90735e-06 10.0197 -1.90735e-06C8.12714 -1.90735e-06 6.58738 1.54098 6.58738 3.43521C6.58738 4.39255 6.98075 5.25955 7.61414 5.88303C7.39731 5.99365 7.1869 6.11877 6.98502 6.25992C6.32752 6.71921 5.79178 7.31186 5.40787 7.9985L2.8447 7.06802C2.33612 6.88339 1.79688 7.26044 1.79688 7.80243V16.5178C1.79688 16.8465 2.00256 17.14 2.31155 17.2522L9.75312 19.9536C9.93073 20.018 10.1227 20.0128 10.2863 19.9536L17.7278 17.2522C18.0368 17.14 18.2425 16.8465 18.2425 16.5178V7.80243C18.2425 7.26135 17.704 6.88309 17.1947 7.06802ZM10.0197 1.5625C11.0507 1.5625 11.8895 2.40265 11.8895 3.43521C11.8895 4.46777 11.0507 5.30792 10.0197 5.30792C8.98866 5.30792 8.14988 4.46777 8.14988 3.43521C8.14988 2.40265 8.98866 1.5625 10.0197 1.5625ZM9.23844 18.1044L3.35938 15.9703V8.91724L9.23844 11.0513V18.1044ZM10.0197 9.67255L6.90644 8.54248C7.58164 7.51892 8.75184 6.87042 10.0197 6.87042C11.2875 6.87042 12.4577 7.51892 13.1329 8.54248L10.0197 9.67255ZM16.68 15.9703L10.8009 18.1044V11.0513L16.68 8.91724V15.9703Z"
-                                                                        fill="currentColor" />
-                                                                </svg>
-
-                                                            </div>
-                                                            <div class="font-size-sm">5 lessons</div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="col-auto px-2 text-right">
-                                                <div class="star-rating mb-2 mb-lg-0">
-                                                    <div class="rating" style="width:100%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3 pb-4 pb-md-5"
-                            style="padding-right:15px;padding-left:15px;">
-                            <!-- Card -->
-                            <div class="card border shadow p-2 lift sk-fade">
-                                <!-- Image -->
-                                <div class="card-zoom position-relative">
-                                    <a href="course-single-v2.html" class="card-img sk-thumbnail img-ratio-3 d-block">
-                                        <img class="rounded shadow-light-lg" src="assets/img/products/product-11.jpg"
-                                            alt="...">
-                                    </a>
-
-                                    <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
-                                        <ins class="h5 mb-0 text-white">$415.99</ins>
-                                    </span>
-                                </div>
-
-                                <!-- Footer -->
-                                <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
-                                    <!-- Preheading -->
-                                    <a href="course-single-v2.html"><span
-                                            class="mb-1 d-inline-block text-gray-800">Development</span></a>
-
-                                    <!-- Heading -->
-                                    <div class="position-relative">
-                                        <a href="course-single-v2.html" class="d-block stretched-link">
-                                            <h5 class="line-clamp-2 h-md-48 h-lg-58 me-md-8 me-lg-10 me-xl-4 mb-2">The
-                                                Complete JavaScript Course 2020: Real Projects!</h5>
-                                        </a>
-
-                                        <div class="row mx-n2 align-items-end">
-                                            <div class="col px-2">
-                                                <ul class="nav mx-n3">
-                                                    <li class="nav-item px-3">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="me-2 d-flex icon-uxs text-secondary">
-                                                                <!-- Icon -->
-                                                                <svg width="20" height="20" viewBox="0 0 20 20"
-                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path
-                                                                        d="M17.1947 7.06802L14.6315 7.9985C14.2476 7.31186 13.712 6.71921 13.0544 6.25992C12.8525 6.11877 12.6421 5.99365 12.4252 5.88303C13.0586 5.25955 13.452 4.39255 13.452 3.43521C13.452 1.54098 11.9124 -1.90735e-06 10.0197 -1.90735e-06C8.12714 -1.90735e-06 6.58738 1.54098 6.58738 3.43521C6.58738 4.39255 6.98075 5.25955 7.61414 5.88303C7.39731 5.99365 7.1869 6.11877 6.98502 6.25992C6.32752 6.71921 5.79178 7.31186 5.40787 7.9985L2.8447 7.06802C2.33612 6.88339 1.79688 7.26044 1.79688 7.80243V16.5178C1.79688 16.8465 2.00256 17.14 2.31155 17.2522L9.75312 19.9536C9.93073 20.018 10.1227 20.0128 10.2863 19.9536L17.7278 17.2522C18.0368 17.14 18.2425 16.8465 18.2425 16.5178V7.80243C18.2425 7.26135 17.704 6.88309 17.1947 7.06802ZM10.0197 1.5625C11.0507 1.5625 11.8895 2.40265 11.8895 3.43521C11.8895 4.46777 11.0507 5.30792 10.0197 5.30792C8.98866 5.30792 8.14988 4.46777 8.14988 3.43521C8.14988 2.40265 8.98866 1.5625 10.0197 1.5625ZM9.23844 18.1044L3.35938 15.9703V8.91724L9.23844 11.0513V18.1044ZM10.0197 9.67255L6.90644 8.54248C7.58164 7.51892 8.75184 6.87042 10.0197 6.87042C11.2875 6.87042 12.4577 7.51892 13.1329 8.54248L10.0197 9.67255ZM16.68 15.9703L10.8009 18.1044V11.0513L16.68 8.91724V15.9703Z"
-                                                                        fill="currentColor" />
-                                                                </svg>
-
-                                                            </div>
-                                                            <div class="font-size-sm">5 lessons</div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="col-auto px-2 text-right">
-                                                <div class="star-rating mb-2 mb-lg-0">
-                                                    <div class="rating" style="width:100%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3 pb-4 pb-md-5"
-                            style="padding-right:15px;padding-left:15px;">
-                            <!-- Card -->
-                            <div class="card border shadow p-2 lift sk-fade">
-                                <!-- Image -->
-                                <div class="card-zoom position-relative">
-                                    <a href="course-single-v2.html" class="card-img sk-thumbnail img-ratio-3 d-block">
-                                        <img class="rounded shadow-light-lg" src="assets/img/products/product-10.jpg"
-                                            alt="...">
-                                    </a>
-
-                                    <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
-                                        <ins class="h5 mb-0 text-white">$415.99</ins>
-                                    </span>
-                                </div>
-
-                                <!-- Footer -->
-                                <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
-                                    <!-- Preheading -->
-                                    <a href="course-single-v2.html"><span
-                                            class="mb-1 d-inline-block text-gray-800">Marketing</span></a>
-
-                                    <!-- Heading -->
-                                    <div class="position-relative">
-                                        <a href="course-single-v2.html" class="d-block stretched-link">
-                                            <h5 class="line-clamp-2 h-md-48 h-lg-58 me-md-8 me-lg-10 me-xl-4 mb-2">
-                                                Productivity and Time Management for workplace</h5>
-                                        </a>
-
-                                        <div class="row mx-n2 align-items-end">
-                                            <div class="col px-2">
-                                                <ul class="nav mx-n3">
-                                                    <li class="nav-item px-3">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="me-2 d-flex icon-uxs text-secondary">
-                                                                <!-- Icon -->
-                                                                <svg width="20" height="20" viewBox="0 0 20 20"
-                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path
-                                                                        d="M17.1947 7.06802L14.6315 7.9985C14.2476 7.31186 13.712 6.71921 13.0544 6.25992C12.8525 6.11877 12.6421 5.99365 12.4252 5.88303C13.0586 5.25955 13.452 4.39255 13.452 3.43521C13.452 1.54098 11.9124 -1.90735e-06 10.0197 -1.90735e-06C8.12714 -1.90735e-06 6.58738 1.54098 6.58738 3.43521C6.58738 4.39255 6.98075 5.25955 7.61414 5.88303C7.39731 5.99365 7.1869 6.11877 6.98502 6.25992C6.32752 6.71921 5.79178 7.31186 5.40787 7.9985L2.8447 7.06802C2.33612 6.88339 1.79688 7.26044 1.79688 7.80243V16.5178C1.79688 16.8465 2.00256 17.14 2.31155 17.2522L9.75312 19.9536C9.93073 20.018 10.1227 20.0128 10.2863 19.9536L17.7278 17.2522C18.0368 17.14 18.2425 16.8465 18.2425 16.5178V7.80243C18.2425 7.26135 17.704 6.88309 17.1947 7.06802ZM10.0197 1.5625C11.0507 1.5625 11.8895 2.40265 11.8895 3.43521C11.8895 4.46777 11.0507 5.30792 10.0197 5.30792C8.98866 5.30792 8.14988 4.46777 8.14988 3.43521C8.14988 2.40265 8.98866 1.5625 10.0197 1.5625ZM9.23844 18.1044L3.35938 15.9703V8.91724L9.23844 11.0513V18.1044ZM10.0197 9.67255L6.90644 8.54248C7.58164 7.51892 8.75184 6.87042 10.0197 6.87042C11.2875 6.87042 12.4577 7.51892 13.1329 8.54248L10.0197 9.67255ZM16.68 15.9703L10.8009 18.1044V11.0513L16.68 8.91724V15.9703Z"
-                                                                        fill="currentColor" />
-                                                                </svg>
-
-                                                            </div>
-                                                            <div class="font-size-sm">5 lessons</div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="col-auto px-2 text-right">
-                                                <div class="star-rating mb-2 mb-lg-0">
-                                                    <div class="rating" style="width:100%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

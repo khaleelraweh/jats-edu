@@ -178,6 +178,9 @@ return [
     'msg_reviewers_register_login'                      =>  'You need to register or log in before making a review.',
 
 
+    // Instructors-single 
+    'Bio'                                              =>   'Bio',
+
 
 
 

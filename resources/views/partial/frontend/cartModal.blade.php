@@ -120,10 +120,11 @@
                 </div>
 
                 <div class="d-md-flex justify-content-between">
-                    <a href="#" class="d-block d-md-inline-block mb-4 mb-md-0 btn btn-primary btn-sm-wide">
+                    <a href="{{ route('frontend.shop_cart') }}"
+                        class="d-block d-md-inline-block mb-4 mb-md-0 btn btn-primary btn-sm-wide">
                         {{ __('transf.btn_view_cart') }}
                     </a>
-                    <a href="#"
+                    <a href="{{ route('frontend.shop_checkout') }}"
                         class="d-block d-md-inline-block btn btn-teal btn-sm-wide text-white">{{ __('transf.btn_checkout') }}</a>
                 </div>
             </div>

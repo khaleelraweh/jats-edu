@@ -71,7 +71,7 @@ Route::get('/blog-single/{instructor?}', [FrontendController::class, 'blog_singl
 
 Route::get('/shop-cart', [FrontendController::class, 'shop_cart'])->name('frontend.shop_cart');
 Route::get('/shop-checkout', [FrontendController::class, 'shop_checkout'])->name('frontend.shop_checkout');
-Route::get('/shop-order-completed', [FrontendController::class, 'shop_order_completed'])->name('frontend.shop_checkout');
+Route::get('/shop-order-completed', [FrontendController::class, 'shop_order_completed'])->name('frontend.shop_order_completed');
 
 
 Route::get('/terms-of-service', [FrontendController::class, 'service'])->name('frontend.service');

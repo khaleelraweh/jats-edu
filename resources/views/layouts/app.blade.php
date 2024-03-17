@@ -56,8 +56,10 @@
 {{-- <body class="bg-white"> --}}
 
 {{-- <body class="{{ request()->routeIs('frontend.course_single') ? 'bg-white' : '' }}"> --}}
+{{-- <body class="bg-white right-sidebar woocommerce-checkout"> --}}
 
 <body class="{{ request()->routeIs('frontend.index') ? 'bg-white' : '' }}">
+
 
 
     <div id="app">

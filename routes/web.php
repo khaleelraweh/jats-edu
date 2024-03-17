@@ -69,6 +69,11 @@ Route::get('/blog-list/{instructor?}', [FrontendController::class, 'blog_list'])
 Route::get('/blog-single/{instructor?}', [FrontendController::class, 'blog_single'])->name('frontend.blog_single');
 
 
+Route::get('/shop-cart', [FrontendController::class, 'shop_cart'])->name('frontend.shop_cart');
+Route::get('/shop-checkout', [FrontendController::class, 'shop_checkout'])->name('frontend.shop_checkout');
+Route::get('/shop-order-completed', [FrontendController::class, 'shop_order_completed'])->name('frontend.shop_checkout');
+
+
 Route::get('/terms-of-service', [FrontendController::class, 'service'])->name('frontend.service');
 
 

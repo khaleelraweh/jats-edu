@@ -141,6 +141,21 @@ class FrontendController extends Controller
         return view('frontend.blog-single');
     }
 
+    public function shop_cart()
+    {
+        return view('frontend.shop-cart');
+    }
+
+    public function shop_checkout()
+    {
+        return view('frontend.shop-checkout');
+    }
+
+    public function shop_order_completed()
+    {
+        return view('frontend.shop-order-completed');
+    }
+
 
     public function service()
     {

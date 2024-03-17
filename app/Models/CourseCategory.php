@@ -110,6 +110,7 @@ class CourseCategory extends Model
     }
 
 
+
     public function photo(): MorphOne
     {
         return $this->morphOne(Photo::class, 'imageable');

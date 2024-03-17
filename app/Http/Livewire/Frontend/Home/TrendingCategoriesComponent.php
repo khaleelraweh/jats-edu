@@ -15,10 +15,12 @@ class TrendingCategoriesComponent extends Component
 
     public function render()
     {
-        $course_categories = CourseCategory::with('firstMedia')->Active()->RootCategory()->orderBy('created_at', 'desc')
-            ->take(
-                $this->amount
-            )
+        $course_categories = CourseCategory::with('firstMedia')
+            ->HasCourses()
+            ->Active()
+            ->RootCategory()
+            ->orderBy('created_at', 'desc')
+            ->take($this->amount)
             ->get();
 
         return view(

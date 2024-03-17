@@ -134,6 +134,10 @@ return [
     'txt_all_courses'                                   =>  'All Courses',
     'lnk_home'                                          =>  'Home',
 
+    // index page 
+    'more_than'                                         =>  'More than',
+    'courses'                                           =>  'courses',
+
     //course single 
     'btn_buy_now'                                       =>   'Buy Now',
     'btn_enroll'                                        =>  'Enroll',

@@ -36,8 +36,6 @@ class FrontendController extends Controller
             )
             ->get();
 
-        $instructors = Instructor::with('courses')->Active()->take(8)->get();
-        // $instructors = User::where('status', true)->take(8)->get();
 
         // Get lecturers
         $lecturers = User::whereHas('roles', function ($query) {
@@ -49,7 +47,7 @@ class FrontendController extends Controller
             ->take(10)
             ->get();
 
-        return view('frontend.index', compact('main_sliders', 'instructors', 'lecturers'));
+        return view('frontend.index', compact('main_sliders', 'lecturers'));
     }
     public function home()
     {

@@ -102,7 +102,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function scopeHasCourses($query)
     {
-
         return $query->whereHas('courses');
     }
 

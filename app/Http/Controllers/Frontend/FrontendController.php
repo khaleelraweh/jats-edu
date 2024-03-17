@@ -69,10 +69,8 @@ class FrontendController extends Controller
 
         // Trim the text to remove leading and trailing spaces
         $course->description = trim($course->description);
-
         // Get the first 200 characters
         $exposedText = substr($course->description, 0, 200);
-
         // Get the rest of the text
         $hiddenText = substr($course->description, 200);
 
@@ -85,10 +83,16 @@ class FrontendController extends Controller
             ->take(8)
             ->get();
 
+        $latest_courses = Course::with('firstMedia', 'photos', 'courseCategory')
+            ->orderBy('created_at', 'desc') // Order by creation date in descending order
+            ->Active()
+            ->take(4)
+            ->get();
+
         // Generate WhatsApp share URL
         $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($course->name . ': ' . route('frontend.course_single', $course->slug));
 
-        return view('frontend.course-single', compact('course', 'exposedText', 'hiddenText', 'related_courses', 'whatsappShareUrl'));
+        return view('frontend.course-single', compact('course', 'exposedText', 'hiddenText', 'related_courses', 'latest_courses', 'whatsappShareUrl'));
     }
 
 

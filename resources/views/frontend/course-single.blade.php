@@ -53,7 +53,7 @@
                 </div>
 
                 <!-- COURSE META
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -77,7 +77,7 @@
 
                     <div class="mb-4 mb-md-0 me-md-8 me-lg-4 me-xl-8">
                         <h6 class="mb-0 text-white">{{ __('transf.created_by') }}</h6>
-                        <a href="#" class="font-size-sm text-white">Alison Dawn</a>
+                        <a href="#" class="font-size-sm text-white">{{ $lecturer->full_name }}</a>
                     </div>
 
                     <div class="mb-4 mb-md-0 me-md-8 me-lg-4 me-xl-8">
@@ -91,7 +91,7 @@
                 </div>
 
                 <!-- COURSE INFO TAB
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
                 <ul id="pills-tab" class="nav course-tab-v1 border-bottom h4 my-8 pt-1" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" href="#pills-overview"
@@ -1383,7 +1383,8 @@
                                             </svg>
 
                                         </div>
-                                        29 {{ __('transf.txt_courses') }}
+                                        {{ count($lecturer->courses) }} {{ __('transf.txt_courses') }}
+
                                     </div>
                                 </div>
                             </div>
@@ -1409,8 +1410,8 @@
             </div>
 
             <div class="col-lg-4">
-                <!-- SIDEBAR FILTER
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+                {{-- SIDEBAR FILTER --}}
+                {{-- enroll section --}}
                 <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
                     {{-- <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-1" --}}
                     <a href="{{ $course->video_promo }}" class="d-block sk-thumbnail rounded mb-1" data-fancybox>
@@ -1639,65 +1640,65 @@
                     </div>
                 </div>
 
-                <div class="d-none">
+                {{-- latest Courses --}}
+                <div class="d-block">
                     <div class="border rounded px-6 px-lg-5 px-xl-6 pt-5 shadow">
                         <h3 class="mb-5">Latest Courses</h3>
                         <ul class="list-unstyled mb-0">
-                            <li class="media mb-6 d-flex">
-                                <a href="course-single-v5.html" class="w-100p d-block me-5">
-                                    <img src="{{ asset('frontend/assets/img/photos/photo-1.jpg') }}" alt="..."
-                                        class="avatar-img rounded-lg h-90p w-100p">
-                                </a>
-                                <div class="media-body flex-grow-1">
-                                    <a href="course-single-v5.html" class="d-block">
-                                        <h6 class="line-clamp-2 mb-3">Web Developtment and Design</h6>
-                                    </a>
-                                    <del class="font-size-sm me-2">$959</del>
-                                    <ins class="h6 mb-0 ">$415.99</ins>
-                                </div>
-                            </li>
+                            @foreach ($latest_courses as $latest_course)
+                                <li class="media mb-6 d-flex">
+                                    <a href="{{ route('frontend.course_single', $latest_course->slug) }}"
+                                        class="w-100p d-block me-5">
 
-                            <li class="media mb-6 d-flex">
-                                <a href="course-single-v5.html" class="w-100p d-block me-5">
-                                    <img src="{{ asset('frontend/assets/img/photos/photo-2.jpg') }}" alt="..."
-                                        class="avatar-img rounded-lg h-90p w-100p">
-                                </a>
-                                <div class="media-body flex-grow-1">
-                                    <a href="course-single-v5.html" class="d-block">
-                                        <h6 class="line-clamp-2 mb-3">The Complete Cyber Security Course : Hackers </h6>
-                                    </a>
-                                    <del class="font-size-sm me-2">$959</del>
-                                    <ins class="h6 mb-0 ">$415.99</ins>
-                                </div>
-                            </li>
+                                        @php
+                                            if ($latest_course->photos->first()->file_name != null) {
+                                                $latest_course_img = asset(
+                                                    'assets/courses/' . $latest_course->photos->first()->file_name,
+                                                );
 
-                            <li class="media mb-6 d-flex">
-                                <a href="course-single-v5.html" class="w-100p d-block me-5">
-                                    <img src="{{ asset('frontend/assets/img/photos/photo-14.jpg') }}" alt="..."
-                                        class="avatar-img rounded-lg h-90p w-100p">
-                                </a>
-                                <div class="media-body flex-grow-1">
-                                    <a href="course-single-v5.html" class="d-block">
-                                        <h6 class="line-clamp-2 mb-3">Fashion Photography From Professional</h6>
-                                    </a>
-                                    <del class="font-size-sm me-2">$959</del>
-                                    <ins class="h6 mb-0 ">$415.99</ins>
-                                </div>
-                            </li>
+                                                if (
+                                                    !file_exists(
+                                                        public_path(
+                                                            'assets/courses/' .
+                                                                $latest_course->photos->first()->file_name,
+                                                        ),
+                                                    )
+                                                ) {
+                                                    $latest_course_img = asset('assets/courses/no_image_found.webp');
+                                                }
+                                            } else {
+                                                $latest_course_img = asset('assets/courses/no_image_found.webp');
+                                            }
+                                        @endphp
 
-                            <li class="media mb-6 d-flex">
-                                <a href="course-single-v5.html" class="w-100p d-block me-5">
-                                    <img src="{{ asset('frontend/assets/img/photos/photo-16.jpg') }}" alt="..."
-                                        class="avatar-img rounded-lg h-90p w-100p">
-                                </a>
-                                <div class="media-body flex-grow-1">
-                                    <a href="course-single-v5.html" class="d-block">
-                                        <h6 class="line-clamp-2 mb-3">The Complete Financial Analyst Course 2020</h6>
+                                        <img src="{{ $latest_course_img }}" alt="{{ $latest_course->title }}"
+                                            class="avatar-img rounded-lg h-90p w-100p">
+                                        {{-- <img src="{{ asset('frontend/assets/img/photos/photo-1.jpg') }}" alt="..."
+                                            class="avatar-img rounded-lg h-90p w-100p"> --}}
+
+
                                     </a>
-                                    <del class="font-size-sm me-2">$959</del>
-                                    <ins class="h6 mb-0 ">$415.99</ins>
-                                </div>
-                            </li>
+                                    <div class="media-body flex-grow-1">
+                                        <a href="{{ route('frontend.course_single', $latest_course->slug) }}"
+                                            class="d-block">
+                                            <h6 class="line-clamp-2 mb-3">{{ $latest_course->title }}</h6>
+                                        </a>
+
+
+                                        @if ($latest_course->offer_price > 0)
+                                            <del
+                                                class="font-size-sm me-2">{{ currency_converter($latest_course->price) }}</del>
+                                            <ins class="h6 mb-0">{{ currency_converter($latest_course->price - $latest_course->offer_price) }}
+                                            </ins>
+                                        @else
+                                            <ins class="h6 mb-0">
+                                                {{ currency_converter($latest_course->price) }}
+                                            </ins>
+                                        @endif
+                                    </div>
+                                </li>
+                            @endforeach
+
                         </ul>
                     </div>
                 </div>
@@ -1736,7 +1737,8 @@
                             }
                         @endphp
                         <div class="card-zoom position-relative">
-                            <a href="course-single-v5.html" class="card-img sk-thumbnail img-ratio-3 d-block">
+                            <a href="{{ route('frontend.course_single', $related_course->slug) }}"
+                                class="card-img sk-thumbnail img-ratio-3 d-block">
                                 <img class="rounded shadow-light-lg" src="{{ $related_course_img }}" alt="...">
                             </a>
 
@@ -1757,12 +1759,13 @@
                         <!-- Footer -->
                         <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
                             <!-- Preheading -->
-                            <a href="course-single-v5.html"><span
+                            <a href="{{ route('frontend.course_single', $related_course->slug) }}"><span
                                     class="mb-1 d-inline-block text-gray-800">{{ $related_course->courseCategory->title }}</span></a>
 
                             <!-- Heading -->
                             <div class="position-relative">
-                                <a href="course-single-v5.html" class="d-block stretched-link">
+                                <a href="{{ route('frontend.course_single', $related_course->slug) }}"
+                                    class="d-block stretched-link">
                                     <h5 class="line-clamp-2 h-md-48 h-lg-58 me-md-8 me-lg-10 me-xl-4 mb-2">
                                         {{ $related_course->title }}
                                     </h5>

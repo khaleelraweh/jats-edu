@@ -148,6 +148,9 @@ return [
     'certificate_yes'           =>  'Yes',
     'certificate_no'           =>  'No',
     'specializations'           =>  'Specializations',
+    'lecturer_tab'              =>  'Lecturers',
+    'lecturers'                 =>  'Lecturers',
+    'lecturer'                  =>  'Lecturer',
 
 
     // Course Topics  

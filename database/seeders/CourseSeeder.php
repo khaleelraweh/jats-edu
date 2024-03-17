@@ -23,7 +23,7 @@ class CourseSeeder extends Seeder
         // Get active instructors
         $instructors = Instructor::active()->inRandomOrder()->take(3)->get();
 
-        // Get active users
+        // Get active lecturer
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', 'lecturer');
         })->active()->inRandomOrder()->take(10)->get();

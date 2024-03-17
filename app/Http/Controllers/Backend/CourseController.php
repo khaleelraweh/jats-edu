@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\CourseRequest;
 use App\Models\Course;
 use App\Models\CourseCategory;
+use App\Models\Specialization;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
@@ -42,10 +44,16 @@ class CourseController extends Controller
         }
 
         $course_categories = CourseCategory::whereStatus(1)->get(['id', 'title']);
-
         $tags = Tag::whereStatus(1)->get(['id', 'name']);
 
-        return view('backend.courses.create', compact('course_categories', 'tags'));
+        // Get active lecturer
+        $lecturers = User::whereHas('roles', function ($query) {
+            $query->where('name', 'lecturer');
+        })->active()->get(['id', 'first_name', 'last_name']);
+
+        $specializations = $lecturers;
+
+        return view('backend.courses.create', compact('course_categories', 'tags', 'lecturers'));
     }
 
     public function store(CourseRequest $request)
@@ -57,41 +65,46 @@ class CourseController extends Controller
 
         // dd($request);
 
-        $input['title']                  =   $request->title;
-        $input['subtitle']                  =   $request->subtitle;
-        $input['description']           =   $request->description;
+        $input['title']                         =   $request->title;
+        $input['subtitle']                      =   $request->subtitle;
+        $input['description']                   =   $request->description;
 
-        $input['skill_level']                      =   $request->skill_level;
-        $input['language']                       =   $request->language;
-        $input['evaluation']                 =   $request->evaluation;
-        $input['lecture_numbers']             =   $request->lecture_numbers;
+        $input['skill_level']                   =   $request->skill_level;
+        $input['language']                      =   $request->language;
+        $input['evaluation']                    =   $request->evaluation;
+        $input['lecture_numbers']               =   $request->lecture_numbers;
         $input['course_duration']               =   $request->course_duration;
 
         // by alyemeni
-        $input['video_promo']           =  $request->video_promo;
-        $input['video_description']           =  $request->video_description;
-        $input['course_type']           =  $request->course_type;
+        $input['video_promo']                   =  $request->video_promo;
+        $input['video_description']             =  $request->video_description;
+        $input['course_type']                   =  $request->course_type;
 
-        $input['deadline']           =  $request->deadline;
-        $input['certificate']           =  $request->certificate;
+        $input['deadline']                      =  $request->deadline;
+        $input['certificate']                   =  $request->certificate;
 
-        $input['price']                 =   $request->price;
-        $input['offer_price']           =   $request->offer_price;
-        $input['offer_ends']            =   $request->offer_ends;
+        $input['price']                         =   $request->price;
+        $input['offer_price']                   =   $request->offer_price;
+        $input['offer_ends']                    =   $request->offer_ends;
 
-        $input['course_category_id']   =   $request->course_category_id;
-        $input['featured']              =   $request->featured;
+        $input['course_category_id']            =   $request->course_category_id;
+        $input['featured']                      =   $request->featured;
 
-        $input['status']                =   $request->status;
-        $input['created_by']            =   auth()->user()->full_name;
+        $input['status']                        =   $request->status;
+        $input['created_by']                    =   auth()->user()->full_name;
 
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
-        $input['published_on'] = $published_on;
+        $published_on                           =   $request->published_on . ' ' . $request->published_on_time;
+        $published_on                           =   new DateTimeImmutable($published_on);
+        $input['published_on']                  =   $published_on;
 
-        $course = Course::create($input);
+        $course                                 =   Course::create($input);
 
         $course->tags()->attach($request->tags);
+
+        //add lecturers
+        if (isset($request->lecturers) && count($request->lecturers) > 0) {
+            $course->users()->sync($request->lecturers);
+        }
 
         // course topics start 
         if ($request->course_topic != null) {

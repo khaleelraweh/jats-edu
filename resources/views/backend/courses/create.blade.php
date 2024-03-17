@@ -103,6 +103,13 @@
                     </li>
 
                     <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="lecturer-tab" data-bs-toggle="tab" data-bs-target="#lecturer"
+                            type="button" role="tab" aria-controls="lecturer"
+                            aria-selected="false">{{ __('panel.lecturer_tab') }}
+                        </button>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
                             type="button" role="tab" aria-controls="published"
                             aria-selected="false">{{ __('panel.published_tab') }}
@@ -524,6 +531,26 @@
                         </div>
                     </div>
 
+                    {{-- lecturer tab --}}
+                    <div class="tab-pane fade" id="lecturer" role="tabpanel" aria-labelledby="lecturer-tab">
+                        {{-- specialization row --}}
+                        <div class="row pt-4">
+
+                            <div class="col-md-12 col-sm-12 ">
+
+                                <label for="lecturers"> {{ __('panel.lecturers') }} </label>
+                                <select name="lecturers[]" class="form-control select2 child" multiple="multiple">
+                                    @forelse ($lecturers as $lecturer)
+                                        <option value="{{ $lecturer->id }}"
+                                            {{ in_array($lecturer->id, old('lecturers', [])) ? 'selected' : null }}>
+                                            {{ $lecturer->first_name }} {{ $lecturer->last_name }}</option>
+                                    @empty
+                                    @endforelse
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
 
                     {{-- Published Tab --}}
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">

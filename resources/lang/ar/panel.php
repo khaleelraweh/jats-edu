@@ -147,6 +147,9 @@ return [
     'certificate_yes'           =>  'نعم',
     'certificate_no'            =>  'لا',
     'specializations'           =>  'التخصصات',
+    'lecturer_tab'              =>  'المحاضرون',
+    'lecturers'                 =>  'المحاضرون',
+    'lecturer'                  =>  'المحاضر',
 
 
 

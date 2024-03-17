@@ -55,7 +55,9 @@
 
 {{-- <body class="bg-white"> --}}
 
-<body class="{{ request()->routeIs('frontend.course_single') ? 'bg-white' : '' }}">
+{{-- <body class="{{ request()->routeIs('frontend.course_single') ? 'bg-white' : '' }}"> --}}
+
+<body class="{{ request()->routeIs('frontend.index') ? 'bg-white' : '' }}">
 
 
     <div id="app">
@@ -73,9 +75,6 @@
         <!-- NAVBAR
         ================================================== -->
         @include('partial.frontend.header')
-
-
-
 
         @yield('content')
 

@@ -59,7 +59,14 @@ Route::get('/home', [FrontendController::class, 'home'])->name('frontend.home');
 Route::get('/courses/{slug?}', [FrontendController::class, 'courses'])->name('frontend.courses');
 Route::get('/course-single/{course?}', [FrontendController::class, 'course_single'])->name('frontend.course_single');
 
-Route::get('/instructor-single/{instructor?}', [FrontendController::class, 'instructor_single'])->name('frontend.instructor_single');
+Route::get('/instructors-list/{instructor?}', [FrontendController::class, 'instructors_list'])->name('frontend.instructors_list');
+Route::get('/instructors-single/{instructor?}', [FrontendController::class, 'instructors_single'])->name('frontend.instructors_single');
+
+Route::get('/event-list/{instructor?}', [FrontendController::class, 'event_list'])->name('frontend.event_list');
+Route::get('/event-single/{instructor?}', [FrontendController::class, 'event_single'])->name('frontend.event_single');
+
+Route::get('/blog-list/{instructor?}', [FrontendController::class, 'blog_list'])->name('frontend.blog_list');
+Route::get('/blog-single/{instructor?}', [FrontendController::class, 'blog_single'])->name('frontend.blog_single');
 
 
 Route::get('/terms-of-service', [FrontendController::class, 'service'])->name('frontend.service');

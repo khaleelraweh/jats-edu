@@ -57,6 +57,8 @@ class FrontendController extends Controller
         return view('frontend.course-list', compact('slug'));
     }
 
+
+
     public function course_single($slug)
     {
         // Retrieve the text from the database
@@ -95,18 +97,34 @@ class FrontendController extends Controller
         return view('frontend.course-single', compact('course', 'exposedText', 'hiddenText', 'related_courses', 'latest_courses', 'whatsappShareUrl'));
     }
 
-    public function instructor_single($slug)
+    public function instructors_list($slug = null)
     {
+        return view('frontend.instructors-list', compact('slug'));
+    }
 
-
-
-
-
-
-        // Generate WhatsApp share URL
-        // $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($course->name . ': ' . route('frontend.course_single', $course->slug));
-
+    public function instructors_single($slug)
+    {
         return view('frontend.instructors-single');
+    }
+
+    public function event_list($slug = null)
+    {
+        return view('frontend.event-list', compact('slug'));
+    }
+
+    public function event_single($slug)
+    {
+        return view('frontend.event-single');
+    }
+
+    public function blog_list($slug = null)
+    {
+        return view('frontend.blog-list', compact('slug'));
+    }
+
+    public function blog_single($slug)
+    {
+        return view('frontend.blog-single');
     }
 
 

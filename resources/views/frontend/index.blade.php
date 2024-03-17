@@ -914,7 +914,7 @@
                                     </ul>
                                 </div>
 
-                                <a href="{{ route('frontend.instructor_single', $lecturer->id) }}"
+                                <a href="{{ route('frontend.instructors_single', $lecturer->id) }}"
                                     class="card-img sk-thumbnail img-ratio-4 card-hover-overlay coral d-block">
                                     @php
                                         if ($lecturer->user_image != null) {
@@ -936,7 +936,7 @@
 
                             <!-- Footer -->
                             <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="{{ route('frontend.instructor_single', $lecturer->id) }}" class="d-block">
+                                <a href="{{ route('frontend.instructors_single', $lecturer->id) }}" class="d-block">
                                     <h5 class="mb-0">{{ $lecturer->full_name }}</h5>
                                 </a>
                                 <span class="font-size-d-sm">

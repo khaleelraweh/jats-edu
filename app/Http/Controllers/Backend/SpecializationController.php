@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\SpecializationRequest;
 use App\Models\Specialization;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
 
 class SpecializationController extends Controller
@@ -35,14 +37,13 @@ class SpecializationController extends Controller
         return view('backend.specializations.create');
     }
 
-    public function store(TagRequest $request)
+    public function store(SpecializationRequest $request)
     {
         if (!auth()->user()->ability('admin', 'create_tags')) {
             return redirect('admin/index');
         }
 
         $input['name']          =   $request->name;
-        $input['section']       =   $request->section;
         $input['status']        =   $request->status;
         $input['created_by']    =   auth()->user()->full_name;
 
@@ -50,9 +51,9 @@ class SpecializationController extends Controller
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        $tag = Tag::create($input);
+        $specialization = Specialization::create($input);
 
-        if ($tag) {
+        if ($specialization) {
             return redirect()->route('admin.specializations.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
@@ -83,7 +84,7 @@ class SpecializationController extends Controller
         return view('backend.specializations.edit', compact('tag'));
     }
 
-    public function update(TagRequest $request,  $tag)
+    public function update(SpecializationRequest $request,  $tag)
     {
         if (!auth()->user()->ability('admin', 'update_tags')) {
             return redirect('admin/index');

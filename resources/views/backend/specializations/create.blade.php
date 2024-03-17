@@ -10,7 +10,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_tag') }}
+                    {{ __('panel.add_new_specialization') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -22,8 +22,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.tags.index') }}">
-                            {{ __('panel.show_tags') }}
+                        <a href="{{ route('admin.specializations.index') }}">
+                            {{ __('panel.show_specializations') }}
                         </a>
                     </li>
                 </ul>
@@ -47,7 +47,7 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form action="{{ route('admin.tags.store') }}" method="post">
+            <form action="{{ route('admin.specializations.store') }}" method="post">
                 @csrf
 
                 {{-- links of tabs --}}
@@ -76,8 +76,9 @@
                             <div class="row ">
                                 <div class="col-sm-12 pt-3">
                                     <div class="form-group">
-                                        <label for="name[{{ $key }}]">{{ __('panel.tag_name') }}
-                                            ({{ $key }})
+                                        <label for="name[{{ $key }}]">
+                                            {{ __('panel.specialization') }} {{ __('panel.in') }}
+                                            ({{ __('panel.' . $key) }})
                                         </label>
                                         <input type="text" name="name[{{ $key }}]"
                                             id="name[{{ $key }}]" value="{{ old('name.' . $key) }}"
@@ -90,22 +91,7 @@
                             </div>
                         @endforeach
 
-                        <div class="row">
-                            <div class="col-sm-12 pt-3">
-                                <label for="section">{{ __('panel.tag_type') }}</label>
-                                <select name="section" class="form-control">
-                                    <option value="1" {{ old('section') == '1' ? 'selected' : null }}>
-                                        {{ __('panel.product_tag') }}</option>
-                                    <option value="2" {{ old('section') == '2' ? 'selected' : null }}>
-                                        {{ __('panel.card_tag') }}</option>
-                                    <option value="3" {{ old('section') == '3' ? 'selected' : null }}>
-                                        {{ __('panel.blog_tag') }}</option>
-                                </select>
-                                @error('section')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+
                     </div>
 
                     {{-- Publish Tab --}}

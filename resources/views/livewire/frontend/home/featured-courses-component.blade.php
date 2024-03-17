@@ -170,11 +170,16 @@
 
                                     <div class="d-lg-flex align-items-end flex-wrap mb-n1">
                                         <div class="star-rating mb-2 mb-lg-0 me-lg-3">
-                                            <div class="rating" style="width:50%;"></div>
+                                            <div class="rating"
+                                                style="width:{{ scaleToPercentage($featured_course->reviews->pluck('rating')->avg(), 5) }}%;">
+                                            </div>
                                         </div>
 
                                         <div class="font-size-sm">
-                                            <span>5.45 (5.8k+ reviews)</span>
+                                            <span>
+                                                {{ round($featured_course->reviews->pluck('rating')->avg(), 2) }}
+                                                ({{ count($featured_course->reviews) }}+ reviews)
+                                            </span>
                                         </div>
                                     </div>
 

@@ -100,6 +100,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Course::class);
     }
 
+    public function scopeHasCourses($query)
+    {
+
+        return $query->whereHas('courses');
+    }
+
     public function specializations(): BelongsToMany
     {
         return $this->belongsToMany(Specialization::class);

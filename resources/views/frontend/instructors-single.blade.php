@@ -352,27 +352,10 @@
                                                 $course_img = asset('assets/courses/no_image_found.webp');
                                             }
 
-                                            if ($course->photos->last()->file_name != null) {
-                                                $course_cover = asset(
-                                                    'assets/courses/' . $course->photos->last()->file_name,
-                                                );
-
-                                                if (
-                                                    !file_exists(
-                                                        public_path(
-                                                            'assets/courses/' . $course->photos->last()->file_name,
-                                                        ),
-                                                    )
-                                                ) {
-                                                    $course_cover = asset('assets/courses/no_image_found.webp');
-                                                }
-                                            } else {
-                                                $course_cover = asset('assets/courses/no_image_found.webp');
-                                            }
                                         @endphp
                                         <a href="{{ route('frontend.course_single', $course->slug) }}"
                                             class="card-img sk-thumbnail img-ratio-3 d-block">
-                                            <img class="rounded shadow-light-lg" src="{{ $course_cover }}"
+                                            <img class="rounded shadow-light-lg" src="{{ $course_img }}"
                                                 alt="{{ $course->title }}">
                                         </a>
 

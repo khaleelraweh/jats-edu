@@ -56,26 +56,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($tags as $tag)
+                        @forelse ($specializations as $specialization)
                             <tr>
-                                <td>{{ $tag->name }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $tag->created_by }}</td>
-                                <td>{{ $tag->status() }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $tag->created_at }}</td>
+                                <td>{{ $specialization->name }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $specialization->created_by }}</td>
+                                <td>{{ $specialization->status() }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $specialization->created_at }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.specializations.edit', $tag->id) }}"
+                                        <a href="{{ route('admin.specializations.edit', $specialization->id) }}"
                                             class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-tag-{{ $tag->id }}').submit();}else{return false;}"
+                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-specialization-{{ $specialization->id }}').submit();}else{return false;}"
                                             class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.specializations.destroy', $tag->id) }}" method="post"
-                                        class="d-none" id="delete-tag-{{ $tag->id }}">
+                                    <form action="{{ route('admin.specializations.destroy', $specialization->id) }}"
+                                        method="post" class="d-none" id="delete-specialization-{{ $specialization->id }}">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -91,7 +91,7 @@
                         <tr>
                             <td colspan="6">
                                 <div class="float-right">
-                                    {!! $tags->appends(request()->all())->links() !!}
+                                    {!! $specializations->appends(request()->all())->links() !!}
                                 </div>
                             </td>
                         </tr>

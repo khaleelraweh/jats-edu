@@ -12,11 +12,11 @@ class SpecializationController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_tags , show_tags')) {
+        if (!auth()->user()->ability('admin', 'manage_specializations , show_specializations')) {
             return redirect('admin/index');
         }
 
-        $tags = Specialization::query()
+        $specializations = Specialization::query()
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -26,12 +26,12 @@ class SpecializationController extends Controller
             ->orderBy(\request()->sort_by ?? 'id', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
 
-        return view('backend.specializations.index', compact('tags'));
+        return view('backend.specializations.index', compact('specializations'));
     }
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_tags')) {
+        if (!auth()->user()->ability('admin', 'create_specializations')) {
             return redirect('admin/index');
         }
         return view('backend.specializations.create');
@@ -39,7 +39,7 @@ class SpecializationController extends Controller
 
     public function store(SpecializationRequest $request)
     {
-        if (!auth()->user()->ability('admin', 'create_tags')) {
+        if (!auth()->user()->ability('admin', 'create_specializations')) {
             return redirect('admin/index');
         }
 
@@ -68,32 +68,32 @@ class SpecializationController extends Controller
 
     public function show($id)
     {
-        if (!auth()->user()->ability('admin', 'display_tags')) {
+        if (!auth()->user()->ability('admin', 'display_specializations')) {
             return redirect('admin/index');
         }
         return view('backend.specializations.show');
     }
 
-    public function edit($tag)
+    public function edit($specialization)
     {
-        if (!auth()->user()->ability('admin', 'update_tags')) {
+        if (!auth()->user()->ability('admin', 'update_specializations')) {
             return redirect('admin/index');
         }
 
-        $tag = Tag::where('id', $tag)->first();
-        return view('backend.specializations.edit', compact('tag'));
+        $specialization = Specialization::where('id', $specialization)->first();
+
+        return view('backend.specializations.edit', compact('specialization'));
     }
 
-    public function update(SpecializationRequest $request,  $tag)
+    public function update(SpecializationRequest $request,  $specialization)
     {
-        if (!auth()->user()->ability('admin', 'update_tags')) {
+        if (!auth()->user()->ability('admin', 'update_specializations')) {
             return redirect('admin/index');
         }
 
-        $tag = Tag::where('id', $tag)->first();
+        $specialization = Specialization::where('id', $specialization)->first();
 
         $input['name'] = $request->name;
-        $input['section']       =   $request->section;
         $input['status']        =   $request->status;
         $input['updated_by']    =   auth()->user()->full_name;
 
@@ -101,9 +101,9 @@ class SpecializationController extends Controller
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        $tag->update($input);
+        $specialization->update($input);
 
-        if ($tag) {
+        if ($specialization) {
             return redirect()->route('admin.specializations.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -115,21 +115,17 @@ class SpecializationController extends Controller
         ]);
     }
 
-    public function destroy($tag)
+    public function destroy($specialization)
     {
-        if (!auth()->user()->ability('admin', 'delete_tags')) {
+        if (!auth()->user()->ability('admin', 'delete_specializations')) {
             return redirect('admin/index');
         }
 
-        $tag = Tag::where('id', $tag)->first();
+        $specialization = Specialization::where('id', $specialization)->first();
+        $specialization->delete();
 
 
-        $tag->deleted_by = auth()->user()->full_name;
-        $tag->save();
-        $tag->delete();
-
-
-        if ($tag) {
+        if ($specialization) {
             return redirect()->route('admin.specializations.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'

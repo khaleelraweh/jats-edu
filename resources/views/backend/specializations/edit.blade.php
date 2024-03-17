@@ -10,7 +10,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_tag') }}
+                    {{ __('panel.edit_existing_specialization') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -22,8 +22,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.tags.index') }}">
-                            {{ __('panel.show_tags') }}
+                        <a href="{{ route('admin.specializations.index') }}">
+                            {{ __('panel.show_specializations') }}
                         </a>
                     </li>
                 </ul>
@@ -44,7 +44,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.tags.update', $tag->id) }}" method="post">
+            <form action="{{ route('admin.specializations.update', $specialization->id) }}" method="post">
                 @csrf
                 @method('PATCH')
 
@@ -73,12 +73,14 @@
                             <div class="row ">
                                 <div class="col-sm-12 pt-3">
                                     <div class="form-group">
-                                        <label for="name[{{ $key }}]">{{ __('panel.tag_name') }}
-                                            ({{ $key }})
+                                        <label for="name[{{ $key }}]">
+                                            {{ __('panel.specialization') }}
+                                            {{ __('panel.in') }}
+                                            ({{ __('panel.' . $key) }})
                                         </label>
                                         <input type="text" name="name[{{ $key }}]"
                                             id="name[{{ $key }}]"
-                                            value="{{ old('name.' . $key, $tag->getTranslation('name', $key)) }}"
+                                            value="{{ old('name.' . $key, $specialization->getTranslation('name', $key)) }}"
                                             class="form-control">
                                         @error('name.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
@@ -88,25 +90,6 @@
                             </div>
                         @endforeach
 
-                        <div class="row">
-                            <div class="col-sm-12 pt-4">
-                                <label for="section">{{ __('panel.tag_type') }}</label>
-                                <select name="section" class="form-control">
-                                    <option value="1" {{ old('section', $tag->section) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.product_tag') }}
-                                    </option>
-                                    <option value="2" {{ old('section', $tag->section) == '2' ? 'selected' : null }}>
-                                        {{ __('panel.card_tag') }}
-                                    </option>
-                                    <option value="3" {{ old('section', $tag->section) == '3' ? 'selected' : null }}>
-                                        {{ __('panel.blog_tag') }}
-                                    </option>
-                                </select>
-                                @error('section')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
                     </div>
 
                     {{-- Publish Tab --}}
@@ -117,7 +100,7 @@
                                 <div class="form-group">
                                     <label for="published_on">{{ __('panel.published_date') }} </label>
                                     <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', \Carbon\Carbon::parse($tag->published_on)->Format('Y-m-d')) }}"
+                                        value="{{ old('published_on', \Carbon\Carbon::parse($specialization->published_on)->Format('Y-m-d')) }}"
                                         class="form-control">
                                     @error('published_on')
                                         <span class="text-danger">{{ $message }}</span>
@@ -132,7 +115,7 @@
                                 <div class="form-group">
                                     <label for="published_on_time"> {{ __('panel.published_time') }}</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', \Carbon\Carbon::parse($tag->published_on)->Format('h:i A')) }}"
+                                        value="{{ old('published_on_time', \Carbon\Carbon::parse($specialization->published_on)->Format('h:i A')) }}"
                                         class="form-control">
                                     @error('published_on_time')
                                         <span class="text-danger">{{ $message }}</span>
@@ -147,10 +130,12 @@
                                     <span>{{ __('panel.status') }}</span>
                                 </label>
                                 <select name="status" class="form-control">
-                                    <option value="1" {{ old('status', $tag->status) == '1' ? 'selected' : null }}>
+                                    <option value="1"
+                                        {{ old('status', $specialization->status) == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}
                                     </option>
-                                    <option value="0" {{ old('status', $tag->status) == '0' ? 'selected' : null }}>
+                                    <option value="0"
+                                        {{ old('status', $specialization->status) == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>

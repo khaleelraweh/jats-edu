@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use DateTimeImmutable;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -51,7 +52,6 @@ class CourseController extends Controller
             $query->where('name', 'lecturer');
         })->active()->get(['id', 'first_name', 'last_name']);
 
-        $specializations = $lecturers;
 
         return view('backend.courses.create', compact('course_categories', 'tags', 'lecturers'));
     }
@@ -104,6 +104,10 @@ class CourseController extends Controller
         //add lecturers
         if (isset($request->lecturers) && count($request->lecturers) > 0) {
             $course->users()->sync($request->lecturers);
+        } else {
+            // If $request->lecturers is not set or empty, assign the currently logged-in user as the lecturer
+            $loggedInUser = Auth::user();
+            $course->users()->sync([$loggedInUser->id]);
         }
 
         // course topics start 
@@ -193,7 +197,15 @@ class CourseController extends Controller
 
         $tags = Tag::whereStatus(1)->get(['id', 'name']);
 
-        return view('backend.courses.edit', compact('course_categories', 'tags', 'course'));
+        // Get active lecturer
+        $lecturers = User::whereHas('roles', function ($query) {
+            $query->where('name', 'lecturer');
+        })->active()->get(['id', 'first_name', 'last_name']);
+
+
+        $courseLecturers = $course->users->pluck(['id'])->toArray();
+
+        return view('backend.courses.edit', compact('course_categories', 'tags', 'course', 'lecturers', 'courseLecturers'));
     }
 
     public function update(CourseRequest $request,  $course)
@@ -242,6 +254,15 @@ class CourseController extends Controller
         $course->update($input);
 
         $course->tags()->sync($request->tags);
+
+        // Update lecturers
+        if (isset($request->lecturers) && count($request->lecturers) > 0) {
+            $course->users()->sync($request->lecturers);
+        } else {
+            // If $request->lecturers is not set or empty, assign the currently logged-in user as the lecturer
+            $loggedInUser = Auth::user();
+            $course->users()->sync([$loggedInUser->id]);
+        }
 
         // course topics start 
         $course->topics()->delete();

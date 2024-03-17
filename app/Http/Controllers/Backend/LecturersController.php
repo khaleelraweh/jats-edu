@@ -168,7 +168,7 @@ class LecturersController extends Controller
 
         $lecturer->update($input);
 
-        //add specifications
+        //update specifications
         if (isset($request->specializations) && count($request->specializations) > 0) {
             $lecturer->specializations()->sync($request->specializations);
         }

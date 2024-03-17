@@ -95,6 +95,20 @@ class FrontendController extends Controller
         return view('frontend.course-single', compact('course', 'exposedText', 'hiddenText', 'related_courses', 'latest_courses', 'whatsappShareUrl'));
     }
 
+    public function instructor_single($slug)
+    {
+
+
+
+
+
+
+        // Generate WhatsApp share URL
+        // $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($course->name . ': ' . route('frontend.course_single', $course->slug));
+
+        return view('frontend.instructors-single');
+    }
+
 
     public function service()
     {

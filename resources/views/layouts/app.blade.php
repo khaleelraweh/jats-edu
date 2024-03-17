@@ -53,6 +53,8 @@
     @livewireStyles
 </head>
 
+{{-- <body class="bg-white"> --}}
+
 <body class="{{ request()->routeIs('frontend.course_single') ? 'bg-white' : '' }}">
 
 

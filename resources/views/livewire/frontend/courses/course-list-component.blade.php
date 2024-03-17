@@ -38,8 +38,7 @@
 
         <div class="row">
             <div class="col-xl-3 mb-5 mb-xl-0">
-                <!-- SIDEBAR FILTER
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
+                {{-- SIDEBAR FILTER --}}
                 <div class=" vertical-scroll" id="courseSidebar">
                     <div class="border rounded mb-6 bg-white">
                         <!-- Heading -->
@@ -447,7 +446,6 @@
                                     </a>
 
                                     <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
-                                        {{-- <ins class="h5 mb-0 text-white">$415.99</ins> --}}
                                         @if ($course->offer_price > 0)
                                             <del class="font-size-sm">{{ currency_converter($course->price) }}</del>
                                             <ins class="h4 mb-0 d-block mb-lg-n1">{{ currency_converter($course->price - $course->offer_price) }}
@@ -465,7 +463,7 @@
                                     <!-- Preheading -->
                                     <a href="course-single-v5.html"><span
                                             class="mb-1 d-inline-block text-gray-800">{{ $course->courseCategory->title }}
-                                            {{ $course->price }}</span></a>
+                                        </span></a>
 
                                     <!-- Heading -->
                                     <div class="position-relative">
@@ -502,7 +500,9 @@
 
                                             <div class="col-auto px-2 text-right">
                                                 <div class="star-rating mb-2 mb-lg-0">
-                                                    <div class="rating" style="width:100%;"></div>
+                                                    <div class="rating"
+                                                        style="width:{{ scaleToPercentage($course->reviews->pluck('rating')->avg(), 5) }}%;">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

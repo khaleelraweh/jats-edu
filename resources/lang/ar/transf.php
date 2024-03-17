@@ -175,6 +175,7 @@ return [
     'txt_content'                                       =>  'محتوى',
     'txt_submit_review'                                 =>  'إرسال المراجعة',
     'btn_share_this_course'                             =>  'مشاركة هذه الدورة',
+    'txt_latest_courses'                                =>  'أحدث الدورات',
 
     'msg_reviewers_register_login'                      =>  'تحتاج إلى التسجيل أو تسجيل الدخول قبل إجراء المراجعة.',
 

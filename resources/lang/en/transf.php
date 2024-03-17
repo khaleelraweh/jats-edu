@@ -173,6 +173,7 @@ return [
     'txt_content'                                       =>  'Content',
     'txt_submit_review'                                 =>  'Submit Review',
     'btn_share_this_course'                             =>  'Share this course',
+    'txt_latest_courses'                                =>  'Latest Courses',
 
     'msg_reviewers_register_login'                      =>  'You need to register or log in before making a review.',
 

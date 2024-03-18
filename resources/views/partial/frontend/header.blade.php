@@ -41,7 +41,7 @@
                     @foreach ($web_menus->where('section', 1) as $menu)
                         @if (count($menu->appearedChildren) == false)
                             <li class="dropdown-item dropright">
-                                <a href="#">
+                                <a href="{{ $menu->link }}">
                                     <div class="me-4 d-flex {{ !request()->routeIs('frontend.index') ? 'text-white' : 'text-primary' }} icon-xs"
                                         style="display: inline-block !important">
                                         <!-- Icon -->
@@ -53,7 +53,8 @@
                             </li>
                         @else
                             <li class="dropdown-item dropright">
-                                <a class="dropdown-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
+                                <a class="dropdown-link dropdown-toggle" data-bs-toggle="dropdown"
+                                    href="{{ $menu->link }}">
                                     <div
                                         class="me-4 d-flex {{ !request()->routeIs('frontend.index') ? 'text-white' : 'text-primary' }} icon-xs">
                                         <!-- Icon -->
@@ -68,7 +69,7 @@
                                         class="dropdown-menu-md {{ !request()->routeIs('frontend.index') ? 'bg-primary' : 'bg-white' }} rounded dropdown-menu-inner">
                                         @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
                                             @foreach ($menu->appearedChildren as $sub_menu)
-                                                <a class="dropdown-item" href="course-single-v1.html">
+                                                <a class="dropdown-item" href="{{ $sub_menu->link }}">
                                                     {{ $sub_menu->title }}
                                                 </a>
                                             @endforeach
@@ -80,11 +81,6 @@
                             </li>
                         @endif
                     @endforeach
-
-
-
-
-
 
                 </ul>
             </li>
@@ -139,8 +135,8 @@
                 @foreach ($web_menus->where('section', 1) as $menu)
                     @if (count($menu->appearedChildren) == false)
                         <li class="">
-                            <a class="nav-link dropdown px-xl-4 text-uppercase" id="navbarShop" href="."
-                                aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown px-xl-4 text-uppercase" id="navbarShop"
+                                href="{{ $menu->link }}" aria-haspopup="true" aria-expanded="false">
                                 {{ $menu->title }}
                             </a>
                         </li>
@@ -148,7 +144,8 @@
                         <li class="nav-item dropdown">
 
                             <a class="nav-link dropdown-toggle px-xl-4 text-uppercase" id="navbarBlog"
-                                data-bs-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
+                                data-bs-toggle="dropdown" href="{{ $menu->link }}" aria-haspopup="true"
+                                aria-expanded="false">
                                 {{ $menu->title }}
                             </a>
                             @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
@@ -156,20 +153,20 @@
                                     @foreach ($menu->appearedChildren as $sub_menu)
                                         @if (count($sub_menu->appearedChildren) == false)
                                             <li class="dropdown-item">
-                                                <a class="dropdown-link" href="blog-single.html">
+                                                <a class="dropdown-link" href="{{ $sub_menu->link }}">
                                                     {{ $sub_menu->title }}
                                                 </a>
                                             </li>
                                         @else
                                             <li class="dropdown-item dropright">
                                                 <a class="dropdown-link dropdown-toggle" data-bs-toggle="dropdown"
-                                                    href="#">
+                                                    href="{{ $sub_menu->link }}">
                                                     {{ $sub_menu->title }}
                                                 </a>
                                                 @if ($sub_menu->appearedChildren !== null && count($sub_menu->appearedChildren) > 0)
                                                     <div class="dropdown-menu border-xl shadow-none">
                                                         @foreach ($sub_menu->appearedChildren as $sub_menu_2)
-                                                            <a class="dropdown-item" href="blog-grid-v1.html">
+                                                            <a class="dropdown-item" href="{{ $sub_menu_2->link }}">
                                                                 {{ $sub_menu_2->title }}
                                                             </a>
                                                         @endforeach

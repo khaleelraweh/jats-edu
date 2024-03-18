@@ -163,13 +163,13 @@
                                             @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
                                                 @foreach ($menu->appearedChildren as $sub_menu)
                                                     @if (count($sub_menu->appearedChildren) == false)
-                                                        <option style="color:blue;font-weight: bold;font-size:14px;"
+                                                        <option style="color:blue;font-weight: bold;font-size:15px;"
                                                             value="{{ $sub_menu->id }}"
                                                             {{ old('parent_id') == $sub_menu->id ? 'selected' : null }}>
                                                             &nbsp; &nbsp; &nbsp; {{ $sub_menu->title }}
                                                         </option>
                                                     @else
-                                                        <option style="color:blue;font-weight: bold;font-size:14px;"
+                                                        <option style="color:blue;font-weight: bold;font-size:15px;"
                                                             value="{{ $sub_menu->id }}"
                                                             {{ old('parent_id') == $sub_menu->id ? 'selected' : null }}>
                                                             &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}

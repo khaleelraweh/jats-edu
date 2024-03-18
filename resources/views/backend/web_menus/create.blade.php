@@ -1,14 +1,58 @@
 @extends('layouts.admin')
 
+@section('style')
+    <style>
+        ul,
+        #myUL {
+            list-style-type: none;
+        }
 
+        #myUL {
+            margin: 0;
+            padding: 0;
+        }
+
+        .caret {
+            cursor: pointer;
+            -webkit-user-select: none;
+            /* Safari 3.1+ */
+            -moz-user-select: none;
+            /* Firefox 2+ */
+            -ms-user-select: none;
+            /* IE 10+ */
+            user-select: none;
+        }
+
+        .caret::before {
+            content: "\25B6";
+            color: black;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .caret-down::before {
+            -ms-transform: rotate(90deg);
+            /* IE 9 */
+            -webkit-transform: rotate(90deg);
+            /* Safari */
+            '
+     transform: rotate(90deg);
+        }
+
+        .nested {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+@endsection
 
 @section('content')
 
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
-
-
-
 
         {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
@@ -101,13 +145,46 @@
                                     {{ __('panel.category_menu') }}
                                 </label>
                                 <select name="parent_id" class="form-control">
-                                    <option value="">{{ __('panel.main_category') }} __</option>
-                                    @forelse ($main_menus as $main_menu)
-                                        <option value="{{ $main_menu->id }}"
-                                            {{ old('parent_id') == $main_menu->id ? 'selected' : null }}>
-                                            {{ $main_menu->title }}</option>
-                                    @empty
-                                    @endforelse
+                                    <option value="">{{ __('panel.main_category') }}</option>
+                                    @foreach ($web_menus->where('section', 1) as $menu)
+                                        @if (count($menu->appearedChildren) == false)
+                                            <option value="{{ $menu->id }}"
+                                                {{ old('parent_id') == $menu->id ? 'selected' : null }}>
+                                                {{ $menu->title }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $menu->id }}"
+                                                {{ old('parent_id') == $menu->id ? 'selected' : null }}>
+                                                {{ $menu->title }}
+                                            </option>
+
+                                            @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
+                                                @foreach ($menu->appearedChildren as $sub_menu)
+                                                    @if (count($sub_menu->appearedChildren) == false)
+                                                        <option value="{{ $sub_menu->id }}"
+                                                            {{ old('parent_id') == $sub_menu->id ? 'selected' : null }}>
+                                                            &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
+                                                        </option>
+                                                    @else
+                                                        <option value="{{ $sub_menu->id }}"
+                                                            {{ old('parent_id') == $sub_menu->id ? 'selected' : null }}>
+                                                            &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
+                                                        </option>
+                                                        @if ($sub_menu->appearedChildren !== null && count($sub_menu->appearedChildren) > 0)
+                                                            @foreach ($sub_menu->appearedChildren as $sub_menu_2)
+                                                                <option value="{{ $sub_menu_2->id }}"
+                                                                    {{ old('parent_id') == $sub_menu_2->id ? 'selected' : null }}>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                                                    &nbsp;{{ $sub_menu_2->title }}
+                                                                </option>
+                                                            @endforeach
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                            </li>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -252,5 +329,17 @@
                 clear: ''
             });
         });
+    </script>
+
+    <script>
+        var toggler = document.getElementsByClassName("caret");
+        var i;
+
+        for (i = 0; i < toggler.length; i++) {
+            toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+            });
+        }
     </script>
 @endsection

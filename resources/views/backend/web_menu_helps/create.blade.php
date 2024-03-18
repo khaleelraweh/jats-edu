@@ -70,12 +70,14 @@
 
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-                        @foreach (config('locales.languages') as $key => $val)
-                            <div class="row ">
-                                <div class="col-sm-12 pt-3">
+                        <div class="row ">
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="col-sm-12 col-md-6 pt-3">
                                     <div class="form-group">
-                                        <label for="title[{{ $key }}]">{{ __('panel.title') }}
-                                            ({{ $key }})
+                                        <label for="title[{{ $key }}]">
+                                            {{ __('panel.title') }}
+                                            {{ __('panel.in') }}
+                                            ({{ __('panel.' . $key) }})
                                         </label>
                                         <input type="text" name="title[{{ $key }}]"
                                             id="title[{{ $key }}]" value="{{ old('title.' . $key) }}"
@@ -85,20 +87,27 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
 
                         <div class="row ">
-                            <div class="col-sm-12 pt-3">
-                                <div class="form-group">
-                                    <label for="link">{{ __('panel.link') }}</label>
-                                    <input type="text" id="link" name="link" value="{{ old('link') }}"
-                                        class="form-control">
-                                    @error('link')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="col-sm-12 col-md-6 pt-3">
+                                    <div class="form-group">
+                                        <label for="link[{{ $key }}]">
+                                            {{ __('panel.link') }}
+                                            {{ __('panel.in') }}
+                                            ({{ __('panel.' . $key) }})
+                                        </label>
+                                        <input type="text" id="link[{{ $key }}]"
+                                            name="link[{{ $key }}]" value="{{ old('link.' . $key) }}"
+                                            class="form-control">
+                                        @error('link.' . $key)
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
 
                     </div>

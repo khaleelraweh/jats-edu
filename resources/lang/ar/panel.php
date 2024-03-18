@@ -63,7 +63,7 @@ return [
 
     // ........... commons in Categories ....... //
 
-    'title'                     => 'إسم الصنف',
+    'category_title'                     => 'إسم الصنف',
     'category_card-count'               => 'عدد الباقات',
 
 

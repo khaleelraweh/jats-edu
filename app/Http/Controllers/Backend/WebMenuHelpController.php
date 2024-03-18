@@ -39,8 +39,6 @@ class WebMenuHelpController extends Controller
             return redirect('admin/index');
         }
 
-        // $main_menus =WebMenu::whereNull('parent_id')->where('section',1)->get(['id','name_ar']);
-        // return view('backend.web_menu_helps.create',compact('main_menus'));
         return view('backend.web_menu_helps.create');
     }
 

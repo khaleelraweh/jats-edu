@@ -184,6 +184,8 @@ return [
 
     // Instructors-single 
     'Bio'                                              =>   'السيرة الذاتية',
+    'instructors'                                       =>  'المحاضرون',
+    'home'                                              =>  'الرئيسية',
 
 
 

@@ -54,7 +54,7 @@ class FrontendController extends Controller
         return view('frontend.home');
     }
 
-    public function courses($slug = null)
+    public function courses_list($slug = null)
     {
         // return view('frontend.course-list', compact('courses', 'course_categories_menu'));
         return view('frontend.course-list', compact('slug'));
@@ -102,7 +102,15 @@ class FrontendController extends Controller
 
     public function instructors_list($slug = null)
     {
-        return view('frontend.instructors-list', compact('slug'));
+        // Get lecturers
+        $lecturers = User::whereHas('roles', function ($query) {
+            $query->where('name', 'lecturer');
+        })
+            ->active()
+            ->HasCourses()
+            ->inRandomOrder()
+            ->get();
+        return view('frontend.instructors-list', compact('slug', 'lecturers'));
     }
 
     public function instructors_single($slug)

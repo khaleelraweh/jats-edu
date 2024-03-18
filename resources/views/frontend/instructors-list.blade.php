@@ -4,16 +4,16 @@
     <!-- PAGE TITLE -->
     <header class="py-8 py-md-11" style="background-image: none;">
         <div class="container text-center py-xl-2">
-            <h1 class="display-4 fw-semi-bold mb-0">Courses Grid 02</h1>
+            <h1 class="display-4 fw-semi-bold mb-0">{{ __('transf.instructors') }}</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-scroll justify-content-center">
                     <li class="breadcrumb-item">
-                        <a class="text-gray-800" href="#">
-                            Home
+                        <a class="text-gray-800" href="{{ route('frontend.index') }}">
+                            {{ __('transf.home') }}
                         </a>
                     </li>
                     <li class="breadcrumb-item text-gray-800 active" aria-current="page">
-                        Courses Grid 02
+                        {{ __('transf.instructors') }}
                     </li>
                 </ol>
             </nav>
@@ -27,8 +27,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-3 mb-5 mb-xl-0">
-                <!-- SIDEBAR FILTER
-                        ================================================== -->
+                <!-- SIDEBAR FILTER -->
                 <div class=" vertical-scroll" id="courseSidebar">
                     <div class="border rounded mb-6 @@widgetBG">
                         <!-- Heading -->
@@ -294,538 +293,92 @@
 
             <div class="col-xl-9">
                 <div class="row row-cols-md-3 mb-6 mb-xl-3">
-                    <div class="col-md pb-4 pb-md-7">
-                        <div class="card border shadow p-2 lift">
-                            <!-- Image -->
-                            <div class="card-zoom position-relative">
-                                <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
-                                    <ul class="nav mx-n4 justify-content-center">
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
+                    @foreach ($lecturers as $lecturer)
+                        <div class="col-md pb-4 pb-md-7">
+                            <div class="card border shadow p-2 lift">
+                                <!-- Image -->
+                                <div class="card-zoom position-relative">
+                                    <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
+                                        <ul class="nav mx-n4 justify-content-center">
+                                            @if ($lecturer->facebook)
+                                                <li class="nav-item px-4">
+                                                    <a href="{{ $lecturer->facebook }}" class="d-block text-white">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </a>
+                                                </li>
+                                            @endif
+                                            @if ($lecturer->twitter)
+                                                <li class="nav-item px-4">
+                                                    <a href="{{ $lecturer->twitter }}" class="d-block text-white">
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            @endif
+                                            @if ($lecturer->instagram)
+                                                <li class="nav-item px-4">
+                                                    <a href="#" class="d-block text-white">
+                                                        <i class="fab fa-instagram"></i>
+                                                    </a>
+                                                </li>
+                                            @endif
+                                            @if ($lecturer->linkedin)
+                                                <li class="nav-item px-4">
+                                                    <a href="#" class="d-block text-white">
+                                                        <i class="fab fa-linkedin-in"></i>
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        </ul>
+                                    </div>
+
+                                    <a href="instructors-single.html"
+                                        class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block">
+                                        @php
+                                            if ($lecturer->user_image != null) {
+                                                $lecturer_img = asset('assets/lecturers/' . $lecturer->user_image);
+
+                                                if (
+                                                    !file_exists(
+                                                        public_path('assets/lecturers/' . $lecturer->user_image),
+                                                    )
+                                                ) {
+                                                    $lecturer_img = asset('assets/lecturers/user_not_found.webp');
+                                                }
+                                            } else {
+                                                $lecturer_img = asset('assets/lecturers/user_not_found.webp');
+                                            }
+                                        @endphp
+                                        <img class="rounded shadow-light-lg img-fluid" src="{{ $lecturer_img }}"
+                                            alt="..."></a>
                                 </div>
 
-                                <a href="instructors-single.html"
-                                    class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block"><img
-                                        class="rounded shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-1.jpg" alt="..."></a>
-                            </div>
+                                <!-- Footer -->
+                                <div class="card-footer px-3 pt-4 pb-1">
+                                    <a href="instructors-single.html" class="d-block">
+                                        <h5 class="mb-0">{{ $lecturer->first_name }} {{ $lecturer->last_name }}</h5>
+                                    </a>
+                                    <span class="font-size-d-sm">
+                                        @if (count($lecturer->specializations) > 0)
+                                            @foreach ($lecturer->specializations->take(2) as $specialization)
+                                                {{ $specialization->name }}
 
-                            <!-- Footer -->
-                            <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="instructors-single.html" class="d-block">
-                                    <h5 class="mb-0">Jack Wilson</h5>
-                                </a>
-                                <span class="font-size-d-sm">Developer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md pb-4 pb-md-7">
-                        <div class="card border shadow p-2 lift">
-                            <!-- Image -->
-                            <div class="card-zoom position-relative">
-                                <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
-                                    <ul class="nav mx-n4 justify-content-center">
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                                @if (!$loop->last)
+                                                    &
+                                                @endif
+                                            @endforeach
+                                        @else
+                                            specification did not set yet
+                                        @endif
+                                    </span>
                                 </div>
-
-                                <a href="instructors-single.html"
-                                    class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block"><img
-                                        class="rounded shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-2.jpg" alt="..."></a>
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="instructors-single.html" class="d-block">
-                                    <h5 class="mb-0">Anna Richard</h5>
-                                </a>
-                                <span class="font-size-d-sm">Travel Bloger</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md pb-4 pb-md-7">
-                        <div class="card border shadow p-2 lift">
-                            <!-- Image -->
-                            <div class="card-zoom position-relative">
-                                <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
-                                    <ul class="nav mx-n4 justify-content-center">
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                    @endforeach
 
-                                <a href="instructors-single.html"
-                                    class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block"><img
-                                        class="rounded shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-3.jpg" alt="..."></a>
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="instructors-single.html" class="d-block">
-                                    <h5 class="mb-0">Kathelen Monero</h5>
-                                </a>
-                                <span class="font-size-d-sm">Designer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md pb-4 pb-md-7">
-                        <div class="card border shadow p-2 lift">
-                            <!-- Image -->
-                            <div class="card-zoom position-relative">
-                                <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
-                                    <ul class="nav mx-n4 justify-content-center">
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <a href="instructors-single.html"
-                                    class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block"><img
-                                        class="rounded shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-4.jpg" alt="..."></a>
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="instructors-single.html" class="d-block">
-                                    <h5 class="mb-0">Kristen Pala</h5>
-                                </a>
-                                <span class="font-size-d-sm">User Experience Design</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md pb-4 pb-md-7">
-                        <div class="card border shadow p-2 lift">
-                            <!-- Image -->
-                            <div class="card-zoom position-relative">
-                                <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
-                                    <ul class="nav mx-n4 justify-content-center">
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <a href="instructors-single.html"
-                                    class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block"><img
-                                        class="rounded shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-9.jpg" alt="..."></a>
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="instructors-single.html" class="d-block">
-                                    <h5 class="mb-0">Anna Richard</h5>
-                                </a>
-                                <span class="font-size-d-sm">Travel Bloger</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md pb-4 pb-md-7">
-                        <div class="card border shadow p-2 lift">
-                            <!-- Image -->
-                            <div class="card-zoom position-relative">
-                                <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
-                                    <ul class="nav mx-n4 justify-content-center">
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <a href="instructors-single.html"
-                                    class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block"><img
-                                        class="rounded shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-10.jpg" alt="..."></a>
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="instructors-single.html" class="d-block">
-                                    <h5 class="mb-0">Jack Wilson</h5>
-                                </a>
-                                <span class="font-size-d-sm">Developer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md pb-4 pb-md-7">
-                        <div class="card border shadow p-2 lift">
-                            <!-- Image -->
-                            <div class="card-zoom position-relative">
-                                <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
-                                    <ul class="nav mx-n4 justify-content-center">
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <a href="instructors-single.html"
-                                    class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block"><img
-                                        class="rounded shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-11.jpg" alt="..."></a>
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="instructors-single.html" class="d-block">
-                                    <h5 class="mb-0">Anna Richard</h5>
-                                </a>
-                                <span class="font-size-d-sm">Travel Bloger</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md pb-4 pb-md-7">
-                        <div class="card border shadow p-2 lift">
-                            <!-- Image -->
-                            <div class="card-zoom position-relative">
-                                <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
-                                    <ul class="nav mx-n4 justify-content-center">
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <a href="instructors-single.html"
-                                    class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block"><img
-                                        class="rounded shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-12.jpg" alt="..."></a>
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="instructors-single.html" class="d-block">
-                                    <h5 class="mb-0">Kathelen Monero</h5>
-                                </a>
-                                <span class="font-size-d-sm">Designer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md pb-4 pb-md-7">
-                        <div class="card border shadow p-2 lift">
-                            <!-- Image -->
-                            <div class="card-zoom position-relative">
-                                <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
-                                    <ul class="nav mx-n4 justify-content-center">
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <a href="instructors-single.html"
-                                    class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block"><img
-                                        class="rounded shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-13.jpg" alt="..."></a>
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="instructors-single.html" class="d-block">
-                                    <h5 class="mb-0">Kristen Pala</h5>
-                                </a>
-                                <span class="font-size-d-sm">User Experience Design</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md pb-4 pb-md-7">
-                        <div class="card border shadow p-2 lift">
-                            <!-- Image -->
-                            <div class="card-zoom position-relative">
-                                <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
-                                    <ul class="nav mx-n4 justify-content-center">
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <a href="instructors-single.html"
-                                    class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block"><img
-                                        class="rounded shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-14.jpg" alt="..."></a>
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="instructors-single.html" class="d-block">
-                                    <h5 class="mb-0">Anna Richard</h5>
-                                </a>
-                                <span class="font-size-d-sm">Travel Bloger</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md pb-4 pb-md-7">
-                        <div class="card border shadow p-2 lift">
-                            <!-- Image -->
-                            <div class="card-zoom position-relative">
-                                <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
-                                    <ul class="nav mx-n4 justify-content-center">
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <a href="instructors-single.html"
-                                    class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block"><img
-                                        class="rounded shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-15.jpg" alt="..."></a>
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="instructors-single.html" class="d-block">
-                                    <h5 class="mb-0">Jack Wilson</h5>
-                                </a>
-                                <span class="font-size-d-sm">Developer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md pb-4 pb-md-7">
-                        <div class="card border shadow p-2 lift">
-                            <!-- Image -->
-                            <div class="card-zoom position-relative">
-                                <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
-                                    <ul class="nav mx-n4 justify-content-center">
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-4">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <a href="instructors-single.html"
-                                    class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block"><img
-                                        class="rounded shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-16.jpg" alt="..."></a>
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="instructors-single.html" class="d-block">
-                                    <h5 class="mb-0">Anna Richard</h5>
-                                </a>
-                                <span class="font-size-d-sm">Travel Bloger</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- PAGINATION
-                        ================================================== -->
+                                                                                            ================================================== -->
                 <nav class="mb-11" aria-label="Page navigationa">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">

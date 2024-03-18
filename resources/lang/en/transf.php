@@ -184,6 +184,8 @@ return [
 
     // Instructors-single 
     'Bio'                                              =>   'Bio',
+    'instructors'                                       =>  'Instructors',
+    'home'                                              =>  'Home',
 
 
 

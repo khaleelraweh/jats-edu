@@ -44,12 +44,7 @@ class WebMenuController extends Controller
             return redirect('admin/index');
         }
 
-        // $main_menus = WebMenu::whereNull('parent_id')->where('section', 1)->active()->get(['id', 'title']);
-
-        // $main_menus = WebMenu::where('section', 1)->active()->get(['id', 'title']);
-
         $main_menus = WebMenu::tree();
-
 
         return view('backend.web_menus.create', compact('main_menus'));
     }
@@ -105,8 +100,8 @@ class WebMenuController extends Controller
             return redirect('admin/index');
         }
 
-        // $main_menus = WebMenu::whereNull('parent_id')->where('section', 1)->active()->get(['id', 'title']);
-        $main_menus = WebMenu::where('section', 1)->active()->get(['id', 'title']);
+
+        $main_menus = WebMenu::tree();
 
         $webMenu = WebMenu::where('id', $webMenu)->first();
 

@@ -146,14 +146,14 @@
                                 </label>
                                 <select name="parent_id" class="form-control">
                                     <option value="">{{ __('panel.main_category') }}</option>
-                                    @foreach ($web_menus->where('section', 1) as $menu)
+                                    @foreach ($main_menus->where('section', 1) as $menu)
                                         @if (count($menu->appearedChildren) == false)
-                                            <option value="{{ $menu->id }}"
+                                            <option style="color: black;font-weight: bold;" value="{{ $menu->id }}"
                                                 {{ old('parent_id') == $menu->id ? 'selected' : null }}>
                                                 {{ $menu->title }}
                                             </option>
                                         @else
-                                            <option value="{{ $menu->id }}"
+                                            <option style="color: black;font-weight: bold;" value="{{ $menu->id }}"
                                                 {{ old('parent_id') == $menu->id ? 'selected' : null }}>
                                                 {{ $menu->title }}
                                             </option>
@@ -161,12 +161,12 @@
                                             @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
                                                 @foreach ($menu->appearedChildren as $sub_menu)
                                                     @if (count($sub_menu->appearedChildren) == false)
-                                                        <option value="{{ $sub_menu->id }}"
+                                                        <option style="color:blue" value="{{ $sub_menu->id }}"
                                                             {{ old('parent_id') == $sub_menu->id ? 'selected' : null }}>
                                                             &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
                                                         </option>
                                                     @else
-                                                        <option value="{{ $sub_menu->id }}"
+                                                        <option style="color:blue" value="{{ $sub_menu->id }}"
                                                             {{ old('parent_id') == $sub_menu->id ? 'selected' : null }}>
                                                             &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
                                                         </option>

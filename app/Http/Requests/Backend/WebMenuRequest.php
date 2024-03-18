@@ -26,7 +26,8 @@ class WebMenuRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'title.*'       =>  'required|max:255|unique_translation:web_menus',
+                        // 'title.*'       =>  'required|max:255|unique_translation:web_menus',
+                        'title.*'       =>  'required|max:255',
                         'link'          =>  'nullable',
                         'icon'          =>  'nullable',
                         'parent_id'     =>  'nullable',
@@ -47,7 +48,8 @@ class WebMenuRequest extends FormRequest
             case 'PATCH': {
                     return [
                         // 'slug.*' => "unique_translation:posts,slug,{$post->id}",
-                        'title.*'           =>   'required|max:255|unique_translation:web_menus,title,' . $this->route()->web_menu,
+                        // 'title.*'           =>   'required|max:255|unique_translation:web_menus,title,' . $this->route()->web_menu,
+                        'title.*'           =>   'required|max:255',
                         'link'              =>   'nullable',
                         'icon'              =>  'nullable',
                         'parent_id'         =>   'nullable',

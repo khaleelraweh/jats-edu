@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->json('title');
             $table->json('slug');
-            $table->string('link')->nullable();
+            $table->json('link')->nullable();
             $table->string('icon')->nullable();
 
             $table->unsignedBigInteger('parent_id')->nullable();

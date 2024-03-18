@@ -64,7 +64,7 @@ return [
     'edit_existing_card_category'      => 'Edit Existing Card Category',
 
     // ........... commons in Categories ....... //
-    'title'                     => 'Category Name',
+    'course_title'                     => 'Category Name',
     'category_card-count'               => 'Card Quintity',
 
 
@@ -116,7 +116,7 @@ return [
 
 
     // ........... commons in Coruse   ....... //
-    'title'                         =>  'Course Title',
+    'course_title'                         =>  'Course Title',
     'subtitle'                      =>  'Course Subtitle',
     'sku'                           =>  'SKU',
     'offer_price'                   =>  'Offer Price',

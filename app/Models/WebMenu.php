@@ -21,7 +21,7 @@ class WebMenu extends Model
     use HasFactory, HasTranslations, HasTranslatableSlug, SearchableTrait;
 
     protected $guarded = [];
-    public $translatable = ['title', 'slug'];
+    public $translatable = ['title', 'slug', 'link'];
 
 
     /**

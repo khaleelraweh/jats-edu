@@ -119,7 +119,7 @@
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
                         <div class="row ">
-                            <div class="col-sm-12 pt-3">
+                            <div class="col-sm-12 col-md-6 pt-3">
                                 <div class="form-group">
                                     <label for="icon"> {{ __('panel.choose_icon') }} </label>
 
@@ -137,9 +137,63 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="parent_id" class="control-label">
+                                    {{ __('panel.category_menu') }}
+                                </label>
+                                <select name="parent_id" class="form-control">
+                                    <option value="">{{ __('panel.main_category') }}</option>
+                                    @foreach ($main_menus->where('section', 1) as $menu)
+                                        @if (count($menu->appearedChildren) == false)
+                                            <option style="color: black;font-weight: bold;font-size:16px"
+                                                value="{{ $menu->id }}"
+                                                {{ old('parent_id') == $menu->id ? 'selected' : null }}>
+                                                {{ $menu->title }}
+                                            </option>
+                                        @else
+                                            <option style="color: black;font-weight: bold;font-size:16px"
+                                                value="{{ $menu->id }}"
+                                                {{ old('parent_id') == $menu->id ? 'selected' : null }}>
+                                                {{ $menu->title }}
+                                            </option>
+
+                                            @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
+                                                @foreach ($menu->appearedChildren as $sub_menu)
+                                                    @if (count($sub_menu->appearedChildren) == false)
+                                                        <option style="color:blue;font-weight: bold;font-size:15px;"
+                                                            value="{{ $sub_menu->id }}"
+                                                            {{ old('parent_id') == $sub_menu->id ? 'selected' : null }}>
+                                                            &nbsp; &nbsp; &nbsp; {{ $sub_menu->title }}
+                                                        </option>
+                                                    @else
+                                                        <option style="color:blue;font-weight: bold;font-size:15px;"
+                                                            value="{{ $sub_menu->id }}"
+                                                            {{ old('parent_id') == $sub_menu->id ? 'selected' : null }}>
+                                                            &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
+                                                        </option>
+                                                        @if ($sub_menu->appearedChildren !== null && count($sub_menu->appearedChildren) > 0)
+                                                            @foreach ($sub_menu->appearedChildren as $sub_menu_2)
+                                                                <option style="font-size: 14px;"
+                                                                    value="{{ $sub_menu_2->id }}"
+                                                                    {{ old('parent_id') == $sub_menu_2->id ? 'selected' : null }}>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                                                    &nbsp;{{ $sub_menu_2->title }}
+                                                                </option>
+                                                            @endforeach
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+
                         </div>
 
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-sm-12 pt-3">
                                 <label for="parent_id" class="control-label">
                                     {{ __('panel.category_menu') }}
@@ -192,14 +246,15 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        @foreach (config('locales.languages') as $key => $val)
-                            <div class="row ">
-                                <div class="col-sm-12 pt-3">
+                        <div class="row ">
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="col-sm-12 col-md-6 pt-3">
                                     <div class="form-group">
-                                        <label for="title[{{ $key }}]">{{ __('panel.title') }}
-                                            ({{ $key }})
+                                        <label for="title[{{ $key }}]">
+                                            {{ __('panel.title') }}
+                                            {{ __('panel.in') }} ({{ __('panel.' . $key) }})
                                         </label>
                                         <input type="text" name="title[{{ $key }}]"
                                             id="title[{{ $key }}]" value="{{ old('title.' . $key) }}"
@@ -209,22 +264,28 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
 
 
 
                         <div class="row ">
-                            <div class="col-sm-12 pt-3">
-                                <div class="form-group">
-                                    <label for="link">{{ __('panel.link') }}</label>
-                                    <input type="text" id="link" name="link" value="{{ old('link') }}"
-                                        class="form-control">
-                                    @error('link')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="col-sm-12 col-md-6 pt-3">
+                                    <div class="form-group">
+                                        <label for="link[{{ $key }}]">
+                                            {{ __('panel.link') }}
+                                            {{ __('panel.in') }} ({{ __('panel.' . $key) }})
+                                        </label>
+                                        <input type="text" id="link[{{ $key }}]"
+                                            name="link[{{ $key }}]" value="{{ old('link.' . $key) }}"
+                                            class="form-control">
+                                        @error('link.' . $key)
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
 
                     </div>

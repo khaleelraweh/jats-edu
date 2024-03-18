@@ -74,6 +74,10 @@ Route::get('/shop-checkout', [FrontendController::class, 'shop_checkout'])->name
 Route::get('/shop-order-completed', [FrontendController::class, 'shop_order_completed'])->name('frontend.shop_order_completed');
 
 
+Route::get('/about', [FrontendController::class, 'about'])->name('frontend.about');
+Route::get('/contact-us', [FrontendController::class, 'contact_us'])->name('frontend.contact_us');
+
+
 Route::get('/terms-of-service', [FrontendController::class, 'service'])->name('frontend.service');
 
 

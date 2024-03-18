@@ -156,6 +156,16 @@ class FrontendController extends Controller
         return view('frontend.shop-order-completed');
     }
 
+    public function about()
+    {
+        return view('frontend.about');
+    }
+
+    public function contact_us()
+    {
+        return view('frontend.contact-us');
+    }
+
 
     public function service()
     {

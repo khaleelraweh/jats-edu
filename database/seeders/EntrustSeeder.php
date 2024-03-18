@@ -58,13 +58,8 @@ class EntrustSeeder extends Seeder
         $customerRole->save();
 
 
-        //LecturerRole
-        // $lecturerRole = new Role();
-        // $lecturerRole->name         = 'lecturer';
-        // $lecturerRole->display_name = 'course lecturer'; // optional
-        // $lecturerRole->description  = 'lecturer is the person who  lecture courses'; // optional
-        // $lecturerRole->allowed_route = null;
-        // $lecturerRole->save();
+        //LecturerRole added in lecturer seeder 
+
 
 
         //------------- 02- Users  ------------//
@@ -110,19 +105,8 @@ class EntrustSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        // Create lecturer
-        // $lecturer = User::create([
-        //     'first_name' => 'lecturer',
-        //     'last_name' => 'person',
-        //     'username' => 'lecturer',
-        //     'email' => 'lecturer@gmail.com',
-        //     'email_verified_at' => now(),
-        //     'mobile' => '00967772036134',
-        //     'password' => bcrypt('123123123'),
-        //     'user_image' => 'avator.svg',
-        //     'status' => 1,
-        //     'remember_token' => Str::random(10),
-        // ]);
+        // Create lecturer added in lecturer seeder 
+
 
         //------------- 03- AttachRoles To  Users  ------------//
         $admin->attachRole($adminRole);
@@ -151,28 +135,6 @@ class EntrustSeeder extends Seeder
             $random_customer->attachRole($customerRole);
         } //end for
 
-
-        //------------- 04-2-  Create random lecturer and  AttachRole to lecturerRole  ------------//
-        // for ($i = 1; $i <= 20; $i++) {
-        //     //Create random lecturer
-        //     $random_lecturer = User::create([
-        //         'first_name' => $faker->firstName,
-        //         'last_name' => $faker->lastName,
-        //         'username' => $faker->unique()->userName,
-        //         'email' => $faker->unique()->email,
-        //         'email_verified_at' => now(),
-        //         'mobile' => '0096777' . $faker->numberBetween(1000000, 9999999),
-        //         'password' => bcrypt('123123123'),
-        //         'user_image' => 'avator.svg',
-        //         'status' => 1,
-        //         'remember_token' => Str::random(10),
-        //     ]);
-
-        //     //Add lecturerRole to Randomlecturer
-        //     $random_lecturer->attachRole($lecturerRole);
-        // } 
-
-
         //------------- 05- Permission  ------------//
         //manage main dashboard page
         $manageMain = Permission::create(['name' => 'main', 'display_name' => ['ar' =>  'الرئيسية', 'en'   =>  'Main'], 'route' => 'index', 'module' => 'index', 'as' => 'index', 'icon' => 'ri-dashboard-line', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '1']);
@@ -188,17 +150,6 @@ class EntrustSeeder extends Seeder
         $displayWebMenus =  Permission::create(['name' => 'display_web_menus', 'display_name'  => ['ar'     => 'عرض رابط', 'en'  =>  'Display Link'], 'route' => 'web_menus', 'module' => 'web_menus', 'as' => 'web_menus.show', 'icon' => null, 'parent' => $manageWebMenus->id, 'parent_original' => $manageWebMenus->id, 'parent_show' => $manageWebMenus->id, 'sidebar_link' => '0', 'appear' => '0']);
         $updateWebMenus  =  Permission::create(['name' => 'update_web_menus', 'display_name'  => ['ar'     => 'تعديل رابط', 'en'  =>  'Edit Link'], 'route' => 'web_menus', 'module' => 'web_menus', 'as' => 'web_menus.edit', 'icon' => null, 'parent' => $manageWebMenus->id, 'parent_original' => $manageWebMenus->id, 'parent_show' => $manageWebMenus->id, 'sidebar_link' => '0', 'appear' => '0']);
         $deleteWebMenus  =  Permission::create(['name' => 'delete_web_menus', 'display_name'  => ['ar'     => 'حذف رابط', 'en'  =>  'Delete Link'], 'route' => 'web_menus', 'module' => 'web_menus', 'as' => 'web_menus.destroy', 'icon' => null, 'parent' => $manageWebMenus->id, 'parent_original' => $manageWebMenus->id, 'parent_show' => $manageWebMenus->id, 'sidebar_link' => '0', 'appear' => '0']);
-
-        //web menu helper
-        $manageWebMenuHelps = Permission::create(['name' => 'manage_web_menu_helps', 'display_name' => ['ar'    =>  'إدارة قائمة المساعدة', 'en'   =>  'Helps Menu'], 'route' => 'web_menu_helps', 'module' => 'web_menu_helps', 'as' => 'web_menu_helps.index', 'icon' => 'fa fa-question', 'parent' => $manageWebMenus->id, 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '10',]);
-        $manageWebMenuHelps->parent_show = $manageWebMenuHelps->id;
-        $manageWebMenuHelps->save();
-        $showWebMenuHelps    =  Permission::create(['name' => 'show_web_menu_helps',  'display_name' => ['ar'  =>  'إدارة قوائم المساعدة',   'en'    =>  'Helps Menu'], 'route' => 'web_menu_helps', 'module' => 'web_menu_helps', 'as' => 'web_menu_helps.index', 'icon' => 'fa fa-question', 'parent' => $manageWebMenuHelps->id, 'parent_original' => $manageWebMenuHelps->id, 'parent_show' => $manageWebMenuHelps->id, 'sidebar_link' => '1', 'appear' => '1']);
-        $createWebMenuHelps  =  Permission::create(['name' => 'create_web_menu_helps', 'display_name'  => ['ar'  =>  'إضافة رابط',   'en'    =>  'Add Helps Link'], 'route' => 'web_menu_helps', 'module' => 'web_menu_helps', 'as' => 'web_menu_helps.create', 'icon' => null, 'parent' => $manageWebMenuHelps->id, 'parent_original' => $manageWebMenuHelps->id, 'parent_show' => $manageWebMenuHelps->id, 'sidebar_link' => '0', 'appear' => '0']);
-        $displayWebMenuHelps =  Permission::create(['name' => 'display_web_menu_helps', 'display_name'  => ['ar'  =>  'عرض رابط',   'en'    =>  'Display Helps Link'], 'route' => 'web_menu_helps', 'module' => 'web_menu_helps', 'as' => 'web_menu_helps.show', 'icon' => null, 'parent' => $manageWebMenuHelps->id, 'parent_original' => $manageWebMenuHelps->id, 'parent_show' => $manageWebMenuHelps->id, 'sidebar_link' => '0', 'appear' => '0']);
-        $updateWebMenuHelps  =  Permission::create(['name' => 'update_web_menu_helps', 'display_name'  => ['ar'  =>  'تعديل رابط',   'en'    =>  'Edit Helps Link'], 'route' => 'web_menu_helps', 'module' => 'web_menu_helps', 'as' => 'web_menu_helps.edit', 'icon' => null, 'parent' => $manageWebMenuHelps->id, 'parent_original' => $manageWebMenuHelps->id, 'parent_show' => $manageWebMenuHelps->id, 'sidebar_link' => '0', 'appear' => '0']);
-        $deleteWebMenuHelps  =  Permission::create(['name' => 'delete_web_menu_helps', 'display_name'  => ['ar'  =>  'حذف رابط',   'en'    =>  'Delete Helps Link'], 'route' => 'web_menu_helps', 'module' => 'web_menu_helps', 'as' => 'web_menu_helps.destroy', 'icon' => null, 'parent' => $manageWebMenuHelps->id, 'parent_original' => $manageWebMenuHelps->id, 'parent_show' => $manageWebMenuHelps->id, 'sidebar_link' => '0', 'appear' => '0']);
-
 
         //company menu
         $manageCompanyMenu = Permission::create(['name' => 'manage_company_menus', 'display_name' => ['ar'    =>  'إدارة قائمة الموسسة', 'en'   =>  'Company Menu'], 'route' => 'company_menus', 'module' => 'company_menus', 'as' => 'company_menus.index', 'icon' => 'fas fa-bars', 'parent' => $manageWebMenus->id, 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '10',]);
@@ -239,6 +190,16 @@ class EntrustSeeder extends Seeder
         $displaySupportMenus =  Permission::create(['name' => 'display_support_menus', 'display_name'  => ['ar'  =>  'عرض رابط',   'en'    =>  'Display menu Link'], 'route' => 'support_menus', 'module' => 'support_menus', 'as' => 'support_menus.show', 'icon' => null, 'parent' => $manageSupportMenus->id, 'parent_original' => $manageSupportMenus->id, 'parent_show' => $manageSupportMenus->id, 'sidebar_link' => '0', 'appear' => '0']);
         $updateSupportMenus  =  Permission::create(['name' => 'update_support_menus', 'display_name'  => ['ar'  =>  'تعديل رابط',   'en'    =>  'Edit menu Link'], 'route' => 'support_menus', 'module' => 'support_menus', 'as' => 'support_menus.edit', 'icon' => null, 'parent' => $manageSupportMenus->id, 'parent_original' => $manageSupportMenus->id, 'parent_show' => $manageSupportMenus->id, 'sidebar_link' => '0', 'appear' => '0']);
         $deleteSupportMenus  =  Permission::create(['name' => 'delete_support_menus', 'display_name'  => ['ar'  =>  'حذف رابط',   'en'    =>  'Delete menu Link'], 'route' => 'support_menus', 'module' => 'support_menus', 'as' => 'support_menus.destroy', 'icon' => null, 'parent' => $manageSupportMenus->id, 'parent_original' => $manageSupportMenus->id, 'parent_show' => $manageSupportMenus->id, 'sidebar_link' => '0', 'appear' => '0']);
+
+        //web menu helper
+        $manageWebMenuHelps = Permission::create(['name' => 'manage_web_menu_helps', 'display_name' => ['ar'    =>  'إدارة قائمة المساعدة', 'en'   =>  'Helps Menu'], 'route' => 'web_menu_helps', 'module' => 'web_menu_helps', 'as' => 'web_menu_helps.index', 'icon' => 'fa fa-question', 'parent' => $manageWebMenus->id, 'parent_original' => '0', 'sidebar_link' => '0', 'appear' => '0', 'ordering' => '10',]);
+        $manageWebMenuHelps->parent_show = $manageWebMenuHelps->id;
+        $manageWebMenuHelps->save();
+        $showWebMenuHelps    =  Permission::create(['name' => 'show_web_menu_helps',  'display_name' => ['ar'  =>  'إدارة قوائم المساعدة',   'en'    =>  'Helps Menu'], 'route' => 'web_menu_helps', 'module' => 'web_menu_helps', 'as' => 'web_menu_helps.index', 'icon' => 'fa fa-question', 'parent' => $manageWebMenuHelps->id, 'parent_original' => $manageWebMenuHelps->id, 'parent_show' => $manageWebMenuHelps->id, 'sidebar_link' => '1', 'appear' => '1']);
+        $createWebMenuHelps  =  Permission::create(['name' => 'create_web_menu_helps', 'display_name'  => ['ar'  =>  'إضافة رابط',   'en'    =>  'Add Helps Link'], 'route' => 'web_menu_helps', 'module' => 'web_menu_helps', 'as' => 'web_menu_helps.create', 'icon' => null, 'parent' => $manageWebMenuHelps->id, 'parent_original' => $manageWebMenuHelps->id, 'parent_show' => $manageWebMenuHelps->id, 'sidebar_link' => '0', 'appear' => '0']);
+        $displayWebMenuHelps =  Permission::create(['name' => 'display_web_menu_helps', 'display_name'  => ['ar'  =>  'عرض رابط',   'en'    =>  'Display Helps Link'], 'route' => 'web_menu_helps', 'module' => 'web_menu_helps', 'as' => 'web_menu_helps.show', 'icon' => null, 'parent' => $manageWebMenuHelps->id, 'parent_original' => $manageWebMenuHelps->id, 'parent_show' => $manageWebMenuHelps->id, 'sidebar_link' => '0', 'appear' => '0']);
+        $updateWebMenuHelps  =  Permission::create(['name' => 'update_web_menu_helps', 'display_name'  => ['ar'  =>  'تعديل رابط',   'en'    =>  'Edit Helps Link'], 'route' => 'web_menu_helps', 'module' => 'web_menu_helps', 'as' => 'web_menu_helps.edit', 'icon' => null, 'parent' => $manageWebMenuHelps->id, 'parent_original' => $manageWebMenuHelps->id, 'parent_show' => $manageWebMenuHelps->id, 'sidebar_link' => '0', 'appear' => '0']);
+        $deleteWebMenuHelps  =  Permission::create(['name' => 'delete_web_menu_helps', 'display_name'  => ['ar'  =>  'حذف رابط',   'en'    =>  'Delete Helps Link'], 'route' => 'web_menu_helps', 'module' => 'web_menu_helps', 'as' => 'web_menu_helps.destroy', 'icon' => null, 'parent' => $manageWebMenuHelps->id, 'parent_original' => $manageWebMenuHelps->id, 'parent_show' => $manageWebMenuHelps->id, 'sidebar_link' => '0', 'appear' => '0']);
 
 
         //main sliders
@@ -304,10 +265,10 @@ class EntrustSeeder extends Seeder
         $deletecard_categories  =  Permission::create(['name' => 'delete_card_categories', 'display_name'  =>    ['ar'   =>  'حذف تصنيف بطاقة',   'en'    =>  'Delete Card Category'],    'route' => 'card_categories', 'module' => 'card_categories', 'as' => 'card_categories.destroy', 'icon' => null, 'parent' => $manageCardCategories->id, 'parent_original' => $manageCardCategories->id, 'parent_show' => $manageCardCategories->id, 'sidebar_link' => '0', 'appear' => '0']);
 
         //manage Course categories
-        $manageCourseCategories = Permission::create(['name' => 'manage_course_categories', 'display_name' => ['ar'    =>  'إدارة الدورات',   'en'    =>  'Manage Courses'], 'route' => 'course_categories', 'module' => 'course_categories', 'as' => 'course_categories.index', 'icon' => 'fas fa-file-archive', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '35',]);
+        $manageCourseCategories = Permission::create(['name' => 'manage_course_categories', 'display_name' => ['ar'    =>  'إدارة الدورات',   'en'    =>  'Manage Courses'], 'route' => 'course_categories', 'module' => 'course_categories', 'as' => 'course_categories.index', 'icon' => 'fas fa-align-justify', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '35',]);
         $manageCourseCategories->parent_show = $manageCourseCategories->id;
         $manageCourseCategories->save();
-        $showCourseCategories    =  Permission::create(['name' => 'show_course_categories', 'display_name'       =>    ['ar'   =>  'تصنيف الدورات',   'en'    =>  ' Categories'],   'route' => 'course_categories', 'module' => 'course_categories', 'as' => 'course_categories.index', 'icon' => 'fas fa-file-archive', 'parent' => $manageCourseCategories->id, 'parent_original' => $manageCourseCategories->id, 'parent_show' => $manageCourseCategories->id, 'sidebar_link' => '1', 'appear' => '1']);
+        $showCourseCategories    =  Permission::create(['name' => 'show_course_categories', 'display_name'       =>    ['ar'   =>  'تصنيف الدورات',   'en'    =>  ' Categories'],   'route' => 'course_categories', 'module' => 'course_categories', 'as' => 'course_categories.index', 'icon' => 'fas fa-align-justify', 'parent' => $manageCourseCategories->id, 'parent_original' => $manageCourseCategories->id, 'parent_show' => $manageCourseCategories->id, 'sidebar_link' => '1', 'appear' => '1']);
         $createCourseCategories  =  Permission::create(['name' => 'create_course_categories', 'display_name'     =>    ['ar'   =>  'إضافة تصنيف الدورة',   'en'    =>  'Add Course Category'],    'route' => 'course_categories', 'module' => 'course_categories', 'as' => 'course_categories.create', 'icon' => null, 'parent' => $manageCourseCategories->id, 'parent_original' => $manageCourseCategories->id, 'parent_show' => $manageCourseCategories->id, 'sidebar_link' => '0', 'appear' => '0']);
         $displayCourseCategories =  Permission::create(['name' => 'display_course_categories', 'display_name'    =>    ['ar'   =>  ' عرض تصنيف الدورة',   'en'    =>  'Display Course Category'],    'route' => 'course_categories', 'module' => 'course_categories', 'as' => 'course_categories.show', 'icon' => null, 'parent' => $manageCourseCategories->id, 'parent_original' => $manageCourseCategories->id, 'parent_show' => $manageCourseCategories->id, 'sidebar_link' => '0', 'appear' => '0']);
         $updateCourseCategories  =  Permission::create(['name' => 'update_course_categories', 'display_name'     =>    ['ar'   =>  'تعديل تصنيف الدورة',   'en'    =>  'Edit Course Category'],    'route' => 'course_categories', 'module' => 'course_categories', 'as' => 'course_categories.edit', 'icon' => null, 'parent' => $manageCourseCategories->id, 'parent_original' => $manageCourseCategories->id, 'parent_show' => $manageCourseCategories->id, 'sidebar_link' => '0', 'appear' => '0']);
@@ -326,57 +287,57 @@ class EntrustSeeder extends Seeder
 
 
         //Manage courses 
-        $manageCourses = Permission::create(['name' => 'manage_courses', 'display_name' => ['ar'    =>  'الدورات', 'en'    =>  'Courses'], 'route' => 'courses', 'module' => 'courses', 'as' => 'courses.index', 'icon' => 'fas fa-file-archive', 'parent' => $manageCourseCategories->id, 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '40',]);
+        $manageCourses = Permission::create(['name' => 'manage_courses', 'display_name' => ['ar'    =>  'الدورات', 'en'    =>  'Courses'], 'route' => 'courses', 'module' => 'courses', 'as' => 'courses.index', 'icon' => 'fas fa-book-open', 'parent' => $manageCourseCategories->id, 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '40',]);
         $manageCourses->parent_show = $manageCourses->id;
         $manageCourses->save();
-        $showCourses   =  Permission::create(['name' => 'show_courses',   'display_name'    =>  ['ar'   =>  'عرض الدورات',   'en'       =>  'Courses'],   'route'     => 'courses', 'module'   => 'courses', 'as' =>  'courses.index', 'icon' => 'fas fa-file-archive', 'parent' => $manageCourses->id, 'parent_original' => $manageCourses->id, 'parent_show' => $manageCourses->id, 'sidebar_link' => '1', 'appear' => '1']);
+        $showCourses   =  Permission::create(['name' => 'show_courses',   'display_name'    =>  ['ar'   =>  'عرض الدورات',   'en'       =>  'Courses'],   'route'     => 'courses', 'module'   => 'courses', 'as' =>  'courses.index', 'icon' => 'fas fa-align-justify', 'parent' => $manageCourses->id, 'parent_original' => $manageCourses->id, 'parent_show' => $manageCourses->id, 'sidebar_link' => '1', 'appear' => '1']);
         $createCourses =  Permission::create(['name' => 'create_courses',   'display_name'    =>  ['ar'   =>  'إضافة دورة جديدة',   'en'    =>  'Add new Course'],   'route'     => 'courses', 'module'  => 'courses', 'as' =>   'courses.create', 'icon' => null, 'parent' => $manageCourses->id, 'parent_original' => $manageCourses->id, 'parent_show' => $manageCourses->id, 'sidebar_link' => '1', 'appear' => '0']);
         $displayCourses =  Permission::create(['name' => 'display_courses',   'display_name'    =>  ['ar'   =>  'عرض دورة',   'en'          =>  'Display Course'],   'route'     => 'courses',  'module'  => 'courses', 'as' =>  'courses.show', 'icon' => null, 'parent' => $manageCourses->id, 'parent_original' => $manageCourses->id, 'parent_show' => $manageCourses->id, 'sidebar_link' => '0', 'appear' => '0']);
         $updateCourses =  Permission::create(['name' => 'update_courses',   'display_name'    =>  ['ar'   =>  'تعديل دورة',   'en'       =>  'Edit Course'],   'route'     => 'courses', 'module'   => 'courses', 'as' =>  'courses.edit', 'icon' => null, 'parent' => $manageCourses->id, 'parent_original' => $manageCourses->id, 'parent_show' => $manageCourses->id, 'sidebar_link' => '0', 'appear' => '0']);
         $deleteCourses =  Permission::create(['name' => 'delete_courses',   'display_name'    =>  ['ar'   =>  'حذف دورة',   'en'         =>  'Delete Course'],   'route'     => 'courses', 'module'   => 'courses', 'as' =>  'courses.destroy', 'icon' => null, 'parent' => $manageCourses->id, 'parent_original' => $manageCourses->id, 'parent_show' => $manageCourses->id, 'sidebar_link' => '0', 'appear' => '0']);
 
         //Customers
-        $manageCustomers = Permission::create(['name' => 'manage_customers', 'display_name' => ['ar'    =>  'إدارة المستخدمين',  'en' =>  'Manage Users'], 'route' => 'customers', 'module' => 'customers', 'as' => 'customers.index', 'icon' => 'fas fa-user', 'parent' => '0', 'parent_original' => '0',  'sidebar_link' => '1', 'appear' => '1', 'ordering' => '45',]);
+        $manageCustomers = Permission::create(['name' => 'manage_customers', 'display_name' => ['ar'    =>  'إدارة المستخدمين',  'en' =>  'Manage Users'], 'route' => 'customers', 'module' => 'customers', 'as' => 'customers.index', 'icon' => 'fas fa-user-cog', 'parent' => '0', 'parent_original' => '0',  'sidebar_link' => '1', 'appear' => '1', 'ordering' => '45',]);
         $manageCustomers->parent_show = $manageCustomers->id;
         $manageCustomers->save();
-        $showCustomers   =  Permission::create(['name'  => 'show_customers', 'display_name'    => ['ar'   =>     'العملاء',   'en'    =>  'Customers'], 'route' => 'customers', 'module' => 'customers', 'as' => 'customers.index', 'icon' => 'fas fa-user', 'parent' => $manageCustomers->id, 'parent_original' => $manageCustomers->id, 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '1']);
+        $showCustomers   =  Permission::create(['name'  => 'show_customers', 'display_name'    => ['ar'   =>     'العملاء',   'en'    =>  'Customers'], 'route' => 'customers', 'module' => 'customers', 'as' => 'customers.index', 'icon' => 'fas fa-user-graduate', 'parent' => $manageCustomers->id, 'parent_original' => $manageCustomers->id, 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '1']);
         $createCustomers =  Permission::create(['name'  => 'create_customers', 'display_name'    => ['ar'   =>      'إضافة عميل',   'en'    =>  'Add New Customer'], 'route' => 'customers', 'module' => 'customers', 'as' => 'customers.create', 'icon' => null, 'parent' => $manageCustomers->id, 'parent_original' => $manageCustomers->id, 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '0']);
         $displayCustomers =  Permission::create(['name' => 'display_customers', 'display_name'     => ['ar'   =>      'عرض عميل',   'en'    =>  'Dsiplay Customer'], 'route' => 'customers', 'module' => 'customers', 'as' => 'customers.show', 'icon' => null, 'parent' => $manageCustomers->id, 'parent_original' => $manageCustomers->id, 'parent_show' => $manageCustomers->id, 'sidebar_link' => '0', 'appear' => '0']);
         $updateCustomers  =  Permission::create(['name' => 'update_customers', 'display_name'     => ['ar'   =>      'تعديل عميل',   'en'    =>  'Edit Customer'], 'route' => 'customers', 'module' => 'customers', 'as' => 'customers.edit', 'icon' => null, 'parent' => $manageCustomers->id, 'parent_original' => $manageCustomers->id, 'parent_show' => $manageCustomers->id, 'sidebar_link' => '0', 'appear' => '0']);
         $deleteCustomers =  Permission::create(['name'  => 'delete_customers', 'display_name'    => ['ar'   =>      'حذف عميل',   'en'    =>  'Delete Customer'], 'route' => 'customers', 'module' => 'customers', 'as' => 'customers.destroy', 'icon' => null, 'parent' => $manageCustomers->id, 'parent_original' => $manageCustomers->id, 'parent_show' => $manageCustomers->id, 'sidebar_link' => '0', 'appear' => '0']);
 
         //Supervisor // we can hide suppervisor not to be in sidebar linke by  making in manage_supervisors 'sidebar_link' => '0'
-        $manageSupervisors = Permission::create(['name' => 'manage_supervisors', 'display_name' => ['ar'    =>  'المشرفين',    'en'    =>  'Supervisors'], 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.index', 'icon' => 'fas fa-user', 'parent' => $manageCustomers->id, 'parent_original' => '0', 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '50',]);
+        $manageSupervisors = Permission::create(['name' => 'manage_supervisors', 'display_name' => ['ar'    =>  'المشرفين',    'en'    =>  'Supervisors'], 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.index', 'icon' => 'fas fa-user-tie', 'parent' => $manageCustomers->id, 'parent_original' => '0', 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '50',]);
         $manageSupervisors->parent_show = $manageSupervisors->id;
         $manageSupervisors->save();
-        $showSupervisors   =  Permission::create(['name' => 'show_supervisors', 'display_name'    =>  ['ar'   =>  'المشرفين',   'en'    =>  'Supervisors'], 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.index', 'icon' => 'fas fa-user', 'parent' => $manageSupervisors->id, 'parent_original' => $manageSupervisors->id, 'parent_show' => $manageSupervisors->id, 'sidebar_link' => '1', 'appear' => '1']);
+        $showSupervisors   =  Permission::create(['name' => 'show_supervisors', 'display_name'    =>  ['ar'   =>  'المشرفين',   'en'    =>  'Supervisors'], 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.index', 'icon' => 'fas fa-user-tie', 'parent' => $manageSupervisors->id, 'parent_original' => $manageSupervisors->id, 'parent_show' => $manageSupervisors->id, 'sidebar_link' => '1', 'appear' => '1']);
         $createSupervisors =  Permission::create(['name' => 'create_supervisors', 'display_name'    =>  ['ar'   =>  'إضافة مشرف جديد',   'en'    =>  'Add Supervisor'], 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.create', 'icon' => null, 'parent' => $manageSupervisors->id, 'parent_original' => $manageSupervisors->id, 'parent_show' => $manageSupervisors->id, 'sidebar_link' => '1', 'appear' => '0']);
         $displaySupervisors =  Permission::create(['name' => 'display_supervisors', 'display_name'    =>  ['ar'   =>  'عرض مشرف',   'en'    =>  'Dsiplay Supervisor'], 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.show', 'icon' => null, 'parent' => $manageSupervisors->id, 'parent_original' => $manageSupervisors->id, 'parent_show' => $manageSupervisors->id, 'sidebar_link' => '0', 'appear' => '0']);
         $updateSupervisors  =  Permission::create(['name' => 'update_supervisors', 'display_name'    =>  ['ar'   =>  'تعديل مشرف',   'en'    =>  'Edit Supervisor'], 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.edit', 'icon' => null, 'parent' => $manageSupervisors->id, 'parent_original' => $manageSupervisors->id, 'parent_show' => $manageSupervisors->id, 'sidebar_link' => '0', 'appear' => '0']);
         $deleteSupervisors =  Permission::create(['name' => 'delete_supervisors', 'display_name'    =>  ['ar'   =>  'حذف مشرف',   'en'    =>  'Delete Supervisor'], 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.destroy', 'icon' => null, 'parent' => $manageSupervisors->id, 'parent_original' => $manageSupervisors->id, 'parent_show' => $manageSupervisors->id, 'sidebar_link' => '0', 'appear' => '0']);
 
         //lecturers
-        $manageLecturers = Permission::create(['name' => 'manage_lecturers', 'display_name' => ['ar'    =>  'المحاضرين',    'en'    =>  'lecturers'], 'route' => 'lecturers', 'module' => 'lecturers', 'as' => 'lecturers.index', 'icon' => 'fas fa-user', 'parent' => $manageCustomers->id, 'parent_original' => '0', 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '55',]);
+        $manageLecturers = Permission::create(['name' => 'manage_lecturers', 'display_name' => ['ar'    =>  'المحاضرين',    'en'    =>  'lecturers'], 'route' => 'lecturers', 'module' => 'lecturers', 'as' => 'lecturers.index', 'icon' => 'fas fa-chalkboard-teacher', 'parent' => $manageCustomers->id, 'parent_original' => '0', 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '55',]);
         $manageLecturers->parent_show = $manageLecturers->id;
         $manageLecturers->save();
-        $showlecturers   =  Permission::create(['name' => 'show_lecturers', 'display_name'    =>  ['ar'   =>  'المحاضرين',   'en'    =>  'lecturers'], 'route' => 'lecturers', 'module' => 'lecturers', 'as' => 'lecturers.index', 'icon' => 'fas fa-user', 'parent' => $manageLecturers->id, 'parent_original' => $manageLecturers->id, 'parent_show' => $manageLecturers->id, 'sidebar_link' => '1', 'appear' => '1']);
+        $showlecturers   =  Permission::create(['name' => 'show_lecturers', 'display_name'    =>  ['ar'   =>  'المحاضرين',   'en'    =>  'lecturers'], 'route' => 'lecturers', 'module' => 'lecturers', 'as' => 'lecturers.index', 'icon' => 'fas fa-chalkboard-teacher', 'parent' => $manageLecturers->id, 'parent_original' => $manageLecturers->id, 'parent_show' => $manageLecturers->id, 'sidebar_link' => '1', 'appear' => '1']);
         $createlecturers =  Permission::create(['name' => 'create_lecturers', 'display_name'    =>  ['ar'   =>  'إضافة محاضر جديد',   'en'    =>  'Add lecturer'], 'route' => 'lecturers', 'module' => 'lecturers', 'as' => 'lecturers.create', 'icon' => null, 'parent' => $manageLecturers->id, 'parent_original' => $manageLecturers->id, 'parent_show' => $manageLecturers->id, 'sidebar_link' => '1', 'appear' => '0']);
         $displaylecturers =  Permission::create(['name' => 'display_lecturers', 'display_name'    =>  ['ar'   =>  'عرض محاضر',   'en'    =>  'Dsiplay lecturer'], 'route' => 'lecturers', 'module' => 'lecturers', 'as' => 'lecturers.show', 'icon' => null, 'parent' => $manageLecturers->id, 'parent_original' => $manageLecturers->id, 'parent_show' => $manageLecturers->id, 'sidebar_link' => '0', 'appear' => '0']);
         $updatelecturers  =  Permission::create(['name' => 'update_lecturers', 'display_name'    =>  ['ar'   =>  'تعديل محاضر',   'en'    =>  'Edit lecturer'], 'route' => 'lecturers', 'module' => 'lecturers', 'as' => 'lecturers.edit', 'icon' => null, 'parent' => $manageLecturers->id, 'parent_original' => $manageLecturers->id, 'parent_show' => $manageLecturers->id, 'sidebar_link' => '0', 'appear' => '0']);
         $deletelecturers =  Permission::create(['name' => 'delete_lecturers', 'display_name'    =>  ['ar'   =>  'حذف محاضر',   'en'    =>  'Delete lecturer'], 'route' => 'lecturers', 'module' => 'lecturers', 'as' => 'lecturers.destroy', 'icon' => null, 'parent' => $manageLecturers->id, 'parent_original' => $manageLecturers->id, 'parent_show' => $manageLecturers->id, 'sidebar_link' => '0', 'appear' => '0']);
 
         //specialization
-        $manageSpecializations = Permission::create(['name' => 'manage_specializations', 'display_name' => ['ar'    =>  'التخصصات',    'en'    =>  'specializations'], 'route' => 'specializations', 'module' => 'specializations', 'as' => 'specializations.index', 'icon' => 'fas fa-user-graduate', 'parent' => $manageCustomers->id, 'parent_original' => '0', 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '55',]);
+        $manageSpecializations = Permission::create(['name' => 'manage_specializations', 'display_name' => ['ar'    =>  'التخصصات',    'en'    =>  'specializations'], 'route' => 'specializations', 'module' => 'specializations', 'as' => 'specializations.index', 'icon' => 'fas fa-file-signature', 'parent' => $manageCustomers->id, 'parent_original' => '0', 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '55',]);
         $manageSpecializations->parent_show = $manageSpecializations->id;
         $manageSpecializations->save();
-        $showSpecializations   =  Permission::create(['name' => 'show_specializations', 'display_name'    =>  ['ar'   =>  'التخصصات',   'en'    =>  'specializations'], 'route' => 'specializations', 'module' => 'specializations', 'as' => 'specializations.index', 'icon' => 'fas fa-user-graduate', 'parent' => $manageSpecializations->id, 'parent_original' => $manageSpecializations->id, 'parent_show' => $manageSpecializations->id, 'sidebar_link' => '1', 'appear' => '1']);
+        $showSpecializations   =  Permission::create(['name' => 'show_specializations', 'display_name'    =>  ['ar'   =>  'التخصصات',   'en'    =>  'specializations'], 'route' => 'specializations', 'module' => 'specializations', 'as' => 'specializations.index', 'icon' => 'fas fa-file-signature', 'parent' => $manageSpecializations->id, 'parent_original' => $manageSpecializations->id, 'parent_show' => $manageSpecializations->id, 'sidebar_link' => '1', 'appear' => '1']);
         $createSpecializations =  Permission::create(['name' => 'create_specializations', 'display_name'    =>  ['ar'   =>  'إضافة تخصص جديد',   'en'    =>  'Add specialization'], 'route' => 'specializations', 'module' => 'specializations', 'as' => 'specializations.create', 'icon' => null, 'parent' => $manageSpecializations->id, 'parent_original' => $manageSpecializations->id, 'parent_show' => $manageSpecializations->id, 'sidebar_link' => '1', 'appear' => '0']);
         $displaySpecializations =  Permission::create(['name' => 'display_specializations', 'display_name'    =>  ['ar'   =>  'عرض تخصص',   'en'    =>  'Dsiplay specialization'], 'route' => 'specializations', 'module' => 'specializations', 'as' => 'specializations.show', 'icon' => null, 'parent' => $manageSpecializations->id, 'parent_original' => $manageSpecializations->id, 'parent_show' => $manageSpecializations->id, 'sidebar_link' => '0', 'appear' => '0']);
         $updateSpecializations  =  Permission::create(['name' => 'update_specializations', 'display_name'    =>  ['ar'   =>  'تعديل تخصص',   'en'    =>  'Edit specialization'], 'route' => 'specializations', 'module' => 'specializations', 'as' => 'specializations.edit', 'icon' => null, 'parent' => $manageSpecializations->id, 'parent_original' => $manageSpecializations->id, 'parent_show' => $manageSpecializations->id, 'sidebar_link' => '0', 'appear' => '0']);
         $deleteSpecializations =  Permission::create(['name' => 'delete_specializations', 'display_name'    =>  ['ar'   =>  'حذف تخصص',   'en'    =>  'Delete specialization'], 'route' => 'specializations', 'module' => 'specializations', 'as' => 'specializations.destroy', 'icon' => null, 'parent' => $manageSpecializations->id, 'parent_original' => $manageSpecializations->id, 'parent_show' => $manageSpecializations->id, 'sidebar_link' => '0', 'appear' => '0']);
 
         //userAddresses
-        $manageCustomerAddresses = Permission::create(['name' => 'manage_customer_addresses', 'display_name' => ['ar'   => 'إدارة عناوين العملاء ', 'en'   =>  'Manage Cust Address'], 'route' => 'customer_addresses', 'module' => 'customer_addresses', 'as' => 'customer_addresses.index', 'icon' => 'fas fa-map-marked-alt', 'parent' => $manageCustomers->id, 'parent_original' => '0', 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '60',]);
+        $manageCustomerAddresses = Permission::create(['name' => 'manage_customer_addresses', 'display_name' => ['ar'   => 'إدارة عناوين العملاء ', 'en'   =>  ' Customer Address'], 'route' => 'customer_addresses', 'module' => 'customer_addresses', 'as' => 'customer_addresses.index', 'icon' => 'fas fa-map-marked-alt', 'parent' => $manageCustomers->id, 'parent_original' => '0', 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '60',]);
         $manageCustomerAddresses->parent_show = $manageCustomerAddresses->id;
         $manageCustomerAddresses->save();
         $showCustomerAddresses   =  Permission::create(['name'  => 'show_customer_addresses', 'display_name'    =>    ['ar'   =>  'عناوين العملاء',   'en'    =>  'Customer Addresses'], 'route' => 'customer_addresses', 'module' => 'customer_addresses', 'as' => 'customer_addresses.index', 'icon' => 'fas fa-map-marked-alt', 'parent' => $manageCustomerAddresses->id, 'parent_original' => $manageCustomerAddresses->id, 'parent_show' => $manageCustomerAddresses->id, 'sidebar_link' => '1', 'appear' => '1']);

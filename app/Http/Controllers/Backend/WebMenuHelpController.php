@@ -20,7 +20,7 @@ class WebMenuHelpController extends Controller
             return redirect('admin/index');
         }
 
-        $menus = WebMenu::query()->where('section', 2)
+        $menus = WebMenu::query()->where('section', 6)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -53,7 +53,7 @@ class WebMenuHelpController extends Controller
 
         // $input['parent_id'] = $request->parent_id;
 
-        $input['section']    = 2; // main menu 
+        $input['section']    = 6; // main menu 
         $input['status']     =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
         $published_on = $request->published_on . ' ' . $request->published_on_time;
@@ -108,7 +108,7 @@ class WebMenuHelpController extends Controller
         $input['title']   = $request->title;
         $input['link']      = $request->link;
 
-        $input['section']    = 2;
+        $input['section']    = 6;
         $input['status']    =   $request->status;
         $input['updated_by'] =   auth()->user()->full_name;
         $published_on = $request->published_on . ' ' . $request->published_on_time;

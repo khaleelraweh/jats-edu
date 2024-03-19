@@ -102,15 +102,7 @@ class FrontendController extends Controller
 
     public function instructors_list($slug = null)
     {
-        // Get lecturers
-        $lecturers = User::whereHas('roles', function ($query) {
-            $query->where('name', 'lecturer');
-        })
-            ->active()
-            ->HasCourses()
-            ->inRandomOrder()
-            ->get();
-        return view('frontend.instructors-list', compact('slug', 'lecturers'));
+        return view('frontend.instructors-list');
     }
 
     public function instructors_single($slug)

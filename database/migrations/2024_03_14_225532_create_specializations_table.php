@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('specializations', function (Blueprint $table) {
             $table->id();
-            $table->json('name')->nullable();
+            $table->json('name');
+            $table->json('slug');
 
             // will be use always
             $table->boolean('status')->default(true);

@@ -109,4 +109,20 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Specialization::class);
     }
+
+    // to return the the user who has role lake lectures or admin or customer 
+    public function scopeWhereHasRoles($query, $role)
+    {
+        return $query->whereHas('roles', function ($query) use ($role) {
+            $query->where('name', $role);
+        });
+    }
+
+    // to return all lecturers how has courses in passed  categories id
+    public function scopeWhereHasCoursesWithCategory($query, $courseCategoryIds)
+    {
+        return $query->whereHas('courses.courseCategory', function ($subQuery) use ($courseCategoryIds) {
+            $subQuery->whereIn('id', $courseCategoryIds);
+        });
+    }
 }

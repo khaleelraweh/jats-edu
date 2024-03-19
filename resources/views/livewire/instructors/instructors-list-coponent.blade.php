@@ -37,47 +37,19 @@
                             aria-labelledby="coursefilter1" data-bs-parent="#courseSidebar">
                             <ul class="list-unstyled list-group list-checkbox">
 
-                                @foreach ($course_categories_menu as $category_item)
+                                @foreach ($specializations as $specialization)
                                     <li class="custom-control custom-checkbox">
 
-                                        <input type="checkbox" wire:model="categoryInputs"
-                                            value="{{ $category_item->slug }}" class="custom-control-input"
-                                            id="{{ $category_item->slug }}">
+                                        <input type="checkbox" wire:model="specials" value="{{ $specialization->slug }}"
+                                            class="custom-control-input" id="{{ $specialization->slug }}">
 
                                         <label class="custom-control-label font-size-base"
-                                            for="{{ $category_item->slug }}">{{ $category_item->title }}
-                                            ({{ $category_item->courses_count }})
+                                            for="{{ $specialization->slug }}">{{ $specialization->name }}
+                                            ({{ $specialization->users_count }})
                                         </label>
                                     </li>
                                 @endforeach
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="CategorycustomCheck2">
-                                    <label class="custom-control-label font-size-base"
-                                        for="CategorycustomCheck2">Exercise
-                                        (8)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="CategorycustomCheck3">
-                                    <label class="custom-control-label font-size-base"
-                                        for="CategorycustomCheck3">Material
-                                        Design (7)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="CategorycustomCheck4">
-                                    <label class="custom-control-label font-size-base"
-                                        for="CategorycustomCheck4">Software
-                                        (6)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="CategorycustomCheck5">
-                                    <label class="custom-control-label font-size-base" for="CategorycustomCheck5">Music
-                                        (6)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="CategorycustomCheck6">
-                                    <label class="custom-control-label font-size-base"
-                                        for="CategorycustomCheck6">Photography (6)</label>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -114,8 +86,8 @@
                             <!-- Search -->
                             <form class="mb-4">
                                 <div class="input-group input-group-filter">
-                                    <input class="form-control form-control-sm border-end-0 shadow-none"
-                                        type="search" placeholder="Search" aria-label="Search">
+                                    <input class="form-control form-control-sm border-end-0 shadow-none" type="search"
+                                        placeholder="Search" aria-label="Search">
                                     <div class="input-group-append">
                                         <button
                                             class="btn btn-sm btn-outline-white border-start-0 shadow-none bg-transparent text-secondary icon-xs d-flex align-items-center"

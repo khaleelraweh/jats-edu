@@ -17,8 +17,8 @@ class InstructorsListCoponent extends Component
     public $paginationLimit = 12;
 
     // ============ filter choice ==========//
-    public $categoryInputs = [];
-    protected $queryString = ['categoryInputs'];
+    public $specials = [];
+    protected $queryString = ['specials'];
 
 
 
@@ -27,12 +27,6 @@ class InstructorsListCoponent extends Component
 
         // Get lecturers
         $lecturers = User::whereHasRoles('lecturer')->withCount('specializations');
-        // ->active()
-        // ->HasCourses()
-        // // ->inRandomOrder()
-        // ->get();
-
-
 
 
         //get all course categories as menu 
@@ -44,19 +38,24 @@ class InstructorsListCoponent extends Component
             $query->WhereHasRoles('lecturer')->HasCourses();
         }])->get();
 
-        $courseCategoryIds = CourseCategory::whereIn('slug->' . app()->getLocale(), $this->categoryInputs)->pluck('id')->toArray();
+        $userspecializationIds = Specialization::whereIn('slug->' . app()->getLocale(), $this->specials)->pluck('id')->toArray();
 
-        $lecturers = $lecturers->when($this->categoryInputs, function ($query) use ($courseCategoryIds) {
-            return $query->whereHasCoursesWithCategory($courseCategoryIds);
+
+
+
+        $lecturers->when($this->specials, function ($query) use ($userspecializationIds) {
+            return $query->whereHas('specializations', function ($subQuery) use ($userspecializationIds) {
+                $subQuery->whereIn('specialization_id', $userspecializationIds);
+            });
         });
 
-        $lecturers = $lecturers->active()->get();
+
+        $lecturers = $lecturers->HasCourses()->active()->get();
 
 
         return view(
             'livewire.instructors.instructors-list-coponent',
             [
-                'course_categories_menu' => $course_categories_menu,
                 'lecturers' => $lecturers,
                 'specializations'  =>  $specializations,
             ]

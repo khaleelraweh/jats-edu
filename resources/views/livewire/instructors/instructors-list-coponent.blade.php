@@ -37,7 +37,7 @@
                             aria-labelledby="coursefilter1" data-bs-parent="#courseSidebar">
                             <ul class="list-unstyled list-group list-checkbox">
 
-                                @foreach ($specializations as $specialization)
+                                @foreach ($specializations_menu as $specialization)
                                     <li class="custom-control custom-checkbox">
 
                                         <input type="checkbox" wire:model="specials" value="{{ $specialization->slug }}"

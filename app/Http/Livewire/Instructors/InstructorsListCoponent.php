@@ -24,23 +24,28 @@ class InstructorsListCoponent extends Component
     public function render()
     {
 
-        // Get lecturers
-        $lecturers = User::whereHasRoles('lecturer')->withCount('specializations');
+        //Query for filter menu 
 
-        $specializations = Specialization::withCount(['users' => function ($query) {
+        // get all specialixations 
+        $specializations_menu = Specialization::withCount(['users' => function ($query) {
             $query->WhereHasRoles('lecturer')->HasCourses();
         }])->get();
+
+
+        // Get lecturers
+        $lecturers = User::whereHasRoles('lecturer');
+
+
 
         $userspecializationIds = Specialization::whereIn('slug->' . app()->getLocale(), $this->specials)->pluck('id')->toArray();
 
 
-
-
-        $lecturers->when($this->specials, function ($query) use ($userspecializationIds) {
-            return $query->whereHas('specializations', function ($subQuery) use ($userspecializationIds) {
-                $subQuery->whereIn('specialization_id', $userspecializationIds);
+        $lecturers
+            ->when($this->specials, function ($query) use ($userspecializationIds) {
+                return $query->whereHas('specializations', function ($subQuery) use ($userspecializationIds) {
+                    $subQuery->whereIn('specialization_id', $userspecializationIds);
+                });
             });
-        });
 
 
         $lecturers = $lecturers->HasCourses()->active()->get();
@@ -50,7 +55,7 @@ class InstructorsListCoponent extends Component
             'livewire.instructors.instructors-list-coponent',
             [
                 'lecturers' => $lecturers,
-                'specializations'  =>  $specializations,
+                'specializations_menu'  =>  $specializations_menu,
             ]
         );
     }

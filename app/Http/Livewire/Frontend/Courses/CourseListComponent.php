@@ -85,10 +85,7 @@ class CourseListComponent extends Component
                 $courseCategoryIds = CourseCategory::whereIn('slug->' . app()->getLocale(), $this->categoryInputs)->pluck('id')->toArray();
                 $courses = $courses->whereIn('course_category_id', $courseCategoryIds);
             }
-
-            // dd($courseCategoryIds);
         }
-
 
 
         $courses = $courses->active()
@@ -113,7 +110,7 @@ class CourseListComponent extends Component
 
 
 
-        $course_categories_menu = CourseCategory::withCount('courses')->get();
+        $course_categories_menu = CourseCategory::withCount('courses')->has('courses')->get();
 
         return view('livewire.frontend.courses.course-list-component', [
             'courses'   =>  $courses,

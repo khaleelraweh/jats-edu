@@ -117,12 +117,4 @@ class User extends Authenticatable implements MustVerifyEmail
             $query->where('name', $role);
         });
     }
-
-    // to return all lecturers how has courses in passed  categories id
-    public function scopeWhereHasCoursesWithCategory($query, $courseCategoryIds)
-    {
-        return $query->whereHas('courses.courseCategory', function ($subQuery) use ($courseCategoryIds) {
-            $subQuery->whereIn('id', $courseCategoryIds);
-        });
-    }
 }

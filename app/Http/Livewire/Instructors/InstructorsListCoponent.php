@@ -21,18 +21,11 @@ class InstructorsListCoponent extends Component
     protected $queryString = ['specials'];
 
 
-
     public function render()
     {
 
         // Get lecturers
         $lecturers = User::whereHasRoles('lecturer')->withCount('specializations');
-
-
-        //get all course categories as menu 
-        $course_categories_menu = CourseCategory::withCount('courses')->get();
-
-
 
         $specializations = Specialization::withCount(['users' => function ($query) {
             $query->WhereHasRoles('lecturer')->HasCourses();

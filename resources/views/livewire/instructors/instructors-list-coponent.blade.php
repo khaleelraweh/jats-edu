@@ -281,14 +281,14 @@
                                             @endif
                                             @if ($lecturer->instagram)
                                                 <li class="nav-item px-4">
-                                                    <a href="#" class="d-block text-white">
+                                                    <a href="{{ $lecturer->instagram }}" class="d-block text-white">
                                                         <i class="fab fa-instagram"></i>
                                                     </a>
                                                 </li>
                                             @endif
                                             @if ($lecturer->linkedin)
                                                 <li class="nav-item px-4">
-                                                    <a href="#" class="d-block text-white">
+                                                    <a href="{{ $lecturer->linkedin }}" class="d-block text-white">
                                                         <i class="fab fa-linkedin-in"></i>
                                                     </a>
                                                 </li>
@@ -296,7 +296,7 @@
                                         </ul>
                                     </div>
 
-                                    <a href="instructors-single.html"
+                                    <a href="{{ route('frontend.instructors_single', $lecturer->id) }}"
                                         class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block">
                                         @php
                                             if ($lecturer->user_image != null) {
@@ -319,8 +319,10 @@
 
                                 <!-- Footer -->
                                 <div class="card-footer px-3 pt-4 pb-1">
-                                    <a href="instructors-single.html" class="d-block">
-                                        <h5 class="mb-0">{{ $lecturer->first_name }} {{ $lecturer->last_name }}</h5>
+                                    <a href="{{ route('frontend.instructors_single', $lecturer->id) }}"
+                                        class="d-block">
+                                        <h5 class="mb-0">{{ $lecturer->first_name }} {{ $lecturer->last_name }}
+                                        </h5>
                                     </a>
                                     <span class="font-size-d-sm">
                                         @if (count($lecturer->specializations) > 0)

@@ -154,7 +154,8 @@
                             aria-labelledby="coursefilter5" data-bs-parent="#courseSidebar">
                             <ul class="list-unstyled list-group list-checkbox">
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="RatingcustomCheck1">
+                                    <input type="checkbox" wire:model="selectedRatings" value="4.5"
+                                        class="custom-control-input" id="RatingcustomCheck1">
                                     <label class="custom-control-label font-size-base" for="RatingcustomCheck1">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
@@ -168,7 +169,8 @@
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="RatingcustomCheck2">
+                                    <input type="checkbox" wire:model="selectedRatings" value="3.5"
+                                        class="custom-control-input" id="RatingcustomCheck2">
                                     <label class="custom-control-label font-size-base" for="RatingcustomCheck2">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
@@ -182,7 +184,8 @@
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="RatingcustomCheck3">
+                                    <input type="checkbox" wire:model="selectedRatings" value="2.5"
+                                        class="custom-control-input" id="RatingcustomCheck3">
                                     <label class="custom-control-label font-size-base" for="RatingcustomCheck3">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
@@ -196,7 +199,8 @@
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="RatingcustomCheck4">
+                                    <input type="checkbox" wire:model="selectedRatings" value="2"
+                                        class="custom-control-input" id="RatingcustomCheck4">
                                     <label class="custom-control-label font-size-base" for="RatingcustomCheck4">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
@@ -210,7 +214,8 @@
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="RatingcustomCheck5">
+                                    <input type="checkbox" wire:model="selectedRatings" value="1"
+                                        class="custom-control-input" id="RatingcustomCheck5">
                                     <label class="custom-control-label font-size-base" for="RatingcustomCheck5">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">

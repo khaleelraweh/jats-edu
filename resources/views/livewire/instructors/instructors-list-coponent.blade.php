@@ -83,9 +83,10 @@
                         <div id="coursefiltercollapse2" class="collapse show mt-n2 px-6 pb-6"
                             aria-labelledby="coursefilter2" data-bs-parent="#courseSidebar">
                             <!-- Search -->
-                            <form class="mb-4">
+                            <form class="mb-4" wire:submit.prevent="submitSearch">
                                 <div class="input-group input-group-filter">
-                                    <input class="form-control form-control-sm border-end-0 shadow-none" type="search"
+                                    <input wire:model="searchQuery"
+                                        class="form-control form-control-sm border-end-0 shadow-none" type="search"
                                         placeholder="Search" aria-label="Search">
                                     <div class="input-group-append">
                                         <button
@@ -101,7 +102,6 @@
                                                     d="M19.762 18.6121L15.1007 13.9509C14.7831 13.6332 14.2687 13.6332 13.9511 13.9509C13.6335 14.2682 13.6335 14.7831 13.9511 15.1005L18.6124 19.7617C18.7712 19.9205 18.9791 19.9999 19.1872 19.9999C19.395 19.9999 19.6032 19.9205 19.762 19.7617C20.0796 19.4444 20.0796 18.9295 19.762 18.6121Z"
                                                     fill="currentColor" />
                                             </svg>
-
                                         </button>
                                     </div>
                                 </div>
@@ -122,6 +122,7 @@
                         </div>
                     </div>
 
+                    {{-- filter by rating  --}}
                     <div class="border rounded mb-6 @@widgetBG">
                         <!-- Heading -->
                         <div id="coursefilter5">

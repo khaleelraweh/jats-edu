@@ -17,9 +17,11 @@ class InstructorsListCoponent extends Component
     public $paginationLimit = 12;
 
     // ============ filter choice ==========//
+    public $searchQuery = '';
+
     public $selectedSpecializations = [];
     public $selectedNames = [];
-    protected $queryString = ['selectedSpecializations', 'selectedNames'];
+    protected $queryString = ['selectedSpecializations', 'selectedNames', 'searchQuery'];
 
 
     public function render()
@@ -36,9 +38,26 @@ class InstructorsListCoponent extends Component
 
 
         // Retrieve all lecturers for the filter menu
+        // $lecturers_menu = User::whereHasRoles('lecturer')->hasCourses()
+        //     ->orderBy('first_name')
+        //     ->orderBy('last_name')
+        //     ->get()
+        //     ->groupBy(function ($user) {
+        //         return $user->first_name . ' ' . $user->last_name;
+        //     })
+        //     ->map(function ($group) {
+        //         return $group->count();
+        //     });
+
         $lecturers_menu = User::whereHasRoles('lecturer')->hasCourses()
             ->orderBy('first_name')
             ->orderBy('last_name')
+            ->when($this->searchQuery, function ($query) {
+                $query->where(function ($subQuery) {
+                    $subQuery->where('first_name', 'LIKE', '%' . $this->searchQuery . '%')
+                        ->orWhere('last_name', 'LIKE', '%' . $this->searchQuery . '%');
+                });
+            })
             ->get()
             ->groupBy(function ($user) {
                 return $user->first_name . ' ' . $user->last_name;
@@ -75,5 +94,9 @@ class InstructorsListCoponent extends Component
                 'lecturers' => $lecturers,
             ]
         );
+    }
+
+    public function submitSearch()
+    {
     }
 }

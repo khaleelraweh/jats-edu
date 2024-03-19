@@ -18,44 +18,61 @@ class InstructorsListCoponent extends Component
 
     // ============ filter choice ==========//
     public $specials = [];
-    protected $queryString = ['specials'];
+    public $selectedNames = [];
+    protected $queryString = ['specials', 'selectedNames'];
 
 
     public function render()
     {
 
-        //Query for filter menu 
 
-        // get all specialixations 
+        // Query for filter menu 
         $specializations_menu = Specialization::withCount(['users' => function ($query) {
-            $query->WhereHasRoles('lecturer')->HasCourses();
+            $query->whereHasRoles('lecturer')->has('courses');
         }])->get();
 
-
-        // Get lecturers
-        $lecturers = User::whereHasRoles('lecturer');
-
-
-
+        // Get the IDs of selected specializations
         $userspecializationIds = Specialization::whereIn('slug->' . app()->getLocale(), $this->specials)->pluck('id')->toArray();
 
 
-        $lecturers
+        // Retrieve all lecturers for the filter menu
+        $lecturers_menu = User::whereHasRoles('lecturer')->hasCourses()
+            ->orderBy('first_name')
+            ->orderBy('last_name')
+            ->get()
+            ->groupBy(function ($user) {
+                return $user->first_name . ' ' . $user->last_name;
+            })
+            ->map(function ($group) {
+                return $group->count();
+            });
+
+
+        // dd($this->selectedName);
+        // Get lecturers
+        $lecturers = User::whereHasRoles('lecturer')
             ->when($this->specials, function ($query) use ($userspecializationIds) {
                 return $query->whereHas('specializations', function ($subQuery) use ($userspecializationIds) {
                     $subQuery->whereIn('specialization_id', $userspecializationIds);
                 });
-            });
-
-
-        $lecturers = $lecturers->HasCourses()->active()->get();
-
+            })
+            ->when($this->selectedNames, function ($query) {
+                return $query->where(function ($subQuery) {
+                    foreach ($this->selectedNames as $fullName) {
+                        $subQuery->orWhereRaw('CONCAT(first_name, " ", last_name) LIKE ?', ["%{$fullName}%"]);
+                    }
+                });
+            })
+            ->has('courses')
+            ->active()
+            ->get();
 
         return view(
             'livewire.instructors.instructors-list-coponent',
             [
-                'lecturers' => $lecturers,
                 'specializations_menu'  =>  $specializations_menu,
+                'lecturers_menu'       =>  $lecturers_menu,
+                'lecturers' => $lecturers,
             ]
         );
     }

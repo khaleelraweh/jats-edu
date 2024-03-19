@@ -39,10 +39,8 @@
 
                                 @foreach ($specializations_menu as $specialization)
                                     <li class="custom-control custom-checkbox">
-
                                         <input type="checkbox" wire:model="specials" value="{{ $specialization->slug }}"
                                             class="custom-control-input" id="{{ $specialization->slug }}">
-
                                         <label class="custom-control-label font-size-base"
                                             for="{{ $specialization->slug }}">{{ $specialization->name }}
                                             ({{ $specialization->users_count }})
@@ -108,41 +106,17 @@
                                 </div>
                             </form>
 
+                            {{-- instructors filter by name  --}}
                             <ul class="list-unstyled list-group list-checkbox list-checkbox-limit">
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="InstructorscustomCheck1">
-                                    <label class="custom-control-label font-size-base"
-                                        for="InstructorscustomCheck1">Chris
-                                        Convrse (03)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="InstructorscustomCheck2">
-                                    <label class="custom-control-label font-size-base"
-                                        for="InstructorscustomCheck2">Morten Rand (15)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="InstructorscustomCheck3">
-                                    <label class="custom-control-label font-size-base"
-                                        for="InstructorscustomCheck3">Rayi
-                                        Villalobos (125)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="InstructorscustomCheck4">
-                                    <label class="custom-control-label font-size-base"
-                                        for="InstructorscustomCheck4">James
-                                        William (1.584)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="InstructorscustomCheck5">
-                                    <label class="custom-control-label font-size-base"
-                                        for="InstructorscustomCheck5">Villalobos (584)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="InstructorscustomCheck6">
-                                    <label class="custom-control-label font-size-base"
-                                        for="InstructorscustomCheck6">Rand
-                                        joe (44)</label>
-                                </li>
+                                @foreach ($lecturers_menu as $name => $count)
+                                    <li class="custom-control custom-checkbox">
+                                        <input wire:model="selectedNames" type="checkbox" value="{{ $name }}"
+                                            class="custom-control-input" id="InstructorscustomCheck{{ $loop->index }}">
+                                        <label class="custom-control-label font-size-base"
+                                            for="InstructorscustomCheck{{ $loop->index }}">
+                                            {{ $name }} ({{ $count }})</label>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -344,8 +318,8 @@
 
                 </div>
 
-                <!-- PAGINATION
-                                                                                                ================================================== -->
+
+                <!-- PAGINATION -->
                 <nav class="mb-11" aria-label="Page navigationa">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">

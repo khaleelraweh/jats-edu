@@ -409,8 +409,13 @@
                     </div>
 
                     {{-- <a class="d-none" href="#" class="btn btn-primary btn-block mb-10">FILTER RESULTS</a> --}}
-                    <a href="{{ route('frontend.courses') }}" class="btn btn-primary btn-block mb-10">
+                    {{-- <a href="{{ route('frontend.courses') }}" class="btn btn-primary btn-block mb-10">
                         Resit Filter
+                    </a> --}}
+
+                    {{-- <a href="#" class="btn btn-primary btn-block mb-10">CLEAR FILTER </a> --}}
+                    <a href="#" class="btn btn-primary btn-block mb-10" wire:click="resetFilters">
+                        RESET FILTER
                     </a>
                 </div>
 

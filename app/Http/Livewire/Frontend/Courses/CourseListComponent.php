@@ -31,6 +31,13 @@ class CourseListComponent extends Component
 
     protected $queryString = ['categoryInputs', 'courseLevels', 'priceInput'];
 
+    public function resetFilters()
+    {
+        $this->sortingBy = "default";
+        $this->priceInput = '';
+        $this->courseLevels = [];
+        $this->categoryInputs = [];
+    }
 
     public function render()
     {
@@ -79,14 +86,10 @@ class CourseListComponent extends Component
                 $courses = $courses->whereIn('course_category_id', $courseCategoryIds);
             }
 
-
-
             // dd($courseCategoryIds);
         }
 
-        // if ($this->courseLevels != null) {
-        //     $courses = $courses->whereIn('skill_level', $this->courseLevels);
-        // }
+
 
         $courses = $courses->active()
             ->when($this->courseLevels, function ($query) {

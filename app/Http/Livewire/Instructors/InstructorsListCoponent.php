@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Instructors;
 use App\Models\CourseCategory;
 use App\Models\Specialization;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -23,10 +24,16 @@ class InstructorsListCoponent extends Component
     public $selectedRatings = [];
     protected $queryString = ['selectedSpecializations', 'selectedNames', 'searchQuery', 'selectedRatings'];
 
+    public function resetFilters()
+    {
+        $this->selectedSpecializations = [];
+        $this->searchQuery = '';
+        $this->selectedNames = [];
+        $this->selectedRatings = [];
+    }
 
     public function render()
     {
-
 
         // Query for filter menu 
         $specializations_menu = Specialization::withCount(['users' => function ($query) {
@@ -69,18 +76,11 @@ class InstructorsListCoponent extends Component
                     }
                 });
             })
-            // ->when($this->selectedRatings, function ($query) {
-            //     // Filter lecturers based on average rating of their courses
-            //     return $query->whereHas('courses.reviews', function ($subQuery) {
-            //         $subQuery->selectRaw('avg(rating) as average_rating')
-            //             ->groupBy('course_id')
-            //             ->havingRaw('avg(rating) >= ?', [collect($this->selectedRatings)->avg()]);
-            //     });
-            // })
 
+            //got each one or more without above selected rating only and 
             // ->when($this->selectedRatings, function ($query) {
-            //     // Filter lecturers based on any of their courses having a rating of 1 or more
-            //     return $query->whereHas('courses.reviews', function ($subQuery) {
+            //     $query->whereHas('courses.reviews', function ($subQuery) {
+            //         // Filter courses by rating
             //         $subQuery->whereIn('rating', $this->selectedRatings);
             //     });
             // })
@@ -95,8 +95,6 @@ class InstructorsListCoponent extends Component
                     });
                 }
             })
-
-
             ->has('courses')
             ->active()
             ->get();

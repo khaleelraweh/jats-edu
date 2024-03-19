@@ -39,8 +39,9 @@
 
                                 @foreach ($specializations_menu as $specialization)
                                     <li class="custom-control custom-checkbox">
-                                        <input type="checkbox" wire:model="specials" value="{{ $specialization->slug }}"
-                                            class="custom-control-input" id="{{ $specialization->slug }}">
+                                        <input type="checkbox" wire:model="selectedSpecializations"
+                                            value="{{ $specialization->slug }}" class="custom-control-input"
+                                            id="{{ $specialization->slug }}">
                                         <label class="custom-control-label font-size-base"
                                             for="{{ $specialization->slug }}">{{ $specialization->name }}
                                             ({{ $specialization->users_count }})

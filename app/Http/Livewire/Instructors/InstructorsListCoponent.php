@@ -17,9 +17,9 @@ class InstructorsListCoponent extends Component
     public $paginationLimit = 12;
 
     // ============ filter choice ==========//
-    public $specials = [];
+    public $selectedSpecializations = [];
     public $selectedNames = [];
-    protected $queryString = ['specials', 'selectedNames'];
+    protected $queryString = ['selectedSpecializations', 'selectedNames'];
 
 
     public function render()
@@ -32,7 +32,7 @@ class InstructorsListCoponent extends Component
         }])->get();
 
         // Get the IDs of selected specializations
-        $userspecializationIds = Specialization::whereIn('slug->' . app()->getLocale(), $this->specials)->pluck('id')->toArray();
+        $selectedSpecializationIds = Specialization::whereIn('slug->' . app()->getLocale(), $this->selectedSpecializations)->pluck('id')->toArray();
 
 
         // Retrieve all lecturers for the filter menu
@@ -51,9 +51,9 @@ class InstructorsListCoponent extends Component
         // dd($this->selectedName);
         // Get lecturers
         $lecturers = User::whereHasRoles('lecturer')
-            ->when($this->specials, function ($query) use ($userspecializationIds) {
-                return $query->whereHas('specializations', function ($subQuery) use ($userspecializationIds) {
-                    $subQuery->whereIn('specialization_id', $userspecializationIds);
+            ->when($this->selectedSpecializations, function ($query) use ($selectedSpecializationIds) {
+                return $query->whereHas('specializations', function ($subQuery) use ($selectedSpecializationIds) {
+                    $subQuery->whereIn('specialization_id', $selectedSpecializationIds);
                 });
             })
             ->when($this->selectedNames, function ($query) {

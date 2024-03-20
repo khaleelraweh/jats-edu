@@ -32,8 +32,9 @@ class CourseListComponent extends Component
 
     public $searchQuery = '';
     public $selectedNames = [];
+    public $selectedRatings = [];
 
-    protected $queryString = ['categoryInputs', 'courseLevels', 'priceInput', 'searchQuery', 'selectedNames'];
+    protected $queryString = ['categoryInputs', 'courseLevels', 'priceInput', 'searchQuery', 'selectedNames', 'selectedRatings'];
 
     public function resetFilters()
     {
@@ -45,43 +46,6 @@ class CourseListComponent extends Component
 
     public function render()
     {
-
-        // $lecturers_menu = User::whereHasRoles('lecturer')->hasCourses()
-        //     ->orderBy('first_name')
-        //     ->orderBy('last_name')
-        //     ->when($this->searchQuery, function ($query) {
-        //         $query->where(function ($subQuery) {
-        //             $subQuery->where('first_name', 'LIKE', '%' . $this->searchQuery . '%')
-        //                 ->orWhere('last_name', 'LIKE', '%' . $this->searchQuery . '%');
-        //         });
-        //     })
-        //     ->get()
-        //     ->groupBy(function ($user) {
-        //         return $user->first_name . ' ' . $user->last_name;
-        //     })
-        //     ->map(function ($group) {
-        //         return $group->count();
-        //     });
-
-
-        // $lecturers_menu = User::whereHasRoles('lecturer')->hasCourses()
-        //     ->orderBy('first_name')
-        //     ->orderBy('last_name')
-        //     ->when($this->searchQuery, function ($query) {
-        //         $query->where(function ($subQuery) {
-        //             $subQuery->where('first_name', 'LIKE', '%' . $this->searchQuery . '%')
-        //                 ->orWhere('last_name', 'LIKE', '%' . $this->searchQuery . '%');
-        //         });
-        //     })
-        //     ->withCount('courses') // Load the count of associated courses for each lecturer
-        //     ->get()
-        //     ->groupBy(function ($user) {
-        //         return $user->first_name . ' ' . $user->last_name;
-        //     })
-        //     ->map(function ($group) {
-        //         // Return the sum of the courses count for each lecturer group
-        //         return $group->sum('courses_count');
-        //     });
 
 
         $lecturers_menu = User::whereHasRoles('lecturer')->hasCourses()
@@ -164,7 +128,6 @@ class CourseListComponent extends Component
         })->pluck('id')->toArray();
 
 
-        // dd($lecturer_ids);
 
         $courses = $courses->active()
             ->when($this->courseLevels, function ($query) {
@@ -182,33 +145,19 @@ class CourseListComponent extends Component
                         $query2->where('price', '>', 0);
                     });
             })
-
-
-            // ->when($this->selectedNames, function ($query) {
-            //     return $query->where(function ($subQuery) {
-            //         foreach ($this->selectedNames as $fullName) {
-            //             $subQuery->orWhereRaw('CONCAT(first_name, " ", last_name) LIKE ?', ["%{$fullName}%"]);
-            //         }
-            //     });
-            // })
-
-            // ->when($this->selectedNames, function ($query) {
-            //     return $query->whereHas('users', function ($subQuery) {
-            //         $subQuery->whereIn('user_id', function ($q) {
-            //             foreach ($this->selectedNames as $fullName) {
-            //                 $q->orWhereRaw('CONCAT(first_name, " ", last_name) LIKE ?', ["%{$fullName}%"])->pluck('id')->toArray();
-            //             }
-            //         });
-            //     });
-            // })
-
             ->when($this->selectedNames, function ($query) use ($lecturer_ids) {
                 return $query->whereHas('users', function ($subQuery) use ($lecturer_ids) {
                     $subQuery->whereIn('user_id', $lecturer_ids);
                 });
             })
-
-
+            ->when($this->selectedRatings, function ($query) {
+                // Filter courses based on reviews rating 
+                foreach ($this->selectedRatings as $rating) {
+                    $query->whereHas('reviews', function ($subQuery) use ($rating) {
+                        $subQuery->where('rating', '>=', $rating);
+                    });
+                }
+            })
             ->orderBy($sort_field, $sort_type)
             ->paginate($this->paginationLimit);
 

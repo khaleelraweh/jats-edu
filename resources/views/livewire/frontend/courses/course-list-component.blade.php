@@ -284,6 +284,7 @@
                         </div>
                     </div>
 
+                    {{-- filter by rating  --}}
                     <div class="border rounded mb-6 bg-white ">
                         <!-- Heading -->
                         <div id="coursefilter5">
@@ -315,7 +316,8 @@
                             aria-labelledby="coursefilter5" data-parent="#courseSidebar">
                             <ul class="list-unstyled list-group list-checkbox">
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="ratingcustomcheck1">
+                                    <input type="checkbox" wire:model="selectedRatings" value="4.5"
+                                        class="custom-control-input" id="ratingcustomcheck1">
                                     <label class="custom-control-label font-size-base" for="ratingcustomcheck1">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
@@ -329,7 +331,8 @@
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="ratingcustomcheck2">
+                                    <input type="checkbox" wire:model="selectedRatings" value="3.5"
+                                        class="custom-control-input" id="ratingcustomcheck2">
                                     <label class="custom-control-label font-size-base" for="ratingcustomcheck2">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
@@ -343,7 +346,8 @@
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="ratingcustomcheck3">
+                                    <input type="checkbox" wire:model="selectedRatings" value="2.5"
+                                        class="custom-control-input" id="ratingcustomcheck3">
                                     <label class="custom-control-label font-size-base" for="ratingcustomcheck3">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
@@ -357,7 +361,8 @@
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="ratingcustomcheck4">
+                                    <input type="checkbox" wire:model="selectedRatings" value="2"
+                                        class="custom-control-input" id="ratingcustomcheck4">
                                     <label class="custom-control-label font-size-base" for="ratingcustomcheck4">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
@@ -371,7 +376,8 @@
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="ratingcustomcheck5">
+                                    <input type="checkbox" wire:model="selectedRatings" value="1"
+                                        class="custom-control-input" id="ratingcustomcheck5">
                                     <label class="custom-control-label font-size-base" for="ratingcustomcheck5">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
@@ -387,6 +393,8 @@
                             </ul>
                         </div>
                     </div>
+
+
 
 
                     {{-- <a href="#" class="btn btn-primary btn-block mb-10">CLEAR FILTER </a> --}}

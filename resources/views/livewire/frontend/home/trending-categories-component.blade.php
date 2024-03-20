@@ -55,22 +55,27 @@
             </div>
 
             <div class="text-center">
-                @if (count($course_categories) >= $amount)
-                    <a wire:click="load_more"
-                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_load_more_course_categories') }}
-                    </a>
-                    <a href="{{ route('frontend.courses') }}"
-                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_view_all_course_categories') }}
-                    </a>
-                @else
-                    <a wire:click="load_less"
-                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_load_less_course_categories') }}
-                    </a>
-                    <a href="{{ route('frontend.courses') }}"
-                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_view_all_course_categories') }}
-                    </a>
+                @if (count($course_categories) > 8)
+                    @if (count($course_categories) > 12)
+                        @if ($amount == 8)
+                            <a wire:click="load_more" class="btn btn-outline-sienna btn-x-wide lift d-inline-block">
+                                {{ __('transf.btn_load_more_course_categories') }}
+                            </a>
+                        @else
+                            <a wire:click="load_less" class="btn btn-outline-sienna btn-x-wide lift d-inline-block">
+                                {{ __('transf.btn_load_less_course_categories') }}
+                            </a>
+                        @endif
+                    @else
+                        <a wire:click="load_more" class="btn btn-outline-sienna btn-x-wide lift d-inline-block">
+                            {{ __('transf.btn_load_more_course_categories') }}
+                        </a>
+                    @endif
                 @endif
-
+                <a href="{{ route('frontend.courses') }}"
+                    class="btn btn-outline-sienna btn-x-wide lift d-inline-block">
+                    {{ __('transf.btn_view_all_course_categories') }}
+                </a>
             </div>
         </div>
     </section>

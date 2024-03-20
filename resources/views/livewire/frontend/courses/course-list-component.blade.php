@@ -89,7 +89,7 @@
                         </div>
                     </div>
 
-                    <div class="border rounded mb-6 bg-white d-none">
+                    <div class="border rounded mb-6 bg-white ">
                         <!-- Heading -->
                         <div id="coursefilter2">
                             <h4 class="mb-0">
@@ -119,13 +119,14 @@
                         <div id="coursefiltercollapse2" class="collapse show mt-n2 px-6 pb-6"
                             aria-labelledby="coursefilter2" data-parent="#courseSidebar">
                             <!-- Search -->
-                            <form class="mb-4">
-                                <div class="input-group">
-                                    <input class="form-control form-control-sm border-end-0 shadow-none" type="search"
+                            <form class="mb-4" wire:submit.prevent="submitSearch">
+                                <div class="input-group input-group-filter">
+                                    <input wire:model="searchQuery"
+                                        class="form-control form-control-sm border-end-0 shadow-none" type="search"
                                         placeholder="Search" aria-label="Search">
                                     <div class="input-group-append">
                                         <button
-                                            class="btn btn-sm btn-outline-white border-start-0 text-dark bg-transparent"
+                                            class="btn btn-sm btn-outline-white border-start-0 shadow-none bg-transparent text-secondary icon-xs d-flex align-items-center"
                                             type="submit">
                                             <!-- Icon -->
                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -137,47 +138,26 @@
                                                     d="M19.762 18.6121L15.1007 13.9509C14.7831 13.6332 14.2687 13.6332 13.9511 13.9509C13.6335 14.2682 13.6335 14.7831 13.9511 15.1005L18.6124 19.7617C18.7712 19.9205 18.9791 19.9999 19.1872 19.9999C19.395 19.9999 19.6032 19.9205 19.762 19.7617C20.0796 19.4444 20.0796 18.9295 19.762 18.6121Z"
                                                     fill="currentColor" />
                                             </svg>
-
                                         </button>
                                     </div>
                                 </div>
                             </form>
 
+                            {{-- instructors filter by name  --}}
                             <ul class="list-unstyled list-group list-checkbox list-checkbox-limit">
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="instructorscustomcheck1">
-                                    <label class="custom-control-label font-size-base"
-                                        for="instructorscustomcheck1">Chris
-                                        Convrse (03)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="instructorscustomcheck2">
-                                    <label class="custom-control-label font-size-base"
-                                        for="instructorscustomcheck2">Morten Rand (15)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="instructorscustomcheck3">
-                                    <label class="custom-control-label font-size-base"
-                                        for="instructorscustomcheck3">Rayi
-                                        Villalobos (125)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="instructorscustomcheck4">
-                                    <label class="custom-control-label font-size-base"
-                                        for="instructorscustomcheck4">James
-                                        William (1.584)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="instructorscustomcheck5">
-                                    <label class="custom-control-label font-size-base"
-                                        for="instructorscustomcheck5">Villalobos (584)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="instructorscustomcheck6">
-                                    <label class="custom-control-label font-size-base"
-                                        for="instructorscustomcheck6">Rand
-                                        joe (44)</label>
-                                </li>
+                                @foreach ($lecturers_menu as $name => $counts)
+                                    <li class="custom-control custom-checkbox">
+                                        <input wire:model="selectedNames" type="checkbox" value="{{ $name }}"
+                                            class="custom-control-input"
+                                            id="InstructorscustomCheck{{ $loop->index }}">
+                                        <label class="custom-control-label font-size-base"
+                                            for="InstructorscustomCheck{{ $loop->index }}">
+                                            {{ $name }}
+                                            {{-- ({{ $counts['lecturersCount'] }}) --}}
+                                            ({{ $counts['coursesCount'] }})
+                                        </label>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -304,7 +284,7 @@
                         </div>
                     </div>
 
-                    <div class="border rounded mb-6 bg-white d-none">
+                    <div class="border rounded mb-6 bg-white ">
                         <!-- Heading -->
                         <div id="coursefilter5">
                             <h4 class="mb-0">
@@ -408,10 +388,6 @@
                         </div>
                     </div>
 
-                    {{-- <a class="d-none" href="#" class="btn btn-primary btn-block mb-10">FILTER RESULTS</a> --}}
-                    {{-- <a href="{{ route('frontend.courses') }}" class="btn btn-primary btn-block mb-10">
-                        Resit Filter
-                    </a> --}}
 
                     {{-- <a href="#" class="btn btn-primary btn-block mb-10">CLEAR FILTER </a> --}}
                     <a href="#" class="btn btn-primary btn-block mb-10" wire:click="resetFilters">
@@ -445,7 +421,8 @@
                                     }
                                 @endphp
                                 <div class="card-zoom position-relative">
-                                    <a href="course-single-v5.html" class="card-img sk-thumbnail img-ratio-3 d-block">
+                                    <a href="{{ route('frontend.course_single', $course->slug) }}"
+                                        class="card-img sk-thumbnail img-ratio-3 d-block">
                                         <img class="rounded shadow-light-lg" src="{{ $course_img }}"
                                             alt="...">
                                     </a>
@@ -466,13 +443,14 @@
                                 <!-- Footer -->
                                 <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
                                     <!-- Preheading -->
-                                    <a href="course-single-v5.html"><span
+                                    <a href="{{ route('frontend.courses', $course->courseCategory->slug) }}"><span
                                             class="mb-1 d-inline-block text-gray-800">{{ $course->courseCategory->title }}
                                         </span></a>
 
                                     <!-- Heading -->
                                     <div class="position-relative">
-                                        <a href="course-single-v5.html" class="d-block stretched-link">
+                                        <a href="{{ route('frontend.course_single', $course->slug) }}"
+                                            class="d-block stretched-link">
                                             <h5 class="line-clamp-2 h-md-48 h-lg-58 me-md-8 me-lg-10 me-xl-4 mb-2">
                                                 {{ $course->title }}
                                             </h5>

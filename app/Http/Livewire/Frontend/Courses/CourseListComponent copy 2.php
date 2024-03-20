@@ -164,8 +164,6 @@ class CourseListComponent extends Component
         })->pluck('id')->toArray();
 
 
-        // dd($lecturer_ids);
-
         $courses = $courses->active()
             ->when($this->courseLevels, function ($query) {
                 $query->whereIn('skill_level', $this->courseLevels);

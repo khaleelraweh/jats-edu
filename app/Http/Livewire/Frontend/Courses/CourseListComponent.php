@@ -42,6 +42,10 @@ class CourseListComponent extends Component
         $this->priceInput = '';
         $this->courseLevels = [];
         $this->categoryInputs = [];
+
+        $this->searchQuery = '';
+        $this->selectedNames = [];
+        $this->selectedRatings = [];
     }
 
     public function render()

@@ -25,13 +25,18 @@ class TrendingCategoriesComponent extends Component
 
         if (count($this->course_categories) > 8) {
             $this->showMoreBtn = true;
-            $this->showLessBtn = false;
+
+            if (count($this->course_categories) <= $this->amount) {
+                $this->showLessBtn = true;
+            } else {
+                $this->showLessBtn = false;
+            }
+        } else {
+            $this->showMoreBtn = false;
         }
 
-        if (count($this->course_categories) <= $this->amount) {
-            $this->showMoreBtn = false;
-            $this->showLessBtn = true;
-        }
+
+
 
         return view(
             'livewire.frontend.home.trending-categories-component',

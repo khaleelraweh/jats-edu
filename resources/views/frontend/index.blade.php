@@ -254,7 +254,7 @@
                     <div class="card border shadow p-2 lift">
                         <div class="row gx-0">
                             <!-- Image -->
-                            <a href="event-single.html"
+                            <a href="{{ route('frontend.event_single', 1) }}"
                                 class="col-auto d-flex rounded-lg w-md-152 bg-bossanova place-center h-md-140p"
                                 style="width: 120px;">
                                 <div class="w-100 text-center">
@@ -270,7 +270,7 @@
                                         <span class="text-white font-size-sm fw-normal">06 Aprıl</span>
                                     </div>
 
-                                    <a href="event-single.html" class="d-block mb-2">
+                                    <a href="{{ route('frontend.event_single', 1) }}" class="d-block mb-2">
                                         <h5 class="line-clamp-2 h-xl-52 mb-2">Elegant Light Box Paper Cut Dioramas New
                                             Design Conference</h5>
                                     </a>
@@ -324,7 +324,7 @@
                     <div class="card border shadow p-2 lift">
                         <div class="row gx-0">
                             <!-- Image -->
-                            <a href="event-single.html"
+                            <a href="{{ route('frontend.event_single', 1) }}"
                                 class="col-auto d-flex rounded-lg w-md-152 bg-bossanova place-center h-md-140p"
                                 style="width: 120px;">
                                 <div class="w-100 text-center">
@@ -340,7 +340,7 @@
                                         <span class="text-white font-size-sm fw-normal">06 Aprıl</span>
                                     </div>
 
-                                    <a href="event-single.html" class="d-block mb-2">
+                                    <a href="{{ route('frontend.event_single', 1) }}" class="d-block mb-2">
                                         <h5 class="line-clamp-2 h-xl-52 mb-2">Lambeth Safeguarding: Understanding
                                             Contextual Harm</h5>
                                     </a>
@@ -394,7 +394,7 @@
                     <div class="card border shadow p-2 lift">
                         <div class="row gx-0">
                             <!-- Image -->
-                            <a href="event-single.html"
+                            <a href="{{ route('frontend.event_single', 1) }}"
                                 class="col-auto d-flex rounded-lg w-md-152 bg-bossanova place-center h-md-140p"
                                 style="width: 120px;">
                                 <div class="w-100 text-center">
@@ -410,7 +410,7 @@
                                         <span class="text-white font-size-sm fw-normal">06 Aprıl</span>
                                     </div>
 
-                                    <a href="event-single.html" class="d-block mb-2">
+                                    <a href="{{ route('frontend.event_single', 1) }}" class="d-block mb-2">
                                         <h5 class="line-clamp-2 h-xl-52 mb-2">Discover Law - Get into the best UK law
                                             schools</h5>
                                     </a>
@@ -464,7 +464,7 @@
                     <div class="card border shadow p-2 lift">
                         <div class="row gx-0">
                             <!-- Image -->
-                            <a href="event-single.html"
+                            <a href="{{ route('frontend.event_single', 1) }}"
                                 class="col-auto d-flex rounded-lg w-md-152 bg-bossanova place-center h-md-140p"
                                 style="width: 120px;">
                                 <div class="w-100 text-center">
@@ -480,7 +480,7 @@
                                         <span class="text-white font-size-sm fw-normal">06 Aprıl</span>
                                     </div>
 
-                                    <a href="event-single.html" class="d-block mb-2">
+                                    <a href="{{ route('frontend.event_single', 1) }}" class="d-block mb-2">
                                         <h5 class="line-clamp-2 h-xl-52 mb-2">Undergraduate Open Day – Holloway Campus - 3
                                             July 2020</h5>
                                     </a>
@@ -534,7 +534,7 @@
                     <div class="card border shadow p-2 lift">
                         <div class="row gx-0">
                             <!-- Image -->
-                            <a href="event-single.html"
+                            <a href="{{ route('frontend.event_single', 1) }}"
                                 class="col-auto d-flex rounded-lg w-md-152 bg-bossanova place-center h-md-140p"
                                 style="width: 120px;">
                                 <div class="w-100 text-center">
@@ -550,7 +550,7 @@
                                         <span class="text-white font-size-sm fw-normal">06 Aprıl</span>
                                     </div>
 
-                                    <a href="event-single.html" class="d-block mb-2">
+                                    <a href="{{ route('frontend.event_single', 1) }}" class="d-block mb-2">
                                         <h5 class="line-clamp-2 h-xl-52 mb-2">"Introduction to Law" Open Day with Bristows
                                         </h5>
                                     </a>
@@ -604,7 +604,7 @@
                     <div class="card border shadow p-2 lift">
                         <div class="row gx-0">
                             <!-- Image -->
-                            <a href="event-single.html"
+                            <a href="{{ route('frontend.event_single', 1) }}"
                                 class="col-auto d-flex rounded-lg w-md-152 bg-bossanova place-center h-md-140p"
                                 style="width: 120px;">
                                 <div class="w-100 text-center">
@@ -620,7 +620,7 @@
                                         <span class="text-white font-size-sm fw-normal">06 Aprıl</span>
                                     </div>
 
-                                    <a href="event-single.html" class="d-block mb-2">
+                                    <a href="{{ route('frontend.event_single', 1) }}" class="d-block mb-2">
                                         <h5 class="line-clamp-2 h-xl-52 mb-2">Kingston College undergraduate Open Events
                                             2019-20</h5>
                                     </a>
@@ -690,11 +690,12 @@
                     <div class="card border shadow p-2 lift sk-fade">
                         <!-- Image -->
                         <div class="card-zoom position-relative">
-                            <a href="blog-single.html" class="card-img d-block sk-thumbnail img-ratio-3"><img
+                            <a href="{{ route('frontend.blog_single', 1) }}"
+                                class="card-img d-block sk-thumbnail img-ratio-3"><img
                                     class="rounded shadow-light-lg img-fluid"
                                     src="{{ asset('frontend/assets/img/post/post-1.jpg') }}" alt="..."></a>
 
-                            <a href="blog-single.html"
+                            <a href="{{ route('frontend.blog_single', 1) }}"
                                 class="badge sk-fade-bottom badge-lg badge-purple badge-pill badge-float bottom-0 left-0 mb-4 ms-4 px-5 me-4">
                                 <span class="text-white fw-normal font-size-sm">Figma</span>
                             </a>
@@ -704,7 +705,8 @@
                         <div class="card-footer px-2 pb-0 pt-4">
                             <ul class="nav mx-n3 mb-3">
                                 <li class="nav-item px-3">
-                                    <a href="blog-single.html" class="d-flex align-items-center text-gray-800">
+                                    <a href="{{ route('frontend.blog_single', 1) }}"
+                                        class="d-flex align-items-center text-gray-800">
                                         <div class="me-3 d-flex">
                                             <!-- Icon -->
                                             <svg width="15" height="15" viewBox="0 0 15 15"
@@ -719,7 +721,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item px-3">
-                                    <a href="blog-single.html" class="d-flex align-items-center text-gray-800">
+                                    <a href="{{ route('frontend.blog_single', 1) }}"
+                                        class="d-flex align-items-center text-gray-800">
                                         <div class="me-2 d-flex">
                                             <!-- Icon -->
                                             <svg width="15" height="15" viewBox="0 0 15 15"
@@ -736,7 +739,7 @@
                             </ul>
 
                             <!-- Heading -->
-                            <a href="blog-single.html" class="d-block">
+                            <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
                                 <h5 class="line-clamp-2 h-48 h-lg-52">The Best Destinations to Begin Your Round the World
                                     Trip</h5>
                             </a>
@@ -749,11 +752,12 @@
                     <div class="card border shadow p-2 lift sk-fade">
                         <!-- Image -->
                         <div class="card-zoom position-relative">
-                            <a href="blog-single.html" class="card-img d-block sk-thumbnail img-ratio-3"><img
+                            <a href="{{ route('frontend.blog_single', 1) }}"
+                                class="card-img d-block sk-thumbnail img-ratio-3"><img
                                     class="rounded shadow-light-lg img-fluid"
                                     src="{{ asset('frontend/assets/img/post/post-2.jpg') }}" alt="..."></a>
 
-                            <a href="blog-single.html"
+                            <a href="{{ route('frontend.blog_single', 1) }}"
                                 class="badge sk-fade-bottom badge-lg badge-purple badge-pill badge-float bottom-0 left-0 mb-4 ms-4 px-5 me-4">
                                 <span class="text-white fw-normal font-size-sm">Adobe XD</span>
                             </a>
@@ -763,7 +767,8 @@
                         <div class="card-footer px-2 pb-0 pt-4">
                             <ul class="nav mx-n3 mb-3">
                                 <li class="nav-item px-3">
-                                    <a href="blog-single.html" class="d-flex align-items-center text-gray-800">
+                                    <a href="{{ route('frontend.blog_single', 1) }}"
+                                        class="d-flex align-items-center text-gray-800">
                                         <div class="me-3 d-flex">
                                             <!-- Icon -->
                                             <svg width="15" height="15" viewBox="0 0 15 15"
@@ -778,7 +783,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item px-3">
-                                    <a href="blog-single.html" class="d-flex align-items-center text-gray-800">
+                                    <a href="{{ route('frontend.blog_single', 1) }}"
+                                        class="d-flex align-items-center text-gray-800">
                                         <div class="me-2 d-flex">
                                             <!-- Icon -->
                                             <svg width="15" height="15" viewBox="0 0 15 15"
@@ -795,7 +801,7 @@
                             </ul>
 
                             <!-- Heading -->
-                            <a href="blog-single.html" class="d-block">
+                            <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
                                 <h5 class="line-clamp-2 h-48 h-lg-52">An Indigenous Anatolian Syllabic Script From 3500
                                     Years Ago</h5>
                             </a>
@@ -808,11 +814,12 @@
                     <div class="card border shadow p-2 lift sk-fade">
                         <!-- Image -->
                         <div class="card-zoom position-relative">
-                            <a href="blog-single.html" class="card-img d-block sk-thumbnail img-ratio-3"><img
+                            <a href="{{ route('frontend.blog_single', 1) }}"
+                                class="card-img d-block sk-thumbnail img-ratio-3"><img
                                     class="rounded shadow-light-lg img-fluid"
                                     src="{{ asset('frontend/assets/img/post/post-3.jpg') }}" alt="..."></a>
 
-                            <a href="blog-single.html"
+                            <a href="{{ route('frontend.blog_single', 1) }}"
                                 class="badge badge-lg sk-fade-bottom badge-purple badge-pill badge-float bottom-0 left-0 mb-4 ms-4 px-5 me-4">
                                 <span class="text-white fw-normal font-size-sm">Photoshop</span>
                             </a>
@@ -822,7 +829,8 @@
                         <div class="card-footer px-2 pb-0 pt-4">
                             <ul class="nav mx-n3 mb-3">
                                 <li class="nav-item px-3">
-                                    <a href="blog-single.html" class="d-flex align-items-center text-gray-800">
+                                    <a href="{{ route('frontend.blog_single', 1) }}"
+                                        class="d-flex align-items-center text-gray-800">
                                         <div class="me-3 d-flex">
                                             <!-- Icon -->
                                             <svg width="15" height="15" viewBox="0 0 15 15"
@@ -837,7 +845,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item px-3">
-                                    <a href="blog-single.html" class="d-flex align-items-center text-gray-800">
+                                    <a href="{{ route('frontend.blog_single', 1) }}"
+                                        class="d-flex align-items-center text-gray-800">
                                         <div class="me-2 d-flex">
                                             <!-- Icon -->
                                             <svg width="15" height="15" viewBox="0 0 15 15"
@@ -854,7 +863,7 @@
                             </ul>
 
                             <!-- Heading -->
-                            <a href="blog-single.html" class="d-block">
+                            <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
                                 <h5 class="line-clamp-2 h-48 h-lg-52">10 Best Countries to Visit for Beginner Travelers
                                 </h5>
                             </a>

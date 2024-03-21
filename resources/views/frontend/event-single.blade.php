@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- EVENT SINGLE
-        ================================================== -->
+            ================================================== -->
     <div class="sk-thumbnail img-ratio-7">
         <img src="assets/img/covers/cover-22.jpg" alt="..." class="img-fluid">
     </div>
@@ -473,7 +473,7 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR
-                    ================================================== -->
+                        ================================================== -->
                 <div class="rounded border p-2 shadow mb-6">
                     <div class="pt-5 pb-4 px-5 px-lg-3 px-xl-5">
                         <div class="d-flex align-items-center mb-2">

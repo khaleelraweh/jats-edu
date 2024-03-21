@@ -25,9 +25,13 @@ class TrendingCategoriesComponent extends Component
 
         if (count($this->course_categories) > 8) {
             $this->showMoreBtn = true;
-
-            if (count($this->course_categories) <= $this->amount) {
-                $this->showLessBtn = true;
+            if ($this->amount > 8) {
+                if (count($this->course_categories) <= $this->amount) {
+                    $this->showLessBtn = true;
+                    $this->showMoreBtn = false;
+                } else {
+                    $this->showLessBtn = true;
+                }
             } else {
                 $this->showLessBtn = false;
             }
@@ -54,6 +58,6 @@ class TrendingCategoriesComponent extends Component
 
     public function load_less()
     {
-        $this->amount = 8;
+        $this->amount -= 4;
     }
 }

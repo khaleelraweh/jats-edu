@@ -123,19 +123,23 @@ class CourseSeeder extends Seeder
             ],
             [
                 'title' => ['ar' => 'دورة في التسويق', 'en' => 'Course in marketing'],
-                'course_category_id' => $categories->random(), // Random category
+                'course_category_id' => 9, // Random category
             ],
             [
                 'title' => ['ar' => 'دورة في الصوت والمسيقي', 'en' => 'A course in voice and music'],
-                'course_category_id' => $categories->random(), // Random category
+                'course_category_id' => 10, // Random category
             ],
             [
-                'title' => ['ar' => 'دورة في الصوت والمسيقي', 'en' => 'A course in voice and music'],
-                'course_category_id' => $categories->random(), // Random category
+                'title' => ['ar' => 'دورة في الصوت العلوم', 'en' => 'A course in Science'],
+                'course_category_id' => 11, // Random category
             ],
             [
-                'title' => ['ar' => 'دورة في الصوت والمسيقي', 'en' => 'A course in voice and music'],
-                'course_category_id' => $categories->random(), // Random category
+                'title' => ['ar' => 'دورة في الفيزياء', 'en' => 'A course in  Physics'],
+                'course_category_id' => 12, // Random category
+            ],
+            [
+                'title' => ['ar' => 'دورة في علم الاحياء', 'en' => 'A course in ahua'],
+                'course_category_id' => 13, // Random category
             ],
             [
                 'title' => ['ar' => 'دورة في الصوت والمسيقي', 'en' => 'A course in voice and music'],

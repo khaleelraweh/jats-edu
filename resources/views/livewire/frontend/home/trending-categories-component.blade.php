@@ -56,7 +56,6 @@
 
             <div class="text-center">
                 @if (count($course_categories) > 8)
-                    {{-- @if (count($course_categories) > 12) --}}
                     @if (count($course_categories) > 12)
                         @if ($amount == 8)
                             <a wire:click="load_more" class="btn btn-outline-sienna btn-x-wide lift d-inline-block">

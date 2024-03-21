@@ -2,9 +2,9 @@
 
 @section('content')
     <!-- EVENT SINGLE
-            ================================================== -->
+                ================================================== -->
     <div class="sk-thumbnail img-ratio-7">
-        <img src="assets/img/covers/cover-22.jpg" alt="..." class="img-fluid">
+        <img src="{{ asset('frontend/assets/img/covers/cover-22.jpg') }}" alt="..." class="img-fluid">
     </div>
 
     <div class="container">
@@ -186,7 +186,8 @@
                                     class="rounded-circle overflow-hidden card-hover-overlay position-relative d-block"
                                     style="max-width: 150px;"><img
                                         class="rounded-circle mx-auto shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-5.jpg" alt="..."></a>
+                                        src="{{ asset('frontend/assets/img/instructors/instructor-5.jpg') }}"
+                                        alt="..."></a>
                             </div>
 
                             <!-- Footer -->
@@ -231,7 +232,8 @@
                                     class="rounded-circle overflow-hidden card-hover-overlay position-relative d-block"
                                     style="max-width: 150px;"><img
                                         class="rounded-circle mx-auto shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-6.jpg" alt="..."></a>
+                                        src="{{ asset('frontend/assets/img/instructors/instructor-6.jpg') }}"
+                                        alt="..."></a>
                             </div>
 
                             <!-- Footer -->
@@ -276,7 +278,8 @@
                                     class="rounded-circle overflow-hidden card-hover-overlay position-relative d-block"
                                     style="max-width: 150px;"><img
                                         class="rounded-circle mx-auto shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-7.jpg" alt="..."></a>
+                                        src="{{ asset('frontend/assets/img/instructors/instructor-7.jpg') }}"
+                                        alt="..."></a>
                             </div>
 
                             <!-- Footer -->
@@ -321,7 +324,8 @@
                                     class="rounded-circle overflow-hidden card-hover-overlay position-relative d-block"
                                     style="max-width: 150px;"><img
                                         class="rounded-circle mx-auto shadow-light-lg img-fluid"
-                                        src="assets/img/instructors/instructor-8.jpg" alt="..."></a>
+                                        src="{{ asset('frontend/assets/img/instructors/instructor-8.jpg') }}"
+                                        alt="..."></a>
                             </div>
 
                             <!-- Footer -->
@@ -375,7 +379,8 @@
                 <ul class="list-unstyled pt-2">
                     <li class="media d-flex">
                         <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                            <img src="assets/img/avatars/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                            <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
+                                class="avatar-img rounded-circle">
                         </div>
                         <div class="media-body flex-grow-1">
                             <div class="d-md-flex align-items-center mb-5">
@@ -396,7 +401,8 @@
                     </li>
                     <li class="media d-flex">
                         <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                            <img src="assets/img/avatars/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                            <img src="{{ asset('frontend/assets/img/avatars/avatar-2.jpg') }}" alt="..."
+                                class="avatar-img rounded-circle">
                         </div>
                         <div class="media-body flex-grow-1">
                             <div class="d-md-flex align-items-center mb-5">
@@ -473,7 +479,7 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR
-                        ================================================== -->
+                            ================================================== -->
                 <div class="rounded border p-2 shadow mb-6">
                     <div class="pt-5 pb-4 px-5 px-lg-3 px-xl-5">
                         <div class="d-flex align-items-center mb-2">

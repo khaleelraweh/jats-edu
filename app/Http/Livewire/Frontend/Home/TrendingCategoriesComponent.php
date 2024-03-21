@@ -9,23 +9,36 @@ class TrendingCategoriesComponent extends Component
 {
 
     public  $amount = 8;
-
-
+    public $course_categories;
+    public $showMoreBtn = false;
+    public $showLessBtn = false;
 
 
     public function render()
     {
-        $course_categories = CourseCategory::with('firstMedia')
+        $this->course_categories = CourseCategory::with('firstMedia')
             ->HasCourses()
             ->Active()
             ->RootCategory()
             ->orderBy('created_at', 'desc')
-            // ->take($this->amount)
             ->get();
+
+        if (count($this->course_categories) > 8) {
+            $this->showMoreBtn = true;
+            $this->showLessBtn = false;
+        }
+
+        if (count($this->course_categories) <= $this->amount) {
+            $this->showMoreBtn = false;
+            $this->showLessBtn = true;
+        }
 
         return view(
             'livewire.frontend.home.trending-categories-component',
-            compact('course_categories')
+            [
+                'course_categories' => $this->course_categories,
+            ]
+
         );
     }
 

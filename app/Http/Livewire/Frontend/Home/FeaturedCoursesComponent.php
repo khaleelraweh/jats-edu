@@ -10,6 +10,9 @@ class FeaturedCoursesComponent extends Component
 {
 
     public  $amount = 8;
+    public $featured_courses;
+    public $showMoreBtn = false;
+    public $showLessBtn = false;
 
     //To filter by categories choosen 
     public $categoryInputs;
@@ -34,7 +37,7 @@ class FeaturedCoursesComponent extends Component
         $course_categories_menu = CourseCategory::withCount('courses')->get();
 
         // $featured_courses = Course::with('firstMedia', 'lastMedia', 'courseCategory')->inRandomOrder()->Active()->ActiveCourseCategory()
-        $featured_courses = Course::with('firstMedia', 'lastMedia', 'courseCategory', 'users', 'reviews')
+        $this->featured_courses = Course::with('firstMedia', 'lastMedia', 'courseCategory', 'users', 'reviews')
             ->inRandomOrder()
             ->Active()
             ->ActiveCourseCategory()
@@ -74,18 +77,41 @@ class FeaturedCoursesComponent extends Component
                         $query2->orderBy('price', 'DESC');
                     });
             })
-            // ->take($this->amount)
             ->get();
-        return view('livewire.frontend.home.featured-courses-component', compact('featured_courses', 'course_categories_menu'));
+
+        if (count($this->featured_courses) > 8) {
+            $this->showMoreBtn = true;
+            if ($this->amount > 8) {
+                if (count($this->featured_courses) <= $this->amount) {
+                    $this->showLessBtn = true;
+                    $this->showMoreBtn = false;
+                } else {
+                    $this->showLessBtn = true;
+                }
+            } else {
+                $this->showLessBtn = false;
+            }
+        } else {
+            $this->showMoreBtn = false;
+        }
+
+        return view(
+            'livewire.frontend.home.featured-courses-component',
+            [
+                'featured_courses'  =>  $this->featured_courses,
+                'course_categories_menu'    =>  $course_categories_menu
+            ]
+            //  compact('featured_courses', 'course_categories_menu')
+        );
     }
 
     public function load_more()
     {
-        $this->amount += 8;
+        $this->amount += 4;
     }
 
     public function load_less()
     {
-        $this->amount = 8;
+        $this->amount -= 4;
     }
 }

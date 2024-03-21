@@ -250,21 +250,18 @@
             </div>
 
             <div class="text-center">
-                @if (count($featured_courses) > $amount)
+                @if ($showMoreBtn)
                     <a wire:click="load_more"
                         class="btn btn-outline-sienna btn-x-wide lift d-inline-block ">{{ __('transf.btn_load_more_courses') }}
                     </a>
-                    <a href="{{ route('frontend.courses') }}"
-                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block d-none">{{ __('transf.btn_view_all_courses') }}
-                    </a>
-                @else
+                @endif
+
+                @if ($showLessBtn)
                     <a wire:click="load_less"
                         class="btn btn-outline-sienna btn-x-wide lift d-inline-block">{{ __('transf.btn_load_less_courses') }}
                     </a>
-                    <a href="{{ route('frontend.courses') }}"
-                        class="btn btn-outline-sienna btn-x-wide lift d-inline-block d-none">{{ __('transf.btn_view_all_courses') }}
-                    </a>
                 @endif
+
 
             </div>
 

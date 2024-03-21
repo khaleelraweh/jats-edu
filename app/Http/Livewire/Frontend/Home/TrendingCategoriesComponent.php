@@ -40,8 +40,6 @@ class TrendingCategoriesComponent extends Component
         }
 
 
-
-
         return view(
             'livewire.frontend.home.trending-categories-component',
             [

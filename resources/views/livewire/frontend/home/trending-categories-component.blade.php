@@ -7,7 +7,7 @@
 
             <div class="row row-cols-md-3 row-cols-xl-4 mb-4">
 
-                @forelse ($course_categories as $course_category)
+                @forelse ($course_categories->take($amount) as $course_category)
                     <div class="col-md mb-6">
                         <!-- Card -->
                         @php
@@ -54,6 +54,8 @@
 
             </div>
 
+            {{ count($course_categories) }}
+            {{ $amount }}
             <div class="text-center">
                 @if (count($course_categories) > 8)
                     @if (count($course_categories) > 12)
@@ -62,9 +64,16 @@
                                 {{ __('transf.btn_load_more_course_categories') }}
                             </a>
                         @else
-                            <a wire:click="load_less" class="btn btn-outline-sienna btn-x-wide lift d-inline-block">
-                                {{ __('transf.btn_load_less_course_categories') }}
-                            </a>
+                            @if (count($course_categories) <= $amount)
+                                <a wire:click="load_less" class="btn btn-outline-sienna btn-x-wide lift d-inline-block">
+                                    {{ __('transf.btn_load_less_course_categories') }}
+                                </a>
+                            @else
+                                <a wire:click="load_more" class="btn btn-outline-sienna btn-x-wide lift d-inline-block">
+                                    {{ __('transf.btn_load_more_course_categories') }}
+                                </a>
+                            @endif
+
                         @endif
                     @else
                         <a wire:click="load_more" class="btn btn-outline-sienna btn-x-wide lift d-inline-block">

@@ -20,7 +20,7 @@ class TrendingCategoriesComponent extends Component
             ->Active()
             ->RootCategory()
             ->orderBy('created_at', 'desc')
-            ->take($this->amount)
+            // ->take($this->amount)
             ->get();
 
         return view(

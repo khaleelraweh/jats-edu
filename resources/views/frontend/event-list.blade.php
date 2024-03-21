@@ -96,8 +96,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-1.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-1.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>
@@ -163,8 +163,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-2.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-2.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>
@@ -230,8 +230,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-3.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-3.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>
@@ -297,8 +297,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-1.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-1.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>
@@ -364,8 +364,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-2.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-2.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>
@@ -431,8 +431,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-3.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-3.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>
@@ -498,8 +498,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-1.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-1.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>
@@ -565,8 +565,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-2.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-2.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>
@@ -632,8 +632,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-3.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-3.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>
@@ -701,8 +701,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-1.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-1.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>
@@ -768,8 +768,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-2.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-2.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>
@@ -835,8 +835,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-3.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-3.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>
@@ -902,8 +902,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-1.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-1.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>
@@ -969,8 +969,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-2.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-2.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>
@@ -1036,8 +1036,8 @@
                     <div class="card-zoom position-relative">
                         <a href="event-single.html"
                             class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-3.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-3.jpg') }}" alt="..."></a>
                         <a href="event-single.html"
                             class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">GET
                             TICKET</a>

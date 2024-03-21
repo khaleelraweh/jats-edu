@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->json('title');
             $table->json('slug');
-            $table->json('description');
             $table->json('subtitle');
+            $table->json('description');
 
             $table->tinyInteger('skill_level')->nullable()->default(1); // واحد مبتدي اثنين متوسط ثلاثة متقدم
             $table->tinyInteger('language')->nullable()->default(1); // واحد عربي اثنين إنجليزي ثلاثة اسباني

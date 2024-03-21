@@ -135,7 +135,6 @@ class Course extends Model
 
     public function courseCategory()
     {
-        //   foreign_key_of this , primary key of productCategory
         return $this->belongsTo(CourseCategory::class, 'course_category_id', 'id');
     }
 

@@ -2,65 +2,90 @@
 
 namespace App\Models;
 
+use App\Helper\MySlugHelper;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Spatie\Sluggable\HasTranslatableSlug;
+use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
 class Post extends Model
 {
-    use HasFactory, HasTranslations, Sluggable, SearchableTrait;
+
+    use HasFactory, HasTranslations, HasTranslatableSlug, SearchableTrait;
 
     protected $guarded = [];
-    public $translatable = ['title', 'slug', 'body'];
 
-    public function sluggable():array
-    {
-        return [
-            'slug->en' => [
-                'source' => 'titleen',
-            ],
-            'slug->ar' => [
-                'source' => 'titlear',
-            ],
-            'slug->ca' => [
-                'source' => 'titleca',
-            ]
-        ];
-    }
+    // for translatable field 
+    public $translatable = ['title', 'subtitle', 'slug', 'description'];
 
+
+    // searchable lab 
     protected $searchable = [
         'columns' => [
-            'title' => 10,
-            'body' => 10,
+            'posts.title' => 10,
         ]
     ];
+
+    // for slug 
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
+
+    // to make slug unique 
+    protected function generateNonUniqueSlug(): string
+    {
+        $slugField = $this->slugOptions->slugField;
+        $slugString = $this->getSlugSourceString();
+
+        $slug = $this->getTranslations($slugField)[$this->getLocale()] ?? null;
+
+        $slugGeneratedFromCallable = is_callable($this->slugOptions->generateSlugFrom);
+        $hasCustomSlug = $this->hasCustomSlugBeenUsed() && !empty($slug);
+        $hasNonChangedCustomSlug = !$slugGeneratedFromCallable && !empty($slug) && !$this->slugIsBasedOnTitle();
+
+        if ($hasCustomSlug || $hasNonChangedCustomSlug) {
+            $slugString = $slug;
+        }
+
+        return MySlugHelper::slug($slugString);
+    }
 
     protected function asJson($value)
     {
         return json_encode($value, JSON_UNESCAPED_UNICODE);
     }
 
-
     public function getRouteKeyName()
     {
         return 'slug';
     }
 
-    public function getTitleenAttribute()
+
+    public function status()
     {
-        return $this->getTranslation('title', 'en');
+        return $this->status ? __('panel.status_active') : __('panel.status_inactive');
     }
 
-    public function getTitlearAttribute()
+    public function courseCategory()
     {
-        return $this->getTranslation('title', 'ar');
+        return $this->belongsTo(CourseCategory::class, 'course_category_id', 'id');
     }
 
-    public function getTitlecaAttribute()
+    public function tags(): MorphToMany
     {
-        return $this->getTranslation('title', 'ca');
+        return $this->morphToMany(Tag::class, 'taggable');
     }
 
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(CourseReview::class);
+    }
 }

@@ -66,8 +66,8 @@ Route::get('/instructors-single/{instructor?}', [FrontendController::class, 'ins
 Route::get('/event-list/{instructor?}', [FrontendController::class, 'event_list'])->name('frontend.event_list');
 Route::get('/event-single/{instructor?}', [FrontendController::class, 'event_single'])->name('frontend.event_single');
 
-Route::get('/blog-list/{instructor?}', [FrontendController::class, 'blog_list'])->name('frontend.blog_list');
-Route::get('/blog-single/{instructor?}', [FrontendController::class, 'blog_single'])->name('frontend.blog_single');
+Route::get('/blog-list/{blog?}', [FrontendController::class, 'blog_list'])->name('frontend.blog_list');
+Route::get('/blog-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.blog_single');
 
 
 Route::get('/shop-cart', [FrontendController::class, 'shop_cart'])->name('frontend.shop_cart');

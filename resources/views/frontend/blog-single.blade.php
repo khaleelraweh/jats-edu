@@ -14,8 +14,8 @@
                 <div class="d-md-flex align-items-center">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-4">
                         <div class="p-1">
-                            <img src="assets/img/avatars/avatar-1.jpg" alt="..." class="rounded-circle" width="52"
-                                height="52">
+                            <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
+                                class="rounded-circle" width="52" height="52">
                         </div>
                     </div>
 
@@ -31,7 +31,7 @@
     </div>
 
     <div class="mb-8 sk-thumbnail img-ratio-7">
-        <img src="assets/img/covers/cover-20.jpg" alt="..." class="img-fluid">
+        <img src="{{ asset('frontend/assets/img/covers/cover-20.jpg') }}" alt="..." class="img-fluid">
     </div>
 
     <div class="container">
@@ -78,7 +78,8 @@
                     </div>
                 </div>
 
-                <img src="assets/img/covers/cover-21.jpg" alt="..." class="img-fluid rounded mb-8">
+                <img src="{{ asset('frontend/assets/img/covers/cover-21.jpg') }}" alt="..."
+                    class="img-fluid rounded mb-8">
 
                 <h3 class="mb-5">Requirements</h3>
                 <ul class="list-style-v2 list-unstyled mb-10">
@@ -128,7 +129,8 @@
                 <ul class="list-unstyled pt-2">
                     <li class="media d-flex">
                         <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                            <img src="assets/img/avatars/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                            <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
+                                class="avatar-img rounded-circle">
                         </div>
                         <div class="media-body flex-shrink-1">
                             <div class="d-md-flex align-items-center mb-5">
@@ -149,7 +151,8 @@
                     </li>
                     <li class="media d-flex">
                         <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                            <img src="assets/img/avatars/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                            <img src="{{ asset('frontend/assets/img/avatars/avatar-2.jpg') }}" alt="..."
+                                class="avatar-img rounded-circle">
                         </div>
                         <div class="media-body flex-shrink-1">
                             <div class="d-md-flex align-items-center mb-5">
@@ -254,8 +257,8 @@
                     <!-- Image -->
                     <div class="card-zoom position-relative">
                         <a href="course-single-v1.html" class="card-img d-block sk-thumbnail img-ratio-3"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-1.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-1.jpg') }}" alt="..."></a>
 
                         <a href="course-single-v1.html"
                             class="badge sk-fade-bottom badge-lg badge-purple badge-pill badge-float bottom-0 left-0 mb-4 ms-4 px-5 me-4">
@@ -313,8 +316,8 @@
                     <!-- Image -->
                     <div class="card-zoom position-relative">
                         <a href="course-single-v1.html" class="card-img d-block sk-thumbnail img-ratio-3"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-2.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-2.jpg') }}" alt="..."></a>
 
                         <a href="course-single-v1.html"
                             class="badge sk-fade-bottom badge-lg badge-purple badge-pill badge-float bottom-0 left-0 mb-4 ms-4 px-5 me-4">
@@ -372,8 +375,8 @@
                     <!-- Image -->
                     <div class="card-zoom position-relative">
                         <a href="course-single-v1.html" class="card-img d-block sk-thumbnail img-ratio-3"><img
-                                class="rounded shadow-light-lg img-fluid" src="assets/img/post/post-3.jpg"
-                                alt="..."></a>
+                                class="rounded shadow-light-lg img-fluid"
+                                src="{{ asset('frontend/assets/img/post/post-3.jpg') }}" alt="..."></a>
 
                         <a href="course-single-v1.html"
                             class="badge badge-lg sk-fade-bottom badge-purple badge-pill badge-float bottom-0 left-0 mb-4 ms-4 px-5 me-4">

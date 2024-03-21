@@ -30,17 +30,19 @@
                 <!-- Blog Post -->
                 <div class="row mb-6 align-items-center">
                     <div class="col-lg-6 col-xl-5 mb-6 mb-lg-0">
-                        <a href="blog-single.html" class="d-block sk-thumbnail img-ratio-4 rounded lift">
-                            <img src="assets/img/post/post-13.jpg" alt="..." class="rounded img-fluid">
+                        <a href="{{ route('frontend.blog_single', 1) }}"
+                            class="d-block sk-thumbnail img-ratio-4 rounded lift">
+                            <img src="{{ asset('frontend/assets/img/post/post-13.jpg') }}" alt="..."
+                                class="rounded img-fluid">
                         </a>
                     </div>
 
                     <div class="col-lg-6 col-xl-7">
-                        <a href="blog-single.html" class="d-inline-block">
+                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-inline-block">
                             <h5 class="text-blue">Business</h5>
                         </a>
 
-                        <a href="blog-single.html" class="d-block me-xl-12">
+                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-block me-xl-12">
                             <h3 class="">The Complete JavaScript Course 2020: Build Real Projects!</h3>
                         </a>
 
@@ -51,13 +53,13 @@
                         <div class="d-md-flex align-items-center">
                             <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-4">
                                 <div class="p-1">
-                                    <img src="assets/img/avatars/avatar-1.jpg" alt="..." class="rounded-circle"
-                                        width="52" height="52">
+                                    <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
+                                        class="rounded-circle" width="52" height="52">
                                 </div>
                             </div>
 
                             <div class="mb-4 mb-md-0">
-                                <a href="blog-single.html" class="d-block">
+                                <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
                                     <h6 class="mb-0">Alison Dawn</h6>
                                 </a>
                                 <span class="font-size-sm">April 06, 2020</span>
@@ -69,17 +71,19 @@
                 <!-- Blog Post -->
                 <div class="row mb-6 align-items-center">
                     <div class="col-lg-6 col-xl-5 mb-6 mb-lg-0">
-                        <a href="blog-single.html" class="d-block sk-thumbnail img-ratio-4 rounded lift">
-                            <img src="assets/img/post/post-14.jpg" alt="..." class="rounded img-fluid">
+                        <a href="{{ route('frontend.blog_single', 1) }}"
+                            class="d-block sk-thumbnail img-ratio-4 rounded lift">
+                            <img src="{{ asset('frontend/assets/img/post/post-14.jpg') }}" alt="..."
+                                class="rounded img-fluid">
                         </a>
                     </div>
 
                     <div class="col-lg-6 col-xl-7">
-                        <a href="blog-single.html" class="d-inline-block">
+                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-inline-block">
                             <h5 class="text-blue">Business</h5>
                         </a>
 
-                        <a href="blog-single.html" class="d-block me-xl-12">
+                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-block me-xl-12">
                             <h3 class="">Learning, Friendship and Fun</h3>
                         </a>
 
@@ -90,13 +94,13 @@
                         <div class="d-md-flex align-items-center">
                             <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-4">
                                 <div class="p-1">
-                                    <img src="assets/img/avatars/avatar-1.jpg" alt="..." class="rounded-circle"
-                                        width="52" height="52">
+                                    <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
+                                        class="rounded-circle" width="52" height="52">
                                 </div>
                             </div>
 
                             <div class="mb-4 mb-md-0">
-                                <a href="blog-single.html" class="d-block">
+                                <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
                                     <h6 class="mb-0">Alison Dawn</h6>
                                 </a>
                                 <span class="font-size-sm">April 06, 2020</span>
@@ -108,17 +112,19 @@
                 <!-- Blog Post -->
                 <div class="row mb-6 align-items-center">
                     <div class="col-lg-6 col-xl-5 mb-6 mb-lg-0">
-                        <a href="blog-single.html" class="d-block sk-thumbnail img-ratio-4 rounded lift">
-                            <img src="assets/img/post/post-15.jpg" alt="..." class="rounded img-fluid">
+                        <a href="{{ route('frontend.blog_single', 1) }}"
+                            class="d-block sk-thumbnail img-ratio-4 rounded lift">
+                            <img src="{{ asset('frontend/assets/img/post/post-15.jpg') }}" alt="..."
+                                class="rounded img-fluid">
                         </a>
                     </div>
 
                     <div class="col-lg-6 col-xl-7">
-                        <a href="blog-single.html" class="d-inline-block">
+                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-inline-block">
                             <h5 class="text-blue">Business</h5>
                         </a>
 
-                        <a href="blog-single.html" class="d-block me-xl-12">
+                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-block me-xl-12">
                             <h3 class="">An Indigenous Anatolian Syllabic Script From 3500 Years Ago</h3>
                         </a>
 
@@ -129,13 +135,13 @@
                         <div class="d-md-flex align-items-center">
                             <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-4">
                                 <div class="p-1">
-                                    <img src="assets/img/avatars/avatar-1.jpg" alt="..." class="rounded-circle"
-                                        width="52" height="52">
+                                    <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
+                                        class="rounded-circle" width="52" height="52">
                                 </div>
                             </div>
 
                             <div class="mb-4 mb-md-0">
-                                <a href="blog-single.html" class="d-block">
+                                <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
                                     <h6 class="mb-0">Alison Dawn</h6>
                                 </a>
                                 <span class="font-size-sm">April 06, 2020</span>
@@ -147,17 +153,19 @@
                 <!-- Blog Post -->
                 <div class="row mb-6 align-items-center">
                     <div class="col-lg-6 col-xl-5 mb-6 mb-lg-0">
-                        <a href="blog-single.html" class="d-block sk-thumbnail img-ratio-4 rounded lift">
-                            <img src="assets/img/post/post-16.jpg" alt="..." class="rounded img-fluid">
+                        <a href="{{ route('frontend.blog_single', 1) }}"
+                            class="d-block sk-thumbnail img-ratio-4 rounded lift">
+                            <img src="{{ asset('frontend/assets/img/post/post-16.jpg') }}" alt="..."
+                                class="rounded img-fluid">
                         </a>
                     </div>
 
                     <div class="col-lg-6 col-xl-7">
-                        <a href="blog-single.html" class="d-inline-block">
+                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-inline-block">
                             <h5 class="text-blue">Business</h5>
                         </a>
 
-                        <a href="blog-single.html" class="d-block me-xl-12">
+                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-block me-xl-12">
                             <h3 class="">World Heath Day in LA 2020</h3>
                         </a>
 
@@ -168,13 +176,13 @@
                         <div class="d-md-flex align-items-center">
                             <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-4">
                                 <div class="p-1">
-                                    <img src="assets/img/avatars/avatar-1.jpg" alt="..." class="rounded-circle"
-                                        width="52" height="52">
+                                    <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
+                                        class="rounded-circle" width="52" height="52">
                                 </div>
                             </div>
 
                             <div class="mb-4 mb-md-0">
-                                <a href="blog-single.html" class="d-block">
+                                <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
                                     <h6 class="mb-0">Alison Dawn</h6>
                                 </a>
                                 <span class="font-size-sm">April 06, 2020</span>
@@ -184,7 +192,7 @@
                 </div>
 
                 <!-- PAGINATION
-                 -->
+                                     -->
                 <nav class="mt-8" aria-label="Page navigationa">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">
@@ -207,7 +215,7 @@
 
             <div class="col-md-5 col-lg-4 col-xl-3">
                 <!-- BLOG SIDEBAR
-                        ================================================== -->
+                                            ================================================== -->
                 <div class="">
                     <div class="border rounded mb-6">
                         <div class="input-group">
@@ -247,12 +255,12 @@
                         <h4 class="mb-5">Recent Posts</h4>
                         <ul class="list-unstyled mb-0">
                             <li class="media mb-6 d-flex">
-                                <a href="blog-single.html" class="mw-70p d-block me-5">
-                                    <img src="assets/img/photos/photo-1.jpg" alt="..."
+                                <a href="{{ route('frontend.blog_single', 1) }}" class="mw-70p d-block me-5">
+                                    <img src="{{ asset('frontend/assets/img/photos/photo-1.jpg') }}" alt="..."
                                         class="avatar-img rounded-lg h-70p o-f-c">
                                 </a>
                                 <div class="media-body flex-shrink-1">
-                                    <a href="blog-single.html" class="d-block">
+                                    <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
                                         <h6 class="line-clamp-2 mb-1 fw-normal">Web Development Design</h6>
                                     </a>
                                     <span>April 06, 2020</span>
@@ -260,12 +268,12 @@
                             </li>
 
                             <li class="media mb-6 d-flex">
-                                <a href="blog-single.html" class="mw-70p d-block me-5">
-                                    <img src="assets/img/photos/photo-2.jpg" alt="..."
+                                <a href="{{ route('frontend.blog_single', 1) }}" class="mw-70p d-block me-5">
+                                    <img src="{{ asset('frontend/assets/img/photos/photo-2.jpg') }}" alt="..."
                                         class="avatar-img rounded-lg h-70p o-f-c">
                                 </a>
                                 <div class="media-body flex-shrink-1">
-                                    <a href="blog-single.html" class="d-block">
+                                    <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
                                         <h6 class="line-clamp-2 mb-1 fw-normal">The Complete Security Course</h6>
                                     </a>
                                     <span>April 06, 2020</span>
@@ -273,12 +281,12 @@
                             </li>
 
                             <li class="media mb-0 d-flex">
-                                <a href="blog-single.html" class="mw-70p d-block me-5">
-                                    <img src="assets/img/photos/photo-14.jpg" alt="..."
+                                <a href="{{ route('frontend.blog_single', 1) }}" class="mw-70p d-block me-5">
+                                    <img src="{{ asset('frontend/assets/img/photos/photo-14.jpg') }}" alt="..."
                                         class="avatar-img rounded-lg h-70p o-f-c">
                                 </a>
                                 <div class="media-body flex-shrink-1">
-                                    <a href="blog-single.html" class="d-block">
+                                    <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
                                         <h6 class="line-clamp-2 mb-1 fw-normal">Fashion Photography</h6>
                                     </a>
                                     <span>April 06, 2020</span>

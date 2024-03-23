@@ -28,8 +28,15 @@ return new class extends Migration
             $table->double('price')->default(0.0);
             $table->double('offer_price')->nullable()->default(0.0);
             $table->date('offer_ends')->nullable();
+
             $table->dateTime('start_date')->nullable();
-            $table->dateTime('deadline')->nullable();
+            $table->dateTime('end_date')->nullable();
+
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
+
+            $table->string('address')->nullable();
+
 
 
             // will be use always

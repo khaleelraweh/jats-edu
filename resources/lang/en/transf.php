@@ -188,6 +188,10 @@ return [
     'home'                                              =>  'Home',
 
 
+    //event list 
+    'get_ticket'                                        => 'GET TICKET',
+
+
 
 
 

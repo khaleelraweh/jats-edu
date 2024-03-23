@@ -103,6 +103,11 @@ class PostSeeder extends Seeder
 
         // Loop through each course data and create courses
         foreach ($coursesData as $courseData) {
+            $startDate = $faker->dateTimeBetween('-1 year', 'now');
+            $endDate = $faker->dateTimeBetween($startDate, 'now');
+            $startTime = $faker->time('H:i:s');
+            $endTime = $faker->time('H:i:s');
+
             $post = Post::create([
                 'title' => $courseData['title'],
                 'subtitle' => ['ar' => 'عنوان فرعي', 'en' => 'subtitle'],
@@ -114,21 +119,19 @@ class PostSeeder extends Seeder
                 'offer_price' => $faker->numberBetween(5, 100),
                 'offer_ends' => $faker->dateTime(),
 
-                'start_date' => "2024-02-11",
-                'deadline' => "2024-03-11",
+                'start_date' => $startDate,
+                'end_date' => $endDate,
+
+                'start_time' => $startTime,
+                'end_time' => $endTime,
+
+                'address'  =>  $faker->city . ' , ' . $faker->country(),
 
                 'status' => true,
                 'published_on' => $faker->dateTime(),
                 'created_by' => $faker->realTextBetween(10, 20),
                 'updated_by' => $faker->realTextBetween(10, 20), // Assuming you want this as well
             ]);
-
-
-            // Create topics for the course
-            // $post->topics()->createMany($topicsList);
-
-            // Create requirements for the course
-            // $post->requirements()->createMany($requirementsList);
         }
     }
 }

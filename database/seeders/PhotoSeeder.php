@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\News;
+use App\Models\Post;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Slider;
@@ -44,6 +45,9 @@ class PhotoSeeder extends Seeder
                 $course->photos()->createMany(Arr::random($images, rand(2, 3)));
             });
 
+            Post::all()->each(function ($post) use ($images) {
+                $post->photos()->createMany(Arr::random($images, rand(1, 3)));
+            });
 
 
 

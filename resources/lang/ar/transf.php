@@ -188,6 +188,10 @@ return [
     'home'                                              =>  'الرئيسية',
 
 
+    //event list 
+    'get_ticket'                                        => 'احصل على تذكرة',
+
+
 
 
 

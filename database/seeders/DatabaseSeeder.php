@@ -63,5 +63,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CardCodeSeeder::class);
         $this->call(TopicSeeder::class);
+        $this->call(RequirementSeeder::class);
     }
 }

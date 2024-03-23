@@ -28,7 +28,6 @@ class TopicSeeder extends Seeder
         ];
 
         Post::all()->each(function ($post) use ($topics) {
-            // $post->topics()->createMany(Arr::random($topics, rand(1, 2)));
             $post->topics()->createMany($topics);
         });
     }

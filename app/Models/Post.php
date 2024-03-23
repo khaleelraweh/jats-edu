@@ -94,8 +94,14 @@ class Post extends Model
     {
         return $this->morphMany(Photo::class, 'imageable');
     }
+
     public function topics(): MorphMany
     {
         return $this->morphMany(Topic::class, 'topicable');
+    }
+
+    public function requirements(): MorphMany
+    {
+        return $this->morphMany(Requirement::class, 'requirementable');
     }
 }

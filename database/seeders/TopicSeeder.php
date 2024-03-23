@@ -21,11 +21,10 @@ class TopicSeeder extends Seeder
 
         // Generate sample data for topics
         $topics = [
-            ['title' => '{"ar": "كن مصممًا لواجهة المستخدم/UX.", "en": "Become a UI/UX designer."}'],
-            ['title' => '{"ar": "ستكون قادرًا على البدء في كسب مهارات المال.", "en": "You will be able to start earning money skills."}'],
-            ['title' => '{"ar": "بناء مشروع واجهة المستخدم من البداية إلى النهاية.", "en": "Build a UI project from beginning to end."}'],
-            ['title' => '{"ar": "العمل مع الألوان والخطوط.", "en": "Work with colors & fonts."}'],
-            // Add more sample data as needed
+            ['title' => ["ar"   => "كن مصممًا لواجهة المستخدم/UX.", "en" => "Become a UI/UX designer."]],
+            ['title' => ["ar"   => "ستكون قادرًا على البدء في كسب مهارات المال.", "en" => "You will be able to start earning money skills."]],
+            ['title' => ["ar"   => "بناء مشروع واجهة المستخدم من البداية إلى النهاية.", "en" => "Build a UI project from beginning to end."]],
+            ['title' => ["ar"   => "العمل مع الألوان والخطوط.", "en" => "Work with colors & fonts."]],
         ];
 
         Post::all()->each(function ($post) use ($topics) {

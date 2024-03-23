@@ -40,9 +40,9 @@ class RequirementSeeder extends Seeder
         ];
 
         $requirements = [
-            ['title' => '{ "ar": "لا نطلب أي خبرة سابقة أو مهارات محددة مسبقًا لحضور هذه الدورة. سيكون التوجيه الجيد كافيًا لإتقان تصميم واجهة المستخدم/تجربة المستخدم.", "en": "We do not require any previous experience or pre-defined skills to take this course. A great orientation would be enough to master UI/UX design."}'],
-            ['title' => '{ "ar": "جهاز كمبيوتر مع اتصال جيد بالإنترنت.", "en": "A computer with a good internet connection."}'],
-            ['title' => '{ "ar": "أدوبي فوتوشوب (اختياري)", "en": "Adobe Photoshop (OPTIONAL)"}'],
+            ['title' => ["ar"  => "لا نطلب أي خبرة سابقة أو مهارات محددة مسبقًا لحضور هذه الدورة. سيكون التوجيه الجيد كافيًا لإتقان تصميم واجهة المستخدم/تجربة المستخدم.", "en"  => "We do not require any previous experience or pre-defined skills to take this course. A great orientation would be enough to master UI/UX design."]],
+            ['title' => ["ar"  => "جهاز كمبيوتر مع اتصال جيد بالإنترنت.", "en" => "A computer with a good internet connection."]],
+            ['title' => ["ar"  => "أدوبي فوتوشوب (اختياري)", "en"  => "Adobe Photoshop (OPTIONAL)"]],
         ];
 
         Post::all()->each(function ($post) use ($requirements) {

@@ -114,7 +114,7 @@ class CourseController extends Controller
         if ($request->course_topic != null) {
             $topics_list = [];
             for ($i = 0; $i < count($request->course_topic); $i++) {
-                $topics_list[$i]['course_topic'] = $request->course_topic[$i];
+                $topics_list[$i]['title'] = $request->course_topic[$i];
             }
 
             // dd($topics_list);
@@ -127,7 +127,7 @@ class CourseController extends Controller
         if ($request->course_requirement != null) {
             $requirements_list = [];
             for ($i = 0; $i < count($request->course_requirement); $i++) {
-                $requirements_list[$i]['course_requirement'] = $request->course_requirement[$i];
+                $requirements_list[$i]['title'] = $request->course_requirement[$i];
             }
             // dd($requirements_list);
             $requirements = $course->requirements()->createMany($requirements_list);
@@ -270,7 +270,7 @@ class CourseController extends Controller
         if ($request->course_topic != null) {
             $topics_list = [];
             for ($i = 0; $i < count($request->course_topic); $i++) {
-                $topics_list[$i]['course_topic'] = $request->course_topic[$i];
+                $topics_list[$i]['title'] = $request->course_topic[$i];
             }
             // dd($topics_list);
             $topics = $course->topics()->createMany($topics_list);
@@ -283,7 +283,7 @@ class CourseController extends Controller
         if ($request->course_requirement != null) {
             $requirements_list = [];
             for ($i = 0; $i < count($request->course_requirement); $i++) {
-                $requirements_list[$i]['course_requirement'] = $request->course_requirement[$i];
+                $requirements_list[$i]['title'] = $request->course_requirement[$i];
             }
             // dd($requirements_list);
             $requirements = $course->requirements()->createMany($requirements_list);

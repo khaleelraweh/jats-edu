@@ -509,7 +509,7 @@
                                                     <input type="text"
                                                         name="course_topic[{{ $loopIndex }}][{{ $key }}]"
                                                         id="course_topic"
-                                                        value="{{ old('course_topic' . $key, $item->getTranslation('course_topic', $key)) }}"
+                                                        value="{{ old('course_topic' . $key, $item->getTranslation('title', $key)) }}"
                                                         class="course_topic form-control">
                                                     @error('course_topic[{{ $loopIndex }}]' . $key)
                                                         <span class="help-block text-danger">{{ $message }}</span>
@@ -568,7 +568,7 @@
                                                     <input type="text"
                                                         name="course_requirement[{{ $loopIndex }}][{{ $key }}]"
                                                         id="course_requirement"
-                                                        value="{{ old('course_requirement' . $key, $item->getTranslation('course_requirement', $key)) }}"
+                                                        value="{{ old('course_requirement' . $key, $item->getTranslation('title', $key)) }}"
                                                         class="course_requirement form-control">
                                                     @error('course_requirement[{{ $loopIndex }}]' . $key)
                                                         <span class="help-block text-danger">{{ $message }}</span>

@@ -33,55 +33,55 @@ class CourseSeeder extends Seeder
         $categories = CourseCategory::active()->pluck('id');
 
         // Topics list for courses
-        $topicsList = [
-            [
-                "course_topic" => [
-                    "ar" => "كن مصممًا لواجهة المستخدم/UX.",
-                    "en" => "Become a UI/UX designer."
-                ],
-            ],
-            [
-                "course_topic" => [
-                    "ar" => "ستكون قادرًا على البدء في كسب مهارات المال.",
-                    "en" => "You will be able to start earning money skills."
-                ],
-            ],
-            [
-                "course_topic" => [
-                    "ar" => "بناء مشروع واجهة المستخدم من البداية إلى النهاية.",
-                    "en" => "Build a UI project from beginning to end."
-                ],
-            ],
-            [
-                "course_topic" => [
-                    "ar" => "العمل مع الألوان والخطوط.",
-                    "en" => "Work with colors & fonts."
-                ],
-            ],
+        // $topicsList = [
+        //     [
+        //         "course_topic" => [
+        //             "ar" => "كن مصممًا لواجهة المستخدم/UX.",
+        //             "en" => "Become a UI/UX designer."
+        //         ],
+        //     ],
+        //     [
+        //         "course_topic" => [
+        //             "ar" => "ستكون قادرًا على البدء في كسب مهارات المال.",
+        //             "en" => "You will be able to start earning money skills."
+        //         ],
+        //     ],
+        //     [
+        //         "course_topic" => [
+        //             "ar" => "بناء مشروع واجهة المستخدم من البداية إلى النهاية.",
+        //             "en" => "Build a UI project from beginning to end."
+        //         ],
+        //     ],
+        //     [
+        //         "course_topic" => [
+        //             "ar" => "العمل مع الألوان والخطوط.",
+        //             "en" => "Work with colors & fonts."
+        //         ],
+        //     ],
 
-        ];
+        // ];
 
         // requirements list for courses
-        $requirementsList = [
-            [
-                "course_requirement" => [
-                    "ar" => "لا نطلب أي خبرة سابقة أو مهارات محددة مسبقًا لحضور هذه الدورة. سيكون التوجيه الجيد كافيًا لإتقان تصميم واجهة المستخدم/تجربة المستخدم.",
-                    "en" => "We do not require any previous experience or pre-defined skills to take this course. A great orientation would be enough to master UI/UX design."
-                ],
-            ],
-            [
-                "course_requirement" => [
-                    "ar" => "جهاز كمبيوتر مع اتصال جيد بالإنترنت.",
-                    "en" => "A computer with a good internet connection."
-                ],
-            ],
-            [
-                "course_requirement" => [
-                    "ar" => "أدوبي فوتوشوب (اختياري)",
-                    "en" => "Adobe Photoshop (OPTIONAL)"
-                ],
-            ],
-        ];
+        // $requirementsList = [
+        //     [
+        //         "course_requirement" => [
+        //             "ar" => "لا نطلب أي خبرة سابقة أو مهارات محددة مسبقًا لحضور هذه الدورة. سيكون التوجيه الجيد كافيًا لإتقان تصميم واجهة المستخدم/تجربة المستخدم.",
+        //             "en" => "We do not require any previous experience or pre-defined skills to take this course. A great orientation would be enough to master UI/UX design."
+        //         ],
+        //     ],
+        //     [
+        //         "course_requirement" => [
+        //             "ar" => "جهاز كمبيوتر مع اتصال جيد بالإنترنت.",
+        //             "en" => "A computer with a good internet connection."
+        //         ],
+        //     ],
+        //     [
+        //         "course_requirement" => [
+        //             "ar" => "أدوبي فوتوشوب (اختياري)",
+        //             "en" => "Adobe Photoshop (OPTIONAL)"
+        //         ],
+        //     ],
+        // ];
 
         // Loop through courses data
         $coursesData = [
@@ -188,10 +188,10 @@ class CourseSeeder extends Seeder
 
 
             // Create topics for the course
-            $course->topics()->createMany($topicsList);
+            // $course->topics()->createMany($topicsList);
 
             // Create requirements for the course
-            $course->requirements()->createMany($requirementsList);
+            // $course->requirements()->createMany($requirementsList);
         }
     }
 }

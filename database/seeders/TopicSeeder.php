@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Course;
 use App\Models\Post;
 use App\Models\Topic;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -29,6 +30,10 @@ class TopicSeeder extends Seeder
 
         Post::all()->each(function ($post) use ($topics) {
             $post->topics()->createMany($topics);
+        });
+
+        Course::all()->each(function ($course) use ($topics) {
+            $course->topics()->createMany($topics);
         });
     }
 }

@@ -186,13 +186,24 @@ class Course extends Model
     }
 
 
-    public function topics()
+    // public function topics()
+    // {
+    //     return $this->hasMany(CourseTopics::class, 'course_id', 'id');
+    // }
+
+    // public function requirements()
+    // {
+    //     return $this->hasMany(CourseRequirement::class, 'course_id', 'id');
+    // }
+
+    public function topics(): MorphMany
     {
-        return $this->hasMany(CourseTopics::class, 'course_id', 'id');
+        return $this->morphMany(Topic::class, 'topicable');
     }
-    public function requirements()
+
+    public function requirements(): MorphMany
     {
-        return $this->hasMany(CourseRequirement::class, 'course_id', 'id');
+        return $this->morphMany(Requirement::class, 'requirementable');
     }
 
     public function lessons()

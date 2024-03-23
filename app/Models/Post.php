@@ -7,6 +7,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Nicolaslopezj\Searchable\SearchableTrait;
 use Spatie\Sluggable\HasTranslatableSlug;
@@ -87,5 +88,14 @@ class Post extends Model
     public function reviews(): HasMany
     {
         return $this->hasMany(CourseReview::class);
+    }
+
+    public function photos(): MorphMany
+    {
+        return $this->morphMany(Photo::class, 'imageable');
+    }
+    public function topics(): MorphMany
+    {
+        return $this->morphMany(Topic::class, 'topicable');
     }
 }

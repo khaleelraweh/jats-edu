@@ -1,0 +1,35 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Post;
+use App\Models\Topic;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
+
+class TopicSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+
+        // Generate sample data for topics
+        $topics = [
+            ['title' => '{"ar": "كن مصممًا لواجهة المستخدم/UX.", "en": "Become a UI/UX designer."}'],
+            ['title' => '{"ar": "ستكون قادرًا على البدء في كسب مهارات المال.", "en": "You will be able to start earning money skills."}'],
+            ['title' => '{"ar": "بناء مشروع واجهة المستخدم من البداية إلى النهاية.", "en": "Build a UI project from beginning to end."}'],
+            ['title' => '{"ar": "العمل مع الألوان والخطوط.", "en": "Work with colors & fonts."}'],
+            // Add more sample data as needed
+        ];
+
+        Post::all()->each(function ($post) use ($topics) {
+            // $post->topics()->createMany(Arr::random($topics, rand(1, 2)));
+            $post->topics()->createMany($topics);
+        });
+    }
+}

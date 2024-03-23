@@ -86,6 +86,7 @@
     </div>
 
 
+    {{-- {{ dd($posts) }} --}}
     <!-- EVENT -->
     <div class="container pb-4 pb-xl-7">
         <div class="row row-cols-md-2 row-cols-lg-3 mb-4">

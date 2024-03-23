@@ -9,6 +9,7 @@ use App\Models\CourseCategory;
 use App\Models\Currency;
 use App\Models\Instructor;
 use App\Models\News;
+use App\Models\Post;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductReview;
@@ -102,6 +103,7 @@ class FrontendController extends Controller
 
     public function instructors_list($slug = null)
     {
+
         return view('frontend.instructors-list');
     }
 
@@ -123,7 +125,8 @@ class FrontendController extends Controller
 
     public function event_list($slug = null)
     {
-        return view('frontend.event-list', compact('slug'));
+        $posts = Post::with('photos', 'topics', 'requirements')->get();
+        return view('frontend.event-list', compact('slug', 'posts'));
     }
 
     public function event_single($slug)
@@ -133,6 +136,7 @@ class FrontendController extends Controller
 
     public function blog_list($slug = null)
     {
+
         return view('frontend.blog-list', compact('slug'));
     }
 

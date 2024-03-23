@@ -20,6 +20,8 @@ return new class extends Migration
             $table->json('subtitle');
             $table->json('description');
             $table->foreignId('course_category_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('section')->default(1); // one is event , two is news 
+
 
 
             $table->string('video_promo')->nullable();

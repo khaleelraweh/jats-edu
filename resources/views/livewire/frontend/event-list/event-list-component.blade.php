@@ -2,7 +2,7 @@
     <!-- CONTROL BAR -->
     <div class="container mb-6 mb-xl-8 z-index-2">
         <div class="d-xl-flex align-items-center">
-            <p class="mb-xl-0">We found <span class="text-dark">{{ count($posts) }} Events</span> available for you</p>
+            <p class="mb-xl-0">We found <span class="text-dark">{{ count($events) }} Events</span> available for you</p>
             <div class="ms-xl-auto d-xl-flex flex-wrap">
                 <div class="mb-4 mb-xl-0 ms-xl-6">
                     <!-- Search -->
@@ -68,49 +68,49 @@
     </div>
 
 
-    {{-- {{ dd($posts) }} --}}
+    {{-- {{ dd($events) }} --}}
     <!-- EVENT -->
     <div class="container pb-4 pb-xl-7">
         <div class="row row-cols-md-2 row-cols-lg-3 mb-4">
 
-            @foreach ($posts->take($amount) as $post)
+            @foreach ($events->take($amount) as $event)
                 <div class="col-md mb-6">
                     <!-- Card -->
                     <div class="card border shadow p-2 lift sk-fade">
                         <!-- Image -->
                         @php
-                            if ($post->photos->first() != null && $post->photos->first()->file_name != null) {
-                                $post_img = asset('assets/posts/' . $post->photos->first()->file_name);
+                            if ($event->photos->first() != null && $event->photos->first()->file_name != null) {
+                                $event_img = asset('assets/events/' . $event->photos->first()->file_name);
 
-                                if (!file_exists(public_path('assets/posts/' . $post->photos->first()->file_name))) {
-                                    $post_img = asset('assets/posts/no_image_found.webp');
+                                if (!file_exists(public_path('assets/events/' . $event->photos->first()->file_name))) {
+                                    $event_img = asset('assets/events/no_image_found.webp');
                                 }
                             } else {
-                                $post_img = asset('assets/posts/no_image_found.webp');
+                                $event_img = asset('assets/events/no_image_found.webp');
                             }
                         @endphp
                         <div class="card-zoom position-relative">
-                            <a href="{{ route('frontend.event_single', $post->slug) }}"
+                            <a href="{{ route('frontend.event_single', $event->slug) }}"
                                 class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay">
-                                <img class="rounded shadow-light-lg img-fluid" src="{{ $post_img }}" alt="...">
+                                <img class="rounded shadow-light-lg img-fluid" src="{{ $event_img }}" alt="...">
                             </a>
-                            <a href="{{ route('frontend.event_single', $post->slug) }}"
+                            <a href="{{ route('frontend.event_single', $event->slug) }}"
                                 class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">
                                 {{ __('transf.get_ticket') }}
                             </a>
-                            <a href="{{ route('frontend.event_single', $post->slug) }}"
+                            <a href="{{ route('frontend.event_single', $event->slug) }}"
                                 class="badge sk-fade-bottom badge-lg badge-orange badge-pill badge-float bottom-0 left-0 mb-4 ms-4 px-5 me-4">
                                 <span
-                                    class="text-white fw-normal font-size-sm">{{ $post->start_date ? \Carbon\Carbon::parse($post->start_date)->translatedFormat('d F Y') : null }}</span>
+                                    class="text-white fw-normal font-size-sm">{{ $event->start_date ? \Carbon\Carbon::parse($event->start_date)->translatedFormat('d F Y') : null }}</span>
                             </a>
                         </div>
 
                         <!-- Footer -->
                         <div class="card-footer px-2 pb-2 pt-4">
                             <!-- Heading -->
-                            <a href="{{ route('frontend.event_single', $post->slug) }}" class="d-block">
+                            <a href="{{ route('frontend.event_single', $event->slug) }}" class="d-block">
                                 <h5 class="line-clamp-2 h-48 h-lg-52 mb-2">
-                                    {{ $post->title }}
+                                    {{ $event->title }}
                                 </h5>
                             </a>
 
@@ -131,9 +131,9 @@
 
                                         </div>
                                         <div class="font-size-sm">
-                                            {{ $post->start_time ? \Carbon\Carbon::parse($post->start_time)->translatedFormat('h:i A') : null }}
+                                            {{ $event->start_time ? \Carbon\Carbon::parse($event->start_time)->translatedFormat('h:i A') : null }}
                                             -
-                                            {{ $post->end_time ? \Carbon\Carbon::parse($post->end_time)->translatedFormat('h:i A') : null }}
+                                            {{ $event->end_time ? \Carbon\Carbon::parse($event->end_time)->translatedFormat('h:i A') : null }}
                                         </div>
                                     </div>
                                 </li>
@@ -152,7 +152,7 @@
                                             </svg>
 
                                         </div>
-                                        <div class="font-size-sm">{{ $post->address }}</div>
+                                        <div class="font-size-sm">{{ $event->address }}</div>
                                     </div>
                                 </li>
                             </ul>

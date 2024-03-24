@@ -10,7 +10,7 @@ class EventListComponent extends Component
 {
 
     public  $amount = 6;
-    public $posts;
+    public $events;
     public $showMoreBtn = false;
     public $showLessBtn = false;
 
@@ -24,7 +24,7 @@ class EventListComponent extends Component
     public function render()
     {
         $categories_menu = CourseCategory::withCount('courses')->get();
-        $this->posts = Post::with('photos', 'topics', 'requirements')
+        $this->events = Post::with('photos', 'topics', 'requirements')
             ->when($this->categoryInputs, function ($query) {
                 $query->where('course_category_id', $this->categoryInputs);
             })
@@ -52,10 +52,10 @@ class EventListComponent extends Component
 
             ->get();
 
-        if (count($this->posts) > 6) {
+        if (count($this->events) > 6) {
             $this->showMoreBtn = true;
             if ($this->amount > 6) {
-                if (count($this->posts) <= $this->amount) {
+                if (count($this->events) <= $this->amount) {
                     $this->showLessBtn = true;
                     $this->showMoreBtn = false;
                 } else {
@@ -70,7 +70,7 @@ class EventListComponent extends Component
 
 
         return view('livewire.frontend.event-list.event-list-component', [
-            'posts' => $this->posts,
+            'events' => $this->events,
             'categories_menu'    =>  $categories_menu
         ]);
     }

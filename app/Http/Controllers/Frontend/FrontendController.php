@@ -129,16 +129,21 @@ class FrontendController extends Controller
 
     public function event_list($slug = null)
     {
+
         return view('frontend.event-list', compact('slug'));
     }
 
     public function event_single($slug)
     {
-        return view('frontend.event-single');
+        $event = Post::with('photos')
+            ->where('slug->' . app()->getLocale(), $slug)
+            ->get();
+        return view('frontend.event-single', compact('event'));
     }
 
     public function blog_list($slug = null)
     {
+
 
         return view('frontend.blog-list', compact('slug'));
     }

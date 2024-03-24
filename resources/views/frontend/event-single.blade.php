@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- EVENT SINGLE
-                                                                                                                                                        ================================================== -->
+                                                                                                                                                                        ================================================== -->
     <div class="sk-thumbnail img-ratio-7">
         <img src="{{ asset('frontend/assets/img/covers/cover-22.jpg') }}" alt="..." class="img-fluid">
     </div>
@@ -156,26 +156,34 @@
                             <div class="card-zoom position-relative d-flex justify-content-center">
                                 <div class="card-float card-hover center">
                                     <ul class="nav mx-n1 justify-content-center">
-                                        <li class="nav-item px-1">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-1">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-1">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item px-1">
-                                            <a href="#" class="d-block text-white">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
+                                        @if ($instructor->facebook)
+                                            <li class="nav-item px-1">
+                                                <a href="{{ $instructor->facebook }}" class="d-block text-white">
+                                                    <i class="fab fa-facebook-f"></i>
+                                                </a>
+                                            </li>
+                                        @endif
+                                        @if ($instructor->twitter)
+                                            <li class="nav-item px-1">
+                                                <a href="{{ $instructor->twitter }}" class="d-block text-white">
+                                                    <i class="fab fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                        @endif
+                                        @if ($instructor->instagram)
+                                            <li class="nav-item px-1">
+                                                <a href="{{ $instructor->instagram }}" class="d-block text-white">
+                                                    <i class="fab fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                        @endif
+                                        @if ($instructor->linkedin)
+                                            <li class="nav-item px-1">
+                                                <a href="{{ $instructor->linkedin }}" class="d-block text-white">
+                                                    <i class="fab fa-linkedin-in"></i>
+                                                </a>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
 
@@ -366,7 +374,7 @@
 
         <div class="col-lg-4">
             <!-- SIDEBAR
-                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                    ================================================== -->
             <div class="rounded border p-2 shadow mb-6">
                 <div class="pt-5 pb-4 px-5 px-lg-3 px-xl-5">
                     <div class="d-flex align-items-center mb-2">

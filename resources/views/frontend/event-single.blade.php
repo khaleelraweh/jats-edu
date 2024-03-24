@@ -29,7 +29,8 @@
                         <li class="nav-item px-3 mb-3 mb-md-0">
                             <span class="badge badge-lg badge-orange badge-pill px-5">
                                 <span
-                                    class="text-white fw-normal font-size-sm">{{ $event->start_date ? \Carbon\Carbon::parse($event->start_date)->translatedFormat('d F Y') : null }}</span>
+                                    class="text-white fw-normal font-size-sm">{{ $event->start_date ? \Carbon\Carbon::parse($event->start_date)->translatedFormat('d F Y') : null }}
+                                </span>
                             </span>
                         </li>
 
@@ -388,7 +389,7 @@
 
             <div class="col-lg-4">
                 <!-- SIDEBAR
-                                                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                            ================================================== -->
                 <div class="rounded border p-2 shadow mb-6">
                     <div class="pt-5 pb-4 px-5 px-lg-3 px-xl-5">
                         <div class="d-flex align-items-center mb-2">

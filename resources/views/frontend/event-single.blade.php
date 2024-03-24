@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- EVENT SINGLE
-                                                                                                        ================================================== -->
+                                                                                                                                                        ================================================== -->
     <div class="sk-thumbnail img-ratio-7">
         <img src="{{ asset('frontend/assets/img/covers/cover-22.jpg') }}" alt="..." class="img-fluid">
     </div>
@@ -146,188 +146,84 @@
 
             </ul>
 
+
             <h3 class="mb-5">Our Speakers</h3>
             <div class="row row-cols-md-2 row-cols-xl-4 mb-9">
-                <div class="col-md mb-5 mb-xl-0">
-                    <div class="card">
-                        <!-- Image -->
-                        <div class="card-zoom position-relative d-flex justify-content-center">
-                            <div class="card-float card-hover center">
-                                <ul class="nav mx-n1 justify-content-center">
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-linkedin-in"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                @foreach ($event->users as $instructor)
+                    <div class="col-md mb-5 mb-xl-0">
+                        <div class="card">
+                            <!-- Image -->
+                            <div class="card-zoom position-relative d-flex justify-content-center">
+                                <div class="card-float card-hover center">
+                                    <ul class="nav mx-n1 justify-content-center">
+                                        <li class="nav-item px-1">
+                                            <a href="#" class="d-block text-white">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item px-1">
+                                            <a href="#" class="d-block text-white">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item px-1">
+                                            <a href="#" class="d-block text-white">
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item px-1">
+                                            <a href="#" class="d-block text-white">
+                                                <i class="fab fa-linkedin-in"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <a href="#"
+                                    class="rounded-circle overflow-hidden card-hover-overlay position-relative d-block"
+                                    style="max-width: 150px;">
+                                    @php
+                                        if ($instructor->user_image != null) {
+                                            $instructor_img = asset('assets/lecturers/' . $instructor->user_image);
+
+                                            if (
+                                                !file_exists(public_path('assets/lecturers/' . $instructor->user_image))
+                                            ) {
+                                                $instructor_img = asset('assets/lecturers/no_image_found.webp');
+                                            }
+                                        } else {
+                                            $instructor_img = asset('assets/lecturers/no_image_found.webp');
+                                        }
+                                    @endphp
+                                    <img class="rounded-circle mx-auto shadow-light-lg img-fluid"
+                                        src="{{ $instructor_img }}" alt="...">
+                                </a>
                             </div>
 
-                            <a href="#"
-                                class="rounded-circle overflow-hidden card-hover-overlay position-relative d-block"
-                                style="max-width: 150px;"><img class="rounded-circle mx-auto shadow-light-lg img-fluid"
-                                    src="{{ asset('frontend/assets/img/instructors/instructor-5.jpg') }}"
-                                    alt="..."></a>
-                        </div>
+                            <!-- Footer -->
+                            <div class="card-footer px-0 text-center pt-4 pb-0">
+                                <a href="#" class="d-block">
+                                    <h5 class="mb-0">{{ $instructor->first_name }} {{ $instructor->last_name }}</h5>
+                                </a>
+                                <span class="font-size-d-sm">
+                                    @if (count($instructor->specializations) > 0)
+                                        @foreach ($instructor->specializations as $specialization)
+                                            {{ $specialization->name }}
 
-                        <!-- Footer -->
-                        <div class="card-footer px-0 text-center pt-4 pb-0">
-                            <a href="#" class="d-block">
-                                <h5 class="mb-0">Jack Wilson</h5>
-                            </a>
-                            <span class="font-size-d-sm">Developer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md mb-5 mb-xl-0">
-                    <div class="card">
-                        <!-- Image -->
-                        <div class="card-zoom position-relative d-flex justify-content-center">
-                            <div class="card-float card-hover center">
-                                <ul class="nav mx-n1 justify-content-center">
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-linkedin-in"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                                            @if (!$loop->last)
+                                                &
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        specification did not set yet
+                                    @endif
+                                </span>
                             </div>
-
-                            <a href="#"
-                                class="rounded-circle overflow-hidden card-hover-overlay position-relative d-block"
-                                style="max-width: 150px;"><img class="rounded-circle mx-auto shadow-light-lg img-fluid"
-                                    src="{{ asset('frontend/assets/img/instructors/instructor-6.jpg') }}"
-                                    alt="..."></a>
-                        </div>
-
-                        <!-- Footer -->
-                        <div class="card-footer px-0 text-center pt-4 pb-0">
-                            <a href="#" class="d-block">
-                                <h5 class="mb-0">Anna Richard</h5>
-                            </a>
-                            <span class="font-size-d-sm">Travel Bloger</span>
                         </div>
                     </div>
-                </div>
-                <div class="col-md mb-5 mb-xl-0">
-                    <div class="card">
-                        <!-- Image -->
-                        <div class="card-zoom position-relative d-flex justify-content-center">
-                            <div class="card-float card-hover center">
-                                <ul class="nav mx-n1 justify-content-center">
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-linkedin-in"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                @endforeach
 
-                            <a href="#"
-                                class="rounded-circle overflow-hidden card-hover-overlay position-relative d-block"
-                                style="max-width: 150px;"><img class="rounded-circle mx-auto shadow-light-lg img-fluid"
-                                    src="{{ asset('frontend/assets/img/instructors/instructor-7.jpg') }}"
-                                    alt="..."></a>
-                        </div>
 
-                        <!-- Footer -->
-                        <div class="card-footer px-0 text-center pt-4 pb-0">
-                            <a href="#" class="d-block">
-                                <h5 class="mb-0">Kathelen Monero</h5>
-                            </a>
-                            <span class="font-size-d-sm">Designer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md mb-5 mb-xl-0">
-                    <div class="card">
-                        <!-- Image -->
-                        <div class="card-zoom position-relative d-flex justify-content-center">
-                            <div class="card-float card-hover center">
-                                <ul class="nav mx-n1 justify-content-center">
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item px-1">
-                                        <a href="#" class="d-block text-white">
-                                            <i class="fab fa-linkedin-in"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <a href="#"
-                                class="rounded-circle overflow-hidden card-hover-overlay position-relative d-block"
-                                style="max-width: 150px;"><img class="rounded-circle mx-auto shadow-light-lg img-fluid"
-                                    src="{{ asset('frontend/assets/img/instructors/instructor-8.jpg') }}"
-                                    alt="..."></a>
-                        </div>
-
-                        <!-- Footer -->
-                        <div class="card-footer px-0 text-center pt-4 pb-0">
-                            <a href="#" class="d-block">
-                                <h5 class="mb-0">Kristen Pala</h5>
-                            </a>
-                            <span class="font-size-d-sm">User Experience Design</span>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="row mb-6 mb-md-10 align-items-center">
@@ -470,7 +366,7 @@
 
         <div class="col-lg-4">
             <!-- SIDEBAR
-                                                                                                                    ================================================== -->
+                                                                                                                                                                    ================================================== -->
             <div class="rounded border p-2 shadow mb-6">
                 <div class="pt-5 pb-4 px-5 px-lg-3 px-xl-5">
                     <div class="d-flex align-items-center mb-2">

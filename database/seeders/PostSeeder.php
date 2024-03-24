@@ -109,8 +109,18 @@ class PostSeeder extends Seeder
 
         // Loop through each course data and create courses
         foreach ($coursesData as $courseData) {
-            $startDate = $faker->dateTimeBetween('-1 year', 'now');
-            $endDate = $faker->dateTimeBetween($startDate, 'now');
+            // Generate a random number of days between 1 and 10
+            $randomDays = mt_rand(1, 10);
+
+            // Generate a start date within the current month and within the range of the next one to ten days
+            $startDate = $faker->dateTimeBetween('now', "+$randomDays days");
+
+
+
+            // Generate an end date within the same year, after the start date
+            $endDate = $faker->dateTimeBetween($startDate->format('Y-m-d'), $startDate->format('Y-m-d') . ' +1 year');
+
+
             $startTime = $faker->time('H:i:s');
             $endTime = $faker->time('H:i:s');
 

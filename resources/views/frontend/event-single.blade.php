@@ -78,31 +78,59 @@
 
                     <h1 class="text-center mb-5">{{ $event->title }}</h1>
 
-                    <div class="row w-xl-65 mx-xl-auto text-center">
-                        <div class="col-6 col-md-3 mb-6 mb-md-0">
-                            <div class="h1 text-blue mb-2"><span data-bs-toggle="countup" data-from="0" data-to="40"
-                                    data-aos data-aos-id="countup:in"></span></div>
-                            <p class="h5 mb-0">DAYS</p>
+                    @if ($event->start_date && $event->start_date > now())
+                        <div class="row w-xl-65 mx-xl-auto text-center">
+                            <div class="col-6 col-md-3 mb-6 mb-md-0">
+                                <div class="h1 text-blue mb-2"><span id="days" data-aos
+                                        data-aos-id="countup:in"></span></div>
+                                <p class="h5 mb-0">DAYS</p>
+                            </div>
+
+                            <div class="col-6 col-md-3 mb-6 mb-md-0">
+                                <div class="h1 text-blue mb-2"><span id="hours" data-aos
+                                        data-aos-id="countup:in"></span></div>
+                                <p class="h5 mb-0">HOURS</p>
+                            </div>
+
+                            <div class="col-6 col-md-3 mb-6 mb-md-0">
+                                <div class="h1 text-blue mb-2"><span id="minutes" data-aos
+                                        data-aos-id="countup:in"></span></div>
+                                <p class="h5 mb-0">MINUTES</p>
+                            </div>
+
+                            <div class="col-6 col-md-3 mb-6 mb-md-0">
+                                <div class="h1 text-blue mb-2"><span id="seconds" data-aos
+                                        data-aos-id="countup:in"></span></div>
+                                <p class="h5 mb-0">SECONDS</p>
+                            </div>
                         </div>
 
-                        <div class="col-6 col-md-3 mb-6 mb-md-0">
-                            <div class="h1 text-blue mb-2"><span data-bs-toggle="countup" data-from="0" data-to="59"
-                                    data-aos data-aos-id="countup:in"></span></div>
-                            <p class="h5 mb-0">HOURS</p>
-                        </div>
+                        {{-- {{ dd($event) }} --}}
+                        <script>
+                            var eventDate = new Date("{{ $event->start_date }}");
 
-                        <div class="col-6 col-md-3 mb-6 mb-md-0">
-                            <div class="h1 text-blue mb-2"><span data-bs-toggle="countup" data-from="0" data-to="27"
-                                    data-aos data-aos-id="countup:in"></span></div>
-                            <p class="h5 mb-0">MINUTES</p>
-                        </div>
+                            function updateCountdown() {
+                                var now = new Date().getTime();
+                                var timeLeft = eventDate - now;
 
-                        <div class="col-6 col-md-3 mb-6 mb-md-0">
-                            <div class="h1 text-blue mb-2"><span data-bs-toggle="countup" data-from="0" data-to="10"
-                                    data-aos data-aos-id="countup:in"></span></div>
-                            <p class="h5 mb-0">SECONDS</p>
-                        </div>
-                    </div>
+                                var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                                var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                                var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                                document.getElementById("days").innerText = days;
+                                document.getElementById("hours").innerText = hours;
+                                document.getElementById("minutes").innerText = minutes;
+                                document.getElementById("seconds").innerText = seconds;
+                            }
+
+                            setInterval(updateCountdown, 1000);
+                            updateCountdown();
+                        </script>
+                    @endif
+
+
+
                 </div>
             </div>
         </div>
@@ -159,6 +187,7 @@
                 </ul>
 
 
+                {{-- {{ dd($event) }} --}}
                 <h3 class="mb-5">Our Speakers</h3>
                 <div class="row row-cols-md-2 row-cols-xl-4 mb-9">
                     @foreach ($event->users as $instructor)
@@ -388,8 +417,7 @@
             </div>
 
             <div class="col-lg-4">
-                <!-- SIDEBAR
-                                                                                                                                                                                                            ================================================== -->
+                <!-- SIDEBAR -->
                 <div class="rounded border p-2 shadow mb-6">
                     <div class="pt-5 pb-4 px-5 px-lg-3 px-xl-5">
                         <div class="d-flex align-items-center mb-2">
@@ -492,3 +520,32 @@
         </div>
     </div>
 @endsection
+
+
+{{-- <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Set the target event date (replace this with your event date)
+        var eventDate = new Date("2024-04-01T00:00:00"); // Example: April 1, 2024
+
+        function updateCountdown() {
+            var now = new Date().getTime();
+            var timeLeft = eventDate - now;
+
+            var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+        }
+
+        // Update the countdown every second
+        setInterval(updateCountdown, 1000);
+
+        // Initial call to display countdown immediately
+        updateCountdown();
+    });
+</script> --}}

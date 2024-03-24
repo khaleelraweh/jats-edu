@@ -77,13 +77,7 @@ class InstructorsListCoponent extends Component
                 });
             })
 
-            //got each one or more without above selected rating only and 
-            // ->when($this->selectedRatings, function ($query) {
-            //     $query->whereHas('courses.reviews', function ($subQuery) {
-            //         // Filter courses by rating
-            //         $subQuery->whereIn('rating', $this->selectedRatings);
-            //     });
-            // })
+
 
             ->when($this->selectedRatings, function ($query) {
                 // Filter lecturers based on the average rating of their courses

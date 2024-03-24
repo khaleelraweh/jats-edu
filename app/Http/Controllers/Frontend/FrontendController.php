@@ -125,8 +125,7 @@ class FrontendController extends Controller
 
     public function event_list($slug = null)
     {
-        $posts = Post::with('photos', 'topics', 'requirements')->get();
-        return view('frontend.event-list', compact('slug', 'posts'));
+        return view('frontend.event-list', compact('slug'));
     }
 
     public function event_single($slug)

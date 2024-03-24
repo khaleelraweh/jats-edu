@@ -48,7 +48,9 @@ class FrontendController extends Controller
             ->take(10)
             ->get();
 
-        return view('frontend.index', compact('main_sliders', 'lecturers'));
+        $events = Post::with('photos')->where('section', 1)->orderBy('created_at', 'ASC')->get();
+
+        return view('frontend.index', compact('main_sliders', 'lecturers', 'events'));
     }
     public function home()
     {
@@ -94,6 +96,8 @@ class FrontendController extends Controller
             ->Active()
             ->take(4)
             ->get();
+
+
 
         // Generate WhatsApp share URL
         $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($course->name . ': ' . route('frontend.course_single', $course->slug));

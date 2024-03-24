@@ -126,6 +126,7 @@ class PostSeeder extends Seeder
                 'end_time' => $endTime,
 
                 'address'  =>  $faker->city . ' , ' . $faker->country(),
+                'section'   =>  rand(1, 2),
 
                 'status' => true,
                 'published_on' => $faker->dateTime(),

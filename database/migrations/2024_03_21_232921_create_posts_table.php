@@ -19,6 +19,7 @@ return new class extends Migration
             $table->json('slug');
             $table->json('subtitle');
             $table->json('description');
+            $table->json('motavation');
             $table->foreignId('course_category_id')->constrained()->cascadeOnDelete();
             $table->unsignedBigInteger('section')->default(1); // one is event , two is news 
 

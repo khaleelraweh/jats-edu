@@ -105,6 +105,30 @@ class FrontendController extends Controller
         return view('frontend.course-single', compact('course', 'exposedText', 'hiddenText', 'related_courses', 'latest_courses', 'whatsappShareUrl'));
     }
 
+    public function event_list($slug = null)
+    {
+
+        return view('frontend.event-list', compact('slug'));
+    }
+
+    public function event_single($slug)
+    {
+        $event = Post::with('photos')
+            ->where('slug->' . app()->getLocale(), $slug)
+            ->firstOrFail();
+
+
+        // Trim the text to remove leading and trailing spaces
+        $event->description = trim($event->description);
+        // Get the first 200 characters
+        $exposedText = substr($event->description, 0, 200);
+        // Get the rest of the text
+        $hiddenText = substr($event->description, 200);
+
+
+        return view('frontend.event-single', compact('event', 'exposedText', 'hiddenText'));
+    }
+
     public function instructors_list($slug = null)
     {
 
@@ -127,19 +151,7 @@ class FrontendController extends Controller
         return view('frontend.instructors-single', compact('lecturer', 'exposedText', 'hiddenText'));
     }
 
-    public function event_list($slug = null)
-    {
 
-        return view('frontend.event-list', compact('slug'));
-    }
-
-    public function event_single($slug)
-    {
-        $event = Post::with('photos')
-            ->where('slug->' . app()->getLocale(), $slug)
-            ->get();
-        return view('frontend.event-single', compact('event'));
-    }
 
     public function blog_list($slug = null)
     {

@@ -111,8 +111,25 @@ class PostSeeder extends Seeder
             $post = Post::create([
                 'title' => $courseData['title'],
                 'subtitle' => ['ar' => 'عنوان فرعي', 'en' => 'subtitle'],
-                'description' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
+
+                'description' => ['ar' => 'مرحباً جميعاً. أنا أراش وأنا مصمم UI/UX. في هذه الدورة سوف أساعد
+                تتعلم وتتقن تطبيق Figma بشكل شامل من الصفر. Figma هي أداة مبتكرة ورائعة
+                لتصميم واجهة المستخدم. يتم استخدامه من قبل الجميع بدءًا من رواد الأعمال والشركات الناشئة وحتى Apple وAirbnb Anim pariatur cliche reprehenderit, enim
+                إيوسمود هاي لايف يتهم تيري ريتشاردسون آد سكويد. Nihil anim Keffiyeh Helvetica، عمل البيرة الحرفية
+                Wes anderson Cred nesciunt sapiente سأساعدك على التعلم وإتقان تطبيق Figma بشكل شامل من
+                يخدش. Figma هي أداة مبتكرة ورائعة لتصميم واجهة المستخدم. يتم استخدامه من قبل الجميع من
+                رواد الأعمال ea proident.
+                الفيسبوك، الخ.', 'en' => ' Hi everyone. I\'m Arash and I\'m a UI/UX designer. In this course, I will help
+                you learn and master Figma app comprehensively from scratch. Figma is an innovative and brilliant tool
+                for User Interface design. It\'s used by everyone from entrepreneurs and start-ups to Apple, Airbnb Anim pariatur cliche reprehenderit, enim
+                eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore
+                wes anderson cred nesciunt sapiente I will help you learn and master Figma app comprehensively from
+                scratch. Figma is an innovative and brilliant tool for User Interface design. It\'s used by everyone from
+                entrepreneurs ea proident.,
+                Facebook, etc.'],
                 'course_category_id' => $courseData['course_category_id'],
+
+                'motavation'    =>  ['ar' => 'هل تريد أن تصبح مصمم UI/UX لكنك لا تعرف من أين تبدأ؟ ستتيح لك هذه الدورة تطوير مهاراتك في تصميم واجهة المستخدم ويمكنك إضافة مصمم واجهة المستخدم إلى سيرتك الذاتية والبدء في جذب العملاء لمهاراتك.',    'en'    =>  'Do you want to become a UI/UX designer but you don\'t know where to start? This course will allow you to develop your user interface design skills and you can add UI designer to your CV and start getting clients for your skills.'],
 
                 'video_promo' => "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO",
                 'price' => $faker->numberBetween(5, 200),

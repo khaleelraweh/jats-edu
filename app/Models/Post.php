@@ -104,4 +104,9 @@ class Post extends Model
     {
         return $this->morphMany(Requirement::class, 'requirementable');
     }
+
+    public function users(): MorphToMany
+    {
+        return $this->morphToMany(User::class, 'userable');
+    }
 }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\CourseCategory;
 use App\Models\Post;
+use App\Models\User;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,6 +20,11 @@ class PostSeeder extends Seeder
     {
 
         $faker = Factory::create();
+
+        // Get active lecturer
+        $users = User::whereHas('roles', function ($query) {
+            $query->where('name', 'lecturer');
+        })->active()->inRandomOrder()->take(10)->get();
 
         // Get active course categories
         $categories = CourseCategory::active()->pluck('id');
@@ -150,6 +156,15 @@ class PostSeeder extends Seeder
                 'created_by' => $faker->realTextBetween(10, 20),
                 'updated_by' => $faker->realTextBetween(10, 20), // Assuming you want this as well
             ]);
+
+            // Shuffle the collection of users
+            $shuffledUsers = $users->shuffle();
+
+            // Take the first 3 users from the shuffled collection
+            $selectedUsers = $shuffledUsers->take(3);
+
+            // Attach users
+            $post->users()->attach($selectedUsers->pluck('id')->toArray());
         }
     }
 }

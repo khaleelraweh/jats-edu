@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Frontend\EventList;
 
+use App\Models\CourseCategory;
 use App\Models\Post;
 use Livewire\Component;
 
@@ -13,10 +14,43 @@ class EventListComponent extends Component
     public $showMoreBtn = false;
     public $showLessBtn = false;
 
+    // filtering 
+    public $categoryInputs;
+    public $sortingBy;
+    public $searchQuery = '';
+    protected $queryString = ['categoryInputs', 'sortingBy', 'searchQuery'];
+
 
     public function render()
     {
-        $this->posts = Post::with('photos', 'topics', 'requirements')->get();
+        $categories_menu = CourseCategory::withCount('courses')->get();
+        $this->posts = Post::with('photos', 'topics', 'requirements')
+            ->when($this->categoryInputs, function ($query) {
+                $query->where('course_category_id', $this->categoryInputs);
+            })
+            ->when($this->searchQuery, function ($query) {
+                $query->where(function ($subQuery) {
+                    $subQuery->where('title', 'LIKE', '%' . $this->searchQuery . '%');
+                });
+            })
+            ->when($this->sortingBy, function ($query) {
+                $query
+                    ->when($this->sortingBy == 'default', function ($query2) {
+                        $query2->orderBy('id', 'ASC');
+                    })
+
+                    ->when($this->sortingBy == 'new-events', function ($query2) {
+                        $query2->orderBy('created_at', 'ASC');
+                    })
+                    ->when($this->sortingBy == 'new-old', function ($query2) {
+                        $query2->orderBy('created_at', 'ASC');
+                    })
+                    ->when($this->sortingBy == 'old-new', function ($query2) {
+                        $query2->orderBy('created_at', 'DESC');
+                    });
+            })
+
+            ->get();
 
         if (count($this->posts) > 6) {
             $this->showMoreBtn = true;
@@ -37,6 +71,7 @@ class EventListComponent extends Component
 
         return view('livewire.frontend.event-list.event-list-component', [
             'posts' => $this->posts,
+            'categories_menu'    =>  $categories_menu
         ]);
     }
 

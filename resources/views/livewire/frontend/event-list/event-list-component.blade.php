@@ -2,13 +2,14 @@
     <!-- CONTROL BAR -->
     <div class="container mb-6 mb-xl-8 z-index-2">
         <div class="d-xl-flex align-items-center">
-            <p class="mb-xl-0">We found <span class="text-dark">834 Events</span> available for you</p>
+            <p class="mb-xl-0">We found <span class="text-dark">{{ count($posts) }} Events</span> available for you</p>
             <div class="ms-xl-auto d-xl-flex flex-wrap">
                 <div class="mb-4 mb-xl-0 ms-xl-6">
                     <!-- Search -->
                     <form class="">
                         <div class="input-group input-group-filter">
-                            <input class="form-control form-control-sm placeholder-dark border-end-0 shadow-none"
+                            <input wire:model="searchQuery"
+                                class="form-control form-control-sm placeholder-dark border-end-0 shadow-none"
                                 type="search" placeholder="Search Our Event" aria-label="Search">
                             <div class="input-group-append">
                                 <button class="btn btn-sm btn-outline-white border-start-0 bg-transparent text-dark"
@@ -33,29 +34,34 @@
                 <div class="mb-4 mb-xl-0 ms-xl-6">
                     <div class="border rounded d-flex align-items-center choices-label h-50p">
                         <span class="ps-5">Event Type:</span>
-                        <select
-                            class="form-select form-select-sm text-dark border-0 ps-1 bg-transparent flex-grow-1 shadow-none dropdown-menu-end"
-                            data-choices>
-                            <option>All</option>
-                            <option>New Event</option>
-                            <option>Time New to Old</option>
-                            <option>Time Old to New</option>
-                        </select>
+                        <div wire:ignore class="col-md-auto mb-4 mb-lg-0">
+                            <select wire:model="categoryInputs" {{-- class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices> --}}
+                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
+                                <option value="">{{ __('transf.chose_categories') }}</option>
+                                @foreach ($categories_menu as $category_item)
+                                    <option value="{{ $category_item->id }}">{{ $category_item->title }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                        </div>
                     </div>
                 </div>
 
-                <div class="mb-4 mb-xl-0 ms-xl-6">
+                <div wire:ignore class="mb-4 mb-xl-0 ms-xl-6">
                     <div class="border rounded d-flex align-items-center choices-label h-50p">
                         <span class="ps-5">Sort by:</span>
-                        <select
+                        <select wire:model="sortingBy"
                             class="form-select form-select-sm text-dark border-0 ps-1 bg-transparent flex-grow-1 shadow-none dropdown-menu-end"
                             data-choices>
-                            <option>Default</option>
-                            <option>New Event</option>
-                            <option>Time New to Old</option>
-                            <option>Time Old to New</option>
+                            <option value="default">Default</option>
+                            <option value="new-events">New Event</option>
+                            <option value="new-old">Time New to Old</option>
+                            <option value="old-new">Time Old to New</option>
                         </select>
                     </div>
+
+
                 </div>
             </div>
         </div>

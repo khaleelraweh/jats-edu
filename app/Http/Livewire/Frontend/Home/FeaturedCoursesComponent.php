@@ -101,7 +101,6 @@ class FeaturedCoursesComponent extends Component
                 'featured_courses'  =>  $this->featured_courses,
                 'course_categories_menu'    =>  $course_categories_menu
             ]
-            //  compact('featured_courses', 'course_categories_menu')
         );
     }
 

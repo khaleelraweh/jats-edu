@@ -45,19 +45,38 @@
                                 {{ $post->description }}
                             </p>
 
+
                             <div class="d-md-flex align-items-center">
                                 <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-4">
                                     <div class="p-1">
-                                        <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}"
-                                            alt="..." class="rounded-circle" width="52" height="52">
+                                        @php
+                                            if ($post->users->first()->user_image != null) {
+                                                $user_img = asset('assets/users/' . $post->users->first()->user_image);
+
+                                                if (
+                                                    !file_exists(
+                                                        public_path(
+                                                            'assets/users/' . $post->users->first()->user_image,
+                                                        ),
+                                                    )
+                                                ) {
+                                                    $user_img = asset('assets/users/no_image_found.webp');
+                                                }
+                                            } else {
+                                                $user_img = asset('assets/users/no_image_found.webp');
+                                            }
+                                        @endphp
+                                        <img src="{{ $user_img }}" alt="{{ $post->users->first()->first_name }}"
+                                            class="rounded-circle" width="52" height="52">
                                     </div>
                                 </div>
 
                                 <div class="mb-4 mb-md-0">
                                     <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
-                                        <h6 class="mb-0">Alison Dawn</h6>
+                                        <h6 class="mb-0">{{ $post->users->first()->full_name }}</h6>
                                     </a>
-                                    <span class="font-size-sm">April 06, 2020</span>
+                                    <span
+                                        class="font-size-sm">{{ $post->created_at ? \Carbon\Carbon::parse($post->created_at)->translatedFormat('d F Y') : null }}</span>
                                 </div>
                             </div>
                         </div>

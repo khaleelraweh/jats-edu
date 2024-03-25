@@ -314,7 +314,11 @@
                     </div>
                 </div>
 
-                <h3 class="mb-6">Comment</h3>
+                {{-- event reviews --}}
+                @livewire('frontend.event-list.event-review-component', ['eventId' => $event->id])
+
+
+                {{-- <h3 class="mb-6">Comment</h3>
                 <ul class="list-unstyled pt-2">
                     <li class="media d-flex">
                         <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
@@ -413,7 +417,8 @@
 
                         <button type="submit" class="btn btn-primary btn-block mw-md-300p">SUBMIT REVIEW</button>
                     </form>
-                </div>
+                </div> --}}
+
             </div>
 
             <div class="col-lg-4">

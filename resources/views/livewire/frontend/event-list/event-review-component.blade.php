@@ -1,47 +1,4 @@
 <div>
-
-
-    {{-- show course rating  --}}
-    <div class="row align-items-center mb-8">
-        <div class="col-md-auto mb-5 mb-md-0">
-            <div class="border rounded shadow d-flex align-items-center justify-content-center px-9 py-8">
-                <div class="m-2 text-center">
-                    <h1 class="display-2 mb-0 fw-medium mb-n1">{{ round($averageRating, 2) }}</h1>
-                    <h5 class="mb-0">{{ __('transf.txt_course_rating') }}</h5>
-                    <div class="star-rating">
-                        <div class="rating" style="width:{{ scaleToPercentage(round($averageRating, 2), 5) }}%;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md">
-            @php
-                $totalReviews = $totalReviews ?? 0;
-                krsort($ratingCounts);
-            @endphp
-            @foreach ($ratingCounts as $rating => $count)
-                <div class="d-md-flex align-items-center my-3 my-md-4">
-                    <div class="bg-gray-200 position-relative rounded-pill flex-grow-1 me-md-5 mb-2 mb-md-0 mw-md-260p"
-                        style="height: 10px;">
-                        <div class="bg-teal rounded-pill position-absolute top-0 left-0 bottom-0" {{-- style="width: {{ $count ? ($count / $totalReviews) * 100 : 0 }}%;"></div> --}}
-                            style="width: {{ scaleToPercentage($rating, 5) }}%;"></div>
-                    </div>
-
-                    <div class="d-flex align-items-center">
-                        <div class="star-rating star-rating-lg secondary me-4">
-                            <div class="rating" style="width: {{ scaleToPercentage($rating, 5) }}%;">
-                            </div>
-                        </div>
-                        <span>{{ $count }}</span>
-                    </div>
-                </div>
-            @endforeach
-
-        </div>
-
-    </div>
-
     {{-- show reviews --}}
     <h3 class="mb-6">Comment</h3>
     <ul class="list-unstyled pt-2">

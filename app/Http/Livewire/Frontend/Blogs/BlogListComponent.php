@@ -73,6 +73,8 @@ class BlogListComponent extends Component
 
         $total_Posts = Post::query()->Blog()->count();
 
+        $recent_posts = Post::with('photos')->Blog()->orderBy('created_at', 'DESC')->take(3)->get();
+
 
 
         return view(
@@ -81,6 +83,7 @@ class BlogListComponent extends Component
                 'posts'             =>  $posts,
                 'categories_menu'   =>  $categories_menu,
                 'total_Posts'       =>  $total_Posts,
+                'recent_posts'      =>  $recent_posts,
             ]
         );
     }

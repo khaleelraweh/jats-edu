@@ -80,3 +80,15 @@
     background-origin: padding-box, padding-box;
     background-clip: border-box, border-box;
 }
+
+/* blog-list */
+.recent-posts img{
+  width: 63px !important;
+}
+
+@media (max-width:767px){
+  .recent-posts  img{
+    width: 100px !important;
+  }
+  
+}

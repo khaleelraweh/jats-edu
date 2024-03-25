@@ -138,45 +138,48 @@
 
                     <div class="border rounded mb-6 p-5 py-md-6 ps-md-6 pe-md-4">
                         <h4 class="mb-5">Recent Posts</h4>
-                        <ul class="list-unstyled mb-0">
-                            <li class="media mb-6 d-flex">
-                                <a href="{{ route('frontend.blog_single', 1) }}" class="mw-70p d-block me-5">
-                                    <img src="{{ asset('frontend/assets/img/photos/photo-1.jpg') }}" alt="..."
-                                        class="avatar-img rounded-lg h-70p o-f-c">
-                                </a>
-                                <div class="media-body flex-shrink-1">
-                                    <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
-                                        <h6 class="line-clamp-2 mb-1 fw-normal">Web Development Design</h6>
-                                    </a>
-                                    <span>April 06, 2020</span>
-                                </div>
-                            </li>
+                        <ul class="list-unstyled mb-0 recent-posts">
+                            @foreach ($recent_posts as $recent_post)
+                                <li class="media mb-6 d-flex">
+                                    <a href="{{ route('frontend.blog_single', $recent_post->slug) }}"
+                                        class="mw-70p d-block me-sm-8 me-md-4">
+                                        @php
+                                            if (
+                                                $recent_post->photos->first() != null &&
+                                                $recent_post->photos->first()->file_name != null
+                                            ) {
+                                                $recent_post_img = asset(
+                                                    'assets/posts/' . $recent_post->photos->first()->file_name,
+                                                );
 
-                            <li class="media mb-6 d-flex">
-                                <a href="{{ route('frontend.blog_single', 1) }}" class="mw-70p d-block me-5">
-                                    <img src="{{ asset('frontend/assets/img/photos/photo-2.jpg') }}" alt="..."
-                                        class="avatar-img rounded-lg h-70p o-f-c">
-                                </a>
-                                <div class="media-body flex-shrink-1">
-                                    <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
-                                        <h6 class="line-clamp-2 mb-1 fw-normal">The Complete Security Course</h6>
+                                                if (
+                                                    !file_exists(
+                                                        public_path(
+                                                            'assets/posts/' . $recent_post->photos->first()->file_name,
+                                                        ),
+                                                    )
+                                                ) {
+                                                    $recent_post_img = asset('assets/posts/no_image_found.webp');
+                                                }
+                                            } else {
+                                                $recent_post_img = asset('assets/posts/no_image_found.webp');
+                                            }
+                                        @endphp
+                                        <img src="{{ $recent_post_img }}" alt="..."
+                                            class="avatar-img rounded-lg h-70p o-f-c">
                                     </a>
-                                    <span>April 06, 2020</span>
-                                </div>
-                            </li>
+                                    <div class="media-body flex-shrink-1">
+                                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
+                                            <h6 class="line-clamp-2 mb-1 fw-normal">
+                                                {{ $recent_post->title }}
+                                            </h6>
+                                        </a>
+                                        <span>{{ $recent_post->created_at ? \Carbon\Carbon::parse($recent_post->created_at)->translatedFormat('d F Y') : null }}</span>
+                                    </div>
+                                </li>
+                            @endforeach
 
-                            <li class="media mb-0 d-flex">
-                                <a href="{{ route('frontend.blog_single', 1) }}" class="mw-70p d-block me-5">
-                                    <img src="{{ asset('frontend/assets/img/photos/photo-14.jpg') }}" alt="..."
-                                        class="avatar-img rounded-lg h-70p o-f-c">
-                                </a>
-                                <div class="media-body flex-shrink-1">
-                                    <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
-                                        <h6 class="line-clamp-2 mb-1 fw-normal">Fashion Photography</h6>
-                                    </a>
-                                    <span>April 06, 2020</span>
-                                </div>
-                            </li>
+
                         </ul>
                     </div>
 

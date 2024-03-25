@@ -191,6 +191,11 @@ return [
     //event list 
     'get_ticket'                                        => 'احصل على تذكرة',
 
+    //event single 
+    'txt_title'                                         =>  'العنوان',
+    'txt_what_is_it_like_to_event'                      =>  'ما هو تقييمك للحدث !',
+
+
 
 
 

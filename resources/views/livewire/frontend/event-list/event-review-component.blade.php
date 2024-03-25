@@ -44,7 +44,7 @@
     {{-- add reviews and rating --}}
     <div class="border shadow rounded p-6 p-md-9">
         <h3 class="mb-2">{{ __('transf.txt_add_reviews_rate') }}</h3>
-        <div class="">{{ __('transf.txt_what_is_it_like_to_course') }}</div>
+        <div class="">{{ __('transf.txt_what_is_it_like_to_event') }}</div>
         <form wire:submit.prevent="storeReview">
             <div class="clearfix">
                 <fieldset class="slect-rating mb-3">
@@ -86,7 +86,7 @@
                 <!-- Title input -->
                 <label for="exampleInputTitle1">{{ __('transf.txt_review_title') }}</label>
                 <input wire:model.defer="title" type="text" name="title" class="form-control placeholder-1"
-                    id="exampleInputTitle1" placeholder="{{ __('transf.txt_courses') }}">
+                    id="exampleInputTitle1" placeholder="{{ __('transf.txt_title') }}">
                 @error('title')
                     <span class="error">{{ $message }}</span>
                 @enderror

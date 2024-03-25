@@ -191,6 +191,9 @@ return [
     //event list 
     'get_ticket'                                        => 'GET TICKET',
 
+    //event single 
+    'txt_title'                                         =>  'Title',
+    'txt_what_is_it_like_to_event'                      =>  'What is it like to event',
 
 
 

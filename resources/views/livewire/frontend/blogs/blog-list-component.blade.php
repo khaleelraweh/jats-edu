@@ -9,7 +9,7 @@
                 @foreach ($posts as $post)
                     <div class="row mb-6 align-items-center">
                         <div class="col-lg-6 col-xl-5 mb-6 mb-lg-0">
-                            <a href="{{ route('frontend.blog_single', 1) }}"
+                            <a href="{{ route('frontend.blog_single', $post->slug) }}"
                                 class="d-block sk-thumbnail img-ratio-4 rounded lift">
                                 @php
                                     if ($post->photos->first() != null && $post->photos->first()->file_name != null) {
@@ -36,7 +36,7 @@
                                 <h5 class="text-blue">{{ $post->courseCategory->title }}</h5>
                             </a>
 
-                            <a href="{{ route('frontend.blog_single', 1) }}" class="d-block me-xl-12">
+                            <a href="{{ route('frontend.blog_single', $post->slug) }}" class="d-block me-xl-12">
                                 <h3 class="">
                                     {{ $post->title }}
                                 </h3>
@@ -73,7 +73,7 @@
                                 </div>
 
                                 <div class="mb-4 mb-md-0">
-                                    <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
+                                    <a href="{{ route('frontend.blog_single', $post->slug) }}" class="d-block">
                                         <h6 class="mb-0">{{ $post->users->first()->full_name }}</h6>
                                     </a>
                                     <span
@@ -169,7 +169,8 @@
                                             class="avatar-img rounded-lg h-70p o-f-c">
                                     </a>
                                     <div class="media-body flex-shrink-1">
-                                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
+                                        <a href="{{ route('frontend.blog_single', $recent_post->slug) }}"
+                                            class="d-block">
                                             <h6 class="line-clamp-2 mb-1 fw-normal">
                                                 {{ $recent_post->title }}
                                             </h6>

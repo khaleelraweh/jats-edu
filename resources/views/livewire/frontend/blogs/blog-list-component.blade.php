@@ -31,7 +31,8 @@
                         </div>
 
                         <div class="col-lg-6 col-xl-7">
-                            <a href="{{ route('frontend.blog_single', $post->slug) }}" class="d-inline-block">
+                            <a href="{{ route('frontend.blog_list', $post->courseCategory->slug) }}"
+                                class="d-inline-block">
                                 <h5 class="text-blue">{{ $post->courseCategory->title }}</h5>
                             </a>
 
@@ -122,6 +123,9 @@
                     <div class="border rounded mb-6 p-5 py-md-6 ps-md-6 pe-md-4">
                         <h4 class="mb-5">Category</h4>
                         <div class="nav flex-column nav-vertical">
+                            <a href="{{ route('frontend.blog_list') }}" class="nav-link py-2">All posts
+                                ({{ $total_Posts }})
+                            </a>
                             @foreach ($categories_menu as $item)
                                 <a href="{{ route('frontend.blog_list', $item->slug) }}"
                                     class="nav-link py-2">{{ $item->title }}

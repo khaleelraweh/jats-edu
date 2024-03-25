@@ -71,12 +71,16 @@ class BlogListComponent extends Component
             $query->where('section', 2);
         })->get();
 
+        $total_Posts = Post::query()->Blog()->count();
+
+
 
         return view(
             'livewire.frontend.blogs.blog-list-component',
             [
                 'posts'             =>  $posts,
                 'categories_menu'   =>  $categories_menu,
+                'total_Posts'       =>  $total_Posts,
             ]
         );
     }

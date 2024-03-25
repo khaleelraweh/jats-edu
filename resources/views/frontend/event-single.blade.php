@@ -280,7 +280,8 @@
 
                 <div class="row mb-6 mb-md-10 align-items-center">
                     <div class="col-md-4 mb-5 mb-md-2">
-                        <a href="#" class="text-teal fw-medium d-flex align-items-center">
+                        <a href="{{ $whatsappShareUrl }}" target="_blank"
+                            class="text-teal fw-medium d-flex align-items-center">
                             <!-- Icon -->
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -494,7 +495,8 @@
                         <button class="btn btn-primary btn-block mb-3" type="button" name="button">BOOK NOW</button>
 
                         <div class="text-center">
-                            <a href="#" class="mx-auto text-teal fw-medium d-inline-flex align-items-center mt-2">
+                            <a href="{{ $whatsappShareUrl }}" target="_blank"
+                                class="mx-auto text-teal fw-medium d-inline-flex align-items-center mt-2">
                                 <!-- Icon -->
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">

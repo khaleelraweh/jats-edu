@@ -125,8 +125,20 @@ class FrontendController extends Controller
         // Get the rest of the text
         $hiddenText = substr($event->description, 200);
 
+        // Generate WhatsApp share URL
+        $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($event->name . ': ' . route('frontend.event_single', $event->slug));
 
-        return view('frontend.event-single', compact('event', 'exposedText', 'hiddenText'));
+        return view('frontend.event-single', compact('event', 'exposedText', 'hiddenText', 'whatsappShareUrl'));
+    }
+
+    public function blog_list($slug = null)
+    {
+        return view('frontend.blog-list', compact('slug'));
+    }
+
+    public function blog_single($slug)
+    {
+        return view('frontend.blog-single');
     }
 
     public function instructors_list($slug = null)
@@ -153,17 +165,7 @@ class FrontendController extends Controller
 
 
 
-    public function blog_list($slug = null)
-    {
 
-
-        return view('frontend.blog-list', compact('slug'));
-    }
-
-    public function blog_single($slug)
-    {
-        return view('frontend.blog-single');
-    }
 
     public function shop_cart()
     {

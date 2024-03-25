@@ -1,6 +1,7 @@
 <?php return array (
   'course-single.course-review-component' => 'App\\Http\\Livewire\\CourseSingle\\CourseReviewComponent',
   'course-single.review-component' => 'App\\Http\\Livewire\\CourseSingle\\ReviewComponent',
+  'frontend.blogs.blog-list-component' => 'App\\Http\\Livewire\\Frontend\\Blogs\\BlogListComponent',
   'frontend.courses.course-list-component' => 'App\\Http\\Livewire\\Frontend\\Courses\\CourseListComponent',
   'frontend.event-list.event-list-component' => 'App\\Http\\Livewire\\Frontend\\EventList\\EventListComponent',
   'frontend.event-list.event-review-component' => 'App\\Http\\Livewire\\Frontend\\EventList\\EventReviewComponent',

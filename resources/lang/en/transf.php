@@ -196,6 +196,9 @@ return [
     'txt_what_is_it_like_to_event'                      =>  'What is it like to event',
 
 
+    //blog list
+    'blog_list'                                         =>  'Blog List',
+
 
 
 

@@ -75,20 +75,39 @@ class Post extends Model
         return $this->status ? __('panel.status_active') : __('panel.status_inactive');
     }
 
+    public function scopeActive($query)
+    {
+        return $query->whereStatus(true);
+    }
+
+    public function scopeEvent($query)
+    {
+        return $query->whereSection(1);
+    }
+
+    public function scopeBlog($query)
+    {
+        return $query->whereSection(2);
+    }
+
+
+    public function scopeActiveCourseCategory($query)
+    {
+        return $query->whereHas('courseCategory', function ($query) {
+            $query->whereStatus(1);
+        });
+    }
+
     public function courseCategory()
     {
         return $this->belongsTo(CourseCategory::class, 'course_category_id', 'id');
     }
 
+
     public function tags(): MorphToMany
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
-
-    // public function reviews(): HasMany
-    // {
-    //     return $this->hasMany(CourseReview::class);
-    // }
 
     public function reviews()
     {

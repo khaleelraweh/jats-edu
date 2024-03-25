@@ -1,175 +1,68 @@
 <div>
     <!-- BLOG LIST V1 -->
     <div class="container mb-11">
+
+
         <div class="row">
             <div class="col-md-7 col-lg-8 col-xl-9 mb-5 mb-md-0">
                 <!-- Blog Post -->
-                <div class="row mb-6 align-items-center">
-                    <div class="col-lg-6 col-xl-5 mb-6 mb-lg-0">
-                        <a href="{{ route('frontend.blog_single', 1) }}"
-                            class="d-block sk-thumbnail img-ratio-4 rounded lift">
-                            <img src="{{ asset('frontend/assets/img/post/post-13.jpg') }}" alt="..."
-                                class="rounded img-fluid">
-                        </a>
-                    </div>
+                @foreach ($posts as $post)
+                    <div class="row mb-6 align-items-center">
+                        <div class="col-lg-6 col-xl-5 mb-6 mb-lg-0">
+                            <a href="{{ route('frontend.blog_single', 1) }}"
+                                class="d-block sk-thumbnail img-ratio-4 rounded lift">
+                                @php
+                                    if ($post->photos->first() != null && $post->photos->first()->file_name != null) {
+                                        $post_img = asset('assets/posts/' . $post->photos->first()->file_name);
 
-                    <div class="col-lg-6 col-xl-7">
-                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-inline-block">
-                            <h5 class="text-blue">Business</h5>
-                        </a>
+                                        if (
+                                            !file_exists(
+                                                public_path('assets/posts/' . $post->photos->first()->file_name),
+                                            )
+                                        ) {
+                                            $post_img = asset('assets/posts/no_image_found.webp');
+                                        }
+                                    } else {
+                                        $post_img = asset('assets/posts/no_image_found.webp');
+                                    }
+                                @endphp
+                                <img src="{{ $post_img }}" alt="{{ $post->title }}" class="rounded img-fluid">
+                            </a>
+                        </div>
 
-                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-block me-xl-12">
-                            <h3 class="">The Complete JavaScript Course 2020: Build Real Projects!</h3>
-                        </a>
+                        <div class="col-lg-6 col-xl-7">
+                            <a href="{{ route('frontend.blog_single', $post->slug) }}" class="d-inline-block">
+                                <h5 class="text-blue">{{ $post->courseCategory->title }}</h5>
+                            </a>
 
-                        <p class="line-clamp-3 mb-6 mb-xl-8 me-xl-6">Convallis vitae, nunc ut venenatis, lectus. Tellus
-                            nunc
-                            orci dolor nec facilisis et lacus, eu aliquet. Amet imperdiet ac venenatis, lacus. Tortor
-                            interdum quisque et, eu etiam ac.</p>
+                            <a href="{{ route('frontend.blog_single', 1) }}" class="d-block me-xl-12">
+                                <h3 class="">
+                                    {{ $post->title }}
+                                </h3>
+                            </a>
 
-                        <div class="d-md-flex align-items-center">
-                            <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-4">
-                                <div class="p-1">
-                                    <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
-                                        class="rounded-circle" width="52" height="52">
+                            <p class="line-clamp-3 mb-6 mb-xl-8 me-xl-6">
+                                {{ $post->description }}
+                            </p>
+
+                            <div class="d-md-flex align-items-center">
+                                <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-4">
+                                    <div class="p-1">
+                                        <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}"
+                                            alt="..." class="rounded-circle" width="52" height="52">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="mb-4 mb-md-0">
-                                <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
-                                    <h6 class="mb-0">Alison Dawn</h6>
-                                </a>
-                                <span class="font-size-sm">April 06, 2020</span>
+                                <div class="mb-4 mb-md-0">
+                                    <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
+                                        <h6 class="mb-0">Alison Dawn</h6>
+                                    </a>
+                                    <span class="font-size-sm">April 06, 2020</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Blog Post -->
-                <div class="row mb-6 align-items-center">
-                    <div class="col-lg-6 col-xl-5 mb-6 mb-lg-0">
-                        <a href="{{ route('frontend.blog_single', 1) }}"
-                            class="d-block sk-thumbnail img-ratio-4 rounded lift">
-                            <img src="{{ asset('frontend/assets/img/post/post-14.jpg') }}" alt="..."
-                                class="rounded img-fluid">
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6 col-xl-7">
-                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-inline-block">
-                            <h5 class="text-blue">Business</h5>
-                        </a>
-
-                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-block me-xl-12">
-                            <h3 class="">Learning, Friendship and Fun</h3>
-                        </a>
-
-                        <p class="line-clamp-3 mb-6 mb-xl-8 me-xl-6">Convallis vitae, nunc ut venenatis, lectus. Tellus
-                            nunc
-                            orci dolor nec facilisis et lacus, eu aliquet. Amet imperdiet ac venenatis, lacus. Tortor
-                            interdum quisque et, eu etiam ac.</p>
-
-                        <div class="d-md-flex align-items-center">
-                            <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-4">
-                                <div class="p-1">
-                                    <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
-                                        class="rounded-circle" width="52" height="52">
-                                </div>
-                            </div>
-
-                            <div class="mb-4 mb-md-0">
-                                <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
-                                    <h6 class="mb-0">Alison Dawn</h6>
-                                </a>
-                                <span class="font-size-sm">April 06, 2020</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Blog Post -->
-                <div class="row mb-6 align-items-center">
-                    <div class="col-lg-6 col-xl-5 mb-6 mb-lg-0">
-                        <a href="{{ route('frontend.blog_single', 1) }}"
-                            class="d-block sk-thumbnail img-ratio-4 rounded lift">
-                            <img src="{{ asset('frontend/assets/img/post/post-15.jpg') }}" alt="..."
-                                class="rounded img-fluid">
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6 col-xl-7">
-                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-inline-block">
-                            <h5 class="text-blue">Business</h5>
-                        </a>
-
-                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-block me-xl-12">
-                            <h3 class="">An Indigenous Anatolian Syllabic Script From 3500 Years Ago</h3>
-                        </a>
-
-                        <p class="line-clamp-3 mb-6 mb-xl-8 me-xl-6">Convallis vitae, nunc ut venenatis, lectus. Tellus
-                            nunc
-                            orci dolor nec facilisis et lacus, eu aliquet. Amet imperdiet ac venenatis, lacus. Tortor
-                            interdum quisque et, eu etiam ac.</p>
-
-                        <div class="d-md-flex align-items-center">
-                            <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-4">
-                                <div class="p-1">
-                                    <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
-                                        class="rounded-circle" width="52" height="52">
-                                </div>
-                            </div>
-
-                            <div class="mb-4 mb-md-0">
-                                <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
-                                    <h6 class="mb-0">Alison Dawn</h6>
-                                </a>
-                                <span class="font-size-sm">April 06, 2020</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Blog Post -->
-                <div class="row mb-6 align-items-center">
-                    <div class="col-lg-6 col-xl-5 mb-6 mb-lg-0">
-                        <a href="{{ route('frontend.blog_single', 1) }}"
-                            class="d-block sk-thumbnail img-ratio-4 rounded lift">
-                            <img src="{{ asset('frontend/assets/img/post/post-16.jpg') }}" alt="..."
-                                class="rounded img-fluid">
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6 col-xl-7">
-                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-inline-block">
-                            <h5 class="text-blue">Business</h5>
-                        </a>
-
-                        <a href="{{ route('frontend.blog_single', 1) }}" class="d-block me-xl-12">
-                            <h3 class="">World Heath Day in LA 2020</h3>
-                        </a>
-
-                        <p class="line-clamp-3 mb-6 mb-xl-8 me-xl-6">Convallis vitae, nunc ut venenatis, lectus. Tellus
-                            nunc orci dolor nec facilisis et lacus, eu aliquet. Amet imperdiet ac venenatis, lacus.
-                            Tortor
-                            interdum quisque et, eu etiam ac.</p>
-
-                        <div class="d-md-flex align-items-center">
-                            <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-4">
-                                <div class="p-1">
-                                    <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
-                                        class="rounded-circle" width="52" height="52">
-                                </div>
-                            </div>
-
-                            <div class="mb-4 mb-md-0">
-                                <a href="{{ route('frontend.blog_single', 1) }}" class="d-block">
-                                    <h6 class="mb-0">Alison Dawn</h6>
-                                </a>
-                                <span class="font-size-sm">April 06, 2020</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
                 <!-- PAGINATION
                                      -->
@@ -194,8 +87,7 @@
             </div>
 
             <div class="col-md-5 col-lg-4 col-xl-3">
-                <!-- BLOG SIDEBAR
-                                            ================================================== -->
+                <!-- BLOG SIDEBAR -->
                 <div class="">
                     <div class="border rounded mb-6">
                         <div class="input-group">

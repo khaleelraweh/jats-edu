@@ -123,7 +123,8 @@
                         <h4 class="mb-5">Category</h4>
                         <div class="nav flex-column nav-vertical">
                             @foreach ($categories_menu as $item)
-                                <a href="blog-grid-v2.html" class="nav-link py-2">{{ $item->title }}
+                                <a href="{{ route('frontend.blog_list', $item->slug) }}"
+                                    class="nav-link py-2">{{ $item->title }}
                                     ({{ $item->posts_count }})
                                 </a>
                             @endforeach

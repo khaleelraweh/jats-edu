@@ -3,15 +3,12 @@
 namespace App\Http\Livewire\CourseSingle;
 
 use App\Models\Course;
-use App\Models\Review;
+use App\Models\CourseReview;
 use Illuminate\Support\Facades\Auth;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class CourseReviewComponent extends Component
 {
-    use LivewireAlert;
-
     public $courseId;
     public $rating;
     public $title;
@@ -19,11 +16,16 @@ class CourseReviewComponent extends Component
     public $ratingCounts = [];
     public $totalReviews;
 
+    protected $rules = [
+        'rating' => 'required|numeric|min:0.5|max:5',
+        'title' => 'required|string|max:255',
+        'message' => 'required|string',
+    ];
+
     public function mount()
     {
-        // Fetch the count for each rating level
-        $this->ratingCounts = Review::where('reviewable_id', $this->courseId)
-            ->where('reviewable_type', Course::class)
+        // Fetch the count for each rating level in descending order
+        $this->ratingCounts = CourseReview::where('course_id', $this->courseId)
             ->selectRaw('rating, count(*) as count')
             ->groupBy('rating')
             ->pluck('count', 'rating')
@@ -41,7 +43,6 @@ class CourseReviewComponent extends Component
         // Calculate the average rating
         $averageRating = $course->reviews->avg('rating');
 
-        // Get the reviews
         $reviews = $course->reviews;
 
         return view('livewire.course-single.course-review-component', compact('reviews', 'averageRating'));
@@ -49,6 +50,9 @@ class CourseReviewComponent extends Component
 
     public function storeReview()
     {
+        // Validate input
+        $this->validate();
+
         // Check if the user is logged in
         if (!Auth::check()) {
             session()->flash('review_error', __('transf.msg_reviewers_register_login'));
@@ -56,43 +60,32 @@ class CourseReviewComponent extends Component
         }
 
         // Check if the user has already submitted a review for this course
-        $existingReview = Review::where('user_id', auth()->user()->id)
-            ->where('reviewable_id', $this->courseId)
-            ->where('reviewable_type', Course::class)
-            ->first();
+        $existingReview = CourseReview::where('user_id', auth()->user()->id)
+            ->where('course_id', $this->courseId)
+            ->exists();
 
         if ($existingReview) {
             session()->flash('review_error', 'You have already submitted a review for this course.');
             return;
         }
 
-        $validatedData = $this->validate([
-            'rating' => 'required|numeric|min:1|max:5',
-            'title' => 'required|string|max:255',
-            'message' => 'required|string',
-        ]);
-
         // Create the review
-        $review = new Review([
+        CourseReview::create([
             'user_id' => auth()->user()->id,
-            'reviewable_id' => $this->courseId,
-            'reviewable_type' => Course::class,
-            'name' => auth()->user()->full_name,
-            'email' => auth()->user()->email,
+            'course_id' => $this->courseId,
             'title' => $this->title,
             'message' => $this->message,
             'rating' => $this->rating,
         ]);
 
-        $review->save();
-
         // Refresh the rating counts after adding a new review
         $this->mount();
 
-        $this->emit('reviewAdded');
-
+        // Reset form fields
         $this->reset(['rating', 'title', 'message']);
 
-        $this->alert('success', __('Review submitted successfully!'));
+        $this->emit('reviewAdded');
+
+        $this->emit('alert', ['type' => 'success', 'message' => __('Review submitted successfully!')]);
     }
 }

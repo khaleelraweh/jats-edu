@@ -65,5 +65,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TopicSeeder::class);
         $this->call(RequirementSeeder::class);
         $this->call(PhotoSeeder::class);
+        $this->call(ReviewSeeder::class);
     }
 }

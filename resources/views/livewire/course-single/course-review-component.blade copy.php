@@ -1,6 +1,5 @@
 <div>
 
-
     {{-- show course rating  --}}
     <div class="row align-items-center mb-8">
         <div class="col-md-auto mb-5 mb-md-0">
@@ -9,7 +8,7 @@
                     <h1 class="display-2 mb-0 fw-medium mb-n1">{{ round($averageRating, 2) }}</h1>
                     <h5 class="mb-0">{{ __('transf.txt_course_rating') }}</h5>
                     <div class="star-rating">
-                        <div class="rating" style="width:{{ scaleToPercentage(round($averageRating, 2), 5) }}%;"></div>
+                        <div class="rating" style="width:{{ scaleToPercentage($averageRating, 5) }}%;"></div>
                     </div>
                 </div>
             </div>
@@ -91,31 +90,40 @@
             <div class="clearfix">
                 <fieldset class="slect-rating mb-3">
 
-                    <input wire:model.defer="rating" type="radio" id="star5" name="rating" value="5" />
+                    <input wire:model.defer="rating_input" type="radio" id="star5" name="rating"
+                        value="5" />
                     <label class="full" for="star5" title="{{ __('Awesome - 5 stars') }}"></label>
 
-                    <input wire:model.defer="rating" type="radio" id="star4half" name="rating" value="4.5" />
+                    <input wire:model.defer="rating_input" type="radio" id="star4half" name="rating"
+                        value="4.5" />
                     <label class="half" for="star4half" title="{{ __('Pretty good - 4.5 stars') }}"></label>
 
-                    <input wire:model.defer="rating" type="radio" id="star4" name="rating" value="4" />
+                    <input wire:model.defer="rating_input" type="radio" id="star4" name="rating"
+                        value="4" />
                     <label class="full" for="star4" title="{{ __('Pretty good - 5 stars') }}"></label>
 
-                    <input wire:model.defer="rating" type="radio" id="star3half" name="rating" value="3.5" />
+                    <input wire:model.defer="rating_input" type="radio" id="star3half" name="rating"
+                        value="3.5" />
                     <label class="half" for="star3half" title="{{ __('Meh - 3.5 stars') }} "></label>
 
-                    <input wire:model.defer="rating" type="radio" id="star3" name="rating" value="3" />
+                    <input wire:model.defer="rating_input" type="radio" id="star3" name="rating"
+                        value="3" />
                     <label class="full" for="star3" title="{{ __('Meh - 3 stars') }}"></label>
 
-                    <input wire:model.defer="rating" type="radio" id="star2half" name="rating" value="2.5" />
+                    <input wire:model.defer="rating_input" type="radio" id="star2half" name="rating"
+                        value="2.5" />
                     <label class="half" for="star2half" title="{{ __('Kinda bad - 2.5 stars') }}"></label>
 
-                    <input wire:model.defer="rating" type="radio" id="star2" name="rating" value="2" />
+                    <input wire:model.defer="rating_input" type="radio" id="star2" name="rating"
+                        value="2" />
                     <label class="full" for="star2" title="{{ __('Kinda bad - 2 stars') }}"></label>
 
-                    <input wire:model.defer="rating" type="radio" id="star1half" name="rating" value="1.5" />
+                    <input wire:model.defer="rating_input" type="radio" id="star1half" name="rating"
+                        value="1.5" />
                     <label class="half" for="star1half" title="{{ __('Meh - 1.5 stars') }}"></label>
 
-                    <input wire:model.defer="rating" type="radio" id="star1" name="rating" value="1" />
+                    <input wire:model.defer="rating_input" type="radio" id="star1" name="rating"
+                        value="1" />
                     <label class="full" for="star1" title="{{ __('Sucks big time - 1 star') }}"></label>
 
                     <input type="radio" id="starhalf" name="rating" value="0.5" />
@@ -127,9 +135,10 @@
             <div class="form-group mb-6">
                 <!-- Title input -->
                 <label for="exampleInputTitle1">{{ __('transf.txt_review_title') }}</label>
-                <input wire:model.defer="title" type="text" name="title" class="form-control placeholder-1"
-                    id="exampleInputTitle1" placeholder="{{ __('transf.txt_courses') }}">
-                @error('title')
+                <input wire:model.defer="title_input" type="text" name="title_input" id="title_input"
+                    class="form-control placeholder-1" id="exampleInputTitle1"
+                    placeholder="{{ __('transf.txt_courses') }}">
+                @error('title_input')
                     <span class="error">{{ $message }}</span>
                 @enderror
             </div>
@@ -137,9 +146,9 @@
             <div class="form-group mb-6">
                 <!-- Review message input -->
                 <label for="exampleFormControlTextarea1">{{ __('transf.txt_review_content') }}</label>
-                <textarea wire:model.defer="message" name="message" class="form-control placeholder-1"
+                <textarea wire:model.defer="message_input" name="message_input" class="form-control placeholder-1"
                     id="exampleFormControlTextarea1" rows="6" placeholder="{{ __('transf.txt_content') }}"></textarea>
-                @error('message')
+                @error('message_input')
                     <span class="error">{{ $message }}</span>
                 @enderror
             </div>

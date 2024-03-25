@@ -34,7 +34,6 @@ class InstructorsListCoponent extends Component
 
     public function render()
     {
-
         // Query for filter menu 
         $specializations_menu = Specialization::withCount(['users' => function ($query) {
             $query->whereHasRoles('lecturer')->has('courses');
@@ -60,8 +59,6 @@ class InstructorsListCoponent extends Component
                 return $group->count();
             });
 
-
-        // dd($this->selectedName);
         // Get lecturers
         $lecturers = User::whereHasRoles('lecturer')
             ->when($this->selectedSpecializations, function ($query) use ($selectedSpecializationIds) {
@@ -77,17 +74,11 @@ class InstructorsListCoponent extends Component
                 });
             })
 
-
-
             ->when($this->selectedRatings, function ($query) {
                 // Filter lecturers based on the average rating of their courses
-                foreach ($this->selectedRatings as $rating) {
-                    $query->whereHas('courses', function ($subQuery) use ($rating) {
-                        $subQuery->whereHas('reviews', function ($reviewQuery) use ($rating) {
-                            $reviewQuery->where('rating', '>=', $rating);
-                        });
-                    });
-                }
+                $query->whereHas('courses.reviews', function ($reviewQuery) {
+                    $reviewQuery->whereIn('rating', $this->selectedRatings);
+                });
             })
             ->has('courses')
             ->active()
@@ -102,6 +93,7 @@ class InstructorsListCoponent extends Component
             ]
         );
     }
+
 
     public function submitSearch()
     {

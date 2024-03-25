@@ -17,9 +17,18 @@ class ReviewComponent extends Component
     public $courseId;
     public function render()
     {
-        $reviews = CourseReview::where('course_id', $this->courseId)->get();
-        $courseRating = $reviews->pluck('rating');
-        $averageRating = $courseRating->avg();
+
+        $course = Course::with('reviews')->find($this->courseId);
+
+        $totalReviews = $course->reviews->count();
+        $totalRatings = $course->reviews->sum('rating');
+
+        // Calculate the average rating
+        $averageRating = $totalReviews > 0 ? $totalRatings / $totalReviews : 0;
+
+
+
+        $reviews = $course->reviews;
 
         return view('livewire.course-single.review-component', compact('reviews', 'averageRating'));
     }

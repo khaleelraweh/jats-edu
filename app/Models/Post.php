@@ -85,10 +85,16 @@ class Post extends Model
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
-    public function reviews(): HasMany
+    // public function reviews(): HasMany
+    // {
+    //     return $this->hasMany(CourseReview::class);
+    // }
+
+    public function reviews()
     {
-        return $this->hasMany(CourseReview::class);
+        return $this->morphMany(Review::class, 'reviewable');
     }
+
 
     public function photos(): MorphMany
     {

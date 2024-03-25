@@ -92,13 +92,15 @@
 
             </div>
 
+
+
             <div class="col-md-5 col-lg-4 col-xl-3">
                 <!-- BLOG SIDEBAR -->
                 <div class="">
                     <div class="border rounded mb-6">
                         <div class="input-group">
-                            <input class="form-control form-control-sm border-0 pe-0" type="search"
-                                placeholder="Search" aria-label="Search">
+                            <input wire:model="searchQuery" class="form-control form-control-sm border-0 pe-0"
+                                type="search" placeholder="Search" aria-label="Search">
                             <div class="input-group-append">
                                 <button class="btn btn-sm my-2 my-sm-0 text-secondary icon-uxs" type="submit">
                                     <!-- Icon -->
@@ -120,12 +122,12 @@
                     <div class="border rounded mb-6 p-5 py-md-6 ps-md-6 pe-md-4">
                         <h4 class="mb-5">Category</h4>
                         <div class="nav flex-column nav-vertical">
-                            <a href="blog-grid-v2.html" class="nav-link py-2">Art (8)</a>
-                            <a href="blog-grid-v2.html" class="nav-link py-2 active">Exercise (8)</a>
-                            <a href="blog-grid-v2.html" class="nav-link py-2">Material Design (7)</a>
-                            <a href="blog-grid-v2.html" class="nav-link py-2">Software Development (6)</a>
-                            <a href="blog-grid-v2.html" class="nav-link py-2">Music (6)</a>
-                            <a href="blog-grid-v2.html" class="nav-link py-2">Photography (6)</a>
+                            @foreach ($categories_menu as $item)
+                                <a href="blog-grid-v2.html" class="nav-link py-2">{{ $item->title }}
+                                    ({{ $item->posts_count }})
+                                </a>
+                            @endforeach
+
                         </div>
                     </div>
 

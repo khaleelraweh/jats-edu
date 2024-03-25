@@ -23,7 +23,7 @@ class BlogListComponent extends Component
     public $searchQuery = '';
     public $selectedNames = [];
 
-    protected $queryString = ['categoryInputs'];
+    protected $queryString = ['categoryInputs', 'searchQuery'];
 
     public function resetFilters()
     {
@@ -57,9 +57,25 @@ class BlogListComponent extends Component
             }
         }
 
-        $posts = $posts->Blog()->active()->paginate($this->paginationLimit);
+        $posts = $posts
+            ->when($this->searchQuery, function ($query) {
+                $query->where(function ($subQuery) {
+                    $subQuery->where('title', 'LIKE', '%' . $this->searchQuery . '%');
+                });
+            })
+            ->Blog()->active()->paginate($this->paginationLimit);
 
-        $categories_menu = CourseCategory::withCount('courses')->get();
+        // $categories_menu = CourseCategory::withCount(['posts' => function ($query) {
+        //     $query->Blog();
+        // }])->has('posts')->get();
+
+        $categories_menu = CourseCategory::withCount('posts')->whereHas('posts', function ($query) {
+            $query->where('section', 2);
+        })->get();
+
+
+        // $course_categories_menu = CourseCategory::withCount('courses')->has('courses')->get();
+
         return view(
             'livewire.frontend.blogs.blog-list-component',
             [

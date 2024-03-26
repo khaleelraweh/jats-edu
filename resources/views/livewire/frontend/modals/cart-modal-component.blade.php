@@ -60,6 +60,6 @@
     {{-- Total --}}
     <div class="d-flex mb-5">
         <h5 class="mb-0 me-auto">{{ __('transf.txt_order_subtotal') }}</h5>
-        <h5 class="mb-0">$121.87</h5>
+        <h5 class="mb-0">{{ $totalPrice }}</h5>
     </div>
 </div>

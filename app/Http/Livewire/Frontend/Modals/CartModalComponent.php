@@ -15,10 +15,13 @@ class CartModalComponent extends Component
     ];
 
     public $cartItems;
+    public $totalPrice;
 
     public function render()
     {
         $this->cartItems = Cart::instance('default')->content();
+        $this->totalPrice = currency_converter(Cart::total());
+
         return view('livewire.frontend.modals.cart-modal-component', [
             'cartItems' => $this->cartItems,
         ]);

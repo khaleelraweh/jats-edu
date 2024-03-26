@@ -78,7 +78,8 @@
                                                             Remove
                                                         </a> <br>
                                                         <a href="#" class="remove" aria-label="Remove this item">
-                                                            <i class="far fa-trash-alt text-secondary font-size-sm"></i>
+                                                            <i
+                                                                class="fas fa-sort-amount-down text-secondary font-size-sm"></i>
                                                             Move to Wishlist
                                                         </a>
                                                     </td>
@@ -121,13 +122,14 @@
                                 <tr class="cart-subtotal">
                                     <th>Subtotal</th>
                                     <td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><span
-                                                class="woocommerce-Price-currencySymbol">£</span>109.95</span></td>
+                                                class="woocommerce-Price-currencySymbol"></span>{{ $totalPrice }}</span>
+                                    </td>
                                 </tr>
 
                                 <tr class="order-total">
                                     <th>Total</th>
                                     <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><span
-                                                    class="woocommerce-Price-currencySymbol">£</span>109.95</span></strong>
+                                                    class="woocommerce-Price-currencySymbol"></span>{{ $totalPrice }}</span></strong>
                                     </td>
                                 </tr>
                             </tbody>

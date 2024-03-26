@@ -3,6 +3,8 @@
   'course-single.review-component' => 'App\\Http\\Livewire\\CourseSingle\\ReviewComponent',
   'frontend.blogs.blog-list-component' => 'App\\Http\\Livewire\\Frontend\\Blogs\\BlogListComponent',
   'frontend.blogs.blog-review-component' => 'App\\Http\\Livewire\\Frontend\\Blogs\\BlogReviewComponent',
+  'frontend.courses.add-to-cart-component' => 'App\\Http\\Livewire\\Frontend\\Courses\\AddToCartComponent',
+  'frontend.courses.add-to-wishlist-component' => 'App\\Http\\Livewire\\Frontend\\Courses\\AddToWishlistComponent',
   'frontend.courses.course-list-component' => 'App\\Http\\Livewire\\Frontend\\Courses\\CourseListComponent',
   'frontend.event-list.event-list-component' => 'App\\Http\\Livewire\\Frontend\\EventList\\EventListComponent',
   'frontend.event-list.event-review-component' => 'App\\Http\\Livewire\\Frontend\\EventList\\EventReviewComponent',

@@ -44,14 +44,12 @@
                         {{ $course->subtitle }}
                     </p>
 
-                    <a href="#"
-                        class="badge badge-lg badge-rounded-circle badge-secondary font-size-base badge-float badge-float-inside top-0 text-white">
-                        <i class="far fa-heart"></i>
-                    </a>
+                    {{-- add to wishlist --}}
+                    @livewire('frontend.courses.add-to-wishlist-component', ['courseId' => $course->id])
                 </div>
 
                 <!-- COURSE META
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -1468,8 +1466,9 @@
                             <span class="ms-2 ">2 days left at this price!</span>
                         </div>
 
-                        <button class="btn btn-primary btn-block mb-3" type="button"
-                            name="button">{{ __('transf.btn_buy_now') }}</button>
+                        {{-- Add to cart --}}
+                        @livewire('frontend.courses.add-to-cart-component', ['courseId' => $course->id])
+
                         <button class="btn btn-orange btn-block mb-6" type="button"
                             name="button">{{ __('transf.btn_enroll') }}</button>
 

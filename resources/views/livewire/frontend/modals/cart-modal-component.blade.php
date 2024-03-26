@@ -33,7 +33,8 @@
                         <div class="font-size-sm">1 × {{ currency_converter($item->price) }}</div>
                     </div>
 
-                    <a href="#" class="d-inline-flex text-secondary">
+                    <a href="#" wire:click.prevent="removeFromCart('{{ $item->rowId }}')"
+                        class="d-inline-flex text-secondary">
                         <!-- Icon -->
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                             xmlns="http://www.w3.org/2000/svg">

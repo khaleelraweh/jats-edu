@@ -26,4 +26,16 @@ class CartModalComponent extends Component
             'cartItems' => $this->cartItems,
         ]);
     }
+
+    public function removeFromCart($rowId)
+    {
+
+        $cart = Cart::content()->where('rowId', $rowId);
+        if ($cart->isNotEmpty()) {
+            Cart::remove($rowId);
+        }
+        // Cart::instance('default')->remove($rowId);
+        $this->emit('updateCartCount');
+        $this->alert('success', __('panel.f_m_item_removed_from_shop_cart'));
+    }
 }

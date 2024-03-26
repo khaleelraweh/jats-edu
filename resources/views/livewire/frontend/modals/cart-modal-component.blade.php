@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="flex-grow-1 mt-1 ms-4">
-                        <h6 class="fw-normal mb-0">{{ $item->name }}</h6>
+                        <h6 class="fw-normal mb-0">{{ $item->model->title }}</h6>
                         <div class="font-size-sm">1 × {{ currency_converter($item->price) }}</div>
                     </div>
 

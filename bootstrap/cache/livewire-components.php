@@ -12,5 +12,6 @@
   'frontend.home.featured-courses-component' => 'App\\Http\\Livewire\\Frontend\\Home\\FeaturedCoursesComponent',
   'frontend.home.trending-categories-component' => 'App\\Http\\Livewire\\Frontend\\Home\\TrendingCategoriesComponent',
   'frontend.modals.cart-modal-component' => 'App\\Http\\Livewire\\Frontend\\Modals\\CartModalComponent',
+  'frontend.shop-cart.shop-cart-component' => 'App\\Http\\Livewire\\Frontend\\ShopCart\\ShopCartComponent',
   'instructors.instructors-list-coponent' => 'App\\Http\\Livewire\\Instructors\\InstructorsListCoponent',
 );

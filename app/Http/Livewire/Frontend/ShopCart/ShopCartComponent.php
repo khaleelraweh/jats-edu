@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Livewire\Frontend\Modals;
+namespace App\Http\Livewire\Frontend\ShopCart;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
-class CartModalComponent extends Component
+class ShopCartComponent extends Component
 {
+
     use LivewireAlert;
 
     protected $listeners = [
@@ -22,7 +23,7 @@ class CartModalComponent extends Component
         $this->cartItems = Cart::instance('default')->content();
         $this->totalPrice = currency_converter(Cart::total());
 
-        return view('livewire.frontend.modals.cart-modal-component', [
+        return view('livewire.frontend.shop-cart.shop-cart-component', [
             'cartItems' => $this->cartItems,
             'totalPrice'    =>  $this->totalPrice,
         ]);

@@ -49,8 +49,11 @@ class FrontendController extends Controller
             ->get();
 
         $events = Post::with('photos')->where('section', 1)->orderBy('created_at', 'ASC')->get();
+        $posts = Post::with('photos')->where('section', 2)->orderBy('created_at', 'ASC')->get();
 
-        return view('frontend.index', compact('main_sliders', 'lecturers', 'events'));
+
+
+        return view('frontend.index', compact('main_sliders', 'lecturers', 'events', 'posts'));
     }
     public function home()
     {

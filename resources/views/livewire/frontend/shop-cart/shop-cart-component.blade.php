@@ -71,7 +71,9 @@
                                                                 class="woocommerce-Price-currencySymbol"></span>{{ currency_converter($item->price) }}</span>
                                                     </td>
                                                     <td class="product-remove">
-                                                        <a href="#" class="remove" aria-label="Remove this item">
+                                                        <a href="#"
+                                                            wire:click.prevent="removeFromCart('{{ $item->rowId }}')"
+                                                            class="remove" aria-label="Remove this item">
                                                             <i class="far fa-trash-alt text-secondary font-size-sm"></i>
                                                             Remove
                                                         </a> <br>
@@ -83,6 +85,21 @@
 
                                                 </tr>
                                             @endforeach
+
+                                            <tr>
+                                                <td colspan="5" class="actions">
+                                                    <div class="coupon">
+                                                        <label for="coupon_code">Coupon:</label>
+                                                        <input type="text" name="coupon_code" class="input-text"
+                                                            id="coupon_code" value="" placeholder="Coupon code"
+                                                            autocomplete="off"> <input type="submit" class="button"
+                                                            name="apply_coupon" value="Apply coupon">
+                                                    </div>
+
+                                                    <input type="submit" class="button" name="update_cart"
+                                                        value="Update cart">
+                                                </td>
+                                            </tr>
 
 
                                         </tbody>

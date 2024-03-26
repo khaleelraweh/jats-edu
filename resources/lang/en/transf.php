@@ -199,6 +199,9 @@ return [
     //blog list
     'blog_list'                                         =>  'Blog List',
 
+    //blog single 
+    'btn_share_this_post'                             =>  'Share This Post',
+
 
 
 

@@ -18,9 +18,6 @@
         <img src="{{ $event_img }}" alt="..." class="img-fluid">
     </div>
 
-    {{-- {{ dd($event) }} --}}
-
-
     <div class="container">
         <div class="row">
             <div class="col-xl-10 mx-xl-auto mt-md-n10 mt-xl-n13 mb-8">
@@ -319,107 +316,6 @@
                 @livewire('frontend.event-list.event-review-component', ['eventId' => $event->id])
 
 
-                {{-- <h3 class="mb-6">Comment</h3>
-                <ul class="list-unstyled pt-2">
-                    <li class="media d-flex">
-                        <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                            <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
-                                class="avatar-img rounded-circle">
-                        </div>
-                        <div class="media-body flex-grow-1">
-                            <div class="d-md-flex align-items-center mb-5">
-                                <div class="me-auto mb-4 mb-md-0">
-                                    <h5 class="mb-0">Oscar Cafeo</h5>
-                                    <p class="font-size-sm font-italic">Beautiful courses</p>
-                                </div>
-                                <div class="star-rating">
-                                    <div class="rating" style="width:100%;"></div>
-                                </div>
-                            </div>
-                            <p class="mb-6 line-height-md">This course was well organized and covered a lot more details
-                                than any other Figma courses. I really enjoy it. One suggestion is that it can be much
-                                better if we could complete the prototype together. Since we created 24 frames, I really
-                                want to test it on Figma mirror to see all the connections. Could you please let me take a
-                                look at the complete prototype?</p>
-                        </div>
-                    </li>
-                    <li class="media d-flex">
-                        <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                            <img src="{{ asset('frontend/assets/img/avatars/avatar-2.jpg') }}" alt="..."
-                                class="avatar-img rounded-circle">
-                        </div>
-                        <div class="media-body flex-grow-1">
-                            <div class="d-md-flex align-items-center mb-5">
-                                <div class="me-auto mb-4 mb-md-0">
-                                    <h5 class="mb-0">Alex Morgan</h5>
-                                    <p class="font-size-sm font-italic">Beautiful courses</p>
-                                </div>
-                                <div class="star-rating">
-                                    <div class="rating" style="width:100%;"></div>
-                                </div>
-                            </div>
-                            <p class="mb-6 line-height-md">This course was well organized and covered a lot more details
-                                than any other Figma courses. I really enjoy it. One suggestion is that it can be much
-                                better if we could complete the prototype together. Since we created 24 frames, I really
-                                want to test it on Figma mirror to see all the connections. Could you please let me take a
-                                look at the complete prototype?</p>
-                        </div>
-                    </li>
-                </ul>
-
-                <div class="border shadow rounded p-6 p-md-9">
-                    <h3 class="mb-2">Add Reviews & Rate</h3>
-                    <div class="">What is it like to Course?</div>
-                    <form>
-                        <div class="clearfix">
-                            <fieldset class="slect-rating mb-3">
-                                <input type="radio" id="star5" name="rating" value="5" />
-                                <label class = "full" for="star5" title="Awesome - 5 stars"></label>
-
-                                <input type="radio" id="star4half" name="rating" value="4 and a half" />
-                                <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-
-                                <input type="radio" id="star4" name="rating" value="4" />
-                                <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-
-                                <input type="radio" id="star3half" name="rating" value="3 and a half" />
-                                <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-
-                                <input type="radio" id="star3" name="rating" value="3" />
-                                <label class = "full" for="star3" title="Meh - 3 stars"></label>
-
-                                <input type="radio" id="star2half" name="rating" value="2 and a half" />
-                                <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-
-                                <input type="radio" id="star2" name="rating" value="2" />
-                                <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-
-                                <input type="radio" id="star1half" name="rating" value="1 and a half" />
-                                <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-
-                                <input type="radio" id="star1" name="rating" value="1" />
-                                <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-
-                                <input type="radio" id="starhalf" name="rating" value="half" />
-                                <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                            </fieldset>
-                        </div>
-
-                        <div class="form-group mb-6">
-                            <label for="exampleInputTitle1">Review Title</label>
-                            <input type="text" class="form-control placeholder-1" id="exampleInputTitle1"
-                                placeholder="Courses">
-                        </div>
-
-                        <div class="form-group mb-6">
-                            <label for="exampleFormControlTextarea1">Review Content</label>
-                            <textarea class="form-control placeholder-1" id="exampleFormControlTextarea1" rows="6" placeholder="Content"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-block mw-md-300p">SUBMIT REVIEW</button>
-                    </form>
-                </div> --}}
-
             </div>
 
             <div class="col-lg-4">
@@ -527,32 +423,3 @@
         </div>
     </div>
 @endsection
-
-
-{{-- <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Set the target event date (replace this with your event date)
-        var eventDate = new Date("2024-04-01T00:00:00"); // Example: April 1, 2024
-
-        function updateCountdown() {
-            var now = new Date().getTime();
-            var timeLeft = eventDate - now;
-
-            var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = days;
-            document.getElementById("hours").innerText = hours;
-            document.getElementById("minutes").innerText = minutes;
-            document.getElementById("seconds").innerText = seconds;
-        }
-
-        // Update the countdown every second
-        setInterval(updateCountdown, 1000);
-
-        // Initial call to display countdown immediately
-        updateCountdown();
-    });
-</script> --}}

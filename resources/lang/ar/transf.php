@@ -160,7 +160,7 @@ return [
     'txt_course_description'                            =>  'وصف الدورة التدريبية',
     'txt_read_more'                                     =>  'إقراء اكثر',
     'txt_read_less'                                     =>  'إقراء اقل',
-    'txt_what_you_will_learn'                           =>  'ما سوف تتعلم?',
+    'txt_what_you_will_learn'                           =>  'ماذا سوف تتعلم؟',
     'txt_requirements'                                  =>  'متطلبات',
     'txt_related_courses'                               =>  'الدورات ذات الصلة',
     'txt_related_courses_desc'                          =>  'اكتشف برنامجك المثالي في دوراتنا.',
@@ -197,6 +197,10 @@ return [
 
     //blog list
     'blog_list'                                         =>  'قائمة المدونات',
+
+    //blog single 
+    'btn_share_this_post'                             =>  'مشاركة هذا المقال ',
+
 
 
 

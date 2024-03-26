@@ -138,7 +138,14 @@ class FrontendController extends Controller
 
     public function blog_single($slug)
     {
-        return view('frontend.blog-single');
+        $post = Post::with('photos')
+            ->where('slug->' . app()->getLocale(), $slug)
+            ->firstOrFail();
+
+        // Generate WhatsApp share URL
+        $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($post->name . ': ' . route('frontend.blog_single', $post->slug));
+
+        return view('frontend.blog-single', compact('post', 'whatsappShareUrl'));
     }
 
     public function instructors_list($slug = null)

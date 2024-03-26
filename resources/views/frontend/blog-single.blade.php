@@ -5,25 +5,41 @@
     <div class="container py-8 pt-lg-11">
         <div class="row">
             <div class="col-xl-8 mx-auto">
-                <h1 class="text-capitalize">Keep your face always toward the sunshine - and shadows will fall behind you.
+                <h1 class="text-capitalize">
+                    {{ $post->title }}
                 </h1>
 
-                <p class="me-xl-12">Master Figma app to get a job in UI Design, User Interface, User Experience design, Web
-                    Design & UX design.</p>
+                <p class="me-xl-12">
+                    {{ $post->subtitle }}
+                </p>
 
                 <div class="d-md-flex align-items-center">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-4">
                         <div class="p-1">
-                            <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
-                                class="rounded-circle" width="52" height="52">
+                            @php
+                                if ($post->users->first()->user_image != null) {
+                                    $user_img = asset('assets/users/' . $post->users->first()->user_image);
+
+                                    if (
+                                        !file_exists(public_path('assets/users/' . $post->users->first()->user_image))
+                                    ) {
+                                        $user_img = asset('assets/users/no_image_found.webp');
+                                    }
+                                } else {
+                                    $user_img = asset('assets/users/no_image_found.webp');
+                                }
+                            @endphp
+                            <img src="{{ $user_img }}" alt="{{ $post->users->first()->full_name }}" class="rounded-circle"
+                                width="52" height="52">
                         </div>
                     </div>
 
                     <div class="mb-4 mb-md-0">
                         <a href="#" class="d-block">
-                            <h6 class="mb-0">Alison Dawn</h6>
+                            <h6 class="mb-0">{{ $post->users->first()->full_name }}</h6>
                         </a>
-                        <span class="font-size-sm">April 06, 2020</span>
+                        <span
+                            class="font-size-sm">{{ $post->created_at ? \Carbon\Carbon::parse($post->created_at)->translatedFormat('d F Y') : null }}</span>
                     </div>
                 </div>
             </div>
@@ -31,67 +47,63 @@
     </div>
 
     <div class="mb-8 sk-thumbnail img-ratio-7">
-        <img src="{{ asset('frontend/assets/img/covers/cover-20.jpg') }}" alt="..." class="img-fluid">
+        @php
+            if ($post->photos->first() != null && $post->photos->first()->file_name != null) {
+                $post_img = asset('assets/posts/' . $post->photos->first()->file_name);
+
+                if (!file_exists(public_path('assets/posts/' . $post->photos->first()->file_name))) {
+                    $post_img = asset('assets/posts/no_image_found.webp');
+                }
+            } else {
+                $post_img = asset('assets/posts/no_image_found.webp');
+            }
+        @endphp
+        <img src="{{ $post_img }}" alt="..." class="img-fluid">
     </div>
 
     <div class="container">
         <div class="row mb-8 mb-md-12">
             <div class="col-xl-8 mx-auto">
                 <h3 class="">Course Description</h3>
-                <p class="mb-6 line-height-md">Aliquam hendrerit sollicitudin purus, quis rutrum mi accumsan nec. Quisque
-                    bibendum orci ac nibh facilisis, at malesuada orci congue. Nullam tempus sollicitudin cursus. Ut et
-                    adipiscing erat. Curabitur this is a text link libero tempus congue.</p>
-                <p class="mb-6 line-height-md">Duis mattis laoreet neque, et ornare neque sollicitudin at. Proin sagittis
-                    dolor sed mi elementum pretium. Donec et justo ante. Vivamus egestas sodales est, eu rhoncus urna semper
-                    eu. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer
-                    tristique elit lobortis purus bibendum, quis dictum metus mattis. Phasellus posuere felis sed eros
-                    porttitor mattis. Curabitur massa magna, tempor in blandit id, porta in ligula. Aliquam laoreet nisl
-                    massa, at interdum mauris sollicitudin et.</p>
+                <p class="mb-6 line-height-md">
+                    {!! $post->description !!}
+                </p>
 
-                <blockquote>
-                    <p>Aliquam hendrerit sollicitudin purus, quis rutrum mi accumsan nec. Quisque bibendum orci ac nibh
-                        facilisis, at malesuada orci congue.
-                        <cite>Luis Pickford</cite>
-                    </p>
-                </blockquote>
-
-                <h3 class="mb-5">What you'll learn</h3>
-                <div class="row row-cols-lg-2 mb-8">
-                    <div class="col-md">
-                        <ul class="list-style-v1 list-unstyled">
-                            <li>Become a UI/UX designer.</li>
-                            <li>You will be able to start earning money skills.</li>
-                            <li>Build a UI project from beginning to end.</li>
-                            <li>Work with colors & fonts.</li>
-                            <li>You will create your own UI Kit.</li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md">
-                        <ul class="list-style-v1 list-unstyled ms-xl-6">
-                            <li>Build & test a complete mobile app.</li>
-                            <li>Learn to design mobile apps & websites.</li>
-                            <li>Design 3 different logos.</li>
-                            <li>Create low-fidelity wireframe.</li>
-                            <li>Downloadable exercise files.</li>
-                        </ul>
-                    </div>
+                {{-- topics section  --}}
+                <h3 class="mb-5">{{ __('transf.txt_what_you_will_learn') }}</h3>
+                <div class="row row-cols-lg-2 mb-8 list-style-v1 list-unstyled ">
+                    @foreach ($post->topics as $topic)
+                        <li class="col-sm-6">{{ $topic->title }}</li>
+                    @endforeach
                 </div>
 
-                <img src="{{ asset('frontend/assets/img/covers/cover-21.jpg') }}" alt="..."
-                    class="img-fluid rounded mb-8">
+                @php
+                    if ($post->photos->last() != null && $post->photos->last()->file_name != null) {
+                        $post_img = asset('assets/posts/' . $post->photos->last()->file_name);
 
-                <h3 class="mb-5">Requirements</h3>
+                        if (!file_exists(public_path('assets/posts/' . $post->photos->last()->file_name))) {
+                            $post_img = asset('assets/posts/no_image_found.webp');
+                        }
+                    } else {
+                        $post_img = asset('assets/posts/no_image_found.webp');
+                    }
+                @endphp
+
+                <img src="{{ $post_img }}" alt="..." class="img-fluid rounded mb-8">
+
+                {{-- requirements --}}
+                <h3 class="mb-5">{{ __('transf.txt_requirements') }}</h3>
                 <ul class="list-style-v2 list-unstyled mb-10">
-                    <li>We do not require any previous experience or pre-defined skills to take this course. A great
-                        orientation would be enough to master UI/UX design.</li>
-                    <li>A computer with a good internet connection.</li>
-                    <li>Adobe Photoshop (OPTIONAL)</li>
+                    @foreach ($post->requirements as $requirement)
+                        <li>{{ $requirement->title }}</li>
+                    @endforeach
+
                 </ul>
 
                 <div class="row mb-6 mb-md-10 align-items-center">
                     <div class="col-md-4 mb-5 mb-md-2">
-                        <a href="#" class="text-teal fw-medium d-flex align-items-center">
+                        <a href="{{ $whatsappShareUrl }}" target="_blank"
+                            class="text-teal fw-medium d-flex align-items-center">
                             <!-- Icon -->
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -112,7 +124,7 @@
                                     fill="currentColor" />
                             </svg>
 
-                            <span class="ms-3">Share This Post</span>
+                            <span class="ms-3">{{ __('transf.btn_share_this_post') }}</span>
                         </a>
                     </div>
 
@@ -125,106 +137,8 @@
                     </div>
                 </div>
 
-                <h3 class="mb-6">Comment</h3>
-                <ul class="list-unstyled pt-2">
-                    <li class="media d-flex">
-                        <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                            <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
-                                class="avatar-img rounded-circle">
-                        </div>
-                        <div class="media-body flex-shrink-1">
-                            <div class="d-md-flex align-items-center mb-5">
-                                <div class="me-auto mb-4 mb-md-0">
-                                    <h5 class="mb-0">Oscar Cafeo</h5>
-                                    <p class="font-size-sm font-italic">Beautiful courses</p>
-                                </div>
-                                <div class="star-rating">
-                                    <div class="rating" style="width:100%;"></div>
-                                </div>
-                            </div>
-                            <p class="mb-6 line-height-md">This course was well organized and covered a lot more details
-                                than any other Figma courses. I really enjoy it. One suggestion is that it can be much
-                                better if we could complete the prototype together. Since we created 24 frames, I really
-                                want to test it on Figma mirror to see all the connections. Could you please let me take a
-                                look at the complete prototype?</p>
-                        </div>
-                    </li>
-                    <li class="media d-flex">
-                        <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                            <img src="{{ asset('frontend/assets/img/avatars/avatar-2.jpg') }}" alt="..."
-                                class="avatar-img rounded-circle">
-                        </div>
-                        <div class="media-body flex-shrink-1">
-                            <div class="d-md-flex align-items-center mb-5">
-                                <div class="me-auto mb-4 mb-md-0">
-                                    <h5 class="mb-0">Alex Morgan</h5>
-                                    <p class="font-size-sm font-italic">Beautiful courses</p>
-                                </div>
-                                <div class="star-rating">
-                                    <div class="rating" style="width:100%;"></div>
-                                </div>
-                            </div>
-                            <p class="mb-6 line-height-md">This course was well organized and covered a lot more details
-                                than any other Figma courses. I really enjoy it. One suggestion is that it can be much
-                                better if we could complete the prototype together. Since we created 24 frames, I really
-                                want to test it on Figma mirror to see all the connections. Could you please let me take a
-                                look at the complete prototype?</p>
-                        </div>
-                    </li>
-                </ul>
-
-                <div class="border shadow rounded p-6 p-md-9">
-                    <h3 class="mb-2">Add Reviews & Rate</h3>
-                    <div class="">What is it like to Course?</div>
-                    <form>
-                        <div class="clearfix">
-                            <fieldset class="slect-rating mb-3">
-                                <input type="radio" id="star5" name="rating" value="5" />
-                                <label class = "full" for="star5" title="Awesome - 5 stars"></label>
-
-                                <input type="radio" id="star4half" name="rating" value="4 and a half" />
-                                <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-
-                                <input type="radio" id="star4" name="rating" value="4" />
-                                <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-
-                                <input type="radio" id="star3half" name="rating" value="3 and a half" />
-                                <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-
-                                <input type="radio" id="star3" name="rating" value="3" />
-                                <label class = "full" for="star3" title="Meh - 3 stars"></label>
-
-                                <input type="radio" id="star2half" name="rating" value="2 and a half" />
-                                <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-
-                                <input type="radio" id="star2" name="rating" value="2" />
-                                <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-
-                                <input type="radio" id="star1half" name="rating" value="1 and a half" />
-                                <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-
-                                <input type="radio" id="star1" name="rating" value="1" />
-                                <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-
-                                <input type="radio" id="starhalf" name="rating" value="half" />
-                                <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                            </fieldset>
-                        </div>
-
-                        <div class="form-group mb-6">
-                            <label for="exampleInputTitle1">Review Title</label>
-                            <input type="text" class="form-control placeholder-1" id="exampleInputTitle1"
-                                placeholder="Courses">
-                        </div>
-
-                        <div class="form-group mb-6">
-                            <label for="exampleFormControlTextarea1">Review Content</label>
-                            <textarea class="form-control placeholder-1" id="exampleFormControlTextarea1" rows="6" placeholder="Content"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-block mw-md-300p">SUBMIT REVIEW</button>
-                    </form>
-                </div>
+                {{-- blog reviews --}}
+                @livewire('frontend.blogs.blog-review-component', ['postId' => $post->id])
             </div>
         </div>
 

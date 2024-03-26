@@ -201,6 +201,8 @@ return [
 
     //blog single 
     'btn_share_this_post'                             =>  'Share This Post',
+    'browse_all'                                      =>    'Browse All',
+
 
 
 

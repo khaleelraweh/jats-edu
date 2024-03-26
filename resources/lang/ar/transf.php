@@ -200,6 +200,7 @@ return [
 
     //blog single 
     'btn_share_this_post'                             =>  'مشاركة هذا المقال ',
+    'browse_all'                                      =>    'تصفح الكل',
 
 
 

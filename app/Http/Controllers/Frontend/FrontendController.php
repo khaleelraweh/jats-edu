@@ -145,10 +145,12 @@ class FrontendController extends Controller
             ->where('slug->' . app()->getLocale(), $slug)
             ->firstOrFail();
 
+        $latest_posts = Post::with('photos')->where('section', 2)->orderBy('created_at', 'ASC')->get();
+
         // Generate WhatsApp share URL
         $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($post->name . ': ' . route('frontend.blog_single', $post->slug));
 
-        return view('frontend.blog-single', compact('post', 'whatsappShareUrl'));
+        return view('frontend.blog-single', compact('post', 'latest_posts',  'whatsappShareUrl'));
     }
 
     public function instructors_list($slug = null)

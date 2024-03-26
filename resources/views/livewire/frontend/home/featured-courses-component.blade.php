@@ -96,7 +96,10 @@
                                 </div>
 
                                 @php
-                                    if ($featured_course->photos->first()->file_name != null) {
+                                    if (
+                                        $featured_course->photos->first() != null &&
+                                        $featured_course->photos->first()->file_name != null
+                                    ) {
                                         $featured_course_img = asset(
                                             'assets/courses/' . $featured_course->photos->first()->file_name,
                                         );

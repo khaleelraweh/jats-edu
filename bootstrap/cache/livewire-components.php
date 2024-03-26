@@ -11,5 +11,6 @@
   'frontend.header.cart-counts-component' => 'App\\Http\\Livewire\\Frontend\\Header\\CartCountsComponent',
   'frontend.home.featured-courses-component' => 'App\\Http\\Livewire\\Frontend\\Home\\FeaturedCoursesComponent',
   'frontend.home.trending-categories-component' => 'App\\Http\\Livewire\\Frontend\\Home\\TrendingCategoriesComponent',
+  'frontend.modals.cart-modal-component' => 'App\\Http\\Livewire\\Frontend\\Modals\\CartModalComponent',
   'instructors.instructors-list-coponent' => 'App\\Http\\Livewire\\Instructors\\InstructorsListCoponent',
 );

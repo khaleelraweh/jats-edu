@@ -49,7 +49,7 @@
                 </div>
 
                 <!-- COURSE META
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ================================================== -->
                 <div class="d-md-flex align-items-center mb-5 course-single-white">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
@@ -1649,7 +1649,10 @@
                                         class="w-100p d-block me-5">
 
                                         @php
-                                            if ($latest_course->photos->first()->file_name != null) {
+                                            if (
+                                                $latest_course->photos->first() != null &&
+                                                $latest_course->photos->first()->file_name != null
+                                            ) {
                                                 $latest_course_img = asset(
                                                     'assets/courses/' . $latest_course->photos->first()->file_name,
                                                 );

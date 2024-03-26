@@ -17,9 +17,7 @@ class ReviewComponent extends Component
     public $courseId;
     public function render()
     {
-
         $course = Course::with('reviews')->find($this->courseId);
-
         $totalReviews = $course->reviews->count();
         $totalRatings = $course->reviews->sum('rating');
 

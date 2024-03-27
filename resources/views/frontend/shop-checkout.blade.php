@@ -33,162 +33,58 @@
                     <div class="woocommerce-billing-fields">
                         <h3>Billing details</h3>
 
-
-
-                        {{-- <div id="accordionCurriculum">
-                            <div class="border rounded shadow mb-6 overflow-hidden">
-                                <div class="d-flex align-items-center" id="curriculumheadingOne">
-                                    <h5 class="mb-0 w-100">
-                                        <button
-                                            class="d-flex align-items-center p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one collapsed"
-                                            type="button" data-bs-toggle="collapse" data-bs-target="#CurriculumcollapseOne"
-                                            aria-expanded="false" aria-controls="CurriculumcollapseOne">
-                                            <span class="me-4 text-dark d-flex">
-                                                <!-- Icon -->
-                                                <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="15" height="2" fill="currentColor"></rect>
-                                                </svg>
-
-                                                <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M0 7H15V9H0V7Z" fill="currentColor"></path>
-                                                    <path d="M6 16L6 8.74228e-08L8 0L8 16H6Z" fill="currentColor"></path>
-                                                </svg>
-
-                                            </span>
-
-                                            Introduction
-                                        </button>
-                                    </h5>
-                                </div>
-
-                                <div id="CurriculumcollapseOne" class="collapse" aria-labelledby="curriculumheadingOne"
-                                    data-parent="#accordionCurriculum" style="">
-                                    <div class="border-top px-5 py-4 min-height-70 d-md-flex align-items-center">
-                                        <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
-
-                                            <div class="ms-4">
-                                                Introduction to the course
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="border rounded shadow mb-6 overflow-hidden">
-                                <div class="d-flex align-items-center" id="curriculumheadingTwo">
-                                    <h5 class="mb-0 w-100">
-                                        <button
-                                            class="d-flex align-items-center p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one"
-                                            type="button" data-bs-toggle="collapse" data-bs-target="#CurriculumcollapseTwo"
-                                            aria-expanded="true" aria-controls="CurriculumcollapseTwo">
-                                            <span class="me-4 text-dark d-flex">
-                                                <!-- Icon -->
-                                                <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="15" height="2" fill="currentColor"></rect>
-                                                </svg>
-
-                                                <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M0 7H15V9H0V7Z" fill="currentColor"></path>
-                                                    <path d="M6 16L6 8.74228e-08L8 0L8 16H6Z" fill="currentColor"></path>
-                                                </svg>
-
-                                            </span>
-
-                                            Design Basics
-                                        </button>
-                                    </h5>
-                                </div>
-
-                                <div id="CurriculumcollapseTwo" class="collapse show" aria-labelledby="curriculumheadingTwo"
-                                    data-parent="#accordionCurriculum">
-                                    <div class="border-top px-5 py-4 min-height-70 d-md-flex align-items-center">
-                                        <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
-
-
-                                            <div class="ms-4">
-                                                Intro to Design Basics
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div> --}}
-
-
                         <div id="accordionCurriculum">
+                            <!-- Accordion panel 1 -->
                             <div class="border rounded mb-1 overflow-hidden">
+                                <!-- Accordion heading as radio button -->
                                 <div class="d-flex align-items-center" id="curriculumheadingOne">
                                     <h5 class="mb-0 w-100">
-                                        <button
-                                            class="d-flex align-items-center p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one"
-                                            type="button" data-bs-toggle="collapse" data-bs-target="#CurriculumcollapseOne"
-                                            aria-expanded="false" aria-controls="CurriculumcollapseOne">
-                                            <span class="me-4 text-dark d-flex">
-                                                <!-- Icon -->
-                                                <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="15" height="2" fill="currentColor"></rect>
-                                                </svg>
-                                                <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M0 7H15V9H0V7Z" fill="currentColor"></path>
-                                                    <path d="M6 16L6 8.74228e-08L8 0L8 16H6Z" fill="currentColor"></path>
-                                                </svg>
-                                            </span>
+                                        <label
+                                            class="d-flex align-items-center p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one">
+                                            <input type="radio" class="accordion-radio me-4 text-dark d-flex"
+                                                name="paymentMethod" value="paypal" data-bs-toggle="collapse"
+                                                data-bs-target="#CurriculumcollapseOne" aria-expanded="false"
+                                                aria-controls="CurriculumcollapseOne">
+
                                             Paypal
-                                        </button>
+                                        </label>
                                     </h5>
                                 </div>
+                                <!-- Accordion content -->
                                 <div id="CurriculumcollapseOne" class="collapse" aria-labelledby="curriculumheadingOne"
                                     data-bs-parent="#accordionCurriculum">
+                                    <!-- Content for PayPal -->
                                     <div class="border-top px-5 py-4 min-height-70 d-md-flex align-items-center">
                                         <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
                                             <div class="ms-4">
                                                 <p>Pay via PayPal; you can pay with your credit card if you don’t have a
-                                                    PayPal
-                                                    account.
-                                                </p>
+                                                    PayPal account.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- Accordion panel 2 -->
                             <div class="border rounded shadow mb-6 overflow-hidden">
+                                <!-- Accordion heading as radio button -->
                                 <div class="d-flex align-items-center" id="curriculumheadingTwo">
                                     <h5 class="mb-0 w-100">
-                                        <button
-                                            class="d-flex align-items-center p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one"
-                                            type="button" data-bs-toggle="collapse" data-bs-target="#CurriculumcollapseTwo"
-                                            aria-expanded="false" aria-controls="CurriculumcollapseTwo">
-                                            <span class="me-4 text-dark d-flex">
-                                                <!-- Icon -->
-                                                <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="15" height="2" fill="currentColor"></rect>
-                                                </svg>
-                                                <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M0 7H15V9H0V7Z" fill="currentColor"></path>
-                                                    <path d="M6 16L6 8.74228e-08L8 0L8 16H6Z" fill="currentColor"></path>
-                                                </svg>
-                                            </span>
-                                            Credit/Depit Card
-                                        </button>
+                                        <label
+                                            class="d-flex align-items-center p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one">
+                                            <input type="radio" class="accordion-radio me-4 text-dark d-flex"
+                                                name="paymentMethod" value="creditDebit" data-bs-toggle="collapse"
+                                                data-bs-target="#CurriculumcollapseTwo" aria-expanded="false"
+                                                aria-controls="CurriculumcollapseTwo">
+
+                                            Credit/Debit Card
+                                        </label>
                                     </h5>
                                 </div>
+                                <!-- Accordion content -->
                                 <div id="CurriculumcollapseTwo" class="collapse" aria-labelledby="curriculumheadingTwo"
                                     data-bs-parent="#accordionCurriculum">
+                                    <!-- Content for Credit/Debit Card -->
                                     <div class="border-top px-5 py-4 min-height-70 d-md-flex align-items-center">
                                         <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
                                             <div class="ms-4">
@@ -232,65 +128,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        {{-- checkout payment method using radio  --}}
-                        <div class="using_radio d-none">
-                            <div class="d-block w-100 ">
-                                <input id="payment_method_paypal" type="radio" class="input-radio"
-                                    name="payment_method" value="paypal" checked="checked"
-                                    onclick="showPayPalMessage()">
-                                <label for="payment_method_paypal">PayPal</label>
-                            </div>
-
-                            <div id="paypal_message" class="payment_box payment_method_paypal" style="display: block;">
-                                <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
-                                    account.
-                                </p>
-                            </div>
-
-                            <div class="d-block w-100 ">
-                                <input id="payment_method_credit_card" type="radio" class="input-radio"
-                                    name="payment_method" value="credit_card" onclick="showCreditCardForm()">
-                                <label for="payment_method_credit_card">Credit Card</label>
-                            </div>
-
-                            <div id="credit_card_form" class="woocommerce-billing-fields__field-wrapper"
-                                style="display: none;">
-                                <p class="form-row form-row-last validate-required validate-email"
-                                    id="billing_email_field" data-priority="110">
-                                    <label for="billing_name" class="">Name on Card <abbr class="required"
-                                            title="required">*</abbr></label>
-                                    <input type="text" class="input-text " name="billing_name" id="billing_name"
-                                        placeholder="Name on Card" value="" autocomplete="name">
-                                </p>
-                                <p class="form-row form-row-last validate-required validate-email"
-                                    id="billing_email_field" data-priority="110">
-                                    <label for="billing_number" class="">Card Number <abbr class="required"
-                                            title="required">*</abbr></label>
-                                    <input type="text" class="input-text " name="billing_number" id="billing_number"
-                                        placeholder="1234 5678 9012 3456" value="" autocomplete="number">
-                                </p>
-
-                                <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field"
-                                    id="billing_first_name_field" data-priority="10">
-                                    <label for="billing_expiry_date" class="">Expiry date <abbr class="required"
-                                            title="required">*</abbr></label>
-                                    <input type="text" class="input-text " name="billing_expiry_date"
-                                        id="billing_expiry_date" placeholder="MM/YY" value=""
-                                        autocomplete="expiry_date" autofocus="autofocus">
-                                </p>
-                                <p class="form-row form-row-last validate-required" id="billing_last_name_field"
-                                    data-priority="20">
-                                    <label for="billing_cvc" class="">CVC/CVV<abbr class="required"
-                                            title="required">*</abbr></label>
-                                    <input type="text" class="input-text " name="billing_cvc" id="billing_cvc"
-                                        placeholder="CVC" value="" autocomplete="CVC">
-                                </p>
-
-
-
                             </div>
                         </div>
 
@@ -443,31 +280,18 @@
 @endsection
 
 @section('script')
-    {{-- using Accordions --}}
+    <!-- Script to toggle accordion panels based on radio button change -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var radios = document.querySelectorAll('.accordion-radio');
             radios.forEach(function(radio) {
                 radio.addEventListener('change', function() {
-                    var target = this.getAttribute('id').replace('accordionRadio',
-                        'Curriculumcollapse');
-                    var collapse = document.getElementById(target);
+                    var target = this.getAttribute('data-bs-target');
+                    var collapse = document.querySelector(target);
                     var bsCollapse = new bootstrap.Collapse(collapse);
                     bsCollapse.toggle();
                 });
             });
         });
-    </script>
-    {{-- using raido inputs --}}
-    <script>
-        function showPayPalMessage() {
-            document.getElementById("paypal_message").style.display = "flex";
-            document.getElementById("credit_card_form").style.display = "none";
-        }
-
-        function showCreditCardForm() {
-            document.getElementById("credit_card_form").style.display = "flex";
-            document.getElementById("paypal_message").style.display = "none";
-        }
     </script>
 @endsection

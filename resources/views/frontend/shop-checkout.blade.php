@@ -142,7 +142,7 @@
                                             <th class="product-total">Total</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="check-product-list">
                                         @foreach (Cart::instance('default')->content() as $item)
                                             <tr class="woocommerce-cart-form__cart-item cart_item">
                                                 <td style="border-bottom: 1px solid #e7e7ec;" class="product-name"
@@ -183,9 +183,9 @@
                                                             <img src="{{ $item_model_img }}"
                                                                 class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image "
                                                                 alt="{{ $item->model->title }}"
-                                                                style="border: 1px solid #e7e7ec;border-radius: .25rem;box-shadow: 0 .5rem .937rem rgba(140,152,164,.1);max-width: 100px;height:50px ">
+                                                                style="border: 1px solid #e7e7ec;border-radius: .25rem;box-shadow: 0 .5rem .937rem rgba(140,152,164,.1);max-width: 100px;height:50px; width:70px; ">
                                                         </a>
-                                                        <div class="ms-6">
+                                                        <div class="ms-3 ms-md-6">
                                                             <a
                                                                 href="{{ route('frontend.course_single', $item->model->slug) }}">{{ $item->model->title }}</a>
                                                         </div>

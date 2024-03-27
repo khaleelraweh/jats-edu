@@ -138,50 +138,72 @@
                                 <table class="shop_table woocommerce-checkout-review-order-table">
                                     <thead>
                                         <tr>
-                                            <th class="product-name">Product</th>
+                                            <th class="product-name">Courses</th>
                                             <th class="product-total">Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="cart_item">
-                                            <td class="product-name">
-                                                Hoodie
-                                                <strong class="product-quantity">× 2</strong>
-                                            </td>
-                                            <td class="product-total">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <span class="woocommerce-Price-currencySymbol">$</span>
-                                                    59.00
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr class="cart_item">
-                                            <td class="product-name">
-                                                Seo Books
-                                                <strong class="product-quantity">× 1</strong>
-                                            </td>
-                                            <td class="product-total">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <span class="woocommerce-Price-currencySymbol">$</span>
-                                                    67.00
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr class="cart-subtotal">
-                                            <th>Subtotal</th>
-                                            <td><span class="woocommerce-Price-amount amount"><span
-                                                        class="woocommerce-Price-currencySymbol">$</span>109.95</span></td>
-                                        </tr>
+                                        @foreach (Cart::instance('default')->content() as $item)
+                                            <tr class="woocommerce-cart-form__cart-item cart_item">
+                                                <td style="border-bottom: 1px solid #e7e7ec;" class="product-name"
+                                                    data-title="Product">
+                                                    <div class="d-flex align-items-center">
+                                                        <a
+                                                            href="{{ route('frontend.course_single', $item->model->slug) }}">
+                                                            @php
+                                                                if (
+                                                                    $item->model->photos->first() != null &&
+                                                                    $item->model->photos->first()->file_name != null
+                                                                ) {
+                                                                    $item_model_img = asset(
+                                                                        'assets/courses/' .
+                                                                            $item->model->photos->first()->file_name,
+                                                                    );
 
-                                        <tr class="order-total">
-                                            <th>Total</th>
-                                            <td><strong><span class="woocommerce-Price-amount amount"><span
-                                                            class="woocommerce-Price-currencySymbol">$</span>109.95</span></strong>
-                                            </td>
-                                        </tr>
-                                    </tfoot>
+                                                                    if (
+                                                                        !file_exists(
+                                                                            public_path(
+                                                                                'assets/courses/' .
+                                                                                    $item->model->photos->first()
+                                                                                        ->file_name,
+                                                                            ),
+                                                                        )
+                                                                    ) {
+                                                                        $item_model_img = asset(
+                                                                            'assets/courses/no_image_found.webp',
+                                                                        );
+                                                                    }
+                                                                } else {
+                                                                    $item_model_img = asset(
+                                                                        'assets/courses/no_image_found.webp',
+                                                                    );
+                                                                }
+                                                            @endphp
+
+                                                            <img src="{{ $item_model_img }}"
+                                                                class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image "
+                                                                alt="{{ $item->model->title }}"
+                                                                style="border: 1px solid #e7e7ec;border-radius: .25rem;box-shadow: 0 .5rem .937rem rgba(140,152,164,.1);max-width: 100px;height:50px ">
+                                                        </a>
+                                                        <div class="ms-6">
+                                                            <a
+                                                                href="{{ route('frontend.course_single', $item->model->slug) }}">{{ $item->model->title }}</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                                <td style="border-bottom: 1px solid #e7e7ec;" class="product-subtotal"
+                                                    data-title="Total">
+                                                    <span class="woocommerce-Price-amount amount"><span
+                                                            class="woocommerce-Price-currencySymbol"></span>{{ currency_converter($item->price) }}</span>
+                                                </td>
+
+
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+
                                 </table>
                             </div>
 
@@ -192,7 +214,7 @@
 
 
             </div>
-
+            {{-- checkout summary --}}
             <div id="order_review" class="woocommerce-checkout-review-order">
                 <div class="woocommerce-checkout-review-order-inner">
                     <h3 id="order_review_heading">Summary</h3>

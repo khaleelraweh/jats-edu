@@ -62,6 +62,7 @@
 
 <body class="{{ request()->routeIs('frontend.index') ? '' : 'bg-white' }}">
 
+    @yield('style')
 
 
     <div id="app">
@@ -114,9 +115,10 @@
     <script src="{{ asset('frontend/assets/libs/smooth-scroll/dist/smooth-scroll.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/libs/typed.js/lib/typed.min.js') }}"></script>
 
-
     <!-- Theme JS -->
     <script src="{{ asset('frontend/assets/js/theme.min.js') }}"></script>
+
+    @yield('script')
 
     @livewireScripts
 

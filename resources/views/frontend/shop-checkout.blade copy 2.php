@@ -33,15 +33,11 @@
                     <div class="woocommerce-billing-fields">
                         <h3>Billing details</h3>
 
-
-
-
                         <div class="d-block w-100">
                             <input id="payment_method_paypal" type="radio" class="input-radio" name="payment_method"
                                 value="paypal" checked="checked" onclick="showPayPalMessage()">
                             <label for="payment_method_paypal">PayPal</label>
                         </div>
-
                         <div id="paypal_message" class="payment_box payment_method_paypal" style="display: block;">
                             <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
                                 account.
@@ -54,40 +50,25 @@
                             <label for="payment_method_credit_card">Credit Card</label>
                         </div>
 
+
+
                         <div id="credit_card_form" class="woocommerce-billing-fields__field-wrapper" style="display: none;">
+
+                            <p class="form-row form-row-wide address-field validate-required" id="billing_address_1_field"
+                                data-priority="50">
+                                <label for="billing_address_1" class="">Street address <abbr class="required"
+                                        title="required">*</abbr></label>
+                                <input type="text" class="input-text " name="billing_address_1" id="billing_address_1"
+                                    placeholder="House number and street name" value="" autocomplete="address-line1">
+                            </p>
+
                             <p class="form-row form-row-last validate-required validate-email" id="billing_email_field"
                                 data-priority="110">
-                                <label for="billing_name" class="">Name on Card <abbr class="required"
+                                <label for="billing_email" class="">Email address <abbr class="required"
                                         title="required">*</abbr></label>
-                                <input type="text" class="input-text " name="billing_name" id="billing_name"
-                                    placeholder="Name on Card" value="" autocomplete="name">
+                                <input type="email" class="input-text " name="billing_email" id="billing_email"
+                                    placeholder="" value="" autocomplete="email">
                             </p>
-                            <p class="form-row form-row-last validate-required validate-email" id="billing_email_field"
-                                data-priority="110">
-                                <label for="billing_number" class="">Card Number <abbr class="required"
-                                        title="required">*</abbr></label>
-                                <input type="text" class="input-text " name="billing_number" id="billing_number"
-                                    placeholder="1234 5678 9012 3456" value="" autocomplete="number">
-                            </p>
-
-                            <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field"
-                                id="billing_first_name_field" data-priority="10">
-                                <label for="billing_expiry_date" class="">Expiry date <abbr class="required"
-                                        title="required">*</abbr></label>
-                                <input type="text" class="input-text " name="billing_expiry_date"
-                                    id="billing_expiry_date" placeholder="MM/YY" value="" autocomplete="expiry_date"
-                                    autofocus="autofocus">
-                            </p>
-                            <p class="form-row form-row-last validate-required" id="billing_last_name_field"
-                                data-priority="20">
-                                <label for="billing_cvc" class="">CVC/CVV<abbr class="required"
-                                        title="required">*</abbr></label>
-                                <input type="text" class="input-text " name="billing_cvc" id="billing_cvc"
-                                    placeholder="CVC" value="" autocomplete="CVC">
-                            </p>
-
-
-
                         </div>
                     </div>
                 </div>
@@ -240,12 +221,12 @@
 @section('script')
     <script>
         function showPayPalMessage() {
-            document.getElementById("paypal_message").style.display = "flex";
+            document.getElementById("paypal_message").style.display = "block";
             document.getElementById("credit_card_form").style.display = "none";
         }
 
         function showCreditCardForm() {
-            document.getElementById("credit_card_form").style.display = "flex";
+            document.getElementById("credit_card_form").style.display = "block";
             document.getElementById("paypal_message").style.display = "none";
         }
     </script>

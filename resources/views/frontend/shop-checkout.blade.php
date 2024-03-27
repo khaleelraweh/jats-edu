@@ -126,7 +126,7 @@
 
 
                         <div id="accordionCurriculum">
-                            <div class="border rounded shadow mb-6 overflow-hidden">
+                            <div class="border rounded mb-1 overflow-hidden">
                                 <div class="d-flex align-items-center" id="curriculumheadingOne">
                                     <h5 class="mb-0 w-100">
                                         <button
@@ -145,7 +145,7 @@
                                                     <path d="M6 16L6 8.74228e-08L8 0L8 16H6Z" fill="currentColor"></path>
                                                 </svg>
                                             </span>
-                                            Introduction
+                                            Paypal
                                         </button>
                                     </h5>
                                 </div>
@@ -154,7 +154,10 @@
                                     <div class="border-top px-5 py-4 min-height-70 d-md-flex align-items-center">
                                         <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
                                             <div class="ms-4">
-                                                Introduction to the course
+                                                <p>Pay via PayPal; you can pay with your credit card if you don’t have a
+                                                    PayPal
+                                                    account.
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -180,7 +183,7 @@
                                                     <path d="M6 16L6 8.74228e-08L8 0L8 16H6Z" fill="currentColor"></path>
                                                 </svg>
                                             </span>
-                                            Design Basics
+                                            Credit/Depit Card
                                         </button>
                                     </h5>
                                 </div>
@@ -189,7 +192,42 @@
                                     <div class="border-top px-5 py-4 min-height-70 d-md-flex align-items-center">
                                         <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
                                             <div class="ms-4">
-                                                Intro to Design Basics
+                                                <div class="woocommerce-billing-fields__field-wrapper">
+                                                    <p class="form-row form-row-last validate-required validate-email"
+                                                        id="billing_email_field" data-priority="110">
+                                                        <label for="billing_name" class="">Name on Card <abbr
+                                                                class="required" title="required">*</abbr></label>
+                                                        <input type="text" class="input-text " name="billing_name"
+                                                            id="billing_name" placeholder="Name on Card" value=""
+                                                            autocomplete="name">
+                                                    </p>
+                                                    <p class="form-row form-row-last validate-required validate-email"
+                                                        id="billing_email_field" data-priority="110">
+                                                        <label for="billing_number" class="">Card Number <abbr
+                                                                class="required" title="required">*</abbr></label>
+                                                        <input type="text" class="input-text " name="billing_number"
+                                                            id="billing_number" placeholder="1234 5678 9012 3456"
+                                                            value="" autocomplete="number">
+                                                    </p>
+
+                                                    <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field"
+                                                        id="billing_first_name_field" data-priority="10">
+                                                        <label for="billing_expiry_date" class="">Expiry date <abbr
+                                                                class="required" title="required">*</abbr></label>
+                                                        <input type="text" class="input-text "
+                                                            name="billing_expiry_date" id="billing_expiry_date"
+                                                            placeholder="MM/YY" value="" autocomplete="expiry_date"
+                                                            autofocus="autofocus">
+                                                    </p>
+                                                    <p class="form-row form-row-last validate-required"
+                                                        id="billing_last_name_field" data-priority="20">
+                                                        <label for="billing_cvc" class="">CVC/CVV<abbr
+                                                                class="required" title="required">*</abbr></label>
+                                                        <input type="text" class="input-text " name="billing_cvc"
+                                                            id="billing_cvc" placeholder="CVC" value=""
+                                                            autocomplete="CVC">
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -197,89 +235,65 @@
                             </div>
                         </div>
 
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                                var accordions = document.querySelectorAll('.collapse-accordion-toggle');
-                                accordions.forEach(function(accordion) {
-                                    accordion.addEventListener('click', function() {
-                                        var target = this.getAttribute('data-bs-target');
-                                        var currentCollapse = document.querySelector(target);
-                                        var collapses = document.querySelectorAll('.collapse');
-                                        collapses.forEach(function(collapse) {
-                                            if (collapse !== currentCollapse) {
-                                                var collapseInstance = bootstrap.Collapse.getInstance(collapse);
-                                                if (collapseInstance) {
-                                                    collapseInstance.hide();
-                                                }
-                                            }
-                                        });
-                                    });
-                                });
-                            });
-                        </script>
+                        {{-- checkout payment method using radio  --}}
+                        <div class="using_radio d-none">
+                            <div class="d-block w-100 ">
+                                <input id="payment_method_paypal" type="radio" class="input-radio"
+                                    name="payment_method" value="paypal" checked="checked"
+                                    onclick="showPayPalMessage()">
+                                <label for="payment_method_paypal">PayPal</label>
+                            </div>
+
+                            <div id="paypal_message" class="payment_box payment_method_paypal" style="display: block;">
+                                <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
+                                    account.
+                                </p>
+                            </div>
+
+                            <div class="d-block w-100 ">
+                                <input id="payment_method_credit_card" type="radio" class="input-radio"
+                                    name="payment_method" value="credit_card" onclick="showCreditCardForm()">
+                                <label for="payment_method_credit_card">Credit Card</label>
+                            </div>
+
+                            <div id="credit_card_form" class="woocommerce-billing-fields__field-wrapper"
+                                style="display: none;">
+                                <p class="form-row form-row-last validate-required validate-email"
+                                    id="billing_email_field" data-priority="110">
+                                    <label for="billing_name" class="">Name on Card <abbr class="required"
+                                            title="required">*</abbr></label>
+                                    <input type="text" class="input-text " name="billing_name" id="billing_name"
+                                        placeholder="Name on Card" value="" autocomplete="name">
+                                </p>
+                                <p class="form-row form-row-last validate-required validate-email"
+                                    id="billing_email_field" data-priority="110">
+                                    <label for="billing_number" class="">Card Number <abbr class="required"
+                                            title="required">*</abbr></label>
+                                    <input type="text" class="input-text " name="billing_number" id="billing_number"
+                                        placeholder="1234 5678 9012 3456" value="" autocomplete="number">
+                                </p>
+
+                                <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field"
+                                    id="billing_first_name_field" data-priority="10">
+                                    <label for="billing_expiry_date" class="">Expiry date <abbr class="required"
+                                            title="required">*</abbr></label>
+                                    <input type="text" class="input-text " name="billing_expiry_date"
+                                        id="billing_expiry_date" placeholder="MM/YY" value=""
+                                        autocomplete="expiry_date" autofocus="autofocus">
+                                </p>
+                                <p class="form-row form-row-last validate-required" id="billing_last_name_field"
+                                    data-priority="20">
+                                    <label for="billing_cvc" class="">CVC/CVV<abbr class="required"
+                                            title="required">*</abbr></label>
+                                    <input type="text" class="input-text " name="billing_cvc" id="billing_cvc"
+                                        placeholder="CVC" value="" autocomplete="CVC">
+                                </p>
 
 
 
-
-
-
-
-
-
-                        <div class="d-block w-100 ">
-                            <input id="payment_method_paypal" type="radio" class="input-radio" name="payment_method"
-                                value="paypal" checked="checked" onclick="showPayPalMessage()">
-                            <label for="payment_method_paypal">PayPal</label>
+                            </div>
                         </div>
 
-                        <div id="paypal_message" class="payment_box payment_method_paypal" style="display: block;">
-                            <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
-                                account.
-                            </p>
-                        </div>
-
-                        <div class="d-block w-100 ">
-                            <input id="payment_method_credit_card" type="radio" class="input-radio"
-                                name="payment_method" value="credit_card" onclick="showCreditCardForm()">
-                            <label for="payment_method_credit_card">Credit Card</label>
-                        </div>
-
-                        <div id="credit_card_form" class="woocommerce-billing-fields__field-wrapper"
-                            style="display: none;">
-                            <p class="form-row form-row-last validate-required validate-email" id="billing_email_field"
-                                data-priority="110">
-                                <label for="billing_name" class="">Name on Card <abbr class="required"
-                                        title="required">*</abbr></label>
-                                <input type="text" class="input-text " name="billing_name" id="billing_name"
-                                    placeholder="Name on Card" value="" autocomplete="name">
-                            </p>
-                            <p class="form-row form-row-last validate-required validate-email" id="billing_email_field"
-                                data-priority="110">
-                                <label for="billing_number" class="">Card Number <abbr class="required"
-                                        title="required">*</abbr></label>
-                                <input type="text" class="input-text " name="billing_number" id="billing_number"
-                                    placeholder="1234 5678 9012 3456" value="" autocomplete="number">
-                            </p>
-
-                            <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field"
-                                id="billing_first_name_field" data-priority="10">
-                                <label for="billing_expiry_date" class="">Expiry date <abbr class="required"
-                                        title="required">*</abbr></label>
-                                <input type="text" class="input-text " name="billing_expiry_date"
-                                    id="billing_expiry_date" placeholder="MM/YY" value=""
-                                    autocomplete="expiry_date" autofocus="autofocus">
-                            </p>
-                            <p class="form-row form-row-last validate-required" id="billing_last_name_field"
-                                data-priority="20">
-                                <label for="billing_cvc" class="">CVC/CVV<abbr class="required"
-                                        title="required">*</abbr></label>
-                                <input type="text" class="input-text " name="billing_cvc" id="billing_cvc"
-                                    placeholder="CVC" value="" autocomplete="CVC">
-                            </p>
-
-
-
-                        </div>
                     </div>
                 </div>
 
@@ -429,6 +443,22 @@
 @endsection
 
 @section('script')
+    {{-- using Accordions --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var radios = document.querySelectorAll('.accordion-radio');
+            radios.forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                    var target = this.getAttribute('id').replace('accordionRadio',
+                        'Curriculumcollapse');
+                    var collapse = document.getElementById(target);
+                    var bsCollapse = new bootstrap.Collapse(collapse);
+                    bsCollapse.toggle();
+                });
+            });
+        });
+    </script>
+    {{-- using raido inputs --}}
     <script>
         function showPayPalMessage() {
             document.getElementById("paypal_message").style.display = "flex";

@@ -35,8 +35,198 @@
 
 
 
+                        {{-- <div id="accordionCurriculum">
+                            <div class="border rounded shadow mb-6 overflow-hidden">
+                                <div class="d-flex align-items-center" id="curriculumheadingOne">
+                                    <h5 class="mb-0 w-100">
+                                        <button
+                                            class="d-flex align-items-center p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one collapsed"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#CurriculumcollapseOne"
+                                            aria-expanded="false" aria-controls="CurriculumcollapseOne">
+                                            <span class="me-4 text-dark d-flex">
+                                                <!-- Icon -->
+                                                <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="15" height="2" fill="currentColor"></rect>
+                                                </svg>
 
-                        <div class="d-block w-100">
+                                                <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0 7H15V9H0V7Z" fill="currentColor"></path>
+                                                    <path d="M6 16L6 8.74228e-08L8 0L8 16H6Z" fill="currentColor"></path>
+                                                </svg>
+
+                                            </span>
+
+                                            Introduction
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="CurriculumcollapseOne" class="collapse" aria-labelledby="curriculumheadingOne"
+                                    data-parent="#accordionCurriculum" style="">
+                                    <div class="border-top px-5 py-4 min-height-70 d-md-flex align-items-center">
+                                        <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
+
+                                            <div class="ms-4">
+                                                Introduction to the course
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="border rounded shadow mb-6 overflow-hidden">
+                                <div class="d-flex align-items-center" id="curriculumheadingTwo">
+                                    <h5 class="mb-0 w-100">
+                                        <button
+                                            class="d-flex align-items-center p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#CurriculumcollapseTwo"
+                                            aria-expanded="true" aria-controls="CurriculumcollapseTwo">
+                                            <span class="me-4 text-dark d-flex">
+                                                <!-- Icon -->
+                                                <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="15" height="2" fill="currentColor"></rect>
+                                                </svg>
+
+                                                <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0 7H15V9H0V7Z" fill="currentColor"></path>
+                                                    <path d="M6 16L6 8.74228e-08L8 0L8 16H6Z" fill="currentColor"></path>
+                                                </svg>
+
+                                            </span>
+
+                                            Design Basics
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="CurriculumcollapseTwo" class="collapse show" aria-labelledby="curriculumheadingTwo"
+                                    data-parent="#accordionCurriculum">
+                                    <div class="border-top px-5 py-4 min-height-70 d-md-flex align-items-center">
+                                        <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
+
+
+                                            <div class="ms-4">
+                                                Intro to Design Basics
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div> --}}
+
+
+                        <div id="accordionCurriculum">
+                            <div class="border rounded shadow mb-6 overflow-hidden">
+                                <div class="d-flex align-items-center" id="curriculumheadingOne">
+                                    <h5 class="mb-0 w-100">
+                                        <button
+                                            class="d-flex align-items-center p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#CurriculumcollapseOne"
+                                            aria-expanded="false" aria-controls="CurriculumcollapseOne">
+                                            <span class="me-4 text-dark d-flex">
+                                                <!-- Icon -->
+                                                <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="15" height="2" fill="currentColor"></rect>
+                                                </svg>
+                                                <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0 7H15V9H0V7Z" fill="currentColor"></path>
+                                                    <path d="M6 16L6 8.74228e-08L8 0L8 16H6Z" fill="currentColor"></path>
+                                                </svg>
+                                            </span>
+                                            Introduction
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="CurriculumcollapseOne" class="collapse" aria-labelledby="curriculumheadingOne"
+                                    data-bs-parent="#accordionCurriculum">
+                                    <div class="border-top px-5 py-4 min-height-70 d-md-flex align-items-center">
+                                        <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
+                                            <div class="ms-4">
+                                                Introduction to the course
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border rounded shadow mb-6 overflow-hidden">
+                                <div class="d-flex align-items-center" id="curriculumheadingTwo">
+                                    <h5 class="mb-0 w-100">
+                                        <button
+                                            class="d-flex align-items-center p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#CurriculumcollapseTwo"
+                                            aria-expanded="false" aria-controls="CurriculumcollapseTwo">
+                                            <span class="me-4 text-dark d-flex">
+                                                <!-- Icon -->
+                                                <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="15" height="2" fill="currentColor"></rect>
+                                                </svg>
+                                                <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0 7H15V9H0V7Z" fill="currentColor"></path>
+                                                    <path d="M6 16L6 8.74228e-08L8 0L8 16H6Z" fill="currentColor"></path>
+                                                </svg>
+                                            </span>
+                                            Design Basics
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="CurriculumcollapseTwo" class="collapse" aria-labelledby="curriculumheadingTwo"
+                                    data-bs-parent="#accordionCurriculum">
+                                    <div class="border-top px-5 py-4 min-height-70 d-md-flex align-items-center">
+                                        <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
+                                            <div class="ms-4">
+                                                Intro to Design Basics
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var accordions = document.querySelectorAll('.collapse-accordion-toggle');
+                                accordions.forEach(function(accordion) {
+                                    accordion.addEventListener('click', function() {
+                                        var target = this.getAttribute('data-bs-target');
+                                        var currentCollapse = document.querySelector(target);
+                                        var collapses = document.querySelectorAll('.collapse');
+                                        collapses.forEach(function(collapse) {
+                                            if (collapse !== currentCollapse) {
+                                                var collapseInstance = bootstrap.Collapse.getInstance(collapse);
+                                                if (collapseInstance) {
+                                                    collapseInstance.hide();
+                                                }
+                                            }
+                                        });
+                                    });
+                                });
+                            });
+                        </script>
+
+
+
+
+
+
+
+
+
+                        <div class="d-block w-100 ">
                             <input id="payment_method_paypal" type="radio" class="input-radio" name="payment_method"
                                 value="paypal" checked="checked" onclick="showPayPalMessage()">
                             <label for="payment_method_paypal">PayPal</label>
@@ -48,13 +238,14 @@
                             </p>
                         </div>
 
-                        <div class="d-block w-100">
-                            <input id="payment_method_credit_card" type="radio" class="input-radio" name="payment_method"
-                                value="credit_card" onclick="showCreditCardForm()">
+                        <div class="d-block w-100 ">
+                            <input id="payment_method_credit_card" type="radio" class="input-radio"
+                                name="payment_method" value="credit_card" onclick="showCreditCardForm()">
                             <label for="payment_method_credit_card">Credit Card</label>
                         </div>
 
-                        <div id="credit_card_form" class="woocommerce-billing-fields__field-wrapper" style="display: none;">
+                        <div id="credit_card_form" class="woocommerce-billing-fields__field-wrapper"
+                            style="display: none;">
                             <p class="form-row form-row-last validate-required validate-email" id="billing_email_field"
                                 data-priority="110">
                                 <label for="billing_name" class="">Name on Card <abbr class="required"
@@ -75,8 +266,8 @@
                                 <label for="billing_expiry_date" class="">Expiry date <abbr class="required"
                                         title="required">*</abbr></label>
                                 <input type="text" class="input-text " name="billing_expiry_date"
-                                    id="billing_expiry_date" placeholder="MM/YY" value="" autocomplete="expiry_date"
-                                    autofocus="autofocus">
+                                    id="billing_expiry_date" placeholder="MM/YY" value=""
+                                    autocomplete="expiry_date" autofocus="autofocus">
                             </p>
                             <p class="form-row form-row-last validate-required" id="billing_last_name_field"
                                 data-priority="20">

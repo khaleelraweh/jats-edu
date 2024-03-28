@@ -27,8 +27,7 @@
     <!-- PAGE HEADER -->
     <div class="position-relative pt-8 pt-xl-11">
         <div class="position-absolute top-0 right-0 left-0 overlay overlay-custom-left d-none d-xl-block">
-            {{-- <img class="img-fluid" src="{{ $course_cover }}" alt="..."> --}}
-            {{-- <img class="img-fluid" src="{{ asset('frontend/assets/img/covers/cover-19.jpg') }}" alt="..."> --}}
+           
         </div>
     </div>
 

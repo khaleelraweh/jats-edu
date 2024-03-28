@@ -30,7 +30,10 @@
 
                     <div class="flex-grow-1 mt-1 ms-4">
                         <h6 class="fw-normal mb-0">{{ $item->model->title }}</h6>
-                        <div class="font-size-sm">1 × {{ currency_converter($item->price) }}</div>
+                        <div class="font-size-sm">
+                            {{ currency_converter($item->model->price - $item->model->offer_price) }}
+                            <del class="ms-1"><small>{{ currency_converter($item->price) }}</small></del>
+                        </div>
                     </div>
 
                     <a href="#" wire:click.prevent="removeFromCart('{{ $item->rowId }}')"
@@ -61,6 +64,17 @@
     {{-- Total --}}
     <div class="d-flex mb-5">
         <h5 class="mb-0 me-auto">{{ __('transf.txt_order_subtotal') }}</h5>
-        <h5 class="mb-0">{{ $totalPrice }}</h5>
+        <h5 class="mb-0">
+            {{ currency_converter($totalPrice) }}
+
+            <del class="ms-1">
+                <small>
+                    {{ currency_converter($oldTotalPrice) }}
+                </small>
+            </del>
+            {{ currency_converter(getNumbers()->get('subtotal')) }}
+            {{ currency_converter(getNumbers()->get('total')) }}
+            {{-- {{ getNumbers()->get('cartItems') }} --}}
+        </h5>
     </div>
 </div>

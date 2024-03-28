@@ -26,44 +26,91 @@ function getParentIdOf($param)
     return $permission ? $permission['id'] : null;
 }
 
+// function getNumbers()
+// {
+
+//     $subtotal = Cart::instance('default')->subtotal();
+
+//     $discount = session()->has('coupon') ? session()->get('coupon')['discount'] : 0.00;
+
+//     $discount_code = session()->has('coupon') ? session()->get('coupon')['code'] : null;
+
+//     $admin_discount = session()->has('offer_discount') ? session()->get('offer_discount') : 0.00;
+
+//     $subtotal_after_discount = $subtotal - $discount - $admin_discount;
+
+//     $tax = config('cart.tax') / 100;
+
+//     $taxText = config('cart.tax') . '%';
+
+//     $productTaxes = round($subtotal_after_discount * $tax, 2);
+
+//     $newSubTotal = $subtotal_after_discount + $productTaxes;
+
+//     $shipping = session()->has('shipping') ? session()->get('shipping')['cost'] : 0.00;
+//     $shipping_code = session()->has('shipping') ? session()->get('shipping')['code'] : null;
+
+//     $total = ($newSubTotal + $shipping) > 0 ? round($newSubTotal + $shipping, 2) : 0.00;
+
+//     return collect([
+//         'subtotal' => $subtotal,
+//         'tax'   => $tax,
+//         'taxText' => $taxText,
+//         'productTaxes' => (float) $productTaxes,
+//         'newSubTotal' => (float) $newSubTotal,
+//         'discount' => (float) $discount,
+//         'discount_code' => $discount_code, // came from session 
+//         'shipping' => (float) $shipping,
+//         'shipping_code' =>    $shipping_code,
+//         'total' => (float) $total,
+//         'admin_discount'    =>  $admin_discount,
+//     ]);
+// }
+
 function getNumbers()
 {
-
     $subtotal = Cart::instance('default')->subtotal();
 
-    $discount = session()->has('coupon') ? session()->get('coupon')['discount'] : 0.00;
-
+    $discount_coupon = session()->has('coupon') ? session()->get('coupon')['discount'] : 0.00;
     $discount_code = session()->has('coupon') ? session()->get('coupon')['code'] : null;
 
-    $admin_discount = session()->has('offer_discount') ? session()->get('offer_discount') : 0.00;
-
-    $subtotal_after_discount = $subtotal - $discount - $admin_discount;
-
-    $tax = config('cart.tax') / 100;
-
-    $taxText = config('cart.tax') . '%';
-
-    $productTaxes = round($subtotal_after_discount * $tax, 2);
-
-    $newSubTotal = $subtotal_after_discount + $productTaxes;
+    $taxRate = config('cart.tax') / 100;
 
     $shipping = session()->has('shipping') ? session()->get('shipping')['cost'] : 0.00;
     $shipping_code = session()->has('shipping') ? session()->get('shipping')['code'] : null;
 
+    $TotalAfterCoupon = $subtotal - $discount_coupon;
+
+    $totalAfterOffers = 0;
+
+    $cartItems = Cart::instance('default')->content();
+
+    foreach ($cartItems as $item) {
+        // Calculate price after offer if offer price exists
+        $itemPrice = $item->model->price - ($item->model->offer_price ?? 0);
+        $totalAfterOffers += $itemPrice * $item->qty;
+    }
+
+    $allTotals = $totalAfterOffers - $discount_coupon;
+
+    $courseTaxes = round($allTotals * $taxRate, 2);
+
+    $newSubTotal = $allTotals + $courseTaxes;
+
     $total = ($newSubTotal + $shipping) > 0 ? round($newSubTotal + $shipping, 2) : 0.00;
 
     return collect([
-        'subtotal' => $subtotal,
-        'tax'   => $tax,
-        'taxText' => $taxText,
-        'productTaxes' => (float) $productTaxes,
+        'subtotal' => (float) $subtotal,
+        'taxRate' => (float) $taxRate,
+        'taxText' => config('cart.tax') . '%',
+        'courseTaxes' => (float) $courseTaxes,
         'newSubTotal' => (float) $newSubTotal,
-        'discount' => (float) $discount,
-        'discount_code' => $discount_code, // came from session 
+        'discount_coupon' => (float) $discount_coupon,
+        'discount_code' => $discount_code,
         'shipping' => (float) $shipping,
-        'shipping_code' =>    $shipping_code,
+        'shipping_code' => $shipping_code,
         'total' => (float) $total,
-        'admin_discount'    =>  $admin_discount,
+        'cartItems' =>  $cartItems,
     ]);
 }
 

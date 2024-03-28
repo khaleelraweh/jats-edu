@@ -40,8 +40,7 @@
                                 <div class="d-flex align-items-center" id="curriculumheadingOne">
                                     <h5 class="mb-0 w-100">
                                         <label
-                                            class="d-flex align-items-center p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one"
-                                            style="font-size: 1.5rem;">
+                                            class="d-flex align-items-center p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one payment-card-head">
                                             <input type="radio" class="accordion-radio me-4 text-dark d-flex"
                                                 name="paymentMethod" value="paypal" data-bs-toggle="collapse"
                                                 data-bs-target="#CurriculumcollapseOne" aria-expanded="false"
@@ -74,10 +73,9 @@
                                     <h5 class="mb-0 w-100">
 
                                         <label
-                                            class="d-flex align-items-center justify-content-between p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one"
-                                            style="font-size: 1.5rem;">
+                                            class="d-flex align-items-center justify-content-between p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one">
 
-                                            <label class="d-flex">
+                                            <label class="d-flex payment-card-head">
                                                 <input type="radio" class="accordion-radio me-4 text-dark d-flex"
                                                     name="paymentMethod" value="creditDebit" data-bs-toggle="collapse"
                                                     data-bs-target="#CurriculumcollapseTwo" aria-expanded="false"
@@ -87,7 +85,7 @@
                                             </label>
 
 
-                                            <label>
+                                            <label class="payment-card-icons">
                                                 <i class="fab fa-cc-visa"></i>
                                                 <i class="fab fa-cc-mastercard"></i>
                                                 <i class="fab fa-cc-amex"></i>

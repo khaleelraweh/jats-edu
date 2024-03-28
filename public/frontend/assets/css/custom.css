@@ -120,3 +120,24 @@
   }
   
 }
+
+
+/* checkout carts */
+.payment-card-head{
+  font-size: 1.5rem;
+
+}
+.payment-card-icons{
+  font-size: 2rem;
+}
+
+@media(max-width:767px){
+  .payment-card-head{
+    font-size: 1rem;
+  
+  }
+  .payment-card-icons{
+    font-size: 1.5rem;
+  }
+}
+

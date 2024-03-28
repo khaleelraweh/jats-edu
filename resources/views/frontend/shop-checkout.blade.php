@@ -258,16 +258,31 @@
                                     </span>
                                 </td>
                             </tr>
-                            <tr class="cart_item">
-                                <td class="product-name">
-                                    Discounts:
-                                </td>
-                                <td class="product-total">
-                                    <span class="woocommerce-Price-amount amount">
-                                        88
-                                    </span>
-                                </td>
-                            </tr>
+                            @if (getNumbers()->get('offer_prices') > 0)
+                                <tr class="cart_item">
+                                    <td class="product-name">
+                                        Offer Discounts:
+                                    </td>
+                                    <td class="product-total">
+                                        <span class="woocommerce-Price-amount amount">
+                                            {{ currency_converter(getNumbers()->get('offer_prices')) }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            @endif
+                            @if (getNumbers()->get('discount_coupon') > 0)
+                                <tr class="cart_item">
+                                    <td class="product-name">
+                                        Offer Discounts:
+                                    </td>
+                                    <td class="product-total">
+                                        <span class="woocommerce-Price-amount amount">
+                                            {{ currency_converter(getNumbers()->get('discount_coupon')) }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            @endif
+
                         </tbody>
                         <tfoot>
                             <tr class="cart-subtotal">

@@ -82,6 +82,7 @@ function getNumbers()
     $TotalAfterCoupon = $subtotal - $discount_coupon;
 
     $totalAfterOffers = 0;
+    $offerPrices = 0;
 
     $cartItems = Cart::instance('default')->content();
 
@@ -89,6 +90,7 @@ function getNumbers()
         // Calculate price after offer if offer price exists
         $itemPrice = $item->model->price - ($item->model->offer_price ?? 0);
         $totalAfterOffers += $itemPrice * $item->qty;
+        $offerPrices += $item->model->offer_price * $item->qty;
     }
 
     $allTotals = $totalAfterOffers - $discount_coupon;
@@ -106,6 +108,7 @@ function getNumbers()
         'courseTaxes' => (float) $courseTaxes,
         'newSubTotal' => (float) $newSubTotal,
         'discount_coupon' => (float) $discount_coupon,
+        'offer_prices' => (float) $offerPrices,
         'discount_code' => $discount_code,
         'shipping' => (float) $shipping,
         'shipping_code' => $shipping_code,

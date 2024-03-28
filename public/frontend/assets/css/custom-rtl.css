@@ -91,3 +91,25 @@
   }
   
 }
+
+/* shop cart page  */
+
+.shop-cart-check-table .action a{
+  font-size: 1rem !important;
+}
+
+@media(max-width:767px){
+  .shop-cart-check-table.cart tbody td{
+    padding: 1rem 0.5rem;
+  }
+  .shop-cart-check-table.cart tbody .product-name img{
+    width: 60px;
+    height: 60px;
+  }
+  .shop-cart-check-table  .course_detail{
+    flex-direction: column;
+  }
+  .shop-cart-check-table .action a{
+    font-size: 0.8rem !important;
+  }
+}

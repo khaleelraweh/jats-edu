@@ -23,8 +23,8 @@
                                                 @foreach ($cartItems as $item)
                                                     <tr class="woocommerce-cart-form__cart-item cart_item">
                                                         <td class="product-name" data-title="Product">
-                                                            <div class="d-flex ">
-                                                                <div class="image-container">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="image">
                                                                     <a
                                                                         href="{{ route('frontend.course_single', $item->model->slug) }}">
                                                                         @php
@@ -63,39 +63,10 @@
                                                                             alt="{{ $item->model->title }}">
                                                                     </a>
                                                                 </div>
-                                                                <div class="ms-6  course_detail"
-                                                                    style="flex: 100%; justify-content: space-between">
-
-                                                                    <div class="row align-items-end mb-4 mb-md-7">
-                                                                        <div class="col-md mb-1 mb-md-0">
-                                                                            <a
-                                                                                href="{{ route('frontend.course_single', $item->model->slug) }}">
-                                                                                {{ $item->model->title }}
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="col-md-auto action">
-                                                                            <a href="#"
-                                                                                wire:click.prevent="removeFromCart('{{ $item->rowId }}')"
-                                                                                class="remove"
-                                                                                aria-label="Remove this item">
-                                                                                <i
-                                                                                    class="far fa-trash-alt text-secondary font-size-sm"></i>
-                                                                                Remove
-                                                                            </a> <br>
-                                                                            <a href="#"
-                                                                                wire:click.prevent="moveToWishlist('{{ $item->rowId }}')"
-                                                                                class="remove"
-                                                                                aria-label="Remove this item">
-                                                                                <i
-                                                                                    class="fas fa-sort-amount-down text-secondary font-size-sm"></i>
-                                                                                Move to Wishlist
-                                                                            </a>
 
 
-
-                                                                        </div>
-                                                                    </div>
-                                                                    {{-- <div class="">
+                                                                <div class="ms-6 d-flex justifay-content-between">
+                                                                    <div class="course_detail">
                                                                         <a
                                                                             href="{{ route('frontend.course_single', $item->model->slug) }}">
                                                                             {{ $item->model->title }}
@@ -119,7 +90,7 @@
                                                                                 class="fas fa-sort-amount-down text-secondary font-size-sm"></i>
                                                                             Move to Wishlist
                                                                         </a>
-                                                                    </div> --}}
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -148,6 +119,23 @@
                                                     </tr>
                                                 @endforeach
 
+                                                <tr class="d-none">
+                                                    <td colspan="5" class="actions">
+                                                        <div class="coupon">
+                                                            <label for="coupon_code">Coupon:</label>
+                                                            <input type="text" name="coupon_code" class="input-text"
+                                                                id="coupon_code" value=""
+                                                                placeholder="Coupon code" autocomplete="off"> <input
+                                                                type="submit" class="button" name="apply_coupon"
+                                                                value="Apply coupon">
+                                                        </div>
+
+                                                        <input type="submit" class="button" name="update_cart"
+                                                            value="Update cart">
+                                                    </td>
+                                                </tr>
+
+
                                             </tbody>
                                         </table>
                                     </form>
@@ -162,7 +150,7 @@
                                 <div class="woocommerce">
                                     <form class="woocommerce-cart-form table-responsive" action="#" method="post">
                                         <table
-                                            class="shop_table shop_table_responsive cart woocommerce-cart-form__contents shop-cart-check-table">
+                                            class="shop_table shop_table_responsive cart woocommerce-cart-form__contents">
                                             <thead>
                                                 <tr>
                                                     <th class="product-name">Courses in wishlist</th>
@@ -175,84 +163,54 @@
                                                 @foreach ($wishlistItems as $item)
                                                     <tr class="woocommerce-cart-form__cart-item cart_item">
                                                         <td class="product-name" data-title="Product">
-                                                            <div class="d-flex ">
-                                                                <div class="image-container">
-                                                                    <a
-                                                                        href="{{ route('frontend.course_single', $item->model->slug) }}">
-                                                                        @php
-                                                                            if (
-                                                                                $item->model->photos->first() != null &&
-                                                                                $item->model->photos->first()
-                                                                                    ->file_name != null
-                                                                            ) {
-                                                                                $item_model_img = asset(
-                                                                                    'assets/courses/' .
-                                                                                        $item->model->photos->first()
-                                                                                            ->file_name,
-                                                                                );
+                                                            <div class="d-flex align-items-center">
+                                                                <a
+                                                                    href="{{ route('frontend.course_single', $item->model->slug) }}">
+                                                                    @php
+                                                                        if (
+                                                                            $item->model->photos->first() != null &&
+                                                                            $item->model->photos->first()->file_name !=
+                                                                                null
+                                                                        ) {
+                                                                            $item_model_img = asset(
+                                                                                'assets/courses/' .
+                                                                                    $item->model->photos->first()
+                                                                                        ->file_name,
+                                                                            );
 
-                                                                                if (
-                                                                                    !file_exists(
-                                                                                        public_path(
-                                                                                            'assets/courses/' .
-                                                                                                $item->model->photos->first()
-                                                                                                    ->file_name,
-                                                                                        ),
-                                                                                    )
-                                                                                ) {
-                                                                                    $item_model_img = asset(
-                                                                                        'assets/courses/no_image_found.webp',
-                                                                                    );
-                                                                                }
-                                                                            } else {
+                                                                            if (
+                                                                                !file_exists(
+                                                                                    public_path(
+                                                                                        'assets/courses/' .
+                                                                                            $item->model->photos->first()
+                                                                                                ->file_name,
+                                                                                    ),
+                                                                                )
+                                                                            ) {
                                                                                 $item_model_img = asset(
                                                                                     'assets/courses/no_image_found.webp',
                                                                                 );
                                                                             }
-                                                                        @endphp
-                                                                        <img src="{{ $item_model_img }}"
-                                                                            class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image"
-                                                                            alt="{{ $item->model->title }}">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="ms-6  course_detail"
-                                                                    style="flex: 100%; justify-content: space-between">
-
-                                                                    <div class="row align-items-end mb-4 mb-md-7">
-                                                                        <div class="col-md mb-1 mb-md-0">
-                                                                            <a
-                                                                                href="{{ route('frontend.course_single', $item->model->slug) }}">
-                                                                                {{ $item->model->title }}
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="col-md-auto action">
-                                                                            <a href="#"
-                                                                                wire:click.prevent="removeFromWishlist('{{ $item->rowId }}')"
-                                                                                class="remove"
-                                                                                aria-label="Remove this item">
-                                                                                <i
-                                                                                    class="far fa-trash-alt text-secondary font-size-sm"></i>
-                                                                                Remove
-                                                                            </a> <br>
-                                                                            <a href="#"
-                                                                                wire:click.prevent="moveToCart('{{ $item->rowId }}')"
-                                                                                class="remove"
-                                                                                aria-label="Remove this item">
-                                                                                <i
-                                                                                    class="fas fa-sort-amount-up text-secondary font-size-sm"></i>
-                                                                                Move to Cart
-                                                                            </a>
-
-                                                                        </div>
-                                                                    </div>
-
+                                                                        } else {
+                                                                            $item_model_img = asset(
+                                                                                'assets/courses/no_image_found.webp',
+                                                                            );
+                                                                        }
+                                                                    @endphp
+                                                                    <img src="{{ $item_model_img }}"
+                                                                        class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image"
+                                                                        alt="{{ $item->model->title }}">
+                                                                </a>
+                                                                <div class="ms-6">
+                                                                    <a
+                                                                        href="{{ route('frontend.course_single', $item->model->slug) }}">{{ $item->model->title }}</a>
                                                                 </div>
                                                             </div>
                                                         </td>
 
                                                         <td class="product-subtotal" data-title="Total">
-                                                            <span
-                                                                class="woocommerce-Price-amount amount">{{ currency_converter($item->price) }}</span>
+                                                            <span class="woocommerce-Price-amount amount"><span
+                                                                    class="woocommerce-Price-currencySymbol"></span>{{ currency_converter($item->price) }}</span>
                                                         </td>
 
 

@@ -211,8 +211,18 @@
 
                                                 <td style="border-bottom: 1px solid #e7e7ec;" class="product-subtotal"
                                                     data-title="Total">
-                                                    <span class="woocommerce-Price-amount amount"><span
-                                                            class="woocommerce-Price-currencySymbol"></span>{{ currency_converter($item->price) }}</span>
+                                                    <span class="woocommerce-Price-amount amount">
+
+                                                        {{ $new_price = currency_converter($item->model->price - $item->model->offer_price) }}
+
+                                                        @if ($new_price != currency_converter($item->model->price))
+                                                            <del class="ms-1">
+                                                                <small>
+                                                                    {{ currency_converter($item->price) }}
+                                                                </small>
+                                                            </del>
+                                                        @endif
+                                                    </span>
                                                 </td>
 
 

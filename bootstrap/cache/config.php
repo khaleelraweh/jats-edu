@@ -1,7 +1,7 @@
 <?php return array (
   'app' => 
   array (
-    'name' => 'Instatute',
+    'name' => 'Jats Edu أكاديمية جاتس',
     'env' => 'local',
     'debug' => true,
     'url' => 'https://authenticate.test',
@@ -240,7 +240,7 @@
         'driver' => 'octane',
       ),
     ),
-    'prefix' => 'instatute_cache',
+    'prefix' => 'jats_edu_akadymy_gats_cache',
   ),
   'cart' => 
   array (
@@ -355,7 +355,7 @@
       'options' => 
       array (
         'cluster' => 'redis',
-        'prefix' => 'instatute_database_',
+        'prefix' => 'jats_edu_akadymy_gats_database_',
       ),
       'default' => 
       array (
@@ -762,7 +762,7 @@
     'from' => 
     array (
       'address' => 'khaleelvisa@gmail.com',
-      'name' => 'Instatute',
+      'name' => 'Jats Edu أكاديمية جاتس',
     ),
     'markdown' => 
     array (
@@ -904,7 +904,7 @@
       0 => 2,
       1 => 100,
     ),
-    'cookie' => 'instatute_session',
+    'cookie' => 'jats_edu_akadymy_gats_session',
     'path' => '/',
     'domain' => NULL,
     'secure' => NULL,

@@ -254,8 +254,7 @@
                                 </td>
                                 <td class="product-total">
                                     <span class="woocommerce-Price-amount amount">
-                                        <span class="woocommerce-Price-currencySymbol">$</span>
-                                        59.00
+                                        {{ currency_converter(getNumbers()->get('subtotal')) }}
                                     </span>
                                 </td>
                             </tr>
@@ -265,8 +264,7 @@
                                 </td>
                                 <td class="product-total">
                                     <span class="woocommerce-Price-amount amount">
-                                        <span class="woocommerce-Price-currencySymbol">$</span>
-                                        67.00
+                                        88
                                     </span>
                                 </td>
                             </tr>
@@ -277,8 +275,11 @@
 
                             <tr class="order-total">
                                 <th>Total</th>
-                                <td><strong><span class="woocommerce-Price-amount amount"><span
-                                                class="woocommerce-Price-currencySymbol">$</span>109.95</span></strong>
+                                <td><strong>
+                                        <span class="woocommerce-Price-amount amount">
+                                            {{ currency_converter(getNumbers()->get('total')) }}
+                                        </span>
+                                    </strong>
                                 </td>
                             </tr>
                         </tfoot>

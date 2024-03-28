@@ -273,7 +273,7 @@
                             @if (getNumbers()->get('discount_coupon') > 0)
                                 <tr class="cart_item">
                                     <td class="product-name">
-                                        Offer Discounts:
+                                        Coupon Discounts:
                                     </td>
                                     <td class="product-total">
                                         <span class="woocommerce-Price-amount amount">

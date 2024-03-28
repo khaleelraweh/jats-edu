@@ -112,7 +112,11 @@
   .shop-cart-check-table  .course_detail{
     flex-direction: column;
   }
-  .shop-cart-check-table .action a{
-    font-size: 0.8rem !important;
+  .shop_table.cart tbody .product-name a{
+    font-size: 0.8rem;
   }
+  .shop-cart-check-table .action a{
+    font-size: 0.5rem !important;
+  }
+  
 }

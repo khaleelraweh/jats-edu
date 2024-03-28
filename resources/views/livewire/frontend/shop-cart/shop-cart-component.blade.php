@@ -4,7 +4,7 @@
             <div class="col-sm-12 col-md-8">
                 <div id="primary" class="content-area">
                     <main id="main" class="site-main ">
-                        <div class="page type-page status-publish hentry mb-10">
+                        <div class="page type-page status-publish hentry mb-6">
                             <!-- .entry-header -->
                             <div class="entry-content">
                                 <div class="woocommerce">
@@ -14,8 +14,7 @@
                                             <thead>
                                                 <tr>
                                                     <th class="product-name">Courses in Cart</th>
-                                                    <th class="product-subtotal">Price</th>
-                                                    {{-- <th class="product-remove">&nbsp;</th> --}}
+                                                    <th class="product-subtotal">&nbsp;</th>
                                                 </tr>
                                             </thead>
 
@@ -63,7 +62,7 @@
                                                                             alt="{{ $item->model->title }}">
                                                                     </a>
                                                                 </div>
-                                                                <div class="ms-6  course_detail"
+                                                                <div class="ms-3 ms-md-6  course_detail"
                                                                     style="flex: 100%; justify-content: space-between">
 
                                                                     <div class="row align-items-end mb-4 mb-md-7">
@@ -95,55 +94,17 @@
 
                                                                         </div>
                                                                     </div>
-                                                                    {{-- <div class="">
-                                                                        <a
-                                                                            href="{{ route('frontend.course_single', $item->model->slug) }}">
-                                                                            {{ $item->model->title }}
-                                                                        </a>
-                                                                    </div>
 
-                                                                    <div class="action">
-                                                                        <a href="#"
-                                                                            wire:click.prevent="removeFromCart('{{ $item->rowId }}')"
-                                                                            class="remove"
-                                                                            aria-label="Remove this item">
-                                                                            <i
-                                                                                class="far fa-trash-alt text-secondary font-size-sm"></i>
-                                                                            Remove
-                                                                        </a> <br>
-                                                                        <a href="#"
-                                                                            wire:click.prevent="moveToWishlist('{{ $item->rowId }}')"
-                                                                            class="remove"
-                                                                            aria-label="Remove this item">
-                                                                            <i
-                                                                                class="fas fa-sort-amount-down text-secondary font-size-sm"></i>
-                                                                            Move to Wishlist
-                                                                        </a>
-                                                                    </div> --}}
                                                                 </div>
                                                             </div>
                                                         </td>
 
-                                                        <td class="product-subtotal" data-title="Total">
+                                                        <td style="width: 25%;text-align: center; padding:1rem 0.5rem"
+                                                            class="product-subtotal" data-title="Total">
                                                             <span
                                                                 class="woocommerce-Price-amount amount">{{ currency_converter($item->price) }}</span>
                                                         </td>
-                                                        {{-- <td class="product-remove">
-                                                            <a href="#"
-                                                                wire:click.prevent="removeFromCart('{{ $item->rowId }}')"
-                                                                class="remove" aria-label="Remove this item">
-                                                                <i
-                                                                    class="far fa-trash-alt text-secondary font-size-sm"></i>
-                                                                Remove
-                                                            </a> <br>
-                                                            <a href="#"
-                                                                wire:click.prevent="moveToWishlist('{{ $item->rowId }}')"
-                                                                class="remove" aria-label="Remove this item">
-                                                                <i
-                                                                    class="fas fa-sort-amount-down text-secondary font-size-sm"></i>
-                                                                Move to Wishlist
-                                                            </a>
-                                                        </td> --}}
+
 
                                                     </tr>
                                                 @endforeach
@@ -166,7 +127,7 @@
                                             <thead>
                                                 <tr>
                                                     <th class="product-name">Courses in wishlist</th>
-                                                    <th class="product-subtotal">Price</th>
+                                                    <th class="product-subtotal">&nbsp;</th>
 
                                                 </tr>
                                             </thead>
@@ -215,7 +176,7 @@
                                                                             alt="{{ $item->model->title }}">
                                                                     </a>
                                                                 </div>
-                                                                <div class="ms-6  course_detail"
+                                                                <div class="ms-3 ms-md-6 course_detail"
                                                                     style="flex: 100%; justify-content: space-between">
 
                                                                     <div class="row align-items-end mb-4 mb-md-7">
@@ -250,7 +211,8 @@
                                                             </div>
                                                         </td>
 
-                                                        <td class="product-subtotal" data-title="Total">
+                                                        <td style="width: 25%;text-align: center; padding:1rem 0.5rem"
+                                                            class="product-subtotal" data-title="Total">
                                                             <span
                                                                 class="woocommerce-Price-amount amount">{{ currency_converter($item->price) }}</span>
                                                         </td>

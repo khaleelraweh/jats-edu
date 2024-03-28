@@ -1,7 +1,7 @@
 <div>
     <div class="container pb-6 pb-xl-10">
         <div class="row">
-            <div class="col-sm-9">
+            <div class="col-sm-12 col-md-8">
                 <div id="primary" class="content-area">
                     <main id="main" class="site-main ">
                         <div class="page type-page status-publish hentry mb-10">
@@ -214,7 +214,7 @@
                     </main>
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-12 col-md-4">
                 <div id="secondary" class="sidebar" role="complementary">
                     <div class="cart-collaterals">
                         <div class="cart_totals">
@@ -237,6 +237,7 @@
                                         </td>
                                     </tr>
                                 </tbody>
+
                             </table>
 
                             <div class="wc-proceed-to-checkout">
@@ -245,6 +246,22 @@
                                     {{-- Proceed to checkout --}}
                                     checkout
                                 </a>
+                            </div>
+
+                            <hr class="mb-2">
+                            <h6 class="mt-0">Promotions</h6>
+                            <div class="">
+                                <form>
+                                    <div class="input-group">
+                                        <input type="text" name="coupon_code" class="form-control"
+                                            placeholder="Enter Coupon" aria-label="Enter Coupon"
+                                            aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary " type="button"
+                                                id="button-addon2">Apply</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -20,16 +20,11 @@ class CartModalComponent extends Component
 
     public function render()
     {
-        $this->cartItems = Cart::instance('default')->content();
-        $this->oldTotalPrice = currency_converter(Cart::total());
+        $this->cartItems = getNumbers()->get('cartItems');
+        $this->oldTotalPrice = currency_converter(getNumbers()->get('subtotal'));
+        $this->totalPrice = currency_converter(getNumbers()->get('total'));
 
-        $this->totalPrice = 0;
 
-        foreach ($this->cartItems as $item) {
-            // Calculate price after offer if offer price exists
-            $itemPrice = $item->model->price - ($item->model->offer_price ?? 0);
-            $this->totalPrice += $itemPrice * $item->qty;
-        }
 
         return view('livewire.frontend.modals.cart-modal-component', [
             'cartItems'             => $this->cartItems,

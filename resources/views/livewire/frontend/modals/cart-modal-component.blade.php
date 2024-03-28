@@ -68,12 +68,12 @@
     <div class="d-flex mb-5">
         <h5 class="mb-0 me-auto">{{ __('transf.txt_order_subtotal') }}</h5>
         <h5 class="mb-0">
-            {{ $totalPrice }}
+            {{ $total }}
 
-            @if ($totalPrice != $oldTotalPrice)
+            @if ($total != $subTotal)
                 <del class="ms-1">
                     <small>
-                        {{ $oldTotalPrice }}
+                        {{ $subTotal }}
                     </small>
                 </del>
             @endif

@@ -101,8 +101,20 @@
 
                                                         <td style="width: 25%;text-align: center; padding:1rem 0.5rem"
                                                             class="product-subtotal" data-title="Total">
-                                                            <span
-                                                                class="woocommerce-Price-amount amount">{{ currency_converter($item->price) }}</span>
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <div class="font-size-sm">
+                                                                    {{ $new_price = currency_converter($item->model->price - $item->model->offer_price) }}
+
+                                                                    @if ($new_price != currency_converter($item->model->price))
+                                                                        <br>
+                                                                        <del class="ms-1">
+                                                                            <small>
+                                                                                {{ currency_converter($item->price) }}
+                                                                            </small>
+                                                                        </del>
+                                                                    @endif
+                                                                </div>
+                                                            </span>
                                                         </td>
 
 
@@ -213,8 +225,20 @@
 
                                                         <td style="width: 25%;text-align: center; padding:1rem 0.5rem"
                                                             class="product-subtotal" data-title="Total">
-                                                            <span
-                                                                class="woocommerce-Price-amount amount">{{ currency_converter($item->price) }}</span>
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <div class="font-size-sm">
+                                                                    {{ $new_price = currency_converter($item->model->price - $item->model->offer_price) }}
+
+                                                                    @if ($new_price != currency_converter($item->model->price))
+                                                                        <br>
+                                                                        <del class="ms-1">
+                                                                            <small>
+                                                                                {{ currency_converter($item->price) }}
+                                                                            </small>
+                                                                        </del>
+                                                                    @endif
+                                                                </div>
+                                                            </span>
                                                         </td>
 
 
@@ -234,22 +258,29 @@
                 <div id="secondary" class="sidebar" role="complementary">
                     <div class="cart-collaterals">
                         <div class="cart_totals">
-                            <h2>Cart totals</h2>
+                            <h2>{{ __('transf.txt_order_subtotal') }}</h2>
 
                             <table class="shop_table shop_table_responsive">
                                 <tbody>
-                                    <tr class="cart-subtotal">
+                                    <tr class="cart-subtotal ">
                                         <th>Subtotal</th>
-                                        <td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><span
-                                                    class="woocommerce-Price-currencySymbol"></span>{{ $totalPrice }}</span>
+                                        <td data-title="Subtotal">
+                                            <span class="woocommerce-Price-amount amount">{{ $total }}
+                                                @if ($total != $subTotal)
+                                                    <del class="ms-1">
+                                                        <small>
+                                                            {{ $subTotal }}
+                                                        </small>
+                                                    </del>
+                                                @endif
+                                            </span>
                                         </td>
                                     </tr>
 
-                                    <tr class="order-total">
+                                    <tr class="order-total ">
                                         <th>Total</th>
                                         <td data-title="Total"><strong><span
-                                                    class="woocommerce-Price-amount amount"><span
-                                                        class="woocommerce-Price-currencySymbol"></span>{{ $totalPrice }}</span></strong>
+                                                    class="woocommerce-Price-amount amount">{{ $total }}</span></strong>
                                         </td>
                                     </tr>
                                 </tbody>

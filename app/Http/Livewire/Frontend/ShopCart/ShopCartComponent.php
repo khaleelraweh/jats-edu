@@ -17,20 +17,25 @@ class ShopCartComponent extends Component
     ];
 
     public $cartItems;
-    public $totalPrice;
-
     public $wishlistItems;
+    public $subTotal;
+    public $total;
+
 
     public function render()
     {
-        $this->cartItems = Cart::instance('default')->content();
-        $this->totalPrice = currency_converter(Cart::total());
+
+        $this->cartItems = getNumbers()->get('cartItems');
         $this->wishlistItems = Cart::instance('wishlist')->content();
 
+        $this->subTotal = currency_converter(getNumbers()->get('subtotal'));
+        $this->total = currency_converter(getNumbers()->get('total'));
+
         return view('livewire.frontend.shop-cart.shop-cart-component', [
-            'cartItems' => $this->cartItems,
-            'wishlistItems' => $this->wishlistItems,
-            'totalPrice'    =>  $this->totalPrice,
+            'cartItems'             => $this->cartItems,
+            'subTotal'         => $this->subTotal,
+            'total'            => $this->total,
+            'wishlistItems'         => $this->wishlistItems,
         ]);
     }
 

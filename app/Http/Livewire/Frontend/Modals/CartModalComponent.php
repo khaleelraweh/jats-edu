@@ -15,21 +15,19 @@ class CartModalComponent extends Component
     ];
 
     public $cartItems;
-    public $oldTotalPrice;
-    public $totalPrice;
+    public $subTotal;
+    public $total;
 
     public function render()
     {
         $this->cartItems = getNumbers()->get('cartItems');
-        $this->oldTotalPrice = currency_converter(getNumbers()->get('subtotal'));
-        $this->totalPrice = currency_converter(getNumbers()->get('total'));
-
-
+        $this->subTotal = currency_converter(getNumbers()->get('subtotal'));
+        $this->total = currency_converter(getNumbers()->get('total'));
 
         return view('livewire.frontend.modals.cart-modal-component', [
             'cartItems'             => $this->cartItems,
-            'totalPrice'            =>  $this->totalPrice,
-            'oldTotalPrice'         =>  $this->oldTotalPrice
+            'total'            =>  $this->total,
+            'subTotal'         =>  $this->subTotal
         ]);
     }
 

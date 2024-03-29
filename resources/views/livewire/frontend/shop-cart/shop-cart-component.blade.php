@@ -272,10 +272,19 @@
                                                             {{ $subTotal }}
                                                         </small>
                                                     </del>
+                                                    @if (getNumbers()->get('discount_coupon') > 0)
+                                                        <del class="ms-1">
+                                                            <small>
+                                                                {{ currency_converter(getNumbers()->get('discount_coupon')) }}
+                                                            </small>
+                                                        </del>
+                                                    @endif
                                                 @endif
                                             </span>
                                         </td>
                                     </tr>
+
+
 
                                     <tr class="order-total ">
                                         <th>Total</th>

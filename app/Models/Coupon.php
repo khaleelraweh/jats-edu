@@ -46,14 +46,10 @@ class Coupon extends Model
 
     public function discount($total)
     {
+        // dd($total);
 
-        // check date expired 
-        if (!$this->checkDate()) {
-
+        if (!$this->checkDate() || !$this->checkUsedTimes()) {
             return 0;
-        } else if (!$this->checkUsedTimes()) {  // check used time of the coupon
-
-            return -1;
         }
 
         // if total sent is greater than this->greater_than in the table : do process will return the value of discount as number

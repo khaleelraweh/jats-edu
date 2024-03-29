@@ -298,15 +298,24 @@
                             <hr class="mb-2">
                             <h6 class="mt-0">Promotions</h6>
                             <div class="">
-                                <form>
+                                <form wire:submit.prevent="applyDiscount()">
                                     <div class="input-group">
-                                        <input type="text" name="coupon_code" class="form-control"
-                                            placeholder="Enter Coupon" aria-label="Enter Coupon"
-                                            aria-describedby="button-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary " type="button"
-                                                id="button-addon2">Apply</button>
-                                        </div>
+                                        @if (!session()->has('coupon'))
+                                            <input type="text" wire:model="coupon_code" name="coupon_code"
+                                                class="form-control" placeholder="Enter Coupon"
+                                                aria-label="Enter Coupon" aria-describedby="button-addon2">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-primary " type="button"
+                                                    id="button-addon2">Apply</button>
+                                            </div>
+                                        @else
+                                            <div class="wc-proceed-to-checkout">
+                                                <a href="#" wire:click.prevent="removeCoupon()"
+                                                    class="checkout-button button alt wc-forward">
+                                                    Remove coupon
+                                                </a>
+                                            </div>
+                                        @endif
                                     </div>
                                 </form>
                             </div>

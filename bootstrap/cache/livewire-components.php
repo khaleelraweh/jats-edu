@@ -6,6 +6,8 @@
   'frontend.courses.add-to-cart-component' => 'App\\Http\\Livewire\\Frontend\\Courses\\AddToCartComponent',
   'frontend.courses.add-to-wishlist-component' => 'App\\Http\\Livewire\\Frontend\\Courses\\AddToWishlistComponent',
   'frontend.courses.course-list-component' => 'App\\Http\\Livewire\\Frontend\\Courses\\CourseListComponent',
+  'frontend.customer.addresses-component' => 'App\\Http\\Livewire\\Frontend\\Customer\\AddressesComponent',
+  'frontend.customer.orders-component' => 'App\\Http\\Livewire\\Frontend\\Customer\\OrdersComponent',
   'frontend.event-list.event-list-component' => 'App\\Http\\Livewire\\Frontend\\EventList\\EventListComponent',
   'frontend.event-list.event-review-component' => 'App\\Http\\Livewire\\Frontend\\EventList\\EventReviewComponent',
   'frontend.header.cart-counts-component' => 'App\\Http\\Livewire\\Frontend\\Header\\CartCountsComponent',

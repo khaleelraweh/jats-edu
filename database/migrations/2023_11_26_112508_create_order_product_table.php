@@ -17,9 +17,6 @@ return new class extends Migration
             $table->foreignId('order_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('product_id')->nullable()->constrained()->nullOnDelete();
             $table->unsignedBigInteger('quantity')->default(1); // make default 1
-            // $table->string('bankAccNumber')->nullable();
-            // $table->string('bankReceipt')->nullable();
-
         });
     }
 

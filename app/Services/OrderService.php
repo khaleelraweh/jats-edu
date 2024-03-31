@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Order;
+use App\Models\OrderCourse;
 use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Models\ProductCoupon;
@@ -38,14 +39,11 @@ class OrderService
 
         foreach (Cart::content() as $item) {
 
-            OrderProduct::create([
+            OrderCourse::create([
                 'order_id' => $order->id,
-                'product_id' => $item->model->id,
+                'course_id' => $item->model->id,
                 'quantity' => $item->qty
             ]);
-
-            // $product = Product::find($item->model->id);
-            // $product->update(['quantity' => $product->quantity - $item->qty]);
         }
 
 

@@ -118,6 +118,8 @@
     <!-- Theme JS -->
     <script src="{{ asset('frontend/assets/js/theme.min.js') }}"></script>
 
+
+
     @yield('script')
 
     @livewireScripts
@@ -125,6 +127,13 @@
     {{-- livewire alert  --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <x-livewire-alert::scripts />
+
+    {{-- alpinejs --}}
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    {{-- RealRashed sweat alert  using toast --}}
+    @include('sweetalert::alert')
+    @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
 
 </body>
 

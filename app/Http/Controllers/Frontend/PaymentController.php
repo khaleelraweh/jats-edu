@@ -46,8 +46,6 @@ class PaymentController extends Controller
             ]
         ]);
 
-
-
         if (isset($response['id']) && $response['id'] != null) {
             foreach ($response['links'] as $link) {
                 if ($link['rel'] === 'approve') {
@@ -141,7 +139,7 @@ class PaymentController extends Controller
             ]);
 
             if (session()->has('coupon')) {
-                $coupon = Coupon::whereCode(session()->get('coupon')['code'])->first();
+                $coupon = Coupon::where('code->' . app()->getLocale(), session()->get('coupon')['code'])->first();
                 $coupon->increment('used_times');
             }
 
@@ -154,13 +152,7 @@ class PaymentController extends Controller
                 'shipping',
             ]);
 
-            // User::whereHas('roles',function ($query){
-            //     $query->whereIn('name' , ['admin','supervisor']);
-            // })->each(function ($admin , $key) use ($order){
-            //     $admin->notify(new OrderCreatedNotification($order));
-            // });
 
-            // toast('Your recent payment is successful with reference code : '. $response->getTransactionReference() , 'success');
             toast(__('panel.f_your_recent_payment_successful_with_refrence_code') . $response['id'], 'success');
 
             return redirect()->route('frontend.index');

@@ -80,6 +80,11 @@ class Order extends Model
         return $this->belongsToMany(Product::class)->withPivot('quantity');
     }
 
+    public function courses(): BelongsToMany
+    {
+        return $this->belongsToMany(Course::class);
+    }
+
     public function transactions(): HasMany
     {
         return $this->hasMany(OrderTransaction::class);

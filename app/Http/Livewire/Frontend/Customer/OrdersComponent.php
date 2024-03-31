@@ -12,18 +12,16 @@ class OrdersComponent extends Component
     use LivewireAlert;
 
     public $showOrder = false;
-    public $order_show ;
+    public $order_show;
 
-    // public function mount(){
-    //     $this_show = auth()->user()->orders;
-    // }
-
-    public function displayOrder($id){
-        $this->order_show = Order::with('products')->find($id);
+    public function displayOrder($id)
+    {
+        $this->order_show = Order::with('products', 'courses')->find($id);
         $this->showOrder = true;
     }
 
-    public function requestReturnOrder($id){
+    public function requestReturnOrder($id)
+    {
 
         $order = Order::whereId($id)->first();
 
@@ -33,17 +31,17 @@ class OrdersComponent extends Component
 
         $order->transactions()->create([
             'transaction' => OrderTransaction::REFUNDED_REQUEST,
-             'transaction_number' => $order->transactions()->whereTransaction(OrderTransaction::PAYMENT_COMPLETED)->first()->transaction_number,
+            'transaction_number' => $order->transactions()->whereTransaction(OrderTransaction::PAYMENT_COMPLETED)->first()->transaction_number,
         ]);
 
 
-        $this->alert('success','Your request is sent successfully');
+        $this->alert('success', 'Your request is sent successfully');
     }
 
     public function render()
     {
-        return view('livewire.frontend.customer.orders-component',[
-            'orders' =>auth()->user()->orders,
+        return view('livewire.frontend.customer.orders-component', [
+            'orders' => auth()->user()->orders,
         ]);
     }
 }

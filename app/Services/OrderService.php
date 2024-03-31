@@ -28,6 +28,7 @@ class OrderService
             'user_id'               => auth()->id(),
             'payment_method_id'     => $this->payment_method,
             'subtotal'              => getNumbers()->get('subtotal'),
+            'offer_discount'        => getNumbers()->get('offer_prices'),
             'discount_code'         => session()->has('coupon') ? session()->get('coupon')['code'] : null,
             'discount'              => getNumbers()->get('discount_coupon'),
             'shipping'              => getNumbers()->get('shipping'),

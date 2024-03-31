@@ -173,7 +173,7 @@ class Course extends Model
 
     public function orders(): BelongsToMany
     {
-        return $this->belongsToMany(Order::class)->withPivot('quantity');
+        return $this->belongsToMany(Order::class);
     }
 
     public function instructors(): BelongsToMany

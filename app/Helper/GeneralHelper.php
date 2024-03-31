@@ -90,8 +90,10 @@ function getNumbers()
         // Calculate price after offer if offer price exists
         $itemPrice = $item->model->price - ($item->model->offer_price ?? 0);
         $totalAfterOffers += $itemPrice * $item->qty;
-        $offerPrices += $item->model->offer_price * $item->qty;
+        // $offerPrices += $item->model->offer_price * $item->qty;
+        $offerPrices = $item->model->offer_price;
     }
+
 
     $allTotals = $totalAfterOffers - $discount_coupon;
 

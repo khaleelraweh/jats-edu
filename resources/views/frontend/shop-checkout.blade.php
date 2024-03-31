@@ -161,6 +161,7 @@
                                     </thead>
                                     <tbody class="check-product-list">
                                         @foreach (Cart::instance('default')->content() as $item)
+                                            {{-- {{ dd($item->model->price) }} --}}
                                             <tr class="woocommerce-cart-form__cart-item cart_item">
                                                 <td style="border-bottom: 1px solid #e7e7ec;" class="product-name"
                                                     data-title="Product">

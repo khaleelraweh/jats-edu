@@ -272,13 +272,13 @@
                                                             {{ $subTotal }}
                                                         </small>
                                                     </del>
-                                                    @if (getNumbers()->get('discount_coupon') > 0)
+                                                    {{-- @if (getNumbers()->get('discount_coupon') > 0)
                                                         <del class="ms-1">
                                                             <small>
                                                                 {{ currency_converter(getNumbers()->get('discount_coupon')) }}
                                                             </small>
                                                         </del>
-                                                    @endif
+                                                    @endif --}}
                                                 @endif
                                             </span>
                                         </td>

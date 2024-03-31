@@ -25,8 +25,9 @@
 
     <!-- SHOP CHECKOUT -->
     <div class="container pb-6 pb-xl-10">
-        <form name="checkout" method="post" class="checkout woocommerce-checkout"
-            action="https://transvelo.github.io/skola-html/5.1/..." novalidate="">
+        <form action="{{ route('checkout.payment') }}" name="checkout" method="post" class="checkout woocommerce-checkout"
+            novalidate="">
+            @csrf
 
             <div class="col2-set" id="customer_details">
                 <div class="col-1">
@@ -42,7 +43,7 @@
                                         <label
                                             class="d-flex align-items-center p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one payment-card-head">
                                             <input type="radio" class="accordion-radio me-4 text-dark d-flex"
-                                                name="paymentMethod" value="paypal" data-bs-toggle="collapse"
+                                                name="payment_method" value="paypal" data-bs-toggle="collapse"
                                                 data-bs-target="#CurriculumcollapseOne" aria-expanded="false"
                                                 aria-controls="CurriculumcollapseOne">
 
@@ -301,9 +302,9 @@
                         </tfoot>
                     </table>
                     <div class="form-row place-order">
-                        <a href="shop-order-completed.html" class="btn btn-primary btn-block">
+                        <button type="submit" class="btn btn-primary btn-block">
                             proccess
-                        </a>
+                        </button>
                     </div>
                 </div>
                 <div class="form-row place-order d-none">

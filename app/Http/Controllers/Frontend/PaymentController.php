@@ -27,6 +27,7 @@ class PaymentController extends Controller
     public function checkout_now(Request $request)
     {
 
+
         $order = (new OrderService)->createOrder($request->except(['_token', 'submit']));
         $paypal = new PaypalService('PayPal_Rest');
         $response = $paypal->purchase([
@@ -50,17 +51,6 @@ class PaymentController extends Controller
         if (isset($response['id']) && $response['id'] != null) {
             foreach ($response['links'] as $link) {
                 if ($link['rel'] === 'approve') {
-
-                    // $users = User::whereHas('roles',function ($query){
-                    //     $query->whereIn('name',['admin','supervisor']);
-                    // })->get();
-
-                    // if(auth()->user()){
-                    //     foreach($users as $user){
-                    //         $user->notify(new OrderCreatedNotification($order));
-                    //     }
-                    // }
-
                     return redirect()->away($link['href']);
                 }
             }

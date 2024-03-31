@@ -10,27 +10,33 @@ use App\Models\OrderTransaction;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use illuminate\Support\Str;
 
-class OrderService{ 
+class OrderService
+{
+    public $payment_method;
 
-    public function createOrder($request){
+    public function createOrder($request)
+    {
+
+        if ($request['payment_method'] == 'paypal') {
+            $this->payment_method = 1;
+        }
+
 
         $order = Order::create([
-            'ref_id'                => 'ORD-'. Str::random(15),
+            'ref_id'                => 'ORD-' . Str::random(15),
             'user_id'               => auth()->id(),
-            // 'user_address_id'       => $request['customer_address_id'],
-            // 'shipping_company_id'   => $request['shipping_company_id'],
-            'payment_method_id'     => $request['payment_method_id'],
+            'payment_method_id'     => $this->payment_method,
             'subtotal'              => getNumbers()->get('subtotal'),
             'discount_code'         => session()->has('coupon') ? session()->get('coupon')['code'] : null,
-            'discount'              => getNumbers()->get('discount'),
+            'discount'              => getNumbers()->get('discount_coupon'),
             'shipping'              => getNumbers()->get('shipping'),
-            'tax'                   => getNumbers()->get('productTaxes'),
+            'tax'                   => getNumbers()->get('courseTaxes'),
             'total'                 => getNumbers()->get('total'),
             'currency'              => 'USD',
             'order_status'          => 0
         ]);
 
-        foreach(Cart::content() as $item){
+        foreach (Cart::content() as $item) {
 
             OrderProduct::create([
                 'order_id' => $order->id,
@@ -38,14 +44,15 @@ class OrderService{
                 'quantity' => $item->qty
             ]);
 
-            $product = Product::find($item->model->id);
-            $product->update(['quantity' => $product->quantity - $item->qty]);
+            // $product = Product::find($item->model->id);
+            // $product->update(['quantity' => $product->quantity - $item->qty]);
         }
 
-        
-        $order->transactions()->create(['transaction' => OrderTransaction::NEW_ORDER]
+
+        $order->transactions()->create(
+            ['transaction' => OrderTransaction::NEW_ORDER]
         );
 
         return $order;
     }
-} 
+}

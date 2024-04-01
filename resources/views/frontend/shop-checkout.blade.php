@@ -43,7 +43,7 @@
                                         <label
                                             class="d-flex align-items-center p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one payment-card-head">
                                             <input type="radio" class="accordion-radio me-4 text-dark d-flex"
-                                                name="payment_method" value="paypal" data-bs-toggle="collapse"
+                                                name="paymentMethod" value="paypal" data-bs-toggle="collapse"
                                                 data-bs-target="#CurriculumcollapseOne" aria-expanded="false"
                                                 aria-controls="CurriculumcollapseOne">
 

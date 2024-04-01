@@ -19,8 +19,10 @@ class OrderService
     public function createOrder($request)
     {
 
-        if ($request['payment_method'] == 'paypal') {
+        if ($request['paymentMethod'] == 'paypal') {
             $this->payment_method = 1;
+        } elseif ($request['paymentMethod'] == 'creditDebit') {
+            $this->payment_method = 2;
         }
 
 

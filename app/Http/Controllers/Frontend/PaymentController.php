@@ -14,6 +14,7 @@ use App\Services\PaypalService;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Paytabscom\Laravel_paytabs\Facades\paypage;
 
 class PaymentController extends Controller
 {
@@ -23,40 +24,61 @@ class PaymentController extends Controller
         return view('frontend.checkout');
     }
 
-    // online 
+    // paypal pay 
     public function checkout_now(Request $request)
     {
+        if ($request->paymentMethod == 'paypal') {
 
+            $order = (new OrderService)->createOrder($request->except(['_token', 'submit']));
 
-        $order = (new OrderService)->createOrder($request->except(['_token', 'submit']));
-        $paypal = new PaypalService('PayPal_Rest');
-        $response = $paypal->purchase([
-            "intent" => "CAPTURE",
-            "application_context" => [
-                "return_url" => $paypal->getReturnUrl($order->id),
-                "cancel_url" => $paypal->getCancelUrl($order->id)
-            ],
-            "purchase_units" => [
-                [
-                    "amount" => [
-                        "currency_code" => "USD",
-                        "value" => $order->total
+            $paypal = new PaypalService('PayPal_Rest');
+            $response = $paypal->purchase([
+                "intent" => "CAPTURE",
+                "application_context" => [
+                    "return_url" => $paypal->getReturnUrl($order->id),
+                    "cancel_url" => $paypal->getCancelUrl($order->id)
+                ],
+                "purchase_units" => [
+                    [
+                        "amount" => [
+                            "currency_code" => "USD",
+                            "value" => $order->total
+                        ]
                     ]
                 ]
-            ]
-        ]);
+            ]);
 
-        if (isset($response['id']) && $response['id'] != null) {
-            foreach ($response['links'] as $link) {
-                if ($link['rel'] === 'approve') {
-                    return redirect()->away($link['href']);
+            if (isset($response['id']) && $response['id'] != null) {
+                foreach ($response['links'] as $link) {
+                    if ($link['rel'] === 'approve') {
+                        return redirect()->away($link['href']);
+                    }
                 }
-            }
-        } else {
+            } else {
 
-            return redirect()->route('checkout.cancel', $order->id);
+                return redirect()->route('checkout.cancel', $order->id);
+            }
+        } elseif ($request->paymentMethod == 'creditDebit') {
+
+            $order = (new OrderService)->createOrder($request->except(['_token', 'submit']));
+            // dd($order);
+
+            $pay = paypage::sendPaymentCode('all')
+                ->sendTransaction('sale', 'ecom')
+                ->sendCart($order->id, $order->total, 'Course for Sale')
+                ->sendCustomerDetails("name", "email", '772036131', "40 st", "Rayidh", "Rayidh", "ASU", "12284", "0000")
+                ->sendShippingDetails('', $name = null, $email = null, $phone = null, $street1 = null, $city = null, $state = null, $country = null, $zip = null, $ip = null)
+                ->sendHideShipping($on = false)
+                ->sendURLs('', '')
+                ->sendLanguage('en')
+                ->sendFramed($on = false)
+                ->create_pay_page(); // to initiate payment page
+
+            return $pay;
         }
     }
+
+
 
     // inner
     public function checkout_in(Request $request)
@@ -119,6 +141,8 @@ class PaymentController extends Controller
             return redirect()->route('frontend.index');
         }
     }
+
+
 
     public function completed(Request $request, $order_id)
     {

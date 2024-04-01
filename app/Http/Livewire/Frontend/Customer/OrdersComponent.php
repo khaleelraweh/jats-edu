@@ -16,7 +16,7 @@ class OrdersComponent extends Component
 
     public function displayOrder($id)
     {
-        $this->order_show = Order::with('products', 'courses')->find($id);
+        $this->order_show = Order::with('courses')->find($id);
         $this->showOrder = true;
     }
 

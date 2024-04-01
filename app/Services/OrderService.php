@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\CourseOrder;
 use App\Models\Order;
 use App\Models\OrderCourse;
 use App\Models\OrderProduct;
@@ -40,9 +41,9 @@ class OrderService
 
         foreach (Cart::content() as $item) {
 
-            OrderCourse::create([
-                'order_id' => $order->id,
+            CourseOrder::create([
                 'course_id' => $item->model->id,
+                'order_id' => $order->id,
                 'quantity' => $item->qty
             ]);
         }

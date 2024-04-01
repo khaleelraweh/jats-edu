@@ -63,10 +63,10 @@
 
 
                         @if ($order_show)
-                            {{ dd($order_show) }}
-                            @foreach ($order_show->products as $product)
+
+                            @foreach ($order_show->courses as $product)
                                 <tr>
-                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $product->title }}</td>
                                     <td>{{ $order->currency() . ' ' . number_format($product->price, 2) }}</td>
                                     <td>{{ $product->pivot->quantity }}</td>
                                     <td>{{ $order->currency() . ' ' . number_format($product->price * $product->pivot->quantity, 2) }}
@@ -75,12 +75,12 @@
                             @endforeach
 
                             <tr>
-                                <td colspan="3" style="text-align: right"><strong>Subtotal</strong> </td>
+                                <td colspan="3" style="text-align: end"><strong>Subtotal</strong> </td>
                                 <td>{{ $order->currency() . ' ' . number_format($order_show->subtotal, 2) }}</td>
                             </tr>
                             @if (!is_null($order->offer_discount))
                                 <tr>
-                                    <td colspan="3" style="text-align: right">
+                                    <td colspan="3" style="text-align: end">
                                         <strong>Offer Discount</strong>
                                     </td>
                                     <td>
@@ -92,7 +92,7 @@
                             @endif
                             @if (!is_null($order->discount_code))
                                 <tr>
-                                    <td colspan="3" style="text-align: right"><strong>Coupon Discount
+                                    <td colspan="3" style="text-align: end"><strong>Coupon Discount
                                             ({{ $order->discount_code }})</strong> </td>
                                     <td>
                                         <del> {{ $order->currency() . ' ' . number_format($order_show->discount, 2) }}
@@ -101,11 +101,11 @@
                                 </tr>
                             @endif
                             <tr>
-                                <td colspan="3" style="text-align: right"><strong>Tax</strong> </td>
+                                <td colspan="3" style="text-align: end"><strong>Tax</strong> </td>
                                 <td>{{ $order->currency() . ' ' . number_format($order_show->tax, 2) }}</td>
                             </tr>
                             <tr>
-                                <td colspan="3" style="text-align: right"><strong>Amount</strong> </td>
+                                <td colspan="3" style="text-align: end"><strong>Amount</strong> </td>
                                 <td>{{ $order->currency() . ' ' . number_format($order_show->total, 2) }}</td>
                             </tr>
                         @endif

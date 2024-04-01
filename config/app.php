@@ -173,6 +173,9 @@ return [
         Mindscms\Entrust\EntrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
+        // paytabs 
+        Paytabscom\Laravel_paytabs\PaypageServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

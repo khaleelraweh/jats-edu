@@ -13,7 +13,6 @@ use App\Services\OrderService;
 use App\Services\PaypalService;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Paytabscom\Laravel_paytabs\Facades\paypage;
 
@@ -64,46 +63,15 @@ class PaymentController extends Controller
             $order = (new OrderService)->createOrder($request->except(['_token', 'submit']));
             // dd($order);
 
-            $payment_method = "all";
-            $tran_type  =   "sale";
-            $tran_class = "ecom";
-            $cart_id = $order->id;
-            $cart_amount = $order->total;
-            $cart_description = "This is description ";
-            $name = Auth()->user()->full_name;
-            $email = auth()->user()->email;
-            $phone = auth()->user()->phone ?? '';
-            $street1 = "street";
-            $city = "Ibb";
-            $state = "Ibb";
-            $country = "اليمن";
-            $zip = "00000";
-            $ip = "";
-            $same_as_billing = "billing";
-            $return = route('checkout.complete_by_paytabs', $order->id);
-            $callback = "";
-            $language = app()->getLocale();
-
-            $status = true; //fix it 
-            $tran_ref = $order->id; //fix it 
-            $token = "this is token"; //fix it 
-
-
-
-
-
-
-            $pay = paypage::sendPaymentCode($payment_method)
-                ->sendTransaction($tran_type, $tran_class)
-                ->sendCart($cart_id, $cart_amount, $cart_description)
-                ->sendCustomerDetails($name, $email, $phone, $street1, $city, $state, $country, $zip, $ip)
-                ->sendShippingDetails($same_as_billing, $name = null, $email = null, $phone = null, $street1 = null, $city = null, $state = null, $country = null, $zip = null, $ip = null)
-                ->sendHideShipping($on = true)
-                ->sendURLs($return, $callback)
-                ->sendLanguage($language)
+            $pay = paypage::sendPaymentCode('all')
+                ->sendTransaction('sale', 'ecom')
+                ->sendCart($order->id, $order->total, 'Course for Sale')
+                ->sendCustomerDetails("name", "email", '772036131', "40 st", "Rayidh", "Rayidh", "ASU", "12284", "0000")
+                ->sendShippingDetails('', $name = null, $email = null, $phone = null, $street1 = null, $city = null, $state = null, $country = null, $zip = null, $ip = null)
+                ->sendHideShipping($on = false)
+                ->sendURLs('', '')
+                ->sendLanguage('en')
                 ->sendFramed($on = false)
-                // ->sendTokinse($status)
-                // ->sendToken($tran_ref, $token)
                 ->create_pay_page(); // to initiate payment page
 
             return $pay;
@@ -215,39 +183,6 @@ class PaymentController extends Controller
         } else {
             return redirect()->route('checkout.cancel', $order->id);
         }
-    }
-
-    public function completed_paytabs(Request $request, $order_id)
-    {
-
-        $order = Order::find($order_id);
-
-        $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
-        $order->transactions()->create([
-            'transaction' => OrderTransaction::PAYMENT_COMPLETED,
-            // 'transaction_number' => $response->getTransactionReference(),
-            'transaction_number' => 10,
-            'payment_result' => 'success',
-        ]);
-
-        if (session()->has('coupon')) {
-            $coupon = Coupon::where('code->' . app()->getLocale(), session()->get('coupon')['code'])->first();
-            $coupon->increment('used_times');
-        }
-
-        Cart::instance('default')->destroy();
-        session()->forget([
-            'coupon',
-            'saved_customer_address_id',
-            'saved_shipping_company_id',
-            'saved_payment_method_id',
-            'shipping',
-        ]);
-
-
-        toast(__('panel.f_your_recent_payment_successful_with_refrence_code') . '10', 'success');
-
-        return redirect()->route('frontend.index');
     }
 
     public function cancelled($order_id)

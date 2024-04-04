@@ -69,8 +69,8 @@
                                         <img src="{{ asset('assets/main_sliders/' . $slider->firstMedia->file_name) }}"
                                             width="60" height="60" alt="{{ $slider->title }}">
                                     @else
-                                        <img src="{{ asset('assets/noImage.png') }}" width="60" height="60"
-                                            alt="{{ $slider->title }}">
+                                        <img src="{{ asset('image/not_found/item_image_not_found.png') }}" width="60"
+                                            height="60" alt="{{ $slider->title }}">
                                     @endif
 
                                 </td>

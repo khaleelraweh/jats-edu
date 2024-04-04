@@ -111,10 +111,10 @@
                                                 ),
                                             )
                                         ) {
-                                            $featured_course_img = asset('assets/courses/no_image_found.webp');
+                                            $featured_course_img = asset('image/not_found/item_image_not_found.webp');
                                         }
                                     } else {
-                                        $featured_course_img = asset('assets/courses/no_image_found.webp');
+                                        $featured_course_img = asset('image/not_found/item_image_not_found.webp');
                                     }
                                 @endphp
 

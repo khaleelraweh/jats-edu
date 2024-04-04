@@ -189,12 +189,12 @@
                                                                         )
                                                                     ) {
                                                                         $item_model_img = asset(
-                                                                            'assets/courses/no_image_found.webp',
+                                                                            'image/not_found/item_image_not_found.webp',
                                                                         );
                                                                     }
                                                                 } else {
                                                                     $item_model_img = asset(
-                                                                        'assets/courses/no_image_found.webp',
+                                                                        'image/not_found/item_image_not_found.webp',
                                                                     );
                                                                 }
                                                             @endphp

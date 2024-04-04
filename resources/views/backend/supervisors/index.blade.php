@@ -67,10 +67,10 @@
                                         if (
                                             !file_exists(public_path('assets/supervisors/' . $supervisor->user_image))
                                         ) {
-                                            $supervisor_img = asset('assets/supervisors/no_image_found.webp');
+                                            $supervisor_img = asset('image/not_found/avator1.webp');
                                         }
                                     } else {
-                                        $supervisor_img = asset('assets/supervisors/no_image_found.webp');
+                                        $supervisor_img = asset('image/not_found/avator1.webp');
                                     }
                                 @endphp
 

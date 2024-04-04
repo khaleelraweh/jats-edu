@@ -23,10 +23,10 @@
                     ),
                     )
                     ) {
-                    $course_category_img = asset('assets/course_categories/no_image_found.webp');
+                    $course_category_img = asset('image/not_found/item_image_not_found.webp');
                     }
                     } else {
-                    $course_category_img = asset('assets/course_categories/no_image_found.webp');
+                    $course_category_img = asset('image/not_found/item_image_not_found.webp');
                     }
                     @endphp
 

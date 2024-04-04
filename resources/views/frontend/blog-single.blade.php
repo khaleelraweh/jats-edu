@@ -23,10 +23,10 @@
                                     if (
                                         !file_exists(public_path('assets/users/' . $post->users->first()->user_image))
                                     ) {
-                                        $user_img = asset('assets/users/no_image_found.webp');
+                                        $user_img = asset('image/not_found/avator1.webp');
                                     }
                                 } else {
-                                    $user_img = asset('assets/users/no_image_found.webp');
+                                    $user_img = asset('image/not_found/avator1.webp');
                                 }
                             @endphp
                             <img src="{{ $user_img }}" alt="{{ $post->users->first()->full_name }}" class="rounded-circle"
@@ -52,10 +52,10 @@
                 $post_img = asset('assets/posts/' . $post->photos->first()->file_name);
 
                 if (!file_exists(public_path('assets/posts/' . $post->photos->first()->file_name))) {
-                    $post_img = asset('assets/posts/no_image_found.webp');
+                    $post_img = asset('image/not_found/item_image_not_found.webp');
                 }
             } else {
-                $post_img = asset('assets/posts/no_image_found.webp');
+                $post_img = asset('image/not_found/item_image_not_found.webp');
             }
         @endphp
         <img src="{{ $post_img }}" alt="..." class="img-fluid">
@@ -82,10 +82,10 @@
                         $post_img = asset('assets/posts/' . $post->photos->last()->file_name);
 
                         if (!file_exists(public_path('assets/posts/' . $post->photos->last()->file_name))) {
-                            $post_img = asset('assets/posts/no_image_found.webp');
+                            $post_img = asset('image/not_found/item_image_not_found.webp');
                         }
                     } else {
-                        $post_img = asset('assets/posts/no_image_found.webp');
+                        $post_img = asset('image/not_found/item_image_not_found.webp');
                     }
                 @endphp
 
@@ -187,10 +187,10 @@
                                                 public_path('assets/posts/' . $latest_post->photos->first()->file_name),
                                             )
                                         ) {
-                                            $latest_post_img = asset('assets/posts/no_image_found.webp');
+                                            $latest_post_img = asset('image/not_found/item_image_not_found.webp');
                                         }
                                     } else {
-                                        $latest_post_img = asset('assets/posts/no_image_found.webp');
+                                        $latest_post_img = asset('image/not_found/item_image_not_found.webp');
                                     }
                                 @endphp
                                 <img class="rounded shadow-light-lg img-fluid" src="{{ $latest_post_img }}" alt="...">

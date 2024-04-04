@@ -20,10 +20,10 @@
                                                 public_path('assets/posts/' . $post->photos->first()->file_name),
                                             )
                                         ) {
-                                            $post_img = asset('assets/posts/no_image_found.webp');
+                                            $post_img = asset('image/not_found/item_image_not_found.webp');
                                         }
                                     } else {
-                                        $post_img = asset('assets/posts/no_image_found.webp');
+                                        $post_img = asset('image/not_found/item_image_not_found.webp');
                                     }
                                 @endphp
                                 <img src="{{ $post_img }}" alt="{{ $post->title }}" class="rounded img-fluid">
@@ -61,10 +61,10 @@
                                                         ),
                                                     )
                                                 ) {
-                                                    $user_img = asset('assets/users/no_image_found.webp');
+                                                    $user_img = asset('image/not_found/avator1.webp');
                                                 }
                                             } else {
-                                                $user_img = asset('assets/users/no_image_found.webp');
+                                                $user_img = asset('image/not_found/avator1.webp');
                                             }
                                         @endphp
                                         <img src="{{ $user_img }}" alt="{{ $post->users->first()->first_name }}"
@@ -159,10 +159,12 @@
                                                         ),
                                                     )
                                                 ) {
-                                                    $recent_post_img = asset('assets/posts/no_image_found.webp');
+                                                    $recent_post_img = asset(
+                                                        'image/not_found/item_image_not_found.webp',
+                                                    );
                                                 }
                                             } else {
-                                                $recent_post_img = asset('assets/posts/no_image_found.webp');
+                                                $recent_post_img = asset('image/not_found/item_image_not_found.webp');
                                             }
                                         @endphp
                                         <img src="{{ $recent_post_img }}" alt="..."

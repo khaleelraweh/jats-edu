@@ -266,10 +266,10 @@
                                                 public_path('assets/events/' . $event->photos->first()->file_name),
                                             )
                                         ) {
-                                            $event_img = asset('assets/events/no_image_found.webp');
+                                            $event_img = asset('image/not_found/item_image_not_found.webp');
                                         }
                                     } else {
-                                        $event_img = asset('assets/events/no_image_found.webp');
+                                        $event_img = asset('image/not_found/item_image_not_found.webp');
                                     }
                                 @endphp
                                 <!-- Image -->
@@ -401,10 +401,10 @@
                                                     public_path('assets/posts/' . $post->photos->first()->file_name),
                                                 )
                                             ) {
-                                                $post_img = asset('assets/posts/no_image_found.webp');
+                                                $post_img = asset('image/not_found/item_image_not_found.webp');
                                             }
                                         } else {
-                                            $post_img = asset('assets/posts/no_image_found.webp');
+                                            $post_img = asset('image/not_found/item_image_not_found.webp');
                                         }
                                     @endphp
                                     <img class="rounded shadow-light-lg img-fluid" src="{{ $post_img }}"

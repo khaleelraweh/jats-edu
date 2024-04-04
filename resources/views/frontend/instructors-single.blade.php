@@ -346,10 +346,10 @@
                                                         ),
                                                     )
                                                 ) {
-                                                    $course_img = asset('assets/courses/no_image_found.webp');
+                                                    $course_img = asset('image/not_found/item_image_not_found.webp');
                                                 }
                                             } else {
-                                                $course_img = asset('assets/courses/no_image_found.webp');
+                                                $course_img = asset('image/not_found/item_image_not_found.webp');
                                             }
 
                                         @endphp

@@ -7,20 +7,20 @@
             $course_img = asset('assets/courses/' . $course->photos->first()->file_name);
 
             if (!file_exists(public_path('assets/courses/' . $course->photos->first()->file_name))) {
-                $course_img = asset('assets/courses/no_image_found.webp');
+                $course_img = asset('image/not_found/item_image_not_found.webp');
             }
         } else {
-            $course_img = asset('assets/courses/no_image_found.webp');
+            $course_img = asset('image/not_found/item_image_not_found.webp');
         }
 
         if ($course->photos->last()->file_name != null) {
             $course_cover = asset('assets/courses/' . $course->photos->last()->file_name);
 
             if (!file_exists(public_path('assets/courses/' . $course->photos->last()->file_name))) {
-                $course_cover = asset('assets/courses/no_image_found.webp');
+                $course_cover = asset('image/not_found/item_image_not_found.webp');
             }
         } else {
-            $course_cover = asset('assets/courses/no_image_found.webp');
+            $course_cover = asset('image/not_found/item_image_not_found.webp');
         }
     @endphp
 
@@ -1666,10 +1666,12 @@
                                                         ),
                                                     )
                                                 ) {
-                                                    $latest_course_img = asset('assets/courses/no_image_found.webp');
+                                                    $latest_course_img = asset(
+                                                        'image/not_found/item_image_not_found.webp',
+                                                    );
                                                 }
                                             } else {
-                                                $latest_course_img = asset('assets/courses/no_image_found.webp');
+                                                $latest_course_img = asset('image/not_found/item_image_not_found.webp');
                                             }
                                         @endphp
 
@@ -1732,10 +1734,10 @@
                                         public_path('assets/courses/' . $related_course->photos->first()->file_name),
                                     )
                                 ) {
-                                    $related_course_img = asset('assets/courses/no_image_found.webp');
+                                    $related_course_img = asset('image/not_found/item_image_not_found.webp');
                                 }
                             } else {
-                                $related_course_img = asset('assets/courses/no_image_found.webp');
+                                $related_course_img = asset('image/not_found/item_image_not_found.webp');
                             }
                         @endphp
                         <div class="card-zoom position-relative">

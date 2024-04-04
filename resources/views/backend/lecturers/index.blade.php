@@ -68,10 +68,10 @@
                                             if (
                                                 !file_exists(public_path('assets/instructors/' . $customer->user_image))
                                             ) {
-                                                $customer_img = asset('assets/instructors/no_image_found.webp');
+                                                $customer_img = asset('image/not_found/avator1.webp');
                                             }
                                         } else {
-                                            $customer_img = asset('assets/instructors/no_image_found.webp');
+                                            $customer_img = asset('image/not_found/avator1.webp');
                                         }
                                     @endphp
                                     <img src="{{ $customer_img }}" width="60" height="60"

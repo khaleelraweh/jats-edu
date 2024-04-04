@@ -8,7 +8,7 @@
                     </h1>
                     <nav aria-label="breadcrumb ">
                         <ul class="breadcrumbs justify-content-lg-start mb-0 px-5 bg-transparent">
-                            <li><a href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a></li>
+                            <li><a hrev="{{ route('frontend.index') }}">{{ __('panel.main') }}</a></li>
                             <li class="active"><span> {{ __('panel.f_control_panel') }} <span></li>
                         </ul>
                     </nav>

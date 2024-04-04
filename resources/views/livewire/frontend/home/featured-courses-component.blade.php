@@ -141,10 +141,10 @@
                                     $instructor_img = asset('assets/instructors/' . $instructor->user_image);
 
                                     if (!file_exists(public_path('assets/instructors/' . $instructor->user_image))) {
-                                        $instructor_img = asset('assets/instructors/no_image_found.webp');
+                                        $instructor_img = asset('image/not_found/avator1.webp');
                                     }
                                 } else {
-                                    $instructor_img = asset('assets/instructors/no_image_found.webp');
+                                    $instructor_img = asset('image/not_found/avator1.webp');
                                 }
                             @endphp
 

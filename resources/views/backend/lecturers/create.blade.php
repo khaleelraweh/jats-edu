@@ -9,7 +9,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_lecturer') }}
+                    {{ __('panel.add_new_instructor') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -21,8 +21,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.lecturers.index') }}">
-                            {{ __('panel.show_lecturers') }}
+                        <a href="{{ route('admin.instructors.index') }}">
+                            {{ __('panel.show_instructors') }}
                         </a>
                     </li>
                 </ul>
@@ -47,7 +47,7 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form action="{{ route('admin.lecturers.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.instructors.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
 
@@ -196,8 +196,8 @@
                                         <br>
                                         <span class="form-text text-muted">{{ __('panel.user_image_size') }} </span>
                                         <div class="file-loading">
-                                            <input type="file" name="user_image" id="lecturer_image"
-                                                value="{{ old('lecturer_image') }}" class="file-input-overview ">
+                                            <input type="file" name="user_image" id="instructor_image"
+                                                value="{{ old('instructor_image') }}" class="file-input-overview ">
                                             <span class="form-text text-muted">{{ __('panel.user_image_size') }} </span>
                                             @error('user_image')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -212,12 +212,12 @@
                     {{-- motavation content --}}
                     <div class="tab-pane fade a" id="motavation" role="tabpanel" aria-labelledby="motavation-tab">
 
-                        {{-- lecturer description field --}}
+                        {{-- instructor description field --}}
                         <div class="row">
                             @foreach (config('locales.languages') as $key => $val)
                                 <div class="col-sm-12 col-md-6 pt-3">
                                     <label for="description[{{ $key }}]">
-                                        {{ __('panel.lecturer_description') }}
+                                        {{ __('panel.instructor_description') }}
                                         {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                     </label>
                                     <textarea name="description[{{ $key }}]" style="height: 120px" class="form-control summernote">{!! old('description.' . $key) !!}</textarea>
@@ -228,12 +228,12 @@
                             @endforeach
                         </div>
 
-                        {{-- lecturer motavation field --}}
+                        {{-- instructor motavation field --}}
                         <div class="row">
                             @foreach (config('locales.languages') as $key => $val)
                                 <div class="col-sm-12 col-md-6 pt-3">
                                     <label for="motavation[{{ $key }}]">
-                                        {{ __('panel.lecturer_motavation') }}
+                                        {{ __('panel.instructor_motavation') }}
                                         {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                     </label>
                                     <textarea name="motavation[{{ $key }}]" rows="10" style="height: 120px"
@@ -366,7 +366,7 @@
     {{-- #user_image is the id in file input file above  --}}
     <script>
         $(function() {
-            $("#lecturer_image").fileinput({
+            $("#instructor_image").fileinput({
                 theme: "fa5",
                 maxFileCount: 1,
                 allowedFileTypes: ['image'],

@@ -17,7 +17,7 @@ use App\Http\Controllers\Backend\CurrenciesController;
 use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\InstructorController;
-use App\Http\Controllers\Backend\LecturersController;
+use App\Http\Controllers\Backend\instructorsController;
 use App\Http\Controllers\Backend\LocaleController;
 use App\Http\Controllers\Backend\MainSliderController;
 use App\Http\Controllers\Backend\NewsController;

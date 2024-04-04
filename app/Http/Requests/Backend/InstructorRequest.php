@@ -45,9 +45,9 @@ class InstructorRequest extends FormRequest
                     return [
                         'first_name' => 'required',
                         'last_name'  => 'required',
-                        'username'   => 'required|max:20|unique:users,username,' . $this->route()->lecturer->id,
-                        'email'      => 'required|email|max:255|unique:users,email,' . $this->route()->lecturer->id,
-                        'mobile'     => 'required|numeric|unique:users,mobile,' . $this->route()->lecturer->id,
+                        'username'   => 'required|max:20|unique:users,username,' . $this->route()->instructor->id,
+                        'email'      => 'required|email|max:255|unique:users,email,' . $this->route()->instructor->id,
+                        'mobile'     => 'required|numeric|unique:users,mobile,' . $this->route()->instructor->id,
                         'password'   => 'nullable|min:8',
                         'status'     => 'required',
                         'user_image' => 'nullable|mimes:jpg,jpeg,png,svg,gif,webp|max:3000',

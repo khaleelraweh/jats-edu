@@ -52,7 +52,7 @@ class CourseListComponent extends Component
     {
 
 
-        $lecturers_menu = User::whereHasRoles('lecturer')->hasCourses()
+        $instructors_menu = User::whereHasRoles('instructor')->hasCourses()
             ->orderBy('first_name')
             ->orderBy('last_name')
             ->when($this->searchQuery, function ($query) {
@@ -61,17 +61,17 @@ class CourseListComponent extends Component
                         ->orWhere('last_name', 'LIKE', '%' . $this->searchQuery . '%');
                 });
             })
-            ->withCount('courses') // Load the count of associated courses for each lecturer
+            ->withCount('courses') // Load the count of associated courses for each instructor
             ->get()
             ->groupBy(function ($user) {
                 return $user->first_name . ' ' . $user->last_name;
             })
             ->map(function ($group) {
-                // Calculate the count of lecturers in each group
-                $lecturersCount = $group->count();
-                // Calculate the sum of courses count for each lecturer group
+                // Calculate the count of instructors in each group
+                $instructorsCount = $group->count();
+                // Calculate the sum of courses count for each instructor group
                 $coursesCount = $group->sum('courses_count');
-                return compact('lecturersCount', 'coursesCount');
+                return compact('instructorsCount', 'coursesCount');
             });
 
 
@@ -123,7 +123,7 @@ class CourseListComponent extends Component
         }
 
 
-        $lecturer_ids = User::when($this->selectedNames, function ($query) {
+        $instructor_ids = User::when($this->selectedNames, function ($query) {
             return $query->where(function ($subQuery) {
                 foreach ($this->selectedNames as $fullName) {
                     $subQuery->orWhereRaw('CONCAT(first_name, " ", last_name) LIKE ?', ["%{$fullName}%"]);
@@ -149,9 +149,9 @@ class CourseListComponent extends Component
                         $query2->where('price', '>', 0);
                     });
             })
-            ->when($this->selectedNames, function ($query) use ($lecturer_ids) {
-                return $query->whereHas('users', function ($subQuery) use ($lecturer_ids) {
-                    $subQuery->whereIn('user_id', $lecturer_ids);
+            ->when($this->selectedNames, function ($query) use ($instructor_ids) {
+                return $query->whereHas('users', function ($subQuery) use ($instructor_ids) {
+                    $subQuery->whereIn('user_id', $instructor_ids);
                 });
             })
             ->when($this->selectedRatings, function ($query) {
@@ -174,7 +174,7 @@ class CourseListComponent extends Component
             'courses'   =>  $courses,
             'course_categories_menu' => $course_categories_menu,
             'sortingBy' => $this->sortingBy,
-            'lecturers_menu'    =>  $lecturers_menu,
+            'instructors_menu'    =>  $instructors_menu,
         ]);
     }
 }

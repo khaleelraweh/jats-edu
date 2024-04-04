@@ -21,7 +21,7 @@ class PostSeeder extends Seeder
 
         $faker = Factory::create();
 
-        // Get active lecturer
+        // Get active instructor
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', 'instructor');
         })->active()->inRandomOrder()->take(10)->get();

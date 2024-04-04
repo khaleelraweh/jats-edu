@@ -8,33 +8,33 @@
                 <div class="d-flex flex-wrap align-items-center justify-content-center mb-5 mb-md-3">
                     <!-- Social -->
                     <ul class="list-unstyled list-inline list-social mb-4 mb-md-0 mx-lg-4 order-1 order-md-0 font-size-sm">
-                        @if ($lecturer->facebook)
+                        @if ($instructor->facebook)
                             <li class="list-inline-item list-social-item">
-                                <a href="{{ $lecturer->facebook }}"
+                                <a href="{{ $instructor->facebook }}"
                                     class="text-secondary w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
                             </li>
                         @endif
-                        @if ($lecturer->twitter)
+                        @if ($instructor->twitter)
                             <li class="list-inline-item list-social-item">
-                                <a href="{{ $lecturer->twitter }}"
+                                <a href="{{ $instructor->twitter }}"
                                     class="text-secondary w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
                                     <i class="fab fa-twitter"></i>
                                 </a>
                             </li>
                         @endif
-                        @if ($lecturer->instagram)
+                        @if ($instructor->instagram)
                             <li class="list-inline-item list-social-item">
-                                <a href="{{ $lecturer->instagram }}"
+                                <a href="{{ $instructor->instagram }}"
                                     class="text-secondary w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
                                     <i class="fab fa-instagram"></i>
                                 </a>
                             </li>
                         @endif
-                        @if ($lecturer->linkedin)
+                        @if ($instructor->linkedin)
                             <li class="list-inline-item list-social-item">
-                                <a href="{{ $lecturer->linkedin }}"
+                                <a href="{{ $instructor->linkedin }}"
                                     class="text-secondary w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
                                     <i class="fab fa-linkedin-in"></i>
                                 </a>
@@ -45,17 +45,17 @@
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 mx-lg-4 order-0">
                         <div class="p-4">
                             @php
-                                if ($lecturer->user_image != null) {
-                                    $lecturer_img = asset('assets/lecturers/' . $lecturer->user_image);
+                                if ($instructor->user_image != null) {
+                                    $instructor_img = asset('assets/instructors/' . $instructor->user_image);
 
-                                    if (!file_exists(public_path('assets/lecturers/' . $lecturer->user_image))) {
-                                        $lecturer_img = asset('assets/lecturers/user_not_found.webp');
+                                    if (!file_exists(public_path('assets/instructors/' . $instructor->user_image))) {
+                                        $instructor_img = asset('assets/instructors/user_not_found.webp');
                                     }
                                 } else {
-                                    $lecturer_img = asset('assets/lecturers/user_not_found.webp');
+                                    $instructor_img = asset('assets/instructors/user_not_found.webp');
                                 }
                             @endphp
-                            <img src="{{ $lecturer_img }}" alt="{{ $lecturer->first_name }}"
+                            <img src="{{ $instructor_img }}" alt="{{ $instructor->first_name }}"
                                 class="rounded-circle img-fluid" width="170" height="170">
                         </div>
                     </div>
@@ -84,10 +84,10 @@
                         <span class="ms-3">Report this author</span>
                     </a>
                 </div>
-                <h1 class="text-center mb-1">{{ $lecturer->first_name }} {{ $lecturer->last_name }}</h1>
+                <h1 class="text-center mb-1">{{ $instructor->first_name }} {{ $instructor->last_name }}</h1>
                 <div class="text-center mb-7">
-                    @if (count($lecturer->specializations) > 0)
-                        @foreach ($lecturer->specializations->take(2) as $specialization)
+                    @if (count($instructor->specializations) > 0)
+                        @foreach ($instructor->specializations->take(2) as $specialization)
                             {{ $specialization->name }}
 
                             @if (!$loop->last)
@@ -256,7 +256,7 @@
                                 </svg>
 
                             </div>
-                            {{ count($lecturer->courses) }} courses
+                            {{ count($instructor->courses) }} courses
                         </div>
                     </div>
                 </div>
@@ -282,7 +282,7 @@
 
                     <h3 class="">{{ __('transf.Bio') }}</h3>
                     <p class="mb-6 line-height-md">
-                        {!! $lecturer->motavation !!}
+                        {!! $instructor->motavation !!}
                     </p>
                     <p class="mb-6 line-height-md">
                         {!! $exposedText !!}
@@ -326,7 +326,7 @@
 
                     <div class="mx-n4 mb-12"
                         data-flickity='{"pageDots": true, "prevNextButtons": false, "cellAlign": "left", "wrapAround": true, "imagesLoaded": true}'>
-                        @foreach ($lecturer->courses as $course)
+                        @foreach ($instructor->courses as $course)
                             <div class="col-md-6 col-lg-4 col-xl-3 pb-4 pb-md-5"
                                 style="padding-right:15px;padding-left:15px;">
                                 <!-- Card -->

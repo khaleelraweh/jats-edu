@@ -109,7 +109,7 @@
 
                             {{-- instructors filter by name  --}}
                             <ul class="list-unstyled list-group list-checkbox list-checkbox-limit">
-                                @foreach ($lecturers_menu as $name => $count)
+                                @foreach ($instructors_menu as $name => $count)
                                     <li class="custom-control custom-checkbox">
                                         <input wire:model="selectedNames" type="checkbox" value="{{ $name }}"
                                             class="custom-control-input" id="InstructorscustomCheck{{ $loop->index }}">
@@ -243,37 +243,38 @@
 
             <div class="col-xl-9">
                 <div class="row row-cols-md-3 mb-6 mb-xl-3">
-                    @foreach ($lecturers as $lecturer)
+                    @foreach ($instructors as $instructor)
                         <div class="col-md pb-4 pb-md-7">
                             <div class="card border shadow p-2 lift">
                                 <!-- Image -->
                                 <div class="card-zoom position-relative">
                                     <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
                                         <ul class="nav mx-n4 justify-content-center">
-                                            @if ($lecturer->facebook)
+                                            @if ($instructor->facebook)
                                                 <li class="nav-item px-4">
-                                                    <a href="{{ $lecturer->facebook }}" class="d-block text-white">
+                                                    <a href="{{ $instructor->facebook }}" class="d-block text-white">
                                                         <i class="fab fa-facebook-f"></i>
                                                     </a>
                                                 </li>
                                             @endif
-                                            @if ($lecturer->twitter)
+                                            @if ($instructor->twitter)
                                                 <li class="nav-item px-4">
-                                                    <a href="{{ $lecturer->twitter }}" class="d-block text-white">
+                                                    <a href="{{ $instructor->twitter }}" class="d-block text-white">
                                                         <i class="fab fa-twitter"></i>
                                                     </a>
                                                 </li>
                                             @endif
-                                            @if ($lecturer->instagram)
+                                            @if ($instructor->instagram)
                                                 <li class="nav-item px-4">
-                                                    <a href="{{ $lecturer->instagram }}" class="d-block text-white">
+                                                    <a href="{{ $instructor->instagram }}"
+                                                        class="d-block text-white">
                                                         <i class="fab fa-instagram"></i>
                                                     </a>
                                                 </li>
                                             @endif
-                                            @if ($lecturer->linkedin)
+                                            @if ($instructor->linkedin)
                                                 <li class="nav-item px-4">
-                                                    <a href="{{ $lecturer->linkedin }}" class="d-block text-white">
+                                                    <a href="{{ $instructor->linkedin }}" class="d-block text-white">
                                                         <i class="fab fa-linkedin-in"></i>
                                                     </a>
                                                 </li>
@@ -281,37 +282,39 @@
                                         </ul>
                                     </div>
 
-                                    <a href="{{ route('frontend.instructors_single', $lecturer->id) }}"
+                                    <a href="{{ route('frontend.instructors_single', $instructor->id) }}"
                                         class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block">
                                         @php
-                                            if ($lecturer->user_image != null) {
-                                                $lecturer_img = asset('assets/lecturers/' . $lecturer->user_image);
+                                            if ($instructor->user_image != null) {
+                                                $instructor_img = asset(
+                                                    'assets/instructors/' . $instructor->user_image,
+                                                );
 
                                                 if (
                                                     !file_exists(
-                                                        public_path('assets/lecturers/' . $lecturer->user_image),
+                                                        public_path('assets/instructors/' . $instructor->user_image),
                                                     )
                                                 ) {
-                                                    $lecturer_img = asset('assets/lecturers/user_not_found.webp');
+                                                    $instructor_img = asset('assets/instructors/user_not_found.webp');
                                                 }
                                             } else {
-                                                $lecturer_img = asset('assets/lecturers/user_not_found.webp');
+                                                $instructor_img = asset('assets/instructors/user_not_found.webp');
                                             }
                                         @endphp
-                                        <img class="rounded shadow-light-lg img-fluid" src="{{ $lecturer_img }}"
+                                        <img class="rounded shadow-light-lg img-fluid" src="{{ $instructor_img }}"
                                             alt="..."></a>
                                 </div>
 
                                 <!-- Footer -->
                                 <div class="card-footer px-3 pt-4 pb-1">
-                                    <a href="{{ route('frontend.instructors_single', $lecturer->id) }}"
+                                    <a href="{{ route('frontend.instructors_single', $instructor->id) }}"
                                         class="d-block">
-                                        <h5 class="mb-0">{{ $lecturer->first_name }} {{ $lecturer->last_name }}
+                                        <h5 class="mb-0">{{ $instructor->first_name }} {{ $instructor->last_name }}
                                         </h5>
                                     </a>
                                     <span class="font-size-d-sm">
-                                        @if (count($lecturer->specializations) > 0)
-                                            @foreach ($lecturer->specializations->take(2) as $specialization)
+                                        @if (count($instructor->specializations) > 0)
+                                            @foreach ($instructor->specializations->take(2) as $specialization)
                                                 {{ $specialization->name }}
 
                                                 @if (!$loop->last)

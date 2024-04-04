@@ -147,9 +147,9 @@ return [
     'certificate'               =>  'Certificate',
     'certificate_yes'           =>  'Yes',
     'certificate_no'           =>  'No',
-    'lecturer_tab'              =>  'Lecturers',
-    'lecturers'                 =>  'Lecturers',
-    'lecturer'                  =>  'Lecturer',
+    'instructor_tab'              =>  'instructors',
+    'instructors'                 =>  'instructors',
+    'instructor'                  =>  'instructor',
 
 
     // Course Topics  
@@ -596,19 +596,19 @@ return [
 
     ##############################################################
 
-    // =============  Manage lecturer  ===============//
-    'manage_lecturers'                => 'Manage Lecturers',
+    // =============  Manage instructor  ===============//
+    'manage_instructors'                => 'Manage instructors',
 
-    // --------------- lecturer Settings  --------------//
-    'show_lecturers'                   => 'Lecturers',
-    'add_new_lecturer'                  => 'Add New Lecturer',
-    'edit_existing_lecturer'            => 'Edit Existing Lecturer ',
+    // --------------- instructor Settings  --------------//
+    'show_instructors'                   => 'instructors',
+    'add_new_instructor'                  => 'Add New instructor',
+    'edit_existing_instructor'            => 'Edit Existing instructor ',
 
 
     // ........... commons in Insturctor   ....... //
     'name'                              =>  'Name',
-    'lecturer_description'              =>  'Lecturer Description',
-    'lecturer_motavation'               =>  'Lecturer Motavation',
+    'instructor_description'              =>  'instructor Description',
+    'instructor_motavation'               =>  'instructor Motavation',
     'motavation_tab'                    =>  'Motavation',
     'social_tab'                        =>  'Social',
     'facebook'                          =>  'Facebook',

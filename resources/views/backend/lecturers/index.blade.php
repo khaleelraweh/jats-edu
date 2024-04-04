@@ -20,17 +20,17 @@
                         @endif
                     </li>
                     <li>
-                        {{ __('panel.show_lecturers') }}
+                        {{ __('panel.show_instructors') }}
                     </li>
                 </ul>
             </div>
             <div class="ml-auto">
-                @ability('admin', 'create_lecturers')
-                    <a href="{{ route('admin.lecturers.create') }}" class="btn btn-primary">
+                @ability('admin', 'create_instructors')
+                    <a href="{{ route('admin.instructors.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
-                        <span class="text">{{ __('panel.add_new_lecturer') }}</span>
+                        <span class="text">{{ __('panel.add_new_instructor') }}</span>
                     </a>
                 @endability
             </div>
@@ -39,7 +39,7 @@
 
         <div class="card-body">
             {{-- filter form part  --}}
-            @include('backend.lecturers.filter.filter')
+            @include('backend.instructors.filter.filter')
 
             {{-- table part --}}
             <div class="table-responsive">
@@ -58,20 +58,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($lecturers as $customer)
+                        @forelse ($instructors as $customer)
                             <tr>
                                 <td class="d-none d-sm-table-cell">
                                     @php
                                         if ($customer->user_image != null) {
-                                            $customer_img = asset('assets/lecturers/' . $customer->user_image);
+                                            $customer_img = asset('assets/instructors/' . $customer->user_image);
 
                                             if (
-                                                !file_exists(public_path('assets/lecturers/' . $customer->user_image))
+                                                !file_exists(public_path('assets/instructors/' . $customer->user_image))
                                             ) {
-                                                $customer_img = asset('assets/lecturers/no_image_found.webp');
+                                                $customer_img = asset('assets/instructors/no_image_found.webp');
                                             }
                                         } else {
-                                            $customer_img = asset('assets/lecturers/no_image_found.webp');
+                                            $customer_img = asset('assets/instructors/no_image_found.webp');
                                         }
                                     @endphp
                                     <img src="{{ $customer_img }}" width="60" height="60"
@@ -110,7 +110,7 @@
                                 <td class="d-none d-sm-table-cell">{{ $customer->created_at->format('Y-m-d') }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.lecturers.edit', $customer->id) }}"
+                                        <a href="{{ route('admin.instructors.edit', $customer->id) }}"
                                             class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
@@ -120,7 +120,7 @@
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.lecturers.destroy', $customer->id) }}" method="post"
+                                    <form action="{{ route('admin.instructors.destroy', $customer->id) }}" method="post"
                                         class="d-none" id="delete-customer-{{ $customer->id }}">
                                         @csrf
                                         @method('DELETE')
@@ -137,7 +137,7 @@
                         <tr>
                             <td colspan="7">
                                 <div class="float-right">
-                                    {!! $lecturers->appends(request()->all())->links() !!}
+                                    {!! $instructors->appends(request()->all())->links() !!}
                                 </div>
                             </td>
                         </tr>

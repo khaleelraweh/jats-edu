@@ -36,8 +36,8 @@ class CourseRequest extends FormRequest
                         'lecture_numbers'                      =>  'nullable|numeric',
                         'Duration'                      =>  'nullable',
 
-                        'lecturers' => 'required|array|min:1',
-                        'lecturers.*' => 'exists:users,id',
+                        'instructors' => 'required|array|min:1',
+                        'instructors.*' => 'exists:users,id',
 
 
 

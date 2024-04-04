@@ -36,13 +36,13 @@ class InstructorsListCoponent extends Component
     {
         // Query for filter menu 
         $specializations_menu = Specialization::withCount(['users' => function ($query) {
-            $query->whereHasRoles('lecturer')->has('courses');
+            $query->whereHasRoles('instructor')->has('courses');
         }])->get();
 
         // Get the IDs of selected specializations
         $selectedSpecializationIds = Specialization::whereIn('slug->' . app()->getLocale(), $this->selectedSpecializations)->pluck('id')->toArray();
 
-        $lecturers_menu = User::whereHasRoles('lecturer')->hasCourses()
+        $instructors_menu = User::whereHasRoles('instructor')->hasCourses()
             ->orderBy('first_name')
             ->orderBy('last_name')
             ->when($this->searchQuery, function ($query) {
@@ -59,8 +59,8 @@ class InstructorsListCoponent extends Component
                 return $group->count();
             });
 
-        // Get lecturers
-        $lecturers = User::whereHasRoles('lecturer')
+        // Get instructors
+        $instructors = User::whereHasRoles('instructor')
             ->when($this->selectedSpecializations, function ($query) use ($selectedSpecializationIds) {
                 return $query->whereHas('specializations', function ($subQuery) use ($selectedSpecializationIds) {
                     $subQuery->whereIn('specialization_id', $selectedSpecializationIds);
@@ -75,7 +75,7 @@ class InstructorsListCoponent extends Component
             })
 
             ->when($this->selectedRatings, function ($query) {
-                // Filter lecturers based on the average rating of their courses
+                // Filter instructors based on the average rating of their courses
                 $query->whereHas('courses.reviews', function ($reviewQuery) {
                     $reviewQuery->whereIn('rating', $this->selectedRatings);
                 });
@@ -88,8 +88,8 @@ class InstructorsListCoponent extends Component
             'livewire.instructors.instructors-list-coponent',
             [
                 'specializations_menu'  =>  $specializations_menu,
-                'lecturers_menu'       =>  $lecturers_menu,
-                'lecturers' => $lecturers,
+                'instructors_menu'       =>  $instructors_menu,
+                'instructors' => $instructors,
             ]
         );
     }

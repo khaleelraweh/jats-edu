@@ -102,9 +102,9 @@
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="lecturer-tab" data-bs-toggle="tab" data-bs-target="#lecturer"
-                            type="button" role="tab" aria-controls="lecturer"
-                            aria-selected="false">{{ __('panel.lecturer_tab') }}
+                        <button class="nav-link" id="instructor-tab" data-bs-toggle="tab" data-bs-target="#instructor"
+                            type="button" role="tab" aria-controls="instructor"
+                            aria-selected="false">{{ __('panel.instructor_tab') }}
                         </button>
                     </li>
 
@@ -592,17 +592,17 @@
 
                     </div>
 
-                    {{-- lecturer tab --}}
-                    <div class="tab-pane fade" id="lecturer" role="tabpanel" aria-labelledby="lecturer-tab">
-                        {{-- lecturers row --}}
+                    {{-- instructor tab --}}
+                    <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
+                        {{-- instructors row --}}
                         <div class="row pt-4">
                             <div class="col-12">
-                                <label for="lecturers">{{ __('panel.lecturers') }}</label>
-                                <select name="lecturers[]" class="form-control select2 child" multiple="multiple">
-                                    @forelse ($lecturers as $lecturer)
-                                        <option value="{{ $lecturer->id }}"
-                                            {{ in_array($lecturer->id, old('lecturers', $courseLecturers)) ? 'selected' : null }}>
-                                            {{ $lecturer->first_name }} {{ $lecturer->last_name }}</option>
+                                <label for="instructors">{{ __('panel.instructors') }}</label>
+                                <select name="instructors[]" class="form-control select2 child" multiple="multiple">
+                                    @forelse ($instructors as $instructor)
+                                        <option value="{{ $instructor->id }}"
+                                            {{ in_array($instructor->id, old('instructors', $courseinstructors)) ? 'selected' : null }}>
+                                            {{ $instructor->first_name }} {{ $instructor->last_name }}</option>
                                     @empty
                                     @endforelse
                                 </select>

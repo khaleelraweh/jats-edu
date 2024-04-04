@@ -38,9 +38,9 @@ class FrontendController extends Controller
             ->get();
 
 
-        // Get lecturers
-        $lecturers = User::whereHas('roles', function ($query) {
-            $query->where('name', 'lecturer');
+        // Get instructors
+        $instructors = User::whereHas('roles', function ($query) {
+            $query->where('name', 'instructor');
         })
             ->active()
             ->HasCourses()
@@ -53,7 +53,7 @@ class FrontendController extends Controller
 
 
 
-        return view('frontend.index', compact('main_sliders', 'lecturers', 'events', 'posts'));
+        return view('frontend.index', compact('main_sliders', 'instructors', 'events', 'posts'));
     }
     public function home()
     {
@@ -162,17 +162,17 @@ class FrontendController extends Controller
     public function instructors_single($slug)
     {
 
-        $lecturer = User::whereId($slug)->first();
+        $instructor = User::whereId($slug)->first();
 
         // Trim the text to remove leading and trailing spaces
-        $lecturer->description = trim($lecturer->description);
+        $instructor->description = trim($instructor->description);
         // Get the first 200 characters
-        $exposedText = substr($lecturer->description, 0, 200);
+        $exposedText = substr($instructor->description, 0, 200);
         // Get the rest of the text
-        $hiddenText = substr($lecturer->description, 200);
+        $hiddenText = substr($instructor->description, 200);
 
 
-        return view('frontend.instructors-single', compact('lecturer', 'exposedText', 'hiddenText'));
+        return view('frontend.instructors-single', compact('instructor', 'exposedText', 'hiddenText'));
     }
 
 

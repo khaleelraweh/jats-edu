@@ -230,17 +230,19 @@
                                         style="max-width: 150px;">
                                         @php
                                             if ($instructor->user_image != null) {
-                                                $instructor_img = asset('assets/lecturers/' . $instructor->user_image);
+                                                $instructor_img = asset(
+                                                    'assets/instructors/' . $instructor->user_image,
+                                                );
 
                                                 if (
                                                     !file_exists(
-                                                        public_path('assets/lecturers/' . $instructor->user_image),
+                                                        public_path('assets/instructors/' . $instructor->user_image),
                                                     )
                                                 ) {
-                                                    $instructor_img = asset('assets/lecturers/no_image_found.webp');
+                                                    $instructor_img = asset('assets/instructors/no_image_found.webp');
                                                 }
                                             } else {
-                                                $instructor_img = asset('assets/lecturers/no_image_found.webp');
+                                                $instructor_img = asset('assets/instructors/no_image_found.webp');
                                             }
                                         @endphp
                                         <img class="rounded-circle mx-auto shadow-light-lg img-fluid"

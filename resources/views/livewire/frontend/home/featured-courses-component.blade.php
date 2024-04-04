@@ -133,18 +133,18 @@
 
                             <!-- Footer -->
                             @php
-                                $lecturer = $featured_course->users->first();
+                                $instructor = $featured_course->users->first();
                             @endphp
 
                             @php
-                                if ($lecturer->user_image != null) {
-                                    $lecturer_img = asset('assets/lecturers/' . $lecturer->user_image);
+                                if ($instructor->user_image != null) {
+                                    $instructor_img = asset('assets/instructors/' . $instructor->user_image);
 
-                                    if (!file_exists(public_path('assets/lecturers/' . $lecturer->user_image))) {
-                                        $lecturer_img = asset('assets/lecturers/no_image_found.webp');
+                                    if (!file_exists(public_path('assets/instructors/' . $instructor->user_image))) {
+                                        $instructor_img = asset('assets/instructors/no_image_found.webp');
                                     }
                                 } else {
-                                    $lecturer_img = asset('assets/lecturers/no_image_found.webp');
+                                    $instructor_img = asset('assets/instructors/no_image_found.webp');
                                 }
                             @endphp
 
@@ -152,7 +152,7 @@
                                 <a href="#" class="d-block">
                                     <div
                                         class="avatar avatar-xl badge-float position-absolute top-0 right-0 mt-n6 me-5 rounded-circle shadow border border-white border-w-lg">
-                                        <img src="{{ $lecturer_img }}" alt="..."
+                                        <img src="{{ $instructor_img }}" alt="..."
                                             class="avatar-img rounded-circle">
                                     </div>
                                 </a>

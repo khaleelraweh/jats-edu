@@ -145,7 +145,7 @@
 
                             {{-- instructors filter by name  --}}
                             <ul class="list-unstyled list-group list-checkbox list-checkbox-limit">
-                                @foreach ($lecturers_menu as $name => $counts)
+                                @foreach ($instructors_menu as $name => $counts)
                                     <li class="custom-control custom-checkbox">
                                         <input wire:model="selectedNames" type="checkbox" value="{{ $name }}"
                                             class="custom-control-input"
@@ -153,7 +153,7 @@
                                         <label class="custom-control-label font-size-base"
                                             for="InstructorscustomCheck{{ $loop->index }}">
                                             {{ $name }}
-                                            {{-- ({{ $counts['lecturersCount'] }}) --}}
+                                            {{-- ({{ $counts['instructorsCount'] }}) --}}
                                             ({{ $counts['coursesCount'] }})
                                         </label>
                                     </li>

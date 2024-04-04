@@ -10,7 +10,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_lecturer') }}
+                    {{ __('panel.edit_existing_instructor') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -22,8 +22,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.lecturers.index') }}">
-                            {{ __('panel.show_lecturers') }}
+                        <a href="{{ route('admin.instructors.index') }}">
+                            {{ __('panel.show_instructors') }}
                         </a>
                     </li>
                 </ul>
@@ -45,7 +45,7 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form action="{{ route('admin.lecturers.update', $lecturer->id) }}" method="post"
+            <form action="{{ route('admin.instructors.update', $instructor->id) }}" method="post"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
@@ -98,8 +98,8 @@
                                         <div class="form-group">
                                             <label for="first_name"> {{ __('panel.first_name') }}</label>
                                             <input type="text" id="first_name" name="first_name"
-                                                value="{{ old('first_name', $lecturer->first_name) }}" class="form-control"
-                                                placeholder="">
+                                                value="{{ old('first_name', $instructor->first_name) }}"
+                                                class="form-control" placeholder="">
                                             @error('first_name')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -109,7 +109,7 @@
                                         <div class="form-group">
                                             <label for="last_name">{{ __('panel.last_name') }}</label>
                                             <input type="text" id="last_name" name="last_name"
-                                                value="{{ old('last_name', $lecturer->last_name) }}" class="form-control"
+                                                value="{{ old('last_name', $instructor->last_name) }}" class="form-control"
                                                 placeholder="">
                                             @error('last_name')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -123,7 +123,7 @@
                                         <div class="form-group">
                                             <label for="username">{{ __('panel.user_name') }}</label>
                                             <input type="text" id="username" name="username"
-                                                value="{{ old('username', $lecturer->username) }}" class="form-control"
+                                                value="{{ old('username', $instructor->username) }}" class="form-control"
                                                 placeholder="">
                                             @error('username')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -148,7 +148,7 @@
                                         <div class="form-group">
                                             <label for="email">{{ __('panel.email') }}</label>
                                             <input type="text" id="email" name="email"
-                                                value="{{ old('email', $lecturer->email) }}" class="form-control"
+                                                value="{{ old('email', $instructor->email) }}" class="form-control"
                                                 placeholder="">
                                             @error('email')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -160,7 +160,7 @@
                                         <div class="form-group">
                                             <label for="mobile">{{ __('panel.mobile') }}</label>
                                             <input type="text" id="mobile" name="mobile"
-                                                value="{{ old('mobile', $lecturer->mobile) }}" class="form-control"
+                                                value="{{ old('mobile', $instructor->mobile) }}" class="form-control"
                                                 placeholder="">
                                             @error('mobile')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -178,7 +178,7 @@
                                             multiple="multiple">
                                             @forelse ($specializations as $specialization)
                                                 <option value="{{ $specialization->id }}"
-                                                    {{ in_array($specialization->id, old('specializations', $lecturerSpecializations)) ? 'selected' : null }}>
+                                                    {{ in_array($specialization->id, old('specializations', $instructorSpecializations)) ? 'selected' : null }}>
                                                     {{ $specialization->name }}</option>
                                             @empty
                                             @endforelse
@@ -196,8 +196,8 @@
                                         <br>
                                         <span class="form-text text-muted">{{ __('panel.user_image_size') }} </span>
                                         <div class="file-loading">
-                                            <input type="file" name="user_image" id="lecturer_image"
-                                                value="{{ old('lecturer_image') }}" class="file-input-overview ">
+                                            <input type="file" name="user_image" id="instructor_image"
+                                                value="{{ old('instructor_image') }}" class="file-input-overview ">
                                             <span class="form-text text-muted">{{ __('panel.user_image_size') }} </span>
                                             @error('user_image')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -212,15 +212,15 @@
                     {{-- motavation content --}}
                     <div class="tab-pane fade a" id="motavation" role="tabpanel" aria-labelledby="motavation-tab">
 
-                        {{-- lecturer description field --}}
+                        {{-- instructor description field --}}
                         <div class="row">
                             @foreach (config('locales.languages') as $key => $val)
                                 <div class="col-sm-12 col-md-6 pt-3">
                                     <label for="description[{{ $key }}]">
-                                        {{ __('panel.lecturer_description') }}
+                                        {{ __('panel.instructor_description') }}
                                         {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                     </label>
-                                    <textarea name="description[{{ $key }}]" style="height: 120px" class="form-control summernote">{!! old('description.' . $key, $lecturer->getTranslation('description', $key)) !!}</textarea>
+                                    <textarea name="description[{{ $key }}]" style="height: 120px" class="form-control summernote">{!! old('description.' . $key, $instructor->getTranslation('description', $key)) !!}</textarea>
                                     @error('course_category_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -228,16 +228,16 @@
                             @endforeach
                         </div>
 
-                        {{-- lecturer motavation field --}}
+                        {{-- instructor motavation field --}}
                         <div class="row">
                             @foreach (config('locales.languages') as $key => $val)
                                 <div class="col-sm-12 col-md-6 pt-3">
                                     <label for="motavation[{{ $key }}]">
-                                        {{ __('panel.lecturer_motavation') }}
+                                        {{ __('panel.instructor_motavation') }}
                                         {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                     </label>
                                     <textarea name="motavation[{{ $key }}]" rows="10" style="height: 120px"
-                                        class="form-control summernote">{!! old('motavation.' . $key, $lecturer->getTranslation('motavation', $key)) !!}</textarea>
+                                        class="form-control summernote">{!! old('motavation.' . $key, $instructor->getTranslation('motavation', $key)) !!}</textarea>
                                     @error('course_category_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -254,7 +254,7 @@
                                 <div class="form-group">
                                     <label for="facebook">{{ __('panel.facebook') }}</label>
                                     <input type="text" id="facebook" name="facebook"
-                                        value="{{ old('facebook', $lecturer->facebook) }}" class="form-control">
+                                        value="{{ old('facebook', $instructor->facebook) }}" class="form-control">
                                     @error('facebook')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -265,7 +265,7 @@
                                 <div class="form-group">
                                     <label for="twitter">{{ __('panel.twitter') }}</label>
                                     <input type="text" id="twitter" name="twitter"
-                                        value="{{ old('twitter', $lecturer->twitter) }}" class="form-control">
+                                        value="{{ old('twitter', $instructor->twitter) }}" class="form-control">
                                     @error('twitter')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -277,7 +277,7 @@
                                 <div class="form-group">
                                     <label for="instagram">{{ __('panel.instagram') }}</label>
                                     <input type="text" id="instagram" name="instagram"
-                                        value="{{ old('instagram', $lecturer->instagram) }}" class="form-control">
+                                        value="{{ old('instagram', $instructor->instagram) }}" class="form-control">
                                     @error('instagram')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -288,7 +288,7 @@
                                 <div class="form-group">
                                     <label for="linkedin">{{ __('panel.linkedin') }}</label>
                                     <input type="text" id="linkedin" name="linkedin"
-                                        value="{{ old('linkedin', $lecturer->linkedin) }}" class="form-control">
+                                        value="{{ old('linkedin', $instructor->linkedin) }}" class="form-control">
                                     @error('linkedin')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -306,7 +306,7 @@
                                 <div class="form-group">
                                     <label for="published_on"> {{ __('panel.published_date') }}</label>
                                     <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', \Carbon\Carbon::parse($lecturer->published_on)->Format('Y-m-d')) }}"
+                                        value="{{ old('published_on', \Carbon\Carbon::parse($instructor->published_on)->Format('Y-m-d')) }}"
                                         class="form-control">
                                     @error('published_on')
                                         <span class="text-danger">{{ $message }}</span>
@@ -320,7 +320,7 @@
                                 <div class="form-group">
                                     <label for="published_on_time">{{ __('panel.published_time') }}</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', \Carbon\Carbon::parse($lecturer->published_on)->Format('h:i A')) }}"
+                                        value="{{ old('published_on_time', \Carbon\Carbon::parse($instructor->published_on)->Format('h:i A')) }}"
                                         class="form-control">
                                     @error('published_on_time')
                                         <span class="text-danger">{{ $message }}</span>
@@ -337,11 +337,11 @@
                                 </label>
                                 <select name="status" class="form-control">
                                     <option value="1"
-                                        {{ old('status', $lecturer->status) == '1' ? 'selected' : null }}>
+                                        {{ old('status', $instructor->status) == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}
                                     </option>
                                     <option value="0"
-                                        {{ old('status', $lecturer->status) == '0' ? 'selected' : null }}>
+                                        {{ old('status', $instructor->status) == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
@@ -374,7 +374,7 @@
     {{-- #user_image is the id in file input file above  --}}
     <script>
         $(function() {
-            $("#lecturer_image").fileinput({
+            $("#instructor_image").fileinput({
                 theme: "fa5",
                 maxFileCount: 1,
                 allowedFileTypes: ['image'],
@@ -383,20 +383,20 @@
                 showUpload: false,
                 overwriteInitial: false,
                 initialPreview: [
-                    @if ($lecturer->user_image != '')
-                        "{{ asset('assets/lecturers/' . $lecturer->user_image) }}",
+                    @if ($instructor->user_image != '')
+                        "{{ asset('assets/instructors/' . $instructor->user_image) }}",
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($lecturer->user_image != '')
+                    @if ($instructor->user_image != '')
                         {
-                            caption: "{{ $lecturer->user_image }}",
+                            caption: "{{ $instructor->user_image }}",
                             size: '1111',
                             width: "120px",
-                            url: "{{ route('admin.lecturers.remove_image', ['lecturer_id' => $lecturer->id, '_token' => csrf_token()]) }}",
-                            key: {{ $lecturer->id }}
+                            url: "{{ route('admin.instructors.remove_image', ['instructor_id' => $instructor->id, '_token' => csrf_token()]) }}",
+                            key: {{ $instructor->id }}
                         }
                     @endif
                 ]

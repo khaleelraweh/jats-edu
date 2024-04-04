@@ -47,13 +47,11 @@ class CourseController extends Controller
         $course_categories = CourseCategory::whereStatus(1)->get(['id', 'title']);
         $tags = Tag::whereStatus(1)->get(['id', 'name']);
 
-        // Get active lecturer
-        $lecturers = User::whereHas('roles', function ($query) {
-            $query->where('name', 'lecturer');
-        })->active()->get(['id', 'first_name', 'last_name']);
+        // Get active instructor
+        $instructors = User::WhereHasRoles('instructor')->active()->get(['id', 'first_name', 'last_name']);
 
 
-        return view('backend.courses.create', compact('course_categories', 'tags', 'lecturers'));
+        return view('backend.courses.create', compact('course_categories', 'tags', 'instructors'));
     }
 
     public function store(CourseRequest $request)
@@ -101,11 +99,11 @@ class CourseController extends Controller
 
         $course->tags()->attach($request->tags);
 
-        //add lecturers
-        if (isset($request->lecturers) && count($request->lecturers) > 0) {
-            $course->users()->sync($request->lecturers);
+        //add instructors
+        if (isset($request->instructors) && count($request->instructors) > 0) {
+            $course->users()->sync($request->instructors);
         } else {
-            // If $request->lecturers is not set or empty, assign the currently logged-in user as the lecturer
+            // If $request->instructors is not set or empty, assign the currently logged-in user as the instructor
             $loggedInUser = Auth::user();
             $course->users()->sync([$loggedInUser->id]);
         }
@@ -197,15 +195,15 @@ class CourseController extends Controller
 
         $tags = Tag::whereStatus(1)->get(['id', 'name']);
 
-        // Get active lecturer
-        $lecturers = User::whereHas('roles', function ($query) {
-            $query->where('name', 'lecturer');
+        // Get active instructor
+        $instructors = User::whereHas('roles', function ($query) {
+            $query->where('name', 'instructor');
         })->active()->get(['id', 'first_name', 'last_name']);
 
 
-        $courseLecturers = $course->users->pluck(['id'])->toArray();
+        $courseinstructors = $course->users->pluck(['id'])->toArray();
 
-        return view('backend.courses.edit', compact('course_categories', 'tags', 'course', 'lecturers', 'courseLecturers'));
+        return view('backend.courses.edit', compact('course_categories', 'tags', 'course', 'instructors', 'courseinstructors'));
     }
 
     public function update(CourseRequest $request,  $course)
@@ -255,11 +253,11 @@ class CourseController extends Controller
 
         $course->tags()->sync($request->tags);
 
-        // Update lecturers
-        if (isset($request->lecturers) && count($request->lecturers) > 0) {
-            $course->users()->sync($request->lecturers);
+        // Update instructors
+        if (isset($request->instructors) && count($request->instructors) > 0) {
+            $course->users()->sync($request->instructors);
         } else {
-            // If $request->lecturers is not set or empty, assign the currently logged-in user as the lecturer
+            // If $request->instructors is not set or empty, assign the currently logged-in user as the instructor
             $loggedInUser = Auth::user();
             $course->users()->sync([$loggedInUser->id]);
         }

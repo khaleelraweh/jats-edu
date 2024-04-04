@@ -147,9 +147,9 @@ return [
     'certificate_yes'           =>  'نعم',
     'certificate_no'            =>  'لا',
 
-    'lecturer_tab'              =>  'المحاضرون',
-    'lecturers'                 =>  'المحاضرون',
-    'lecturer'                  =>  'المحاضر',
+    'instructor_tab'              =>  'المحاضرون',
+    'instructors'                 =>  'المحاضرون',
+    'instructor'                  =>  'المحاضر',
 
 
 
@@ -232,12 +232,12 @@ return [
     'edit_existing_supervisor'      => 'تعديل بيانات حساب مشرف ',
 
 
-    // --------------- lecturers  --------------//
-    'show_lecturers'              => 'المحاضرين',
-    'add_new_lecturer'            => 'إضافة حساب محاضر جديد',
-    'edit_existing_lecturer'      => 'تعديل بيانات حساب محاضر ',
+    // --------------- instructors  --------------//
+    'show_instructors'              => 'المحاضرين',
+    'add_new_instructor'            => 'إضافة حساب محاضر جديد',
+    'edit_existing_instructor'      => 'تعديل بيانات حساب محاضر ',
 
-    // ........... commons in lecturers   ....... //
+    // ........... commons in instructors   ....... //
     'customer_name'                 =>  'إسم العميل ',
     'advertisor_name'               =>  'إسم المشرف',
     'permissions'                   =>  'الصلاحيات',
@@ -572,19 +572,19 @@ return [
 
     ##############################################################
 
-    // =============  Managelecturers  ===============//
-    'managelecturers'                => 'إدارة المحاضرين',
+    // =============  Manageinstructors  ===============//
+    'manageinstructors'                => 'إدارة المحاضرين',
 
-    // ---------------lecturer Settings  --------------//
-    'showlecturers'                   => 'المحاضرين',
-    'add_newlecturer'                  => 'إضافة محاضر جديد',
-    'edit_existinglecturer'            => 'تعديل بيانات المحاضر ',
+    // ---------------instructor Settings  --------------//
+    'showinstructors'                   => 'المحاضرين',
+    'add_newinstructor'                  => 'إضافة محاضر جديد',
+    'edit_existinginstructor'            => 'تعديل بيانات المحاضر ',
 
 
     // ........... commons in Insturctor   ....... //
     'name'                              =>  'الإسم',
-    'lecturer_description'              =>  'لمحة عن المدرب ',
-    'lecturer_motavation'               =>  'كلمة تحفيزية للطلاب',
+    'instructor_description'              =>  'لمحة عن المدرب ',
+    'instructor_motavation'               =>  'كلمة تحفيزية للطلاب',
     'motavation_tab'                    =>  'تحفيز',
     'social_tab'                        =>  'روابط',
     'facebook'                          =>  'فيسبوك',

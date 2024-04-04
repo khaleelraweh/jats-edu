@@ -27,14 +27,14 @@ return new class extends Migration
             $table->rememberToken();
             $table->boolean('receive_emails')->default(true);
 
-            // new info for lecturer start  
+            // new info for instructor start  
             $table->json('description')->nullable();
             $table->json('motavation')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();
             $table->string('linkedin')->nullable();
-            // new info for lecturer start  
+            // new info for instructor start  
 
             // will be use always
             $table->string('created_by')->nullable();

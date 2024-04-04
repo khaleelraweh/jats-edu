@@ -27,7 +27,7 @@
     <!-- PAGE HEADER -->
     <div class="position-relative pt-8 pt-xl-11">
         <div class="position-absolute top-0 right-0 left-0 overlay overlay-custom-left d-none d-xl-block">
-           
+
         </div>
     </div>
 
@@ -52,26 +52,26 @@
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-md-6 me-lg-4 me-xl-6 bg-white">
                         <div class="p-2">
                             @php
-                                $lecturer = $course->users->first();
+                                $instructor = $course->users->first();
 
-                                if ($lecturer->user_image != null) {
-                                    $lecturer_img = asset('assets/lecturers/' . $lecturer->user_image);
+                                if ($instructor->user_image != null) {
+                                    $instructor_img = asset('assets/instructors/' . $instructor->user_image);
 
-                                    if (!file_exists(public_path('assets/lecturers/' . $lecturer->user_image))) {
-                                        $lecturer_img = asset('assets/lecturers/no_image_found.webp');
+                                    if (!file_exists(public_path('assets/instructors/' . $instructor->user_image))) {
+                                        $instructor_img = asset('assets/instructors/no_image_found.webp');
                                     }
                                 } else {
-                                    $lecturer_img = asset('assets/lecturers/no_image_found.webp');
+                                    $instructor_img = asset('assets/instructors/no_image_found.webp');
                                 }
                             @endphp
-                            <img src="{{ $lecturer_img }}" alt="..." class="rounded-circle" width="68"
+                            <img src="{{ $instructor_img }}" alt="..." class="rounded-circle" width="68"
                                 height="68">
                         </div>
                     </div>
 
                     <div class="mb-4 mb-md-0 me-md-8 me-lg-4 me-xl-8">
                         <h6 class="mb-0 text-white">{{ __('transf.created_by') }}</h6>
-                        <a href="#" class="font-size-sm text-white">{{ $lecturer->full_name }}</a>
+                        <a href="#" class="font-size-sm text-white">{{ $instructor->full_name }}</a>
                     </div>
 
                     <div class="mb-4 mb-md-0 me-md-8 me-lg-4 me-xl-8">
@@ -1269,7 +1269,7 @@
                         </div>
                     </div>
 
-                    {{-- lecturer part  --}}
+                    {{-- instructor part  --}}
                     <div class="tab-pane fade" id="pills-instructor" role="tabpanel"
                         aria-labelledby="pills-instructor-tab">
 
@@ -1277,33 +1277,36 @@
                             {{ __('transf.txt_about_this_instructors') }}
                         </h3>
 
-                        @foreach ($course->users as $lecturer)
+                        @foreach ($course->users as $instructor)
                             <div class="d-flex align-items-center mb-6">
                                 <div class="d-inline-block rounded-circle border me-6 p-2">
                                     <div class="avatar avatar-size-120">
                                         @php
-                                            if ($lecturer->user_image != null) {
-                                                $lecturer_img = asset('assets/lecturers/' . $lecturer->user_image);
+                                            if ($instructor->user_image != null) {
+                                                $instructor_img = asset(
+                                                    'assets/instructors/' . $instructor->user_image,
+                                                );
 
                                                 if (
                                                     !file_exists(
-                                                        public_path('assets/lecturers/' . $lecturer->user_image),
+                                                        public_path('assets/instructors/' . $instructor->user_image),
                                                     )
                                                 ) {
-                                                    $lecturer_img = asset('assets/lecturers/no_image_found.webp');
+                                                    $instructor_img = asset('assets/instructors/no_image_found.webp');
                                                 }
                                             } else {
-                                                $lecturer_img = asset('assets/lecturers/no_image_found.webp');
+                                                $instructor_img = asset('assets/instructors/no_image_found.webp');
                                             }
                                         @endphp
-                                        <img src="{{ $lecturer_img }}" alt="..." class="avatar-img rounded-circle">
+                                        <img src="{{ $instructor_img }}" alt="..."
+                                            class="avatar-img rounded-circle">
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="mb-0">{{ $lecturer->full_name }}</h4>
+                                    <h4 class="mb-0">{{ $instructor->full_name }}</h4>
                                     <span>
-                                        @if (count($lecturer->specializations) > 0)
-                                            @foreach ($lecturer->specializations as $specialization)
+                                        @if (count($instructor->specializations) > 0)
+                                            @foreach ($instructor->specializations as $specialization)
                                                 {{ $specialization->name }}
 
                                                 @if (!$loop->last)
@@ -1376,17 +1379,17 @@
                                             </svg>
 
                                         </div>
-                                        {{ count($lecturer->courses) }} {{ __('transf.txt_courses') }}
+                                        {{ count($instructor->courses) }} {{ __('transf.txt_courses') }}
 
                                     </div>
                                 </div>
                             </div>
 
                             <p class="mb-6 line-height-md">
-                                {!! $lecturer->description !!}
+                                {!! $instructor->description !!}
                             </p>
                             <p class="mb-6 line-height-md">
-                                {!! $lecturer->motavation !!}
+                                {!! $instructor->motavation !!}
                             </p>
                         @endforeach
                     </div>

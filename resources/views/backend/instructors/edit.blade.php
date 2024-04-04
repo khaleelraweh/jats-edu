@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-
 @section('content')
 
     {{-- main holder page  --}}
@@ -11,7 +10,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_slider') }}
+                    {{ __('panel.edit_existing_instructor') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -23,13 +22,12 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.main_sliders.index') }}">
-                            {{ __('panel.show_main_slider') }}
+                        <a href="{{ route('admin.instructors.index') }}">
+                            {{ __('panel.show_instructors') }}
                         </a>
                     </li>
                 </ul>
             </div>
-
         </div>
 
         {{-- body part  --}}
@@ -47,26 +45,34 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form action="{{ route('admin.main_sliders.update', $mainSlider->id) }}" method="post"
+            <form action="{{ route('admin.instructors.update', $instructor->id) }}" method="post"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    @foreach (config('locales.languages') as $key => $val)
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link {{ $loop->index == 0 ? 'active' : '' }}" id="{{ $key }}-tab"
-                                data-bs-toggle="tab" data-bs-target="#{{ $key }}" type="button" role="tab"
-                                aria-controls="{{ $key }}" aria-selected="true">
-                                {{ __('panel.content_tab') }}({{ $key }})
-                            </button>
-                        </li>
-                    @endforeach
 
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="url-tab" data-bs-toggle="tab" data-bs-target="#url" type="button"
-                            role="tab" aria-controls="url" aria-selected="true">{{ __('panel.url_tab') }}
+                        <button class="nav-link active " id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
+                            type="button" role="tab" aria-controls="content" aria-selected="true">
+                            {{ __('panel.content_tab') }}
+                        </button>
+                    </li>
+
+                    {{-- motavation tab --}}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="motavation-tab" data-bs-toggle="tab" data-bs-target="#motavation"
+                            type="button" role="tab" aria-controls="motavation"
+                            aria-selected="false">{{ __('panel.motavation_tab') }}
+                        </button>
+                    </li>
+
+                    {{-- social tab --}}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="social-tab" data-bs-toggle="tab" data-bs-target="#social"
+                            type="button" role="tab" aria-controls="social"
+                            aria-selected="false">{{ __('panel.social_tab') }}
                         </button>
                     </li>
 
@@ -81,111 +87,215 @@
 
                 <div class="tab-content" id="myTabContent">
 
-                    {{-- Content Tab --}}
-                    @foreach (config('locales.languages') as $key => $val)
-                        <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }}" id="{{ $key }}"
-                            role="tabpanel" aria-labelledby="{{ $key }}">
+                    {{-- content tab --}}
+                    <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
+                        <div class="row">
 
-                            <div class="row">
+                            <div class="col-sm-12 col-md-8">
 
-                                {{-- البيانات الاساسية --}}
-                                <div class=" {{ $loop->index == 0 ? 'col-md-7' : '' }} col-sm-12 ">
-
-                                    {{-- slider title field --}}
-                                    <div class="row ">
-                                        <div class="col-sm-12 pt-3">
-                                            <div class="form-group">
-                                                <label for="title[{{ $key }}]">
-                                                    {{ __('panel.title') }}
-                                                    {{ __('panel.in') }} {{ __('panel.' . $key) }}
-                                                </label>
-                                                <input type="text" name="title[{{ $key }}]"
-                                                    id="title[{{ $key }}]"
-                                                    value="{{ old('title.' . $key, $mainSlider->getTranslation('title', $key)) }}"
-                                                    class="form-control">
-                                                @error('title.' . $key)
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 pt-4">
+                                        <div class="form-group">
+                                            <label for="first_name"> {{ __('panel.first_name') }}</label>
+                                            <input type="text" id="first_name" name="first_name"
+                                                value="{{ old('first_name', $instructor->first_name) }}" class="form-control"
+                                                placeholder="">
+                                            @error('first_name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
-
-                                    {{--  description field --}}
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 pt-4">
-                                            <label for="description[{{ $key }}]">
-                                                {{ __('panel.description') }}
-                                                {{ __('panel.in') }} {{ __('panel.' . $key) }}
-                                            </label>
-                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
-                                            {!! old('description.' . $key, $mainSlider->getTranslation('description', $key)) !!}
-                                        </textarea>
+                                    <div class="col-sm-12 col-md-6 pt-4">
+                                        <div class="form-group">
+                                            <label for="last_name">{{ __('panel.last_name') }}</label>
+                                            <input type="text" id="last_name" name="last_name"
+                                                value="{{ old('last_name', $instructor->last_name) }}" class="form-control"
+                                                placeholder="">
+                                            @error('last_name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
 
-                                {{-- مرفق الصور  --}}
-                                <div class=" {{ $loop->index == 0 ? 'col-md-5' : 'd-none' }}  col-sm-12 ">
-
-                                    <div class="row pt-4">
-                                        <div class="col-12">
-                                            <label for="images">{{ __('panel.image') }}/
-                                                {{ __('panel.images') }}</label>
-                                            <br>
-                                            <div class="file-loading">
-                                                <input type="file" name="images[]" id="slider_images"
-                                                    class="file-input-overview" multiple="multiple">
-                                                @error('images')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 pt-4">
+                                        <div class="form-group">
+                                            <label for="username">{{ __('panel.user_name') }}</label>
+                                            <input type="text" id="username" name="username"
+                                                value="{{ old('username', $instructor->username) }}" class="form-control"
+                                                placeholder="">
+                                            @error('username')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 pt-4">
+                                        <div class="form-group">
+                                            <label for="password">{{ __('panel.user_password') }}</label>
+                                            <input type="password" id="password" name="password"
+                                                value="{{ old('password') }}" class="form-control" placeholder="">
+                                            @error('password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 pt-4">
+                                        <div class="form-group">
+                                            <label for="email">{{ __('panel.email') }}</label>
+                                            <input type="text" id="email" name="email"
+                                                value="{{ old('email', $instructor->email) }}" class="form-control"
+                                                placeholder="">
+                                            @error('email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-6 pt-4">
+                                        <div class="form-group">
+                                            <label for="mobile">{{ __('panel.mobile') }}</label>
+                                            <input type="text" id="mobile" name="mobile"
+                                                value="{{ old('mobile', $instructor->mobile) }}" class="form-control"
+                                                placeholder="">
+                                            @error('mobile')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                {{-- specializations row --}}
+                                <div class="row pt-4">
+                                    <div class="col-12">
+                                        <label for="specializations">{{ __('panel.specializations') }}</label>
+                                        <select name="specializations[]" class="form-control select2 child"
+                                            multiple="multiple">
+                                            @forelse ($specializations as $specialization)
+                                                <option value="{{ $specialization->id }}"
+                                                    {{ in_array($specialization->id, old('specializations', $instructorSpecializations)) ? 'selected' : null }}>
+                                                    {{ $specialization->name }}</option>
+                                            @empty
+                                            @endforelse
+                                        </select>
+
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
-                    @endforeach
+                            <div class="col-sm-12 col-md-4">
 
-                    {{-- url Tab --}}
-                    <div class="tab-pane fade" id="url" role="tabpanel" aria-labelledby="url-tab">
-
-                        {{-- url fields --}}
-                        <div class="row">
-                            {{-- url field --}}
-                            <div class="col-md-12 col-sm-12 pt-4">
-                                <label for="url">{{ __('panel.url_link') }}</label>
-                                <input type="text" name="url" id="url"
-                                    value="{{ old('url', $mainSlider->url) }}" class="form-control"
-                                    placeholder="http://youtlinks.com ">
-                                @error('url')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        {{--  target  fields --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4 pt-4">
-                                <label for="target">{{ __('panel.url_target') }} </label>
-                                <select name="target" class="form-control">
-                                    <option value="_self"
-                                        {{ old('target', $mainSlider->target) == '_self' ? 'selected' : null }}>
-                                        {{ __('panel.in_the_same_tab') }}
-                                    </option>
-                                    <option value="_blank"
-                                        {{ old('target', $mainSlider->target) == '_blank' ? 'selected' : null }}>
-                                        {{ __('panel.in_new_tab') }}
-                                    </option>
-                                </select>
-                                @error('target')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                <div class="row pt-4">
+                                    <div class="col-12">
+                                        <label for="user_image"> {{ __('panel.image') }} </label>
+                                        <br>
+                                        <span class="form-text text-muted">{{ __('panel.user_image_size') }} </span>
+                                        <div class="file-loading">
+                                            <input type="file" name="user_image" id="instructor_image"
+                                                value="{{ old('instructor_image') }}" class="file-input-overview ">
+                                            <span class="form-text text-muted">{{ __('panel.user_image_size') }} </span>
+                                            @error('user_image')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
+                    {{-- motavation content --}}
+                    <div class="tab-pane fade a" id="motavation" role="tabpanel" aria-labelledby="motavation-tab">
+
+                        {{-- instructor description field --}}
+                        <div class="row">
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="col-sm-12 col-md-6 pt-3">
+                                    <label for="description[{{ $key }}]">
+                                        {{ __('panel.instructor_description') }}
+                                        {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                    </label>
+                                    <textarea name="description[{{ $key }}]" style="height: 120px" class="form-control summernote">{!! old('description.' . $key, $instructor->getTranslation('description', $key)) !!}</textarea>
+                                    @error('course_category_id')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            @endforeach
+                        </div>
+
+                        {{-- instructor motavation field --}}
+                        <div class="row">
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="col-sm-12 col-md-6 pt-3">
+                                    <label for="motavation[{{ $key }}]">
+                                        {{ __('panel.instructor_motavation') }}
+                                        {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                    </label>
+                                    <textarea name="motavation[{{ $key }}]" rows="10" style="height: 120px"
+                                        class="form-control summernote">{!! old('motavation.' . $key, $instructor->getTranslation('motavation', $key)) !!}</textarea>
+                                    @error('course_category_id')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            @endforeach
+                        </div>
+
+                    </div>
+
+                    {{-- social content --}}
+                    <div class="tab-pane fade a" id="social" role="tabpanel" aria-labelledby="social-tab">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <div class="form-group">
+                                    <label for="facebook">{{ __('panel.facebook') }}</label>
+                                    <input type="text" id="facebook" name="facebook"
+                                        value="{{ old('facebook', $instructor->facebook) }}" class="form-control">
+                                    @error('facebook')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <div class="form-group">
+                                    <label for="twitter">{{ __('panel.twitter') }}</label>
+                                    <input type="text" id="twitter" name="twitter"
+                                        value="{{ old('twitter', $instructor->twitter) }}" class="form-control">
+                                    @error('twitter')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <div class="form-group">
+                                    <label for="instagram">{{ __('panel.instagram') }}</label>
+                                    <input type="text" id="instagram" name="instagram"
+                                        value="{{ old('instagram', $instructor->instagram) }}" class="form-control">
+                                    @error('instagram')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <div class="form-group">
+                                    <label for="linkedin">{{ __('panel.linkedin') }}</label>
+                                    <input type="text" id="linkedin" name="linkedin"
+                                        value="{{ old('linkedin', $instructor->linkedin) }}" class="form-control">
+                                    @error('linkedin')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     {{-- Published Tab --}}
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
@@ -196,7 +306,7 @@
                                 <div class="form-group">
                                     <label for="published_on"> {{ __('panel.published_date') }}</label>
                                     <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', \Carbon\Carbon::parse($mainSlider->published_on)->Format('Y-m-d')) }}"
+                                        value="{{ old('published_on', \Carbon\Carbon::parse($instructor->published_on)->Format('Y-m-d')) }}"
                                         class="form-control">
                                     @error('published_on')
                                         <span class="text-danger">{{ $message }}</span>
@@ -210,7 +320,7 @@
                                 <div class="form-group">
                                     <label for="published_on_time">{{ __('panel.published_time') }}</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', \Carbon\Carbon::parse($mainSlider->published_on)->Format('h:i A')) }}"
+                                        value="{{ old('published_on_time', \Carbon\Carbon::parse($instructor->published_on)->Format('h:i A')) }}"
                                         class="form-control">
                                     @error('published_on_time')
                                         <span class="text-danger">{{ $message }}</span>
@@ -227,11 +337,11 @@
                                 </label>
                                 <select name="status" class="form-control">
                                     <option value="1"
-                                        {{ old('status', $mainSlider->status) == '1' ? 'selected' : null }}>
+                                        {{ old('status', $instructor->status) == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}
                                     </option>
                                     <option value="0"
-                                        {{ old('status', $mainSlider->status) == '0' ? 'selected' : null }}>
+                                        {{ old('status', $instructor->status) == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
@@ -241,27 +351,8 @@
                             </div>
                         </div>
 
-                        {{-- show info field --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4">
-                                <label for="showInfo">{{ __('panel.show_slider_info') }}</label>
-                                <select name="showInfo" class="form-control">
-                                    <option value="1"
-                                        {{ old('showInfo', $mainSlider->showInfo) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.yes') }}
-                                    </option>
-                                    <option value="0"
-                                        {{ old('showInfo', $mainSlider->showInfo) == '0' ? 'selected' : null }}>
-                                        {{ __('panel.no') }}
-                                    </option>
-                                </select>
-                                @error('showInfo')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
                     </div>
+
 
 
                     <div class="form-group pt-4">
@@ -269,6 +360,7 @@
                             {{ __('panel.update_data') }}
                         </button>
                     </div>
+
                 </div>
 
             </form>
@@ -279,50 +371,38 @@
 @endsection
 
 @section('script')
+    {{-- #user_image is the id in file input file above  --}}
     <script>
         $(function() {
-
-            $("#slider_images").fileinput({
+            $("#instructor_image").fileinput({
                 theme: "fa5",
-                maxFileCount: 5,
+                maxFileCount: 1,
                 allowedFileTypes: ['image'],
                 showCancel: true,
                 showRemove: false,
                 showUpload: false,
                 overwriteInitial: false,
-                // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
-                // delete images from photos and assets/sliders 
-                // because there are maybe more than one image we will go for each image and show them in the edit page 
                 initialPreview: [
-                    @if ($mainSlider->photos()->count() > 0)
-                        @foreach ($mainSlider->photos as $media)
-                            "{{ asset('assets/main_sliders/' . $media->file_name) }}",
-                        @endforeach
+                    @if ($instructor->user_image != '')
+                        "{{ asset('assets/instructors/' . $instructor->user_image) }}",
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($mainSlider->photos()->count() > 0)
-                        @foreach ($mainSlider->photos as $media)
-                            {
-                                caption: "{{ $media->file_name }}",
-                                size: '{{ $media->file_size }}',
-                                width: "120px",
-                                // url : الراوت المستخدم لحذف الصورة
-                                url: "{{ route('admin.main_sliders.remove_image', ['image_id' => $media->id, 'slider_id' => $mainSlider->id, '_token' => csrf_token()]) }}",
-                                key: {{ $media->id }}
-                            },
-                        @endforeach
+                    @if ($instructor->user_image != '')
+                        {
+                            caption: "{{ $instructor->user_image }}",
+                            size: '1111',
+                            width: "120px",
+                            url: "{{ route('admin.instructors.remove_image', ['instructor_id' => $instructor->id, '_token' => csrf_token()]) }}",
+                            key: {{ $instructor->id }}
+                        }
                     @endif
-
                 ]
-            }).on('filesorted', function(event, params) {
-                console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
             });
 
             // ======= start pickadate codeing  for start and end date ===========
-
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
                 min: new Date(),
@@ -345,22 +425,6 @@
             });
 
             // ======= End pickadate codeing for publish start and end date  ===========
-
-
-
-            $('.summernote').summernote({
-                tabSize: 2,
-                height: 200,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
 
 
         });

@@ -26,43 +26,35 @@ class InstructorRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'name.*'               =>  'required|max:255|unique_translation:instructors',
-                        'specialization.*'         =>  'nullable',
-                        'email'                   =>  'nullable',
-                        'phone'                =>  'required',
+                        'first_name' => 'required',
+                        'last_name'  => 'required',
+                        'username'   => 'required|max:20|unique:users',
+                        'email'      => 'required|email|max:255|unique:users',
+                        'mobile'     => 'required|numeric|unique:users',
+                        'password'   => 'nullable|min:8',
+                        'status'     => 'required',
+                        'user_image' => 'nullable|mimes:jpg,jpeg,png,svg,gif,webp|max:3000',
 
-                        'images'                =>  'required',
-                        'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
-
-                        // used always 
-                        'status'                =>  'required',
-                        'published_on'          =>  'nullable',
-                        'published_on_time'     =>  'nullable',
-                        'created_by'            =>  'nullable',
-                        'updated_by'            =>  'nullable',
-                        'deleted_by'            =>  'nullable',
-                        // end of used always 
+                        'created_by' => 'nullable',
+                        'updated_by' => 'nullable',
+                        'deleted_by' => 'nullable',
                     ];
                 }
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'name.*'           =>  'required|max:255|unique_translation:sliders,title,' . $this->route()->main_slider,
-                        'specialization.*'     =>  'nullable',
-                        'email'               =>  'nullable',
-                        'phone'            =>  'required',
+                        'first_name' => 'required',
+                        'last_name'  => 'required',
+                        'username'   => 'required|max:20|unique:users,username,' . $this->route()->lecturer->id,
+                        'email'      => 'required|email|max:255|unique:users,email,' . $this->route()->lecturer->id,
+                        'mobile'     => 'required|numeric|unique:users,mobile,' . $this->route()->lecturer->id,
+                        'password'   => 'nullable|min:8',
+                        'status'     => 'required',
+                        'user_image' => 'nullable|mimes:jpg,jpeg,png,svg,gif,webp|max:3000',
 
-                        'images'            =>  'nullable',
-                        'images.*'          =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
-
-                        // used always 
-                        'status'             =>  'required',
-                        'published_on'       =>  'nullable',
-                        'published_on_time'  =>  'nullable',
-                        'created_by'         =>  'nullable',
-                        'updated_by'         =>  'nullable',
-                        'deleted_by'         =>  'nullable',
-                        // end of used always 
+                        'created_by' => 'nullable',
+                        'updated_by' => 'nullable',
+                        'deleted_by' => 'nullable',
                     ];
                 }
 
@@ -74,15 +66,13 @@ class InstructorRequest extends FormRequest
     public function attributes(): array
     {
         $attr = [
+            'first_name'      => '( ' . __('panel.first_name') . ' )',
+            'last_name'      => '( ' . __('panel.last_name') . ' )',
+            'username'      => '( ' . __('panel.user_name') . ' )',
             'email'      => '( ' . __('panel.email') . ' )',
-            'phone'      => '( ' . __('panel.phone') . ' )',
+            'mobile'      => '( ' . __('panel.mobile') . ' )',
             'status'    =>  '( ' . __('panel.status') . ' )',
         ];
-
-        foreach (config('locales.languages') as $key => $val) {
-            $attr += ['name.' . $key       =>  "( " . __('panel.name')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
-            $attr += ['specialization.' . $key       =>  "( " . __('panel.specialization')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
-        }
 
         return $attr;
     }

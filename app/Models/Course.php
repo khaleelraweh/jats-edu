@@ -160,10 +160,7 @@ class Course extends Model
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
-    // public function reviews(): HasMany
-    // {
-    //     return $this->hasMany(CourseReview::class);
-    // }
+
 
     public function reviews()
     {
@@ -176,14 +173,19 @@ class Course extends Model
         return $this->belongsToMany(Order::class);
     }
 
-    public function instructors(): BelongsToMany
+    // public function instructors(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(User::class);
+    // }
+
+    public function instructors(): MorphToMany
     {
-        return $this->belongsToMany(Instructor::class);
+        return $this->morphToMany(User::class, 'userable');
     }
 
-    public function users(): BelongsToMany
+    public function users(): MorphToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->morphToMany(User::class, 'userable');
     }
 
     public function specializations()
@@ -191,16 +193,6 @@ class Course extends Model
         return $this->hasManyThrough(Specialization::class, User::class);
     }
 
-
-    // public function topics()
-    // {
-    //     return $this->hasMany(CourseTopics::class, 'course_id', 'id');
-    // }
-
-    // public function requirements()
-    // {
-    //     return $this->hasMany(CourseRequirement::class, 'course_id', 'id');
-    // }
 
     public function topics(): MorphMany
     {

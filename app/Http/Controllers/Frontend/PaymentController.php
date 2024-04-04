@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
 use App\Models\Order;
-use App\Models\OrderProduct;
 use App\Models\OrderTransaction;
 use App\Models\Product;
-use App\Models\User;
 use App\Services\OrderService;
 use App\Services\PaypalService;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -19,14 +17,10 @@ use Paytabscom\Laravel_paytabs\Facades\paypage;
 
 class PaymentController extends Controller
 {
-    public function checkout()
-    {
 
-        return view('frontend.checkout');
-    }
 
     // paypal pay 
-    public function checkout_now(Request $request)
+    public function checkout(Request $request)
     {
         if ($request->paymentMethod == 'paypal') {
 
@@ -62,7 +56,6 @@ class PaymentController extends Controller
         } elseif ($request->paymentMethod == 'creditDebit') {
 
             $order = (new OrderService)->createOrder($request->except(['_token', 'submit']));
-            // dd($order);
 
             $payment_method = "all";
             $tran_type  =   "sale";
@@ -81,16 +74,8 @@ class PaymentController extends Controller
             $ip = "";
             $same_as_billing = "billing";
             $return = route('checkout.complete_by_paytabs', $order->id);
-            $callback = "";
+            $callback = route('checkout.complete_by_paytabs', $order->id);
             $language = app()->getLocale();
-
-            $status = true; //fix it 
-            $tran_ref = $order->id; //fix it 
-            $token = "this is token"; //fix it 
-
-
-
-
 
 
             $pay = paypage::sendPaymentCode($payment_method)
@@ -102,8 +87,6 @@ class PaymentController extends Controller
                 ->sendURLs($return, $callback)
                 ->sendLanguage($language)
                 ->sendFramed($on = false)
-                // ->sendTokinse($status)
-                // ->sendToken($tran_ref, $token)
                 ->create_pay_page(); // to initiate payment page
 
             return $pay;
@@ -111,67 +94,9 @@ class PaymentController extends Controller
     }
 
 
-
-    // inner
-    public function checkout_in(Request $request)
+    public function getReturnUrl($order_id)
     {
-        if ($request->payType == 1) {
-
-            $order = Order::create([
-                'ref_id'                => 'ORD-' . Str::random(15),
-                'user_id'               => auth()->id(),
-                'payment_method_id'     => $request['payment_method_id'],
-                'subtotal'              => getNumbers()->get('subtotal'),
-                'discount_code'         => session()->has('coupon') ? session()->get('coupon')['code'] : null,
-                'discount'              => getNumbers()->get('discount'),
-                'tax'                   => getNumbers()->get('productTaxes'),
-                'total'                 => getNumbers()->get('total'),
-                'currency'              => 'USD',
-                'order_status'          => 0,
-
-                'bankAccNumber' => $request->bankAccNumber,
-                'bankReceipt'   => $request->bankReceipt,
-            ]);
-
-            foreach (Cart::content() as $item) {
-
-                OrderProduct::create([
-                    'order_id' => $order->id,
-                    'product_id' => $item->model->id,
-                    'quantity' => $item->qty,
-                ]);
-
-                $product = Product::find($item->model->id);
-                $product->update(['quantity' => $product->quantity - $item->qty]);
-            }
-
-
-            $order->transactions()->create(
-                ['transaction' => OrderTransaction::NEW_ORDER]
-            );
-
-            Cart::instance('default')->destroy();
-            session()->forget([
-                'coupon',
-                'saved_customer_address_id',
-                'saved_shipping_company_id',
-                'saved_payment_method_id',
-                'shipping',
-            ]);
-
-            $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
-            $order->transactions()->create([
-                'transaction' => OrderTransaction::PAYMENT_COMPLETED,
-                // 'transaction_number' => $response->getTransactionReference(),
-                'transaction_number' => $order->ref_id,
-                'payment_result' => 'success',
-            ]);
-
-
-            toast(__('panel.f_reservesion_proccess_completed'), 'success');
-
-            return redirect()->route('frontend.index');
-        }
+        return route('checkout.complete', $order_id);
     }
 
 
@@ -220,6 +145,7 @@ class PaymentController extends Controller
     public function completed_paytabs(Request $request, $order_id)
     {
 
+        dd($request);
         $order = Order::find($order_id);
 
         $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
@@ -249,6 +175,21 @@ class PaymentController extends Controller
 
         return redirect()->route('frontend.index');
     }
+
+    public function call_back(Request $request)
+    {
+        dd($request);
+    }
+
+    public function query($tran_ref)
+    {
+
+        $transaction = Paypage::queryTransaction($tran_ref);
+        dd($transaction);
+    }
+
+
+
 
     public function cancelled($order_id)
     {

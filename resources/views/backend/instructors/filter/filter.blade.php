@@ -1,5 +1,5 @@
 <div class="card-body">
-    <form action="{{ route('admin.main_sliders.index') }}" method="get">
+    <form action="{{ route('admin.instructors.index') }}" method="get">
         <div class="row">
             <div class="col-8 col-sm-4 col-md-2">
                 <div class="form-group">
@@ -23,22 +23,22 @@
             <div class="d-none d-sm-block col-sm-4 col-md-2">
                 <div class="form-group">
                     <select name="sort_by" class="form-control">
-                        {{-- <option value="">بحث حسب</option> --}}
                         <option value="id"
                             {{ old('sort_by', request()->input('sort_by')) == 'id' ? 'selected' : '' }}>
                             {{ __('panel.id') }}
                         </option>
-                        <option value="title"
-                            {{ old('sort_by', request()->input('sort_by')) == 'title' ? 'selected' : '' }}>
-                            {{ __('panel.title') }}
+                        <option value="first_name"
+                            {{ old('sort_by', request()->input('sort_by')) == 'first_name' ? 'selected' : '' }}>
+                            {{ __('panel.first_name') }}
+                        </option>
+                        <option value="last_name"
+                            {{ old('sort_by', request()->input('sort_by')) == 'last_name' ? 'selected' : '' }}>
+                            {{ __('panel.last_name') }}
+
                         </option>
                         <option value="created_at"
                             {{ old('sort_by', request()->input('sort_by')) == 'created_at' ? 'selected' : '' }}>
                             {{ __('panel.created_at') }}
-                        </option>
-                        <option value="published_on"
-                            {{ old('sort_by', request()->input('sort_by')) == 'published_on' ? 'selected' : '' }}>
-                            {{ __('panel.published_on') }}
                         </option>
 
                     </select>
@@ -47,7 +47,7 @@
             <div class="col-md-2 d-none d-md-block">
                 <div class="form-group">
                     <select name="order_by" class="form-control">
-                        {{-- <option value="">ترتيب حسب</option> --}}
+                        {{-- <option value="">---</option> --}}
                         <option value="asc"
                             {{ old('order_by', request()->input('order_by')) == 'asc' ? 'selected' : '' }}>
                             {{ __('panel.asc') }}
@@ -62,7 +62,7 @@
             <div class="col-md-1 d-none d-md-block">
                 <div class="form-group">
                     <select name="limit_by" class="form-control">
-                        {{-- <option value="">عدد</option> --}}
+                        {{-- <option value="">---</option> --}}
                         <option value="10"
                             {{ old('limit_by', request()->input('limit_by')) == '10' ? 'selected' : '' }}>10</option>
                         <option value="20"

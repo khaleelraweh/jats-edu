@@ -23,7 +23,7 @@ class PostSeeder extends Seeder
 
         // Get active lecturer
         $users = User::whereHas('roles', function ($query) {
-            $query->where('name', 'lecturer');
+            $query->where('name', 'instructor');
         })->active()->inRandomOrder()->take(10)->get();
 
         // Get active course categories

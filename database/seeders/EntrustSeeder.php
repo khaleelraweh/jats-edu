@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\Specialization;
 use App\Models\User;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -29,6 +30,7 @@ class EntrustSeeder extends Seeder
 
         //create fake information  using faker factory lab 
         $faker = Factory::create();
+        $specializations = Specialization::query()->pluck('id');
 
 
         //------------- 01- Roles ------------//
@@ -57,8 +59,14 @@ class EntrustSeeder extends Seeder
         $customerRole->allowed_route = null;
         $customerRole->save();
 
+        //instructorRole
+        $instructorRole = new Role();
+        $instructorRole->name         = 'instructor';
+        $instructorRole->display_name = 'course instructor';
+        $instructorRole->description  = 'instructor is the person who  instruct courses';
+        $instructorRole->allowed_route = null;
+        $instructorRole->save();
 
-        //LecturerRole added in lecturer seeder 
 
 
 
@@ -105,14 +113,29 @@ class EntrustSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        // Create lecturer added in lecturer seeder 
+        // create instructor
+        $instructor = User::create([
+            'first_name' => 'instructor',
+            'last_name' => 'person',
+            'username' => 'instructor',
+            'email' => 'instructor@gmail.com',
+            'email_verified_at' => now(),
+            'mobile' => '00967772036134',
+            'password' => bcrypt('123123123'),
+            'user_image' => 'avator.svg',
+            'status' => 1,
+            'remember_token' => Str::random(10),
+        ]);
+
 
 
         //------------- 03- AttachRoles To  Users  ------------//
         $admin->attachRole($adminRole);
         $supervisor->attachRole($supervisorRole);
         $customer->attachRole($customerRole);
-        // $lecturer->attachRole($lecturerRole);
+        $instructor->attachRole($instructorRole);
+        $instructor->specializations()->sync($specializations->random(1, 3));
+
 
 
         //------------- 04-  Create random customer and  AttachRole to customerRole  ------------//
@@ -134,6 +157,39 @@ class EntrustSeeder extends Seeder
             //Add customerRole to RandomCusomer
             $random_customer->attachRole($customerRole);
         } //end for
+
+
+        //------------- 04-2-  Create random instructor and  AttachRole to instructorRole  ------------//
+        for ($i = 1; $i <= 20; $i++) {
+            //Create random instructor
+            $random_instructor = User::create([
+                'first_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
+                'username' => $faker->unique()->userName,
+                'email' => $faker->unique()->email,
+                'email_verified_at' => now(),
+                'mobile' => '0096777' . $faker->numberBetween(1000000, 9999999),
+                'password' => bcrypt('123123123'),
+                'user_image' => 'avator.svg',
+                'status' => 1,
+                'remember_token' => Str::random(10),
+                //for instructor info start
+                'description'          =>   $faker->text(),
+                'motavation'          =>  $faker->text(),
+                'facebook'          =>  'www.facebook.com',
+                'twitter'           =>  'www.twitter.com',
+                'instagram'         =>  'www.instagram.com',
+                'linkedin'          =>  'www.linkedin.com',
+                //for instructor info end 
+            ]);
+
+            //Add instructorRole to Randominstructor
+            $random_instructor->attachRole($instructorRole);
+
+            // Add  specializations to Randominstructor
+            $random_instructor->specializations()->sync($specializations->random(rand(1, 3)));
+        }
+
 
         //------------- 05- Permission  ------------//
         //manage main dashboard page
@@ -222,18 +278,6 @@ class EntrustSeeder extends Seeder
         $updateAdvertisorSliders  =  Permission::create(['name' => 'update_advertisor_sliders', 'display_name'    =>  ['ar'   =>  'تعديل الشريحة',   'en'    =>  'Edit Adv Slide'],  'route' => 'advertisor_sliders', 'module' => 'advertisor_sliders', 'as' => 'advertisor_sliders.edit', 'icon' => null, 'parent' => $manageAdvertisorSliders->id, 'parent_original' => $manageAdvertisorSliders->id, 'parent_show' => $manageAdvertisorSliders->id, 'sidebar_link' => '0', 'appear' => '0']);
         $deleteAdvertisorSliders  =  Permission::create(['name' => 'delete_advertisor_sliders', 'display_name'    =>  ['ar'   =>  'حذف الشريحة',   'en'    =>  'Delete Adv Slide'],  'route' => 'advertisor_sliders', 'module' => 'advertisor_sliders', 'as' => 'advertisor_sliders.destroy', 'icon' => null, 'parent' => $manageAdvertisorSliders->id, 'parent_original' => $manageAdvertisorSliders->id, 'parent_show' => $manageAdvertisorSliders->id, 'sidebar_link' => '0', 'appear' => '0']);
 
-
-        //Instructors
-        $manageInstructors = Permission::create(['name' => 'manage_instructors', 'display_name' => ['ar'    =>  'إدارة المحاضرين', 'en' =>  'Manage Instructors'], 'route' => 'instructors', 'module' => 'instructors', 'as' => 'instructors.index', 'icon' => 'fas fa-sliders-h', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '0', 'appear' => '0', 'ordering' => '25',]);
-        $manageInstructors->parent_show = $manageInstructors->id;
-        $manageInstructors->save();
-        $showInstructors    =  Permission::create(['name' => 'show_instructors', 'display_name'    =>  ['ar'    =>  ' عرض المحاضرين',   'en'    =>  'Main Instructors'], 'route' => 'instructors', 'module' => 'instructors', 'as' => 'instructors.index', 'icon' => 'fas  fa-sliders-h', 'parent' => $manageInstructors->id, 'parent_original' => $manageInstructors->id, 'parent_show' => $manageInstructors->id, 'sidebar_link' => '1', 'appear' => '1']);
-        $createInstructors  =  Permission::create(['name' => 'create_instructors', 'display_name'    =>  ['ar'    =>  'إضافة محاضر جديد',   'en'    =>  'Add Instructor'], 'route' => 'instructors', 'module' => 'instructors', 'as' => 'instructors.create', 'icon' => null, 'parent' => $manageInstructors->id, 'parent_original' => $manageInstructors->id, 'parent_show' => $manageInstructors->id, 'sidebar_link' => '0', 'appear' => '0']);
-        $displayInstructors =  Permission::create(['name' => 'display_instructors', 'display_name'    =>  ['ar'    =>  'عرض محاضر',   'en'    =>  'Display Main Instructor'],  'route' => 'instructors', 'module' => 'instructors', 'as' => 'instructors.show', 'icon' => null, 'parent' => $manageInstructors->id, 'parent_original' => $manageInstructors->id, 'parent_show' => $manageInstructors->id, 'sidebar_link' => '0', 'appear' => '0']);
-        $updateInstructors  =  Permission::create(['name' => 'update_instructors', 'display_name'    =>  ['ar'    =>  'تعديل محاضر',   'en'    =>  'Edit Main Instructor'],  'route' => 'instructors', 'module' => 'instructors', 'as' => 'instructors.edit', 'icon' => null, 'parent' => $manageInstructors->id, 'parent_original' => $manageInstructors->id, 'parent_show' => $manageInstructors->id, 'sidebar_link' => '0', 'appear' => '0']);
-        $deleteInstructors  =  Permission::create(['name' => 'delete_instructors', 'display_name'    =>  ['ar'    =>  'حذف محاضر',   'en'    =>  'Delete Main Instructor'],  'route' => 'instructors', 'module' => 'instructors', 'as' => 'instructors.destroy', 'icon' => null, 'parent' => $manageInstructors->id, 'parent_original' => $manageInstructors->id, 'parent_show' => $manageInstructors->id, 'sidebar_link' => '0', 'appear' => '0']);
-
-
         //Procuct Categories
         $manageProductCategories = Permission::create(['name' => 'manage_product_categories', 'display_name' => ['ar'   =>  'إدارة تصنيف المنتجات',  'en'    =>  'Manage Product Categories'], 'route' => 'product_categories', 'module' => 'product_categories', 'as' => 'product_categories.index', 'icon' => 'fas fa-file-archive', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '0', 'appear' => '0', 'ordering' => '25',]);
         $manageProductCategories->parent_show = $manageProductCategories->id;
@@ -316,15 +360,15 @@ class EntrustSeeder extends Seeder
         $updateSupervisors  =  Permission::create(['name' => 'update_supervisors', 'display_name'    =>  ['ar'   =>  'تعديل مشرف',   'en'    =>  'Edit Supervisor'], 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.edit', 'icon' => null, 'parent' => $manageSupervisors->id, 'parent_original' => $manageSupervisors->id, 'parent_show' => $manageSupervisors->id, 'sidebar_link' => '0', 'appear' => '0']);
         $deleteSupervisors =  Permission::create(['name' => 'delete_supervisors', 'display_name'    =>  ['ar'   =>  'حذف مشرف',   'en'    =>  'Delete Supervisor'], 'route' => 'supervisors', 'module' => 'supervisors', 'as' => 'supervisors.destroy', 'icon' => null, 'parent' => $manageSupervisors->id, 'parent_original' => $manageSupervisors->id, 'parent_show' => $manageSupervisors->id, 'sidebar_link' => '0', 'appear' => '0']);
 
-        //lecturers
-        $manageLecturers = Permission::create(['name' => 'manage_lecturers', 'display_name' => ['ar'    =>  'المحاضرين',    'en'    =>  'lecturers'], 'route' => 'lecturers', 'module' => 'lecturers', 'as' => 'lecturers.index', 'icon' => 'fas fa-chalkboard-teacher', 'parent' => $manageCustomers->id, 'parent_original' => '0', 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '55',]);
-        $manageLecturers->parent_show = $manageLecturers->id;
-        $manageLecturers->save();
-        $showlecturers   =  Permission::create(['name' => 'show_lecturers', 'display_name'    =>  ['ar'   =>  'المحاضرين',   'en'    =>  'lecturers'], 'route' => 'lecturers', 'module' => 'lecturers', 'as' => 'lecturers.index', 'icon' => 'fas fa-chalkboard-teacher', 'parent' => $manageLecturers->id, 'parent_original' => $manageLecturers->id, 'parent_show' => $manageLecturers->id, 'sidebar_link' => '1', 'appear' => '1']);
-        $createlecturers =  Permission::create(['name' => 'create_lecturers', 'display_name'    =>  ['ar'   =>  'إضافة محاضر جديد',   'en'    =>  'Add lecturer'], 'route' => 'lecturers', 'module' => 'lecturers', 'as' => 'lecturers.create', 'icon' => null, 'parent' => $manageLecturers->id, 'parent_original' => $manageLecturers->id, 'parent_show' => $manageLecturers->id, 'sidebar_link' => '1', 'appear' => '0']);
-        $displaylecturers =  Permission::create(['name' => 'display_lecturers', 'display_name'    =>  ['ar'   =>  'عرض محاضر',   'en'    =>  'Dsiplay lecturer'], 'route' => 'lecturers', 'module' => 'lecturers', 'as' => 'lecturers.show', 'icon' => null, 'parent' => $manageLecturers->id, 'parent_original' => $manageLecturers->id, 'parent_show' => $manageLecturers->id, 'sidebar_link' => '0', 'appear' => '0']);
-        $updatelecturers  =  Permission::create(['name' => 'update_lecturers', 'display_name'    =>  ['ar'   =>  'تعديل محاضر',   'en'    =>  'Edit lecturer'], 'route' => 'lecturers', 'module' => 'lecturers', 'as' => 'lecturers.edit', 'icon' => null, 'parent' => $manageLecturers->id, 'parent_original' => $manageLecturers->id, 'parent_show' => $manageLecturers->id, 'sidebar_link' => '0', 'appear' => '0']);
-        $deletelecturers =  Permission::create(['name' => 'delete_lecturers', 'display_name'    =>  ['ar'   =>  'حذف محاضر',   'en'    =>  'Delete lecturer'], 'route' => 'lecturers', 'module' => 'lecturers', 'as' => 'lecturers.destroy', 'icon' => null, 'parent' => $manageLecturers->id, 'parent_original' => $manageLecturers->id, 'parent_show' => $manageLecturers->id, 'sidebar_link' => '0', 'appear' => '0']);
+        //instructors
+        $manageInstructors = Permission::create(['name' => 'manage_instructors', 'display_name' => ['ar'    =>  'المحاضرين',    'en'    =>  'instructors'], 'route' => 'instructors', 'module' => 'instructors', 'as' => 'instructors.index', 'icon' => 'fas fa-chalkboard-teacher', 'parent' => $manageCustomers->id, 'parent_original' => '0', 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '55',]);
+        $manageInstructors->parent_show = $manageInstructors->id;
+        $manageInstructors->save();
+        $showInstructors   =  Permission::create(['name' => 'show_instructors', 'display_name'    =>  ['ar'   =>  'المحاضرين',   'en'    =>  'instructors'], 'route' => 'instructors', 'module' => 'instructors', 'as' => 'instructors.index', 'icon' => 'fas fa-chalkboard-teacher', 'parent' => $manageInstructors->id, 'parent_original' => $manageInstructors->id, 'parent_show' => $manageInstructors->id, 'sidebar_link' => '1', 'appear' => '1']);
+        $createInstructors =  Permission::create(['name' => 'create_instructors', 'display_name'    =>  ['ar'   =>  'إضافة محاضر جديد',   'en'    =>  'Add Instructor'], 'route' => 'instructors', 'module' => 'instructors', 'as' => 'instructors.create', 'icon' => null, 'parent' => $manageInstructors->id, 'parent_original' => $manageInstructors->id, 'parent_show' => $manageInstructors->id, 'sidebar_link' => '1', 'appear' => '0']);
+        $displayInstructors =  Permission::create(['name' => 'display_instructors', 'display_name'    =>  ['ar'   =>  'عرض محاضر',   'en'    =>  'Dsiplay Instructor'], 'route' => 'instructors', 'module' => 'instructors', 'as' => 'instructors.show', 'icon' => null, 'parent' => $manageInstructors->id, 'parent_original' => $manageInstructors->id, 'parent_show' => $manageInstructors->id, 'sidebar_link' => '0', 'appear' => '0']);
+        $updateInstructors  =  Permission::create(['name' => 'update_instructors', 'display_name'    =>  ['ar'   =>  'تعديل محاضر',   'en'    =>  'Edit Instructor'], 'route' => 'instructors', 'module' => 'instructors', 'as' => 'instructors.edit', 'icon' => null, 'parent' => $manageInstructors->id, 'parent_original' => $manageInstructors->id, 'parent_show' => $manageInstructors->id, 'sidebar_link' => '0', 'appear' => '0']);
+        $deleteInstructors =  Permission::create(['name' => 'delete_instructors', 'display_name'    =>  ['ar'   =>  'حذف محاضر',   'en'    =>  'Delete Instructor'], 'route' => 'instructors', 'module' => 'instructors', 'as' => 'instructors.destroy', 'icon' => null, 'parent' => $manageInstructors->id, 'parent_original' => $manageInstructors->id, 'parent_show' => $manageInstructors->id, 'sidebar_link' => '0', 'appear' => '0']);
 
         //specialization
         $manageSpecializations = Permission::create(['name' => 'manage_specializations', 'display_name' => ['ar'    =>  'التخصصات',    'en'    =>  'specializations'], 'route' => 'specializations', 'module' => 'specializations', 'as' => 'specializations.index', 'icon' => 'fas fa-file-signature', 'parent' => $manageCustomers->id, 'parent_original' => '0', 'parent_show' => $manageCustomers->id, 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '55',]);

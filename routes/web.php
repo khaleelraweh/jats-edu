@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\CourseReviewController;
 use App\Http\Controllers\Backend\CurrenciesController;
 use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Backend\InstructorController;
 use App\Http\Controllers\Backend\LecturersController;
 use App\Http\Controllers\Backend\LocaleController;
 use App\Http\Controllers\Backend\MainSliderController;
@@ -42,7 +43,6 @@ use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\PaymentController;
-use App\Http\Controllers\InstructorController;
 use App\Models\News;
 use Illuminate\Support\Facades\auth;
 use Illuminate\Support\Facades\Route;
@@ -119,16 +119,16 @@ Route::group(['middleware' => ['roles', 'role:customer', 'verified']], function 
     Route::get('/orders', [FrontendCustomerController::class, 'orders'])->name('customer.orders');
 
     Route::group(['middleware' => 'check_cart'], function () {
-        Route::get('/checkout', [PaymentController::class, 'checkout'])->name('frontend.checkout');
-        Route::post('/checkout/payment', [PaymentController::class, 'checkout_now'])->name('checkout.payment');
 
+        Route::post('/checkout/payment', [PaymentController::class, 'checkout'])->name('checkout.payment');
         Route::get('/checkout/{order_id}/cancelled', [PaymentController::class, 'cancelled'])->name('checkout.cancel');
         Route::get('/checkout/{order_id}/completed', [PaymentController::class, 'completed'])->name('checkout.complete');
+
         Route::get('/checkout/webhook/{order?}/{env?}', [PaymentController::class, 'webhook'])->name('checkout.webhook.ipn');
 
-        Route::post('/checkout/paymentIn', [PaymentController::class, 'checkout_in'])->name('checkout.payment_in');
-
         Route::get('/checkout/{order_id}/completed', [PaymentController::class, 'completed_paytabs'])->name('checkout.complete_by_paytabs');
+        Route::get('checkout/query/{tran_ref}', [PaymentController::class, 'query'])->name('checkout.query');
+        Route::post('checkout/call_back', [PaymentController::class, 'call_back'])->name('checkout.call_back');
     });
 });
 
@@ -196,8 +196,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('supervisors/remove-image', [SupervisorController::class, 'remove_image'])->name('supervisors.remove_image');
         Route::resource('supervisors', SupervisorController::class);
 
-        Route::post('lecturers/remove-image', [LecturersController::class, 'remove_image'])->name('lecturers.remove_image');
-        Route::resource('lecturers', LecturersController::class);
+
 
 
         Route::resource('customer_addresses', CustomerAddressController::class);

@@ -20,13 +20,11 @@ class DatabaseSeeder extends Seeder
         // $this->call(WorldSeeder::class);
         // $this->call(WorldStatusSeeder::class);
 
-        $this->call(EntrustSeeder::class);
         $this->call(SpecializationSeeder::class);
-        $this->call(LecturerSeeder::class);
+        $this->call(EntrustSeeder::class);
         // $this->call(UserAddressSeeder::class); //This will be only for user khaleel user
         $this->call(ProductCategorySeeder::class);
         $this->call(CardCategorySeeder::class);
-        $this->call(InstructorSeeder::class);
         $this->call(CourseCategorySeeder::class);
         $this->call(CourseSeeder::class);
         $this->call(CourseReviewSeeder::class);

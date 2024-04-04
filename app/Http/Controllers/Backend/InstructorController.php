@@ -1,29 +1,29 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\backend\LecturerRequest;
+use App\Http\Requests\backend\InstructorRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\Role;
 use App\Models\Specialization;
-use App\Models\User;
 use Intervention\Image\Facades\Image;
 use illuminate\support\Str;
 
-class LecturersController extends Controller
+class InstructorController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_lecturers , show_lecturers')) {
+        if (!auth()->user()->ability('admin', 'manage_instructors , show_instructors')) {
             return redirect('admin/index');
         }
 
         //get users where has roles 
-        $lecturers = User::with('specializations')->whereHas('roles', function ($query) {
+        $instructors = User::with('specializations')->whereHas('roles', function ($query) {
             //this roles its name is customer
-            $query->where('name', 'lecturer');
+            $query->where('name', 'instructor');
         })
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
@@ -34,21 +34,21 @@ class LecturersController extends Controller
             ->orderBy(\request()->sort_by ?? 'id', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
 
-        return view('backend.lecturers.index', compact('lecturers'));
+        return view('backend.instructors.index', compact('instructors'));
     }
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_lecturers')) {
+        if (!auth()->user()->ability('admin', 'create_instructors')) {
             return redirect('admin/index');
         }
         $specializations = Specialization::get(['id', 'name']);
-        return view('backend.lecturers.create', compact('specializations'));
+        return view('backend.instructors.create', compact('specializations'));
     }
 
-    public function store(LecturerRequest $request)
+    public function store(InstructorRequest $request)
     {
-        if (!auth()->user()->ability('admin', 'create_lecturers')) {
+        if (!auth()->user()->ability('admin', 'create_instructors')) {
             return redirect('admin/index');
         }
 
@@ -72,7 +72,7 @@ class LecturersController extends Controller
 
         if ($image = $request->file('user_image')) {
             $file_name = Str::slug($request->username) . '_' . time() .  "." . $image->getClientOriginalExtension();
-            $path = public_path('assets/lecturers/' . $file_name);
+            $path = public_path('assets/instructors/' . $file_name);
             Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save($path, 100);
@@ -80,53 +80,53 @@ class LecturersController extends Controller
             $input['user_image'] = $file_name;
         }
 
-        $lecturer = User::create($input);
+        $instructor = User::create($input);
 
-        //Attach the new lecturer to role lecturer
-        $lecturer->attachRole(Role::whereName('lecturer')->first()->id);
+        //Attach the new instructor to role instructor
+        $instructor->attachRole(Role::whereName('instructor')->first()->id);
 
         //add specifications
         if (isset($request->specializations) && count($request->specializations) > 0) {
-            $lecturer->specializations()->sync($request->specializations);
+            $instructor->specializations()->sync($request->specializations);
         }
 
-        if ($lecturer) {
-            return redirect()->route('admin.lecturers.index')->with([
+        if ($instructor) {
+            return redirect()->route('admin.instructors.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.lecturers.index')->with([
+        return redirect()->route('admin.instructors.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
     }
 
-    public function show(User $lecturer)
+    public function show(User $instructor)
     {
-        if (!auth()->user()->ability('admin', 'display_lecturers')) {
+        if (!auth()->user()->ability('admin', 'display_instructors')) {
             return redirect('admin/index');
         }
-        return view('backend.lecturers.show', compact('lecturer'));
+        return view('backend.instructors.show', compact('instructor'));
     }
 
-    public function edit(User $lecturer)
+    public function edit(User $instructor)
     {
-        if (!auth()->user()->ability('admin', 'update_lecturers')) {
+        if (!auth()->user()->ability('admin', 'update_instructors')) {
             return redirect('admin/index');
         }
 
         $specializations = Specialization::get(['id', 'name']);
 
-        $lecturerSpecializations = $lecturer->specializations->pluck(['id'])->toArray();
+        $instructorSpecializations = $instructor->specializations->pluck(['id'])->toArray();
 
-        return view('backend.lecturers.edit', compact('lecturer', 'specializations', 'lecturerSpecializations'));
+        return view('backend.instructors.edit', compact('instructor', 'specializations', 'instructorSpecializations'));
     }
 
-    public function update(LecturerRequest $request, User $lecturer)
+    public function update(InstructorRequest $request, User $instructor)
     {
-        if (!auth()->user()->ability('admin', 'update_lecturers')) {
+        if (!auth()->user()->ability('admin', 'update_instructors')) {
             return redirect('admin/index');
         }
 
@@ -152,13 +152,13 @@ class LecturersController extends Controller
 
         if ($image = $request->file('user_image')) {
 
-            if ($lecturer->user_image != null && File::exists('assets/lecturers/' . $lecturer->user_image)) {
-                unlink('assets/lecturers/' . $lecturer->user_image);
+            if ($instructor->user_image != null && File::exists('assets/instructors/' . $instructor->user_image)) {
+                unlink('assets/instructors/' . $instructor->user_image);
             }
 
             $file_name = Str::slug($request->username) . '_' . time() .  "." . $image->getClientOriginalExtension();
 
-            $path = public_path('assets/lecturers/' . $file_name);
+            $path = public_path('assets/instructors/' . $file_name);
             Image::make($image->getRealPath())->resize(500, null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save($path);
@@ -166,51 +166,51 @@ class LecturersController extends Controller
             $input['user_image'] = $file_name;
         }
 
-        $lecturer->update($input);
+        $instructor->update($input);
 
         //update specifications
         if (isset($request->specializations) && count($request->specializations) > 0) {
-            $lecturer->specializations()->sync($request->specializations);
+            $instructor->specializations()->sync($request->specializations);
         }
 
-        if ($lecturer) {
-            return redirect()->route('admin.lecturers.index')->with([
+        if ($instructor) {
+            return redirect()->route('admin.instructors.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.lecturers.index')->with([
+        return redirect()->route('admin.instructors.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
     }
 
-    public function destroy(User $lecturer)
+    public function destroy(User $instructor)
     {
-        if (!auth()->user()->ability('admin', 'delete_lecturers')) {
+        if (!auth()->user()->ability('admin', 'delete_instructors')) {
             return redirect('admin/index');
         }
 
         // first: delete image from users path 
-        if (File::exists('assets/lecturers/' . $lecturer->user_image)) {
-            unlink('assets/lecturers/' . $lecturer->user_image);
+        if (File::exists('assets/instructors/' . $instructor->user_image)) {
+            unlink('assets/instructors/' . $instructor->user_image);
         }
 
-        $lecturer->deleted_by = auth()->user()->full_name;
-        $lecturer->save();
+        $instructor->deleted_by = auth()->user()->full_name;
+        $instructor->save();
 
         //second : delete customer from users table
-        $lecturer->delete();
+        $instructor->delete();
 
-        if ($lecturer) {
-            return redirect()->route('admin.lecturers.index')->with([
+        if ($instructor) {
+            return redirect()->route('admin.instructors.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.lecturers.index')->with([
+        return redirect()->route('admin.instructors.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -219,35 +219,35 @@ class LecturersController extends Controller
     public function remove_image(Request $request)
     {
 
-        if (!auth()->user()->ability('admin', 'delete_lecturers')) {
+        if (!auth()->user()->ability('admin', 'delete_instructors')) {
             return redirect('admin/index');
         }
 
-        $lecturer = User::findOrFail($request->lecturer_id);
-        if (File::exists('assets/lecturers/' . $lecturer->user_image)) {
-            unlink('assets/lecturers/' . $lecturer->user_image);
-            $lecturer->user_image = null;
-            $lecturer->save();
+        $instructor = User::findOrFail($request->instructor_id);
+        if (File::exists('assets/instructors/' . $instructor->user_image)) {
+            unlink('assets/instructors/' . $instructor->user_image);
+            $instructor->user_image = null;
+            $instructor->save();
         }
-        if ($lecturer->user_image != null) {
-            $lecturer->user_image = null;
-            $lecturer->save();
+        if ($instructor->user_image != null) {
+            $instructor->user_image = null;
+            $instructor->save();
         }
 
         return true;
     }
 
-    public function get_lecturers()
+    public function get_instructors()
     {
         //get user where has relation with roles and this role its name is customer
-        $lecturers = User::whereHas('roles', function ($query) {
-            $query->where('name', 'lecturer');
+        $instructors = User::whereHas('roles', function ($query) {
+            $query->where('name', 'instructor');
         })
             ->when(\request()->input('query') != '', function ($query) {
                 $query->search(\request()->input('query'));
             })
             ->get(['id', 'first_name', 'last_name', 'email'])->toArray();
 
-        return response()->json($lecturers);
+        return response()->json($instructors);
     }
 }

@@ -86,11 +86,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(UserAddress::class);
     }
 
-    // public function reviews(): HasMany
-    // {
-    //     return $this->hasMany(ProductReview::class);
-    // }
-
     public function reviews()
     {
         return $this->hasMany(Review::class);
@@ -101,10 +96,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Order::class);
     }
 
-    public function courses(): BelongsToMany
-    {
-        return $this->belongsToMany(Course::class);
-    }
+    // public function courses(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(Course::class);
+    // }
 
     public function scopeHasCourses($query)
     {
@@ -127,5 +122,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function posts(): MorphToMany
     {
         return $this->morphedByMany(Post::class, 'userable');
+    }
+    public function courses(): MorphToMany
+    {
+        return $this->morphedByMany(Course::class, 'userable');
     }
 }

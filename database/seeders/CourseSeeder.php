@@ -20,13 +20,11 @@ class CourseSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        // Get active instructors
-        $instructors = Instructor::active()->inRandomOrder()->take(3)->get();
+        // $users = User::whereHas('roles', function ($query) {
+        //     $query->where('name', 'instructor');
+        // })->active()->inRandomOrder()->take(10)->get();
 
-        // Get active lecturer
-        $users = User::whereHas('roles', function ($query) {
-            $query->where('name', 'lecturer');
-        })->active()->inRandomOrder()->take(10)->get();
+        $users = User::WhereHasRoles('instructor')->active()->inRandomOrder()->take(10)->get();
 
 
         // Get active course categories
@@ -126,9 +124,6 @@ class CourseSeeder extends Seeder
                 'updated_by' => $faker->realTextBetween(10, 20), // Assuming you want this as well
             ]);
 
-            // Attach instructors
-            $course->instructors()->attach($instructors->pluck('id')->toArray());
-
             // Shuffle the collection of users
             $shuffledUsers = $users->shuffle();
 
@@ -136,7 +131,7 @@ class CourseSeeder extends Seeder
             $selectedUsers = $shuffledUsers->take(3);
 
             // Attach users
-            $course->users()->attach($selectedUsers->pluck('id')->toArray());
+            $course->instructors()->attach($selectedUsers->pluck('id')->toArray());
         }
     }
 }

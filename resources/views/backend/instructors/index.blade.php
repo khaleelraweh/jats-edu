@@ -1,17 +1,14 @@
 @extends('layouts.admin')
-
 @section('content')
 
     <div class="card shadow mb-4">
-        {{-- {{ dd(Cookie::get('theme')) }} --}}
 
         {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
-
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_instructors') }}
+                    {{ __('panel.manage_users') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -27,7 +24,6 @@
                     </li>
                 </ul>
             </div>
-
             <div class="ml-auto">
                 @ability('admin', 'create_instructors')
                     <a href="{{ route('admin.instructors.create') }}" class="btn btn-primary">
@@ -42,7 +38,6 @@
         </div>
 
         <div class="card-body">
-
             {{-- filter form part  --}}
             @include('backend.instructors.filter.filter')
 
@@ -50,48 +45,83 @@
             <div class="table-responsive">
                 <table class="table table-hover table-striped table-bordered dt-responsive nowrap"
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-
                     <thead>
                         <tr>
-                            <th>{{ __('panel.image') }}</th>
-                            <th>{{ __('panel.name') }}</th>
-                            <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
-                            <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
+                            <th class="d-none d-sm-table-cell">{{ __('panel.image') }}</th>
+                            <th>{{ __('panel.customer_name') }}</th>
+                            <th class="d-none d-sm-table-cell">{{ __('panel.specializations') }} </th>
+                            <th class="d-none d-sm-table-cell">{{ __('panel.email') }} {{ __('panel.and') }}
+                                {{ __('panel.mobile') }} </th>
                             <th>{{ __('panel.status') }}</th>
+                            <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($instructors as $instructor)
+                        @forelse ($instructors as $customer)
                             <tr>
-                                <td>
-                                    @if ($instructor->firstMedia)
-                                        <img src="{{ asset('assets/instructors/' . $instructor->firstMedia->file_name) }}"
-                                            width="60" height="60" alt="{{ $instructor->title }}">
-                                    @else
-                                        <img src="{{ asset('assets/noImage.png') }}" width="60" height="60"
-                                            alt="{{ $instructor->title }}">
-                                    @endif
-                                </td>
-                                <td>{{ $instructor->name }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $instructor->created_by ?? 'admin' }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $instructor->created_at }}</td>
-                                <td>{{ $instructor->status() }}</td>
-                                <td>
+                                <td class="d-none d-sm-table-cell">
+                                    @php
+                                        if ($customer->user_image != null) {
+                                            $customer_img = asset('assets/instructors/' . $customer->user_image);
 
+                                            if (
+                                                !file_exists(public_path('assets/instructors/' . $customer->user_image))
+                                            ) {
+                                                $customer_img = asset('assets/instructors/no_image_found.webp');
+                                            }
+                                        } else {
+                                            $customer_img = asset('assets/instructors/no_image_found.webp');
+                                        }
+                                    @endphp
+                                    <img src="{{ $customer_img }}" width="60" height="60"
+                                        alt="{{ $customer->full_name }}">
+
+                                </td>
+                                <td>
+                                    {{ $customer->full_name }} <br>
+                                    <small>
+                                        <span class="bg-info px-2 text-white rounded-pill">
+                                            {{ __('panel.username') }}:
+                                            <strong>{{ $customer->username }}</strong>
+                                        </span>
+                                    </small>
+
+                                </td>
+                                <td>
+                                    @if (count($customer->specializations) > 0)
+                                        @foreach ($customer->specializations as $specialization)
+                                            {{ $specialization->name }}
+
+                                            @if (!$loop->last)
+                                                &
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        not set yet
+                                    @endif
+
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    {{ $customer->email }} <br>
+                                    {{ $customer->mobile }}
+                                </td>
+                                <td>{{ $customer->status() }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $customer->created_at->format('Y-m-d') }}</td>
+                                <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.instructors.edit', $instructor->id) }}"
+                                        <a href="{{ route('admin.instructors.edit', $customer->id) }}"
                                             class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-{{ $instructor->id }}').submit();}else{return false;}"
+                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-customer-{{ $customer->id }}').submit();}else{return false;}"
                                             class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.instructors.destroy', $instructor->id) }}" method="post"
-                                        class="d-none" id="delete-product-{{ $instructor->id }}">
+                                    <form action="{{ route('admin.instructors.destroy', $customer->id) }}" method="post"
+                                        class="d-none" id="delete-customer-{{ $customer->id }}">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -99,13 +129,13 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center"> {{ __('panel.no_found_item') }} </td>
+                                <td colspan="7" class="text-center">{{ __('panel.no_found_item') }}</td>
                             </tr>
                         @endforelse
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="6">
+                            <td colspan="7">
                                 <div class="float-right">
                                     {!! $instructors->appends(request()->all())->links() !!}
                                 </div>
@@ -114,7 +144,6 @@
                     </tfoot>
                 </table>
             </div>
-
         </div>
 
     </div>

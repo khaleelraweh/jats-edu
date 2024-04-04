@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-
 @section('content')
+
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
 
@@ -28,11 +28,14 @@
                 </ul>
             </div>
 
+
         </div>
+
 
         {{-- body part  --}}
         <div class="card-body">
 
+            {{-- erorrs show is exists --}}
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -43,20 +46,39 @@
                 </div>
             @endif
 
+            {{-- enctype used cause we will save images  --}}
             <form action="{{ route('admin.instructors.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
+
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
+
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
-                            type="button" role="tab" aria-controls="content"
-                            aria-selected="true">{{ __('panel.content_tab') }}
+                        <button class="nav-link active " id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
+                            type="button" role="tab" aria-controls="content" aria-selected="true">
+                            {{ __('panel.content_tab') }}
                         </button>
                     </li>
 
 
+                    {{-- motavation tab --}}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="motavation-tab" data-bs-toggle="tab" data-bs-target="#motavation"
+                            type="button" role="tab" aria-controls="motavation"
+                            aria-selected="false">{{ __('panel.motavation_tab') }}
+                        </button>
+                    </li>
 
+                    {{-- social tab --}}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="social-tab" data-bs-toggle="tab" data-bs-target="#social"
+                            type="button" role="tab" aria-controls="social"
+                            aria-selected="false">{{ __('panel.social_tab') }}
+                        </button>
+                    </li>
+
+                    {{-- publish tab --}}
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
                             type="button" role="tab" aria-controls="published"
@@ -68,113 +90,212 @@
 
                 <div class="tab-content" id="myTabContent">
 
-                    {{-- Content Tab --}}
-
-                    <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
+                    {{-- content tab --}}
+                    <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
 
                         <div class="row">
 
-                            {{-- البيانات الاساسية --}}
-                            <div class="col-md-7 col-sm-12 ">
+                            <div class="col-sm-12 col-md-8">
 
-                                {{-- instructor name field --}}
-                                @foreach (config('locales.languages') as $key => $val)
-                                    <div class="row ">
-                                        <div class="col-sm-12 pt-3">
-                                            <div class="form-group">
-                                                <label for="name[{{ $key }}]">
-                                                    {{ __('panel.name') }}
-                                                    {{ __('panel.in') }} {{ __('panel.' . $key) }}
-                                                </label>
-                                                <input type="text" name="name[{{ $key }}]"
-                                                    id="name[{{ $key }}]" value="{{ old('name.' . $key) }}"
-                                                    class="form-control">
-                                                @error('name.' . $key)
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 pt-4">
+                                        <div class="form-group">
+                                            <label for="first_name"> {{ __('panel.first_name') }}</label>
+                                            <input type="text" id="first_name" name="first_name"
+                                                value="{{ old('first_name') }}" class="form-control" placeholder="">
+                                            @error('first_name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
-                                @endforeach
-
-                                {{-- instructor specialization field --}}
-                                @foreach (config('locales.languages') as $key => $val)
-                                    <div class="row ">
-                                        <div class="col-sm-12 pt-3">
-                                            <div class="form-group">
-                                                <label for="specialization[{{ $key }}]">
-                                                    {{ __('panel.specialization') }}
-                                                    {{ __('panel.in') }} {{ __('panel.' . $key) }}
-                                                </label>
-                                                <input type="text" name="specialization[{{ $key }}]"
-                                                    id="specialization[{{ $key }}]"
-                                                    value="{{ old('specialization.' . $key) }}" class="form-control">
-                                                @error('specialization.' . $key)
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+                                    <div class="col-sm-12 col-md-6 pt-4">
+                                        <div class="form-group">
+                                            <label for="last_name">{{ __('panel.last_name') }}</label>
+                                            <input type="text" id="last_name" name="last_name"
+                                                value="{{ old('last_name') }}" class="form-control" placeholder="">
+                                            @error('last_name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
 
-                                {{-- email --}}
-                                <div class="row ">
-                                    <div class="col-sm-12 pt-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 pt-4">
+                                        <div class="form-group">
+                                            <label for="username">{{ __('panel.user_name') }}</label>
+                                            <input type="text" id="username" name="username"
+                                                value="{{ old('username') }}" class="form-control" placeholder="">
+                                            @error('username')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 pt-4">
+                                        <div class="form-group">
+                                            <label for="password">{{ __('panel.user_password') }}</label>
+                                            <input type="text" id="password" name="password"
+                                                value="{{ old('password') }}" class="form-control" placeholder="">
+                                            @error('password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 pt-4">
                                         <div class="form-group">
                                             <label for="email">{{ __('panel.email') }}</label>
-                                            <input type="text" id="email" name="email" value="{{ old('email') }}"
-                                                class="form-control">
+                                            <input type="text" id="email" name="email"
+                                                value="{{ old('email') }}" class="form-control" placeholder="">
                                             @error('email')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
 
-                                {{-- phone --}}
-                                <div class="row ">
-                                    <div class="col-sm-12 pt-3">
+                                    <div class="col-sm-12 col-md-6 pt-4">
                                         <div class="form-group">
-                                            <label for="phone">{{ __('panel.phone') }}</label>
-                                            <input type="text" id="phone" name="phone" value="{{ old('phone') }}"
-                                                class="form-control">
-                                            @error('phone')
+                                            <label for="mobile">{{ __('panel.mobile') }}</label>
+                                            <input type="text" id="mobile" name="mobile"
+                                                value="{{ old('mobile') }}" class="form-control" placeholder="">
+                                            @error('mobile')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
 
+                                </div>
+                                {{-- specialization row --}}
+                                <div class="row pt-4">
+
+                                    <div class="col-md-12 col-sm-12 ">
+
+                                        <label for="specializations"> {{ __('panel.specializations') }} </label>
+                                        <select name="specializations[]" class="form-control select2 child"
+                                            multiple="multiple">
+                                            @forelse ($specializations as $specialization)
+                                                <option value="{{ $specialization->id }}"
+                                                    {{ in_array($specialization->id, old('specializations', [])) ? 'selected' : null }}>
+                                                    {{ $specialization->name }}</option>
+                                            @empty
+                                            @endforelse
+                                        </select>
+                                    </div>
+
+                                </div>
                             </div>
 
-                            {{-- مرفق الصور  --}}
-                            <div class="col-md-5 col-sm-12 ">
+                            <div class="col-sm-12 col-md-4">
 
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 pt-4">
-                                        <label for="images">
-                                            {{ __('panel.image') }}
-                                            /
-                                            {{ __('panel.images') }}
-                                        </label>
-                                        <span>(<small>w:750 , h:1550 </small>)</span>
+                                <div class="row pt-4">
+                                    <div class="col-12">
+                                        <label for="user_image"> {{ __('panel.image') }} </label>
                                         <br>
+                                        <span class="form-text text-muted">{{ __('panel.user_image_size') }} </span>
                                         <div class="file-loading">
-                                            <input type="file" name="images[]" id="slider_images"
-                                                class="file-input-overview" multiple="multiple">
-                                            @error('images')
+                                            <input type="file" name="user_image" id="instructor_image"
+                                                value="{{ old('instructor_image') }}" class="file-input-overview ">
+                                            <span class="form-text text-muted">{{ __('panel.user_image_size') }} </span>
+                                            @error('user_image')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
 
+                    {{-- motavation content --}}
+                    <div class="tab-pane fade a" id="motavation" role="tabpanel" aria-labelledby="motavation-tab">
 
+                        {{-- instructor description field --}}
+                        <div class="row">
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="col-sm-12 col-md-6 pt-3">
+                                    <label for="description[{{ $key }}]">
+                                        {{ __('panel.instructor_description') }}
+                                        {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                    </label>
+                                    <textarea name="description[{{ $key }}]" style="height: 120px" class="form-control summernote">{!! old('description.' . $key) !!}</textarea>
+                                    @error('course_category_id')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            @endforeach
+                        </div>
+
+                        {{-- instructor motavation field --}}
+                        <div class="row">
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="col-sm-12 col-md-6 pt-3">
+                                    <label for="motavation[{{ $key }}]">
+                                        {{ __('panel.instructor_motavation') }}
+                                        {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                    </label>
+                                    <textarea name="motavation[{{ $key }}]" rows="10" style="height: 120px"
+                                        class="form-control summernote">{!! old('motavation.' . $key) !!}</textarea>
+                                    @error('course_category_id')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            @endforeach
+                        </div>
+
+                    </div>
+
+                    {{-- social content --}}
+                    <div class="tab-pane fade a" id="social" role="tabpanel" aria-labelledby="social-tab">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <div class="form-group">
+                                    <label for="facebook">{{ __('panel.facebook') }}</label>
+                                    <input type="text" id="facebook" name="facebook" value="{{ old('facebook') }}"
+                                        class="form-control">
+                                    @error('facebook')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <div class="form-group">
+                                    <label for="twitter">{{ __('panel.twitter') }}</label>
+                                    <input type="text" id="twitter" name="twitter" value="{{ old('twitter') }}"
+                                        class="form-control">
+                                    @error('twitter')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <div class="form-group">
+                                    <label for="instagram">{{ __('panel.instagram') }}</label>
+                                    <input type="text" id="instagram" name="instagram"
+                                        value="{{ old('instagram') }}" class="form-control">
+                                    @error('instagram')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <div class="form-group">
+                                    <label for="linkedin">{{ __('panel.linkedin') }}</label>
+                                    <input type="text" id="linkedin" name="linkedin" value="{{ old('linkedin') }}"
+                                        class="form-control">
+                                    @error('linkedin')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     {{-- Published Tab --}}
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
@@ -205,7 +326,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                         </div>
 
                         {{-- status and featured field --}}
@@ -226,30 +346,13 @@
                             </div>
                         </div>
 
-                        {{-- show info field --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4">
-                                <label for="showInfo">{{ __('panel.show_slider_info') }}</label>
-                                <select name="showInfo" class="form-control">
-                                    <option value="1" {{ old('showInfo') == '1' ? 'selected' : null }}>
-                                        {{ __('panel.yes') }}
-                                    </option>
-                                    <option value="0" {{ old('showInfo') == '0' ? 'selected' : null }}>
-                                        {{ __('panel.no') }}
-                                    </option>
-                                </select>
-                                @error('showInfo')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
                     </div>
 
                     <div class="form-group pt-4">
                         <button type="submit" name="submit" class="btn btn-primary">
                             {{ __('panel.save_data') }}</button>
                     </div>
+
                 </div>
 
             </form>
@@ -260,67 +363,50 @@
 @endsection
 
 @section('script')
+    {{-- #user_image is the id in file input file above  --}}
     <script>
         $(function() {
-
-            $("#slider_images").fileinput({
+            $("#instructor_image").fileinput({
                 theme: "fa5",
-                maxFileCount: 5,
+                maxFileCount: 1,
                 allowedFileTypes: ['image'],
                 showCancel: true,
                 showRemove: false,
                 showUpload: false,
                 overwriteInitial: false
-            });
+            })
+        });
 
+        // ======= start pickadate codeing ===========
+        $('#published_on').pickadate({
+            format: 'yyyy-mm-dd',
+            min: new Date(),
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: true, // creates a dropdown to control years
+            clear: 'Clear',
+            close: 'OK',
+            colseOnSelect: true // Close Upon Selecting a date
+        });
 
-            // ======= start pickadate codeing ===========
-            $('#published_on').pickadate({
-                format: 'yyyy-mm-dd',
-                min: new Date(),
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
-                clear: 'Clear',
-                close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
-            });
-
-            var publishedOn = $('#published_on').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
-            // when change date 
-            $('#published_on').change(function() {
-                selected_ci_date = "";
-                selected_ci_date = $('#published_on').val();
-                if (selected_ci_date != null) {
-                    var cidate = new Date(selected_ci_date);
-                    min_codate = "";
-                    min_codate = new Date();
-                    min_codate.setDate(cidate.getDate() + 1);
-                    enddate.set('min', min_codate);
-                }
-
-            });
-
-            $('#published_on_time').pickatime({
-                clear: ''
-            });
-            // ======= End pickadate codeing ===========
-
-            $('.summernote').summernote({
-                tabSize: 2,
-                height: 120,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
-
+        var publishedOn = $('#published_on').pickadate(
+            'picker'); // set startdate in the picker to the start date in the #start_date elemet
+        // when change date 
+        $('#published_on').change(function() {
+            selected_ci_date = "";
+            selected_ci_date = $('#published_on').val();
+            if (selected_ci_date != null) {
+                var cidate = new Date(selected_ci_date);
+                min_codate = "";
+                min_codate = new Date();
+                min_codate.setDate(cidate.getDate() + 1);
+                enddate.set('min', min_codate);
+            }
 
         });
+
+        $('#published_on_time').pickatime({
+            clear: ''
+        });
+        // ======= End pickadate codeing ===========
     </script>
 @endsection

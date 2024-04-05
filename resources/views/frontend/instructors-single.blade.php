@@ -49,10 +49,10 @@
                                     $instructor_img = asset('assets/instructors/' . $instructor->user_image);
 
                                     if (!file_exists(public_path('assets/instructors/' . $instructor->user_image))) {
-                                        $instructor_img = asset('assets/instructors/user_not_found.webp');
+                                        $instructor_img = asset('image/not_found/avator2.webp');
                                     }
                                 } else {
-                                    $instructor_img = asset('assets/instructors/user_not_found.webp');
+                                    $instructor_img = asset('image/not_found/avator2.webp');
                                 }
                             @endphp
                             <img src="{{ $instructor_img }}" alt="{{ $instructor->first_name }}"

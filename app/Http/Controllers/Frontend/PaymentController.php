@@ -78,7 +78,7 @@ class PaymentController extends Controller
             $language = app()->getLocale();
 
 
-            $pay = paypage::sendPaymentCode($payment_method)
+            $response = paypage::sendPaymentCode($payment_method)
                 ->sendTransaction($tran_type, $tran_class)
                 ->sendCart($cart_id, $cart_amount, $cart_description)
                 ->sendCustomerDetails($name, $email, $phone, $street1, $city, $state, $country, $zip, $ip)
@@ -89,15 +89,44 @@ class PaymentController extends Controller
                 ->sendFramed($on = false)
                 ->create_pay_page(); // to initiate payment page
 
-            return $pay;
+            if ($response['response_code'] == 100) {
+                // Payment was successful
+                $transactionReference = $response['transaction_id'];
+
+                // Process the successful payment
+                return $this->handleSuccessfulPayment($transactionReference);
+            } else {
+                // Payment failed
+                return $this->handleFailedPayment($response['result']);
+            }
+
+            // return $response;
         }
     }
+
+
+    private function handleSuccessfulPayment($transactionReference)
+    {
+
+        return redirect()->route('checkout.complete_by_paytabs', ['transactionReference' => $transactionReference]);
+    }
+
+    private function handleFailedPayment($error)
+    {
+        // Handle the failed payment
+        // Log the error, display a message to the user, etc.
+        return redirect()->route('checkout.cancel')->with('error', $error);
+    }
+
+
 
 
     public function getReturnUrl($order_id)
     {
         return route('checkout.complete', $order_id);
     }
+
+
 
 
 

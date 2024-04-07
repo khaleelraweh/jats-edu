@@ -89,18 +89,9 @@ class PaymentController extends Controller
                 ->sendFramed($on = false)
                 ->create_pay_page(); // to initiate payment page
 
-            if ($response['response_code'] == 100) {
-                // Payment was successful
-                $transactionReference = $response['transaction_id'];
 
-                // Process the successful payment
-                return $this->handleSuccessfulPayment($transactionReference);
-            } else {
-                // Payment failed
-                return $this->handleFailedPayment($response['result']);
-            }
 
-            // return $response;
+            return $response;
         }
     }
 
@@ -174,7 +165,7 @@ class PaymentController extends Controller
     public function completed_paytabs(Request $request, $order_id)
     {
 
-        dd($request);
+        // dd($request);
         $order = Order::find($order_id);
 
         $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
@@ -207,14 +198,14 @@ class PaymentController extends Controller
 
     public function call_back(Request $request)
     {
-        dd($request);
+        // dd($request);
     }
 
     public function query($tran_ref)
     {
 
         $transaction = Paypage::queryTransaction($tran_ref);
-        dd($transaction);
+        // dd($transaction);
     }
 
 

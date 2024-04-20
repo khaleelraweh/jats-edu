@@ -204,6 +204,10 @@ return [
     'browse_all'                                      =>    'Browse All',
 
 
+    //Customers orders
+    'txt_my_orders'                                 =>  'My Orders',
+    'txt_orders'                                    =>  'Orders',
+
 
 
 

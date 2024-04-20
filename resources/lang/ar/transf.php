@@ -202,6 +202,10 @@ return [
     'btn_share_this_post'                             =>  'مشاركة هذا المقال ',
     'browse_all'                                      =>    'تصفح الكل',
 
+    //Customers orders
+    'txt_my_orders'                                 =>  'طلباتي',
+    'txt_orders'                                    =>  'الطلبات',
+
 
 
 

@@ -24,12 +24,11 @@ class PaymentController extends Controller
         return view('frontend.checkout');
     }
 
+    // online 
     public function checkout_now(Request $request)
     {
 
-        // paypal pay
         if ($request->paymentMethod == 'paypal') {
-
             $order = (new OrderService)->createOrder($request->except(['_token', 'submit']));
             $paypal = new PaypalService('PayPal_Rest');
             $response = $paypal->purchase([
@@ -53,6 +52,17 @@ class PaymentController extends Controller
             if (isset($response['id']) && $response['id'] != null) {
                 foreach ($response['links'] as $link) {
                     if ($link['rel'] === 'approve') {
+
+                        // $users = User::whereHas('roles',function ($query){
+                        //     $query->whereIn('name',['admin','supervisor']);
+                        // })->get();
+
+                        // if(auth()->user()){
+                        //     foreach($users as $user){
+                        //         $user->notify(new OrderCreatedNotification($order));
+                        //     }
+                        // }
+
                         return redirect()->away($link['href']);
                     }
                 }
@@ -81,7 +91,7 @@ class PaymentController extends Controller
             $ip = "";
             $same_as_billing = "billing";
             $return = route('checkout.complete_by_paytabs', $order->id);
-            $callback = route('checkout.call_back');
+            $callback = route('checkout.complete_by_paytabs', $order->id);
             $language = app()->getLocale();
 
 
@@ -95,6 +105,7 @@ class PaymentController extends Controller
                 ->sendLanguage($language)
                 ->sendFramed($on = false)
                 ->create_pay_page(); // to initiate payment page
+
 
 
             return $response;
@@ -150,9 +161,34 @@ class PaymentController extends Controller
         }
     }
 
+    public function cancelled($order_id)
+    {
+        $order = Order::find($order_id);
+        $order->update([
+            'order_status' => Order::CANCELED
+        ]);
+
+        $order->products()->each(function ($order_product) {
+            $product = Product::whereId($order_product->pivot->product_id)->first();
+            $product->update([
+                'quantity' => $product->quantity + $order_product->quantity
+            ]);
+        });
+
+        toast(__('panel.f_you_have_cancelled_your_order_payment'), 'error'); //using realrashed sweet alert lab
+
+        return redirect()->route('frontend.index');
+    }
+
+    public function webhook($order, $env)
+    {
+        //
+    }
+
     public function completed_paytabs(Request $request, $order_id)
     {
 
+        // dd($request);
         $order = Order::find($order_id);
 
         $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
@@ -181,34 +217,5 @@ class PaymentController extends Controller
         toast(__('panel.f_your_recent_payment_successful_with_refrence_code') . '10', 'success');
 
         return redirect()->route('frontend.index');
-    }
-
-    public function call_back(Request $request)
-    {
-        dd($request);
-    }
-
-    public function cancelled($order_id)
-    {
-        $order = Order::find($order_id);
-        $order->update([
-            'order_status' => Order::CANCELED
-        ]);
-
-        $order->products()->each(function ($order_product) {
-            $product = Product::whereId($order_product->pivot->product_id)->first();
-            $product->update([
-                'quantity' => $product->quantity + $order_product->quantity
-            ]);
-        });
-
-        toast(__('panel.f_you_have_cancelled_your_order_payment'), 'error'); //using realrashed sweet alert lab
-
-        return redirect()->route('frontend.index');
-    }
-
-    public function webhook($order, $env)
-    {
-        //
     }
 }

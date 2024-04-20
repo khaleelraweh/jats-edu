@@ -205,6 +205,11 @@ return [
     //Customers orders
     'txt_my_orders'                                 =>  'طلباتي',
     'txt_orders'                                    =>  'الطلبات',
+    'txt_order_ref'                                 =>  'رقم المرجع',
+    'txt_order_total'                               =>  'المجموع',
+    'txt_order_status'                              =>  'الحالة',
+    'txt_order_date'                                =>  'التاريخ',
+    'txt_order_action'                              =>  'العملية',
 
 
 

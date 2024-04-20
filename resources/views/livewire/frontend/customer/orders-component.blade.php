@@ -9,11 +9,11 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Order Ref.</th>
-                        <th>Total</th>
-                        <th>Status</th>
-                        <th>Date</th>
-                        <th class="col-2">Action</th>
+                        <th>{{ __('transf.txt_order_ref') }}</th>
+                        <th>{{ __('transf.txt_order_total') }}</th>
+                        <th>{{ __('transf.txt_order_status') }}</th>
+                        <th>{{ __('transf.txt_order_date') }}</th>
+                        <th class="col-2">{{ __('transf.txt_order_action') }}</th>
                     </tr>
                 </thead>
                 <tbody>

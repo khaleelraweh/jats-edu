@@ -207,6 +207,11 @@ return [
     //Customers orders
     'txt_my_orders'                                 =>  'My Orders',
     'txt_orders'                                    =>  'Orders',
+    'txt_order_ref'                                 =>  'Order Ref',
+    'txt_order_total'                               =>  'Total',
+    'txt_order_status'                              =>  'Status',
+    'txt_order_date'                                =>  'Date',
+    'txt_order_action'                              =>  'Action',
 
 
 

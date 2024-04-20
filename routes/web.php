@@ -127,6 +127,7 @@ Route::group(['middleware' => ['roles', 'role:customer', 'verified']], function 
         Route::get('/checkout/webhook/{order?}/{env?}', [PaymentController::class, 'webhook'])->name('checkout.webhook.ipn');
 
         Route::get('/checkout/{order_id}/completed', [PaymentController::class, 'completed_paytabs'])->name('checkout.complete_by_paytabs');
+        Route::get('/callback', [PaymentController::class, 'call_back'])->name('checkout.call_back');
 
 
         Route::post('/checkout/paymentIn', [PaymentController::class, 'checkout_in'])->name('checkout.payment_in');

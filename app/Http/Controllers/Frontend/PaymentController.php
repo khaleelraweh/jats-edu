@@ -24,7 +24,6 @@ class PaymentController extends Controller
         return view('frontend.checkout');
     }
 
-    // online 
     public function checkout_now(Request $request)
     {
 
@@ -82,7 +81,7 @@ class PaymentController extends Controller
             $ip = "";
             $same_as_billing = "billing";
             $return = route('checkout.complete_by_paytabs', $order->id);
-            $callback = route('checkout.complete_by_paytabs', $order->id);
+            $callback = route('checkout.call_back');
             $language = app()->getLocale();
 
 
@@ -96,7 +95,6 @@ class PaymentController extends Controller
                 ->sendLanguage($language)
                 ->sendFramed($on = false)
                 ->create_pay_page(); // to initiate payment page
-
 
 
             return $response;
@@ -155,7 +153,6 @@ class PaymentController extends Controller
     public function completed_paytabs(Request $request, $order_id)
     {
 
-        // dd($request);
         $order = Order::find($order_id);
 
         $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
@@ -184,6 +181,11 @@ class PaymentController extends Controller
         toast(__('panel.f_your_recent_payment_successful_with_refrence_code') . '10', 'success');
 
         return redirect()->route('frontend.index');
+    }
+
+    public function call_back(Request $request)
+    {
+        dd($request);
     }
 
     public function cancelled($order_id)

@@ -171,4 +171,38 @@ class Order extends Model
         }
         return $result;
     }
+    // public function statusWithLabel()
+    // {
+
+    //     switch ($this->order_status) {
+    //         case 0:
+    //             $result = '<label class="badge bg-success text-light">' .  __('panel.order_new_order')  . '</label>';
+    //             break;
+    //         case 1:
+    //             $result = '<label class="badge bg-warning text-light">' . __('panel.order_paid') . '</label>';
+    //             break;
+    //         case 2:
+    //             $result = '<label class="badge bg-warning text-light">' .  __('panel.order_under_process') . '</label>';
+    //             break;
+    //         case 3:
+    //             $result = '<label class="badge bg-primary text-light">' . __('panel.order_finished') . '</label>';
+    //             break;
+    //         case 4:
+    //             $result = '<label class="badge bg-danger text-light">' . __('panel.order_rejected') . '</label>';
+    //             break;
+    //         case 5:
+    //             $result = '<label class="badge bg-dark text-light">' . __('panel.order_canceled') . '</label>';
+    //             break;
+    //         case 6:
+    //             $result = '<label class="badge bg-dark text-light">' . __('panel.order_refund_requested')  . '</label>';
+    //             break;
+    //         case 7:
+    //             $result = '<label class="badge bg-info text-dark">' .  __('panel.order_returned_order')  . '</label>';
+    //             break;
+    //         case 8:
+    //             $result = '<label class="badge bg-dark text-light">' .  __('panel.order_refunded') . '</label>';
+    //             break;
+    //     }
+    //     return $result;
+    // }
 }

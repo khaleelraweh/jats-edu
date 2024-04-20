@@ -223,9 +223,9 @@ return [
     'txt_course_tax'                                =>  'الضريبة',
     'txt_course_amount'                             =>  'الاجمالي الكلي',
 
-    'txt_transactions'                               =>  'المعاملات',
+    'txt_transactions'                              =>  'المعاملات',
     'txt_transaction'                               =>  'الحركة',
-    'txt_transaction_date'                               =>  'التاريخ',
+    'txt_transaction_date'                          =>  'التاريخ',
 
 
 

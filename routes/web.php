@@ -119,16 +119,17 @@ Route::group(['middleware' => ['roles', 'role:customer', 'verified']], function 
     Route::get('/orders', [FrontendCustomerController::class, 'orders'])->name('customer.orders');
 
     Route::group(['middleware' => 'check_cart'], function () {
+        Route::get('/checkout', [PaymentController::class, 'checkout'])->name('frontend.checkout');
+        Route::post('/checkout/payment', [PaymentController::class, 'checkout_now'])->name('checkout.payment');
 
-        Route::post('/checkout/payment', [PaymentController::class, 'checkout'])->name('checkout.payment');
         Route::get('/checkout/{order_id}/cancelled', [PaymentController::class, 'cancelled'])->name('checkout.cancel');
         Route::get('/checkout/{order_id}/completed', [PaymentController::class, 'completed'])->name('checkout.complete');
-
         Route::get('/checkout/webhook/{order?}/{env?}', [PaymentController::class, 'webhook'])->name('checkout.webhook.ipn');
 
         Route::get('/checkout/{order_id}/completed', [PaymentController::class, 'completed_paytabs'])->name('checkout.complete_by_paytabs');
-        Route::get('checkout/query/{tran_ref}', [PaymentController::class, 'query'])->name('checkout.query');
-        Route::post('checkout/call_back', [PaymentController::class, 'call_back'])->name('checkout.call_back');
+
+
+        Route::post('/checkout/paymentIn', [PaymentController::class, 'checkout_in'])->name('checkout.payment_in');
     });
 });
 

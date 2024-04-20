@@ -4,16 +4,13 @@ namespace App\Services;
 
 use App\Models\CourseOrder;
 use App\Models\Order;
-use App\Models\OrderCourse;
-use App\Models\OrderProduct;
-use App\Models\Product;
-use App\Models\ProductCoupon;
 use App\Models\OrderTransaction;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use illuminate\Support\Str;
 
 class OrderService
 {
+
     public $payment_method;
 
     public function createOrder($request)

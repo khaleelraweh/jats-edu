@@ -5,27 +5,33 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
 use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\OrderTransaction;
 use App\Models\Product;
+use App\Models\User;
 use App\Services\OrderService;
 use App\Services\PaypalService;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Paytabscom\Laravel_paytabs\Facades\paypage;
 
 class PaymentController extends Controller
 {
-
-
-    // paypal pay 
-    public function checkout(Request $request)
+    public function checkout()
     {
+
+        return view('frontend.checkout');
+    }
+
+    // online 
+    public function checkout_now(Request $request)
+    {
+
+        // paypal pay
         if ($request->paymentMethod == 'paypal') {
 
             $order = (new OrderService)->createOrder($request->except(['_token', 'submit']));
-
             $paypal = new PaypalService('PayPal_Rest');
             $response = $paypal->purchase([
                 "intent" => "CAPTURE",
@@ -42,6 +48,8 @@ class PaymentController extends Controller
                     ]
                 ]
             ]);
+
+
 
             if (isset($response['id']) && $response['id'] != null) {
                 foreach ($response['links'] as $link) {
@@ -96,30 +104,6 @@ class PaymentController extends Controller
     }
 
 
-    private function handleSuccessfulPayment($transactionReference)
-    {
-
-        return redirect()->route('checkout.complete_by_paytabs', ['transactionReference' => $transactionReference]);
-    }
-
-    private function handleFailedPayment($error)
-    {
-        // Handle the failed payment
-        // Log the error, display a message to the user, etc.
-        return redirect()->route('checkout.cancel')->with('error', $error);
-    }
-
-
-
-
-    public function getReturnUrl($order_id)
-    {
-        return route('checkout.complete', $order_id);
-    }
-
-
-
-
 
     public function completed(Request $request, $order_id)
     {
@@ -140,7 +124,7 @@ class PaymentController extends Controller
             ]);
 
             if (session()->has('coupon')) {
-                $coupon = Coupon::where('code->' . app()->getLocale(), session()->get('coupon')['code'])->first();
+                $coupon = Coupon::whereCode(session()->get('coupon')['code'])->first();
                 $coupon->increment('used_times');
             }
 
@@ -153,7 +137,13 @@ class PaymentController extends Controller
                 'shipping',
             ]);
 
+            // User::whereHas('roles',function ($query){
+            //     $query->whereIn('name' , ['admin','supervisor']);
+            // })->each(function ($admin , $key) use ($order){
+            //     $admin->notify(new OrderCreatedNotification($order));
+            // });
 
+            // toast('Your recent payment is successful with reference code : '. $response->getTransactionReference() , 'success');
             toast(__('panel.f_your_recent_payment_successful_with_refrence_code') . $response['id'], 'success');
 
             return redirect()->route('frontend.index');
@@ -195,21 +185,6 @@ class PaymentController extends Controller
 
         return redirect()->route('frontend.index');
     }
-
-    public function call_back(Request $request)
-    {
-        // dd($request);
-    }
-
-    public function query($tran_ref)
-    {
-
-        $transaction = Paypage::queryTransaction($tran_ref);
-        // dd($transaction);
-    }
-
-
-
 
     public function cancelled($order_id)
     {

@@ -212,7 +212,21 @@ return [
     'txt_order_status'                              =>  'Status',
     'txt_order_date'                                =>  'Date',
     'txt_order_action'                              =>  'Action',
+    'txt_no_order_found'                            =>  'No Order Found Yet !',
 
+    'txt_course'                                    =>  'Course',
+    'txt_course_price'                              =>  'Price',
+    'txt_course_quantity'                           =>  'Quantity',
+    'txt_course_total'                              =>  'Total',
+    'txt_course_subtotal'                           =>  'Subtotal',
+    'txt_course_offer_discount'                     =>  'Offer Discount',
+    'txt_course_coupon_discount'                    =>  'Coupon Discount',
+    'txt_course_tax'                                =>  'Tax',
+    'txt_course_amount'                             =>  'Final Total',
+
+    'txt_transactions'                              =>  'Transactions',
+    'txt_transaction'                               =>  'Transaction',
+    'txt_transaction_date'                          =>  'Date',
 
 
 

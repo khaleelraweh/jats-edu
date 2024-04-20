@@ -210,6 +210,24 @@ return [
     'txt_order_status'                              =>  'الحالة',
     'txt_order_date'                                =>  'التاريخ',
     'txt_order_action'                              =>  'العملية',
+    'txt_no_order_found'                            =>  'لم يتم العثور على اي طلب ',
+
+
+    'txt_course'                                    =>  'الكورس',
+    'txt_course_price'                              =>  'السعر',
+    'txt_course_quantity'                           =>  'الكمية',
+    'txt_course_total'                              =>  'المجموع',
+    'txt_course_subtotal'                           =>  'المجموع الفرعي',
+    'txt_course_offer_discount'                     =>  'خصم العرض',
+    'txt_course_coupon_discount'                    =>  'خصم الكوبون',
+    'txt_course_tax'                                =>  'الضريبة',
+    'txt_course_amount'                             =>  'الاجمالي الكلي',
+
+    'txt_transactions'                               =>  'المعاملات',
+    'txt_transaction'                               =>  'الحركة',
+    'txt_transaction_date'                               =>  'التاريخ',
+
+
 
 
 

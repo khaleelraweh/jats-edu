@@ -33,7 +33,7 @@
                     @empty
                         <tr>
                             <td colspan="5">
-                                <p class="text-center">No orders found.</p>
+                                <p class="text-center">{{ __('transf.txt_no_order_found') }}</p>
                             </td>
                         </tr>
                     @endforelse
@@ -47,12 +47,15 @@
                     <thead class="bg-light">
                         <tr>
                             <th class="border-0" scope="col"><strong
-                                    class="text-small text-uppercase">Product</strong></th>
-                            <th class="border-0" scope="col"><strong class="text-small text-uppercase">Price</strong>
+                                    class="text-small text-uppercase">{{ __('transf.txt_course') }}</strong></th>
+                            <th class="border-0" scope="col"><strong
+                                    class="text-small text-uppercase">{{ __('transf.txt_course_price') }}</strong>
                             </th>
                             <th class="border-0" scope="col"><strong
-                                    class="text-small text-uppercase">Quantity</strong></th>
-                            <th class="border-0" scope="col"><strong class="text-small text-uppercase">Total</strong>
+                                    class="text-small text-uppercase">{{ __('transf.txt_course_quantity') }}</strong>
+                            </th>
+                            <th class="border-0" scope="col"><strong
+                                    class="text-small text-uppercase">{{ __('transf.txt_course_total') }}</strong>
                             </th>
                         </tr>
                     </thead>
@@ -75,13 +78,15 @@
                             @endforeach
 
                             <tr>
-                                <td colspan="3" style="text-align: end"><strong>Subtotal</strong> </td>
+                                <td colspan="3" style="text-align: end">
+                                    <strong>{{ __('transf.txt_course_subtotal') }}</strong>
+                                </td>
                                 <td>{{ $order->currency() . ' ' . number_format($order_show->subtotal, 2) }}</td>
                             </tr>
                             @if (!is_null($order->offer_discount))
                                 <tr>
                                     <td colspan="3" style="text-align: end">
-                                        <strong>Offer Discount</strong>
+                                        <strong>{{ __('transf.txt_course_offer_discount') }}</strong>
                                     </td>
                                     <td>
                                         <del>
@@ -92,8 +97,10 @@
                             @endif
                             @if (!is_null($order->discount_code))
                                 <tr>
-                                    <td colspan="3" style="text-align: end"><strong>Coupon Discount
-                                            ({{ $order->discount_code }})</strong> </td>
+                                    <td colspan="3" style="text-align: end">
+                                        <strong>{{ __('transf.txt_course_coupon_discount') }}
+                                            ({{ $order->discount_code }})</strong>
+                                    </td>
                                     <td>
                                         <del> {{ $order->currency() . ' ' . number_format($order_show->discount, 2) }}
                                         </del>
@@ -101,11 +108,15 @@
                                 </tr>
                             @endif
                             <tr>
-                                <td colspan="3" style="text-align: end"><strong>Tax</strong> </td>
+                                <td colspan="3" style="text-align: end">
+                                    <strong>{{ __('transf.txt_course_tax') }}</strong>
+                                </td>
                                 <td>{{ $order->currency() . ' ' . number_format($order_show->tax, 2) }}</td>
                             </tr>
                             <tr>
-                                <td colspan="3" style="text-align: end"><strong>Amount</strong> </td>
+                                <td colspan="3" style="text-align: end">
+                                    <strong>{{ __('transf.txt_course_amount') }}</strong>
+                                </td>
                                 <td>{{ $order->currency() . ' ' . number_format($order_show->total, 2) }}</td>
                             </tr>
                         @endif
@@ -115,15 +126,16 @@
             </div>
 
             <!-- Transactions Table  -->
-            <h2 class="h5 text-uppercase">Transactions</h2>
+            <h2 class="h5 text-uppercase">{{ __('transf.txt_transactions') }}</h2>
 
             <div class="table-responsive mb-4">
                 <table class="table">
                     <thead class="bg-light">
                         <tr>
                             <th class="border-0" scope="col"><strong
-                                    class="text-small text-uppercase">Transaction</strong></th>
-                            <th class="border-0" scope="col"><strong class="text-small text-uppercase">Date</strong>
+                                    class="text-small text-uppercase">{{ __('transf.txt_transaction') }}</strong></th>
+                            <th class="border-0" scope="col"><strong
+                                    class="text-small text-uppercase">{{ __('transf.txt_transaction_date') }}</strong>
                             </th>
                             {{-- <th class="border-0" scope="col"><strong class="text-small text-uppercase">Days</strong></th> --}}
                             <th></th>

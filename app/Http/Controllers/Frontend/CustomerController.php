@@ -86,8 +86,9 @@ class CustomerController extends Controller
 
     public function courses_list($slug = null)
     {
+        $orders =  auth()->user()->orders;
         // return view('frontend.course-list', compact('courses', 'course_categories_menu'));
-        return view('frontend.customer.course-list', compact('slug'));
+        return view('frontend.customer.course-list', compact('slug', 'orders'));
     }
 
     public function course_single($slug)

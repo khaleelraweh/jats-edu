@@ -2,9 +2,7 @@
 
 @section('content')
     <!-- PAGE TITLE
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ================================================== -->
-    {{-- <header class="bg-white py-8 py-lg-12 position-relative mb-8" style="background-image: none;"> --}}
-    {{-- <header class="bg-white py-3 py-lg-3 position-relative mb-3" style="background-image: none;"> --}}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
     <header class="bg-white py-5 py-lg-5 position-relative mb-5" style="background-image: none;">
         <div class="container text-center py-xl-5">
             <h1 class="display-4 fw-semi-bold mb-0">

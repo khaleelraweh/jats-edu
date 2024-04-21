@@ -56,7 +56,7 @@
                                 @endif
                             </div>
 
-                            <div class="col-lg-6 form-group pt-2">
+                            <div class="col-lg-6 form-group pt-3">
                                 <label class="text-small text-uppercase" for="first_name">
                                     {{ __('panel.first_name') }}
                                 </label>
@@ -67,7 +67,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-lg-6 form-group pt-2">
+                            <div class="col-lg-6 form-group pt-3">
                                 <label class="text-small text-uppercase" for="last_name"> {{ __('panel.last_name') }}
                                 </label>
                                 <input class="form-control form-control-lg" name="last_name" type="text"
@@ -77,7 +77,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-lg-6 form-group pt-2">
+                            <div class="col-lg-6 form-group pt-3">
                                 <label class="text-small text-uppercase" for="email">{{ __('panel.f_email') }}</label>
                                 <input class="form-control form-control-lg" name="email" type="text"
                                     value="{{ old('email', auth()->user()->email) }}">
@@ -86,7 +86,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-lg-6 form-group pt-2">
+                            <div class="col-lg-6 form-group pt-3">
                                 <label class="text-small text-uppercase" for="mobile"> {{ __('panel.f_phone_number') }}
                                 </label>
                                 <input class="form-control form-control-lg" name="mobile" type="text"
@@ -96,7 +96,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-lg-6 form-group pt-2">
+                            <div class="col-lg-6 form-group pt-3">
                                 <label class="text-small text-uppercase" for="password"> {{ __('panel.f_password') }}
                                     <small class="ml-auto text-danger">(Optional)</small></label>
                                 <input class="form-control form-control-lg" name="password" type="text"
@@ -106,7 +106,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-lg-6 form-group pt-2">
+                            <div class="col-lg-6 form-group pt-3">
                                 <label class="text-small text-uppercase" for="password_confirmation">
                                     {{ __('panel.f_confirm_password') }}
                                     <small class="ml-auto text-danger">({{ __('panel.optional') }})</small> </label>
@@ -117,7 +117,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-lg-12 form-group pt-2">
+                            <div class="col-lg-12 form-group pt-3">
                                 <label class="text-small text-uppercase" for="user_image">{{ __('panel.image') }}</label>
                                 <input class="form-control form-control-lg" name="user_image" type="file"
                                     value="{{ old('user_image') }}">

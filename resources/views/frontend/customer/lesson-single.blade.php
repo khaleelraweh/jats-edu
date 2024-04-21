@@ -2,13 +2,14 @@
 
 @section('content')
     <!-- NAVBAR
-            ================================================== -->
+                                        ================================================== -->
     <header class="bg-portgore py-3">
         <div class="px-5 px-lg-8 w-100">
             <div class="d-md-flex align-items-center">
                 <!-- Brand -->
                 <a class="navbar-brand mb-2 mb-md-0" href="index.html">
-                    <img src="assets/img/brand-white.svg" class="navbar-brand-img" alt="...">
+                    <img src="{{ asset('frontend/assets/img/brand-white.svg') }}" class="navbar-brand-img" alt="...">
+
                 </a>
 
                 <!-- Lesson Title -->
@@ -26,7 +27,7 @@
 
 
     <!-- COURSE
-            ================================================== -->
+                                        ================================================== -->
     <div class="container container-wd">
         <div class="row pt-8 pb-10">
             <div class="col-lg-8">
@@ -42,7 +43,8 @@
                         </svg>
 
                     </div>
-                    <img class="rounded shadow-light-lg" src="assets/img/products/product-2.jpg" alt="...">
+                    <img class="rounded shadow-light-lg" src="{{ asset('frontend/assets/img/products/product-2.jpg') }}"
+                        alt="...">
                 </a>
 
                 <h3 class="text-white">Course Description</h3>
@@ -81,7 +83,8 @@
                 <ul class="list-unstyled pt-2">
                     <li class="media d-flex">
                         <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                            <img src="assets/img/avatars/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                            <img src="{{ asset('frontend/assets/img/avatars/avatar-1.jpg') }}" alt="..."
+                                class="avatar-img rounded-circle">
                         </div>
                         <div class="media-body flex-grow-1">
                             <div class="d-md-flex align-items-center mb-5">
@@ -102,7 +105,8 @@
                     </li>
                     <li class="media d-flex">
                         <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
-                            <img src="assets/img/avatars/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                            <img src="{{ asset('frontend/assets/img/avatars/avatar-2.jpg') }}" alt="..."
+                                class="avatar-img rounded-circle">
                         </div>
                         <div class="media-body flex-grow-1">
                             <div class="d-md-flex align-items-center mb-5">

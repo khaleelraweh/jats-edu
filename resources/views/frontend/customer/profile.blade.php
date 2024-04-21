@@ -51,8 +51,9 @@
                                             class="btn btn-sm btn-outline-danger bg-danger  btn-slide slide-white btn-wide shadow mb-4 mb-md-0 me-md-5 text-uppercase">{{ __('panel.f_delete_image') }}</a>
                                     </div>
                                 @else
-                                    <img src="{{ asset('assets/users/avatar.svg') }}"
-                                        alt="{{ auth()->user()->full_name }}" class="img-thumbnail" width="120">
+                                    <img src="{{ asset('image/not_found/avator2.webp') }}"
+                                        alt="{{ auth()->user()->full_name }}" class="img-thumbnail rounded-pill"
+                                        width="120">
                                 @endif
                             </div>
 

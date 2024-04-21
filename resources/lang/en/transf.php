@@ -236,6 +236,9 @@ return [
     'lnk_my_wishlist'                               =>  'My Wishlist',
     'lnk_my_learning'                               =>  'My Learning',
 
+    // customer  course-list
+    'txt_my_learning_courses'                       =>  'My Learning Courses',
+
 
 
 ];

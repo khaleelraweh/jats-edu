@@ -234,6 +234,9 @@ return [
     'lnk_my_wishlist'                                  =>  'مضلاتي',
     'lnk_my_learning'                               =>  'كورساتي',
 
+    // customer  course-list
+    'txt_my_learning_courses'                       =>  'كورساتي التعليمية',
+
 
 
 

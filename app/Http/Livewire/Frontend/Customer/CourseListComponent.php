@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Frontend\Courses;
+namespace App\Http\Livewire\Frontend\Customer;
 
 use App\Models\Course;
 use App\Models\CourseCategory;
@@ -11,7 +11,6 @@ use Livewire\WithPagination;
 
 class CourseListComponent extends Component
 {
-
 
     use LivewireAlert;
     use WithPagination;
@@ -166,7 +165,7 @@ class CourseListComponent extends Component
 
         $course_categories_menu = CourseCategory::withCount('courses')->has('courses')->get();
 
-        return view('livewire.frontend.courses.course-list-component', [
+        return view('livewire.frontend.customer.course-list-component', [
             'courses'   =>  $courses,
             'course_categories_menu' => $course_categories_menu,
             'sortingBy' => $this->sortingBy,

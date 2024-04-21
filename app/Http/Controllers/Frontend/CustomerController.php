@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ProfileRequest;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
@@ -86,9 +87,21 @@ class CustomerController extends Controller
 
     public function courses_list($slug = null)
     {
-        $orders =  auth()->user()->orders;
+        $user = Auth::user();
+
+        if ($user) {
+
+            $orders = $user->orders()->where('order_status', 1)->get();
+
+
+            $courses = [];
+
+            foreach ($orders as $order) {
+                $courses = array_merge($courses, $order->courses()->get()->toArray());
+            }
+        }
         // return view('frontend.course-list', compact('courses', 'course_categories_menu'));
-        return view('frontend.customer.course-list', compact('slug', 'orders'));
+        return view('frontend.customer.course-list', compact('slug', 'courses'));
     }
 
     public function course_single($slug)

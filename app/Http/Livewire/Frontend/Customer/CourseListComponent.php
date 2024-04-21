@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Frontend\Customer;
 use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -49,6 +50,9 @@ class CourseListComponent extends Component
 
     public function render()
     {
+
+
+
         $instructors_menu = User::whereHasRoles('instructor')->hasCourses()
             ->orderBy('first_name')
             ->orderBy('last_name')
@@ -98,7 +102,26 @@ class CourseListComponent extends Component
                 $sort_type = "asc";
         }
 
-        $courses = Course::with('photos', 'firstMedia');
+        // Retrieve the authenticated user
+        $user = Auth::user();
+
+        // Initialize an array to store course IDs
+        $orderedCourseIds = [];
+
+        // Check if the user is authenticated
+        if ($user) {
+            // Retrieve orders made by the user with order_status = 1
+            $orders = $user->orders()->where('order_status', 1)->get();
+
+            // Extract course IDs from the orders
+            foreach ($orders as $order) {
+                $orderedCourseIds = array_merge($orderedCourseIds, $order->courses()->pluck('id')->toArray());
+            }
+        }
+
+        $courses = Course::whereIn('id', $orderedCourseIds)
+            ->with('photos', 'firstMedia');
+
         if ($this->slug == null) {
             $courses = $courses->ActiveCourseCategory();
             if ($this->categoryInputs != null) {

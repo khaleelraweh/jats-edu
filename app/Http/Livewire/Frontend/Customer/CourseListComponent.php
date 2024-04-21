@@ -51,32 +51,6 @@ class CourseListComponent extends Component
     public function render()
     {
 
-
-
-        $instructors_menu = User::whereHasRoles('instructor')->hasCourses()
-            ->orderBy('first_name')
-            ->orderBy('last_name')
-            ->when($this->searchQuery, function ($query) {
-                $query->where(function ($subQuery) {
-                    $subQuery->where('first_name', 'LIKE', '%' . $this->searchQuery . '%')
-                        ->orWhere('last_name', 'LIKE', '%' . $this->searchQuery . '%');
-                });
-            })
-            ->withCount('courses') // Load the count of associated courses for each instructor
-            ->get()
-            ->groupBy(function ($user) {
-                return $user->first_name . ' ' . $user->last_name;
-            })
-            ->map(function ($group) {
-                // Calculate the count of instructors in each group
-                $instructorsCount = $group->count();
-                // Calculate the sum of courses count for each instructor group
-                $coursesCount = $group->sum('courses_count');
-                return compact('instructorsCount', 'coursesCount');
-            });
-
-
-
         switch ($this->sortingBy) {
             case 'popularity':
                 $sort_field = "id";
@@ -119,8 +93,38 @@ class CourseListComponent extends Component
             }
         }
 
-        $courses = Course::whereIn('id', $orderedCourseIds)
+        $instructors_menu = User::whereHasRoles('instructor')
+            ->whereHas('courses', function ($query) use ($orderedCourseIds) {
+                $query->whereIn('courses.id', $orderedCourseIds); // Specify courses.id here
+            })
+            ->orderBy('first_name')
+            ->orderBy('last_name')
+            ->when($this->searchQuery, function ($query) {
+                $query->where(function ($subQuery) {
+                    $subQuery->where('first_name', 'LIKE', '%' . $this->searchQuery . '%')
+                        ->orWhere('last_name', 'LIKE', '%' . $this->searchQuery . '%');
+                });
+            })
+            ->withCount('courses') // Load the count of associated courses for each instructor
+            ->get()
+            ->groupBy(function ($user) {
+                return $user->first_name . ' ' . $user->last_name;
+            })
+            ->map(function ($group) {
+                // Calculate the count of instructors in each group
+                $instructorsCount = $group->count();
+                // Calculate the sum of courses count for each instructor group
+                $coursesCount = $group->sum('courses_count');
+                return compact('instructorsCount', 'coursesCount');
+            });
+
+
+
+
+        $courses = Course::whereIn('courses.id', $orderedCourseIds)
             ->with('photos', 'firstMedia');
+
+
 
         if ($this->slug == null) {
             $courses = $courses->ActiveCourseCategory();

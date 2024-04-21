@@ -105,21 +105,8 @@
                         </button>
                     </div>
 
-                    @php
-                        if (auth()->user()->user_image != null) {
-                            $user_img = asset('assets/users/' . auth()->user()->user_image);
-
-                            if (!file_exists(public_path('assets/users/' . auth()->user()->user_image))) {
-                                $user_img = asset('assets/users/user_not_found.webp');
-                            }
-                        } else {
-                            $user_img = asset('assets/users/user_not_found.webp');
-                        }
-                    @endphp
-
                     <div class="modal-body">
                         <div class="modal-header-content mt-2">
-                            {{-- <img src="{{ $user_img }}" alt=""> --}}
 
                             @if (auth()->user()->user_image != '')
                                 <img src="{{ asset('assets/users/' . auth()->user()->user_image) }}"

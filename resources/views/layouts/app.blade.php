@@ -55,39 +55,38 @@
     @yield('style')
 </head>
 
-{{-- <body class="bg-white"> --}}
 
-{{-- <body class="{{ request()->routeIs('frontend.course_single') ? 'bg-white' : '' }}"> --}}
-{{-- <body class="bg-white right-sidebar woocommerce-checkout"> --}}
 
-{{-- <body class="{{ request()->routeIs('frontend.index') ? 'bg-white' : '' }}"> --}}
-
-<body class="{{ request()->routeIs('frontend.index') ? '' : 'bg-white' }}">
-
-    {{-- lesson single body is --}}
-    {{-- <body class="bg-dark"> --}}
+<body
+    class="{{ request()->routeIs('frontend.index') ? '' : (request()->routeIs('customer.lesson_single') ? 'bg-dark' : 'bg-light') }}">
 
     <div id="app">
 
-        <!-- MODALS
+        @if (!request()->routeIs('customer.lesson_single'))
+            <!-- MODALS
         ================================================== -->
-        <!-- Modal Sidebar account -->
-        @include('partial.frontend.modalExample')
+            <!-- Modal Sidebar account -->
+            @include('partial.frontend.modalExample')
 
-        @include('partial.frontend.accountModal')
+            @include('partial.frontend.accountModal')
 
-        <!-- Modal Sidebar cart -->
-        @include('partial.frontend.cartModal')
+            <!-- Modal Sidebar cart -->
+            @include('partial.frontend.cartModal')
 
-        <!-- NAVBAR
+            <!-- NAVBAR
         ================================================== -->
-        @include('partial.frontend.header')
+            @include('partial.frontend.header')
+        @endif
 
         @yield('content')
 
         <!-- FOOTER
         ================================================== -->
-        @include('partial.frontend.footer')
+
+        @if (!request()->routeIs('customer.lesson_single'))
+            @include('partial.frontend.footer')
+        @endif
+
 
 
 

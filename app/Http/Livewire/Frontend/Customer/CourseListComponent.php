@@ -125,7 +125,6 @@ class CourseListComponent extends Component
             ->with('photos', 'firstMedia');
 
 
-
         if ($this->slug == null) {
             $courses = $courses->ActiveCourseCategory();
             if ($this->categoryInputs != null) {
@@ -189,8 +188,14 @@ class CourseListComponent extends Component
 
 
 
-
-        $course_categories_menu = CourseCategory::withCount('courses')->has('courses')->get();
+        // Retrieve course categories that have courses ordered by the user before
+        $course_categories_menu = CourseCategory::withCount(['courses' => function ($query) use ($orderedCourseIds) {
+            $query->whereIn('courses.id', $orderedCourseIds);
+        }])
+            ->whereHas('courses', function ($query) use ($orderedCourseIds) {
+                $query->whereIn('courses.id', $orderedCourseIds); // Specify courses.id here
+            })
+            ->get();
 
         return view('livewire.frontend.customer.course-list-component', [
             'courses'   =>  $courses,

@@ -226,7 +226,7 @@
                                     </li>
                                     <div class="hr"></div>
                                     <li>
-                                        <a href="{{ route('frontend.shop_cart') }}">
+                                        <a href="{{ route('customer.courses') }}">
                                             {{ __('transf.lnk_my_learning') }}
                                         </a>
                                     </li>

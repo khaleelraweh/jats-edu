@@ -27,9 +27,9 @@ class OrderSeeder extends Seeder
         $subTotalValue = $products->sum('price');
         $discountValue = $subTotalValue / 2;
         $shippingValue = 15.00;
-        $taxValue = ($subTotalValue - $discountValue) * 0.15 ;
-        $totalValue = $subTotalValue - $discountValue + $shippingValue + $taxValue ;
-        
+        $taxValue = ($subTotalValue - $discountValue) * 0.15;
+        $totalValue = $subTotalValue - $discountValue + $shippingValue + $taxValue;
+
         // Create Order 
         $order = $khaleelUser->orders()->create([
             'ref_id'    =>  Str::random(15),
@@ -48,7 +48,7 @@ class OrderSeeder extends Seeder
         ]);
 
         //Create Order Products 
-        $order->products()->attach($products->pluck('id')->toArray());
+        $order->courses()->attach($products->pluck('id')->toArray());
 
         // Create Order Transations
         $order->transactions()->createMany([
@@ -77,7 +77,7 @@ class OrderSeeder extends Seeder
         //             $taxValue = ($subTotalValue - $discountValue) * 0.15 ;
         //             $totalValue = $subTotalValue - $discountValue + $shippingValue + $taxValue ;
         //             $order_status = rand(0,8);
-                    
+
         //             // Create Order 
         //             $order = $user->orders()->create([
         //                 'ref_id'    =>  Str::random(15),
@@ -117,4 +117,3 @@ class OrderSeeder extends Seeder
         //  });
     }
 }
- 

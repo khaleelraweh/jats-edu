@@ -228,6 +228,9 @@ return [
     'txt_transaction_date'                          =>  'التاريخ',
 
 
+    'txt_profile'                                   =>  'الملف الشخصي',
+
+
 
 
 

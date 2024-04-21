@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <header class="bg-white py-3 py-lg-3 position-relative mb-2" style="background-image: none;">
-        <div class="container text-center py-xl-2">
+    <header class="bg-white py-5 py-lg-5 position-relative mb-5" style="background-image: none;">
+        <div class="container text-center py-xl-5">
             <h1 class="display-4 fw-semi-bold mb-0">
                 <a href="{{ route('customer.orders') }}">
                     {{ __('transf.txt_my_orders') }}
@@ -34,7 +34,7 @@
     <section class="py-5">
         <div class="row m-0">
 
-            <div class="col-lg-8 custom-white-spacing second-back-color">
+            <div class="col-lg-12">
                 <div class="container">
 
                     <livewire:frontend.customer.orders-component />
@@ -43,9 +43,9 @@
 
 
             {{-- SIDEBAR --}}
-            <div class="col-lg-4">
+            {{-- <div class="col-lg-4">
                 @include('partial.frontend.customer.sidebar')
-            </div>
+            </div> --}}
         </div>
     </section>
 @endsection

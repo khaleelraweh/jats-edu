@@ -22,7 +22,7 @@
     <section class="py-5 ">
         <div class="row m-0">
 
-            <div class="col-lg-8 custom-white-spacing second-back-color">
+            <div class="col-lg-12 custom-white-spacing second-back-color">
                 <h2 class="h5 text-uppercase mb-4"> {{ __('panel.f_general_information') }} </h2>
                 {{-- Content --}}
                 {{ __('panel.f_control_panel') }}

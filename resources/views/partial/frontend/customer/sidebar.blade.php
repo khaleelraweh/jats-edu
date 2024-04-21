@@ -1,4 +1,4 @@
-<div class="card mt-0 border-0  p-lg-2 custom-card main-back-color" style="padding: 0px">
+<div class="card mt-0 border-0  p-lg-2 customer-sidebar" style="padding: 0px">
     <div class="card-body custom-card-body-rounded second-back-color">
         <h5 class="text-uppercase mb-4">{{ __('panel.f_content') }}</h5>
         <div

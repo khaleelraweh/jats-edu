@@ -229,5 +229,8 @@ return [
     'txt_transaction_date'                          =>  'Date',
 
 
+    'txt_profile'                                   =>  'Profile',
+
+
 
 ];

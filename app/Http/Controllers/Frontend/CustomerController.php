@@ -143,4 +143,9 @@ class CustomerController extends Controller
 
         return view('frontend.customer.course-single', compact('course', 'exposedText', 'hiddenText', 'related_courses', 'latest_courses', 'whatsappShareUrl'));
     }
+
+    public function lesson_single($slug)
+    {
+        return view('frontend.customer.lesson-single');
+    }
 }

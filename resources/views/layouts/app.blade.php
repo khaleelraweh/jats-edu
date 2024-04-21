@@ -51,6 +51,8 @@
         href="{{ $rtl == 'rtl' ? asset('frontend/assets/css/custom-rtl.css') : asset('frontend/assets/css/custom.css') }}">
 
     @livewireStyles
+
+    @yield('style')
 </head>
 
 {{-- <body class="bg-white"> --}}
@@ -62,8 +64,8 @@
 
 <body class="{{ request()->routeIs('frontend.index') ? '' : 'bg-white' }}">
 
-    @yield('style')
-
+    {{-- lesson single body is --}}
+    {{-- <body class="bg-dark"> --}}
 
     <div id="app">
 

@@ -116,6 +116,10 @@ Route::group(['middleware' => ['roles', 'role:customer', 'verified']], function 
     Route::get('/profile/remove-image', [FrontendCustomerController::class, 'remove_profile_image'])->name('customer.remove_profile_image');
     Route::get('/addresses', [FrontendCustomerController::class, 'addresses'])->name('customer.addresses');
 
+    Route::get('/student-courses-list/{slug?}', [FrontendCustomerController::class, 'courses_list'])->name('customer.courses');
+    Route::get('/student-course-single/{course?}', [FrontendCustomerController::class, 'course_single'])->name('customer.course_single');
+
+
     Route::get('/orders', [FrontendCustomerController::class, 'orders'])->name('customer.orders');
 
     Route::group(['middleware' => 'check_cart'], function () {

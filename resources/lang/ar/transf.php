@@ -231,7 +231,8 @@ return [
     'txt_profile'                                   =>  'الملف الشخصي',
 
     'lnk_my_cart'                                   =>  'السلة',
-    'lnk_my_wishlist'                                  =>  'مضلاتي'
+    'lnk_my_wishlist'                                  =>  'مضلاتي',
+    'lnk_my_learning'                               =>  'كورساتي',
 
 
 

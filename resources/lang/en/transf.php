@@ -233,7 +233,8 @@ return [
 
 
     'lnk_my_cart'                                   =>  'My Cart',
-    'lnk_my_wishlist'                               =>  'My Wishlist'
+    'lnk_my_wishlist'                               =>  'My Wishlist',
+    'lnk_my_learning'                               =>  'My Learning',
 
 
 

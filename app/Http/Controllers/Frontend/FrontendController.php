@@ -66,8 +66,6 @@ class FrontendController extends Controller
         return view('frontend.course-list', compact('slug'));
     }
 
-
-
     public function course_single($slug)
     {
         // Retrieve the text from the database

@@ -232,5 +232,9 @@ return [
     'txt_profile'                                   =>  'Profile',
 
 
+    'lnk_my_cart'                                   =>  'My Cart',
+    'lnk_my_wishlist'                               =>  'My Wishlist'
+
+
 
 ];

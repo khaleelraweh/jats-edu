@@ -212,6 +212,20 @@
                                         </a>
                                     </li>
                                     <div class="hr"></div>
+
+                                    <li>
+                                        <a href="{{ route('frontend.shop_cart') }}">
+                                            {{ __('transf.lnk_my_cart') }}
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('frontend.shop_cart') }}">
+                                            {{ __('transf.lnk_my_wishlist') }}
+                                        </a>
+                                    </li>
+                                    <div class="hr"></div>
+
                                     <li>
                                         <a href="javascript:void(0);"
                                             onclick="event.preventDefault();document.getElementById('logout-form').submit();">

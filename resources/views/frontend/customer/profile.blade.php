@@ -127,8 +127,10 @@
                             </div>
 
                             <div class="col-lg-12 form-group pt-3">
-                                <button class="btn  pref-link" type="submit"> {{ __('panel.update') }}
+                                <button class="btn text-white-all btn-coral btn-wide d-none d-lg-inline-block"
+                                    data-aos-duration="200" data-aos="fade-up" type="submit"> {{ __('panel.update') }}
                                     {{ __('panel.f_profile') }} </button>
+
                             </div>
 
                         </div>

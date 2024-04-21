@@ -119,7 +119,16 @@
 
                     <div class="modal-body">
                         <div class="modal-header-content mt-2">
-                            <img src="{{ $user_img }}" alt="">
+                            {{-- <img src="{{ $user_img }}" alt=""> --}}
+
+                            @if (auth()->user()->user_image != '')
+                                <img src="{{ asset('assets/users/' . auth()->user()->user_image) }}"
+                                    alt="{{ auth()->user()->full_name }}" class="img-thumbnail rounded-pill">
+                            @else
+                                <img src="{{ asset('image/not_found/avator2.webp') }}"
+                                    alt="{{ auth()->user()->full_name }}" class="img-thumbnail rounded-pill"
+                                    width="120">
+                            @endif
                             <div class="mt-2 mt-md-auto">
                                 <h6 class="mb-1">
                                     <span>{{ __('panel.f_welcome') }} : </span>

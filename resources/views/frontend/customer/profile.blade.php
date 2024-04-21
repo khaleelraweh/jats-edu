@@ -25,7 +25,7 @@
         </div>
         <!-- Img -->
 
-        <img class="position-absolute position-center-y right-0 mw-300p mw-xl-450p me-md-6 d-none d-lg-block img-fluid"
+        <img class="position-absolute position-center-y right-0 mw-300p mw-xl-450p  d-none d-lg-block img-fluid"
             src="{{ asset('assets/courses/il1.png') }}" alt="...">
     </header>
 

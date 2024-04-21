@@ -205,7 +205,7 @@
                                             {{ __('panel.f_user_profile') }}
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="d-none">
                                         <a href="{{ route('customer.addresses') }}">
                                             {{ __('panel.f_user_addresses') }}
                                         </a>

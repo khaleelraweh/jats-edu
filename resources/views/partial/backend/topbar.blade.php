@@ -129,10 +129,10 @@
                     $user_img = asset('assets/users/' . auth()->user()->user_image);
 
                     if (!file_exists(public_path('assets/users/' . auth()->user()->user_image))) {
-                        $user_img = asset('assets/users/user_not_found.webp');
+                        $user_img = asset('image/not_found/avator2.webp');
                     }
                 } else {
-                    $user_img = asset('assets/users/user_not_found.webp');
+                    $user_img = asset('image/not_found/avator2.webp');
                 }
             @endphp
 

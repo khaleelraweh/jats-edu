@@ -32,7 +32,7 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.courses.index') }}">
+                        <a href="{{ route('admin.events.index') }}">
                             {{ __('panel.show_courses') }}
                         </a>
                     </li>
@@ -56,7 +56,7 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form id="my_form_id" action="{{ route('admin.courses.update', $event->id) }}" method="post"
+            <form id="my_form_id" action="{{ route('admin.events.update', $event->id) }}" method="post"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
@@ -748,7 +748,7 @@
                                 size: '{{ $media->file_size }}',
                                 width: "120px",
                                 // url : الراوت المستخدم لحذف الصورة
-                                url: "{{ route('admin.courses.remove_image', ['image_id' => $media->id, 'course_id' => $event->id, '_token' => csrf_token()]) }}",
+                                url: "{{ route('admin.events.remove_image', ['image_id' => $media->id, 'course_id' => $event->id, '_token' => csrf_token()]) }}",
                                 key: {{ $media->id }}
                             },
                         @endforeach

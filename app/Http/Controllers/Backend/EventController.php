@@ -205,14 +205,14 @@ class EventController extends Controller
         return view('backend.events.edit', compact('course_categories', 'tags', 'event', 'instructors', 'courseinstructors'));
     }
 
-    public function update(CourseRequest $request,  $course)
+    public function update(EventRequest $request,  $event)
     {
         if (!auth()->user()->ability('admin', 'update_events')) {
             return redirect('admin/index');
         }
 
 
-        $course = Course::where('id', $course)->first();
+        $event = Course::where('id', $event)->first();
 
 
         // get Input from create.blade.php form request using CourseRequest to validate fields
@@ -248,21 +248,21 @@ class EventController extends Controller
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        $course->update($input);
+        $event->update($input);
 
-        $course->tags()->sync($request->tags);
+        $event->tags()->sync($request->tags);
 
         // Update instructors
         if (isset($request->instructors) && count($request->instructors) > 0) {
-            $course->users()->sync($request->instructors);
+            $event->users()->sync($request->instructors);
         } else {
             // If $request->instructors is not set or empty, assign the currently logged-in user as the instructor
             $loggedInUser = Auth::user();
-            $course->users()->sync([$loggedInUser->id]);
+            $event->users()->sync([$loggedInUser->id]);
         }
 
         // course topics start 
-        $course->topics()->delete();
+        $event->topics()->delete();
 
         if ($request->course_topic != null) {
             $topics_list = [];
@@ -270,20 +270,20 @@ class EventController extends Controller
                 $topics_list[$i]['title'] = $request->course_topic[$i];
             }
             // dd($topics_list);
-            $topics = $course->topics()->createMany($topics_list);
+            $topics = $event->topics()->createMany($topics_list);
         }
         // course topics start 
 
 
         // course requirement start 
-        $course->requirements()->delete();
+        $event->requirements()->delete();
         if ($request->course_requirement != null) {
             $requirements_list = [];
             for ($i = 0; $i < count($request->course_requirement); $i++) {
                 $requirements_list[$i]['title'] = $request->course_requirement[$i];
             }
             // dd($requirements_list);
-            $requirements = $course->requirements()->createMany($requirements_list);
+            $requirements = $event->requirements()->createMany($requirements_list);
         }
 
         // course topics start 
@@ -291,18 +291,18 @@ class EventController extends Controller
 
         if ($request->images && count($request->images) > 0) {
 
-            $i = $course->photos->count() + 1;
+            $i = $event->photos->count() + 1;
 
             foreach ($request->images as $image) {
 
-                $file_name = $course->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_name = $event->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/courses/' . $file_name);
 
                 Image::make($image->getRealPath())->save($path);
 
-                $course->photos()->create([
+                $event->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -314,7 +314,7 @@ class EventController extends Controller
             }
         }
 
-        if ($course) {
+        if ($event) {
             return redirect()->route('admin.events.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'

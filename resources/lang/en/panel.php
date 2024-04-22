@@ -174,6 +174,11 @@ return [
     'act'                                                       =>  'Act',
     'type'                                                      =>  'Type',
 
+    // --------------- Events  --------------//
+    'manage_events'                            => 'Manage Events',
+    'show_events'                   => 'Events',
+    'add_new_event'                => 'Add New Event',
+    'edit_existing_event'          => 'Edit Existing Event ',
 
     ##############################################################
 

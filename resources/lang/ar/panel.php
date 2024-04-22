@@ -175,6 +175,11 @@ return [
     'type'                                              =>  'التعريف',
 
 
+    // --------------- Events  --------------//
+    'manage_events'                             => 'إدارة الاحداث',
+    'show_events'                               => 'الاحداث',
+    'add_new_event'                             => 'إضافة حدث جديد',
+    'edit_existing_event'                       => 'تعديل بيانات الحدث ',
 
 
 

@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\CourseReviewController;
 use App\Http\Controllers\Backend\CurrenciesController;
 use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Backend\EventController;
 use App\Http\Controllers\Backend\InstructorController;
 use App\Http\Controllers\Backend\instructorsController;
 use App\Http\Controllers\Backend\LocaleController;
@@ -189,6 +190,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('courses/remove-image', [CourseController::class, 'remove_image'])->name('courses.remove_image');
         Route::resource('courses', CourseController::class);
 
+        Route::post('events/remove-image', [EventController::class, 'remove_image'])->name('events.remove_image');
+        Route::resource('events', EventController::class);
+
         Route::resource('coupons', CouponController::class);
 
 
@@ -198,9 +202,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::post('supervisors/remove-image', [SupervisorController::class, 'remove_image'])->name('supervisors.remove_image');
         Route::resource('supervisors', SupervisorController::class);
-
-
-
 
         Route::resource('customer_addresses', CustomerAddressController::class);
 

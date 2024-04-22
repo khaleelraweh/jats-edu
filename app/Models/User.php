@@ -123,6 +123,11 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->morphedByMany(Post::class, 'userable');
     }
+    public function events(): MorphToMany
+    {
+        return $this->morphedByMany(Post::class, 'userable');
+    }
+
     public function courses(): MorphToMany
     {
         return $this->morphedByMany(Course::class, 'userable');

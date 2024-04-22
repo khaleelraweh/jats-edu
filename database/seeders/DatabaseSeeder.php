@@ -55,6 +55,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CurrencySeeder::class);
 
         $this->call(PostSeeder::class);
+        $this->call(EventSeeder::class);
 
         $this->call(CardCodeSeeder::class);
         // last called 

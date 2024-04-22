@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Course;
+use App\Models\Event;
 use App\Models\Post;
 use App\Models\Topic;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -33,6 +34,10 @@ class TopicSeeder extends Seeder
 
         Course::all()->each(function ($course) use ($topics) {
             $course->topics()->createMany($topics);
+        });
+
+        Event::all()->each(function ($event) use ($topics) {
+            $event->topics()->createMany($topics);
         });
     }
 }

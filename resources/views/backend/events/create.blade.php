@@ -22,7 +22,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_course') }}
+                    {{ __('panel.add_new_event') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -35,7 +35,7 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.courses.index') }}">
-                            {{ __('panel.show_courses') }}
+                            {{ __('panel.show_events') }}
                         </a>
                     </li>
                 </ul>
@@ -77,7 +77,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="course_info-tab" data-bs-toggle="tab" data-bs-target="#course_info"
                             type="button" role="tab" aria-controls="course_info"
-                            aria-selected="true">{{ __('panel.course_info_tab') }}
+                            aria-selected="true">{{ __('panel.event_info_tab') }}
                         </button>
                     </li>
 
@@ -90,7 +90,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="course_topics-tab" data-bs-toggle="tab" data-bs-target="#course_topics"
                             type="button" role="tab" aria-controls="course_topics"
-                            aria-selected="true">{{ __('panel.course_topics_tab') }}
+                            aria-selected="true">{{ __('panel.event_topics_tab') }}
                         </button>
                     </li>
 
@@ -98,7 +98,7 @@
                         <button class="nav-link" id="course_requirements-tab" data-bs-toggle="tab"
                             data-bs-target="#course_requirements" type="button" role="tab"
                             aria-controls="course_requirements"
-                            aria-selected="true">{{ __('panel.course_requirements_tab') }}
+                            aria-selected="true">{{ __('panel.event_requirements_tab') }}
                         </button>
                     </li>
 
@@ -133,7 +133,7 @@
                                     @if ($loop->first)
                                         <div class="row pt-3">
                                             <div class="col-12 ">
-                                                <label for="category_id">{{ __('panel.course_title') }}</label>
+                                                <label for="category_id">{{ __('panel.category') }}</label>
                                                 <select name="course_category_id" class="form-control"
                                                     id="course_category_id">
                                                     <option value="">{{ __('panel.main_category') }} __</option>

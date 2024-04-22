@@ -114,8 +114,8 @@ return [
 
 
     // ........... commons in Coruse   ....... //
-    'course_title'                         => 'عنوان الدورة',
-    'subtitle'                      =>  'عنوان الدورة الفرعي',
+    'course_title'                         => 'العنوان',
+    'subtitle'                      =>  'العنوان  الفرعي',
     'sku'                           =>  'رمز التخزين التعريفي',
     'offer_price'                   =>  'سعر العرض',
     'offer_ends'                    =>  'وقت انتهاء العرض',
@@ -123,26 +123,26 @@ return [
     'qty_not_limited'               =>  'الكمية غير محدودة',
     'sort_by'                       =>  'ترتيب حسب',
     'course_info_tab'               =>  'معلومات الدورة',
-    'skill_level'                  =>  'مستوي الدورة',
+    'skill_level'                  =>  'المستوي',
     'skill_level_beginner'         =>  'مبتدئ',
     'skill_level_intermediate'     =>  'متوسط',
     'skill_level_advance'          =>  'متقدم',
-    'language'                   =>  'لغة الدورة',
+    'language'                   =>  'اللغة',
     'language_ar'                =>  'عربي',
     'language_en'                =>  'إنجليزي',
-    'evaluation'             =>  'تقييم الدورة',
+    'evaluation'             =>  'التقييم',
     'evaluation_normal'      =>  'عادي',
     'evaluation_featured'         =>  'مفضل',
     'evaluation_best_seller'      =>  'الاكثر مبيعا',
-    'lecture_numbers'              =>  'عدد دروس الدورة',
-    'Duration'                =>  'إجمالي وقت الدورة',
+    'lecture_numbers'              =>  'عدد الدروس ',
+    'Duration'                =>  'إجمالي الوقت',
 
     'video_promo'               =>  'فيديو ترويجي',
     'video_description'               =>  'فيديو الشرح',
     'course_type'               =>  'نوع الكورس',
     'course_type_presence'      =>  'حضوري',
     'course_type_enrolled'      =>  'مسجل',
-    'deadline'                  =>  'موعد انتهاء الدورة',
+    'deadline'                  =>  'موعد الانتهاء ',
     'certificate'               =>  'الشهادة',
     'certificate_yes'           =>  'نعم',
     'certificate_no'            =>  'لا',
@@ -155,7 +155,7 @@ return [
 
     // course topics  
     'course_topics_tab'                         =>  'مواضيع الدورة',
-    'txt_course_topics'                         =>  'مواضيع الدورة',
+    'txt_course_topics'                         =>  'المواضيع',
     'btn_add_another_topic'                     =>  'إضافة موضوع جديد',
     'topic_in_ar'                               =>  'الموضوع بالعربي',
     'topic_in_en'                               =>  'الموضوع بالانجليزي',
@@ -164,22 +164,27 @@ return [
 
     // course requirement  
     'course_requirements_tab'                         =>  'متطلبات الدورة',
-    'txt_course_requirements'                         =>  'متطلبات الدورة',
+    'txt_course_requirements'                         =>  'المتطلبات',
     'btn_add_another_requirement'                     =>  'إضافة متطلب جديد',
     'requirement_in_ar'                               =>  'المتطلب بالعربي',
     'requirement_in_en'                               =>  'المتطلب بالانجليزي',
     'msg_one_or_more_requirement_field_empty'         =>  'واحد او اكثر من متطلبات الدورة فارغ , الرجاء تعبئتها قبل اكمال عملية الحفظ',
     'msg_please_fill_in_all_requirement_fields_before_adding_new'  => 'يرجى ملء جميع الحقول في علامة التبويب متطلبات الدورة قبل إضافة متطلب جديد.',
 
-    'act'                                               =>  'Act',
-    'type'                                              =>  'التعريف',
+    'act'                                             =>  'Act',
+    'type'                                            =>  'التعريف',
 
 
     // --------------- Events  --------------//
-    'manage_events'                             => 'إدارة الاحداث',
-    'show_events'                               => 'الاحداث',
-    'add_new_event'                             => 'إضافة حدث جديد',
-    'edit_existing_event'                       => 'تعديل بيانات الحدث ',
+    'category'                                      =>  'التصنيف',
+    'event_info_tab'                                =>  'معلومات الحدث',
+    'event_topics_tab'                              =>  'مواضيع الحدث',
+    'event_requirements_tab'                        =>  'متطلبات الحدث',
+
+    'manage_events'                                 => 'إدارة الاحداث',
+    'show_events'                                   => 'الاحداث',
+    'add_new_event'                                 => 'إضافة حدث جديد',
+    'edit_existing_event'                           => 'تعديل بيانات الحدث ',
 
 
 

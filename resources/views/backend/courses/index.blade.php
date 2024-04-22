@@ -63,14 +63,24 @@
                             <tr>
 
                                 <td>
-                                    @if ($course->firstMedia)
-                                        {{-- <td><img src="{{asset('assets/cards/'.$course->photos()->first()->file_name)}}" width="60" alt="product Image"> </td> --}}
-                                        <img src="{{ asset('assets/courses/' . $course->firstMedia->file_name) }}"
-                                            width="60" height="60" alt="{{ $course->title }}">
-                                    @else
-                                        <img src="{{ asset('assets/No-Image-Found.png') }}" width="60" height="60"
-                                            alt="{{ $course->title }}">
-                                    @endif
+
+                                    @php
+                                        if ($course->firstMedia != null && $course->firstMedia->file_name != null) {
+                                            $course_img = asset('assets/courses/' . $course->firstMedia->file_name);
+
+                                            if (
+                                                !file_exists(
+                                                    public_path('assets/courses/' . $course->firstMedia->file_name),
+                                                )
+                                            ) {
+                                                $course_img = asset('image/not_found/item_image_not_found.webp');
+                                            }
+                                        } else {
+                                            $course_img = asset('image/not_found/item_image_not_found.webp');
+                                        }
+                                    @endphp
+                                    <img src="{{ $course_img }}" width="60" height="60"
+                                        alt="{{ $course->title }}">
 
                                 </td>
                                 <td>{{ $course->title }}</td>

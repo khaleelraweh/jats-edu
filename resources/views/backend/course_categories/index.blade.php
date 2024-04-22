@@ -66,14 +66,34 @@
                                 @forelse ($categories as $category)
                                     <tr>
                                         <td>
-                                            @if ($category->firstMedia)
-                                                {{-- <td><img src="{{asset('assets/products/'.$product->photos()->first()->file_name)}}" width="60" alt="product Image"> </td> --}}
-                                                <img src="{{ asset('assets/course_categories/' . $category->firstMedia->file_name) }}"
-                                                    width="60" height="60" alt="{{ $category->title }}">
-                                            @else
-                                                <img src="{{ asset('assets/No-Image-Found.png') }}" width="60"
-                                                    height="60" alt="{{ $category->title }}">
-                                            @endif
+                                            @php
+                                                if (
+                                                    $category->firstMedia != null &&
+                                                    $category->firstMedia->file_name != null
+                                                ) {
+                                                    $category_img = asset(
+                                                        'assets/course_categories/' . $category->firstMedia->file_name,
+                                                    );
+
+                                                    if (
+                                                        !file_exists(
+                                                            public_path(
+                                                                'assets/course_categories/' .
+                                                                    $category->firstMedia->file_name,
+                                                            ),
+                                                        )
+                                                    ) {
+                                                        $category_img = asset(
+                                                            'image/not_found/item_image_not_found.webp',
+                                                        );
+                                                    }
+                                                } else {
+                                                    $category_img = asset('image/not_found/item_image_not_found.webp');
+                                                }
+                                            @endphp
+                                            <img src="{{ $category_img }}" width="60" height="60"
+                                                alt="{{ $category->title }}">
+
 
                                         </td>
 

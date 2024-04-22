@@ -120,6 +120,17 @@ class Course extends Model
         return $query->whereStatus(true);
     }
 
+    public function scopeCourse($query)
+    {
+        return $query->whereSection(1);
+    }
+
+    public function scopeEvent($query)
+    {
+        return $query->whereSection(2);
+    }
+
+
     public function scopeHasQuantity($query)
     {
         return $query->where('quantity', '>=', -1);

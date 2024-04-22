@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\Event;
 use App\Models\User;
@@ -109,10 +110,12 @@ class EventSeeder extends Seeder
 
         // Loop through each course data and create courses
         foreach ($coursesData as $courseData) {
-            // Generate a random number of days between 1 and 10
+
             $randomDays = mt_rand(1, 10);
+
             // Generate a start date within the current month and within the range of the next one to ten days
             $startDate = $faker->dateTimeBetween('now', "+$randomDays days");
+
 
             // Generate an end date within the same year, after the start date
             $endDate = $faker->dateTimeBetween($startDate->format('Y-m-d'), $startDate->format('Y-m-d') . ' +1 year');
@@ -121,33 +124,24 @@ class EventSeeder extends Seeder
             $startTime = $faker->time('H:i:s');
             $endTime = $faker->time('H:i:s');
 
-            $event = Event::create([
+            $course = Course::create([
                 'title' => $courseData['title'],
                 'subtitle' => ['ar' => 'عنوان فرعي', 'en' => 'subtitle'],
-
-                'description' => ['ar' => 'مرحباً جميعاً. أنا أراش وأنا مصمم UI/UX. في هذه الدورة سوف أساعد
-                تتعلم وتتقن تطبيق Figma بشكل شامل من الصفر. Figma هي أداة مبتكرة ورائعة
-                لتصميم واجهة المستخدم. يتم استخدامه من قبل الجميع بدءًا من رواد الأعمال والشركات الناشئة وحتى Apple وAirbnb Anim pariatur cliche reprehenderit, enim
-                إيوسمود هاي لايف يتهم تيري ريتشاردسون آد سكويد. Nihil anim Keffiyeh Helvetica، عمل البيرة الحرفية
-                Wes anderson Cred nesciunt sapiente سأساعدك على التعلم وإتقان تطبيق Figma بشكل شامل من
-                يخدش. Figma هي أداة مبتكرة ورائعة لتصميم واجهة المستخدم. يتم استخدامه من قبل الجميع من
-                رواد الأعمال ea proident.
-                الفيسبوك، الخ.', 'en' => ' Hi everyone. I\'m Arash and I\'m a UI/UX designer. In this course, I will help
-                you learn and master Figma app comprehensively from scratch. Figma is an innovative and brilliant tool
-                for User Interface design. It\'s used by everyone from entrepreneurs and start-ups to Apple, Airbnb Anim pariatur cliche reprehenderit, enim
-                eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore
-                wes anderson cred nesciunt sapiente I will help you learn and master Figma app comprehensively from
-                scratch. Figma is an innovative and brilliant tool for User Interface design. It\'s used by everyone from
-                entrepreneurs ea proident.,
-                Facebook, etc.'],
-                'course_category_id' => $courseData['course_category_id'],
-
-                'motavation'    =>  ['ar' => 'هل تريد أن تصبح مصمم UI/UX لكنك لا تعرف من أين تبدأ؟ ستتيح لك هذه الدورة تطوير مهاراتك في تصميم واجهة المستخدم ويمكنك إضافة مصمم واجهة المستخدم إلى سيرتك الذاتية والبدء في جذب العملاء لمهاراتك.',    'en'    =>  'Do you want to become a UI/UX designer but you don\'t know where to start? This course will allow you to develop your user interface design skills and you can add UI designer to your CV and start getting clients for your skills.'],
-
+                'description' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
+                'skill_level' => 1,
+                'language' => 1,
+                'lecture_numbers' => 5,
+                'course_duration' => "8h 12m",
                 'video_promo' => "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO",
+                'video_description' => "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4",
+                'course_type' => 1,
+                'deadline' => "2024-03-11",
+                'certificate' => 1,
                 'price' => $faker->numberBetween(5, 200),
                 'offer_price' => $faker->numberBetween(5, 100),
                 'offer_ends' => $faker->dateTime(),
+                'featured' => rand(0, 1),
+
 
                 'start_date' => $startDate,
                 'end_date' => $endDate,
@@ -156,8 +150,10 @@ class EventSeeder extends Seeder
                 'end_time' => $endTime,
 
                 'address'  =>  $faker->city . ' , ' . $faker->country(),
+                'section'   =>  2,
 
                 'status' => true,
+                'course_category_id' => $courseData['course_category_id'],
                 'published_on' => $faker->dateTime(),
                 'created_by' => $faker->realTextBetween(10, 20),
                 'updated_by' => $faker->realTextBetween(10, 20), // Assuming you want this as well
@@ -170,7 +166,7 @@ class EventSeeder extends Seeder
             $selectedUsers = $shuffledUsers->take(3);
 
             // Attach users
-            $event->users()->attach($selectedUsers->pluck('id')->toArray());
+            $course->instructors()->attach($selectedUsers->pluck('id')->toArray());
         }
     }
 }

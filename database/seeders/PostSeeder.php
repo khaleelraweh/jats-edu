@@ -116,7 +116,6 @@ class PostSeeder extends Seeder
             $startDate = $faker->dateTimeBetween('now', "+$randomDays days");
 
 
-
             // Generate an end date within the same year, after the start date
             $endDate = $faker->dateTimeBetween($startDate->format('Y-m-d'), $startDate->format('Y-m-d') . ' +1 year');
 

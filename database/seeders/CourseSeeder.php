@@ -100,6 +100,20 @@ class CourseSeeder extends Seeder
 
         // Loop through each course data and create courses
         foreach ($coursesData as $courseData) {
+
+            $randomDays = mt_rand(1, 10);
+
+            // Generate a start date within the current month and within the range of the next one to ten days
+            $startDate = $faker->dateTimeBetween('now', "+$randomDays days");
+
+
+            // Generate an end date within the same year, after the start date
+            $endDate = $faker->dateTimeBetween($startDate->format('Y-m-d'), $startDate->format('Y-m-d') . ' +1 year');
+
+
+            $startTime = $faker->time('H:i:s');
+            $endTime = $faker->time('H:i:s');
+
             $course = Course::create([
                 'title' => $courseData['title'],
                 'subtitle' => ['ar' => 'عنوان فرعي', 'en' => 'subtitle'],
@@ -117,6 +131,17 @@ class CourseSeeder extends Seeder
                 'offer_price' => $faker->numberBetween(5, 100),
                 'offer_ends' => $faker->dateTime(),
                 'featured' => rand(0, 1),
+
+
+                'start_date' => $startDate,
+                'end_date' => $endDate,
+
+                'start_time' => $startTime,
+                'end_time' => $endTime,
+
+                'address'  =>  $faker->city . ' , ' . $faker->country(),
+                'section'   =>  1,
+
                 'status' => true,
                 'course_category_id' => $courseData['course_category_id'],
                 'published_on' => $faker->dateTime(),

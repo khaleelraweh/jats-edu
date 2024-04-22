@@ -26,6 +26,7 @@ class CourseController extends Controller
 
         $courses = Course::with('courseCategory', 'tags', 'firstMedia')
             ->ActiveCourseCategory()
+            ->Course()
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })

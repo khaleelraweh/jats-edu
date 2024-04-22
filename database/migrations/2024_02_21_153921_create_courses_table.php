@@ -44,6 +44,21 @@ return new class extends Migration
 
             $table->integer('views')->default(0);
 
+            // for events only 
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('end_date')->nullable();
+
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
+
+            $table->string('address')->nullable();
+            //end for events only 
+
+            $table->unsignedBigInteger('section')->default(1); // one is course , two is event 
+
+
+
+
             // will be use always
             $table->boolean('status')->default(true);
             $table->dateTime('published_on')->nullable();

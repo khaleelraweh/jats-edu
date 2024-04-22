@@ -57,7 +57,7 @@
 
 
 
-<body
+<body {{-- class="{{ request()->routeIs('frontend.index') ? '' : (request()->routeIs('customer.lesson_single') ? 'bg-dark' : 'bg-light') }}"> --}}
     class="{{ request()->routeIs('frontend.index') ? '' : (request()->routeIs('customer.lesson_single') ? 'bg-dark' : 'bg-light') }}">
 
     <div id="app">

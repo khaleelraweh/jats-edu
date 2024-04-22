@@ -35,9 +35,5 @@ class TopicSeeder extends Seeder
         Course::all()->each(function ($course) use ($topics) {
             $course->topics()->createMany($topics);
         });
-
-        Event::all()->each(function ($event) use ($topics) {
-            $event->topics()->createMany($topics);
-        });
     }
 }

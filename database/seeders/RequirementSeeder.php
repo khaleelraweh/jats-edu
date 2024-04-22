@@ -53,9 +53,5 @@ class RequirementSeeder extends Seeder
         Course::all()->each(function ($course) use ($requirements) {
             $course->requirements()->createMany($requirements);
         });
-
-        Event::all()->each(function ($event) use ($requirements) {
-            $event->requirements()->createMany($requirements);
-        });
     }
 }

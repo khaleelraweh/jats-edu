@@ -39,7 +39,7 @@ class EventController extends Controller
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_courses')) {
+        if (!auth()->user()->ability('admin', 'create_events')) {
             return redirect('admin/index');
         }
 
@@ -55,7 +55,7 @@ class EventController extends Controller
     public function store(EventRequest $request)
     {
 
-        if (!auth()->user()->ability('admin', 'create_courses')) {
+        if (!auth()->user()->ability('admin', 'create_events')) {
             return redirect('admin/index');
         }
 
@@ -173,22 +173,22 @@ class EventController extends Controller
 
     public function show($id)
     {
-        if (!auth()->user()->ability('admin', 'display_courses')) {
+        if (!auth()->user()->ability('admin', 'display_events')) {
             return redirect('admin/index');
         }
 
         return view('backend.events.show');
     }
 
-    public function edit($course)
+    public function edit($event)
     {
 
-        if (!auth()->user()->ability('admin', 'update_courses')) {
+        if (!auth()->user()->ability('admin', 'update_events')) {
             return redirect('admin/index');
         }
 
 
-        $course = Course::where('id', $course)->first();
+        $event = Course::where('id', $event)->first();
 
         $course_categories = CourseCategory::whereStatus(1)->get(['id', 'title']);
 
@@ -200,14 +200,14 @@ class EventController extends Controller
         })->active()->get(['id', 'first_name', 'last_name']);
 
 
-        $courseinstructors = $course->users->pluck(['id'])->toArray();
+        $courseinstructors = $event->users->pluck(['id'])->toArray();
 
-        return view('backend.events.edit', compact('course_categories', 'tags', 'course', 'instructors', 'courseinstructors'));
+        return view('backend.events.edit', compact('course_categories', 'tags', 'event', 'instructors', 'courseinstructors'));
     }
 
     public function update(CourseRequest $request,  $course)
     {
-        if (!auth()->user()->ability('admin', 'update_courses')) {
+        if (!auth()->user()->ability('admin', 'update_events')) {
             return redirect('admin/index');
         }
 
@@ -329,7 +329,7 @@ class EventController extends Controller
 
     public function destroy($course)
     {
-        if (!auth()->user()->ability('admin', 'delete_courses')) {
+        if (!auth()->user()->ability('admin', 'delete_events')) {
             return redirect('admin/index');
         }
 
@@ -363,7 +363,7 @@ class EventController extends Controller
     public function remove_image(Request $request)
     {
 
-        if (!auth()->user()->ability('admin', 'delete_courses')) {
+        if (!auth()->user()->ability('admin', 'delete_events')) {
             return redirect('admin/index');
         }
 

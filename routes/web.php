@@ -216,10 +216,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('shipping_companies', ShippingCompanyController::class);
 
-        Route::resource('product_reviews', ProductReviewController::class);
-
-        Route::resource('course_reviews', CourseReviewController::class);
-
         Route::resource('reviews', ReviewsController::class);
 
         Route::post('payment_methods/remove-image', [PaymentMethodController::class, 'remove_image'])->name('payment_methods.remove_image');

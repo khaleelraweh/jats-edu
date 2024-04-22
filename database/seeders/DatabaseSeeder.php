@@ -27,7 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CardCategorySeeder::class);
         $this->call(CourseCategorySeeder::class);
         $this->call(CourseSeeder::class);
-        $this->call(CourseReviewSeeder::class);
 
 
         $this->call(TagSeeder::class);
@@ -37,7 +36,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdvSliderSeeder::class);
         $this->call(ProductTagSeeder::class);
         $this->call(CouponSeeder::class);
-        $this->call(ProductReviewSeeder::class);
         // $this->call(ShippingCompanySeeder::class);
         $this->call(PaymentMethodSeeder::class);
         $this->call(OrderSeeder::class);

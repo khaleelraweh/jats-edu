@@ -94,17 +94,17 @@ class EventController extends Controller
         $published_on                           =   new DateTimeImmutable($published_on);
         $input['published_on']                  =   $published_on;
 
-        $course                                 =   Course::create($input);
+        $event                                 =   Course::create($input);
 
-        $course->tags()->attach($request->tags);
+        $event->tags()->attach($request->tags);
 
         //add instructors
         if (isset($request->instructors) && count($request->instructors) > 0) {
-            $course->users()->sync($request->instructors);
+            $event->users()->sync($request->instructors);
         } else {
             // If $request->instructors is not set or empty, assign the currently logged-in user as the instructor
             $loggedInUser = Auth::user();
-            $course->users()->sync([$loggedInUser->id]);
+            $event->users()->sync([$loggedInUser->id]);
         }
 
         // course topics start 
@@ -115,7 +115,7 @@ class EventController extends Controller
             }
 
             // dd($topics_list);
-            $topics = $course->topics()->createMany($topics_list);
+            $topics = $event->topics()->createMany($topics_list);
         }
         // course topics start 
 
@@ -127,7 +127,7 @@ class EventController extends Controller
                 $requirements_list[$i]['title'] = $request->course_requirement[$i];
             }
             // dd($requirements_list);
-            $requirements = $course->requirements()->createMany($requirements_list);
+            $requirements = $event->requirements()->createMany($requirements_list);
         }
         // course topics start 
 
@@ -139,14 +139,14 @@ class EventController extends Controller
 
             foreach ($request->images as $image) {
 
-                $file_name = $course->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_name = $event->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/courses/' . $file_name);
 
                 Image::make($image->getRealPath())->save($path);
 
-                $course->photos()->create([
+                $event->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -158,7 +158,7 @@ class EventController extends Controller
             }
         }
 
-        if ($course) {
+        if ($event) {
             return redirect()->route('admin.events.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
@@ -327,17 +327,17 @@ class EventController extends Controller
         ]);
     }
 
-    public function destroy($course)
+    public function destroy($event)
     {
         if (!auth()->user()->ability('admin', 'delete_events')) {
             return redirect('admin/index');
         }
 
-        $course = Course::where('id', $course)->first();
+        $event = Course::where('id', $event)->first();
 
 
-        if ($course->photos->count() > 0) {
-            foreach ($course->photos as $photo) {
+        if ($event->photos->count() > 0) {
+            foreach ($event->photos as $photo) {
                 if (File::exists('assets/courses/' . $photo->file_name)) {
                     unlink('assets/courses/' . $photo->file_name);
                 }
@@ -345,9 +345,9 @@ class EventController extends Controller
             }
         }
 
-        $course->delete();
+        $event->delete();
 
-        if ($course) {
+        if ($event) {
             return redirect()->route('admin.events.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
@@ -367,9 +367,9 @@ class EventController extends Controller
             return redirect('admin/index');
         }
 
-        $course = Course::findOrFail($request->course_id);
+        $event = Course::findOrFail($request->course_id);
 
-        $image = $course->photos()->where('id', $request->image_id)->first();
+        $image = $event->photos()->where('id', $request->image_id)->first();
 
         if (File::exists('assets/courses/' . $image->file_name)) {
             unlink('assets/courses/' . $image->file_name);

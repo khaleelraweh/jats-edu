@@ -40,6 +40,7 @@ class FeaturedCoursesComponent extends Component
         $this->featured_courses = Course::with('firstMedia', 'lastMedia', 'courseCategory', 'users', 'reviews')
             ->inRandomOrder()
             ->Active()
+            ->Course()
             ->ActiveCourseCategory()
             ->when($this->categoryInputs, function ($query) {
                 $query->where('course_category_id', $this->categoryInputs);

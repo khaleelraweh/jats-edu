@@ -61,7 +61,12 @@
                             </td>
                             <td class="d-none d-sm-table-cell">
                                 @if ($review->reviewable_type === 'App\Models\Course')
-                                    Course
+                                    @if ($review->reviewable->section == 1)
+                                        Course
+                                    @endif
+                                    @if ($review->reviewable->section == 2)
+                                        Event
+                                    @endif
                                 @elseif ($review->reviewable_type === 'App\Models\Post')
                                     Post
                                 @else

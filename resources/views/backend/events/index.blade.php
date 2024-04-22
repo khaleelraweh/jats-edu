@@ -63,14 +63,27 @@
                             <tr>
 
                                 <td>
-                                    @if ($event->firstMedia)
-                                        {{-- <td><img src="{{asset('assets/cards/'.$event->photos()->first()->file_name)}}" width="60" alt="product Image"> </td> --}}
-                                        <img src="{{ asset('assets/courses/' . $event->firstMedia->file_name) }}"
-                                            width="60" height="60" alt="{{ $event->title }}">
-                                    @else
-                                        <img src="{{ asset('image/not_found/item_image_not_found.webp') }}" width="60"
-                                            height="60" alt="khaleel">
-                                    @endif
+
+                                    @php
+                                        if ($event->firstMedia != null && $event->firstMedia->file_name != null) {
+                                            $event_img = asset('assets/courses/' . $event->firstMedia->file_name);
+
+                                            if (
+                                                !file_exists(
+                                                    public_path('assets/courses/' . $event->firstMedia->file_name),
+                                                )
+                                            ) {
+                                                $event_img = asset('image/not_found/item_image_not_found.webp');
+                                            }
+                                        } else {
+                                            $event_img = asset('image/not_found/item_image_not_found.webp');
+                                        }
+                                    @endphp
+
+                                    <img src="{{ $event_img }}" width="60" height="60"
+                                        alt="{{ $event->title }}">
+
+
 
                                 </td>
                                 <td>{{ $event->title }}</td>

@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\EventRequest;
 use App\Models\Course;
 use App\Models\CourseCategory;
-use App\Models\Event;
 use App\Models\Tag;
 use App\Models\User;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class EventController extends Controller
 {
@@ -82,6 +85,7 @@ class EventController extends Controller
 
         $input['course_category_id']            =   $request->course_category_id;
         $input['featured']                      =   $request->featured;
+        $input['section']                       =   2;
 
         $input['status']                        =   $request->status;
         $input['created_by']                    =   auth()->user()->full_name;

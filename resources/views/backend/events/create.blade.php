@@ -34,7 +34,7 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.courses.index') }}">
+                        <a href="{{ route('admin.events.index') }}">
                             {{ __('panel.show_events') }}
                         </a>
                     </li>
@@ -59,7 +59,7 @@
 
 
             {{-- enctype used cause we will save images  --}}
-            <form id="my_form_id" action="{{ route('admin.courses.store') }}" method="post" enctype="multipart/form-data">
+            <form id="my_form_id" action="{{ route('admin.events.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 {{-- links of tabs --}}

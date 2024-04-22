@@ -99,7 +99,7 @@ class CourseListComponent extends Component
                 $sort_type = "asc";
         }
 
-        $courses = Course::with('photos', 'firstMedia');
+        $courses = Course::with('photos', 'firstMedia')->Course();
         if ($this->slug == null) {
             $courses = $courses->ActiveCourseCategory();
             if ($this->categoryInputs != null) {

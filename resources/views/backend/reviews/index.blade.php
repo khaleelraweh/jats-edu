@@ -24,7 +24,6 @@
         </div>
 
 
-
         {{-- filter form part  --}}
 
         @include('backend.reviews.filter.filter')
@@ -39,7 +38,8 @@
                         <th class="d-none d-sm-table-cell">الاسم</th>
                         <th> عنوان التعليق</th>
                         <th>التقييم</th>
-                        <th class="d-none d-sm-table-cell">الدورة</th>
+                        <th>النوع</th>
+                        <th class="d-none d-sm-table-cell">العنوان</th>
                         <th>الحالة</th>
                         <th class="d-none d-sm-table-cell">تاريخ الانشاء</th>
                         <th class="text-center" style="width:30px;">الإعدادات</th>
@@ -59,7 +59,18 @@
                             <td>
                                 <span class="badge bg-success"> {{ $review->rating }}</span>
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $review->title }}</td>
+                            <td class="d-none d-sm-table-cell">
+                                @if ($review->reviewable_type === 'App\Models\Course')
+                                    Course
+                                @elseif ($review->reviewable_type === 'App\Models\Post')
+                                    Post
+                                @else
+                                    This review belongs to an unknown entity.
+                                @endif
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                                {{ $review->reviewable->title }}
+                            </td>
                             <td>{{ $review->status }}</td>
                             <td class="d-none d-sm-table-cell">{{ $review->created_at }}</td>
                             <td>
@@ -82,13 +93,13 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="text-center">No Reviews found</td>
+                            <td colspan="8" class="text-center">No Reviews found</td>
                         </tr>
                     @endforelse
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="7">
+                        <td colspan="8">
                             <div class="float-right">
                                 {!! $reviews->appends(request()->all())->links() !!}
                             </div>

@@ -97,7 +97,7 @@
 
                                     <div class="row pt-3 {{ $loop->index == 0 ? 'd-flex' : 'd-none' }}">
                                         <div class="col-12 ">
-                                            <label for="category_id">{{ __('panel.course_title') }}</label>
+                                            <label for="category_id">{{ __('panel.category') }}</label>
                                             <select name="course_category_id" class="form-control" id="course_category_id">
                                                 <option value="">{{ __('panel.main_category') }} __</option>
                                                 @forelse ($course_categories as $course_category)

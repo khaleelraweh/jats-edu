@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->json('title');
             $table->json('slug');
-            $table->json('subtitle');
+            $table->json('subtitle')->nullable();
             $table->json('description');
-            $table->json('motavation');
+            $table->json('motavation')->nullable();
             $table->foreignId('course_category_id')->constrained()->cascadeOnDelete();
-            $table->unsignedBigInteger('section')->default(1); // one is event , two is news 
+            $table->unsignedBigInteger('section')->default(1); // 1 is post
 
 
 

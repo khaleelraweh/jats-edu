@@ -26,6 +26,7 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PaymentCategoriesController;
 use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\PaymentMethodOfflineController;
+use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductReviewController;
@@ -228,6 +229,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::post('news/remove-image', [NewsController::class, 'remove_image'])->name('news.remove_image');
         Route::resource('news', NewsController::class);
+
+        Route::post('posts/remove-image', [NewsController::class, 'remove_image'])->name('posts.remove_image');
+        Route::resource('posts', PostController::class);
 
         Route::post('payment_categories/remove-image', [PaymentCategoriesController::class, 'remove_image'])->name('payment_categories.remove_image');
         Route::resource('payment_categories', PaymentCategoriesController::class);

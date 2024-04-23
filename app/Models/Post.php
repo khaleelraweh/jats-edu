@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Nicolaslopezj\Searchable\SearchableTrait;
 use Spatie\Sluggable\HasTranslatableSlug;
@@ -30,6 +31,10 @@ class Post extends Model
         'columns' => [
             'posts.title' => 10,
         ]
+    ];
+
+    protected $casts = [
+        'published_on' => 'datetime',
     ];
 
     // for slug 
@@ -118,6 +123,16 @@ class Post extends Model
     public function photos(): MorphMany
     {
         return $this->morphMany(Photo::class, 'imageable');
+    }
+
+    public function firstMedia(): MorphOne
+    {
+        return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort', 'asc');
+    }
+
+    public function lastMedia(): MorphOne
+    {
+        return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort', 'desc');
     }
 
     public function topics(): MorphMany

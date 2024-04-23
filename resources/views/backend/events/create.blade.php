@@ -832,9 +832,16 @@
                 close: 'OK',
                 colseOnSelect: true // Close upon selecting a date ,
             });
-
-
             // end  start_date and end_date field picker
+
+            // start start_time and end_time field picker 
+            $('#start_time').pickatime({
+                clear: ''
+            });
+            $('#end_time').pickatime({
+                clear: ''
+            });
+            // end start_time and end_time field picker 
 
             // ======= start pickadate codeing ===========
             $('#publish_date').pickadate({
@@ -934,7 +941,6 @@
                 <?php } ?>
             });
         });
-
 
         $(document).on('click', '.delegated-btn', function(e) {
             e.preventDefault();

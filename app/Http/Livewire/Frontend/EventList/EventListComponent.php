@@ -24,7 +24,11 @@ class EventListComponent extends Component
 
     public function render()
     {
-        $categories_menu = CourseCategory::withCount('courses')->get();
+        // $categories_menu = CourseCategory::withCount('courses')->get();
+
+        $categories_menu = CourseCategory::whereHas('courses', function ($query) {
+            $query->Event();
+        })->withCount('courses')->get();
         // $this->events = Post::with('photos', 'topics', 'requirements')
         $this->events = Course::with('photos', 'topics', 'requirements')
             ->Event()

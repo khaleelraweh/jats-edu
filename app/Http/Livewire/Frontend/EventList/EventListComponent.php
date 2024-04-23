@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Frontend\EventList;
 
+use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\Post;
 use Livewire\Component;
@@ -24,7 +25,9 @@ class EventListComponent extends Component
     public function render()
     {
         $categories_menu = CourseCategory::withCount('courses')->get();
-        $this->events = Post::with('photos', 'topics', 'requirements')
+        // $this->events = Post::with('photos', 'topics', 'requirements')
+        $this->events = Course::with('photos', 'topics', 'requirements')
+            ->Course()
             ->when($this->categoryInputs, function ($query) {
                 $query->where('course_category_id', $this->categoryInputs);
             })

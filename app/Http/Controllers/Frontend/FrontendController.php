@@ -48,7 +48,8 @@ class FrontendController extends Controller
             ->take(10)
             ->get();
 
-        $events = Post::with('photos')->where('section', 1)->orderBy('created_at', 'ASC')->get();
+        // $events = Post::with('photos')->where('section', 1)->orderBy('created_at', 'ASC')->get();
+        $events = Course::with('photos')->where('section', 2)->orderBy('created_at', 'ASC')->get();
         $posts = Post::with('photos')->where('section', 2)->orderBy('created_at', 'ASC')->get();
 
 

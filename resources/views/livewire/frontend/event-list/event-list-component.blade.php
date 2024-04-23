@@ -48,22 +48,27 @@
                     </div>
                 </div>
 
-                <div class="ms-lg-auto d-lg-flex flex-wrap">
-                    <div class="mb-4 mb-lg-0 ms-lg-6">
 
-                        <div wire:ignore class="border rounded d-flex align-items-center choices-label h-50p">
-                            <span class="ps-5" style="width: 110px">Sort by:</span>
-                            <select
-                                class="form-select form-select-sm text-dark border-0 ps-3 flex-grow-1 shadow-none dropdown-menu-end"
-                                aria-label="Small select example" wire:model="sortingBy">
-                                <option value="default">Default</option>
-                                <option value="new-events">New Event</option>
-                                <option value="new-old">Time New to Old</option>
-                                <option value="old-new">Time Old to New</option>
-                            </select>
 
-                        </div>
+
+                <div class="mb-4 mb-xl-0 ms-xl-6">
+
+                    <div wire:ignore class="border rounded d-flex align-items-center choices-label h-50p">
+                        <span class="ps-5">By:</span>
+                        <select wire:ignore wire:model="sortingBy"
+                            class="form-select form-select-sm text-dark border-0 ps-1 bg-transparent flex-grow-1 shadow-none dropdown-menu-end">
+
+                            <option value="default">Default</option>
+                            <option value="new-events">New Event</option>
+                            <option value="new-old">Time New to Old</option>
+                            <option value="old-new">Time Old to New</option>
+                        </select>
                     </div>
+
+
+
+
+
                 </div>
 
             </div>

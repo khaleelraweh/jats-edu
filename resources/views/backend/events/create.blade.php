@@ -743,8 +743,9 @@
                 close: 'OK',
                 colseOnSelect: true // Close Upon Selecting a date
             });
-            var publishedOn = $('#published_on').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
+
+            var publishedOn = $('#published_on').pickadate('picker');
+
             // when change date 
             $('#published_on').change(function() {
                 selected_ci_date = "";
@@ -764,7 +765,6 @@
             });
 
             // start deadline 
-
             $('#deadline').pickadate({
                 format: 'yyyy-mm-dd',
                 min: new Date(),
@@ -774,9 +774,9 @@
                 close: 'OK',
                 colseOnSelect: true // Close Upon Selecting a date
             });
-            var publishedOn = $('#deadline').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
-            // when change date 
+
+            var publishedOn = $('#deadline').pickadate('picker');
+
             $('#deadline').change(function() {
                 selected_ci_date = "";
                 selected_ci_date = $('#deadline').val();
@@ -789,8 +789,52 @@
                 }
 
             });
-
             // end deadline 
+
+            // start start_date and end_date field picker
+
+            $('#start_date').pickadate({
+                format: 'yyyy-mm-dd',
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: true, // creates a dropdown to control years
+                clear: 'Clear',
+                close: 'OK',
+                colseOnSelect: true // Close Upon Selecting a date
+            });
+
+            var startdate = $('#start_date').pickadate('picker');
+            var enddate = $('#expire_date').pickadate('picker');
+
+            // when change date 
+            $('#start_date').change(function() {
+                selected_ci_date = "";
+                selected_ci_date = $('#start_date')
+                    .val(); // make selected start date in picker = start_date value
+                if (selected_ci_date != null) {
+                    var cidate = new Date(
+                        selected_ci_date
+                    ); // make cidate(start date ) = current date you selected in selected ci date (selected start date )
+                    min_codate = "";
+                    min_codate = new Date();
+                    min_codate.setDate(cidate.getDate() +
+                        1); // minimum selected date to be expired shoud be current date plus one 
+                    enddate.set('min', min_codate);
+                }
+
+            });
+
+            $('#end_date').pickadate({
+                format: 'yyyy-mm-dd',
+                min: new Date(),
+                selectMonths: true, // Creates a dropdoen to control month
+                selectYears: true, // Creates a dropdown to control month 
+                clear: 'Clear',
+                close: 'OK',
+                colseOnSelect: true // Close upon selecting a date ,
+            });
+
+
+            // end  start_date and end_date field picker
 
             // ======= start pickadate codeing ===========
             $('#publish_date').pickadate({
@@ -898,6 +942,7 @@
 
         });
     </script>
+
 
 
     // script course requirements

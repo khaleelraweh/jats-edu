@@ -103,6 +103,7 @@ class Post extends Model
         });
     }
 
+
     public function courseCategory()
     {
         return $this->belongsTo(CourseCategory::class, 'course_category_id', 'id');

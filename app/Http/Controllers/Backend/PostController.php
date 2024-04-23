@@ -132,6 +132,8 @@ class PostController extends Controller
 
     public function update(PostRequest $request,  $post)
     {
+
+
         if (!auth()->user()->ability('admin', 'update_posts')) {
             return redirect('admin/index');
         }

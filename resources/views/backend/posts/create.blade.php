@@ -95,7 +95,7 @@
                                 <div class="{{ $loop->index == 0 ? 'col-md-7' : '' }}  col-sm-12 ">
 
 
-                                    <div class="row pt-3 {{ $loop->index == 0 ? 'd-flex' : 'd-none' }}">
+                                    <div class="row  {{ $loop->index == 0 ? 'd-flex' : 'd-none' }}">
                                         <div class="col-12 ">
                                             <label for="category_id">{{ __('panel.category') }}</label>
                                             <select name="course_category_id" class="form-control" id="course_category_id">

@@ -115,30 +115,32 @@ class PostController extends Controller
         return view('backend.posts.show');
     }
 
-    public function edit($posts)
+    public function edit($post)
     {
         if (!auth()->user()->ability('admin', 'update_posts')) {
             return redirect('admin/index');
         }
 
-        $posts = Post::where('id', $posts)->first();
+        $course_categories = CourseCategory::whereStatus(1)->get(['id', 'title']);
+
+        $post = Post::where('id', $post)->first();
 
         $tags = Tag::whereStatus(1)->where('section', 3)->get(['id', 'name']);
 
-        return view('backend.posts.edit', compact('posts', 'tags'));
+        return view('backend.posts.edit', compact('post', 'tags', 'course_categories'));
     }
 
-    public function update(PostRequest $request,  $posts)
+    public function update(PostRequest $request,  $post)
     {
         if (!auth()->user()->ability('admin', 'update_posts')) {
             return redirect('admin/index');
         }
 
-        $posts = Post::where('id', $posts)->first();
+        $post = Post::where('id', $post)->first();
 
-        $input['title']              =   $request->title;
-        $input['description']       =   $request->description;
-        $input['course_category_id']            =   $request->course_category_id;
+        $input['title']                         =   $request->title;
+        $input['description']                   =   $request->description;
+        $input['course_category_id']   =   $request->course_category_id;
 
         // always added 
         $input['status']            =   $request->status;
@@ -148,16 +150,16 @@ class PostController extends Controller
         $input['published_on'] = $published_on;
         // end of always added 
 
-        $posts->update($input);
+        $post->update($input);
 
-        $posts->tags()->sync($request->tags);
+        $post->tags()->sync($request->tags);
 
         if ($request->images && count($request->images) > 0) {
-            $i = $posts->photos->count() + 1;
+            $i = $post->photos->count() + 1;
 
             foreach ($request->images as $image) {
 
-                $file_name = $posts->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $post->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/posts/' . $file_name);
@@ -166,7 +168,7 @@ class PostController extends Controller
                     $constraint->aspectRatio();
                 })->save($path, 100);
 
-                $posts->photos()->create([
+                $post->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -179,7 +181,7 @@ class PostController extends Controller
         }
 
 
-        if ($posts) {
+        if ($post) {
             return redirect()->route('admin.posts.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'

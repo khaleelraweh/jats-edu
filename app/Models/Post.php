@@ -85,14 +85,10 @@ class Post extends Model
         return $query->whereStatus(true);
     }
 
-    public function scopeEvent($query)
-    {
-        return $query->whereSection(1);
-    }
 
     public function scopeBlog($query)
     {
-        return $query->whereSection(2);
+        return $query->whereSection(1);
     }
 
 

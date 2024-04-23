@@ -381,6 +381,7 @@
             </div>
 
             <div class="row row-cols-md-2 row-cols-lg-3">
+
                 @foreach ($posts->take(3) as $post)
                     <div class="col-md mb-5 mb-lg-0">
                         <!-- Card -->

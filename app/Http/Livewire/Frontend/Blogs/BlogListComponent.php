@@ -66,9 +66,9 @@ class BlogListComponent extends Component
             ->Blog()->active()->paginate($this->paginationLimit);
 
         $categories_menu = CourseCategory::withCount(['posts' => function ($query) {
-            $query->where('section', 2);
+            $query->where('section', 1);
         }])->whereHas('posts', function ($query) {
-            $query->where('section', 2);
+            $query->where('section', 1);
         })->get();
 
         $total_Posts = Post::query()->Blog()->count();

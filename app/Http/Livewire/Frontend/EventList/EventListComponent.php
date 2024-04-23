@@ -4,13 +4,12 @@ namespace App\Http\Livewire\Frontend\EventList;
 
 use App\Models\Course;
 use App\Models\CourseCategory;
-use App\Models\Post;
 use Livewire\Component;
 
 class EventListComponent extends Component
 {
 
-    public  $amount = 6;
+    public $amount = 6;
     public $events;
     public $showMoreBtn = false;
     public $showLessBtn = false;
@@ -24,63 +23,61 @@ class EventListComponent extends Component
 
     public function render()
     {
-        // $categories_menu = CourseCategory::withCount('courses')->get();
-
+        // Fetch categories menu
         $categories_menu = CourseCategory::whereHas('courses', function ($query) {
             $query->Event();
-        })->withCount('courses')->get();
-        // $this->events = Post::with('photos', 'topics', 'requirements')
-        $this->events = Course::with('photos', 'topics', 'requirements')
-            ->Event()
-            ->when($this->categoryInputs, function ($query) {
-                $query->where('course_category_id', $this->categoryInputs);
-            })
-            ->when($this->searchQuery, function ($query) {
-                $query->where(function ($subQuery) {
-                    $subQuery->where('title', 'LIKE', '%' . $this->searchQuery . '%');
-                });
-            })
-            ->when($this->sortingBy, function ($query) {
-                $query
-                    ->when($this->sortingBy == 'default', function ($query2) {
-                        $query2->orderBy('id', 'asc');
-                    })
+        })->hasCourses()->withCount('courses')->get();
 
-                    ->when($this->sortingBy == 'new-events', function ($query2) {
-                        $query2->orderBy('created_at', 'asc');
-                    })
-                    ->when($this->sortingBy == 'new-old', function ($query2) {
-                        $query2->orderBy('created_at', 'asc');
-                    })
-                    ->when($this->sortingBy == 'old-new', function ($query2) {
-                        $query2->orderBy('created_at', 'desc');
-                    });
-            })
+        // Build query to fetch events
+        $query = Course::with('photos', 'topics', 'requirements')->Event();
 
-            ->get();
 
-        if (count($this->events) > 6) {
-            $this->showMoreBtn = true;
-            if ($this->amount > 6) {
-                if (count($this->events) <= $this->amount) {
-                    $this->showLessBtn = true;
-                    $this->showMoreBtn = false;
-                } else {
-                    $this->showLessBtn = true;
-                }
+        // Apply category filter if selected
+        if ($this->categoryInputs !== null) {
+            // Check if "Choose Categories" option is selected
+            if ($this->categoryInputs == '') {
+                // Don't apply category filter
             } else {
-                $this->showLessBtn = false;
+                $query->where('course_category_id', $this->categoryInputs);
             }
-        } else {
-            $this->showMoreBtn = false;
         }
 
 
+        // Apply search query filter
+        if ($this->searchQuery) {
+            $query->where('title', 'LIKE', '%' . $this->searchQuery . '%');
+        }
+
+        // Apply sorting
+        switch ($this->sortingBy) {
+            case 'new-events':
+                $query->orderBy('created_at', 'desc');
+                break;
+            case 'new-old':
+                $query->orderBy('created_at', 'asc');
+                break;
+            case 'old-new':
+                $query->orderBy('created_at', 'desc');
+                break;
+            default:
+                $query->orderBy('id', 'asc');
+                break;
+        }
+
+        // Fetch events based on query
+        $this->events = $query->get();
+
+        // Determine button visibility based on event count
+        $totalEventsCount = count($this->events);
+        $this->showMoreBtn = $totalEventsCount > $this->amount;
+        $this->showLessBtn = $totalEventsCount > 6;
+
         return view('livewire.frontend.event-list.event-list-component', [
             'events' => $this->events,
-            'categories_menu'    =>  $categories_menu
+            'categories_menu' => $categories_menu
         ]);
     }
+
 
     public function load_more()
     {

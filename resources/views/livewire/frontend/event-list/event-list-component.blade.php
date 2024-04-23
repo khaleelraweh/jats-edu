@@ -1,12 +1,12 @@
 <div>
 
 
-    <!-- CONTROL BAR -->
     <div class="container mb-6 mb-xl-8 z-index-2">
         <div class="d-xl-flex align-items-center">
             <p class="mb-xl-0">We found <span class="text-dark">{{ count($events) }} Events</span> available for you</p>
-            <div class="ms-xl-auto d-xl-flex flex-wrap">
-                <div class="mb-4 mb-xl-0 ms-xl-6">
+            <div class="ms-xl-auto d-md-flex flex-wrap">
+
+                <div class="mb-4 mb-lg-0 me-2">
                     <!-- Search -->
                     <form class="">
                         <div class="input-group input-group-filter">
@@ -26,56 +26,44 @@
                                             d="M19.762 18.6121L15.1007 13.9509C14.7831 13.6332 14.2687 13.6332 13.9511 13.9509C13.6335 14.2682 13.6335 14.7831 13.9511 15.1005L18.6124 19.7617C18.7712 19.9205 18.9791 19.9999 19.1872 19.9999C19.395 19.9999 19.6032 19.9205 19.762 19.7617C20.0796 19.4444 20.0796 18.9295 19.762 18.6121Z"
                                             fill="currentColor" />
                                     </svg>
-
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
 
-                <div class="mb-4 mb-xl-0 ms-xl-6">
+                <div class="mb-4 mb-lg-0 me-2">
                     <div class="border rounded d-flex align-items-center choices-label h-50p">
-                        <span class="ps-5">Event Type:</span>
-                        <div wire:ignore class="col-md-auto mb-4 mb-lg-0">
-                            <select wire:model="categoryInputs" {{-- class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices> --}}
-                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
-                                <option value="">{{ __('transf.chose_categories') }}</option>
-                                @foreach ($categories_menu as $category_item)
-                                    <option value="{{ $category_item->id }}">{{ $category_item->title }}
-                                    </option>
-                                @endforeach
+                        <span class="ps-5">Type:</span>
+                        <select wire:model="categoryInputs"
+                            class="form-select form-select-sm ps-5 text-primary shadow fw-medium">
+                            <option value="">{{ __('transf.chose_categories') }}</option>
+                            @foreach ($categories_menu as $category_item)
+                                <option value="{{ $category_item->id }}">{{ $category_item->title }}</option>
+                            @endforeach
+                        </select>
 
-                            </select>
-                        </div>
                     </div>
                 </div>
 
-
-
-
-                <div class="mb-4 mb-xl-0 ms-xl-6">
-
+                <div class="mb-4 mb-lg-0">
                     <div wire:ignore class="border rounded d-flex align-items-center choices-label h-50p">
                         <span class="ps-5">By:</span>
                         <select wire:ignore wire:model="sortingBy"
-                            class="form-select form-select-sm text-dark border-0 ps-1 bg-transparent flex-grow-1 shadow-none dropdown-menu-end">
-
+                            class="form-select form-select-sm ps-5 text-primary shadow fw-medium">
                             <option value="default">Default</option>
                             <option value="new-events">New Event</option>
                             <option value="new-old">Time New to Old</option>
                             <option value="old-new">Time Old to New</option>
                         </select>
                     </div>
-
-
-
-
-
                 </div>
-
             </div>
         </div>
     </div>
+
+
+
 
 
     {{-- {{ dd($events) }} --}}

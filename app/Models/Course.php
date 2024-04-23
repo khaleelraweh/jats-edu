@@ -25,7 +25,7 @@ class Course extends Model
     protected $guarded = [];
 
     // for translatable field 
-    public $translatable = ['title', 'subtitle', 'slug', 'description'];
+    public $translatable = ['title', 'subtitle', 'slug', 'description', 'address'];
 
 
     // searchable lab 

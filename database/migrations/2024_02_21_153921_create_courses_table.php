@@ -51,12 +51,11 @@ return new class extends Migration
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
 
-            $table->string('address')->nullable();
+            // $table->string('address')->nullable();
+            $table->json('address');
+
             //end for events only 
-
             $table->unsignedBigInteger('section')->default(1); // one is course , two is event 
-
-
 
 
             // will be use always

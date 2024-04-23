@@ -183,7 +183,7 @@
                                                 </label>
                                                 <input type="text" name="subtitle[{{ $key }}]"
                                                     id="subtitle[{{ $key }}]"
-                                                    value="{{ old('subtitle.' . $key, $event->getTranslation('title', $key)) }}"
+                                                    value="{{ old('subtitle.' . $key, $event->getTranslation('subtitle', $key)) }}"
                                                     class="form-control">
                                                 @error('subtitle.' . $key)
                                                     <span class="text-danger">{{ $message }}</span>
@@ -683,7 +683,8 @@
                                             {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                         </label>
                                         <input type="text" name="address[{{ $key }}]"
-                                            id="address[{{ $key }}]" value="{{ old('address.' . $key) }}"
+                                            id="address[{{ $key }}]"
+                                            value="{{ old('address.' . $key, $event->getTranslation('address', $key)) }}"
                                             class="form-control">
                                         @error('address.' . $key)
                                             <span class="text-danger">{{ $message }}</span>

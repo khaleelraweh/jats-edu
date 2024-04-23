@@ -176,15 +176,24 @@ return [
     'type'                                                      =>  'Type',
 
     // --------------- Events  --------------//
-    'requirement'                   =>  'Requirements',
-    'category'                      =>  'Category',
-    'event_info_tab'                =>  'Event Info',
-    'event_topics_tab'                         =>  'Event Topics',
-    'event_requirements_tab'                                   =>  'Event Requirements',
-    'manage_events'                            => 'Manage Events',
-    'show_events'                   => 'Events',
-    'add_new_event'                => 'Add New Event',
-    'edit_existing_event'          => 'Edit Existing Event ',
+    'requirement'                               =>  'Requirements',
+    'category'                                  =>  'Category',
+    'event_info_tab'                            =>  'Event Info',
+    'event_topics_tab'                          =>  'Event Topics',
+    'event_requirements_tab'                    =>  'Event Requirements',
+    'manage_events'                             => 'Manage Events',
+    'show_events'                               => 'Events',
+    'add_new_event'                             => 'Add New Event',
+    'edit_existing_event'                       => 'Edit Existing Event ',
+
+    'event_dates_tab'                           =>  'Event Dates',
+    'event_start_date'                          =>  'Event Start Date',
+    'event_end_date'                            =>  'Event End Date',
+
+    'event_start_time'                          =>  'Event Start Time',
+    'event_end_time'                            =>  'Event End Time',
+
+    'event_address'                             =>  'Event Address',
 
     ##############################################################
 

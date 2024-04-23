@@ -110,6 +110,13 @@
                     </li>
 
                     <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="event_dates-tab" data-bs-toggle="tab" data-bs-target="#event_dates"
+                            type="button" role="tab" aria-controls="event_dates"
+                            aria-selected="false">{{ __('panel.event_dates_tab') }}
+                        </button>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
                             type="button" role="tab" aria-controls="published"
                             aria-selected="false">{{ __('panel.published_tab') }}
@@ -531,7 +538,7 @@
                         </div>
                     </div>
 
-                    {{-- instructor tab --}}
+                    {{-- instructor tab content --}}
                     <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
                         {{-- specialization row --}}
                         <div class="row pt-4">
@@ -550,6 +557,79 @@
                             </div>
 
                         </div>
+                    </div>
+
+                    {{-- Event dates tab  content --}}
+                    <div class="tab-pane fade" id="event_dates" role="tabpanel" aria-labelledby="event_dates-tab">
+                        {{-- Event start and end date  --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <div class="form-group">
+                                    <label for="start_date">{{ __('panel.event_start_date') }}</label>
+                                    <input type="text" id="start_date" name="start_date"
+                                        value="{{ old('start_date', now()->format('Y-m-d')) }}" class="form-control">
+                                    @error('start_date')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <div class="form-group">
+                                    <label for="end_date">{{ __('panel.event_end_date') }}</label>
+                                    <input type="text" id="end_date" name="end_date"
+                                        value="{{ old('end_date', now()->format('Y-m-d')) }}" class="form-control">
+                                    @error('end_date')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Event start and end time  --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <div class="form-group">
+                                    <label for="start_time">{{ __('panel.event_start_time') }}</label>
+                                    <input type="text" id="start_time" name="start_time"
+                                        value="{{ old('start_time', now()->format('h:m A')) }}" class="form-control">
+                                    @error('start_time')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <div class="form-group">
+                                    <label for="end_time">{{ __('panel.event_end_time') }}</label>
+                                    <input type="text" id="end_time" name="end_time"
+                                        value="{{ old('end_time', now()->format('h:m A')) }}" class="form-control">
+                                    @error('end_time')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                        </div>
+
+                        {{-- course address field --}}
+                        <div class="row ">
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="col-sm-12 col-md-6 pt-3">
+                                    <div class="form-group">
+                                        <label for="address[{{ $key }}]">
+                                            {{ __('panel.event_address') }}
+                                            {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                        </label>
+                                        <input type="text" name="address[{{ $key }}]"
+                                            id="address[{{ $key }}]" value="{{ old('address.' . $key) }}"
+                                            class="form-control">
+                                        @error('address.' . $key)
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
                     </div>
 
                     {{-- Published Tab --}}

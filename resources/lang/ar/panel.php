@@ -186,6 +186,8 @@ return [
     'add_new_event'                                 => 'إضافة حدث جديد',
     'edit_existing_event'                           => 'تعديل بيانات الحدث ',
 
+    'event_dates_tab'                               =>  'مواعيد الحدث',
+
 
 
 

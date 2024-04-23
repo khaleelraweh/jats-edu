@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->json('name');
             $table->json('slug');
-            $table->unsignedBigInteger('section')->default(1); // tag:1= product , 2= card , 3 = blog
+            $table->unsignedBigInteger('section')->default(1); // tag:1= course , 2= event , 3 = posts
 
             // will be use always
             $table->boolean('status')->default(true);

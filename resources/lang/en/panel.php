@@ -210,9 +210,9 @@ return [
     // ........... commons in Tag   ....... //
     'tag_name'                  => 'Tag Name',
     'tag_type'                  =>  'Tag Type',
-    'product_tag'               =>  'Product Tag',
-    'card_tag'                  =>  'Card Tag',
-    'blog_tag'                  =>  'Blog Tag',
+    'course_tag'                =>  'Course Tag',
+    'event_tag'                 =>  'Event Tag',
+    'post_tag'                  =>  'Post Tag',
 
 
     ##############################################################

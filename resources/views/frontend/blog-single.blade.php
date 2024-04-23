@@ -94,11 +94,10 @@
                     </div>
 
                     <div class="col-md-8">
-                        <a href="#" class="btn btn-sm btn-light text-gray-800 px-5 fw-normal me-1 mb-2">Course</a>
-                        <a href="#" class="btn btn-sm btn-light text-gray-800 px-5 fw-normal me-1 mb-2">Timeline</a>
-                        <a href="#" class="btn btn-sm btn-light text-gray-800 px-5 fw-normal me-1 mb-2">Moodle</a>
-                        <a href="#" class="btn btn-sm btn-light text-gray-800 px-5 fw-normal me-1 mb-2">Best</a>
-                        <a href="#" class="btn btn-sm btn-light text-gray-800 px-5 fw-normal me-1 mb-2">Info</a>
+                        @foreach ($post->tags as $tag)
+                            <a href="#"
+                                class="btn btn-sm btn-light text-gray-800 px-5 fw-normal me-1 mb-2">{{ $tag->name }}</a>
+                        @endforeach
                     </div>
                 </div>
 

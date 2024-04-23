@@ -15,10 +15,13 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        Tag::create(['name' => ['ar' => 'Pupga', 'en' => 'PUPGA', 'ca' => 'PUPGAspan'], 'slug' => ['ar' => 'Pupga', 'en' => 'Pubga', 'ca' => 'Pubga-Span'],  'section' => 3,  'status' => true]);
-        Tag::create(['name' => ['ar' => 'إنمي', 'en' => 'Enimy', 'ca' => 'EnimySpan'], 'slug' => ['ar' => 'إنمي', 'en' => 'Enimay', 'ca' => 'Enimay-Span'],  'section' => 3,  'status' => true]);
-        Tag::create(['name' => ['ar' => 'كروت', 'en' => 'Enimy', 'ca' => 'Cardspan'], 'slug' => ['ar' => 'كروت', 'en' => 'cards', 'ca' => 'cards-Span'],  'section' => 3,  'status' => true]);
-        Tag::create(['name' => ['ar' => 'عروض', 'en' => 'offers', 'ca' => 'offerspan'], 'slug' => ['ar' => 'عروض', 'en' => 'offers', 'ca' => 'offers-Span'],  'section' => 3,  'status' => true]);
-        Tag::create(['name' => ['ar' => 'منتج', 'en' => 'Product', 'ca' => 'ProductSpan'], 'slug' => ['ar' => 'منتج', 'en' => 'Product', 'ca' => 'Product-Span'],  'section' => 3,  'status' => true]);
+        Tag::create(['name' => ['ar' => 'تطوير الذات', 'en' => 'Self development',], 'slug' => ['ar' => 'تطوير_الذات', 'en' => 'self_development'],  'section' => 1,  'status' => true]);
+        Tag::create(['name' => ['ar' => 'تطوير البرمجيات', 'en' => 'software development',], 'slug' => ['ar' => 'تطوير_البرمجيات', 'en' => 'software_development'],  'section' => 1,  'status' => true]);
+
+        Tag::create(['name' => ['ar' => 'تطوير الذات', 'en' => 'Self development',], 'slug' => ['ar' => 'تطوير_الذات', 'en' => 'self_development'],  'section' => 2,  'status' => true]);
+        Tag::create(['name' => ['ar' => 'تطوير البرمجيات', 'en' => 'software development',], 'slug' => ['ar' => 'تطوير_البرمجيات', 'en' => 'software_development'],  'section' => 2,  'status' => true]);
+
+        Tag::create(['name' => ['ar' => 'تطوير الذات', 'en' => 'Self development',], 'slug' => ['ar' => 'تطوير_الذات', 'en' => 'self_development'],  'section' => 3,  'status' => true]);
+        Tag::create(['name' => ['ar' => 'تطوير البرمجيات', 'en' => 'software development',], 'slug' => ['ar' => 'تطوير_البرمجيات', 'en' => 'software_development'],  'section' => 3,  'status' => true]);
     }
 }

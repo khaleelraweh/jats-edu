@@ -71,36 +71,23 @@ Route::get('/event-single/{event?}', [FrontendController::class, 'event_single']
 
 Route::get('/blog-list/{blog?}', [FrontendController::class, 'blog_list'])->name('frontend.blog_list');
 Route::get('/blog-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.blog_single');
+Route::get('/blog/tags/{slug?}', [BlogController::class, 'blog_tag'])->name('frontend.blog_tag');
 
 
 Route::get('/shop-cart', [FrontendController::class, 'shop_cart'])->name('frontend.shop_cart');
 Route::get('/shop-checkout', [FrontendController::class, 'shop_checkout'])->name('frontend.shop_checkout');
 Route::get('/shop-order-completed', [FrontendController::class, 'shop_order_completed'])->name('frontend.shop_order_completed');
 
-
 Route::get('/about', [FrontendController::class, 'about'])->name('frontend.about');
 Route::get('/contact-us', [FrontendController::class, 'contact_us'])->name('frontend.contact_us');
 
-
 Route::get('/terms-of-service', [FrontendController::class, 'service'])->name('frontend.service');
 
-
-
-Route::group(['middleware' => 'web'], function () {
-    Route::get('/card-category/{slug?}', [FrontendController::class, 'card_category'])->name('frontend.card_category');
-    Route::get('/card/{slug?}', [FrontendController::class, 'card'])->name('frontend.card');
-});
 Route::get('/cart', [FrontendController::class, 'cart'])->name('frontend.cart');
 Route::get('/wishlist', [FrontendController::class, 'wishlist'])->name('frontend.wishlist');
 
-// Route::get('/checkout',[FrontendController::class,'checkout'])->name('frontend.checkout');
-
-
-Route::get('/blog', [BlogController::class, 'blog'])->name('frontend.blog');
-Route::get('/blog/post/{slug?}', [BlogController::class, 'post'])->name('frontend.blog.post');
 
 // start blog tag
-Route::get('/blog/tags/{slug?}', [BlogController::class, 'blog_tag'])->name('frontend.blog_tag');
 // end blog tag 
 
 Route::post('currency_load', [CurrenciesController::class, 'currencyLoad'])->name('currency.load');

@@ -95,11 +95,11 @@
                                 <label for="section">{{ __('panel.tag_type') }}</label>
                                 <select name="section" class="form-control">
                                     <option value="1" {{ old('section') == '1' ? 'selected' : null }}>
-                                        {{ __('panel.product_tag') }}</option>
+                                        {{ __('panel.course_tag') }}</option>
                                     <option value="2" {{ old('section') == '2' ? 'selected' : null }}>
-                                        {{ __('panel.card_tag') }}</option>
+                                        {{ __('panel.event_tag') }}</option>
                                     <option value="3" {{ old('section') == '3' ? 'selected' : null }}>
-                                        {{ __('panel.blog_tag') }}</option>
+                                        {{ __('panel.post_tag') }}</option>
                                 </select>
                                 @error('section')
                                     <span class="text-danger">{{ $message }}</span>

@@ -140,7 +140,7 @@ class FrontendController extends Controller
 
     public function blog_single($slug)
     {
-        $post = Post::with('photos')
+        $post = Post::with('photos', 'tags')
             ->where('slug->' . app()->getLocale(), $slug)
             ->firstOrFail();
 

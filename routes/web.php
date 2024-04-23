@@ -70,8 +70,8 @@ Route::get('/event-list/{event?}', [FrontendController::class, 'event_list'])->n
 Route::get('/event-single/{event?}', [FrontendController::class, 'event_single'])->name('frontend.event_single');
 
 Route::get('/blog-list/{blog?}', [FrontendController::class, 'blog_list'])->name('frontend.blog_list');
+Route::get('/blog-tag-list', [FrontendController::class, 'blog_tag_list'])->name('frontend.blog_tag-list');
 Route::get('/blog-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.blog_single');
-Route::get('/blog-list/tags/{slug?}', [BlogController::class, 'blog_list_tag'])->name('frontend.blog_list_tag');
 
 
 Route::get('/shop-cart', [FrontendController::class, 'shop_cart'])->name('frontend.shop_cart');

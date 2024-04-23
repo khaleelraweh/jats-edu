@@ -21,5 +21,5 @@
         <!-- Img -->
         <img class="d-none img-fluid" src="...html" alt="...">
     </header>
-    @livewire('frontend.blogs.blog-list-component', ['slug' => $slug])
+    @livewire('frontend.blogs.blog-tag-list-component', ['slug' => $slug])
 @endsection

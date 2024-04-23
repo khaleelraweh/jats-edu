@@ -137,6 +137,10 @@ class FrontendController extends Controller
     {
         return view('frontend.blog-list', compact('slug'));
     }
+    public function blog_tag_list($slug = null)
+    {
+        return view('frontend.blog-tag-list', compact('slug'));
+    }
 
     public function blog_single($slug)
     {

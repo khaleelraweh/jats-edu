@@ -28,9 +28,6 @@ class TopicSeeder extends Seeder
             ['title' => ["ar"   => "العمل مع الألوان والخطوط.", "en" => "Work with colors & fonts."]],
         ];
 
-        Post::all()->each(function ($post) use ($topics) {
-            $post->topics()->createMany($topics);
-        });
 
         Course::all()->each(function ($course) use ($topics) {
             $course->topics()->createMany($topics);

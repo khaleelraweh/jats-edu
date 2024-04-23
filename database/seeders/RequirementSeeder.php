@@ -46,10 +46,6 @@ class RequirementSeeder extends Seeder
             ['title' => ["ar"  => "أدوبي فوتوشوب (اختياري)", "en"  => "Adobe Photoshop (OPTIONAL)"]],
         ];
 
-        Post::all()->each(function ($post) use ($requirements) {
-            $post->requirements()->createMany($requirements);
-        });
-
         Course::all()->each(function ($course) use ($requirements) {
             $course->requirements()->createMany($requirements);
         });

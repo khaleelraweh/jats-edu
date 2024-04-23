@@ -125,7 +125,7 @@ class PostSeeder extends Seeder
 
             $post = Post::create([
                 'title' => $courseData['title'],
-                'subtitle' => ['ar' => 'عنوان فرعي', 'en' => 'subtitle'],
+
 
                 'description' => ['ar' => 'مرحباً جميعاً. أنا أراش وأنا مصمم UI/UX. في هذه الدورة سوف أساعد
                 تتعلم وتتقن تطبيق Figma بشكل شامل من الصفر. Figma هي أداة مبتكرة ورائعة

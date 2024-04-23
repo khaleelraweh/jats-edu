@@ -9,10 +9,6 @@
                     {{ $post->title }}
                 </h1>
 
-                <p class="me-xl-12">
-                    {{ $post->subtitle }}
-                </p>
-
                 <div class="d-md-flex align-items-center">
                     <div class="border rounded-circle d-inline-block mb-4 mb-md-0 me-4">
                         <div class="p-1">
@@ -68,37 +64,6 @@
                 <p class="mb-6 line-height-md">
                     {!! $post->description !!}
                 </p>
-
-                {{-- topics section  --}}
-                <h3 class="mb-5">{{ __('transf.txt_what_you_will_learn') }}</h3>
-                <div class="row row-cols-lg-2 mb-8 list-style-v1 list-unstyled ">
-                    @foreach ($post->topics as $topic)
-                        <li class="col-sm-6">{{ $topic->title }}</li>
-                    @endforeach
-                </div>
-
-                @php
-                    if ($post->photos->last() != null && $post->photos->last()->file_name != null) {
-                        $post_img = asset('assets/posts/' . $post->photos->last()->file_name);
-
-                        if (!file_exists(public_path('assets/posts/' . $post->photos->last()->file_name))) {
-                            $post_img = asset('image/not_found/item_image_not_found.webp');
-                        }
-                    } else {
-                        $post_img = asset('image/not_found/item_image_not_found.webp');
-                    }
-                @endphp
-
-                <img src="{{ $post_img }}" alt="..." class="img-fluid rounded mb-8">
-
-                {{-- requirements --}}
-                <h3 class="mb-5">{{ __('transf.txt_requirements') }}</h3>
-                <ul class="list-style-v2 list-unstyled mb-10">
-                    @foreach ($post->requirements as $requirement)
-                        <li>{{ $requirement->title }}</li>
-                    @endforeach
-
-                </ul>
 
                 <div class="row mb-6 mb-md-10 align-items-center">
                     <div class="col-md-4 mb-5 mb-md-2">

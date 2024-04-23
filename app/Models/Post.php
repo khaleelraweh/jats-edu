@@ -23,7 +23,7 @@ class Post extends Model
     protected $guarded = [];
 
     // for translatable field 
-    public $translatable = ['title', 'subtitle', 'slug', 'description', 'motavation'];
+    public $translatable = ['title', 'slug', 'description', 'motavation'];
 
 
     // searchable lab 
@@ -132,15 +132,6 @@ class Post extends Model
         return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort', 'desc');
     }
 
-    public function topics(): MorphMany
-    {
-        return $this->morphMany(Topic::class, 'topicable');
-    }
-
-    public function requirements(): MorphMany
-    {
-        return $this->morphMany(Requirement::class, 'requirementable');
-    }
 
     public function users(): MorphToMany
     {

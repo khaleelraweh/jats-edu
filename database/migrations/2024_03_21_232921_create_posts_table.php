@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->json('title');
             $table->json('slug');
-            $table->json('subtitle')->nullable();
+
             $table->json('description');
             $table->json('motavation')->nullable();
             $table->foreignId('course_category_id')->constrained()->cascadeOnDelete();

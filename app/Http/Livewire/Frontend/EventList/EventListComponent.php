@@ -27,7 +27,7 @@ class EventListComponent extends Component
         $categories_menu = CourseCategory::withCount('courses')->get();
         // $this->events = Post::with('photos', 'topics', 'requirements')
         $this->events = Course::with('photos', 'topics', 'requirements')
-            ->Course()
+            ->Event()
             ->when($this->categoryInputs, function ($query) {
                 $query->where('course_category_id', $this->categoryInputs);
             })

@@ -39,17 +39,17 @@ class EventListComponent extends Component
             ->when($this->sortingBy, function ($query) {
                 $query
                     ->when($this->sortingBy == 'default', function ($query2) {
-                        $query2->orderBy('id', 'ASC');
+                        $query2->orderBy('id', 'asc');
                     })
 
                     ->when($this->sortingBy == 'new-events', function ($query2) {
-                        $query2->orderBy('created_at', 'ASC');
+                        $query2->orderBy('created_at', 'asc');
                     })
                     ->when($this->sortingBy == 'new-old', function ($query2) {
-                        $query2->orderBy('created_at', 'ASC');
+                        $query2->orderBy('created_at', 'asc');
                     })
                     ->when($this->sortingBy == 'old-new', function ($query2) {
-                        $query2->orderBy('created_at', 'DESC');
+                        $query2->orderBy('created_at', 'desc');
                     });
             })
 

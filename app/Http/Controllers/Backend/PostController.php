@@ -195,16 +195,16 @@ class PostController extends Controller
         ]);
     }
 
-    public function destroy($posts)
+    public function destroy($post)
     {
         if (!auth()->user()->ability('admin', 'delete_posts')) {
             return redirect('admin/index');
         }
 
-        $posts = Post::where('id', $posts)->first();
+        $post = Post::where('id', $post)->first();
 
-        if ($posts->photos->count() > 0) {
-            foreach ($posts->photos as $photo) {
+        if ($post->photos->count() > 0) {
+            foreach ($post->photos as $photo) {
                 if (File::exists('assets/posts/' . $photo->file_name)) {
                     unlink('assets/posts/' . $photo->file_name);
                 }
@@ -212,9 +212,9 @@ class PostController extends Controller
             }
         }
 
-        $posts->delete();
+        $post->delete();
 
-        if ($posts) {
+        if ($post) {
             return redirect()->route('admin.posts.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
@@ -230,15 +230,13 @@ class PostController extends Controller
     public function remove_image(Request $request)
     {
 
-        if (!auth()->user()->ability('admin', 'delete_posts')) {
+        if (!auth()->user()->ability('admin', 'delete_courses')) {
             return redirect('admin/index');
         }
 
-        //find product from product table 
-        $posts = Post::findOrFail($request->post_id);
+        $post = Post::findOrFail($request->course_id);
 
-        //find photos image from photos table 
-        $image = $posts->photos()->where('id', $request->image_id)->first();
+        $image = $post->photos()->where('id', $request->image_id)->first();
 
         if (File::exists('assets/posts/' . $image->file_name)) {
             unlink('assets/posts/' . $image->file_name);

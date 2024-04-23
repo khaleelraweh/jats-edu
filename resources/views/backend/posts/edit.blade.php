@@ -163,16 +163,13 @@
 
                                 <div class="col-md-5 col-sm-12 {{ $loop->index == 0 ? 'd-block' : 'd-none' }}   ">
 
-                                    <div class="row pt-3">
-                                        <div class="col-12">
-                                            <label for="images">
-                                                {{ __('panel.image') }}
-                                                /
-                                                {{ __('panel.images') }}
-                                            </label>
+                                    <div class="row">
+                                        <div class="col-12 pt-4">
+                                            <label for="images">{{ __('panel.image') }}/
+                                                {{ __('panel.images') }}</label>
                                             <br>
                                             <div class="file-loading">
-                                                <input type="file" name="images[]" id="product_images"
+                                                <input type="file" name="images[]" id="course_images"
                                                     class="file-input-overview" multiple="multiple">
                                                 @error('images')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -309,7 +306,7 @@
                 matcher: matchStart
             });
 
-            $("#product_images").fileinput({
+            $("#course_images").fileinput({
                 theme: "fa5",
                 maxFileCount: 5,
                 allowedFileTypes: ['image'],
@@ -317,6 +314,9 @@
                 showRemove: false,
                 showUpload: false,
                 overwriteInitial: false,
+                // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
+                // delete images from photos and assets/products 
+                // because there are maybe more than one image we will go for each image and show them in the edit page 
                 initialPreview: [
                     @if ($post->photos()->count() > 0)
                         @foreach ($post->photos as $media)
@@ -333,7 +333,8 @@
                                 caption: "{{ $media->file_name }}",
                                 size: '{{ $media->file_size }}',
                                 width: "120px",
-                                url: "{{ route('admin.posts.remove_image', ['image_id' => $media->id, 'post_id' => $post->id, '_token' => csrf_token()]) }}",
+                                // url : الراوت المستخدم لحذف الصورة
+                                url: "{{ route('admin.posts.remove_image', ['image_id' => $media->id, 'course_id' => $post->id, '_token' => csrf_token()]) }}",
                                 key: {{ $media->id }}
                             },
                         @endforeach

@@ -188,6 +188,14 @@ return [
 
     'event_dates_tab'                               =>  'مواعيد الحدث',
 
+    'event_start_date'                              =>  'تاريخ بدء الحدث',
+    'event_end_date'                                =>  'تاريخ إنتهاء الحدث',
+
+    'event_start_time'                              =>  'من الساعة',
+    'event_end_time'                                =>  'إلي الساعة',
+
+    'event_address'                                 =>  'مكان انعقاد الحدث',
+
 
 
 

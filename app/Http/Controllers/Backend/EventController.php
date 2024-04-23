@@ -87,6 +87,12 @@ class EventController extends Controller
         $input['featured']                      =   $request->featured;
         $input['section']                       =   2;
 
+        $input['start_date']                    =  $request->start_date;
+        $input['end_date']                      =  $request->end_date;
+        $input['start_time']                    =  $request->start_time;
+        $input['end_time']                      =  $request->end_time;
+        $input['address']                       =  $request->address;
+
         $input['status']                        =   $request->status;
         $input['created_by']                    =   auth()->user()->full_name;
 
@@ -240,6 +246,12 @@ class EventController extends Controller
 
         $input['course_category_id']   =   $request->course_category_id;
         $input['featured']              =   $request->featured;
+
+        $input['start_date']                    =  $request->start_date;
+        $input['end_date']                      =  $request->end_date;
+        $input['start_time']                    =  $request->start_time;
+        $input['end_time']                      =  $request->end_time;
+        $input['address']                       =  $request->address;
 
         $input['status']            =   $request->status;
         $input['updated_by']        =   auth()->user()->full_name;

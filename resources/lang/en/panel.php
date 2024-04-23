@@ -187,6 +187,7 @@ return [
     'edit_existing_event'                       => 'Edit Existing Event ',
 
     'event_dates_tab'                           =>  'Event Dates',
+
     'event_start_date'                          =>  'Event Start Date',
     'event_end_date'                            =>  'Event End Date',
 

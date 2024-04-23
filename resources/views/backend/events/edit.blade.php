@@ -108,6 +108,13 @@
                         </button>
                     </li>
 
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="event_dates-tab" data-bs-toggle="tab" data-bs-target="#event_dates"
+                            type="button" role="tab" aria-controls="event_dates"
+                            aria-selected="false">{{ __('panel.event_dates_tab') }}
+                        </button>
+                    </li>
+
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
@@ -592,7 +599,7 @@
 
                     </div>
 
-                    {{-- instructor tab --}}
+                    {{-- instructor tab content --}}
                     <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
                         {{-- instructors row --}}
                         <div class="row pt-4">
@@ -611,7 +618,84 @@
                         </div>
                     </div>
 
-                    {{-- Published Tab --}}
+                    {{-- Event dates tab  content --}}
+                    <div class="tab-pane fade" id="event_dates" role="tabpanel" aria-labelledby="event_dates-tab">
+                        {{-- Event start and end date  --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <div class="form-group">
+                                    <label for="start_date">{{ __('panel.event_start_date') }}</label>
+                                    <input type="text" id="start_date" name="start_date"
+                                        value="{{ old('start_date', \Carbon\Carbon::parse($event->start_date)->Format('Y-m-d')) }}"
+                                        class="form-control">
+                                    @error('start_date')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <div class="form-group">
+                                    <label for="end_date">{{ __('panel.event_end_date') }}</label>
+                                    <input type="text" id="end_date" name="end_date"
+                                        value="{{ old('end_date', \Carbon\Carbon::parse($event->end_date)->Format('Y-m-d')) }}"
+                                        class="form-control">
+                                    @error('end_date')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Event start and end time  --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <div class="form-group">
+                                    <label for="start_time">{{ __('panel.event_start_time') }}</label>
+                                    <input type="text" id="start_time" name="start_time"
+                                        value="{{ old('start_time', \Carbon\Carbon::parse($event->start_time)->translatedFormat('h:i A')) }}"
+                                        class="form-control">
+                                    @error('start_time')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <div class="form-group">
+                                    <label for="end_time">{{ __('panel.event_end_time') }}</label>
+                                    <input type="text" id="end_time" name="end_time"
+                                        value="{{ old('end_time', \Carbon\Carbon::parse($event->end_time)->translatedFormat('h:i A')) }}"
+                                        class="form-control">
+                                    @error('end_time')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                        </div>
+
+                        {{-- course address field --}}
+                        <div class="row ">
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="col-sm-12 col-md-6 pt-3">
+                                    <div class="form-group">
+                                        <label for="address[{{ $key }}]">
+                                            {{ __('panel.event_address') }}
+                                            {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                        </label>
+                                        <input type="text" name="address[{{ $key }}]"
+                                            id="address[{{ $key }}]" value="{{ old('address.' . $key) }}"
+                                            class="form-control">
+                                        @error('address.' . $key)
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                    </div>
+
+                    {{-- Published Tab content --}}
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
 
                         {{-- published_on and published_on_time  --}}
@@ -799,9 +883,59 @@
 
             });
 
-
-
             //deadline end 
+
+            // ===== start start_date and end_date field picker  =====//
+            $('#start_date').pickadate({
+                format: 'yyyy-mm-dd',
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: true, // creates a dropdown to control years
+                clear: 'Clear',
+                close: 'OK',
+                colseOnSelect: true // Close Upon Selecting a date
+            });
+
+            var startdate = $('#start_date').pickadate('picker');
+            var enddate = $('#expire_date').pickadate('picker');
+
+            // when change date 
+            $('#start_date').change(function() {
+                selected_ci_date = "";
+                selected_ci_date = $('#start_date')
+                    .val(); // make selected start date in picker = start_date value
+                if (selected_ci_date != null) {
+                    var cidate = new Date(
+                        selected_ci_date
+                    ); // make cidate(start date ) = current date you selected in selected ci date (selected start date )
+                    min_codate = "";
+                    min_codate = new Date();
+                    min_codate.setDate(cidate.getDate() +
+                        1); // minimum selected date to be expired shoud be current date plus one 
+                    enddate.set('min', min_codate);
+                }
+
+            });
+
+            $('#end_date').pickadate({
+                format: 'yyyy-mm-dd',
+                min: new Date(),
+                selectMonths: true, // Creates a dropdoen to control month
+                selectYears: true, // Creates a dropdown to control month 
+                clear: 'Clear',
+                close: 'OK',
+                colseOnSelect: true // Close upon selecting a date ,
+            });
+            // end  start_date and end_date field picker
+
+            // start start_time and end_time field picker 
+            $('#start_time').pickatime({
+                clear: ''
+            });
+            $('#end_time').pickatime({
+                clear: ''
+            });
+            //  ====== end start_time and end_time field picker ======//
+
 
 
 

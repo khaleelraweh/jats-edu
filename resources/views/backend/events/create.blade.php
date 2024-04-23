@@ -632,7 +632,7 @@
 
                     </div>
 
-                    {{-- Published Tab --}}
+                    {{-- Published Tab content --}}
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
 
                         {{-- publish_start publish time field --}}
@@ -791,8 +791,7 @@
             });
             // end deadline 
 
-            // start start_date and end_date field picker
-
+            // ===== start start_date and end_date field picker  =====//
             $('#start_date').pickadate({
                 format: 'yyyy-mm-dd',
                 selectMonths: true, // Creates a dropdown to control month
@@ -841,7 +840,7 @@
             $('#end_time').pickatime({
                 clear: ''
             });
-            // end start_time and end_time field picker 
+            //  ====== end start_time and end_time field picker ======//
 
             // ======= start pickadate codeing ===========
             $('#publish_date').pickadate({

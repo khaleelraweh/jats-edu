@@ -41,13 +41,7 @@ class BlogTagListComponent extends Component
 
         $tags = Tag::query()->whereStatus(1)->where('section', 3)->get();
 
-        $random_posts = Post::with('tags')
-            ->active()
-            ->inRandomOrder()
-            ->take(2)
-            ->get();
-
-        $posts = Post::query();
+        $posts = Post::query()->ActiveCourseCategory();
 
         $posts = $posts->with('tags')->whereHas('tags', function ($query) use ($slug) {
             $query->where([
@@ -55,6 +49,17 @@ class BlogTagListComponent extends Component
                 'status' => true
             ]);
         });
+
+        // start adding new 
+
+        $posts = $posts
+            ->when($this->searchQuery, function ($query) {
+                $query->where(function ($subQuery) {
+                    $subQuery->where('title', 'LIKE', '%' . $this->searchQuery . '%');
+                });
+            });
+
+
 
         $posts = $posts->active()
             ->paginate($this->paginationLimit);

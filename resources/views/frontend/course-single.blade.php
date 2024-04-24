@@ -81,7 +81,7 @@
                     </div>
 
                     {{-- Review livewire --}}
-                    @livewire('course-single.review-component', ['courseId' => $course->id])
+                    @livewire('frontend.courses.review-component', ['courseId' => $course->id])
                 </div>
 
                 <!-- COURSE INFO TAB -->

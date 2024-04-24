@@ -1401,7 +1401,7 @@
 
 
                         {{-- course reviews --}}
-                        @livewire('course-single.course-review-component', ['courseId' => $course->id])
+                        @livewire('frontend.courses.course-review-component', ['courseId' => $course->id])
 
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\CourseSingle;
+namespace App\Http\Livewire\Frontend\Courses;
 
 use App\Models\Course;
 use App\Models\Review;
@@ -43,8 +43,7 @@ class CourseReviewComponent extends Component
 
         // Get the reviews
         $reviews = $course->reviews;
-
-        return view('livewire.course-single.course-review-component', compact('reviews', 'averageRating'));
+        return view('livewire.frontend.courses.course-review-component', compact('reviews', 'averageRating'));
     }
 
     public function storeReview()

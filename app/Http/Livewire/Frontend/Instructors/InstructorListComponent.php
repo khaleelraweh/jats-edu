@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Livewire\Instructors;
+namespace App\Http\Livewire\Frontend\Instructors;
 
-use App\Models\CourseCategory;
 use App\Models\Specialization;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class InstructorsListCoponent extends Component
+class InstructorListComponent extends Component
 {
     use LivewireAlert;
     use WithPagination;
@@ -85,7 +83,7 @@ class InstructorsListCoponent extends Component
             ->get();
 
         return view(
-            'livewire.instructors.instructors-list-coponent',
+            'livewire.frontend.instructors.instructor-list-component',
             [
                 'specializations_menu'  =>  $specializations_menu,
                 'instructors_menu'       =>  $instructors_menu,
@@ -93,7 +91,6 @@ class InstructorsListCoponent extends Component
             ]
         );
     }
-
 
     public function submitSearch()
     {

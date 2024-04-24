@@ -24,5 +24,5 @@
 
 
     <!-- Instructors -->
-    @livewire('instructors.instructors-list-coponent')
+    @livewire('frontend.instructors.instructor-list-component')
 @endsection

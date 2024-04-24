@@ -1,6 +1,4 @@
 <div>
-
-
     <div class="container">
         <div class="row">
             <div class="col-xl-3 mb-5 mb-xl-0">
@@ -37,47 +35,18 @@
                             aria-labelledby="coursefilter1" data-bs-parent="#courseSidebar">
                             <ul class="list-unstyled list-group list-checkbox">
 
-                                @foreach ($course_categories_menu as $category_item)
+                                @foreach ($specializations_menu as $specialization)
                                     <li class="custom-control custom-checkbox">
-
-                                        <input type="checkbox" wire:model="categoryInputs"
-                                            value="{{ $category_item->slug }}" class="custom-control-input"
-                                            id="{{ $category_item->slug }}">
-
+                                        <input type="checkbox" wire:model="selectedSpecializations"
+                                            value="{{ $specialization->slug }}" class="custom-control-input"
+                                            id="{{ $specialization->slug }}">
                                         <label class="custom-control-label font-size-base"
-                                            for="{{ $category_item->slug }}">{{ $category_item->title }}
-                                            ({{ $category_item->courses_count }})
+                                            for="{{ $specialization->slug }}">{{ $specialization->name }}
+                                            ({{ $specialization->users_count }})
                                         </label>
                                     </li>
                                 @endforeach
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="CategorycustomCheck2">
-                                    <label class="custom-control-label font-size-base"
-                                        for="CategorycustomCheck2">Exercise
-                                        (8)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="CategorycustomCheck3">
-                                    <label class="custom-control-label font-size-base"
-                                        for="CategorycustomCheck3">Material
-                                        Design (7)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="CategorycustomCheck4">
-                                    <label class="custom-control-label font-size-base"
-                                        for="CategorycustomCheck4">Software
-                                        (6)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="CategorycustomCheck5">
-                                    <label class="custom-control-label font-size-base" for="CategorycustomCheck5">Music
-                                        (6)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="CategorycustomCheck6">
-                                    <label class="custom-control-label font-size-base"
-                                        for="CategorycustomCheck6">Photography (6)</label>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -112,10 +81,11 @@
                         <div id="coursefiltercollapse2" class="collapse show mt-n2 px-6 pb-6"
                             aria-labelledby="coursefilter2" data-bs-parent="#courseSidebar">
                             <!-- Search -->
-                            <form class="mb-4">
+                            <form class="mb-4" wire:submit.prevent="submitSearch">
                                 <div class="input-group input-group-filter">
-                                    <input class="form-control form-control-sm border-end-0 shadow-none"
-                                        type="search" placeholder="Search" aria-label="Search">
+                                    <input wire:model="searchQuery"
+                                        class="form-control form-control-sm border-end-0 shadow-none" type="search"
+                                        placeholder="Search" aria-label="Search">
                                     <div class="input-group-append">
                                         <button
                                             class="btn btn-sm btn-outline-white border-start-0 shadow-none bg-transparent text-secondary icon-xs d-flex align-items-center"
@@ -130,51 +100,27 @@
                                                     d="M19.762 18.6121L15.1007 13.9509C14.7831 13.6332 14.2687 13.6332 13.9511 13.9509C13.6335 14.2682 13.6335 14.7831 13.9511 15.1005L18.6124 19.7617C18.7712 19.9205 18.9791 19.9999 19.1872 19.9999C19.395 19.9999 19.6032 19.9205 19.762 19.7617C20.0796 19.4444 20.0796 18.9295 19.762 18.6121Z"
                                                     fill="currentColor" />
                                             </svg>
-
                                         </button>
                                     </div>
                                 </div>
                             </form>
 
+                            {{-- instructors filter by name  --}}
                             <ul class="list-unstyled list-group list-checkbox list-checkbox-limit">
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="InstructorscustomCheck1">
-                                    <label class="custom-control-label font-size-base"
-                                        for="InstructorscustomCheck1">Chris
-                                        Convrse (03)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="InstructorscustomCheck2">
-                                    <label class="custom-control-label font-size-base"
-                                        for="InstructorscustomCheck2">Morten Rand (15)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="InstructorscustomCheck3">
-                                    <label class="custom-control-label font-size-base"
-                                        for="InstructorscustomCheck3">Rayi
-                                        Villalobos (125)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="InstructorscustomCheck4">
-                                    <label class="custom-control-label font-size-base"
-                                        for="InstructorscustomCheck4">James
-                                        William (1.584)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="InstructorscustomCheck5">
-                                    <label class="custom-control-label font-size-base"
-                                        for="InstructorscustomCheck5">Villalobos (584)</label>
-                                </li>
-                                <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="InstructorscustomCheck6">
-                                    <label class="custom-control-label font-size-base"
-                                        for="InstructorscustomCheck6">Rand
-                                        joe (44)</label>
-                                </li>
+                                @foreach ($instructors_menu as $name => $count)
+                                    <li class="custom-control custom-checkbox">
+                                        <input wire:model="selectedNames" type="checkbox" value="{{ $name }}"
+                                            class="custom-control-input" id="InstructorscustomCheck{{ $loop->index }}">
+                                        <label class="custom-control-label font-size-base"
+                                            for="InstructorscustomCheck{{ $loop->index }}">
+                                            {{ $name }} ({{ $count }})</label>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
 
+                    {{-- filter by rating  --}}
                     <div class="border rounded mb-6 @@widgetBG">
                         <!-- Heading -->
                         <div id="coursefilter5">
@@ -206,7 +152,8 @@
                             aria-labelledby="coursefilter5" data-bs-parent="#courseSidebar">
                             <ul class="list-unstyled list-group list-checkbox">
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="RatingcustomCheck1">
+                                    <input type="checkbox" wire:model="selectedRatings" value="4.5"
+                                        class="custom-control-input" id="RatingcustomCheck1">
                                     <label class="custom-control-label font-size-base" for="RatingcustomCheck1">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
@@ -220,7 +167,8 @@
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="RatingcustomCheck2">
+                                    <input type="checkbox" wire:model="selectedRatings" value="3.5"
+                                        class="custom-control-input" id="RatingcustomCheck2">
                                     <label class="custom-control-label font-size-base" for="RatingcustomCheck2">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
@@ -234,7 +182,8 @@
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="RatingcustomCheck3">
+                                    <input type="checkbox" wire:model="selectedRatings" value="2.5"
+                                        class="custom-control-input" id="RatingcustomCheck3">
                                     <label class="custom-control-label font-size-base" for="RatingcustomCheck3">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
@@ -248,7 +197,8 @@
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="RatingcustomCheck4">
+                                    <input type="checkbox" wire:model="selectedRatings" value="2"
+                                        class="custom-control-input" id="RatingcustomCheck4">
                                     <label class="custom-control-label font-size-base" for="RatingcustomCheck4">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
@@ -262,7 +212,8 @@
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="RatingcustomCheck5">
+                                    <input type="checkbox" wire:model="selectedRatings" value="1"
+                                        class="custom-control-input" id="RatingcustomCheck5">
                                     <label class="custom-control-label font-size-base" for="RatingcustomCheck5">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
@@ -279,7 +230,11 @@
                         </div>
                     </div>
 
-                    <a href="#" class="btn btn-primary btn-block mb-10">FILTER RESULTS</a>
+                    {{-- <a href="#" class="btn btn-primary btn-block mb-10">CLEAR FILTER </a> --}}
+                    <a href="#" class="btn btn-primary btn-block mb-10" wire:click="resetFilters">
+                        RESET FILTER
+                    </a>
+
                 </div>
 
             </div>
@@ -309,14 +264,15 @@
                                             @endif
                                             @if ($instructor->instagram)
                                                 <li class="nav-item px-4">
-                                                    <a href="#" class="d-block text-white">
+                                                    <a href="{{ $instructor->instagram }}"
+                                                        class="d-block text-white">
                                                         <i class="fab fa-instagram"></i>
                                                     </a>
                                                 </li>
                                             @endif
                                             @if ($instructor->linkedin)
                                                 <li class="nav-item px-4">
-                                                    <a href="#" class="d-block text-white">
+                                                    <a href="{{ $instructor->linkedin }}" class="d-block text-white">
                                                         <i class="fab fa-linkedin-in"></i>
                                                     </a>
                                                 </li>
@@ -324,7 +280,7 @@
                                         </ul>
                                     </div>
 
-                                    <a href="instructors-single.html"
+                                    <a href="{{ route('frontend.instructors_single', $instructor->id) }}"
                                         class="card-img sk-thumbnail img-ratio-4 card-hover-overlay d-block">
                                         @php
                                             if ($instructor->user_image != null) {
@@ -349,7 +305,8 @@
 
                                 <!-- Footer -->
                                 <div class="card-footer px-3 pt-4 pb-1">
-                                    <a href="instructors-single.html" class="d-block">
+                                    <a href="{{ route('frontend.instructors_single', $instructor->id) }}"
+                                        class="d-block">
                                         <h5 class="mb-0">{{ $instructor->first_name }} {{ $instructor->last_name }}
                                         </h5>
                                     </a>
@@ -373,8 +330,8 @@
 
                 </div>
 
-                <!-- PAGINATION
-                                                                                                ================================================== -->
+
+                <!-- PAGINATION -->
                 <nav class="mb-11" aria-label="Page navigationa">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">

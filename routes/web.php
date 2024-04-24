@@ -55,7 +55,9 @@ Auth::routes(['verify' => true]);
 // لايقاف الديباجر نضيف هذا الكود
 app('debugbar')->disable();
 
-//Frontend 
+// #################################################### //
+// #################  Frontend Route   ################ //
+// #################################################### //
 Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
 Route::get('/index', [FrontendController::class, 'index'])->name('frontend.index');
 Route::get('/home', [FrontendController::class, 'home'])->name('frontend.home');
@@ -73,11 +75,6 @@ Route::get('/blog-list/{blog?}', [FrontendController::class, 'blog_list'])->name
 Route::get('/blog-tag-list/{slug?}', [FrontendController::class, 'blog_tag_list'])->name('frontend.blog_tag_list');
 Route::get('/blog-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.blog_single');
 
-
-Route::get('/shop-cart', [FrontendController::class, 'shop_cart'])->name('frontend.shop_cart');
-Route::get('/shop-checkout', [FrontendController::class, 'shop_checkout'])->name('frontend.shop_checkout');
-Route::get('/shop-order-completed', [FrontendController::class, 'shop_order_completed'])->name('frontend.shop_order_completed');
-
 Route::get('/about', [FrontendController::class, 'about'])->name('frontend.about');
 Route::get('/contact-us', [FrontendController::class, 'contact_us'])->name('frontend.contact_us');
 
@@ -85,49 +82,70 @@ Route::get('/terms-of-service', [FrontendController::class, 'service'])->name('f
 
 Route::get('/cart', [FrontendController::class, 'cart'])->name('frontend.cart');
 Route::get('/wishlist', [FrontendController::class, 'wishlist'])->name('frontend.wishlist');
-
-
-// start blog tag
-// end blog tag 
+Route::get('/shop-cart', [FrontendController::class, 'shop_cart'])->name('frontend.shop_cart');
 
 Route::post('currency_load', [CurrenciesController::class, 'currencyLoad'])->name('currency.load');
 
+Route::get('/change-language/{locale}',     [LocaleController::class, 'switch'])->name('change.language');
 
 
-// this routes is only for customers whom are loged  in my websige
-// we add middlewire verified to prefent user to enter his profile and orders before verification email 
+
+// #################################################### //
+// #############  Customer Authed Route   ############# //
+// #################################################### //
 Route::group(['middleware' => ['roles', 'role:customer', 'verified']], function () {
 
-
-    //route for customer profile 
+    // ==============  Customer Profile Setting   ==============  //
     Route::get('/dashboard', [FrontendCustomerController::class, 'dashboard'])->name('customer.dashboard');
     Route::get('/profile', [FrontendCustomerController::class, 'profile'])->name('customer.profile');
-    Route::patch('/profile', [FrontendCustomerController::class, 'update_profile'])->name('customer.update_profile');
+    Route::patch('/profile/update', [FrontendCustomerController::class, 'update_profile'])->name('customer.update_profile');
     Route::get('/profile/remove-image', [FrontendCustomerController::class, 'remove_profile_image'])->name('customer.remove_profile_image');
+
+
+    // ==============  Customer Address Setting   ==============  //
     Route::get('/addresses', [FrontendCustomerController::class, 'addresses'])->name('customer.addresses');
 
+
+    // ==============  Customer Orders Setting   ==============  //
+    Route::get('/orders', [FrontendCustomerController::class, 'orders'])->name('customer.orders');
+
+    // ==============  Customer Bought Courses and Lessons ======  //
     Route::get('/student-courses-list/{slug?}', [FrontendCustomerController::class, 'courses_list'])->name('customer.courses');
     Route::get('/lesson-single/{course?}', [FrontendCustomerController::class, 'lesson_single'])->name('customer.lesson_single');
 
 
-    Route::get('/orders', [FrontendCustomerController::class, 'orders'])->name('customer.orders');
-
+    // #############  Customer Checkout  Routes   ############# //
     Route::group(['middleware' => 'check_cart'], function () {
-        Route::get('/checkout', [PaymentController::class, 'checkout'])->name('frontend.checkout');
-        Route::post('/checkout/payment', [PaymentController::class, 'checkout_now'])->name('checkout.payment');
 
+        // ==============  Customer checkout Page  ==============  //
+        Route::get('/shop-checkout', [FrontendController::class, 'shop_checkout'])->name('frontend.shop_checkout');
+
+
+        // ==============  Customer Completed Page  ==============  //
+        Route::get('/shop-order-completed', [FrontendController::class, 'shop_order_completed'])->name('frontend.shop_order_completed');
+
+
+        // ==============  Customer Paypal Pay Routes  ==============  //
+        // Route::get('/checkout', [PaymentController::class, 'checkout'])->name('frontend.checkout');
+        Route::post('/checkout/payment', [PaymentController::class, 'checkout_now'])->name('checkout.payment');
         Route::get('/checkout/{order_id}/cancelled', [PaymentController::class, 'cancelled'])->name('checkout.cancel');
         Route::get('/checkout/{order_id}/completed', [PaymentController::class, 'completed'])->name('checkout.complete');
         Route::get('/checkout/webhook/{order?}/{env?}', [PaymentController::class, 'webhook'])->name('checkout.webhook.ipn');
 
+
+        // ==============  Customer PayTabs Pay Routes  ==============  //
         Route::get('/checkout/{order_id}/completed_by_paytabs', [PaymentController::class, 'completed_paytabs'])->name('checkout.complete_by_paytabs');
     });
 });
 
-//Backend
+
+// #################################################### //
+// #################  Backend Routes   ################ //
+// #################################################### //
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
-    //guest to website 
+
+    // ###############   Guest Access Pages   ############### //
     Route::group(['middleware' => 'guest'], function () {
         Route::get('/login', [BackendController::class, 'login'])->name('login');
         Route::get('/register', [BackendController::class, 'register'])->name('register');
@@ -135,45 +153,44 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/recover-password', [BackendController::class, 'recover_password'])->name('recover-password');
     });
 
+
+    // ==============   Theme Icon To Style Website Ready ==============  //
     Route::post('/cookie/create/update', [BackendController::class, 'create_update_theme'])->name('create_update_theme');
 
 
-    //uthenticate to website 
+
+    // ###############    Authenticated Routes    ############### //
     Route::group(['middleware' => ['roles', 'role:admin|supervisor']], function () {
+
+        // ==============   Admin Index Access   ==============  //
         Route::get('/', [BackendController::class, 'index'])->name('index2');
         Route::get('/index', [BackendController::class, 'index'])->name('index');
 
-
+        // ==============   Admin Acount Tab   ==============  //
         Route::get('account_settings', [BackendController::class, 'account_settings'])->name('account_settings');
         Route::post('admin/remove-image', [BackendController::class, 'remove_image'])->name('remove_image');
         Route::patch('account_settings', [BackendController::class, 'update_account_settings'])->name('update_account_settings');
 
 
-
-        Route::post('product_categories/remove-image', [ProductCategoriesController::class, 'remove_image'])->name('product_categories.remove_image');
-        Route::resource('product_categories', ProductCategoriesController::class);
-
-
-        Route::post('products/remove-image', [ProductController::class, 'remove_image'])->name('products.remove_image');
-        Route::resource('products', ProductController::class);
-
-        // Route::post('main_sliders/remove-image', [MainSliderController::class, 'remove_image'])->name('main_sliders.remove_image');
-        // Route::resource('main_sliders', MainSliderController::class);
+        // ==============   Menus Tab   ==============  //
+        Route::resource('web_menus', WebMenuController::class);
+        Route::resource('company_menus', CompanyMenuController::class);
+        Route::resource('topics_menus', TopicsMenuController::class);
+        Route::resource('tracks_menus', TracksMenuController::class);
+        Route::resource('support_menus', SupportMenuController::class);
 
 
-        // Route::post('advertisor_sliders/remove-image', [AdvertisorSliderController::class, 'remove_image'])->name('advertisor_sliders.remove_image');
-        // Route::resource('advertisor_sliders', AdvertisorSliderController::class);
+        // ==============   Sliders Tab   ==============  //
+        Route::post('main_sliders/remove-image', [MainSliderController::class, 'remove_image'])->name('main_sliders.remove_image');
+        Route::resource('main_sliders', MainSliderController::class);
 
-        Route::resource('tags', TagController::class);
+        Route::post('advertisor_sliders/remove-image', [AdvertisorSliderController::class, 'remove_image'])->name('advertisor_sliders.remove_image');
+        Route::resource('advertisor_sliders', AdvertisorSliderController::class);
 
-        Route::post('card_categories/remove-image', [CardCategoriesController::class, 'remove_image'])->name('card_categories.remove_image');
-        Route::resource('card_categories', CardCategoriesController::class);
 
+        // ==============   Courses Tab   ==============  //
         Route::post('course_categories/remove-image', [CourseCategoriesController::class, 'remove_image'])->name('course_categories.remove_image');
         Route::resource('course_categories', CourseCategoriesController::class);
-
-        Route::post('cards/remove-image', [CardController::class, 'remove_image'])->name('cards.remove_image');
-        Route::resource('cards', CardController::class);
 
         Route::post('courses/remove-image', [CourseController::class, 'remove_image'])->name('courses.remove_image');
         Route::resource('courses', CourseController::class);
@@ -181,9 +198,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('events/remove-image', [EventController::class, 'remove_image'])->name('events.remove_image');
         Route::resource('events', EventController::class);
 
-        Route::resource('coupons', CouponController::class);
 
-
+        // ==============   Users Tab   ==============  //
         Route::post('customers/remove-image', [CustomerController::class, 'remove_image'])->name('customers.remove_image');
         Route::get('customers/get_customers', [CustomerController::class, 'get_customers'])->name('customers.get_customers');
         Route::resource('customers', CustomerController::class);
@@ -191,10 +207,27 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('supervisors/remove-image', [SupervisorController::class, 'remove_image'])->name('supervisors.remove_image');
         Route::resource('supervisors', SupervisorController::class);
 
-        Route::resource('customer_addresses', CustomerAddressController::class);
+        Route::post('instructor/remove-image', [InstructorController::class, 'remove_image'])->name('instructors.remove_image');
+        Route::resource('instructors', InstructorController::class);
 
         Route::resource('specializations', SpecializationController::class);
 
+        Route::resource('customer_addresses', CustomerAddressController::class);
+
+
+        // ==============   Reviews Tab   ==============  //
+        Route::resource('reviews', ReviewsController::class);
+
+
+        // ==============   Tags Tab   ==============  //
+        Route::resource('tags', TagController::class);
+
+
+        // ==============   Coupons Tab   ==============  //
+        Route::resource('coupons', CouponController::class);
+
+
+        // ==============   Countries Tab   ==============  //
         Route::resource('countries', CountryController::class);
 
         Route::get('states/get_states', [StateController::class, 'get_states'])->name('states.get_states');
@@ -203,79 +236,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('cities/get_cities', [CityController::class, 'get_cities'])->name('cities.get_cities');
         Route::resource('cities', CityController::class);
 
-        Route::resource('shipping_companies', ShippingCompanyController::class);
 
-        Route::resource('reviews', ReviewsController::class);
-
-        Route::post('payment_methods/remove-image', [PaymentMethodController::class, 'remove_image'])->name('payment_methods.remove_image');
-        Route::resource('payment_methods', PaymentMethodController::class);
-
+        // ==============   Orders Tab   ==============  //
         Route::resource('orders', OrderController::class);
 
-        Route::resource('common_questions', CommonQuestionController::class);
 
-        Route::post('news/remove-image', [NewsController::class, 'remove_image'])->name('news.remove_image');
-        Route::resource('news', NewsController::class);
-
+        // ==============   Blog/Posts Tab   ==============  //
         Route::post('posts/remove-image', [PostController::class, 'remove_image'])->name('posts.remove_image');
         Route::resource('posts', PostController::class);
 
-        Route::post('payment_categories/remove-image', [PaymentCategoriesController::class, 'remove_image'])->name('payment_categories.remove_image');
-        Route::resource('payment_categories', PaymentCategoriesController::class);
-
-        Route::post('payment_method_offlines/remove-image', [PaymentMethodOfflineController::class, 'remove_image'])->name('payment_method_offlines.remove_image');
-        Route::resource('payment_method_offlines', PaymentMethodOfflineController::class);
-
-
-
-        // Route::group(['middleware' => 'web'], function (){
-
-        // Route::get('/web_menus/{web_menus}/edit',    [WebMenuController::class, 'edit'])->name('web_menus.edit');
-        Route::resource('web_menus', WebMenuController::class);
-
-        // Route::get('/web_menu_helps/{web_menu_helps}/edit',    [WebMenuHelpController::class, 'edit'])->name('web_menu_helps.edit');
-        Route::resource('web_menu_helps', WebMenuHelpController::class);
-
-        //company menu 
-        Route::resource('company_menus', CompanyMenuController::class);
-
-        //Topics menu 
-        Route::resource('topics_menus', TopicsMenuController::class);
-
-        //Topics menu 
-        Route::resource('tracks_menus', TracksMenuController::class);
-
-        //Topics menu 
-        Route::resource('support_menus', SupportMenuController::class);
-
-        Route::post('main_sliders/remove-image', [MainSliderController::class, 'remove_image'])->name('main_sliders.remove_image');
-        Route::resource('main_sliders', MainSliderController::class);
-
-        Route::post('instructor/remove-image', [InstructorController::class, 'remove_image'])->name('instructors.remove_image');
-        Route::resource('instructors', InstructorController::class);
-
-
-        Route::post('advertisor_sliders/remove-image', [AdvertisorSliderController::class, 'remove_image'])->name('advertisor_sliders.remove_image');
-        // Route::get('advertisor_sliders/{advertisor_slider}/edit', [AdvertisorSliderController::class, 'edit'])->name('advertisor_sliders.edit');
-        Route::resource('advertisor_sliders', AdvertisorSliderController::class);
-
-
-
-        // });
-
-        Route::resource('card_codes', CardCodeController::class);
-        Route::post('card_codes/custom_codes', [CardCodeController::class, 'store_custom_codes'])->name('card_codes.store_custom_codes');
-        Route::post('card_codes/custom_group_codes', [CardCodeController::class, 'store_custom_group_codes'])->name('card_codes.store_custom_group_codes');
-
-
-
-
-
-        // Route::resource('site_infos' , SiteSettingsController::class);
+        // ==============   Site Setting  Tab   ==============  //
         Route::get('site_setting/site_infos', [SiteSettingsController::class, 'show_main_informations'])->name('settings.site_main_infos.show');
         Route::post('site_setting/update_site_info/{id?}', [SiteSettingsController::class, 'update_main_informations'])->name('settings.site_main_infos.update');
         Route::post('site_setting/site_infos/remove-image', [SiteSettingsController::class, 'remove_image'])->name('site_infos.remove_image');
-
 
         Route::get('site_setting/site_contacts', [SiteSettingsController::class, 'show_contact_informations'])->name('settings.site_contacts.show');
         Route::post('site_setting/update_site_contact/{id?}', [SiteSettingsController::class, 'update_contact_informations'])->name('settings.site_contacts.update');
@@ -294,11 +267,25 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('currencies', CurrenciesController::class);
         Route::post('update-currency-status', [CurrenciesController::class, 'updateCurrencyStatus'])->name('currencies.update_currency_status');
+
+
+
+        // ######################################################### //
+        // ###################    Working on      ################## //
+
+        Route::resource('shipping_companies', ShippingCompanyController::class);
+
+        Route::post('payment_categories/remove-image', [PaymentCategoriesController::class, 'remove_image'])->name('payment_categories.remove_image');
+        Route::resource('payment_categories', PaymentCategoriesController::class);
+
+        Route::post('payment_methods/remove-image', [PaymentMethodController::class, 'remove_image'])->name('payment_methods.remove_image');
+        Route::resource('payment_methods', PaymentMethodController::class);
+
+        Route::post('payment_method_offlines/remove-image', [PaymentMethodOfflineController::class, 'remove_image'])->name('payment_method_offlines.remove_image');
+        Route::resource('payment_method_offlines', PaymentMethodOfflineController::class);
+
+
+        // Route::group(['middleware' => 'web'], function (){
+        // });
     });
 });
-
-
-
-Route::get('/change-language/{locale}',     [LocaleController::class, 'switch'])->name('change.language');
-
-// Route::post('/cookie/create/update',[BackendController::class , 'create_update_theme'])->name('create_update_theme');

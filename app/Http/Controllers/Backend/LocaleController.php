@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Currency;
 use App\Models\News;
-use App\Models\Post;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\SiteSetting;

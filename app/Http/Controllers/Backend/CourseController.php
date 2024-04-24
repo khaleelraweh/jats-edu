@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\CourseRequest;
 use App\Models\Course;
 use App\Models\CourseCategory;
-use App\Models\Specialization;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;

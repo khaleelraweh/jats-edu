@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SpecializationSeeder::class);
         $this->call(EntrustSeeder::class);
         // $this->call(UserAddressSeeder::class); //This will be only for user khaleel user
-        $this->call(ProductCategorySeeder::class);
         $this->call(CourseCategorySeeder::class);
         $this->call(CourseSeeder::class);
 

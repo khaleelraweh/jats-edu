@@ -32,7 +32,6 @@ class DatabaseSeeder extends Seeder
         // $this->call(ProductSeeder::class);
         $this->call(MainSliderSeeder::class);
         $this->call(AdvSliderSeeder::class);
-        $this->call(ProductTagSeeder::class);
         $this->call(CouponSeeder::class);
         // $this->call(ShippingCompanySeeder::class);
         $this->call(PaymentMethodSeeder::class);

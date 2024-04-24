@@ -2,13 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product;
-use App\Models\Tag;
+use App\Models\Course;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Arr;
 
-class ProductTagSeeder extends Seeder
+class CourseTagSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,10 +15,11 @@ class ProductTagSeeder extends Seeder
      */
     public function run()
     {
-         $tags = Tag::whereStatus(true)->pluck('id')->toArray();
+        $tags = Tag::whereStatus(true)->pluck('id')->toArray();
          
-         Product::all()->each(function ($product) use ($tags) {
+         Course::all()->each(function ($product) use ($tags) {
              $product->tags()->attach(Arr::random($tags, rand(2, 3)));
              });
+    }
     }
 }

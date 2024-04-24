@@ -33,31 +33,48 @@ class BlogTagListComponent extends Component
         $this->searchQuery = '';
         $this->selectedNames = [];
     }
-
-
     public function render()
     {
-        $slug = $this->slug;
-
         $tags = Tag::query()->whereStatus(1)->where('section', 3)->get();
 
-        $random_posts = Post::with('tags')
-            ->active()
-            ->inRandomOrder()
-            ->take(2)
-            ->get();
-
-        $posts = Post::query();
-
-        $posts = $posts->with('tags')->whereHas('tags', function ($query) use ($slug) {
+        $posts = Post::with('photos');
+        $slugs = $this->slug;
+        $posts = $posts->with('tags')->whereHas('tags', function ($query) use ($slugs) {
             $query->where([
-                'slug->' . app()->getLocale() => $slug,
+                'slug->' . app()->getLocale() => $slugs,
                 'status' => true
             ]);
         });
 
-        $posts = $posts->active()
-            ->paginate($this->paginationLimit);
+        dd($posts);
+
+        if ($this->slug == null) {
+            $posts = $posts->ActiveCourseCategory();
+
+            if ($this->categoryInputs != null) {
+                $courseCategoryIds = CourseCategory::whereIn('slug->' . app()->getLocale(), $this->categoryInputs)->pluck('id')->toArray();
+                $posts = $posts->whereIn('course_category_id', $courseCategoryIds);
+            }
+        } else {
+
+            if ($this->categoryInputs == null) {
+                $course_category = CourseCategory::where('slug->' . app()->getLocale(), $this->slug)
+                    ->whereStatus(true)
+                    ->first();
+                $posts = $posts->where('course_category_id', $course_category->id);
+            } else {
+                $courseCategoryIds = CourseCategory::whereIn('slug->' . app()->getLocale(), $this->categoryInputs)->pluck('id')->toArray();
+                $posts = $posts->whereIn('course_category_id', $courseCategoryIds);
+            }
+        }
+
+        $posts = $posts
+            ->when($this->searchQuery, function ($query) {
+                $query->where(function ($subQuery) {
+                    $subQuery->where('title', 'LIKE', '%' . $this->searchQuery . '%');
+                });
+            })
+            ->Blog()->active()->paginate($this->paginationLimit);
 
         $categories_menu = CourseCategory::withCount(['posts' => function ($query) {
             $query->where('section', 1);

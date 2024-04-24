@@ -15,6 +15,7 @@ use App\Models\ProductCategory;
 use App\Models\ProductReview;
 use App\Models\SiteSetting;
 use App\Models\Slider;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Livewire\WithPagination;
@@ -139,7 +140,27 @@ class FrontendController extends Controller
     }
     public function blog_tag_list($slug = null)
     {
-        return view('frontend.blog-tag-list', compact('slug'));
+        $tags = Tag::query()->whereStatus(1)->where('section', 3)->get();
+
+        $random_posts = Post::with('tags')
+            ->active()
+            ->inRandomOrder()
+            ->take(2)
+            ->get();
+
+        $posts = Post::query();
+
+        $posts = $posts->with('tags')->whereHas('tags', function ($query) use ($slug) {
+            $query->where([
+                'slug->' . app()->getLocale() => $slug,
+                'status' => true
+            ]);
+        });
+
+        $posts = $posts->active()
+            ->paginate($this->paginationLimit);
+
+        return view('frontend.blog-tag-list', compact('slug', 'posts'));
     }
 
     public function blog_tag($slug = null)
@@ -164,12 +185,13 @@ class FrontendController extends Controller
         $blog = $blog->active()
             //  ->orderBy($sort_field , $sort_type)
             ->paginate($this->paginationLimit);
+
         return view('frontend.blog.blog_tag', compact('slug', 'blog', 'tags', 'random_posts'));
     }
 
     public function blog_single($slug)
     {
-        $post = Post::with('photos', 'tags', 'topics')
+        $post = Post::with('photos', 'tags')
             ->where('slug->' . app()->getLocale(), $slug)
             ->firstOrFail();
 

@@ -3,19 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\CommonQuestion;
 use App\Models\Course;
-use App\Models\CourseCategory;
-use App\Models\Currency;
-use App\Models\Instructor;
-use App\Models\News;
 use App\Models\Post;
-use App\Models\Product;
-use App\Models\ProductCategory;
-use App\Models\ProductReview;
-use App\Models\SiteSetting;
 use App\Models\Slider;
-use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Livewire\WithPagination;

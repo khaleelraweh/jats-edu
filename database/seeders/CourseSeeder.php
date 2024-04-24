@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Course;
 use App\Models\CourseCategory;
-use App\Models\Instructor;
 use App\Models\User;
 use Faker\Factory;
 use Illuminate\Database\Seeder;

@@ -5,8 +5,6 @@ namespace Database\Seeders;
 use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\Post;
-use App\Models\Product;
-use App\Models\ProductCategory;
 use App\Models\Slider;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;

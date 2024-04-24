@@ -3,9 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Course;
-use App\Models\Event;
-use App\Models\Post;
-use App\Models\Topic;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;

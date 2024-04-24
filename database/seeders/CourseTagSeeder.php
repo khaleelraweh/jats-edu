@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Course;
+use App\Models\Tag;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 
 class CourseTagSeeder extends Seeder
 {
@@ -16,10 +18,9 @@ class CourseTagSeeder extends Seeder
     public function run()
     {
         $tags = Tag::whereStatus(true)->pluck('id')->toArray();
-         
-         Course::all()->each(function ($product) use ($tags) {
-             $product->tags()->attach(Arr::random($tags, rand(2, 3)));
-             });
-    }
+
+        Course::all()->each(function ($product) use ($tags) {
+            $product->tags()->attach(Arr::random($tags, rand(2, 3)));
+        });
     }
 }

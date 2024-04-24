@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Frontend\EventList;
 
 use App\Models\Course;
-use App\Models\Post;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;

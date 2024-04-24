@@ -55,9 +55,9 @@ Auth::routes(['verify' => true]);
 // لايقاف الديباجر نضيف هذا الكود
 app('debugbar')->disable();
 
-// #################################################### //
-// #################  Frontend Route   ################ //
-// #################################################### //
+// ######################################################### //
+// ###################   Frontend Route   ################## //
+// ######################################################### //
 Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
 Route::get('/index', [FrontendController::class, 'index'])->name('frontend.index');
 Route::get('/home', [FrontendController::class, 'home'])->name('frontend.home');
@@ -90,9 +90,9 @@ Route::get('/change-language/{locale}',     [LocaleController::class, 'switch'])
 
 
 
-// #################################################### //
-// #############  Customer Authed Route   ############# //
-// #################################################### //
+// ######################################################### //
+// ###############   Customer Authed Route   ############### //
+// ######################################################### //
 Route::group(['middleware' => ['roles', 'role:customer', 'verified']], function () {
 
     // ==============  Customer Profile Setting   ==============  //
@@ -114,7 +114,7 @@ Route::group(['middleware' => ['roles', 'role:customer', 'verified']], function 
     Route::get('/lesson-single/{course?}', [FrontendCustomerController::class, 'lesson_single'])->name('customer.lesson_single');
 
 
-    // #############  Customer Checkout  Routes   ############# //
+    // ##############  Customer Checkout  Routes   ############# //
     Route::group(['middleware' => 'check_cart'], function () {
 
         // ==============  Customer checkout Page  ==============  //
@@ -139,13 +139,13 @@ Route::group(['middleware' => ['roles', 'role:customer', 'verified']], function 
 });
 
 
-// #################################################### //
-// #################  Backend Routes   ################ //
-// #################################################### //
+// ######################################################### //
+// ###################   Backend Routes   ################## //
+// ######################################################### //
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
-    // ###############   Guest Access Pages   ############### //
+    // #################   Guest Access Pages   ################ //
     Route::group(['middleware' => 'guest'], function () {
         Route::get('/login', [BackendController::class, 'login'])->name('login');
         Route::get('/register', [BackendController::class, 'register'])->name('register');
@@ -156,7 +156,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     // ==============   Theme Icon To Style Website Ready ==============  //
     Route::post('/cookie/create/update', [BackendController::class, 'create_update_theme'])->name('create_update_theme');
-
 
 
     // ###############    Authenticated Routes    ############### //

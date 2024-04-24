@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Course;
 use App\Models\CourseCategory;
-use App\Models\News;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\ProductCategory;
@@ -32,10 +31,6 @@ class PhotoSeeder extends Seeder
             $images[] = ['file_name' => '8.webp', 'file_type' => 'images/webp', 'file_size' => rand(100, 900), 'file_status' => true];
 
 
-            ProductCategory::all()->each(function ($productCategory) use ($images) {
-                $productCategory->photo()->createMany(Arr::random($images, rand(1, 1)));
-            });
-
             CourseCategory::all()->each(function ($courseCategory) use ($images) {
                 $courseCategory->photo()->createMany(Arr::random($images, rand(1, 1)));
             });
@@ -50,16 +45,6 @@ class PhotoSeeder extends Seeder
             });
 
 
-
-            //product photo faker 
-            Product::all()->each(function ($product) use ($images) {
-                $product->photos()->createMany(Arr::random($images, rand(2, 3)));
-            });
-
-            //news photo faker 
-            News::all()->each(function ($news) use ($images) {
-                $news->photos()->createMany(Arr::random($images, rand(2, 3)));
-            });
 
             //slider photo faker 
             Slider::all()->each(function ($slider) use ($images) {

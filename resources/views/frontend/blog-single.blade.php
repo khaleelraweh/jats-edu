@@ -95,7 +95,7 @@
 
                     <div class="col-md-8">
                         @foreach ($post->tags as $tag)
-                            <a href="#"
+                            <a href="{{ route('frontend.blog_tag_list', $tag->slug) }}"
                                 class="btn btn-sm btn-light text-gray-800 px-5 fw-normal me-1 mb-2">{{ $tag->name }}</a>
                         @endforeach
                     </div>

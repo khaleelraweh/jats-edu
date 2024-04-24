@@ -102,7 +102,7 @@
                             </div>
                         </div>
 
-                        {{-- {{ dd($event) }} --}}
+
                         <script>
                             var eventDate = new Date("{{ $event->start_date }}");
 
@@ -125,9 +125,6 @@
                             updateCountdown();
                         </script>
                     @endif
-
-
-
                 </div>
             </div>
         </div>
@@ -315,7 +312,7 @@
                 </div>
 
                 {{-- event reviews --}}
-                @livewire('frontend.event-list.event-review-component', ['eventId' => $event->id])
+                {{-- @livewire('frontend.event-list.event-review-component', ['eventId' => $event->id]) --}}
 
 
             </div>

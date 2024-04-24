@@ -115,7 +115,7 @@ class FrontendController extends Controller
 
     public function event_single($slug)
     {
-        $event = Post::with('photos')
+        $event = Course::with('photos', 'topics', 'requirements')
             ->where('slug->' . app()->getLocale(), $slug)
             ->firstOrFail();
 
@@ -144,7 +144,7 @@ class FrontendController extends Controller
 
     public function blog_single($slug)
     {
-        $post = Post::with('photos', 'tags')
+        $post = Post::with('photos', 'tags', 'topics')
             ->where('slug->' . app()->getLocale(), $slug)
             ->firstOrFail();
 
@@ -158,13 +158,11 @@ class FrontendController extends Controller
 
     public function instructors_list($slug = null)
     {
-
         return view('frontend.instructors-list');
     }
 
     public function instructors_single($slug)
     {
-
         $instructor = User::whereId($slug)->first();
 
         // Trim the text to remove leading and trailing spaces
@@ -177,10 +175,6 @@ class FrontendController extends Controller
 
         return view('frontend.instructors-single', compact('instructor', 'exposedText', 'hiddenText'));
     }
-
-
-
-
 
     public function shop_cart()
     {

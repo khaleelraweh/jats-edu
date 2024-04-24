@@ -35,6 +35,13 @@ class BlogTagListComponent extends Component
     public function render()
     {
         $posts = Post::with('photos');
+        $slugs = $this->slug;
+        $posts = $posts->with('tags')->whereHas('tags', function ($query) use ($slugs) {
+            $query->where([
+                'slug->' . app()->getLocale() => $slugs,
+                'status' => true
+            ]);
+        });
 
         if ($this->slug == null) {
             $posts = $posts->ActiveCourseCategory();

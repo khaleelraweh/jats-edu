@@ -85,8 +85,6 @@ class PaymentMethodOffline extends Model
         });
     }
 
-    // product category has only one photo in photo table so relationship is morphone
-    // to get only first one media elemet
     public function firstMedia(): MorphOne
     {
         return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort', 'asc');
@@ -97,7 +95,6 @@ class PaymentMethodOffline extends Model
         return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort', 'desc');
     }
 
-    // one product may have more than one photo
     public function photos(): MorphMany
     {
         return $this->morphMany(Photo::class, 'imageable');

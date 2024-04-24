@@ -10,34 +10,36 @@ use Nicolaslopezj\Searchable\SearchableTrait;
 
 class PaymentMethod extends Model
 {
-    use HasFactory ,SearchableTrait;
+    use HasFactory, SearchableTrait;
 
     protected $guarded = [];
 
 
     public $searchable =  [
-        'columns' =>[
+        'columns' => [
             'payment_methods.name'           => 10,
             'payment_methods.code'           => 10,
             'payment_methods.merchant_email' => 10,
         ]
-    ]; 
+    ];
 
-    public function status():string{
+    public function status(): string
+    {
         return $this->status ? 'مفعل' : 'غير مفعل';
     }
 
-    public function sandbox():string{
+    public function sandbox(): string
+    {
         return $this->sandbox ? 'تجريبي' : 'حقيقي';
     }
 
-    // one product may have more than one photo
-    public function photos():MorphMany
+    public function photos(): MorphMany
     {
         return $this->morphMany(Photo::class, 'imageable');
     }
 
-    public function orders():HasMany{
+    public function orders(): HasMany
+    {
         return $this->hasMany(Order::class);
     }
 }

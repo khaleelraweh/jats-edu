@@ -160,7 +160,6 @@ class Course extends Model
         return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort', 'desc');
     }
 
-    // one product may have more than one photo
     public function photos(): MorphMany
     {
         return $this->morphMany(Photo::class, 'imageable');

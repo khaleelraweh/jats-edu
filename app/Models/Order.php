@@ -75,11 +75,6 @@ class Order extends Model
         return $this->belongsTo(UserAddress::class);
     }
 
-    public function products(): BelongsToMany
-    {
-        return $this->belongsToMany(Product::class)->withPivot('quantity');
-    }
-
     public function courses(): BelongsToMany
     {
         return $this->belongsToMany(Course::class)->withPivot('quantity');

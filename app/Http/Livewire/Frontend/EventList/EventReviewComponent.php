@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Frontend\EventList;
 
+use App\Models\Course;
 use App\Models\Post;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,7 @@ class EventReviewComponent extends Component
     {
         // Fetch the count for each rating level
         $this->ratingCounts = Review::where('reviewable_id', $this->eventId)
-            ->where('reviewable_type', Post::class)
+            ->where('reviewable_type', Course::class)
             ->selectRaw('rating, count(*) as count')
             ->groupBy('rating')
             ->pluck('count', 'rating')
@@ -37,7 +38,7 @@ class EventReviewComponent extends Component
     public function render()
     {
         // Retrieve the course along with its reviews
-        $event = Post::with('reviews')->find($this->eventId);
+        $event = Course::with('reviews')->find($this->eventId);
 
         // Calculate the average rating
         $averageRating = $event->reviews->avg('rating');
@@ -59,7 +60,7 @@ class EventReviewComponent extends Component
         // Check if the user has already submitted a review for this course
         $existingReview = Review::where('user_id', auth()->user()->id)
             ->where('reviewable_id', $this->eventId)
-            ->where('reviewable_type', Post::class)
+            ->where('reviewable_type', Course::class)
             ->first();
 
         if ($existingReview) {
@@ -77,7 +78,7 @@ class EventReviewComponent extends Component
         $review = new Review([
             'user_id' => auth()->user()->id,
             'reviewable_id' => $this->eventId,
-            'reviewable_type' => Post::class,
+            'reviewable_type' => Course::class,
             'name' => auth()->user()->full_name,
             'email' => auth()->user()->email,
             'title' => $this->title,

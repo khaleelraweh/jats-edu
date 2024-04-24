@@ -312,7 +312,7 @@
                 </div>
 
                 {{-- event reviews --}}
-                {{-- @livewire('frontend.event-list.event-review-component', ['eventId' => $event->id]) --}}
+                @livewire('frontend.event-list.event-review-component', ['eventId' => $event->id])
 
 
             </div>

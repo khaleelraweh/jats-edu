@@ -16,7 +16,7 @@ class TagController extends Controller
             return redirect('admin/index');
         }
 
-        $tags = Tag::with('products')
+        $tags = Tag::with('courses')
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })

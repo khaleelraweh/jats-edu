@@ -68,8 +68,9 @@ class Tag extends Model
     }
 
 
-    public function products(): MorphToMany
+
+    public function courses(): MorphToMany
     {
-        return $this->morphedByMany(Product::class, 'taggable');
+        return $this->morphedByMany(Course::class, 'taggable');
     }
 }

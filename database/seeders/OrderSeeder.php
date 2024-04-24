@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Course;
 use App\Models\Order;
 use Illuminate\Support\Str;
-use App\Models\Product;
 use App\Models\User;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,7 +23,7 @@ class OrderSeeder extends Seeder
         $faker = Factory::create();
 
         $khaleelUser = User::find(3);
-        $products = Product::active()->hasQuantity()->activeCategory()->inRandomOrder()->take(3)->get();
+        $products = Course::active()->inRandomOrder()->take(3)->get();
         $subTotalValue = $products->sum('price');
         $discountValue = $subTotalValue / 2;
         $shippingValue = 15.00;

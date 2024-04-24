@@ -138,56 +138,12 @@ class FrontendController extends Controller
     {
         return view('frontend.blog-list', compact('slug'));
     }
+
     public function blog_tag_list($slug = null)
     {
-        $tags = Tag::query()->whereStatus(1)->where('section', 3)->get();
-
-        $random_posts = Post::with('tags')
-            ->active()
-            ->inRandomOrder()
-            ->take(2)
-            ->get();
-
-        $posts = Post::query();
-
-        $posts = $posts->with('tags')->whereHas('tags', function ($query) use ($slug) {
-            $query->where([
-                'slug->' . app()->getLocale() => $slug,
-                'status' => true
-            ]);
-        });
-
-        $posts = $posts->active()
-            ->paginate($this->paginationLimit);
-
-        return view('frontend.blog-tag-list', compact('slug', 'posts'));
+        return view('frontend.blog-tag-list', compact('slug'));
     }
 
-    public function blog_tag($slug = null)
-    {
-        // $tags = Tag::query()->whereStatus(1)->where('section', 3)->get();
-
-        $random_posts = News::with('tags')
-            ->active()
-            ->inRandomOrder()
-            ->take(2)
-            ->get();
-
-        $blog = News::query();
-
-        $blog = $blog->with('tags')->whereHas('tags', function ($query) use ($slug) {
-            $query->where([
-                'slug->' . app()->getLocale() => $slug,
-                'status' => true
-            ]);
-        });
-
-        $blog = $blog->active()
-            //  ->orderBy($sort_field , $sort_type)
-            ->paginate($this->paginationLimit);
-
-        return view('frontend.blog.blog_tag', compact('slug', 'blog', 'tags', 'random_posts'));
-    }
 
     public function blog_single($slug)
     {

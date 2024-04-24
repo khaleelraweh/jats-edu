@@ -18,7 +18,7 @@
                 </ol>
             </nav>
         </div>
-        {{-- {{ dd($posts) }} --}}
+
         <!-- Img -->
         <img class="d-none img-fluid" src="...html" alt="...">
     </header>

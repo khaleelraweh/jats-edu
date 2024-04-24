@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Frontend\Blogs;
 
 use App\Models\CourseCategory;
 use App\Models\Post;
+use App\Models\Tag;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -35,6 +36,7 @@ class BlogListComponent extends Component
 
     public function render()
     {
+        $tags = Tag::query()->whereStatus(1)->where('section', 3)->get();
         $posts = Post::with('photos');
 
         if ($this->slug == null) {
@@ -84,6 +86,7 @@ class BlogListComponent extends Component
                 'categories_menu'   =>  $categories_menu,
                 'total_Posts'       =>  $total_Posts,
                 'recent_posts'      =>  $recent_posts,
+                'tags'              =>  $tags,
             ]
         );
     }

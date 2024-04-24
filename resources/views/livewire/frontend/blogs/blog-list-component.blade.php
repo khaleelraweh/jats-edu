@@ -188,16 +188,14 @@
 
                     <div class="border rounded mb-6 p-5 py-md-6 ps-md-6 pe-md-4">
                         <h4 class="mb-5">Tags</h4>
-                        <a href="blog-grid-v2.html"
-                            class="btn btn-sm btn-light text-gray-800 px-5 fw-normal me-1 mb-2">Course</a>
-                        <a href="blog-grid-v2.html"
-                            class="btn btn-sm btn-light text-gray-800 px-5 fw-normal me-1 mb-2">Timeline</a>
-                        <a href="blog-grid-v2.html"
-                            class="btn btn-sm btn-light text-gray-800 px-5 fw-normal me-1 mb-2">Moodle</a>
-                        <a href="blog-grid-v2.html"
-                            class="btn btn-sm btn-light text-gray-800 px-5 fw-normal me-1 mb-2">Best</a>
-                        <a href="blog-grid-v2.html"
-                            class="btn btn-sm btn-light text-gray-800 px-5 fw-normal me-1 mb-2">Info</a>
+                        @foreach ($tags as $tag)
+                            <a href="{{ route('frontend.blog_tag_list', $tag->slug) }}"
+                                class="btn btn-sm btn-light text-gray-800 px-5 fw-normal me-1 mb-2">
+                                {{ $tag->name }}
+                            </a>
+                        @endforeach
+
+
                     </div>
                 </div>
 

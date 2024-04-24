@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('icon')->nullable();
 
             $table->unsignedBigInteger('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('product_categories')->nullOnDelete();
+            $table->foreign('parent_id')->references('id')->on('web_menus')->nullOnDelete();
 
             $table->unsignedBigInteger('section')->default(1); // 1: main menu   2 : our_company  3 : topics    4 : tacks   5 : support 
 

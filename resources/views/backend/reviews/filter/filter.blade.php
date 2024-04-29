@@ -4,17 +4,19 @@
             <div class="col-8 col-sm-4 col-md-2">
                 <div class="form-group">
                     <input type="text" name="keyword" value="{{ old('keyword', request()->input('keyword')) }}"
-                        class="form-control" placeholder="ابحث هنا">
+                        class="form-control" placeholder="{{ __('panel.keyword') }}">
                 </div>
             </div>
             <div class="col-md-2 d-none d-md-block">
                 <div class="form-group">
                     <select name="status" class="form-control">
-                        <option value="">عرض الكل</option>
+                        <option value="">{{ __('panel.show_all') }}</option>
                         <option value="1" {{ old('status', request()->input('status')) == '1' ? 'selected' : '' }}>
-                            مفعل</option>
+                            {{ __('panel.status_active') }}
+                        </option>
                         <option value="0" {{ old('status', request()->input('status')) == '0' ? 'selected' : '' }}>
-                            غير مفعل</option>
+                            {{ __('panel.status_inactive') }}
+                        </option>
                     </select>
                 </div>
             </div>
@@ -23,19 +25,17 @@
                     <select name="sort_by" class="form-control">
                         {{-- <option value="">---</option> --}}
                         <option value="id"
-                            {{ old('sort_by', request()->input('sort_by')) == 'id' ? 'selected' : '' }}>رقم الحقل
+                            {{ old('sort_by', request()->input('sort_by')) == 'id' ? 'selected' : '' }}>
+                            {{ __('panel.id') }}
                         </option>
                         <option value="name"
-                            {{ old('sort_by', request()->input('sort_by')) == 'name' ? 'selected' : '' }}>عنوان التعليق
+                            {{ old('sort_by', request()->input('sort_by')) == 'name' ? 'selected' : '' }}>
+                            {{ __('panel.review_title') }}
                         </option>
                         <option value="created_at"
                             {{ old('sort_by', request()->input('sort_by')) == 'created_at' ? 'selected' : '' }}>
-                            تاريخ الانشاء
+                            {{ __('panel.created_at') }}
                         </option>
-                        <option value="published_on"
-                            {{ old('sort_by', request()->input('sort_by')) == 'published_on' ? 'selected' : '' }}>
-                            تاريخ النشر</option>
-
                     </select>
                 </div>
             </div>
@@ -44,10 +44,12 @@
                     <select name="order_by" class="form-control">
                         {{-- <option value="">---</option> --}}
                         <option value="asc"
-                            {{ old('order_by', request()->input('order_by')) == 'asc' ? 'selected' : '' }}>تصاعدي
+                            {{ old('order_by', request()->input('order_by')) == 'asc' ? 'selected' : '' }}>
+                            {{ __('panel.asc') }}
                         </option>
                         <option value="desc"
-                            {{ old('order_by', request()->input('order_by')) == 'desc' ? 'selected' : '' }}>تنازلي
+                            {{ old('order_by', request()->input('order_by')) == 'desc' ? 'selected' : '' }}>
+                            {{ __('panel.desc') }}
                         </option>
                     </select>
                 </div>
@@ -71,7 +73,7 @@
             </div>
             <div class="col-2 col-sm-2 col-md-1">
                 <div class="form-group">
-                    <button type="submit" name="submit" class="btn btn-link">بحث</button>
+                    <button type="submit" name="submit" class="btn btn-link">{{ __('panel.search') }}</button>
                 </div>
             </div>
         </div>

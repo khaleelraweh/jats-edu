@@ -10,18 +10,18 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    تعديل تعليق
+                    {{ __('panel.edit_existing_review') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
                         <a href="{{ route('admin.index') }}">
-                            الرئيسية
+                            {{ __('panel.main') }}
                         </a>
                         <i class="fa fa-solid fa-chevron-left chevron"></i>
                     </li>
                     <li>
                         <a href="{{ route('admin.reviews.index') }}">
-                            إدارة التعليقات
+                            {{ __('panel.manage_reviews') }}
                         </a>
                     </li>
                 </ul>
@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-4 pt-2">
                         <div class="form-group">
-                            <label for="name">الاسم</label>
+                            <label for="name">{{ __('panel.name') }}</label>
                             <input type="text" id="name" name="name" value="{{ old('name', $review->name) }}"
                                 class="form-control">
                             @error('name')
@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-sm-12 col-md-4 pt-2">
                         <div class="form-group">
-                            <label for="email">الايميل</label>
+                            <label for="email">{{ __('panel.email') }}</label>
                             <input type="text" id="email" name="email" value="{{ old('email', $review->email) }}"
                                 class="form-control">
                             @error('email')
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-4 pt-2">
-                        <label for="rating">التقييم</label>
+                        <label for="rating">{{ __('panel.review_rating') }}</label>
                         <select name="rating" class="form-control">
                             <option value="">---</option>
                             <option value="1" {{ old('rating', $review->rating) == '1' ? 'selected' : null }}>1
@@ -77,19 +77,18 @@
                     <div class="col-sm-12 col-md-4 pt-3">
                         <div class="form-group">
                             <label for="reviewable_id">
-                                المنتج
+                                {{ __('panel.review_type') }}
                                 (
                                 @if ($review->reviewable_type === 'App\Models\Course')
                                     @if ($review->reviewable->section == 1)
-                                        Course
+                                        {{ __('panel.review_type_course') }}
                                     @endif
                                     @if ($review->reviewable->section == 2)
-                                        Event
+                                        {{ __('panel.review_type_event') }}
                                     @endif
                                 @elseif ($review->reviewable_type === 'App\Models\Post')
-                                    Post
+                                    {{ __('panel.review_type_post') }}
                                 @else
-                                    This review belongs to an unknown entity.
                                 @endif
                                 )
 
@@ -105,7 +104,7 @@
                     </div>
                     <div class="col-sm-12 col-md-4 pt-3">
                         <div class="form-group">
-                            <label for="user_id">العميل</label>
+                            <label for="user_id">{{ __('panel.customer') }}</label>
                             <input type="text" id="user_name" name="user_name"
                                 value="{{ $review->user_id != '' ? $review->user->full_name : '' }}" class="form-control"
                                 readonly>
@@ -117,12 +116,14 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-4 pt-3">
-                        <label for="status">الحالة</label>
+                        <label for="status">{{ __('panel.status') }}</label>
                         <select name="status" class="form-control">
                             <option value="1" {{ old('status', $review->status) == '1' ? 'selected' : null }}>
-                                مفعل</option>
+                                {{ __('panel.status_active') }}
+                            </option>
                             <option value="0" {{ old('status', $review->status) == '0' ? 'selected' : null }}>
-                                غير مفعل</option>
+                                {{ __('panel.status_inactive') }}
+                            </option>
                         </select>
                         @error('status')
                             <span class="text-danger">{{ $message }}</span>
@@ -132,7 +133,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-12 pt-3">
                         <div class="form-group">
-                            <label for="title">عوان التعليق</label>
+                            <label for="title">{{ __('panel.review_link_title') }}</label>
                             <input type="text" id="title" name="title" value="{{ old('title', $review->title) }}"
                                 class="form-control">
                             @error('title')
@@ -144,7 +145,7 @@
 
                 <div class="row">
                     <div class="col-sm-12 pt-3">
-                        <label for="message">الوصف</label>
+                        <label for="message">{{ __('panel.description') }}</label>
                         <textarea name="message" rows="10" class="form-control summernote">
                             {!! old('message', $review->message) !!}
                         </textarea>
@@ -154,7 +155,7 @@
 
 
                 <div class="form-group pt-2">
-                    <button type="submit" name="submit" class="btn btn-primary">تعديل التعليق</button>
+                    <button type="submit" name="submit" class="btn btn-primary">{{ __('panel.update_review') }}</button>
                 </div>
 
             </form>

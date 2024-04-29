@@ -300,6 +300,7 @@ return [
     'review_type_course'                =>  'Course',
     'review_type_event'                 =>  'Event',
     'review_type_post'                  =>  'Post',
+    'update_review'                     =>  'Update Review',
 
 
 

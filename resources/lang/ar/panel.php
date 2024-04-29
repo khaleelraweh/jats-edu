@@ -299,6 +299,7 @@ return [
     'review_type_course'                =>  'دورة',
     'review_type_event'                 =>  'حدث',
     'review_type_post'                  =>  'مقال',
+    'update_review'                     =>  'تعديل التعليق',
 
 
     #################################### Manage Residential Site ( Countries , States , Cities   ) ##########################

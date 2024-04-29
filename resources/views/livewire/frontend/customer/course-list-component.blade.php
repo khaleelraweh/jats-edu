@@ -323,7 +323,7 @@
                                             </span>
 
                                             <span class="ms-3">
-                                                <span>& up</span>
+                                                <span>{{ __('transf.&_up') }}</span>
                                             </span>
                                         </span>
                                     </label>
@@ -338,7 +338,7 @@
                                             </span>
 
                                             <span class="ms-3">
-                                                <span>& up</span>
+                                                <span>{{ __('transf.&_up') }}</span>
                                             </span>
                                         </span>
                                     </label>
@@ -353,7 +353,7 @@
                                             </span>
 
                                             <span class="ms-3">
-                                                <span>& up</span>
+                                                <span>{{ __('transf.&_up') }}</span>
                                             </span>
                                         </span>
                                     </label>
@@ -368,7 +368,7 @@
                                             </span>
 
                                             <span class="ms-3">
-                                                <span>& up</span>
+                                                <span>{{ __('transf.&_up') }}</span>
                                             </span>
                                         </span>
                                     </label>
@@ -383,7 +383,7 @@
                                             </span>
 
                                             <span class="ms-3">
-                                                <span>& up</span>
+                                                <span>{{ __('transf.&_up') }}</span>
                                             </span>
                                         </span>
                                     </label>

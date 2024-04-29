@@ -110,7 +110,7 @@ Route::group(['middleware' => ['roles', 'role:customer', 'verified']], function 
     Route::get('/orders', [FrontendCustomerController::class, 'orders'])->name('customer.orders');
 
     // ==============  Customer Bought Courses and Lessons ======  //
-    Route::get('/student-courses-list/{slug?}', [FrontendCustomerController::class, 'courses_list'])->name('customer.courses');
+    Route::get('/student-courses-list/{slug?}', [FrontendCustomerController::class, 'student_courses_list'])->name('customer.courses');
     Route::get('/lesson-single/{course?}', [FrontendCustomerController::class, 'lesson_single'])->name('customer.lesson_single');
 
 

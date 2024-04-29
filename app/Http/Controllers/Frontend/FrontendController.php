@@ -47,6 +47,7 @@ class FrontendController extends Controller
 
         return view('frontend.index', compact('main_sliders', 'instructors', 'events', 'posts'));
     }
+
     public function home()
     {
         return view('frontend.home');

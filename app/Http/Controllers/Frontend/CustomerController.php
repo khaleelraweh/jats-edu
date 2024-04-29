@@ -85,7 +85,7 @@ class CustomerController extends Controller
 
     //all about course 
 
-    public function courses_list($slug = null)
+    public function student_courses_list($slug = null)
     {
         $user = Auth::user();
 
@@ -101,51 +101,13 @@ class CustomerController extends Controller
             }
         }
         // return view('frontend.course-list', compact('courses', 'course_categories_menu'));
-        return view('frontend.customer.course-list', compact('slug', 'courses'));
+        return view('frontend.customer.student-course-list', compact('slug', 'courses'));
     }
 
-    public function course_single($slug)
-    {
-        // Retrieve the text from the database
-        $course  = Course::with('courseCategory', 'photos', 'users', 'reviews')
-            ->where('slug->' . app()->getLocale(), $slug)
-            ->Active()
-            ->ActiveCourseCategory()
-            ->firstOrFail();
-
-
-        // Trim the text to remove leading and trailing spaces
-        $course->description = trim($course->description);
-        // Get the first 200 characters
-        $exposedText = substr($course->description, 0, 200);
-        // Get the rest of the text
-        $hiddenText = substr($course->description, 200);
-
-
-        //get all related course that are the same of courseCategory of the this choisen course
-        $related_courses = Course::with('firstMedia', 'photos', 'courseCategory')->whereHas('courseCategory', function ($query) use ($course) {
-            $query->whereId($course->course_category_id)->whereStatus(true);
-        })->inRandomOrder()
-            ->Active()
-            ->take(8)
-            ->get();
-
-        $latest_courses = Course::with('firstMedia', 'photos', 'courseCategory')
-            ->orderBy('created_at', 'desc') // Order by creation date in descending order
-            ->Active()
-            ->take(4)
-            ->get();
-
-
-
-        // Generate WhatsApp share URL
-        $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($course->name . ': ' . route('frontend.course_single', $course->slug));
-
-        return view('frontend.customer.course-single', compact('course', 'exposedText', 'hiddenText', 'related_courses', 'latest_courses', 'whatsappShareUrl'));
-    }
 
     public function lesson_single($slug)
     {
-        return view('frontend.customer.lesson-single');
+        $course = Course::with('sections')->where('slug->' . app()->getLocale(), $slug)->first();
+        return view('frontend.customer.lesson-single', compact('course'));
     }
 }

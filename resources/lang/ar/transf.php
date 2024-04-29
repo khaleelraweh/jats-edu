@@ -314,6 +314,12 @@ return [
 
     //Shop Checkout
     'shop_checkout'                                 =>  'إستكمال عملية الشراء',
+
+    'billing_details'                               =>  'تفاصيل الفاتورة',
+    'paypal'                                        =>  'باي بال',
+    'paypal_details'                                =>  'الدفع عن طريق باي بال. يمكنك الدفع باستخدام بطاقتك الائتمانية إذا لم يكن لديك حساب PayPal',
+    'credit_debit_card'                             =>  'بطاقة الائتمان',
+
     'summary'                                       =>  'ملخص',
     'original_price'                                =>  'السعر الأصلي',
     'offer_discount'                                =>  'خصم ترويجي',

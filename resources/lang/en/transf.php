@@ -312,11 +312,20 @@ return [
 
     //Shop Checkout
     'shop_checkout'                                 =>  'Shop Checkout',
+
+    'billing_details'                               =>  'Billing details',
+    'paypal'                                        =>  'PayPal',
+    'paypal_details'                                =>  'Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account',
+    'credit_debit_card'                             =>  'Credit/Debit Card',
+
+
+
     'summary'                                       =>  'Summary',
     'original_price'                                =>  'Original Price',
     'offer_discount'                                =>  'Offer Discount',
     'coupon_discout'                                =>  'Coupon Discount',
     'proccess'                                      =>  'Proccess',
+
 
 
 

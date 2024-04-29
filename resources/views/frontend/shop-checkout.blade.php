@@ -48,7 +48,7 @@
                                                 aria-controls="CurriculumcollapseOne">
 
                                             <i class="fab fa-paypal mx-2"></i>
-                                            Paypal
+                                            {{ __('transf.paypal') }}
                                         </label>
                                     </h5>
                                 </div>
@@ -59,8 +59,7 @@
                                     <div class="border-top px-5 py-4 min-height-70 d-md-flex align-items-center">
                                         <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
                                             <div class="ms-4">
-                                                <p>Pay via PayPal; you can pay with your credit card if you don’t have a
-                                                    PayPal account.</p>
+                                                <p>{{ __('transf.paypal_details') }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -82,7 +81,7 @@
                                                     data-bs-target="#CurriculumcollapseTwo" aria-expanded="false"
                                                     aria-controls="CurriculumcollapseTwo">
                                                 <i class="fas fa-credit-card mx-2"></i>
-                                                Credit/Debit Card
+                                                {{ __('transf.credit_debit_card') }}
                                             </label>
 
 

@@ -4,16 +4,16 @@
     <!-- PAGE TITLE -->
     <header class="py-8 py-md-10" style="background-image: none;">
         <div class="container text-center py-xl-2">
-            <h1 class="display-4 fw-semi-bold mb-0">Shop Checkout</h1>
+            <h1 class="display-4 fw-semi-bold mb-0">{{ __('transf.shop_checkout') }}</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-scroll justify-content-center">
                     <li class="breadcrumb-item">
-                        <a class="text-gray-800" href="#">
-                            Home
+                        <a class="text-gray-800" href="{{ route('frontend.index') }}">
+                            {{ __('transf.home') }}
                         </a>
                     </li>
                     <li class="breadcrumb-item text-gray-800 active" aria-current="page">
-                        Shop Checkout
+                        {{ __('transf.shop_checkout') }}
                     </li>
                 </ol>
             </nav>
@@ -246,13 +246,14 @@
             {{-- checkout summary --}}
             <div id="order_review" class="woocommerce-checkout-review-order">
                 <div class="woocommerce-checkout-review-order-inner">
-                    <h3 id="order_review_heading">Summary</h3>
+                    <h3 id="order_review_heading">{{ __('transf.summary') }}</h3>
                     <table class="shop_table woocommerce-checkout-review-order-table">
 
                         <tbody>
                             <tr class="cart_item">
                                 <td class="product-name">
-                                    Original Price:
+                                    {{ __('transf.original_price') }}
+                                    :
                                 </td>
                                 <td class="product-total">
                                     <span class="woocommerce-Price-amount amount">
@@ -263,7 +264,8 @@
                             @if (getNumbers()->get('offer_prices') > 0)
                                 <tr class="cart_item">
                                     <td class="product-name">
-                                        Offer Discounts:
+                                        {{ __('transf.offer_discount') }}
+                                        :
                                     </td>
                                     <td class="product-total">
                                         <span class="woocommerce-Price-amount amount">
@@ -275,7 +277,7 @@
                             @if (getNumbers()->get('discount_coupon') > 0)
                                 <tr class="cart_item">
                                     <td class="product-name">
-                                        Coupon Discounts:
+                                        {{ __('transf.coupon_discout') }}:
                                     </td>
                                     <td class="product-total">
                                         <span class="woocommerce-Price-amount amount">
@@ -291,7 +293,7 @@
                             </tr>
 
                             <tr class="order-total">
-                                <th>Total</th>
+                                <th>{{ __('transf.total') }}</th>
                                 <td><strong>
                                         <span class="woocommerce-Price-amount amount">
                                             {{ currency_converter(getNumbers()->get('total')) }}
@@ -303,7 +305,7 @@
                     </table>
                     <div class="form-row place-order">
                         <button type="submit" class="btn btn-primary btn-block">
-                            proccess
+                            {{ __('transf.proccess') }}
                         </button>
                     </div>
                 </div>

@@ -310,6 +310,14 @@ return [
     'checkout'                                      =>  'Checkout',
 
 
+    //Shop Checkout
+    'shop_checkout'                                 =>  'Shop Checkout',
+    'summary'                                       =>  'Summary',
+    'original_price'                                =>  'Original Price',
+    'offer_discount'                                =>  'Offer Discount',
+    'coupon_discout'                                =>  'Coupon Discount',
+    'proccess'                                      =>  'Proccess',
+
 
 
 

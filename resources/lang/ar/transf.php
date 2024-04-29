@@ -310,8 +310,15 @@ return [
     'remove_coupon'                                 =>  'حذف كود الخصم',
     'subtotal'                                      =>  'المجموع الاجمالي',
     'total'                                         =>  'المجموع النهائي',
-    'checkout'                                      =>  'إتمام عملية الشراء',
+    'checkout'                                      =>  'الدفع',
 
+    //Shop Checkout
+    'shop_checkout'                                 =>  'إستكمال عملية الشراء',
+    'summary'                                       =>  'ملخص',
+    'original_price'                                =>  'السعر الأصلي',
+    'offer_discount'                                =>  'خصم ترويجي',
+    'coupon_discout'                                =>  'خصم القسيمة',
+    'proccess'                                      =>  'معالجة',
 
 
 

@@ -283,6 +283,28 @@ return [
     'po_box'        =>  'Po Box',
 
 
+    // =============  Manage Reviews ===============//
+    'manage_reviews'                => 'Manage Reviews',
+
+    // ---------------  reviews --------------//
+    'show_reviews'                  => 'Reviews',
+    'add_new_review'                => 'Add New Review',
+    'edit_existing_review'          => 'Edit Existing Review',
+
+
+    // ........... commons in reviews ....... //
+    'review_title'                      => 'Review Title',
+    'review_rating'                     => 'Rating',
+    'review_type'                       => 'Type',
+    'review_link_title'                 =>  'Title',
+    'review_type_course'                =>  'Course',
+    'review_type_event'                 =>  'Event',
+    'review_type_post'                  =>  'Post',
+
+
+
+
+
     ##############################################################
 
     // =============  Manage Residential Site ( Countries , States , Cities   )===============//

@@ -282,6 +282,25 @@ return [
     'po_box'                        =>  'الصندوق البريدي',
 
 
+    // =============  Manage Reviews ===============//
+    'manage_reviews'                => 'إدارة التعليقات',
+
+    // ---------------  reviews --------------//
+    'show_reviews'                  => 'التعليقات',
+    'add_new_review'                => 'إضافة تعليق جديد',
+    'edit_existing_review'          => 'تعديل تعليق موجود مسبقا',
+
+
+    // ........... commons in reviews ....... //
+    'review_title'                      => 'عنوان التعليق',
+    'review_rating'                     => 'التقييم',
+    'review_type'                       => 'النوع',
+    'review_link_title'                 =>  'العنوان',
+    'review_type_course'                =>  'دورة',
+    'review_type_event'                 =>  'حدث',
+    'review_type_post'                  =>  'مقال',
+
+
     #################################### Manage Residential Site ( Countries , States , Cities   ) ##########################
     'manage_residentail_site'       => 'إدارة الموقع السكني',
 

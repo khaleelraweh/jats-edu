@@ -7,17 +7,17 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    إدارة التعليقات
+                    {{ __('panel.manage_reviews') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
                         <a href="{{ route('admin.index') }}">
-                            الرئيسية
+                            {{ __('panel.main') }}
                         </a>
                         <i class="fa fa-solid fa-chevron-left chevron"></i>
                     </li>
                     <li>
-                        إدارة التعليقات
+                        {{ __('panel.show_reviews') }}
                     </li>
                 </ul>
             </div>
@@ -35,14 +35,14 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="d-none d-sm-table-cell">الاسم</th>
-                        <th> عنوان التعليق</th>
-                        <th>التقييم</th>
-                        <th>النوع</th>
-                        <th class="d-none d-sm-table-cell">العنوان</th>
-                        <th>الحالة</th>
-                        <th class="d-none d-sm-table-cell">تاريخ الانشاء</th>
-                        <th class="text-center" style="width:30px;">الإعدادات</th>
+                        <th class="d-none d-sm-table-cell">{{ __('panel.name') }}</th>
+                        <th>{{ __('panel.review_title') }}</th>
+                        <th>{{ __('panel.review_rating') }}</th>
+                        <th>{{ __('panel.review_type') }}</th>
+                        <th class="d-none d-sm-table-cell">{{ __('panel.review_link_title') }}</th>
+                        <th>{{ __('panel.status') }}</th>
+                        <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
+                        <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,15 +62,14 @@
                             <td class="d-none d-sm-table-cell">
                                 @if ($review->reviewable_type === 'App\Models\Course')
                                     @if ($review->reviewable->section == 1)
-                                        Course
+                                        {{ __('panel.review_type_course') }}
                                     @endif
                                     @if ($review->reviewable->section == 2)
-                                        Event
+                                        {{ __('panel.review_type_event') }}
                                     @endif
                                 @elseif ($review->reviewable_type === 'App\Models\Post')
-                                    Post
+                                    {{ __('panel.review_type_post') }}
                                 @else
-                                    This review belongs to an unknown entity.
                                 @endif
                             </td>
                             <td class="d-none d-sm-table-cell">

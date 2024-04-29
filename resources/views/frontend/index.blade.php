@@ -85,7 +85,7 @@
             <h1 class="text-white text-uppercase">{{ __('transf.txt_enhance_your_skin') }}</h1>
             <div class="font-size-lg mb-md-6 mb-4 text-white">{{ __('transf.txt_enhance_your_skin_desc') }}</div>
             <div class="mx-auto">
-                <a href="#"
+                <a href="{{ route('frontend.courses') }}"
                     class="btn btn-sienna btn-x-wide lift d-inline-block text-white">{{ __('transf.btn_get_started_now') }}</a>
             </div>
         </div>

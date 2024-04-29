@@ -124,7 +124,8 @@
                     <div class="border rounded mb-6 p-5 py-md-6 ps-md-6 pe-md-4">
                         <h4 class="mb-5">{{ __('transf.categories') }}</h4>
                         <div class="nav flex-column nav-vertical">
-                            <a href="{{ route('frontend.blog_list') }}" class="nav-link py-2">All posts
+                            <a href="{{ route('frontend.blog_list') }}" class="nav-link py-2">
+                                {{ __('transf.all') }}
                                 ({{ $total_Posts }})
                             </a>
                             @foreach ($categories_menu as $item)

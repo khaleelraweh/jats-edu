@@ -200,6 +200,8 @@ return [
 
     //blog list
     'blog_list'                                         =>  'قائمة المدونات',
+    'recent_posts'                                      =>  'المقالات الحديثة',
+    'tags'                                              =>  'الكلمات مفتاحية',
 
     //blog single 
     'btn_share_this_post'                             =>  'مشاركة هذا المقال ',

@@ -101,7 +101,7 @@
                     <div class="border rounded mb-6">
                         <div class="input-group">
                             <input wire:model="searchQuery" class="form-control form-control-sm border-0 pe-0"
-                                type="search" placeholder="Search" aria-label="Search">
+                                type="search" placeholder="{{ __('transf.search') }}" aria-label="Search">
                             <div class="input-group-append">
                                 <button class="btn btn-sm my-2 my-sm-0 text-secondary icon-uxs" type="submit">
                                     <!-- Icon -->
@@ -121,7 +121,7 @@
                     </div>
 
                     <div class="border rounded mb-6 p-5 py-md-6 ps-md-6 pe-md-4">
-                        <h4 class="mb-5">Category</h4>
+                        <h4 class="mb-5">{{ __('transf.categories') }}</h4>
                         <div class="nav flex-column nav-vertical">
                             <a href="{{ route('frontend.blog_list') }}" class="nav-link py-2">All posts
                                 ({{ $total_Posts }})
@@ -137,7 +137,7 @@
                     </div>
 
                     <div class="border rounded mb-6 p-5 py-md-6 ps-md-6 pe-md-4">
-                        <h4 class="mb-5">Recent Posts</h4>
+                        <h4 class="mb-5">{{ __('transf.recent_posts') }}</h4>
                         <ul class="list-unstyled mb-0 recent-posts">
                             @foreach ($recent_posts as $recent_post)
                                 <li class="media mb-6 d-flex">
@@ -187,7 +187,7 @@
                     </div>
 
                     <div class="border rounded mb-6 p-5 py-md-6 ps-md-6 pe-md-4">
-                        <h4 class="mb-5">Tags</h4>
+                        <h4 class="mb-5">{{ __('transf.tags') }}</h4>
                         @foreach ($tags as $tag)
                             <a href="{{ route('frontend.blog_tag_list', $tag->slug) }}"
                                 class="btn btn-sm btn-light text-gray-800 px-5 fw-normal me-1 mb-2">

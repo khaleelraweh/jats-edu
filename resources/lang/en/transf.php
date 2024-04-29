@@ -200,6 +200,8 @@ return [
 
     //blog list
     'blog_list'                                         =>  'Blog List',
+    'recent_posts'                                      =>  'Recent Posts',
+    'tags'                                              =>  'Tags',
 
     //blog single 
     'btn_share_this_post'                             =>  'Share This Post',

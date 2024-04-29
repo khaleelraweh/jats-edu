@@ -237,7 +237,26 @@ return [
     // customer  course-list
     'txt_my_learning_courses'                       =>  'كورساتي التعليمية',
 
+    // Course list component
+    'txt_we_found'                                  =>  'لقد وجدنا',
+    'txt_available_for_you'                         =>  'متاحة لك',
 
+    // sored by  
+    'sort_by'                                       =>  'ترتيب حسب',
+    'sort_default'                                  =>  'الافتراضي',
+    'sort_popularity'                               =>  'الشهرة',
+    'sort_new_courses'                              =>  'الكورسات الجديدة',
+    'sort_price_low_to_high'                        =>  'السعر من الاقل الي الاعلي',
+    'sort_price_high_to_low'                        =>  'السعر من الاعلي الى الاقل',
+
+
+    // Category 
+    'categories'                                    =>  'المجموعات',
+    'instructors'                                   =>  'المدربون',
+    'prices'                                        =>  'الاسعار',
+    'levels'                                        =>  'المستويات',
+    'ratings'                                       =>  'التقييمات',
+    'reset_filter'                                  =>  'إعادة تعيين المرشحات',
 
 
 

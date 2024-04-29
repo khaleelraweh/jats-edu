@@ -239,6 +239,27 @@ return [
     // customer  course-list
     'txt_my_learning_courses'                       =>  'My Learning Courses',
 
+    // Course list component
+    'txt_we_found'                                  =>  'We Found',
+    'txt_available_for_you'                         =>  'available for you',
+
+    // sored by  
+    'sort_by'                                       =>  'Sort by',
+    'sort_default'                                  =>  'Default',
+    'sort_popularity'                               =>  'Popularity',
+    'sort_new_courses'                              =>  'New Courses',
+    'sort_price_low_to_high'                        =>  'Price Low to High',
+    'sort_price_high_to_low'                        =>  'Price High to Low',
+
+    // Category 
+    'categories'                                    =>  'Categories',
+    'instructors'                                   =>  'Instructors',
+    'prices'                                        =>  'Prices',
+    'levels'                                        =>  'Levels',
+    'ratings'                                       =>  'Ratings',
+    'reset_filter'                                  =>  'Reset Filter',
+
+
 
 
 ];

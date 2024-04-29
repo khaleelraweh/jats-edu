@@ -3,21 +3,23 @@
     <div class="container mb-6 mb-xl-8 z-index-2">
         <div class="d-lg-flex align-items-center mb-6 mb-xl-0">
 
-            <p class="mb-lg-0">We found <span class="text-dark">{{ $courses->total() }} courses</span> available for you
+            <p class="mb-lg-0">{{ __('transf.txt_we_found') }} <span class="text-dark">{{ $courses->total() }}
+                    {{ __('transf.courses') }}</span>
+                {{ __('transf.txt_available_for_you') }}
             </p>
             <div class="ms-lg-auto d-lg-flex flex-wrap">
                 <div class="mb-4 mb-lg-0 ms-lg-6">
 
                     <div wire:ignore class="border rounded d-flex align-items-center choices-label h-50p">
-                        <span class="ps-5" style="width: 110px">Sort by:</span>
+                        <span class="ps-5" style="width: 110px">{{ __('transf.sort_by') }} :</span>
                         <select
                             class="form-select form-select-sm text-dark border-0 ps-3 flex-grow-1 shadow-none dropdown-menu-end"
                             aria-label="Small select example" wire:model="sortingBy">
-                            <option value="default">Default</option>
-                            <option value="popularity">Popularity</option>
-                            <option value="new-courses">New Courses</option>
-                            <option value="low-high">Price Low to High</option>
-                            <option value="high-low">Price High to low</option>
+                            <option value="default">{{ __('transf.sort_default') }}</option>
+                            <option value="popularity"> {{ __('transf.sort_popularity') }} </option>
+                            <option value="new-courses">{{ __('transf.sort_new_courses') }}</option>
+                            <option value="low-high">{{ __('transf.sort_price_low_to_high') }}</option>
+                            <option value="high-low">{{ __('transf.sort_price_high_to_low') }}</option>
                         </select>
 
                     </div>
@@ -43,7 +45,7 @@
                                     class="p-6 text-dark fw-medium d-flex align-items-center collapse-accordion-toggle line-height-one"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#coursefiltercollapse1"
                                     aria-expanded="true" aria-controls="coursefiltercollapse1">
-                                    Category
+                                    {{ __('transf.categories') }}
                                     <span class="ms-auto text-dark d-flex">
                                         <!-- Icon -->
                                         <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
@@ -92,7 +94,7 @@
                                     class="p-6 text-dark fw-medium d-flex align-items-center collapse-accordion-toggle line-height-one"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#coursefiltercollapse2"
                                     aria-expanded="true" aria-controls="coursefiltercollapse2">
-                                    Instructors
+                                    {{ __('transf.instructors') }}
                                     <span class="ms-auto text-dark d-flex">
                                         <!-- Icon -->
                                         <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
@@ -142,8 +144,8 @@
                             <ul class="list-unstyled list-group list-checkbox list-checkbox-limit">
                                 @foreach ($instructors_menu as $name => $counts)
                                     <li class="custom-control custom-checkbox">
-                                        <input wire:model="selectedNames" type="checkbox" value="{{ $name }}"
-                                            class="custom-control-input"
+                                        <input wire:model="selectedNames" type="checkbox"
+                                            value="{{ $name }}" class="custom-control-input"
                                             id="InstructorscustomCheck{{ $loop->index }}">
                                         <label class="custom-control-label font-size-base"
                                             for="InstructorscustomCheck{{ $loop->index }}">
@@ -165,7 +167,7 @@
                                     class="p-6 text-dark fw-medium d-flex align-items-center collapse-accordion-toggle line-height-one"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#coursefiltercollapse3"
                                     aria-expanded="true" aria-controls="coursefiltercollapse3">
-                                    Price
+                                    {{ __('transf.prices') }}
                                     <span class="ms-auto text-dark d-flex">
                                         <!-- Icon -->
                                         <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
@@ -223,7 +225,7 @@
                                     class="p-6 text-dark fw-medium d-flex align-items-center collapse-accordion-toggle line-height-one"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#coursefiltercollapse4"
                                     aria-expanded="true" aria-controls="coursefiltercollapse4">
-                                    Level
+                                    {{ __('transf.levels') }}
                                     <span class="ms-auto text-dark d-flex">
                                         <!-- Icon -->
                                         <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
@@ -288,7 +290,7 @@
                                     class="p-6 text-dark fw-medium d-flex align-items-center collapse-accordion-toggle line-height-one"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#coursefiltercollapse5"
                                     aria-expanded="true" aria-controls="coursefiltercollapse5">
-                                    Rating
+                                    {{ __('transf.ratings') }}
                                     <span class="ms-auto text-dark d-flex">
                                         <!-- Icon -->
                                         <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
@@ -394,7 +396,7 @@
 
                     {{-- <a href="#" class="btn btn-primary btn-block mb-10">CLEAR FILTER </a> --}}
                     <a href="#" class="btn btn-primary btn-block mb-10" wire:click="resetFilters">
-                        RESET FILTER
+                        {{ __('transf.reset_filter') }}
                     </a>
                 </div>
 

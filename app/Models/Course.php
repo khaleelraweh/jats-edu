@@ -214,11 +214,6 @@ class Course extends Model
         return $this->morphMany(Requirement::class, 'requirementable');
     }
 
-    public function lessons()
-    {
-        return $this->hasMany(Lesson::class);
-    }
-
     public function sections()
     {
         return $this->hasMany(CourseSection::class);

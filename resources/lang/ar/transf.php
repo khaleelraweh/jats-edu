@@ -198,8 +198,15 @@ return [
 
     //event single 
     'txt_title'                                         =>  'العنوان',
+    'event_description'                                 =>  'وصف الحدث',
     'txt_what_is_it_like_to_event'                      =>  'ما هو تقييمك للحدث !',
     'txt_share_this_event'                              =>  'شارك هذا الحدث',
+
+    //event single timer 
+    'days'                                              =>  'ايام',
+    'hours'                                              =>  'ساعات',
+    'minutes'                                              =>  'دقائق',
+    'seconds'                                              =>  'ثواني',
 
     //blog list
     'blog_list'                                         =>  'قائمة المدونات',

@@ -197,8 +197,15 @@ return [
 
     //event single 
     'txt_title'                                         =>  'Title',
+    'event_description'                                 =>  'Event Description',
     'txt_what_is_it_like_to_event'                      =>  'What is it like to event',
     'txt_share_this_event'                              =>  'Share This Event',
+
+    //event single timer 
+    'days'                                              =>  'DAYS',
+    'hours'                                              =>  'HOURS',
+    'minutes'                                              =>  'MINUTES',
+    'seconds'                                              =>  'SECONDS',
 
 
     //blog list

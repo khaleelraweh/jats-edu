@@ -80,25 +80,25 @@
                             <div class="col-6 col-md-3 mb-6 mb-md-0">
                                 <div class="h1 text-blue mb-2"><span id="days" data-aos
                                         data-aos-id="countup:in"></span></div>
-                                <p class="h5 mb-0">DAYS</p>
+                                <p class="h5 mb-0">{{ __('transf.days') }}</p>
                             </div>
 
                             <div class="col-6 col-md-3 mb-6 mb-md-0">
                                 <div class="h1 text-blue mb-2"><span id="hours" data-aos
                                         data-aos-id="countup:in"></span></div>
-                                <p class="h5 mb-0">HOURS</p>
+                                <p class="h5 mb-0">{{ __('transf.hours') }}</p>
                             </div>
 
                             <div class="col-6 col-md-3 mb-6 mb-md-0">
                                 <div class="h1 text-blue mb-2"><span id="minutes" data-aos
                                         data-aos-id="countup:in"></span></div>
-                                <p class="h5 mb-0">MINUTES</p>
+                                <p class="h5 mb-0">{{ __('transf.minutes') }}</p>
                             </div>
 
                             <div class="col-6 col-md-3 mb-6 mb-md-0">
                                 <div class="h1 text-blue mb-2"><span id="seconds" data-aos
                                         data-aos-id="countup:in"></span></div>
-                                <p class="h5 mb-0">SECONDS</p>
+                                <p class="h5 mb-0">{{ __('transf.seconds') }}</p>
                             </div>
                         </div>
 
@@ -131,7 +131,7 @@
 
         <div class="row mb-11">
             <div class="col-lg-8 mb-6 mb-lg-0">
-                <h3 class="">Event Description</h3>
+                <h3 class="">{{ __('transf.event_description') }}</h3>
                 <p class="mb-6 line-height-md">
                     {!! $event->motavation !!}
                 </p>

@@ -32,7 +32,7 @@
             <div class="col2-set" id="customer_details">
                 <div class="col-1">
                     <div class="woocommerce-billing-fields">
-                        <h3>Billing details</h3>
+                        <h3>{{ __('transf.billing_details') }}</h3>
 
                         <div id="accordionCurriculum">
                             <!-- Accordion panel 1 -->
@@ -319,8 +319,8 @@
 
 
 
-        <!-- CALL ACTION -->
-        <section class="py-6 py-md-11 border-top border-bottom" data-jarallax data-speed=".8"
+        <!-- CALL ACTION d-none -->
+        <section class="py-6 py-md-11 border-top border-bottom d-none" data-jarallax data-speed=".8"
             style="background-image: url(assets/img/illustrations/illustration-1.jpg)">
             <div class="container text-center py-xl-4" data-aos="fade-up">
                 <div class="row">

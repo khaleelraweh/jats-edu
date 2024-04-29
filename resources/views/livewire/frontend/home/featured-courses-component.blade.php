@@ -25,17 +25,17 @@
                             <select wire:model="courseLevels"
                                 class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
                                 <option value="">{{ __('transf.chose_levels') }}</option>
-                                <option value="1">Beginner</option>
-                                <option value="2">Intermediate</option>
-                                <option value="3">Advanced</option>
+                                <option value="1">{{ __('transf.beginner') }}</option>
+                                <option value="2">{{ __('transf.intermediate') }}</option>
+                                <option value="3">{{ __('transf.advance') }}</option>
                             </select>
                         </div>
                         <div wire:ignore class="col-md-auto mb-4 mb-lg-0">
                             <select wire:model="priceInput"
                                 class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
-                                <option value="all">All</option>
-                                <option value="free">Free</option>
-                                <option value="paid">Paid</option>
+                                <option value="all">{{ __('transf.all') }}</option>
+                                <option value="free">{{ __('transf.free') }}</option>
+                                <option value="paid">{{ __('transf.paid') }}</option>
 
                             </select>
                         </div>
@@ -47,11 +47,11 @@
                     <select wire:model="sortingBy" class="form-select form-select-sm ps-5 text-primary shadow fw-medium"
                         data-choices>
                         {{-- <option>{{ __('transf.chose_recently_accessed') }}</option> --}}
-                        <option value="default">Default</option>
-                        <option value="popularity">Popularity</option>
-                        <option value="new-courses">New Courses</option>
-                        <option value="low-high">Price Low to High</option>
-                        <option value="high-low">Price High to low</option>
+                        <option value="default">{{ __('transf.sort_default') }}</option>
+                        <option value="popularity">{{ __('transf.sort_popularity') }}</option>
+                        <option value="new-courses">{{ __('transf.sort_new_courses') }} </option>
+                        <option value="low-high">{{ __('transf.sort_price_low_to_high') }} </option>
+                        <option value="high-low">{{ __('transf.sort_price_high_to_low') }} </option>
                     </select>
                 </div>
             </div>

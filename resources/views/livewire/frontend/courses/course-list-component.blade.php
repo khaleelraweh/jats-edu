@@ -11,7 +11,7 @@
                 <div class="mb-4 mb-lg-0 ms-lg-6">
 
                     <div wire:ignore class="border rounded d-flex align-items-center choices-label h-50p">
-                        <span class="ps-5" style="width: 110px">{{ __('transf.sort_by') }} :</span>
+                        <span class="ps-5" style="width: 115px">{{ __('transf.sort_by') }} :</span>
                         <select
                             class="form-select form-select-sm text-dark border-0 ps-3 flex-grow-1 shadow-none dropdown-menu-end"
                             aria-label="Small select example" wire:model="sortingBy">

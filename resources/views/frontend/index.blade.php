@@ -28,11 +28,11 @@
                                         </p>
 
                                         <!-- Buttons -->
-                                        <a href="course-single-v1.html"
+                                        <a href="{{ route('frontend.courses') }}"
                                             class="btn text-white-alone btn-slide slide-white btn-wide shadow mb-4 mb-md-0 me-md-5 text-uppercase"
                                             data-aos-duration="200"
                                             data-aos="fade-up">{{ __('transf.btn_get_started') }}</a>
-                                        <a href="course-single-v1.html"
+                                        <a href="{{ route('frontend.courses') }}"
                                             class="btn text-white-all btn-coral btn-wide d-none d-lg-inline-block"
                                             data-aos-duration="200"
                                             data-aos="fade-up">{{ __('transf.btn_view_courses') }}</a>
@@ -571,8 +571,8 @@
         </div>
     </section>
 
-    {{-- COUNTUP --}}
-    <section class="py-5 py-md-12 jarallax" data-jarallax data-speed=".8"
+    {{-- COUNTUP d-none --}}
+    <section class="py-5 py-md-12 jarallax d-none" data-jarallax data-speed=".8"
         style="background-image: url({{ asset('frontend/assets/img/covers/cover-6.jpg') }})">
         <div class="container">
             <div class="row align-items-center">
@@ -656,8 +656,8 @@
         </div>
     </section>
 
-    {{-- NEWSLETTER --}}
-    <section class="py-6 py-md-8 bg-coral">
+    {{-- NEWSLETTER d-none --}}
+    <section class="py-6 py-md-8 bg-coral d-none">
         <div class="container">
             <div class="row align-items-center py-2">
                 <div class="col-xl-6 mb-4 mb-xl-0">

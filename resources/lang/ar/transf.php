@@ -297,6 +297,21 @@ return [
     '&_up'                                          =>  'و اعلى',
     'reset_filter'                                  =>  'إعادة تعيين المرشحات',
 
+    // Shop Cart 
+    'shop_cart'                                     =>  'عربة التسوق',
+    'courses_in_cart'                               =>  'الدورات في سلة التسوق',
+    'courses_in_wishlist'                           =>  'الدورات في قائمة المفضلات',
+    'remove'                                        =>  'حذف',
+    'move_to_cart'                                  =>  'نقل الى العربة',
+    'move_to_wishlist'                              =>  'نقل الى قائمة المفضلات',
+    'promotions'                                    =>  'الترويج',
+    'enter_coupon'                                  =>  'ادخل كود الخصم',
+    'apply'                                         =>  'تطبيق',
+    'remove_coupon'                                 =>  'حذف كود الخصم',
+    'subtotal'                                      =>  'المجموع الاجمالي',
+    'total'                                         =>  'المجموع النهائي',
+    'checkout'                                      =>  'إتمام عملية الشراء',
+
 
 
 

@@ -13,7 +13,7 @@
                                             class="shop_table shop_table_responsive cart woocommerce-cart-form__contents shop-cart-check-table">
                                             <thead>
                                                 <tr>
-                                                    <th class="product-name">Courses in Cart</th>
+                                                    <th class="product-name">{{ __('transf.courses_in_cart') }}</th>
                                                     <th class="product-subtotal">&nbsp;</th>
                                                 </tr>
                                             </thead>
@@ -79,7 +79,7 @@
                                                                                 aria-label="Remove this item">
                                                                                 <i
                                                                                     class="far fa-trash-alt text-secondary font-size-sm"></i>
-                                                                                Remove
+                                                                                {{ __('transf.remove') }}
                                                                             </a> <br>
                                                                             <a href="#"
                                                                                 wire:click.prevent="moveToWishlist('{{ $item->rowId }}')"
@@ -87,7 +87,7 @@
                                                                                 aria-label="Remove this item">
                                                                                 <i
                                                                                     class="fas fa-sort-amount-down text-secondary font-size-sm"></i>
-                                                                                Move to Wishlist
+                                                                                {{ __('transf.move_to_wishlist') }}
                                                                             </a>
 
 
@@ -138,7 +138,8 @@
                                             class="shop_table shop_table_responsive cart woocommerce-cart-form__contents shop-cart-check-table">
                                             <thead>
                                                 <tr>
-                                                    <th class="product-name">Courses in wishlist</th>
+                                                    <th class="product-name">{{ __('transf.courses_in_wishlist') }}
+                                                    </th>
                                                     <th class="product-subtotal">&nbsp;</th>
 
                                                 </tr>
@@ -205,7 +206,7 @@
                                                                                 aria-label="Remove this item">
                                                                                 <i
                                                                                     class="far fa-trash-alt text-secondary font-size-sm"></i>
-                                                                                Remove
+                                                                                {{ __('transf.remove') }}
                                                                             </a> <br>
                                                                             <a href="#"
                                                                                 wire:click.prevent="moveToCart('{{ $item->rowId }}')"
@@ -213,7 +214,7 @@
                                                                                 aria-label="Remove this item">
                                                                                 <i
                                                                                     class="fas fa-sort-amount-up text-secondary font-size-sm"></i>
-                                                                                Move to Cart
+                                                                                {{ __('transf.move_to_cart') }}
                                                                             </a>
 
                                                                         </div>
@@ -263,7 +264,7 @@
                             <table class="shop_table shop_table_responsive">
                                 <tbody>
                                     <tr class="cart-subtotal ">
-                                        <th>Subtotal</th>
+                                        <th>{{ __('transf.subtotal') }}</th>
                                         <td data-title="Subtotal">
                                             <span class="woocommerce-Price-amount amount">{{ $total }}
                                                 @if ($total != $subTotal)
@@ -280,7 +281,7 @@
 
 
                                     <tr class="order-total ">
-                                        <th>Total</th>
+                                        <th>{{ __('transf.total') }}</th>
                                         <td data-title="Total"><strong><span
                                                     class="woocommerce-Price-amount amount">{{ $total }}</span></strong>
                                         </td>
@@ -293,28 +294,28 @@
                                 <a href="{{ route('frontend.shop_checkout') }}"
                                     class="checkout-button button alt wc-forward">
                                     {{-- Proceed to checkout --}}
-                                    checkout
+                                    {{ __('transf.checkout') }}
                                 </a>
                             </div>
 
                             <hr class="mb-2">
-                            <h6 class="mt-0">Promotions</h6>
+                            <h6 class="mt-0">{{ __('transf.promotions') }}</h6>
                             <div class="">
                                 <form wire:submit.prevent="applyDiscount()">
                                     <div class="input-group">
                                         @if (!session()->has('coupon'))
                                             <input type="text" wire:model="coupon_code" name="coupon_code"
-                                                class="form-control" placeholder="Enter Coupon"
+                                                class="form-control" placeholder="{{ __('transf.enter_coupon') }}"
                                                 aria-label="Enter Coupon" aria-describedby="button-addon2">
                                             <div class="input-group-append">
                                                 <button type="submit" class="btn btn-primary " type="button"
-                                                    id="button-addon2">Apply</button>
+                                                    id="button-addon2">{{ __('transf.apply') }}</button>
                                             </div>
                                         @else
                                             <div class="wc-proceed-to-checkout">
                                                 <a href="#" wire:click.prevent="removeCoupon()"
                                                     class="checkout-button button alt wc-forward">
-                                                    Remove coupon
+                                                    {{ __('transf.remove_coupon') }}
                                                 </a>
                                             </div>
                                         @endif

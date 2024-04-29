@@ -294,6 +294,24 @@ return [
     '&_up'                                          =>  '& up',
     'reset_filter'                                  =>  'Reset Filter',
 
+    // Shop Cart 
+    'shop_cart'                                     =>  'Shop Cart',
+    'courses_in_cart'                               =>  'Courses in Cart',
+    'courses_in_wishlist'                           =>  'Courses in Wishlist',
+    'remove'                                        =>  'Remove',
+    'move_to_cart'                                  =>  'Move To Cart',
+    'move_to_wishlist'                              =>  'Move To Wishlist',
+    'promotions'                                    =>  'Promotions',
+    'enter_coupon'                                  =>  'Enter Coupon',
+    'apply'                                         =>  'Apply',
+    'remove_coupon'                                 =>  'Remove Coupon',
+    'subtotal'                                      =>  'Subtotal',
+    'total'                                         =>  'Total',
+    'checkout'                                      =>  'Checkout',
+
+
+
+
 
 
 

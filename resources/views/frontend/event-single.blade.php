@@ -298,7 +298,7 @@
                                     fill="currentColor" />
                             </svg>
 
-                            <span class="ms-3">Share This Event</span>
+                            <span class="ms-3">{{ __('transf.txt_share_this_event') }}</span>
                         </a>
                     </div>
 

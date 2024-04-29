@@ -195,6 +195,7 @@ return [
     //event single 
     'txt_title'                                         =>  'Title',
     'txt_what_is_it_like_to_event'                      =>  'What is it like to event',
+    'txt_share_this_event'                              =>  'Share This Event',
 
 
     //blog list

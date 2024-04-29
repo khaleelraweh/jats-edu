@@ -196,6 +196,7 @@ return [
     //event single 
     'txt_title'                                         =>  'العنوان',
     'txt_what_is_it_like_to_event'                      =>  'ما هو تقييمك للحدث !',
+    'txt_share_this_event'                              =>  'شارك هذا الحدث',
 
     //blog list
     'blog_list'                                         =>  'قائمة المدونات',

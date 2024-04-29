@@ -200,6 +200,7 @@ return [
     'event_description'                                 =>  'Event Description',
     'txt_what_is_it_like_to_event'                      =>  'What is it like to event',
     'txt_share_this_event'                              =>  'Share This Event',
+    'our_speakers'                                      =>  'Our Speakers',
 
     //event single timer 
     'days'                                              =>  'DAYS',

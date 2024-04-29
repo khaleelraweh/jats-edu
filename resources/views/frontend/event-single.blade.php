@@ -182,7 +182,7 @@
 
 
                 {{-- {{ dd($event) }} --}}
-                <h3 class="mb-5">Our Speakers</h3>
+                <h3 class="mb-5">{{ __('transf.our_speakers') }}</h3>
                 <div class="row row-cols-md-2 row-cols-xl-4 mb-9">
                     @foreach ($event->users as $instructor)
                         <div class="col-md mb-5 mb-xl-0">
@@ -412,7 +412,7 @@
                                         fill="currentColor" />
                                 </svg>
 
-                                <span class="ms-3">Share this course</span>
+                                <span class="ms-3">{{ __('transf.txt_share_this_event') }}</span>
                             </a>
                         </div>
                     </div>

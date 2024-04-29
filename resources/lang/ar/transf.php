@@ -201,6 +201,7 @@ return [
     'event_description'                                 =>  'وصف الحدث',
     'txt_what_is_it_like_to_event'                      =>  'ما هو تقييمك للحدث !',
     'txt_share_this_event'                              =>  'شارك هذا الحدث',
+    'our_speakers'                                      =>  'المتحدثون',
 
     //event single timer 
     'days'                                              =>  'ايام',

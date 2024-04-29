@@ -254,9 +254,17 @@ return [
     // Category 
     'categories'                                    =>  'Categories',
     'instructors'                                   =>  'Instructors',
+    'search'                                        =>  'Search',
     'prices'                                        =>  'Prices',
+    'all'                                           =>  'All',
+    'free'                                          =>  'Free',
+    'paid'                                          =>  'Paid',
     'levels'                                        =>  'Levels',
+    'beginner'                                      =>  'Beginner',
+    'intermediate'                                  =>  'Intermediate',
+    'advance'                                       =>  'Advance',
     'ratings'                                       =>  'Ratings',
+    '&_up'                                          =>  '& up',
     'reset_filter'                                  =>  'Reset Filter',
 
 

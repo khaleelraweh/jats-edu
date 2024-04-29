@@ -120,7 +120,7 @@
                                 <div class="input-group input-group-filter">
                                     <input wire:model="searchQuery"
                                         class="form-control form-control-sm border-end-0 shadow-none" type="search"
-                                        placeholder="Search" aria-label="Search">
+                                        placeholder="{{ __('transf.search') }}" aria-label="Search">
                                     <div class="input-group-append">
                                         <button
                                             class="btn btn-sm btn-outline-white border-start-0 shadow-none bg-transparent text-secondary icon-xs d-flex align-items-center"
@@ -195,21 +195,24 @@
                                     <input type="radio" wire:model="priceInput" id="pricecustomradio1"
                                         name="customRadio" value="all" class="custom-control-input">
 
-                                    <label class="custom-control-label font-size-base" for="pricecustomradio1">All
+                                    <label class="custom-control-label font-size-base" for="pricecustomradio1">
+                                        {{ __('transf.all') }}
                                         ({{ count($courses) ?? 0 }})
                                     </label>
                                 </li>
                                 <li class="custom-control custom-radio">
                                     <input type="radio" wire:model="priceInput" id="pricecustomradio2"
                                         name="customRadio" value="free" class="custom-control-input">
-                                    <label class="custom-control-label font-size-base" for="pricecustomradio2">Free
+                                    <label class="custom-control-label font-size-base" for="pricecustomradio2">
+                                        {{ __('transf.free') }}
                                         ({{ count($courses->where('price', '=', 0)) ?? 0 }})
                                     </label>
                                 </li>
                                 <li class="custom-control custom-radio">
                                     <input type="radio" wire:model="priceInput" id="pricecustomradio3"
                                         name="customRadio" value="paid" class="custom-control-input">
-                                    <label class="custom-control-label font-size-base" for="pricecustomradio3">Paid
+                                    <label class="custom-control-label font-size-base" for="pricecustomradio3">
+                                        {{ __('transf.paid') }}
                                         ({{ count($courses->where('price', '>', 0)) ?? 0 }})
                                     </label>
                                 </li>
@@ -252,8 +255,8 @@
                                     <input type="checkbox" wire:model="courseLevels" value="1"
                                         class="custom-control-input" id="levelcustomcheck1">
 
-                                    <label class="custom-control-label font-size-base"
-                                        for="levelcustomcheck1">Beginner
+                                    <label class="custom-control-label font-size-base" for="levelcustomcheck1">
+                                        {{ __('transf.beginner') }}
                                         ({{ count($courses->where('skill_level', 1)) ?? 0 }})
                                     </label>
                                 </li>
@@ -263,7 +266,7 @@
                                         class="custom-control-input" id="levelcustomcheck2">
 
                                     <label class="custom-control-label font-size-base"
-                                        for="levelcustomcheck2">Intermediate
+                                        for="levelcustomcheck2">{{ __('transf.intermediate') }}
                                         ({{ count($courses->where('skill_level', 2)) ?? 0 }})
                                     </label>
                                 </li>
@@ -273,7 +276,7 @@
                                         class="custom-control-input" id="levelcustomcheck3">
 
                                     <label class="custom-control-label font-size-base"
-                                        for="levelcustomcheck3">Advanced
+                                        for="levelcustomcheck3">{{ __('transf.advance') }}
                                         ({{ count($courses->where('skill_level', 3)) ?? 0 }})
                                     </label>
                                 </li>
@@ -322,7 +325,7 @@
                                             </span>
 
                                             <span class="ms-3">
-                                                <span>& up</span>
+                                                <span>{{ __('transf.&_up') }}</span>
                                             </span>
                                         </span>
                                     </label>
@@ -337,7 +340,7 @@
                                             </span>
 
                                             <span class="ms-3">
-                                                <span>& up</span>
+                                                <span>{{ __('transf.&_up') }}</span>
                                             </span>
                                         </span>
                                     </label>
@@ -352,7 +355,7 @@
                                             </span>
 
                                             <span class="ms-3">
-                                                <span>& up</span>
+                                                <span>{{ __('transf.&_up') }}</span>
                                             </span>
                                         </span>
                                     </label>
@@ -367,7 +370,7 @@
                                             </span>
 
                                             <span class="ms-3">
-                                                <span>& up</span>
+                                                <span>{{ __('transf.&_up') }}</span>
                                             </span>
                                         </span>
                                     </label>
@@ -382,7 +385,7 @@
                                             </span>
 
                                             <span class="ms-3">
-                                                <span>& up</span>
+                                                <span>{{ __('transf.&_up') }}</span>
                                             </span>
                                         </span>
                                     </label>

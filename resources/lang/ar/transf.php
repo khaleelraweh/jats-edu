@@ -253,9 +253,17 @@ return [
     // Category 
     'categories'                                    =>  'المجموعات',
     'instructors'                                   =>  'المدربون',
+    'search'                                        =>  'بحث',
     'prices'                                        =>  'الاسعار',
+    'all'                                           =>  'الكل',
+    'free'                                          =>  'مجان',
+    'paid'                                          =>  'مدفوع',
     'levels'                                        =>  'المستويات',
+    'beginner'                                      =>  'مبتدئ',
+    'intermediate'                                  =>  'متوسط',
+    'advance'                                       =>  'متقدم',
     'ratings'                                       =>  'التقييمات',
+    '&_up'                                          =>  'و اعلى',
     'reset_filter'                                  =>  'إعادة تعيين المرشحات',
 
 

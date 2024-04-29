@@ -132,10 +132,10 @@ class PaymentController extends Controller
                 'payment_result' => 'success',
             ]);
 
-            if (session()->has('coupon')) {
-                $coupon = Coupon::whereCode(session()->get('coupon')['code'])->first();
-                $coupon->increment('used_times');
-            }
+            // if (session()->has('coupon')) {
+            //     $coupon = Coupon::whereCode(session()->get('coupon')['code'])->first();
+            //     $coupon->increment('used_times');
+            // }
 
             Cart::instance('default')->destroy();
             session()->forget([

@@ -22,8 +22,8 @@ return new class extends Migration
             $table->unsignedInteger('duration_minutes')->nullable(); // Store duration in minutes
 
 
-            $table->unsignedBigInteger('section_id');
-            $table->foreign('section_id')->references('id')->on('course_sections')->onDelete('cascade');
+            $table->unsignedBigInteger('course_section_id');
+            $table->foreign('course_section_id')->references('id')->on('course_sections')->onDelete('cascade');
 
             // start will be use always
             $table->boolean('status')->default(true);

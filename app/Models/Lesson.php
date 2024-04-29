@@ -77,12 +77,16 @@ class Lesson extends Model
         return $this->belongsTo(CourseSection::class);
     }
 
-    // get duration in hours and minutes 
+    // get duration in hours and minutes
     public function getDurationAttribute()
     {
         $hours = floor($this->duration_minutes / 60);
         $minutes = $this->duration_minutes % 60;
 
-        return sprintf('%02d hr %02d min', $hours, $minutes);
+        if ($hours > 0) {
+            return sprintf('%02d hr %02d min', $hours, $minutes);
+        } else {
+            return sprintf('%02d min', $minutes);
+        }
     }
 }

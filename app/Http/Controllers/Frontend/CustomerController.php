@@ -107,7 +107,15 @@ class CustomerController extends Controller
 
     public function lesson_single($slug)
     {
-        $course = Course::with('sections')->where('slug->' . app()->getLocale(), $slug)->first();
-        return view('frontend.customer.lesson-single', compact('course'));
+        $course = Course::with('sections.lessons')->where('slug->' . app()->getLocale(), $slug)->first();
+
+        // Calculate total duration for each section
+        $totalDurations = [];
+        foreach ($course->sections as $section) {
+            $totalDuration = $section->lessons->sum('duration_minutes');
+            $totalDurations[$section->id] = $totalDuration;
+        }
+
+        return view('frontend.customer.student-lesson-single', compact('course', 'totalDurations'));
     }
 }

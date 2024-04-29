@@ -320,6 +320,9 @@ return [
     'paypal_details'                                =>  'الدفع عن طريق باي بال. يمكنك الدفع باستخدام بطاقتك الائتمانية إذا لم يكن لديك حساب PayPal',
     'credit_debit_card'                             =>  'بطاقة الائتمان',
 
+    'order_details'                                 =>  'تفاصيل الطلب',
+    'courses_total'                                 =>  'المجموع',
+
     'summary'                                       =>  'ملخص',
     'original_price'                                =>  'السعر الأصلي',
     'offer_discount'                                =>  'خصم ترويجي',

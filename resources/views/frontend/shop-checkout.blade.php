@@ -151,12 +151,12 @@
                         {{-- order view --}}
                         <div id="order_reviews" class="woocommerce-checkout-review-order">
                             <div class="woocommerce-checkout-review-order-inner">
-                                <h3 id="order_review_heading">Order details</h3>
+                                <h3 id="order_review_heading">{{ __('transf.order_details') }}</h3>
                                 <table class="shop_table woocommerce-checkout-review-order-table">
                                     <thead>
                                         <tr>
-                                            <th class="product-name">Courses</th>
-                                            <th class="product-total">Total</th>
+                                            <th class="product-name">{{ __('transf.courses') }}</th>
+                                            <th class="product-total">{{ __('transf.courses_total') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody class="check-product-list">

@@ -318,6 +318,9 @@ return [
     'paypal_details'                                =>  'Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account',
     'credit_debit_card'                             =>  'Credit/Debit Card',
 
+    'order_details'                                 =>  'Order details',
+    'courses_total'                                 =>  'Total',
+
 
 
     'summary'                                       =>  'Summary',

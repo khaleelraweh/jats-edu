@@ -218,4 +218,9 @@ class Course extends Model
     {
         return $this->hasMany(Lesson::class);
     }
+
+    public function sections()
+    {
+        return $this->hasMany(CourseSection::class);
+    }
 }

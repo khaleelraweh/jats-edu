@@ -55,5 +55,8 @@ class DatabaseSeeder extends Seeder
         $this->call(RequirementSeeder::class);
         $this->call(PhotoSeeder::class);
         $this->call(ReviewSeeder::class);
+
+
+        $this->call(CourseSectionSeeder::class);
     }
 }

@@ -192,6 +192,7 @@ return [
 
     //event list 
     'get_ticket'                                        => 'احصل على تذكرة',
+    'events'                                            =>  'الاحداث',
 
     //event single 
     'txt_title'                                         =>  'العنوان',
@@ -247,14 +248,22 @@ return [
     // Course list component
     'txt_we_found'                                  =>  'لقد وجدنا',
     'txt_available_for_you'                         =>  'متاحة لك',
+    'type'                                          =>  'النوع',
+    'by'                                            =>  'بواسطة',
 
     // sored by  
     'sort_by'                                       =>  'ترتيب حسب',
     'sort_default'                                  =>  'الافتراضي',
     'sort_popularity'                               =>  'الشهرة',
-    'sort_new_courses'                              =>  'الكورسات الجديدة',
+    'sort_new_courses'                              =>  'الدورات الجديدة',
+    'sort_new_events'                               =>  'الاحداث الجديدة',
     'sort_price_low_to_high'                        =>  'السعر من الاقل الي الاعلي',
     'sort_price_high_to_low'                        =>  'السعر من الاعلي الى الاقل',
+
+    'sort_time_new_to_old'                         =>  'الوقت: الاحدث الى الاقدم',
+    'sort_time_old_to_new'                         =>  'الوقت: الاقدم الى الاحدث',
+
+
 
 
     // Category 

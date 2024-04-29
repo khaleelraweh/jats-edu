@@ -3,7 +3,10 @@
 
     <div class="container mb-6 mb-xl-8 z-index-2">
         <div class="d-xl-flex align-items-center">
-            <p class="mb-xl-0">We found <span class="text-dark">{{ count($events) }} Events</span> available for you</p>
+            <p class="mb-xl-0">{{ __('transf.txt_we_found') }} <span class="text-dark">{{ count($events) }}
+                    {{ __('transf.events') }}</span>
+                {{ __('transf.txt_available_for_you') }}
+            </p>
             <div class="ms-xl-auto d-md-flex flex-wrap">
 
                 <div class="mb-4 mb-lg-0 me-2">
@@ -12,7 +15,7 @@
                         <div class="input-group input-group-filter">
                             <input wire:model="searchQuery"
                                 class="form-control form-control-sm placeholder-dark border-end-0 shadow-none"
-                                type="search" placeholder="Search Our Event" aria-label="Search">
+                                type="search" placeholder="{{ __('transf.search') }}" aria-label="Search">
                             <div class="input-group-append">
                                 <button class="btn btn-sm btn-outline-white border-start-0 bg-transparent text-dark"
                                     type="submit">
@@ -34,7 +37,7 @@
 
                 <div class="mb-4 mb-lg-0 me-2">
                     <div class="border rounded d-flex align-items-center choices-label h-50p">
-                        <span class="ps-5">Type:</span>
+                        <span class="ps-5">{{ __('transf.type') }}:</span>
                         <select wire:model="categoryInputs"
                             class="form-select form-select-sm ps-5 text-primary shadow fw-medium">
                             <option value="">{{ __('transf.chose_categories') }}</option>
@@ -48,13 +51,13 @@
 
                 <div class="mb-4 mb-lg-0">
                     <div wire:ignore class="border rounded d-flex align-items-center choices-label h-50p">
-                        <span class="ps-5">By:</span>
+                        <span class="ps-5">{{ __('transf.by') }}:</span>
                         <select wire:ignore wire:model="sortingBy"
                             class="form-select form-select-sm ps-5 text-primary shadow fw-medium">
-                            <option value="default">Default</option>
-                            <option value="new-events">New Event</option>
-                            <option value="new-old">Time New to Old</option>
-                            <option value="old-new">Time Old to New</option>
+                            <option value="default">{{ __('transf.sort_default') }}</option>
+                            <option value="new-events">{{ __('transf.sort_new_events') }}</option>
+                            <option value="new-old">{{ __('transf.sort_time_new_to_old') }}</option>
+                            <option value="old-new">{{ __('transf.sort_time_old_to_new') }}</option>
                         </select>
                     </div>
                 </div>
@@ -90,7 +93,8 @@
                         <div class="card-zoom position-relative">
                             <a href="{{ route('frontend.event_single', $event->slug) }}"
                                 class="card-img d-block sk-thumbnail img-ratio-3 card-hover-overlay">
-                                <img class="rounded shadow-light-lg img-fluid" src="{{ $event_img }}" alt="...">
+                                <img class="rounded shadow-light-lg img-fluid" src="{{ $event_img }}"
+                                    alt="...">
                             </a>
                             <a href="{{ route('frontend.event_single', $event->slug) }}"
                                 class="text-underline text-white card-text-overlay position-absolute h5 mb-0 center">

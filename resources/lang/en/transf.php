@@ -191,6 +191,7 @@ return [
 
     //event list 
     'get_ticket'                                        => 'GET TICKET',
+    'events'                                            =>  'Events',
 
     //event single 
     'txt_title'                                         =>  'Title',
@@ -248,15 +249,20 @@ return [
     // Course list component
     'txt_we_found'                                  =>  'We Found',
     'txt_available_for_you'                         =>  'available for you',
+    'type'                                          =>  'Type',
+    'by'                                            =>  'By',
 
     // sored by  
     'sort_by'                                       =>  'Sort by',
     'sort_default'                                  =>  'Default',
     'sort_popularity'                               =>  'Popularity',
     'sort_new_courses'                              =>  'New Courses',
+    'sort_new_events'                               =>  'New Events',
     'sort_price_low_to_high'                        =>  'Price Low to High',
     'sort_price_high_to_low'                        =>  'Price High to Low',
 
+    'sort_time_new_to_old'                         =>  'Time: New To Old',
+    'sort_time_old_to_new'                         =>  'Time: Old To New',
     // Category 
     'categories'                                    =>  'Categories',
     'instructors'                                   =>  'Instructors',

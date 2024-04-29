@@ -182,6 +182,8 @@ return [
 
     'msg_reviewers_register_login'                      =>  'تحتاج إلى التسجيل أو تسجيل الدخول قبل إجراء المراجعة.',
 
+    'txt_comments'                                      =>  'التعليقات',
+
     // Instructors-single 
     'Bio'                                              =>   'السيرة الذاتية',
     'instructors'                                       =>  'المحاضرون',

@@ -204,6 +204,8 @@ return [
     //blog single 
     'btn_share_this_post'                             =>  'Share This Post',
     'browse_all'                                      =>    'Browse All',
+    'txt_description'                               =>  'Description',
+    'txt_content'                                       =>  'Content',
 
 
     //Customers orders

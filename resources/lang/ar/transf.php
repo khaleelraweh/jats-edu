@@ -204,6 +204,8 @@ return [
     //blog single 
     'btn_share_this_post'                             =>  'مشاركة هذا المقال ',
     'browse_all'                                      =>    'تصفح الكل',
+    'txt_description'                                   =>  'الوصف',
+    'txt_content'                                       =>  'المحتوي',
 
     //Customers orders
     'txt_my_orders'                                 =>  'طلباتي',

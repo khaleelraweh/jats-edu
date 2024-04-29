@@ -60,7 +60,7 @@
     <div class="container">
         <div class="row mb-8 mb-md-12">
             <div class="col-xl-8 mx-auto">
-                <h3 class="">Course Description</h3>
+                <h3 class="">{{ __('transf.txt_content') }}</h3>
                 <p class="mb-6 line-height-md">
                     {!! $post->description !!}
                 </p>

@@ -1,6 +1,6 @@
 <div>
     {{-- show reviews --}}
-    <h3 class="mb-6">Comment</h3>
+    <h3 class="mb-6">{{ __('transf.txt_comments') }}</h3>
     <ul class="list-unstyled pt-2">
         @foreach ($reviews as $review)
             <li class="media d-flex">

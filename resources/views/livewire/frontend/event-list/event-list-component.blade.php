@@ -203,11 +203,11 @@
                             fill="currentColor" />
                     </svg>
 
-                    <span class="ms-2">LOAD MORE</span>
+                    <span class="ms-2">{{ __('transf.load_more') }}</span>
                 </span>
 
                 <span class="less mx-auto">
-                    LOAD LESS
+                    {{ __('transf.load_less') }}
                 </span>
             </a>
 

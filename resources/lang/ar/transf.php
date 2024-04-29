@@ -193,6 +193,8 @@ return [
     //event list 
     'get_ticket'                                        => 'احصل على تذكرة',
     'events'                                            =>  'الاحداث',
+    'load_more'                                         =>  'استعراض عناصر اكثر',
+    'load_less'                                         =>  'استعراض عناصر اقل',
 
     //event single 
     'txt_title'                                         =>  'العنوان',

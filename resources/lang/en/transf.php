@@ -192,6 +192,8 @@ return [
     //event list 
     'get_ticket'                                        => 'GET TICKET',
     'events'                                            =>  'Events',
+    'load_more'                                         =>  'LOAD MORE',
+    'load_less'                                         =>  'LOAD LESS',
 
     //event single 
     'txt_title'                                         =>  'Title',

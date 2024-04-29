@@ -53,10 +53,10 @@
                             $review_user_image = asset('assets/customers/' . $review->user->user_image);
 
                             if (!file_exists(public_path('assets/customers/' . $review->user->user_image))) {
-                                $review_user_image = asset('assets/not_found/avator1.webp');
+                                $review_user_image = asset('image/not_found/avator1.webp');
                             }
                         } else {
-                            $review_user_image = asset('assets/not_found/avator1.webp');
+                            $review_user_image = asset('image/not_found/avator1.webp');
                         }
                     @endphp
 

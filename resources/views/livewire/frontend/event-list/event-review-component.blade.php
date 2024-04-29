@@ -1,6 +1,6 @@
 <div>
     {{-- show reviews --}}
-    <h3 class="mb-6">Comment</h3>
+    <h3 class="mb-6">{{ __('transf.txt_comments') }}</h3>
     <ul class="list-unstyled pt-2">
         @foreach ($reviews as $review)
             <li class="media d-flex">
@@ -10,10 +10,10 @@
                             $review_user_image = asset('assets/customers/' . $review->user->user_image);
 
                             if (!file_exists(public_path('assets/customers/' . $review->user->user_image))) {
-                                $review_user_image = asset('assets/not_found/avator1.webp');
+                                $review_user_image = asset('image/not_found/avator1.webp');
                             }
                         } else {
-                            $review_user_image = asset('assets/not_found/avator1.webp');
+                            $review_user_image = asset('image/not_found/avator1.webp');
                         }
                     @endphp
 

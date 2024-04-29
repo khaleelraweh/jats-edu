@@ -201,6 +201,11 @@ return [
     'txt_what_is_it_like_to_event'                      =>  'What is it like to event',
     'txt_share_this_event'                              =>  'Share This Event',
     'our_speakers'                                      =>  'Our Speakers',
+    'book_now'                                          =>  'BOOK NOW',
+    'off'                                               =>  'Off',
+    'days left at this price!'                          =>  'days left at this price!',
+    'total_slot'                                        =>  'Total Slot',
+    'booked_slot'                                       =>  'Booked Slot',
 
     //event single timer 
     'days'                                              =>  'DAYS',

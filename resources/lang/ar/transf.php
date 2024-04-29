@@ -202,6 +202,11 @@ return [
     'txt_what_is_it_like_to_event'                      =>  'ما هو تقييمك للحدث !',
     'txt_share_this_event'                              =>  'شارك هذا الحدث',
     'our_speakers'                                      =>  'المتحدثون',
+    'book_now'                                          =>  'احجز الان',
+    'off'                                               =>  'خصم',
+    'days left at this price!'                           =>  ' أيام مضت على هذا السعر!',
+    'total_slot'                                        =>  'التكلفة الإجمالية',
+    'booked_slot'                                       =>  'تكلفة الحجز',
 
     //event single timer 
     'days'                                              =>  'ايام',

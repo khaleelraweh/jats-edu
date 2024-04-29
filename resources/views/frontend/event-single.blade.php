@@ -324,7 +324,8 @@
                         <div class="d-flex align-items-center mb-2">
                             <ins class="h2 mb-0">$89.99</ins>
                             <del class="ms-3">339.99</del>
-                            <div class="badge badge-lg badge-purple text-white ms-auto fw-normal">91% Off</div>
+                            <div class="badge badge-lg badge-purple text-white ms-auto fw-normal">91%
+                                {{ __('transf.off') }}</div>
                         </div>
 
                         <div class="d-flex align-items-center text-alizarin mb-6">
@@ -350,7 +351,7 @@
                                     fill="currentColor" />
                             </svg>
 
-                            <span class="ms-2">2 days left at this price!</span>
+                            <span class="ms-2">2 {{ __('transf.days left at this price!') }}</span>
                         </div>
 
                         <ul class="list-group list-group-flush mb-6">
@@ -365,7 +366,7 @@
                                     </svg>
 
                                 </div>
-                                <h6 class="mb-0 ms-3 me-auto">Total Slot</h6>
+                                <h6 class="mb-0 ms-3 me-auto">{{ __('transf.total_slot') }}</h6>
                                 <span>240</span>
                             </li>
                             <li class="list-group-item d-flex align-items-center py-3">
@@ -382,12 +383,13 @@
                                     </svg>
 
                                 </div>
-                                <h6 class="mb-0 ms-3 me-auto">Booked Slot</h6>
+                                <h6 class="mb-0 ms-3 me-auto">{{ __('transf.booked_slot') }}</h6>
                                 <span>20</span>
                             </li>
                         </ul>
 
-                        <button class="btn btn-primary btn-block mb-3" type="button" name="button">BOOK NOW</button>
+                        <button class="btn btn-primary btn-block mb-3" type="button"
+                            name="button">{{ __('transf.book_now') }}</button>
 
                         <div class="text-center">
                             <a href="{{ $whatsappShareUrl }}" target="_blank"

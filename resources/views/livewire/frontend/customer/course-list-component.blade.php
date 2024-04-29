@@ -3,30 +3,25 @@
     <div class="container mb-6 mb-xl-8 z-index-2">
         <div class="d-lg-flex align-items-center mb-6 mb-xl-0">
 
-            <p class="mb-lg-0">We found <span class="text-dark">{{ $courses->total() }} courses</span> available for you
+            <p class="mb-lg-0">{{ __('transf.txt_we_found') }} <span class="text-dark">{{ $courses->total() }}
+                    {{ __('transf.courses') }}</span> {{ __('transf.txt_available_for_you') }}
             </p>
             <div class="ms-lg-auto d-lg-flex flex-wrap">
                 <div class="mb-4 mb-lg-0 ms-lg-6">
 
                     <div wire:ignore class="border rounded d-flex align-items-center choices-label h-50p">
-                        <span class="ps-5" style="width: 110px">Sort by:</span>
+                        <span class="ps-5" style="width: 110px">{{ __('transf.sort_by') }}:</span>
                         <select
                             class="form-select form-select-sm text-dark border-0 ps-3 flex-grow-1 shadow-none dropdown-menu-end"
                             aria-label="Small select example" wire:model="sortingBy">
-                            <option value="default">Default</option>
-                            <option value="popularity">Popularity</option>
-                            <option value="new-courses">New Courses</option>
-                            <option value="low-high">Price Low to High</option>
-                            <option value="high-low">Price High to low</option>
+                            <option value="default">{{ __('transf.sort_default') }}</option>
+                            <option value="popularity"> {{ __('transf.sort_popularity') }} </option>
+                            <option value="new-courses">{{ __('transf.sort_new_courses') }}</option>
+                            <option value="low-high">{{ __('transf.sort_price_low_to_high') }}</option>
+                            <option value="high-low">{{ __('transf.sort_price_high_to_low') }}</option>
                         </select>
 
                     </div>
-
-
-
-
-
-
                 </div>
             </div>
         </div>
@@ -48,7 +43,7 @@
                                     class="p-6 text-dark fw-medium d-flex align-items-center collapse-accordion-toggle line-height-one"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#coursefiltercollapse1"
                                     aria-expanded="true" aria-controls="coursefiltercollapse1">
-                                    Category
+                                    {{ __('transf.categories') }}
                                     <span class="ms-auto text-dark d-flex">
                                         <!-- Icon -->
                                         <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
@@ -97,7 +92,7 @@
                                     class="p-6 text-dark fw-medium d-flex align-items-center collapse-accordion-toggle line-height-one"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#coursefiltercollapse2"
                                     aria-expanded="true" aria-controls="coursefiltercollapse2">
-                                    Instructors
+                                    {{ __('transf.instructors') }}
                                     <span class="ms-auto text-dark d-flex">
                                         <!-- Icon -->
                                         <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
@@ -123,7 +118,7 @@
                                 <div class="input-group input-group-filter">
                                     <input wire:model="searchQuery"
                                         class="form-control form-control-sm border-end-0 shadow-none" type="search"
-                                        placeholder="Search" aria-label="Search">
+                                        placeholder="{{ __('transf.search') }}" aria-label="Search">
                                     <div class="input-group-append">
                                         <button
                                             class="btn btn-sm btn-outline-white border-start-0 shadow-none bg-transparent text-secondary icon-xs d-flex align-items-center"
@@ -147,8 +142,8 @@
                             <ul class="list-unstyled list-group list-checkbox list-checkbox-limit">
                                 @foreach ($instructors_menu as $name => $counts)
                                     <li class="custom-control custom-checkbox">
-                                        <input wire:model="selectedNames" type="checkbox" value="{{ $name }}"
-                                            class="custom-control-input"
+                                        <input wire:model="selectedNames" type="checkbox"
+                                            value="{{ $name }}" class="custom-control-input"
                                             id="InstructorscustomCheck{{ $loop->index }}">
                                         <label class="custom-control-label font-size-base"
                                             for="InstructorscustomCheck{{ $loop->index }}">
@@ -170,7 +165,7 @@
                                     class="p-6 text-dark fw-medium d-flex align-items-center collapse-accordion-toggle line-height-one"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#coursefiltercollapse3"
                                     aria-expanded="true" aria-controls="coursefiltercollapse3">
-                                    Price
+                                    {{ __('transf.prices') }}
                                     <span class="ms-auto text-dark d-flex">
                                         <!-- Icon -->
                                         <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
@@ -198,21 +193,24 @@
                                     <input type="radio" wire:model="priceInput" id="pricecustomradio1"
                                         name="customRadio" value="all" class="custom-control-input">
 
-                                    <label class="custom-control-label font-size-base" for="pricecustomradio1">All
+                                    <label class="custom-control-label font-size-base"
+                                        for="pricecustomradio1">{{ __('transf.all') }}
                                         ({{ count($courses) ?? 0 }})
                                     </label>
                                 </li>
                                 <li class="custom-control custom-radio">
                                     <input type="radio" wire:model="priceInput" id="pricecustomradio2"
                                         name="customRadio" value="free" class="custom-control-input">
-                                    <label class="custom-control-label font-size-base" for="pricecustomradio2">Free
+                                    <label class="custom-control-label font-size-base"
+                                        for="pricecustomradio2">{{ __('transf.free') }}
                                         ({{ count($courses->where('price', '=', 0)) ?? 0 }})
                                     </label>
                                 </li>
                                 <li class="custom-control custom-radio">
                                     <input type="radio" wire:model="priceInput" id="pricecustomradio3"
                                         name="customRadio" value="paid" class="custom-control-input">
-                                    <label class="custom-control-label font-size-base" for="pricecustomradio3">Paid
+                                    <label class="custom-control-label font-size-base"
+                                        for="pricecustomradio3">{{ __('transf.paid') }}
                                         ({{ count($courses->where('price', '>', 0)) ?? 0 }})
                                     </label>
                                 </li>
@@ -228,7 +226,7 @@
                                     class="p-6 text-dark fw-medium d-flex align-items-center collapse-accordion-toggle line-height-one"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#coursefiltercollapse4"
                                     aria-expanded="true" aria-controls="coursefiltercollapse4">
-                                    Level
+                                    {{ __('transf.levels') }}
                                     <span class="ms-auto text-dark d-flex">
                                         <!-- Icon -->
                                         <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
@@ -256,7 +254,7 @@
                                         class="custom-control-input" id="levelcustomcheck1">
 
                                     <label class="custom-control-label font-size-base"
-                                        for="levelcustomcheck1">Beginner
+                                        for="levelcustomcheck1">{{ __('transf.beginner') }}
                                         ({{ count($courses->where('skill_level', 1)) ?? 0 }})
                                     </label>
                                 </li>
@@ -265,8 +263,8 @@
                                     <input type="checkbox" wire:model="courseLevels" value="2"
                                         class="custom-control-input" id="levelcustomcheck2">
 
-                                    <label class="custom-control-label font-size-base"
-                                        for="levelcustomcheck2">Intermediate
+                                    <label class="custom-control-label font-size-base" for="levelcustomcheck2">
+                                        {{ __('transf.intermediate') }}
                                         ({{ count($courses->where('skill_level', 2)) ?? 0 }})
                                     </label>
                                 </li>
@@ -275,8 +273,8 @@
                                     <input type="checkbox" wire:model="courseLevels" value="3"
                                         class="custom-control-input" id="levelcustomcheck3">
 
-                                    <label class="custom-control-label font-size-base"
-                                        for="levelcustomcheck3">Advanced
+                                    <label class="custom-control-label font-size-base" for="levelcustomcheck3">
+                                        {{ __('transf.advance') }}
                                         ({{ count($courses->where('skill_level', 3)) ?? 0 }})
                                     </label>
                                 </li>
@@ -293,7 +291,7 @@
                                     class="p-6 text-dark fw-medium d-flex align-items-center collapse-accordion-toggle line-height-one"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#coursefiltercollapse5"
                                     aria-expanded="true" aria-controls="coursefiltercollapse5">
-                                    Rating
+                                    {{ __('transf.ratings') }}
                                     <span class="ms-auto text-dark d-flex">
                                         <!-- Icon -->
                                         <svg width="15" height="2" viewBox="0 0 15 2" fill="none"
@@ -399,7 +397,7 @@
 
                     {{-- <a href="#" class="btn btn-primary btn-block mb-10">CLEAR FILTER </a> --}}
                     <a href="#" class="btn btn-primary btn-block mb-10" wire:click="resetFilters">
-                        RESET FILTER
+                        {{ __('transf.reset_filter') }}
                     </a>
                 </div>
 

@@ -35,5 +35,8 @@ class StudentLessonSingleComponent extends Component
     public function updateVideoUrl($url)
     {
         $this->videoUrl = $url;
+
+        // Refresh the Livewire component to update the video
+        $this->render();
     }
 }

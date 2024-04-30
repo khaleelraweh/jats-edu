@@ -30,9 +30,8 @@
     <div class="container container-wd">
         <div class="row pt-8 pb-10">
             <div class="col-lg-8">
-                {{-- <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-8"
-                    data-fancybox> --}}
-                <a href="{{ $videoUrl }}" class="d-block sk-thumbnail rounded mb-8" data-fancybox>
+
+                {{-- <a href="{{ $videoUrl }}" class="d-block sk-thumbnail rounded mb-8" data-fancybox>
                     <div
                         class="h-90p w-90p rounded-circle bg-white size-30-all d-inline-flex align-items-center justify-content-center position-absolute center z-index-1">
                         <!-- Icon -->
@@ -45,7 +44,12 @@
                     </div>
                     <img class="rounded shadow-light-lg" src="{{ asset('frontend/assets/img/products/product-2.jpg') }}"
                         alt="...">
-                </a>
+                </a> --}}
+
+                <iframe class="  rounded mb-8" style="width: 100%; height:500px;" src="{{ $videoUrl }}"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
                 <h3 class="text-white">{{ __('transf.txt_course_description') }}</h3>
 

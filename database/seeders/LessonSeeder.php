@@ -20,6 +20,14 @@ class LessonSeeder extends Seeder
         $faker = Factory::create();
         // Retrieve all course sections
         $sections = CourseSection::all();
+        $urls = [
+            "https://www.youtube.com/embed/UuPc7yh7dvA?si=xkO8D_HtH6R240qe",
+            "https://www.youtube.com/embed/0XTkzDQIz7k?si=z1p6kW7VdKwsFsBb",
+            "https://www.youtube.com/embed/0XTkzDQIz7k?si=avyjek9Ry8KfNlGo",
+            "https://www.youtube.com/embed/iLhRTH1UW28?si=fbaGzn_Nb32muGVu",
+            "https://www.youtube.com/embed/iLhRTH1UW28?si=BF_h9mC2l_LxpkZf",
+            // Add more URLs as needed
+        ];
 
         foreach ($sections as $section) {
             // Generate lessons based on lectures_count
@@ -27,10 +35,11 @@ class LessonSeeder extends Seeder
                 Lesson::create([
 
                     'title' => ['ar' => $faker->sentence(3), 'en' => $faker->sentence(3)],
-
                     // 'url'      =>  $faker->url,
+                    // 'url'      =>  "https://www.youtube.com/embed/UuPc7yh7dvA?si=xkO8D_HtH6R240qe",
 
-                    'url'      =>  "https://www.youtube.com/watch?v=bRgHWj3Am_M",
+                    'url'      =>  $urls[array_rand($urls)],
+
                     'duration_minutes' => $faker->time('H:i', 'now'),
                     'course_section_id' => $section->id,
 

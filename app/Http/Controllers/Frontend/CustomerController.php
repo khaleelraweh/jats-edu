@@ -109,6 +109,14 @@ class CustomerController extends Controller
     {
         $course = Course::with('sections.lessons')->where('slug->' . app()->getLocale(), $slug)->first();
 
+        // Trim the text to remove leading and trailing spaces
+        $course->description = trim($course->description);
+        // Get the first 200 characters
+        $exposedText = substr($course->description, 0, 200);
+        // Get the rest of the text
+        $hiddenText = substr($course->description, 200);
+
+
         // Calculate total duration for each section
         $totalDurations = [];
         foreach ($course->sections as $section) {
@@ -116,6 +124,6 @@ class CustomerController extends Controller
             $totalDurations[$section->id] = $totalDuration;
         }
 
-        return view('frontend.customer.student-lesson-single', compact('course', 'totalDurations'));
+        return view('frontend.customer.student-lesson-single', compact('course', 'totalDurations', 'exposedText', 'hiddenText'));
     }
 }

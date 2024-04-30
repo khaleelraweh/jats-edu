@@ -14,7 +14,8 @@
 
                 <!-- Lesson Title -->
                 <div class="mx-auto mb-5 mb-md-0">
-                    <h3 class="mb-0 line-clamp-2 text-white">Learn Figma: User Interface Design Essentials - UI/UX Design
+                    <h3 class="mb-0 line-clamp-2 text-white">
+                        {{ $course->title }}
                     </h3>
                 </div>
 
@@ -46,37 +47,36 @@
                         alt="...">
                 </a>
 
-                <h3 class="text-white">Course Description</h3>
+                <h3 class="text-white">{{ __('transf.txt_course_description') }}</h3>
 
-                <p class="mb-6 line-height-md">Do you want to become a UI/UX designer but you don't know where to start?
-                    This course will allow you to develop your user interface design skills and you can add UI designer to
-                    your CV and start getting clients for your skills.</p>
-                <p class="mb-6 line-height-md">Hi everyone. I'm Arash and I'm a UI/UX designer. In this course, I will help
-                    you learn and master Figma app comprehensively from scratch. Figma is an innovative and brilliant tool
-                    for User Interface design. It's used by everyone from entrepreneurs and start-ups to Apple, Airbnb,
-                    Facebook, etc.</p>
-                <p class="collapse mb-6 line-height-md" id="readcollapseExample">Anim pariatur cliche reprehenderit, enim
-                    eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore
-                    wes anderson cred nesciunt sapiente I will help you learn and master Figma app comprehensively from
-                    scratch. Figma is an innovative and brilliant tool for User Interface design. It's used by everyone from
-                    entrepreneurs ea proident.</p>
-                <a class="text-teal read-more h6 d-inline-block mb-8" data-bs-toggle="collapse" href="#readcollapseExample"
-                    role="button" aria-expanded="false" aria-controls="readcollapseExample">
-                    <span class="d-inline-flex align-items-center more">
-                        Read More
-                        <span
-                            class="d-flex align-items-center justify-content-center bg-teal rounded-circle ms-2 p-2 w-26p">
-                            <i class="fas fa-plus font-size-10 text-white"></i>
+                <p class="mb-6 line-height-md">
+                    {!! $exposedText !!}
+                </p>
+
+                <p class="collapse mb-6 line-height-md" id="readcollapseExample">
+                    {!! $hiddenText !!}
+                </p>
+
+                @if (strlen($hiddenText) > 0)
+                    <a class="text-teal read-more h6 d-inline-block mb-8" data-bs-toggle="collapse"
+                        href="#readcollapseExample" role="button" aria-expanded="false"
+                        aria-controls="readcollapseExample">
+                        <span class="d-inline-flex align-items-center more">
+                            {{ __('transf.txt_read_more') }}
+                            <span
+                                class="d-flex align-items-center justify-content-center bg-teal rounded-circle ms-2 p-2 w-26p">
+                                <i class="fas fa-plus font-size-10 text-white"></i>
+                            </span>
                         </span>
-                    </span>
-                    <span class="d-inline-flex align-items-center less">
-                        Read Less
-                        <span
-                            class="d-flex align-items-center justify-content-center bg-teal rounded-circle ms-2 p-2 w-26p">
-                            <i class="fas fa-minus font-size-10 text-white"></i>
+                        <span class="d-inline-flex align-items-center less">
+                            {{ __('transf.txt_read_less') }}
+                            <span
+                                class="d-flex align-items-center justify-content-center bg-teal rounded-circle ms-2 p-2 w-26p">
+                                <i class="fas fa-minus font-size-10 text-white"></i>
+                            </span>
                         </span>
-                    </span>
-                </a>
+                    </a>
+                @endif
 
                 <h3 class="text-white mb-6">Comment</h3>
                 <ul class="list-unstyled pt-2">

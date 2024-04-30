@@ -35,13 +35,5 @@ class StudentLessonSingleComponent extends Component
     public function updateVideoUrl($url)
     {
         $this->videoUrl = $url;
-
-        // // Update the video URL based on the clicked link
-        // if ($url === $this->lesson->url) {
-        //     $this->videoUrl = $url;
-        // } else {
-        //     // Update the video URL based on the second link
-        //     $this->videoUrl = 'your_new_video_url_here';
-        // }
     }
 }

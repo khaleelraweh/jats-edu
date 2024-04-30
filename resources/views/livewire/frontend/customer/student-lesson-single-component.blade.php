@@ -5,7 +5,7 @@
         <div class="px-5 px-lg-8 w-100">
             <div class="d-md-flex align-items-center">
                 <!-- Brand -->
-                <a class="navbar-brand mb-2 mb-md-0" href="index.html">
+                <a class="navbar-brand mb-2 mb-md-0" href="{{ route('frontend.index') }}">
                     <img src="{{ asset('frontend/assets/img/brand-white.svg') }}" class="navbar-brand-img" alt="...">
 
                 </a>

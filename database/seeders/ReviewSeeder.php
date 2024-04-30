@@ -22,7 +22,8 @@ class ReviewSeeder extends Seeder
         Course::all()->each(function ($course) use ($faker) {
 
             $course->reviews()->create([
-                'user_id'   =>  rand(3, 23),
+                // 'user_id'   =>  rand(3, 23),
+                'user_id'   =>  1,
                 'name'      =>  $faker->userName(),
                 'email'     =>  $faker->safeEmail(),
                 'title'     =>  $faker->sentence(),
@@ -35,7 +36,8 @@ class ReviewSeeder extends Seeder
         Post::all()->each(function ($post) use ($faker) {
 
             $post->reviews()->create([
-                'user_id'   =>  rand(3, 23),
+                // 'user_id'   =>  rand(3, 23),
+                'user_id'   =>  1,
                 'name'      =>  $faker->userName(),
                 'email'     =>  $faker->safeEmail(),
                 'title'     =>  $faker->sentence(),

@@ -36,8 +36,6 @@ class LessonSeeder extends Seeder
 
                     'title' => ['ar' => $faker->sentence(3), 'en' => $faker->sentence(3)],
                     // 'url'      =>  $faker->url,
-                    // 'url'      =>  "https://www.youtube.com/embed/UuPc7yh7dvA?si=xkO8D_HtH6R240qe",
-
                     'url'      =>  $urls[array_rand($urls)],
 
                     'duration_minutes' => $faker->time('H:i', 'now'),

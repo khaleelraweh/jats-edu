@@ -17,26 +17,26 @@ class RequirementSeeder extends Seeder
     {
 
         // requirements list for courses
-        $requirementsList = [
-            [
-                "course_requirement" => [
-                    "ar" => "لا نطلب أي خبرة سابقة أو مهارات محددة مسبقًا لحضور هذه الدورة. سيكون التوجيه الجيد كافيًا لإتقان تصميم واجهة المستخدم/تجربة المستخدم.",
-                    "en" => "We do not require any previous experience or pre-defined skills to take this course. A great orientation would be enough to master UI/UX design."
-                ],
-            ],
-            [
-                "course_requirement" => [
-                    "ar" => "جهاز كمبيوتر مع اتصال جيد بالإنترنت.",
-                    "en" => "A computer with a good internet connection."
-                ],
-            ],
-            [
-                "course_requirement" => [
-                    "ar" => "أدوبي فوتوشوب (اختياري)",
-                    "en" => "Adobe Photoshop (OPTIONAL)"
-                ],
-            ],
-        ];
+        // $requirementsList = [
+        //     [
+        //         "course_requirement" => [
+        //             "ar" => "لا نطلب أي خبرة سابقة أو مهارات محددة مسبقًا لحضور هذه الدورة. سيكون التوجيه الجيد كافيًا لإتقان تصميم واجهة المستخدم/تجربة المستخدم.",
+        //             "en" => "We do not require any previous experience or pre-defined skills to take this course. A great orientation would be enough to master UI/UX design."
+        //         ],
+        //     ],
+        //     [
+        //         "course_requirement" => [
+        //             "ar" => "جهاز كمبيوتر مع اتصال جيد بالإنترنت.",
+        //             "en" => "A computer with a good internet connection."
+        //         ],
+        //     ],
+        //     [
+        //         "course_requirement" => [
+        //             "ar" => "أدوبي فوتوشوب (اختياري)",
+        //             "en" => "Adobe Photoshop (OPTIONAL)"
+        //         ],
+        //     ],
+        // ];
 
         $requirements = [
             ['title' => ["ar"  => "لا نطلب أي خبرة سابقة أو مهارات محددة مسبقًا لحضور هذه الدورة. سيكون التوجيه الجيد كافيًا لإتقان تصميم واجهة المستخدم/تجربة المستخدم.", "en"  => "We do not require any previous experience or pre-defined skills to take this course. A great orientation would be enough to master UI/UX design."]],

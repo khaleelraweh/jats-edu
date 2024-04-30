@@ -24,7 +24,7 @@ class MainSliderSeeder extends Seeder
             $target = ['_self', '_blank'];
 
 
-            for ($i = 1; $i <= 5; $i++) {
+            for ($i = 1; $i <= 1; $i++) {
                 $sliders[] = [
                     'title'         => json_encode(['ar' => 'غير حياتك من خلال التعليم' . $i, 'en' => 'Transform your life through education' . $i]),
                     'slug'          => json_encode(['ar' => $faker->unique()->slug(3), 'en' => $faker->unique()->slug(3)]),

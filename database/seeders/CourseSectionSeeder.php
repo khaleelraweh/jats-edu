@@ -39,44 +39,44 @@ class CourseSectionSeeder extends Seeder
                 'updated_by' => $faker->realTextBetween(10, 20),
             ]);
 
-            CourseSection::create([
-                'title' => ['ar' => 'الادوار والصلاحيات', 'en' => 'Roules and Permissions'],
-                'lectures_count' => 11,
-                'duration' => "3hr 53m",
-                'course_id' => $course->id,
+            // CourseSection::create([
+            //     'title' => ['ar' => 'الادوار والصلاحيات', 'en' => 'Roules and Permissions'],
+            //     'lectures_count' => 11,
+            //     'duration' => "3hr 53m",
+            //     'course_id' => $course->id,
 
-                'status' => true,
-                'published_on' => $faker->dateTime(),
-                'created_by' => $faker->realTextBetween(10, 20),
-                'updated_by' => $faker->realTextBetween(10, 20),
-            ]);
+            //     'status' => true,
+            //     'published_on' => $faker->dateTime(),
+            //     'created_by' => $faker->realTextBetween(10, 20),
+            //     'updated_by' => $faker->realTextBetween(10, 20),
+            // ]);
 
-            CourseSection::create([
-                'title' => ['ar' => ' بناء لوحة التحكم', 'en' => 'Build the control panel'],
-                'lectures_count' => 31,
-                'duration' => "19hr 15m",
-                'course_id' => $course->id,
+            // CourseSection::create([
+            //     'title' => ['ar' => ' بناء لوحة التحكم', 'en' => 'Build the control panel'],
+            //     'lectures_count' => 31,
+            //     'duration' => "19hr 15m",
+            //     'course_id' => $course->id,
 
-                'status' => true,
-                'published_on' => $faker->dateTime(),
-                'created_by' => $faker->realTextBetween(10, 20),
-                'updated_by' => $faker->realTextBetween(10, 20),
-            ]);
+            //     'status' => true,
+            //     'published_on' => $faker->dateTime(),
+            //     'created_by' => $faker->realTextBetween(10, 20),
+            //     'updated_by' => $faker->realTextBetween(10, 20),
+            // ]);
 
             //random section title 
-            for ($i = 0; $i < 3; $i++) {
-                CourseSection::create([
-                    'title' => ['ar' => $fakerAr->sentence(3), 'en' => $faker->sentence(3)],
-                    'lectures_count' => $faker->numberBetween(5, 20),
-                    'duration' => $faker->time('H:i', 'now'),
-                    'course_id' => $course->id,
+            // for ($i = 0; $i < 3; $i++) {
+            //     CourseSection::create([
+            //         'title' => ['ar' => $fakerAr->sentence(3), 'en' => $faker->sentence(3)],
+            //         'lectures_count' => $faker->numberBetween(5, 20),
+            //         'duration' => $faker->time('H:i', 'now'),
+            //         'course_id' => $course->id,
 
-                    'status' => true,
-                    'published_on' => $faker->dateTime(),
-                    'created_by' => $faker->name(),
-                    'updated_by' => $faker->name(),
-                ]);
-            }
+            //         'status' => true,
+            //         'published_on' => $faker->dateTime(),
+            //         'created_by' => $faker->name(),
+            //         'updated_by' => $faker->name(),
+            //     ]);
+            // }
         }
     }
 }

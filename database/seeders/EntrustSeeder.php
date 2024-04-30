@@ -139,56 +139,56 @@ class EntrustSeeder extends Seeder
 
 
         //------------- 04-  Create random customer and  AttachRole to customerRole  ------------//
-        for ($i = 1; $i <= 20; $i++) {
-            //Create random customer
-            $random_customer = User::create([
-                'first_name' => $faker->firstName,
-                'last_name' => $faker->lastName,
-                'username' => $faker->unique()->userName,
-                'email' => $faker->unique()->email,
-                'email_verified_at' => now(),
-                'mobile' => '0096777' . $faker->numberBetween(1000000, 9999999),
-                'password' => bcrypt('123123123'),
-                'user_image' => 'avator.svg',
-                'status' => 1,
-                'remember_token' => Str::random(10),
-            ]);
+        // for ($i = 1; $i <= 20; $i++) {
+        //     //Create random customer
+        //     $random_customer = User::create([
+        //         'first_name' => $faker->firstName,
+        //         'last_name' => $faker->lastName,
+        //         'username' => $faker->unique()->userName,
+        //         'email' => $faker->unique()->email,
+        //         'email_verified_at' => now(),
+        //         'mobile' => '0096777' . $faker->numberBetween(1000000, 9999999),
+        //         'password' => bcrypt('123123123'),
+        //         'user_image' => 'avator.svg',
+        //         'status' => 1,
+        //         'remember_token' => Str::random(10),
+        //     ]);
 
-            //Add customerRole to RandomCusomer
-            $random_customer->attachRole($customerRole);
-        } //end for
+        //     //Add customerRole to RandomCusomer
+        //     $random_customer->attachRole($customerRole);
+        // } //end for
 
 
         //------------- 04-2-  Create random instructor and  AttachRole to instructorRole  ------------//
-        for ($i = 1; $i <= 20; $i++) {
-            //Create random instructor
-            $random_instructor = User::create([
-                'first_name' => $faker->firstName,
-                'last_name' => $faker->lastName,
-                'username' => $faker->unique()->userName,
-                'email' => $faker->unique()->email,
-                'email_verified_at' => now(),
-                'mobile' => '0096777' . $faker->numberBetween(1000000, 9999999),
-                'password' => bcrypt('123123123'),
-                'user_image' => 'avator.svg',
-                'status' => 1,
-                'remember_token' => Str::random(10),
-                //for instructor info start
-                'description'          =>   $faker->text(),
-                'motavation'          =>  $faker->text(),
-                'facebook'          =>  'www.facebook.com',
-                'twitter'           =>  'www.twitter.com',
-                'instagram'         =>  'www.instagram.com',
-                'linkedin'          =>  'www.linkedin.com',
-                //for instructor info end 
-            ]);
+        // for ($i = 1; $i <= 20; $i++) {
+        //     //Create random instructor
+        //     $random_instructor = User::create([
+        //         'first_name' => $faker->firstName,
+        //         'last_name' => $faker->lastName,
+        //         'username' => $faker->unique()->userName,
+        //         'email' => $faker->unique()->email,
+        //         'email_verified_at' => now(),
+        //         'mobile' => '0096777' . $faker->numberBetween(1000000, 9999999),
+        //         'password' => bcrypt('123123123'),
+        //         'user_image' => 'avator.svg',
+        //         'status' => 1,
+        //         'remember_token' => Str::random(10),
+        //         //for instructor info start
+        //         'description'          =>   $faker->text(),
+        //         'motavation'          =>  $faker->text(),
+        //         'facebook'          =>  'www.facebook.com',
+        //         'twitter'           =>  'www.twitter.com',
+        //         'instagram'         =>  'www.instagram.com',
+        //         'linkedin'          =>  'www.linkedin.com',
+        //         //for instructor info end 
+        //     ]);
 
-            //Add instructorRole to Randominstructor
-            $random_instructor->attachRole($instructorRole);
+        //     //Add instructorRole to Randominstructor
+        //     $random_instructor->attachRole($instructorRole);
 
-            // Add  specializations to Randominstructor
-            $random_instructor->specializations()->sync($specializations->random(rand(1, 3)));
-        }
+        //     // Add  specializations to Randominstructor
+        //     $random_instructor->specializations()->sync($specializations->random(rand(1, 3)));
+        // }
 
 
         //------------- 05- Permission  ------------//

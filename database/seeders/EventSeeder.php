@@ -36,74 +36,74 @@ class EventSeeder extends Seeder
                 'title' => ['ar' => 'مؤتمر تصميم جديد لصندوق الضوء الأنيق من قطع الورق', 'en' => 'Elegant Light Box Paper Cut Dioramas New Design Conference'],
                 'course_category_id' => 1,
             ],
-            [
-                'title' => ['ar' => 'اكتشف القانون - التحق بأفضل كليات الحقوق في المملكة المتحدة', 'en' => 'Discover Law - Get into the best UK law schools'],
-                'course_category_id' => 2,
-            ],
-            [
-                'title' => ['ar' => '"مقدمة في القانون" يوم مفتوح مع بريستو', 'en' => '"Introduction to Law" Open Day with Bristows'],
-                'course_category_id' => 3,
-            ],
-            [
-                'title' => ['ar' => 'حماية لامبث: فهم الضرر السياقي', 'en' => 'Lambeth Safeguarding: Understanding Contextual Harm'],
-                'course_category_id' => 4,
-            ],
-            [
-                'title' => ['ar' => 'اليوم المفتوح للطلاب الجامعيين - حرم هولواي الجامعي - 3 يوليو 2020', 'en' => 'Undergraduate Open Day – Holloway Campus - 3 July 2020'],
-                'course_category_id' => 5,
-            ],
-            [
-                'title' => ['ar' => 'الأحداث المفتوحة للطلاب الجامعيين في جامعة كينجستون 2019-20', 'en' => 'Kingston College undergraduate Open Events 2019-20'],
-                'course_category_id' => 6,
-            ],
-            [
-                'title' => ['ar' => 'مؤتمر تصميم جديد لصندوق الضوء الأنيق من قطع الورق', 'en' => 'Elegant Light Box Paper Cut Dioramas New Design Conference'],
-                'course_category_id' => 1,
-            ],
-            [
-                'title' => ['ar' => 'اكتشف القانون - التحق بأفضل كليات الحقوق في المملكة المتحدة', 'en' => 'Discover Law - Get into the best UK law schools'],
-                'course_category_id' => 2,
-            ],
-            [
-                'title' => ['ar' => '"مقدمة في القانون" يوم مفتوح مع بريستو', 'en' => '"Introduction to Law" Open Day with Bristows'],
-                'course_category_id' => 3,
-            ],
-            [
-                'title' => ['ar' => 'حماية لامبث: فهم الضرر السياقي', 'en' => 'Lambeth Safeguarding: Understanding Contextual Harm'],
-                'course_category_id' => 4,
-            ],
-            [
-                'title' => ['ar' => 'اليوم المفتوح للطلاب الجامعيين - حرم هولواي الجامعي - 3 يوليو 2020', 'en' => 'Undergraduate Open Day – Holloway Campus - 3 July 2020'],
-                'course_category_id' => 5,
-            ],
-            [
-                'title' => ['ar' => 'الأحداث المفتوحة للطلاب الجامعيين في جامعة كينجستون 2019-20', 'en' => 'Kingston College undergraduate Open Events 2019-20'],
-                'course_category_id' => 6,
-            ],
-            [
-                'title' => ['ar' => 'مؤتمر تصميم جديد لصندوق الضوء الأنيق من قطع الورق', 'en' => 'Elegant Light Box Paper Cut Dioramas New Design Conference'],
-                'course_category_id' => 1,
-            ],
-            [
-                'title' => ['ar' => 'اكتشف القانون - التحق بأفضل كليات الحقوق في المملكة المتحدة', 'en' => 'Discover Law - Get into the best UK law schools'],
-                'course_category_id' => 2,
-            ],
-            [
-                'title' => ['ar' => '"مقدمة في القانون" يوم مفتوح مع بريستو', 'en' => '"Introduction to Law" Open Day with Bristows'],
-                'course_category_id' => 3,
-            ],
-            [
-                'title' => ['ar' => 'حماية لامبث: فهم الضرر السياقي', 'en' => 'Lambeth Safeguarding: Understanding Contextual Harm'],
-                'course_category_id' => 4,
-            ],
-            [
-                'title' => ['ar' => 'اليوم المفتوح للطلاب الجامعيين - حرم هولواي الجامعي - 3 يوليو 2020', 'en' => 'Undergraduate Open Day – Holloway Campus - 3 July 2020'],
-                'course_category_id' => 5,
-            ],
-            [
-                'title' => ['ar' => 'الأحداث المفتوحة للطلاب الجامعيين في جامعة كينجستون 2019-20', 'en' => 'Kingston College undergraduate Open Events 2019-20'],
-                'course_category_id' => 6,
-            ],
+            // [
+            //     'title' => ['ar' => 'اكتشف القانون - التحق بأفضل كليات الحقوق في المملكة المتحدة', 'en' => 'Discover Law - Get into the best UK law schools'],
+            //     'course_category_id' => 2,
+            // ],
+            // [
+            //     'title' => ['ar' => '"مقدمة في القانون" يوم مفتوح مع بريستو', 'en' => '"Introduction to Law" Open Day with Bristows'],
+            //     'course_category_id' => 3,
+            // ],
+            // [
+            //     'title' => ['ar' => 'حماية لامبث: فهم الضرر السياقي', 'en' => 'Lambeth Safeguarding: Understanding Contextual Harm'],
+            //     'course_category_id' => 4,
+            // ],
+            // [
+            //     'title' => ['ar' => 'اليوم المفتوح للطلاب الجامعيين - حرم هولواي الجامعي - 3 يوليو 2020', 'en' => 'Undergraduate Open Day – Holloway Campus - 3 July 2020'],
+            //     'course_category_id' => 5,
+            // ],
+            // [
+            //     'title' => ['ar' => 'الأحداث المفتوحة للطلاب الجامعيين في جامعة كينجستون 2019-20', 'en' => 'Kingston College undergraduate Open Events 2019-20'],
+            //     'course_category_id' => 6,
+            // ],
+            // [
+            //     'title' => ['ar' => 'مؤتمر تصميم جديد لصندوق الضوء الأنيق من قطع الورق', 'en' => 'Elegant Light Box Paper Cut Dioramas New Design Conference'],
+            //     'course_category_id' => 1,
+            // ],
+            // [
+            //     'title' => ['ar' => 'اكتشف القانون - التحق بأفضل كليات الحقوق في المملكة المتحدة', 'en' => 'Discover Law - Get into the best UK law schools'],
+            //     'course_category_id' => 2,
+            // ],
+            // [
+            //     'title' => ['ar' => '"مقدمة في القانون" يوم مفتوح مع بريستو', 'en' => '"Introduction to Law" Open Day with Bristows'],
+            //     'course_category_id' => 3,
+            // ],
+            // [
+            //     'title' => ['ar' => 'حماية لامبث: فهم الضرر السياقي', 'en' => 'Lambeth Safeguarding: Understanding Contextual Harm'],
+            //     'course_category_id' => 4,
+            // ],
+            // [
+            //     'title' => ['ar' => 'اليوم المفتوح للطلاب الجامعيين - حرم هولواي الجامعي - 3 يوليو 2020', 'en' => 'Undergraduate Open Day – Holloway Campus - 3 July 2020'],
+            //     'course_category_id' => 5,
+            // ],
+            // [
+            //     'title' => ['ar' => 'الأحداث المفتوحة للطلاب الجامعيين في جامعة كينجستون 2019-20', 'en' => 'Kingston College undergraduate Open Events 2019-20'],
+            //     'course_category_id' => 6,
+            // ],
+            // [
+            //     'title' => ['ar' => 'مؤتمر تصميم جديد لصندوق الضوء الأنيق من قطع الورق', 'en' => 'Elegant Light Box Paper Cut Dioramas New Design Conference'],
+            //     'course_category_id' => 1,
+            // ],
+            // [
+            //     'title' => ['ar' => 'اكتشف القانون - التحق بأفضل كليات الحقوق في المملكة المتحدة', 'en' => 'Discover Law - Get into the best UK law schools'],
+            //     'course_category_id' => 2,
+            // ],
+            // [
+            //     'title' => ['ar' => '"مقدمة في القانون" يوم مفتوح مع بريستو', 'en' => '"Introduction to Law" Open Day with Bristows'],
+            //     'course_category_id' => 3,
+            // ],
+            // [
+            //     'title' => ['ar' => 'حماية لامبث: فهم الضرر السياقي', 'en' => 'Lambeth Safeguarding: Understanding Contextual Harm'],
+            //     'course_category_id' => 4,
+            // ],
+            // [
+            //     'title' => ['ar' => 'اليوم المفتوح للطلاب الجامعيين - حرم هولواي الجامعي - 3 يوليو 2020', 'en' => 'Undergraduate Open Day – Holloway Campus - 3 July 2020'],
+            //     'course_category_id' => 5,
+            // ],
+            // [
+            //     'title' => ['ar' => 'الأحداث المفتوحة للطلاب الجامعيين في جامعة كينجستون 2019-20', 'en' => 'Kingston College undergraduate Open Events 2019-20'],
+            //     'course_category_id' => 6,
+            // ],
 
         ];
 

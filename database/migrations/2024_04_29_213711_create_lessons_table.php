@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->json('title');
-            // $table->string('link')->nullable();
-            $table->string('url')->nullable();
             $table->json('slug');
-            // $table->string('duration')->nullable();
+
+            $table->string('url')->nullable();
+
             $table->unsignedInteger('duration_minutes')->nullable(); // Store duration in minutes
 
 

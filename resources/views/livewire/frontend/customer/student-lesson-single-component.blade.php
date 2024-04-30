@@ -18,7 +18,7 @@
                 </div>
 
                 <!-- Back to Course -->
-                <a href="course-single-v1.html"
+                <a href="{{ route('customer.courses') }}"
                     class="btn btn-sm btn-orange ms-md-6 px-6 mb-3 mb-md-0 flex-shrink-0">Back
                     to Course</a>
             </div>

@@ -9,9 +9,10 @@ class StudentLessonSingleComponent extends Component
 {
     public $slug;
 
+    public $videoUrl;
+
     public function render()
     {
-
         $course = Course::with('sections.lessons')->where('slug->' . app()->getLocale(), $this->slug)->first();
 
         // Trim the text to remove leading and trailing spaces
@@ -21,7 +22,6 @@ class StudentLessonSingleComponent extends Component
         // Get the rest of the text
         $hiddenText = substr($course->description, 200);
 
-
         // Calculate total duration for each section
         $totalDurations = [];
         foreach ($course->sections as $section) {
@@ -30,5 +30,18 @@ class StudentLessonSingleComponent extends Component
         }
 
         return view('livewire.frontend.customer.student-lesson-single-component', compact('course', 'totalDurations', 'exposedText', 'hiddenText'));
+    }
+
+    public function updateVideoUrl($url)
+    {
+        $this->videoUrl = $url;
+
+        // // Update the video URL based on the clicked link
+        // if ($url === $this->lesson->url) {
+        //     $this->videoUrl = $url;
+        // } else {
+        //     // Update the video URL based on the second link
+        //     $this->videoUrl = 'your_new_video_url_here';
+        // }
     }
 }

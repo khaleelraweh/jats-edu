@@ -27,9 +27,10 @@ class LessonSeeder extends Seeder
                 Lesson::create([
 
                     'title' => ['ar' => $faker->sentence(3), 'en' => $faker->sentence(3)],
-                    // 'duration' => $faker->time('H:i', 'now'),
-                    // 'link'      =>  $faker->url,
-                    'url'      =>  $faker->url,
+
+                    // 'url'      =>  $faker->url,
+
+                    'url'      =>  "https://www.youtube.com/watch?v=bRgHWj3Am_M",
                     'duration_minutes' => $faker->time('H:i', 'now'),
                     'course_section_id' => $section->id,
 

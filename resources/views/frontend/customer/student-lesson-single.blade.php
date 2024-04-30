@@ -31,7 +31,9 @@
     <div class="container container-wd">
         <div class="row pt-8 pb-10">
             <div class="col-lg-8">
-                <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-8"
+                {{-- <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-8"
+                    data-fancybox> --}}
+                <a href="https://www.youtube.com/watch?v=8ubEZA4gg1E" class="d-block sk-thumbnail rounded mb-8"
                     data-fancybox>
                     <div
                         class="h-90p w-90p rounded-circle bg-white size-30-all d-inline-flex align-items-center justify-content-center position-absolute center z-index-1">
@@ -311,7 +313,8 @@
                                                 <div
                                                     class="badge btn-orange-soft text-white-70 me-5 font-size-sm fw-normal py-2">
                                                     {{ $lesson->duration }}</div>
-                                                <a href="#" class="text-secondary d-flex">
+                                                {{-- <a href="#" class="text-secondary d-flex"> --}}
+                                                <a href="{{ $lesson->url }}" class="text-secondary d-flex">
                                                     <!-- Icon -->
                                                     <svg width="14" height="16" viewBox="0 0 14 16"
                                                         xmlns="http://www.w3.org/2000/svg">

@@ -10,6 +10,7 @@
   'frontend.customer.addresses-component' => 'App\\Http\\Livewire\\Frontend\\Customer\\AddressesComponent',
   'frontend.customer.course-list-component' => 'App\\Http\\Livewire\\Frontend\\Customer\\CourseListComponent',
   'frontend.customer.orders-component' => 'App\\Http\\Livewire\\Frontend\\Customer\\OrdersComponent',
+  'frontend.customer.student-lesson-single-component' => 'App\\Http\\Livewire\\Frontend\\Customer\\StudentLessonSingleComponent',
   'frontend.event-list.event-list-component' => 'App\\Http\\Livewire\\Frontend\\EventList\\EventListComponent',
   'frontend.event-list.event-review-component' => 'App\\Http\\Livewire\\Frontend\\EventList\\EventReviewComponent',
   'frontend.header.cart-counts-component' => 'App\\Http\\Livewire\\Frontend\\Header\\CartCountsComponent',
@@ -18,5 +19,4 @@
   'frontend.instructors.instructor-list-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\InstructorListComponent',
   'frontend.modals.cart-modal-component' => 'App\\Http\\Livewire\\Frontend\\Modals\\CartModalComponent',
   'frontend.shop-cart.shop-cart-component' => 'App\\Http\\Livewire\\Frontend\\ShopCart\\ShopCartComponent',
-  'instructors.instructors-list-coponent' => 'App\\Http\\Livewire\\Instructors\\InstructorsListCoponent',
 );

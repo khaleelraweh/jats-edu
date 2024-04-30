@@ -91,8 +91,8 @@
         </div>
     </section>
 
-    {{-- TESTIMONIAL --}}
-    <section class="py-8 py-md-11 pb-xl-12 bg-white">
+    {{-- TESTIMONIAL d-none --}}
+    <section class="py-8 py-md-11 pb-xl-12 bg-white d-none">
         <div class="container px-xl-9">
             <div class="text-center mb-2">
                 <h1 class="mb-1">{{ __('transf.txt_what_our_students_have_to_say') }}</h1>

@@ -335,6 +335,8 @@ return [
     'instructor_profile'                            =>  'الملف الشخصي للمدرب',
     'instructor_addresses'                          =>  'عناوين المدرب',
     'logout'                                        =>  'تسجيل الخروج',
+    'new_course'                                    =>  'دورة جديدة',
+
 
 
 

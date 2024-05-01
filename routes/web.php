@@ -149,7 +149,7 @@ Route::group(['middleware' => ['roles', 'role:customer', 'verified']], function 
 // ######################################################### //
 Route::group(['middleware' => ['roles', 'role:instructor', 'verified']], function () {
     // ==============  instructor Profile Setting   ==============  //
-    Route::get('instructor/dashboard', [FrontendInstructorController::class, 'dashboard'])->name('instructor.dashboard');
+    Route::get('instructor/Courses', [FrontendInstructorController::class, 'dashboard'])->name('instructor.dashboard');
     Route::get('instructor/profile', [FrontendInstructorController::class, 'profile'])->name('instructor.profile');
     Route::patch('instructor/profile/update', [FrontendInstructorController::class, 'update_profile'])->name('instructor.update_profile');
     Route::get('instructor/profile/remove-image', [FrontendInstructorController::class, 'remove_profile_image'])->name('instructor.remove_profile_image');

@@ -336,6 +336,7 @@ return [
     'instructor_profile'                            =>  'Instructor Profile',
     'instructor_addresses'                          =>  'Instructor Addresses',
     'logout'                                        =>  'Logout',
+    'new_course'                                    =>  'New Course',
 
 
 

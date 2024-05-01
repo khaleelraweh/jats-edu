@@ -115,7 +115,6 @@ class CustomerController extends Controller
     {
         $instructorRoleId = Role::whereName('instructor')->first()->id;
 
-        // Attach the "instructor" role to the current user
         Auth()->user()->attachRoles([$instructorRoleId]);
 
         return view('frontend.customer.instructor-greating');

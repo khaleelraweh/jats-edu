@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row mt-3">
             <div class="col-sm-12">
-                <h2>Courses</h2>
+                <h2>{{ __('transf.courses') }}</h2>
             </div>
         </div>
 

@@ -137,7 +137,7 @@ return [
 
     // index page 
     'more_than'                                         =>  'أكثر من ',
-    'courses'                                           =>  'دورة',
+    'course'                                           =>  'دورة',
 
     //course single 
     'btn_buy_now'                                       =>  'اشتري الآن',

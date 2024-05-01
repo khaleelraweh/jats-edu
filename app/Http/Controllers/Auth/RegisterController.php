@@ -53,10 +53,11 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255','unique:users'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'mobile' => ['required', 'numeric','unique:users'],
+            'mobile' => ['required', 'numeric', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'account_tyle'  =>  ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -68,17 +69,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $customer =  User::create([
-            'first_name'=> $data['first_name'],
+        $user =  User::create([
+            'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'username'  => $data['username'],
             'email'     => $data['email'],
             'mobile'    => $data['mobile'],
             'password'  => Hash::make($data['password']),
-            'user_image'=>'avator.svg',  
+            'user_image' => 'avator.svg',
         ]);
 
-        $customer->attachRole(Role::whereName('customer')->first()->id);
-        return $customer;
+
+        // Get the IDs of both "customer" and "instructor" roles
+        // $customerRoleId = Role::whereName('customer')->first()->id;
+        // $instructorRoleId = Role::whereName('instructor')->first()->id;
+
+        // // Attach both roles to the user
+        // $user->attachRoles([$customerRoleId, $instructorRoleId]);
+
+        $user->attachRoles(Role::whereName($data['account_type'])->first()->id);
+
+        return $user;
     }
 }

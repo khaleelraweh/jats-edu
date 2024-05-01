@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ProfileRequest;
 use App\Models\Course;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -108,5 +109,15 @@ class CustomerController extends Controller
     public function lesson_single($slug)
     {
         return view('frontend.customer.student-lesson-single', compact('slug'));
+    }
+
+    public function Teach_on_jats()
+    {
+        $instructorRoleId = Role::whereName('instructor')->first()->id;
+
+        // Attach the "instructor" role to the current user
+        Auth()->user()->attachRoles([$instructorRoleId]);
+
+        return view('frontend.customer.instructor-greating');
     }
 }

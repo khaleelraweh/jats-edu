@@ -922,6 +922,7 @@ return [
     'f_user_password'                                   =>  ' كلمة المرور للمستخدم',
     'f_forgot_password'                                 =>  'نسيت كلمة المرور ؟',
 
+    'f_account_type'                                    =>  'نوع الحساب',
 
     //user loged in 
 
@@ -942,6 +943,8 @@ return [
     'f_add_new_address'                                 =>  'إضافة عنوان جديد',
     'f_default_address'                                 =>  'العنوان الإفتراضي',
     'f_my_orders'                                       =>  'طلباتي',
+    'f_instructor_dashboard'                            =>  'لوحة تحكم المعلم',
+    'f_teach_on_jats'                                   =>  'قم بالتدريس في جاتس',
     'f_logout'                                          =>  'تسجيل الخروج',
 
     // Register 

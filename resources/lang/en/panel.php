@@ -946,6 +946,8 @@ return [
     'f_user_password'                                   =>  'user password',
     'f_forgot_password'                                 =>  'forgot your password ?',
 
+    'f_account_type'                                    =>  'Account Type',
+
     //user loged in 
     'f_welcome'                                         =>  'Welcome',
     'f_insure_user_email'                               =>  'Insure your email',
@@ -965,7 +967,10 @@ return [
     'f_add_new_address'                                 =>  'Add new address',
     'f_default_address'                                 =>  'Default Address',
     'f_my_orders'                                       =>  'My Orders',
+    'f_instructor_dashboard'                            =>  'Instructor Dashboard',
+    'f_teach_on_jats'                                   =>  'Teach on Jats',
     'f_logout'                                          =>  'Logout',
+
 
     // Register 
     'f_create_new_account'                              => 'Create new account',

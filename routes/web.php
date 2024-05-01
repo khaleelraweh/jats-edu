@@ -45,6 +45,7 @@ use App\Http\Controllers\Backend\WebMenuHelpController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\InstructorController as FrontendInstructorController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Models\News;
 use Illuminate\Support\Facades\auth;
@@ -90,6 +91,7 @@ Route::get('/change-language/{locale}',     [LocaleController::class, 'switch'])
 
 
 
+
 // ######################################################### //
 // ###############   Customer Authed Route   ############### //
 // ######################################################### //
@@ -108,6 +110,10 @@ Route::group(['middleware' => ['roles', 'role:customer', 'verified']], function 
 
     // ==============  Customer Orders Setting   ==============  //
     Route::get('/orders', [FrontendCustomerController::class, 'orders'])->name('customer.orders');
+
+    // ==============  Customer Teach on jats   ==============  //
+    Route::get('/Teach-on-jats', [FrontendCustomerController::class, 'Teach_on_jats'])->name('customer.teach_on_jats');
+
 
     // ==============  Customer Bought Courses and Lessons ======  //
     Route::get('/student-courses-list/{slug?}', [FrontendCustomerController::class, 'student_courses_list'])->name('customer.courses');
@@ -136,6 +142,13 @@ Route::group(['middleware' => ['roles', 'role:customer', 'verified']], function 
         // ==============  Customer PayTabs Pay Routes  ==============  //
         Route::get('/checkout/{order_id}/completed_by_paytabs', [PaymentController::class, 'completed_paytabs'])->name('checkout.complete_by_paytabs');
     });
+});
+
+// ######################################################### //
+// ###############   Instructor Authed Route   ############### //
+// ######################################################### //
+Route::group(['middleware' => ['roles', 'role:instructor', 'verified']], function () {
+    Route::get('/instructor-dashboard', [FrontendInstructorController::class, 'dashboard'])->name('instructor.dashboard');
 });
 
 

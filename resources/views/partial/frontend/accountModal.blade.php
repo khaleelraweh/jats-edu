@@ -108,14 +108,23 @@
                     <div class="modal-body">
                         <div class="modal-header-content mt-2">
 
-                            @if (auth()->user()->user_image != '')
-                                <img src="{{ asset('assets/users/' . auth()->user()->user_image) }}"
-                                    alt="{{ auth()->user()->full_name }}" class="img-thumbnail rounded-pill">
-                            @else
-                                <img src="{{ asset('image/not_found/avator2.webp') }}"
-                                    alt="{{ auth()->user()->full_name }}" class="img-thumbnail rounded-pill"
-                                    width="120">
-                            @endif
+
+
+                            @php
+                                if (auth()->user()->user_image != null) {
+                                    $user_img = asset('assets/users/' . auth()->user()->user_image);
+
+                                    if (!file_exists(public_path('assets/users/' . auth()->user()->user_image))) {
+                                        $user_img = asset('image/not_found/avator2.webp');
+                                    }
+                                } else {
+                                    $user_img = asset('image/not_found/avator2.webp');
+                                }
+                            @endphp
+
+                            <img src="{{ $user_img }}" alt="{{ auth()->user()->full_name }}"
+                                class="img-thumbnail rounded-pill">
+
                             <div class="mt-2 mt-md-auto">
                                 <h6 class="mb-1">
                                     <span>{{ __('panel.f_welcome') }} : </span>
@@ -211,6 +220,18 @@
                                             {{ __('panel.f_my_orders') }}
                                         </a>
                                     </li>
+                                    @if (auth()->user()->hasRole('instructor'))
+                                        <li>
+                                            <a href="{{ route('instructor.dashboard') }}">
+                                                {{ __('panel.f_instructor_dashboard') }}
+                                            </a>
+                                        </li>
+                                    @else
+                                        <a href="{{ route('customer.teach_on_jats') }}">
+                                            {{ __('panel.f_teach_on_jats') }}
+                                        </a>
+                                    @endif
+
                                     <div class="hr"></div>
 
                                     <li>
@@ -405,6 +426,28 @@
                             @enderror
 
                         </div>
+
+                        <div class="form-group mb-5">
+                            <label for="account_tyle">
+                                <i class="fa fa-user custom-color"></i>
+                                {{ __('panel.f_account_type') }}
+                                <span class="required">*</span>
+                            </label>
+
+                            <select name="account_tyle" id="account_tyle" class="form-select"
+                                aria-label="Default select example">
+                                <option value="customer">Student</option>
+                                <option value="instructor">Instructor</option>
+                            </select>
+
+                            @error('account_tyle')
+                                <span class="invalid-feedback text-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+
+                        </div>
+
 
                         <!-- Submit -->
                         <button class="btn btn-block btn-primary" type="submit">

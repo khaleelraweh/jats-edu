@@ -330,6 +330,12 @@ return [
     'proccess'                                      =>  'Proccess',
 
 
+    // instructor dashboard
+    'student'                                       =>  'Student',
+    'switch_to_student_view_here'                   =>  'Switch to the student view here - get back to the courses you’re taking.',
+    'instructor_profile'                            =>  'Instructor Profile',
+    'instructor_addresses'                          =>  'Instructor Addresses',
+    'logout'                                        =>  'Logout',
 
 
 

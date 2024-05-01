@@ -2,92 +2,6 @@
     <div class="modal-dialog">
         <div class="modal-content">
             @guest
-
-                <!-- Signin -->
-                <div class="collapse show" id="collapseSignin" data-bs-parent="#accountModal">
-                    <div class="modal-header">
-                        <h5 class="modal-title">{{ __('transf.txt_login_to_account') }}</h5>
-                        <button type="button" class="close text-primary" data-bs-dismiss="modal" aria-label="Close">
-                            <!-- Icon -->
-                            <svg width="16" height="17" viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M0.142135 2.00015L1.55635 0.585938L15.6985 14.7281L14.2843 16.1423L0.142135 2.00015Z"
-                                    fill="currentColor"></path>
-                                <path d="M14.1421 1.0001L15.5563 2.41431L1.41421 16.5564L0 15.1422L14.1421 1.0001Z"
-                                    fill="currentColor"></path>
-                            </svg>
-
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <!-- Form Signin -->
-                        <form class="mb-5" method="POST" action="{{ route('login') }}">
-                            @csrf
-
-                            {{-- user name or email --}}
-                            <div class="form-group mb-5">
-                                <label for="modalSigninEmail">
-                                    {{ __('transf.lbl_username_or_email') }}
-                                </label>
-                                <input type="text" name="email"
-                                    class="form-control  @if ($errors->has('email') || $errors->has('username')) has-error @endif"
-                                    id="modalSigninEmail" placeholder="{{ __('transf.holder_your_name_or_email') }}"
-                                    value="{{ old('email') }}">
-                                @if ($errors->has('email') || $errors->has('username'))
-                                    <span class="help">{{ $errors->first('email') }}
-                                        {{ $errors->first('username') }}</span>
-                                @endif
-                            </div>
-
-                            <!-- Password -->
-
-                            <div class="form-group mb-5">
-                                <label for="modalSigninPassword">
-                                    Password
-                                </label>
-                                <input type="password" name="password" required autocomplete="current-password"
-                                    class="form-control" id="modalSigninPassword"
-                                    placeholder="{{ __('transf.holder_stars') }}" />
-
-                                @error('password')
-                                    <span class="invalid-feedback text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
-                            </div>
-
-                            <div class="d-flex align-items-center mb-5 font-size-sm">
-                                <div class="form-check">
-                                    <input class="form-check-input text-gray-800" type="checkbox" id="autoSizingCheck">
-                                    <label class="form-check-label text-gray-800" for="autoSizingCheck">
-                                        {{ __('transf.lbl_remember_me') }}
-                                    </label>
-                                </div>
-
-                                <div class="ms-auto">
-                                    <a class="text-gray-800" data-bs-toggle="collapse" href="#collapseForgotPassword"
-                                        role="button" aria-expanded="false" aria-controls="collapseForgotPassword">
-                                        {{ __('transf.lnk_forgot_password') }}
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- Submit -->
-                            <button class="btn btn-block btn-primary" type="submit">
-                                {{ __('transf.btn_login') }}
-                            </button>
-                        </form>
-
-                        <!-- Text -->
-                        <p class="mb-0 font-size-sm text-center">
-                            {{ __('transf.txt_dont_have_an_account') }}
-                            <a class="text-underline" data-bs-toggle="collapse" href="#collapseSignup" role="button"
-                                aria-expanded="false" aria-controls="collapseSignup">{{ __('transf.lnk_sign_up') }}</a>
-                        </p>
-                    </div>
-                </div>
             @else
                 <!-- Signin -->
                 <div class="collapse show" id="collapseSignin" data-bs-parent="#accountModal">
@@ -177,86 +91,30 @@
 
                         @if (auth()->user()->email_verified_at != null)
                             @if (auth()->user()->roles->first()->allowed_route != '')
-                                <ul>
-                                    <li>
-                                        <a href="{{ route('admin.index') }}">
-                                            {{ __('panel.f_control_panel') }}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.account_settings') }}">
-                                            {{ __('panel.f_user_profile') }}
-                                        </a>
-                                    </li>
-
-
-                                    <div class="hr"></div>
-
-                                    <li>
-                                        <a href="javascript:void(0);"
-                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                            {{ __('panel.f_logout') }}
-                                        </a>
-                                        <form action="{{ route('logout') }}" method="POST" id="logout-form"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
-                                    </li>
-                                </ul>
                             @else
                                 <ul>
                                     <li>
-                                        <a href="{{ route('customer.profile') }}">
-                                            {{ __('panel.f_user_profile') }}
-                                        </a>
-                                    </li>
-                                    <li class="d-none">
-                                        <a href="{{ route('customer.addresses') }}">
-                                            {{ __('panel.f_user_addresses') }}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('customer.orders') }}">
-                                            {{ __('panel.f_my_orders') }}
-                                        </a>
-                                    </li>
-                                    @if (auth()->user()->hasRole('instructor'))
-                                        <li>
-                                            <a href="{{ route('instructor.dashboard') }}">
-                                                {{ __('panel.f_instructor_dashboard') }}
-                                            </a>
-                                        </li>
-                                    @else
-                                        <a href="{{ route('customer.teach_on_jats') }}">
-                                            {{ __('panel.f_teach_on_jats') }}
-                                        </a>
-                                    @endif
-
-                                    <div class="hr"></div>
-
-                                    <li>
-                                        <a href="{{ route('frontend.shop_cart') }}">
-                                            {{ __('transf.lnk_my_cart') }}
+                                        <a href="{{ route('frontend.index') }}">
+                                            {{ __('transf.student') }}
                                         </a>
                                     </li>
 
-                                    <li>
-                                        <a href="{{ route('frontend.shop_cart') }}">
-                                            {{ __('transf.lnk_my_wishlist') }}
-                                        </a>
-                                    </li>
                                     <div class="hr"></div>
                                     <li>
-                                        <a href="{{ route('customer.courses') }}">
-                                            {{ __('transf.lnk_my_learning') }}
+                                        <a href="{{ route('instructor.profile') }}">
+                                            {{ __('transf.instructor_profile') }}
                                         </a>
                                     </li>
+
+
                                     <div class="hr"></div>
+
+
 
                                     <li>
                                         <a href="javascript:void(0);"
                                             onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                            {{ __('panel.f_logout') }}
+                                            {{ __('transf.logout') }}
                                         </a>
                                         <form action="{{ route('logout') }}" method="POST" id="logout-form"
                                             class="d-none">
@@ -326,8 +184,8 @@
                                 <span class="required">*</span>
                             </label>
 
-                            <input type="text" name="last_name" id="last_name" class="form-control "
-                                value="" placeholder="{{ __('panel.last_name') }}">
+                            <input type="text" name="last_name" id="last_name" class="form-control " value=""
+                                placeholder="{{ __('panel.last_name') }}">
 
                             @error('last_name')
                                 <span class="invalid-feedback text-danger" role="alert">

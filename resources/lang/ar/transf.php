@@ -329,6 +329,12 @@ return [
     'coupon_discout'                                =>  'خصم القسيمة',
     'proccess'                                      =>  'معالجة',
 
+    // instructor dashboard
+    'student'                                       =>  'طالب',
+    'switch_to_student_view_here'                   =>  'قم بالتبديل إلى عرض الطالب هنا - ارجع إلى الدورات التدريبية التي تدرسها.',
+    'instructor_profile'                            =>  'الملف الشخصي للمدرب',
+    'instructor_addresses'                          =>  'عناوين المدرب',
+    'logout'                                        =>  'تسجيل الخروج',
 
 
 

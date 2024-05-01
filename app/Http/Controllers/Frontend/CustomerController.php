@@ -19,6 +19,7 @@ class CustomerController extends Controller
     {
         return view('frontend.customer.index');
     }
+
     public function profile()
     {
         return view('frontend.customer.profile');

@@ -1,19 +1,15 @@
 @extends('layouts.app-instructor')
 @section('content')
     <div class="container">
-        <div class="row mt-3">
-            <div class="col-sm-12">
-                <h2>{{ __('transf.courses') }}</h2>
-            </div>
-        </div>
+
 
         {{-- <header class="navbar navbar-expand-xl navbar-light bg-white border-bottom py-1 py-xl-1 "> --}}
-        <header class="navbar navbar-expand-xl navbar-light bg-transparent  py-1 py-xl-1 ">
+        <header class="navbar navbar-expand-xl navbar-light bg-transparent  py-1 py-xl-1 my-3">
 
             <div class="container-fluid">
                 <!-- Brand -->
                 <a class="navbar-brand me-0" href="{{ route('frontend.index') }}">
-                    search and filter
+                    <h2>{{ __('transf.courses') }}</h2>
                 </a>
 
                 <!-- Account modal  -->
@@ -27,5 +23,7 @@
                 </ul>
             </div>
         </header>
+
+        @livewire('frontend.instructors.instructor-courses-component')
     </div>
 @endsection

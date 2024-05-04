@@ -336,6 +336,8 @@ return [
     'instructor_addresses'                          =>  'عناوين المدرب',
     'logout'                                        =>  'تسجيل الخروج',
     'new_course'                                    =>  'دورة جديدة',
+    'of_courses'                                    =>  'من الدورات',
+    'txt_related_to_you'                            =>  'تابعة لحاسبك',
 
 
 

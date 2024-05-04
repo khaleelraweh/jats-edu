@@ -9,9 +9,9 @@
             <p class="mb-lg-0">
                 {{ __('transf.txt_we_found') }}
                 <span class="text-dark">{{ $courses->total() }}
-                    {{ __('transf.courses') }}
+                    {{ __('transf.of_courses') }}
                 </span>
-                {{ __('transf.txt_available_for_you') }}
+                {{ __('transf.txt_related_to_you') }}
             </p>
             <div class="ms-lg-auto d-lg-flex flex-wrap">
                 <div class="mb-4 mb-lg-0 ms-lg-6">

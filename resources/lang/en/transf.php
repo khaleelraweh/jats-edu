@@ -337,6 +337,8 @@ return [
     'instructor_addresses'                          =>  'Instructor Addresses',
     'logout'                                        =>  'Logout',
     'new_course'                                    =>  'New Course',
+    'of_courses'                                    =>  'Of Courses',
+    'txt_related_to_you'                            =>  'Related To You',
 
 
 

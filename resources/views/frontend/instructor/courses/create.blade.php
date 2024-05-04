@@ -234,7 +234,10 @@
                     </div>
                 </div>
             </div>
-            <form action="registerUser" method="POST">
+
+            <form action="{{ route('instructor.courses.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
+
                 <input type="hidden" name="_token" value="iJquRbgH4Np4OcWzjk8Bd03CaexHzse7gz2vHrml">
 
                 <div class="registration-content">

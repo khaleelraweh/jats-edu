@@ -238,7 +238,7 @@
             <form action="{{ route('instructor.courses.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
-                <input type="hidden" name="_token" value="iJquRbgH4Np4OcWzjk8Bd03CaexHzse7gz2vHrml">
+                {{-- <input type="hidden" name="_token" value="iJquRbgH4Np4OcWzjk8Bd03CaexHzse7gz2vHrml"> --}}
 
                 <div class="registration-content">
                     <div id="aboutcont" data-progress="15%">

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->json('title');
             $table->json('slug');
-            $table->json('subtitle');
-            $table->json('description');
+            $table->json('subtitle')->nullable();
+            $table->json('description')->nullable();
 
             $table->tinyInteger('skill_level')->nullable()->default(1); // واحد مبتدي اثنين متوسط ثلاثة متقدم
             $table->tinyInteger('language')->nullable()->default(1); // واحد عربي اثنين إنجليزي ثلاثة اسباني
@@ -32,10 +32,10 @@ return new class extends Migration
             $table->tinyInteger('course_type')->nullable();   //  1: mean presence 2 : enrolled
 
             $table->date('deadline')->nullable();
-            $table->boolean('certificate')->default(true);
+            $table->boolean('certificate')->nullable()->default(true);
 
 
-            $table->double('price')->default(0.0);
+            $table->double('price')->nullable()->default(0.0);
             $table->double('offer_price')->nullable()->default(0.0); // سعر العرض
             $table->date('offer_ends')->nullable(); // تاريخ انتهاء العرض 
             $table->boolean('featured')->default(false);
@@ -58,7 +58,7 @@ return new class extends Migration
 
 
             // will be use always
-            $table->boolean('status')->default(true);
+            $table->boolean('status')->nullable()->default(true);
             $table->dateTime('published_on')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();

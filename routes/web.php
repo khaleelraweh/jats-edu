@@ -45,6 +45,7 @@ use App\Http\Controllers\Backend\WebMenuHelpController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\Instructor\CourseController as InstructorCourseController;
 use App\Http\Controllers\Frontend\InstructorController as FrontendInstructorController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Models\News;
@@ -148,11 +149,17 @@ Route::group(['middleware' => ['roles', 'role:customer', 'verified']], function 
 // ###############   Instructor Authed Route   ############### //
 // ######################################################### //
 Route::group(['middleware' => ['roles', 'role:instructor', 'verified']], function () {
-    // ==============  instructor Profile Setting   ==============  //
-    Route::get('instructor/Courses', [FrontendInstructorController::class, 'dashboard'])->name('instructor.dashboard');
-    Route::get('instructor/profile', [FrontendInstructorController::class, 'profile'])->name('instructor.profile');
-    Route::patch('instructor/profile/update', [FrontendInstructorController::class, 'update_profile'])->name('instructor.update_profile');
-    Route::get('instructor/profile/remove-image', [FrontendInstructorController::class, 'remove_profile_image'])->name('instructor.remove_profile_image');
+
+    Route::group(['prefix' => 'instructor/', 'as' => 'instructor.'], function () {
+        // ==============  instructor Profile Setting   ==============  //
+        Route::get('dashboard', [FrontendInstructorController::class, 'dashboard'])->name('dashboard');
+        Route::get('profile', [FrontendInstructorController::class, 'profile'])->name('profile');
+        Route::patch('profile/update', [FrontendInstructorController::class, 'update_profile'])->name('update_profile');
+        Route::get('profile/remove-image', [FrontendInstructorController::class, 'remove_profile_image'])->name('remove_profile_image');
+
+        Route::post('courses/remove-image', [InstructorCourseController::class, 'remove_image'])->name('courses.remove_image');
+        Route::resource('courses', InstructorCourseController::class);
+    });
 });
 
 

@@ -340,6 +340,37 @@ return [
     'txt_related_to_you'                            =>  'تابعة لحاسبك',
 
 
+    // instructor create Course
+
+    'course_generators'                             =>  'مولد الدورات',
+
+    // Step2 : Course Title 
+    'how_about_working_title'                       =>  'ماذا عن عنوان العمل؟',
+
+    'ex_learn_photoshop_cs6_from_scratch_ar'        =>  'على سبيل المثال, تعلم فوتوشوب من الصفر',
+    'ex_learn_photoshop_cs6_from_scratch_en'        =>  'ex. Learn Photoshop Cs6 From Scratch',
+
+    'its_ok_if_you_cant_think_of_a_good_title_now_you_can_change_it_later'  =>  'لا بأس إذا كنت لا تستطيع التفكير في عنوان جيد الآن. يمكنك تغييره لاحقا.',
+    'course_title'                                  =>  'عنوان الدورة',
+    'in_language'                                  =>  'في اللغة',
+    'ar'                                            =>  'العربية',
+    'en'                                            =>  'الإنجليزية',
+
+    // Step2 : Course Category Title 
+    'category_title'                         =>  'عنوان الفئة',
+    'course_category_title'                         =>  'عنوان فئة الدورة',
+    'what_category_best_fits_the_knowledge_you_will_shire'                  =>  'ما هي الفئة التي تناسب المعرفة التي ستشاركها',
+    'if_you_are_not_sure_about_the_right_category,you_can_change_it_later'  =>  'إذا لم تكن متأكدًا من الفئة الصحيحة، فيمكنك تغييرها لاحقًا',
+
+    'choose_a_category'                             =>  'اختر فئة',
+
+
+    //Step3 : comfirmation
+    'confirmation'                                  =>  'التاكيد',
+    'confirmation_message'                          =>  'بعد قيامك بإدخال اسم الدورة وفئة الدورة التي تنتمي إليها، يمكنك الآن إنشاء الدورة وتخزينها للعمل عليها وعلى الدروس المرتبطة بها.',
+    'create_course'                                 =>  'إنشاء الدورة',
+    'previous'                                      =>  'السابق',
+    'next'                                          =>  'التالي',
 
 
 

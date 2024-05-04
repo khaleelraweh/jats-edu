@@ -340,8 +340,36 @@ return [
     'of_courses'                                    =>  'Of Courses',
     'txt_related_to_you'                            =>  'Related To You',
 
+    // instructor create Course
 
+    'course_generators'                             =>  'Course Generators',
+    //step1 : course Title 
+    'how_about_working_title'                       =>  'How About a Working Title?',
 
+    'ex_learn_photoshop_cs6_from_scratch_ar'        =>  'على سبيل المثال, تعلم فوتوشوب من الصفر',
+    'ex_learn_photoshop_cs6_from_scratch_en'        =>  'ex. Learn Photoshop Cs6 From Scratch',
+
+    'its_ok_if_you_cant_think_of_a_good_title_now_you_can_change_it_later'  =>  'It\'s ok if you can\'t think of a good title now. You can change it later.',
+
+    'course_title'                                  =>  'Course Title',
+    'in_language'                                   =>  'in',
+    'ar'                                            =>  'Arabic',
+    'en'                                            =>  'English',
+
+    // Step2 : Course Category title 
+    'category_title'                                =>  'Category Title',
+    'course_category_title'                         =>  'Course Category Title',
+    'what_category_best_fits_the_knowledge_you_will_shire'                  =>  'What category best fits the knowledge you will shire',
+    'if_you_are_not_sure_about_the_right_category,you_can_change_it_later'  =>  'If you are not sure about the right category,you can change it later',
+
+    'choose_a_category'                             =>  'Choose a category',
+
+    //Step3 : comfirmation
+    'confirmation'                                  =>  'confirmation',
+    'confirmation_message'                          =>  'After you have entered the course name and the course category to which it belongs, you can now create the course and store it to work on it and on its related lessons.',
+    'create_course'                                 =>  'Create Course',
+    'previous'                                      =>  'Previous',
+    'next'                                          =>  'Next',
 
 
 ];

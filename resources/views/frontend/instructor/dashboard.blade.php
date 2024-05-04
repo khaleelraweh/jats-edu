@@ -15,10 +15,11 @@
                 <!-- Account modal  -->
                 <ul class="navbar-nav flex-row ms-auto ms-xl-0 me-n2 me-md-n4">
 
-                    <button class="btn text-white-all btn-coral btn-wide d-none d-lg-inline-block" data-aos-duration="200"
+                    <a href="{{ route('instructor.courses.create') }}"
+                        class="btn text-white-all btn-coral btn-wide d-none d-lg-inline-block" data-aos-duration="200"
                         data-aos="fade-up" type="submit">
                         {{ __('transf.new_course') }}
-                    </button>
+                    </a>
 
                 </ul>
             </div>

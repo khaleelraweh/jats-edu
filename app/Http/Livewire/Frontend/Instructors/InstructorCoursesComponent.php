@@ -53,8 +53,6 @@ class InstructorCoursesComponent extends Component
 
         //Get this auth user id
         $userId = auth()->id();
-
-
         switch ($this->sortingBy) {
             case 'popularity':
                 $sort_field = "id";

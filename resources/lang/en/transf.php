@@ -337,7 +337,7 @@ return [
     'instructor_addresses'                          =>  'Instructor Addresses',
     'logout'                                        =>  'Logout',
     'new_course'                                    =>  'New Course',
-    'of_courses'                                    =>  'Of Courses',
+    'of_courses'                                    =>  'of Courses',
     'txt_related_to_you'                            =>  'Related To You',
 
     // instructor create Course

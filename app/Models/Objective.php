@@ -19,7 +19,7 @@ class Objective extends Model
         return json_encode($value, JSON_UNESCAPED_UNICODE);
     }
 
-    public function requirementable(): MorphTo
+    public function objectiveable(): MorphTo
     {
         return $this->morphTo();
     }

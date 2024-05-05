@@ -1,6 +1,4 @@
 <div>
-
-
     @if ($databaseDataValid || ($formSubmitted && !$errors->any()))
         <i class="mdi mdi-check-circle-outline text-success display-4"></i>
     @endif
@@ -11,23 +9,26 @@
 
         {{-- Objectives --}}
         <div class="card">
-            <div class="card-header">
-                <h4>{{ __('transf.what_will_students_learn_in_your_course?') }}</h4>
-                <h6>{{ __('transf.what_will_students_learn_tips') }}</h6>
-                @if ($objectivesValid || ($formSubmitted && !$errors->any()))
-                    <i class="mdi mdi-check-circle-outline text-success display-4"></i>
-                @endif
-
-                <!-- Display validation errors -->
-                @if ($errors->has('objectives'))
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->get('objectives') as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+            <div class="card-header d-flex justify-content-between align-items-start">
+                <div>
+                    <h4>{{ __('transf.what_will_students_learn_in_your_course?') }}</h4>
+                    <h6>{{ __('transf.what_will_students_learn_tips') }}</h6>
+                    <!-- Display validation errors -->
+                    @if ($errors->has('objectives'))
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->get('objectives') as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+                <div>
+                    @if ($objectivesValid || ($formSubmitted && !$errors->any()))
+                        <i class="mdi mdi-check-circle-outline text-success display-4"></i>
+                    @endif
+                </div>
             </div>
             <div class="card-body">
                 <table class="table" id="products_table">
@@ -75,25 +76,30 @@
 
         {{-- Requirements --}}
         <div class="card">
-            <div class="card-header">
-                <h4>{{ __('transf.what_are_the_requirements_or_prerequisites_for_taking_your_course?') }}</h4>
-                <h6>{{ __('transf.what_are_the_requirements_tips') }}</h6>
-                @if ($requirementsValid || ($formSubmitted && !$errors->any()))
-                    <i class="mdi mdi-check-circle-outline text-success display-4"></i>
-                @endif
+            <div class="card-header d-flex justify-content-between align-items-start">
+                <div>
+                    <h4>{{ __('transf.what_are_the_requirements_or_prerequisites_for_taking_your_course?') }}</h4>
+                    <h6>{{ __('transf.what_are_the_requirements_tips') }}</h6>
+                    <!-- Display validation errors -->
+                    @if ($errors->has('requirements'))
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->get('requirements') as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+                <div>
+                    @if ($requirementsValid || ($formSubmitted && !$errors->any()))
+                        <i class="mdi mdi-check-circle-outline text-success display-4"></i>
+                    @endif
+                </div>
             </div>
 
             <div class="card-body">
-                <!-- Display validation errors -->
-                @if ($errors->has('requirements'))
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->get('requirements') as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+
                 <table class="table" id="products_table">
                     <thead>
                         <tr>

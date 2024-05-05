@@ -374,7 +374,10 @@ return [
     // Course Update Items 
     //section 1 
     'plan_your_course'                              =>  'Plan your course',
-    'intended_learners'                              =>  'Intended learners',
+    'intended_learners'                             =>  'Intended learners',
+    'intended_description'                          =>  'The following descriptions will be publicly visible on your Course Landing Page and will have a direct impact on your course performance. These descriptions will help learners decide if your course is right for them.',
+    'what_will_students_learn_in_your_course?'      =>  'What will students learn in your course?',
+    'what_will_students_learn_tips'                 =>  'You must enter at least 4 learning objectives or outcomes that learners can expect to achieve after completing your course.',
 
 
 ];

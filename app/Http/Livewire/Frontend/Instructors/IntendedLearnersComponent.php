@@ -11,10 +11,35 @@ class IntendedLearnersComponent extends Component
 {
     public $courseId;
 
+    // start 
+    public $orderProducts = [];
+    // end 
+
+
+
     public function mount($courseId)
     {
         $this->courseId = $courseId;
+        // start 
+        $this->orderProducts = [
+            ['product_id' => '', 'quantity' => 1]
+        ];
+        //end 
     }
+
+
+    // Start adding 
+    public function addProduct()
+    {
+        $this->orderProducts[] = ['product_id' => '', 'quantity' => 1];
+    }
+
+    public function removeProduct($index)
+    {
+        unset($this->orderProducts[$index]);
+        $this->orderProducts = array_values($this->orderProducts);
+    }
+    // End adding 
 
     public function render()
     {

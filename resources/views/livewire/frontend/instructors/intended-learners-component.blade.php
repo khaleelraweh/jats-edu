@@ -44,36 +44,23 @@
                 <table class="table" id="products_table">
                     <thead>
                         <tr>
-                            <th>Lang</th>
                             <th>{{ __('transf.objective') }} </th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($objectives as $index => $objective)
-                            @foreach (config('locales.languages') as $key => $val)
-                                <tr>
-                                    <td>{{ $key }}</td>
-                                    <td>
-                                        {{-- <input type="text" name="objectives[{{ $index }}][product_id]" --}}
-                                        <input type="text" name="objectives[{{ $index }}][{{ $key }}]"
-                                            class="form-control" wire:model="objectives.{{ $index }}.quantity" />
-
-                                        {{-- <input type="text"
-                                            name="course_requirement[{{ $loopIndex }}][{{ $key }}]"
-                                            id="course_requirement"
-                                            value="{{ old('course_requirement' . $key, $item->getTranslation('title', $key)) }}"
-                                            class="course_requirement form-control">
-                                        @error('course_requirement[{{ $loopIndex }}]' . $key)
-                                            <span class="help-block text-danger">{{ $message }}</span>
-                                        @enderror --}}
-                                    </td>
-                                    <td>
-                                        <a href="#"
-                                            wire:click.prevent="removeObjective({{ $index }})">{{ __('transf.delete') }}</a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                            <tr>
+                                <td>
+                                    <input type="text" name="objectives[{{ $index }}][title]"
+                                        class="form-control" wire:model="objectives.{{ $index }}.title"
+                                        placeholder="{{ __('transf.example:define_the_roles_and_responsibilities_of_a_project_manager') }}" />
+                                </td>
+                                <td>
+                                    <a href="#"
+                                        wire:click.prevent="removeObjective({{ $index }})">{{ __('transf.delete') }}</a>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

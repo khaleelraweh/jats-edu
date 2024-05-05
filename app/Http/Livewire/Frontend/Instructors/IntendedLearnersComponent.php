@@ -6,33 +6,32 @@ use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\Objective;
 use App\Models\User;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class IntendedLearnersComponent extends Component
 {
-    public $courseId;
+    use LivewireAlert;
 
-    // start 
+    public $courseId;
     public $objectives = [];
-    // end 
 
 
 
     public function mount($courseId)
     {
         $this->courseId = $courseId;
-        // start 
+
         $this->objectives = [
-            ['product_id' => '', 'quantity' => 'Enter title '],
+            ['title' => ''],
         ];
-        //end 
     }
 
 
     // Start adding 
     public function addObjective()
     {
-        $this->objectives[] = ['product_id' => '', 'quantity' => 'Enter title '];
+        $this->objectives[] = ['title' => ''];
     }
 
     public function removeObjective($index)
@@ -64,28 +63,13 @@ class IntendedLearnersComponent extends Component
     public function storeObjective()
     {
 
-        // dd("khaleel");
-
         $course = Course::where('id', $this->courseId)->first();
 
-        // $validatedData = $this->validate([
-        //     'objectives' => 'required|string|max:255',
-        // ]);
-
-
-        dd($this->objectives);
-
-        // course objectives start 
 
         $course->objectives()->delete();
 
         if ($this->objectives != null) {
-            $objectives_list = [];
-            for ($i = 0; $i < count($this->objectives); $i++) {
-                $objectives_list[$i]['title'] = $this->objectives[$i];
-            }
-            // dd($requirements_list);
-            $objectives = $course->objectives()->createMany($objectives_list);
+            $objectives = $course->objectives()->createMany($this->objectives);
         }
 
 

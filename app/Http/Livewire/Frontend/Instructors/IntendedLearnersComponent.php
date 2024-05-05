@@ -193,6 +193,6 @@ class IntendedLearnersComponent extends Component
         $this->formSubmitted = true;
 
         // Show success alert
-        $this->alert('success', __('Review submitted successfully!'));
+        $this->alert('success', __('transf.intended_learners') . ' ' . __('transf.completed_successfully!'));
     }
 }

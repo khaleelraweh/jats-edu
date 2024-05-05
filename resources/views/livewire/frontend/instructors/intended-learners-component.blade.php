@@ -1,7 +1,11 @@
 <div>
-    @if ($databaseDataValid || ($formSubmitted && !$errors->any()))
-        <i class="mdi mdi-check-circle-outline text-success display-4"></i>
-    @endif
+    <header class="d-flex justify-content-end">
+        <div class="completed-section-badge">
+            @if ($databaseDataValid || ($formSubmitted && !$errors->any()))
+                <i class="mdi mdi-check-circle-outline text-success display-4"></i>
+            @endif
+        </div>
+    </header>
     <p class="h6 py-3 text-muted">{{ __('transf.intended_description') }} </p>
 
     <form wire:submit.prevent="storeObjective">

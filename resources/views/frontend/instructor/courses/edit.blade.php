@@ -9,6 +9,35 @@
     <link href="{{ asset('frontend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('frontend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+
+    <style>
+        #basic-pills-wizard {
+            display: flex;
+        }
+
+        .twitter-bs-wizard-nav {
+            display: flex;
+            flex-direction: column;
+            min-width: 20%;
+        }
+
+        .tab-content.twitter-bs-wizard-tab-content {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .twitter-bs-wizard .twitter-bs-wizard-nav::before {
+            width: 0 !important;
+        }
+
+        .nav-item {
+            text-align: start !important;
+        }
+
+        .step-title {
+            display: inline !important;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -18,7 +47,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Basic pills Wizard</h4>
+                        <h4 class="card-title mb-4">{{ __('transf.course_generators') }}</h4>
 
                         <div id="basic-pills-wizard" class="twitter-bs-wizard">
                             <ul class="twitter-bs-wizard-nav">
@@ -260,12 +289,11 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <ul class="pager wizard twitter-bs-wizard-pager-link d-flex justify-content-between">
+                                    <li class="previous"><a href="javascript: void(0);">Previous</a></li>
+                                    <li class="next"><a href="javascript: void(0);">Next</a></li>
+                                </ul>
                             </div>
-                            <ul class="pager wizard twitter-bs-wizard-pager-link d-flex justify-content-between">
-                                <li class="previous"><a href="javascript: void(0);">Previous</a></li>
-                                <li class="next"><a href="javascript: void(0);">Next</a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>

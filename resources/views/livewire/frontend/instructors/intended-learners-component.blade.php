@@ -55,8 +55,18 @@
                                 <tr>
                                     <td>{{ $key }}</td>
                                     <td>
-                                        <input type="text" name="objectives[{{ $index }}][quantity]"
+                                        {{-- <input type="text" name="objectives[{{ $index }}][quantity]" --}}
+                                        <input type="text" name="objectives[{{ $index }}][{{ $key }}]"
                                             class="form-control" wire:model="objectives.{{ $index }}.quantity" />
+
+                                        {{-- <input type="text"
+                                            name="course_requirement[{{ $loopIndex }}][{{ $key }}]"
+                                            id="course_requirement"
+                                            value="{{ old('course_requirement' . $key, $item->getTranslation('title', $key)) }}"
+                                            class="course_requirement form-control">
+                                        @error('course_requirement[{{ $loopIndex }}]' . $key)
+                                            <span class="help-block text-danger">{{ $message }}</span>
+                                        @enderror --}}
                                     </td>
                                     <td>
                                         <a href="#"

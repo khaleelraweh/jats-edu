@@ -32,6 +32,7 @@
 
         .nav-item {
             text-align: start !important;
+            flex-grow: 0 !important;
         }
 
         .step-title {

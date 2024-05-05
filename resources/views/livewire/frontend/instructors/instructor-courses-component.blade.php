@@ -360,7 +360,8 @@
                                 @endphp
 
                                 <div class="card-zoom position-relative">
-                                    <a href="{{ route('frontend.course_single', $course->slug) }}"
+                                    {{-- <a href="{{ route('frontend.course_single', $course->slug) }}" --}}
+                                    <a href="{{ route('instructor.courses.edit', $course->id) }}"
                                         class="card-img sk-thumbnail img-ratio-3 d-block">
                                         <img class="rounded shadow-light-lg" src="{{ $course_img }}"
                                             alt="...">
@@ -388,7 +389,8 @@
 
                                     <!-- Heading -->
                                     <div class="position-relative">
-                                        <a href="{{ route('frontend.course_single', $course->slug) }}"
+                                        {{-- <a href="{{ route('frontend.course_single', $course->slug) }}" --}}
+                                        <a href="{{ route('instructor.courses.edit', $course->id) }}"
                                             class="d-block stretched-link">
                                             <h5 class="line-clamp-2 h-md-48 h-lg-58 me-md-8 me-lg-10 me-xl-4 mb-2">
                                                 {{ $course->title }}

@@ -1,13 +1,4 @@
-@extends('layouts.admin')
-
-@section('style')
-    <style>
-        .note-editor.note-airframe,
-        .note-editor.note-frame {
-            margin-bottom: 0;
-        }
-    </style>
-@endsection
+@extends('layouts.app-instructor')
 
 @section('content')
 

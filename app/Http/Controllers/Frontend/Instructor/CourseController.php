@@ -87,11 +87,6 @@ class CourseController extends Controller
     public function edit($course)
     {
 
-        if (!auth()->user()->ability('admin', 'update_courses')) {
-            return redirect('admin/index');
-        }
-
-
         $course = Course::where('id', $course)->first();
 
         $course_categories = CourseCategory::whereStatus(1)->get(['id', 'title']);
@@ -106,7 +101,8 @@ class CourseController extends Controller
 
         $courseinstructors = $course->users->pluck(['id'])->toArray();
 
-        return view('backend.courses.edit', compact('course_categories', 'tags', 'course', 'instructors', 'courseinstructors'));
+
+        return view('frontend.instructor.courses.edit', compact('course_categories', 'tags', 'course', 'instructors', 'courseinstructors'));
     }
 
     public function update(CourseRequest $request,  $course)

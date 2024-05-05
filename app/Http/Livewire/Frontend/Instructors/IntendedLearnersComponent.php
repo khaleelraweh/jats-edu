@@ -22,9 +22,17 @@ class IntendedLearnersComponent extends Component
     {
         $this->courseId = $courseId;
 
-        $this->objectives = [
-            ['title' => ''],
-        ];
+        $course = Course::where('id', $this->courseId)->first();
+
+        if ($course->objectives != null) {
+            foreach ($course->objectives as $item) {
+                $this->objectives[] = ['title' => $item->title];
+            }
+        } else {
+            $this->objectives = [
+                ['title' => ''],
+            ];
+        }
     }
 
 

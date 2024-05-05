@@ -8,12 +8,18 @@
 
 
         {{-- Objectives --}}
+
+
+
+
         <div class="card">
             <div class="card-header">
                 <h4>{{ __('transf.what_will_students_learn_in_your_course?') }}</h4>
                 <h6>{{ __('transf.what_will_students_learn_tips') }}</h6>
-            </div>
-            <div class="card-body">
+                @if ($databaseDataValid || ($formSubmitted && !$errors->any()))
+                    <i class="mdi mdi-check-circle-outline text-success display-4"></i>
+                @endif
+
                 <!-- Display validation errors -->
                 @if ($errors->has('objectives'))
                     <div class="alert alert-danger">
@@ -24,7 +30,8 @@
                         </ul>
                     </div>
                 @endif
-
+            </div>
+            <div class="card-body">
                 <table class="table" id="products_table">
                     <thead>
                         <tr>
@@ -69,10 +76,15 @@
         </div>
 
         {{-- Requirements --}}
+
+
         <div class="card">
             <div class="card-header">
                 <h4>{{ __('transf.what_are_the_requirements_or_prerequisites_for_taking_your_course?') }}</h4>
                 <h6>{{ __('transf.what_are_the_requirements_tips') }}</h6>
+                @if ($databaseDataValid || ($formSubmitted && !$errors->any()))
+                    <i class="mdi mdi-check-circle-outline text-success display-4"></i>
+                @endif
             </div>
 
             <div class="card-body">

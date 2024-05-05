@@ -8,6 +8,8 @@ use App\Models\Objective;
 use App\Models\User;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
+use Illuminate\Support\Facades\Validator;
+
 
 class IntendedLearnersComponent extends Component
 {
@@ -17,6 +19,9 @@ class IntendedLearnersComponent extends Component
     public $objectives = [];
     public $requirements = [];
 
+    public $formSubmitted = false;
+    public $databaseDataValid = false;
+
 
 
     public function mount($courseId)
@@ -24,7 +29,7 @@ class IntendedLearnersComponent extends Component
         $this->courseId = $courseId;
         $course = Course::where('id', $this->courseId)->first();
 
-        // ================ initail objectives ===========//
+        // Initialize objectives
         if ($course->objectives != null && $course->objectives->isNotEmpty()) {
             foreach ($course->objectives as $item) {
                 $this->objectives[] = ['title' => $item->title];
@@ -38,7 +43,7 @@ class IntendedLearnersComponent extends Component
             ];
         }
 
-        // ================ initail Requirements ===========//
+        // Initialize Requirements
         if ($course->requirements != null && $course->requirements->isNotEmpty()) {
             foreach ($course->requirements as $item) {
                 $this->requirements[] = ['title' => $item->title];
@@ -48,6 +53,54 @@ class IntendedLearnersComponent extends Component
                 ['title' => ''],
             ];
         }
+
+        // Validate database data
+        $this->validateDatabaseData();
+    }
+
+
+    protected function validateDatabaseData()
+    {
+        $course = Course::where('id', $this->courseId)->first();
+
+        // Validate objectives
+        $objectivesCount = $course->objectives->count();
+        if ($objectivesCount >= 4) {
+            foreach ($course->objectives as $item) {
+                $validator = Validator::make(['title' => $item->title], [
+                    'title' => ['required', 'string', 'min:10', 'max:160'],
+                ]);
+
+                if ($validator->fails()) {
+                    $this->databaseDataValid = false;
+                    return;
+                }
+            }
+        } else {
+            $this->databaseDataValid = false;
+            return;
+        }
+
+        // Validate requirements
+        $requirementsCount = $course->requirements->count();
+        if ($requirementsCount >= 1) {
+            foreach ($course->requirements as $item) {
+                $validator = Validator::make(['title' => $item->title], [
+                    'title' => ['required', 'string', 'min:10', 'max:160'],
+                ]);
+
+                if ($validator->fails()) {
+                    $this->databaseDataValid = false;
+                    return;
+                }
+            }
+        } else {
+            $this->databaseDataValid = false;
+            return;
+        }
+
+        // If all data passes validation
+        $this->databaseDataValid = true;
     }
 
 
@@ -98,9 +151,6 @@ class IntendedLearnersComponent extends Component
 
     public function storeObjective()
     {
-
-        $course = Course::where('id', $this->courseId)->first();
-
         // Validate objectives and requirements
         $this->validate([
             'objectives' => ['required', 'array', 'min:4'],
@@ -114,30 +164,32 @@ class IntendedLearnersComponent extends Component
             'objectives.*.title.string' => 'The objective must be a string.',
             'objectives.*.title.min' => 'The objective must be at least ten characters.',
             'objectives.*.title.max' => 'The objective must not exceed 160 characters.',
-            'requirements.required' => 'At least one requirements are required.',
-            'requirements.min' => 'At least one requirements are required.',
+            'requirements.required' => 'At least one requirement is required.',
+            'requirements.min' => 'At least one requirement is required.',
             'requirements.*.title.required' => 'The requirement field is required.',
             'requirements.*.title.string' => 'The requirement must be a string.',
             'requirements.*.title.min' => 'The requirement must be at least ten characters.',
             'requirements.*.title.max' => 'The requirement must not exceed 160 characters.',
         ]);
 
-
-        // add Objectives
+        // Store objectives and requirements
+        $course = Course::where('id', $this->courseId)->first();
         $course->objectives()->delete();
         if ($this->objectives != null) {
-            $objectives = $course->objectives()->createMany($this->objectives);
+            $course->objectives()->createMany($this->objectives);
         }
-
-        //add Requirements
         $course->requirements()->delete();
         if ($this->requirements != null) {
-            $requirements = $course->requirements()->createMany($this->requirements);
+            $course->requirements()->createMany($this->requirements);
         }
 
+        // Set $databaseDataValid to true
+        $this->databaseDataValid = true;
 
-        // $this->reset(['rating', 'title', 'message']);
+        // Set formSubmitted to true on successful submission
+        $this->formSubmitted = true;
 
+        // Show success alert
         $this->alert('success', __('Review submitted successfully!'));
     }
 }

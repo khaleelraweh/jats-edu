@@ -38,9 +38,19 @@
                         @foreach ($objectives as $index => $objective)
                             <tr>
                                 <td>
-                                    <input type="text" name="objectives[{{ $index }}][title]"
+                                    {{-- <input type="text" name="objectives[{{ $index }}][title]"
                                         class="form-control" wire:model="objectives.{{ $index }}.title"
-                                        placeholder="{{ __('transf.example:define_the_roles_and_responsibilities_of_a_project_manager') }}" />
+                                        placeholder="{{ __('transf.example:define_the_roles_and_responsibilities_of_a_project_manager') }}" /> --}}
+
+
+                                    <div class="input-group">
+                                        <input type="text" name="objectives[{{ $index }}][title]"
+                                            class="form-control" wire:model="objectives.{{ $index }}.title"
+                                            placeholder="{{ __('transf.example:define_the_roles_and_responsibilities_of_a_project_manager') }}" />
+                                        <span
+                                            class="input-group-text">{{ 160 - strlen($objectives[$index]['title']) }}</span>
+                                    </div>
+
                                     <!-- Display validation error for current objective -->
                                     @error('objectives.' . $index . '.title')
                                         <div class="text-danger">{{ $message }}</div>
@@ -97,9 +107,16 @@
                         @foreach ($requirements as $index => $requirement)
                             <tr>
                                 <td>
-                                    <input type="text" name="requirements[{{ $index }}][title]"
-                                        class="form-control" wire:model="requirements.{{ $index }}.title"
-                                        placeholder="{{ __('transf.example:no_programming_experience_needed.you_will_learn_everything_you_need_to_know') }}" />
+
+                                    <div class="input-group">
+                                        <input type="text" name="requirements[{{ $index }}][title]"
+                                            class="form-control" wire:model="requirements.{{ $index }}.title"
+                                            placeholder="{{ __('transf.example:no_programming_experience_needed.you_will_learn_everything_you_need_to_know') }}" />
+                                        <span
+                                            class="input-group-text">{{ 160 - strlen($requirements[$index]['title']) }}</span>
+                                    </div>
+
+
                                     <!-- Display validation error for current requirement -->
                                     @error('requirements.' . $index . '.title')
                                         <div class="text-danger">{{ $message }}</div>

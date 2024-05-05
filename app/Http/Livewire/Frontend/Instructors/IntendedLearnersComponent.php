@@ -34,6 +34,7 @@ class IntendedLearnersComponent extends Component
                 ['title' => ''],
                 ['title' => ''],
                 ['title' => ''],
+                ['title' => ''],
             ];
         }
 
@@ -100,17 +101,25 @@ class IntendedLearnersComponent extends Component
 
         $course = Course::where('id', $this->courseId)->first();
 
-
-        // Validate objectives
+        // Validate objectives and requirements
         $this->validate([
-            'objectives' => ['required', 'array', 'min:3'],
-            'objectives.*.title' => ['required', 'string', 'min:10'],
+            'objectives' => ['required', 'array', 'min:4'],
+            'objectives.*.title' => ['required', 'string', 'min:10', 'max:160'],
+            'requirements' => ['required', 'array', 'min:1'],
+            'requirements.*.title' => ['required', 'string', 'min:10', 'max:160'],
         ], [
-            'objectives.required' => 'At least three objectives are required.',
-            'objectives.min' => 'At least three objectives are required.',
+            'objectives.required' => 'At least four objectives are required.',
+            'objectives.min' => 'At least four objectives are required.',
             'objectives.*.title.required' => 'The objective field is required.',
             'objectives.*.title.string' => 'The objective must be a string.',
             'objectives.*.title.min' => 'The objective must be at least ten characters.',
+            'objectives.*.title.max' => 'The objective must not exceed 160 characters.',
+            'requirements.required' => 'At least one requirements are required.',
+            'requirements.min' => 'At least one requirements are required.',
+            'requirements.*.title.required' => 'The requirement field is required.',
+            'requirements.*.title.string' => 'The requirement must be a string.',
+            'requirements.*.title.min' => 'The requirement must be at least ten characters.',
+            'requirements.*.title.max' => 'The requirement must not exceed 160 characters.',
         ]);
 
 
@@ -119,19 +128,6 @@ class IntendedLearnersComponent extends Component
         if ($this->objectives != null) {
             $objectives = $course->objectives()->createMany($this->objectives);
         }
-
-
-        // Validate requirements
-        $this->validate([
-            'requirements' => ['required', 'array', 'min:1'],
-            'requirements.*.title' => ['required', 'string', 'min:10'],
-        ], [
-            'requirements.required' => 'At least three requirements are required.',
-            'requirements.min' => 'At least three requirements are required.',
-            'requirements.*.title.required' => 'The requirement field is required.',
-            'requirements.*.title.string' => 'The requirement must be a string.',
-            'requirements.*.title.min' => 'The requirement must be at least ten characters.',
-        ]);
 
         //add Requirements
         $course->requirements()->delete();

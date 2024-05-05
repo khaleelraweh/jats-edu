@@ -407,6 +407,22 @@ return [
     'example:beginner_python_developers_curious_about_data_science' =>  'Example: Beginner python developers curious about data science',
 
     //Intended validation 
-    'At least four objectives are required.'        =>  'At least four objectives are required.',
+    'At least four objectives are required.'            =>  'At least four objectives are required.',
+    'The objective field is required.'                  =>  'The objective field is required.',
+    'The objective must be a string.'                   =>  'The objective must be a string.',
+    'The objective must be at least ten characters.'    =>  'The objective must be at least ten characters.',
+    'The objective must not exceed 160 characters.'     =>  'The objective must not exceed 160 characters.',
+    'At least one requirement is required.'             =>  'At least one requirement is required.',
+    'At least one requirement is required.'             =>  'At least one requirement is required.',
+    'The requirement field is required.'                =>  'The requirement field is required.',
+    'The requirement must be a string.'                 =>  'The requirement must be a string.',
+    'The requirement must be at least ten characters.'  =>  'The requirement must be at least ten characters.',
+    'The requirement must not exceed 160 characters.'   =>  'The requirement must not exceed 160 characters.',
+    'At least one intended is required.'                =>  'At least one intended learner is required.',
+    'At least one intended is required.'                =>  'At least one intended learner is required.',
+    'The intended field is required.'                   =>  'The intended learner field is required.',
+    'The intended must be a string.'                    =>  'The intended learner must be a string.',
+    'The intended must be at least ten characters.'     =>  'The intended learner must be at least ten characters.',
+    'The intended must not exceed 160 characters.'      =>  'The intended learner must not exceed 160 characters.',
 
 ];

@@ -409,7 +409,24 @@ return [
     'example:beginner_python_developers_curious_about_data_science' =>  'مثال: مطورو لغة بايثون المبتدئون مهتمون بعلم البيانات',
 
     //Intended validation 
-    'At least four objectives are required.'        =>  'مطلوب أربعة أهداف على الأقل.',
+    'At least four objectives are required.'            =>  'مطلوب أربعة أهداف على الأقل.',
+    'The objective field is required.'                  =>  'حقل الهدف مطلوب.',
+    'The objective must be a string.'                   =>  'يجب أن يكون الهدف سلسلة نصية.',
+    'The objective must be at least ten characters.'    =>  'يجب أن يكون الهدف عشرة أحرف على الأقل.',
+    'The objective must not exceed 160 characters.'     =>  'يجب ألا يتجاوز الهدف 160 حرفًا.',
+    'At least one requirement is required.'             =>  'مطلوب شرط واحد على الأقل.',
+    'At least one requirement is required.'             =>  'مطلوب شرط واحد على الأقل.',
+    'The requirement field is required.'                =>  'حقل المتطلبات مطلوب.',
+    'The requirement must be a string.'                 =>  'يجب أن يكون الشرط سلسلة نصية.',
+    'The requirement must be at least ten characters.'  =>  'يجب أن يكون الشرط عشرة أحرف على الأقل.',
+    'The requirement must not exceed 160 characters.'   =>  'يجب ألا يتجاوز المتطلب 160 حرفًا.',
+    'At least one intended is required.'                =>  'مطلوب متعلم مقصود واحد على الأقل.',
+    'At least one intended is required.'                =>  'مطلوب متعلم مقصود واحد على الأقل.',
+    'The intended field is required.'                   =>  'حقل المتعلم المقصود مطلوب.',
+    'The intended must be a string.'                    =>  'يجب أن يكون المتعلم المقصود سلسلة نصية.',
+    'The intended must be at least ten characters.'     =>  'يجب أن يكون المتعلم المقصود عشرة أحرف على الأقل.',
+    'The intended must not exceed 160 characters.'      =>  'يجب ألا يتجاوز المتعلم المقصود 160 حرفًا.',
+
 
 
 

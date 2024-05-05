@@ -51,7 +51,7 @@
         </div>
         <br />
         <div>
-            <input class="btn btn-primary" type="submit" value="Save Order">
+            <input class="btn btn-primary" type="submit" value="{{ __('transf.save_objective') }}">
         </div>
     </form>
 </div>

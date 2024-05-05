@@ -251,8 +251,9 @@
                                     </div>
                                 </div>
                                 <ul class="pager wizard twitter-bs-wizard-pager-link d-flex justify-content-between">
-                                    <li class="previous"><a href="javascript: void(0);">Previous</a></li>
-                                    <li class="next"><a href="javascript: void(0);">Next</a></li>
+                                    <li class="previous"><a href="javascript: void(0);">{{ __('transf.previous') }}</a>
+                                    </li>
+                                    <li class="next"><a href="javascript: void(0);">{{ __('transf.next') }}</a></li>
                                 </ul>
                             </div>
                         </div>

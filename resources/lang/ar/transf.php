@@ -383,6 +383,9 @@ return [
 
     'objective'                                     =>  'الهدف',
     'add_another_objective'                         =>  'أضف هدفًا آخر',
+    'save_objective'                                =>  'حفظ الهدف',
+
+
 
 
 

@@ -97,6 +97,20 @@ class IntendedLearnersComponent extends Component
 
         $course = Course::where('id', $this->courseId)->first();
 
+        // Validate requirements
+        $this->validate([
+            'requirements' => ['required', 'array', 'min:3'],
+            'requirements.*.title' => ['required', 'string', 'min:10'],
+        ], [
+            'requirements.required' => 'At least three requirements are required.',
+            'requirements.min' => 'At least three requirements are required.',
+            'requirements.*.title.required' => 'The requirement field is required.',
+            'requirements.*.title.string' => 'The requirement must be a string.',
+            'requirements.*.title.min' => 'The requirement must be at least ten characters.',
+        ]);
+
+
+
         // add Objectives
         $course->objectives()->delete();
         if ($this->objectives != null) {

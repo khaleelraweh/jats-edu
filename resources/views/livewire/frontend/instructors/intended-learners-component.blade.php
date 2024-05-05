@@ -1,6 +1,7 @@
 <div>
 
 
+
     <p class="h6 py-3 text-muted">{{ __('transf.intended_description') }} </p>
 
     <form wire:submit.prevent="storeObjective">
@@ -49,6 +50,24 @@
         </div>
 
         {{-- Requirements --}}
+
+        <!-- Display validation errors -->
+        @if ($errors->has('requirements'))
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->get('requirements') as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+
+        <!-- Display validation errors for requirements -->
+        {{-- @error('requirements.*.title')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror --}}
+
         <div class="card">
             <div class="card-header">
                 <h4>{{ __('transf.what_are_the_requirements_or_prerequisites_for_taking_your_course?') }}</h4>
@@ -70,6 +89,11 @@
                                     <input type="text" name="requirements[{{ $index }}][title]"
                                         class="form-control" wire:model="requirements.{{ $index }}.title"
                                         placeholder="{{ __('transf.example:no_programming_experience_needed.you_will_learn_everything_you_need_to_know') }}" />
+                                    <!-- Display validation error for current requirement -->
+                                    @error('requirements.' . $index . '.title')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+
                                 </td>
                                 <td>
                                     <a href="#"

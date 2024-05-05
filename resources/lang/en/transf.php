@@ -406,4 +406,7 @@ return [
     'add_more_to_your_response'                     =>  'Add more to your response',
     'example:beginner_python_developers_curious_about_data_science' =>  'Example: Beginner python developers curious about data science',
 
+    //Intended validation 
+    'At least four objectives are required.'        =>  'At least four objectives are required.',
+
 ];

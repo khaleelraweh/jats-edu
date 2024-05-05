@@ -208,8 +208,8 @@ class IntendedLearnersComponent extends Component
             'intendeds' => ['required', 'array', 'min:1'],
             'intendeds.*.title' => ['required', 'string', 'min:10', 'max:160'],
         ], [
-            'objectives.required' => 'At least four objectives are required.',
-            'objectives.min' => 'At least four objectives are required.',
+            'objectives.required' => __('transf.At least four objectives are required.'),
+            'objectives.min' => __('transf.At least four objectives are required.'),
             'objectives.*.title.required' => 'The objective field is required.',
             'objectives.*.title.string' => 'The objective must be a string.',
             'objectives.*.title.min' => 'The objective must be at least ten characters.',

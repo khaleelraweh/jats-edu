@@ -408,6 +408,9 @@ return [
     'add_more_to_your_response'                     =>  'أضف المزيد إلى ردك',
     'example:beginner_python_developers_curious_about_data_science' =>  'مثال: مطورو لغة بايثون المبتدئون مهتمون بعلم البيانات',
 
+    //Intended validation 
+    'At least four objectives are required.'        =>  'مطلوب أربعة أهداف على الأقل.',
+
 
 
 

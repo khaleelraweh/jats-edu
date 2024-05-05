@@ -10,10 +10,6 @@
 
 
         {{-- Objectives --}}
-
-
-
-
         <div class="card">
             <div class="card-header">
                 <h4>{{ __('transf.what_will_students_learn_in_your_course?') }}</h4>
@@ -78,8 +74,6 @@
         </div>
 
         {{-- Requirements --}}
-
-
         <div class="card">
             <div class="card-header">
                 <h4>{{ __('transf.what_are_the_requirements_or_prerequisites_for_taking_your_course?') }}</h4>

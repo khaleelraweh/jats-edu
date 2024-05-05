@@ -381,6 +381,8 @@ return [
     'what_will_students_learn_in_your_course?'      =>  'ماذا سيتعلم الطلاب في الدورة الخاصة بك؟',
     'what_will_students_learn_tips'                 =>  'يجب عليك إدخال ما لا يقل عن 4 أهداف أو نتائج تعليمية يمكن للمتعلمين توقع تحقيقها بعد إكمال الدورة التدريبية الخاصة بك.',
 
+    'objective'                                     =>  'الهدف',
+    'add_another_objective'                         =>  'أضف هدفًا آخر',
 
 
 

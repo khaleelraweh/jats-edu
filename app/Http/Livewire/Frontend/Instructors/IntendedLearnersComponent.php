@@ -12,7 +12,7 @@ class IntendedLearnersComponent extends Component
     public $courseId;
 
     // start 
-    public $orderProducts = [];
+    public $objectives = [];
     // end 
 
 
@@ -21,23 +21,23 @@ class IntendedLearnersComponent extends Component
     {
         $this->courseId = $courseId;
         // start 
-        $this->orderProducts = [
-            ['product_id' => '', 'quantity' => 1]
+        $this->objectives = [
+            ['product_id' => '', 'quantity' => 1],
         ];
         //end 
     }
 
 
     // Start adding 
-    public function addProduct()
+    public function addObjective()
     {
-        $this->orderProducts[] = ['product_id' => '', 'quantity' => 1];
+        $this->objectives[] = ['product_id' => '', 'quantity' => 1];
     }
 
-    public function removeProduct($index)
+    public function removeObjective($index)
     {
-        unset($this->orderProducts[$index]);
-        $this->orderProducts = array_values($this->orderProducts);
+        unset($this->objectives[$index]);
+        $this->objectives = array_values($this->objectives);
     }
     // End adding 
 

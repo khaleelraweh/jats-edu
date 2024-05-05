@@ -379,5 +379,9 @@ return [
     'what_will_students_learn_in_your_course?'      =>  'What will students learn in your course?',
     'what_will_students_learn_tips'                 =>  'You must enter at least 4 learning objectives or outcomes that learners can expect to achieve after completing your course.',
 
+    'objective'                                     =>  'Objective',
+    'add_another_objective'                         =>  'Add Another Objective',
+
+
 
 ];

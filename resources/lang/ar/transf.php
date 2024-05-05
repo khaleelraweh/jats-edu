@@ -378,6 +378,8 @@ return [
     'plan_your_course'                              =>  'خطط للدورة الخاصة بك',
     'intended_learners'                              =>  'المتعلمون المقصودون',
     'intended_description'                          =>  'ستكون الأوصاف التالية مرئية بشكل عام على الصفحة المقصودة للدورة التدريبية الخاصة بك وسيكون لها تأثير مباشر على أداء الدورة التدريبية الخاصة بك. ستساعد هذه الأوصاف المتعلمين على تحديد ما إذا كانت الدورة التدريبية الخاصة بك مناسبة لهم أم لا.',
+
+    //Objectives
     'what_will_students_learn_in_your_course?'      =>  'ماذا سيتعلم الطلاب في الدورة الخاصة بك؟',
     'what_will_students_learn_tips'                 =>  'يجب عليك إدخال ما لا يقل عن 4 أهداف أو نتائج تعليمية يمكن للمتعلمين توقع تحقيقها بعد إكمال الدورة التدريبية الخاصة بك.',
 
@@ -386,6 +388,14 @@ return [
     'save_objective'                                =>  'حفظ الهدف',
     'delete'                                        =>  'حذف',
     'example:define_the_roles_and_responsibilities_of_a_project_manager'    =>  'مثال: تحديد أدوار ومسؤوليات مدير المشروع',
+
+    // Requirements
+    'what_are_the_requirements_or_prerequisites_for_taking_your_course?'    =>  'ما هي المتطلبات أو المتطلبات الأساسية لأخذ الدورة الخاصة بك؟',
+    'what_are_the_requirements_tips'                =>  'قم بإدراج المهارات أو الخبرة أو الأدوات أو المعدات المطلوبة التي يجب أن يمتلكها المتعلمون قبل بدء الدورة التدريبية الخاصة بك. إذا لم تكن هناك متطلبات، استخدم هذه المساحة كفرصة لخفض حاجز المبتدئين.',
+
+    'requirement'                                   =>  'متطلب',
+    'add_another_requirement'                       =>  'إضافة مطلب آخر',
+    'example:no_programming_experience_needed.you_will_learn_everything_you_need_to_know'   =>  'مثال: لا حاجة إلى خبرة في البرمجة. سوف تتعلم كل ما تحتاج إلى معرفته',
 
 
 

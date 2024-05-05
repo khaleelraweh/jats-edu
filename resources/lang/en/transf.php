@@ -376,6 +376,8 @@ return [
     'plan_your_course'                              =>  'Plan your course',
     'intended_learners'                             =>  'Intended learners',
     'intended_description'                          =>  'The following descriptions will be publicly visible on your Course Landing Page and will have a direct impact on your course performance. These descriptions will help learners decide if your course is right for them.',
+
+    // objectives
     'what_will_students_learn_in_your_course?'      =>  'What will students learn in your course?',
     'what_will_students_learn_tips'                 =>  'You must enter at least 4 learning objectives or outcomes that learners can expect to achieve after completing your course.',
 
@@ -385,6 +387,13 @@ return [
     'delete'                                        =>  'Delete',
     'example:define_the_roles_and_responsibilities_of_a_project_manager'    =>  'Example: Define the roles and responsibilities of a project manager',
 
+    // requirements
+    'what_are_the_requirements_or_prerequisites_for_taking_your_course?'    =>  'What are the requirements or prerequisites for taking your course?',
+    'what_are_the_requirements_tips'                =>  'List the required skills, experience, tools or equipment learners should have prior to taking your course. If there are no requirements, use this space as an opportunity to lower the barrier for beginners.',
+
+    'requirement'                                   =>  'Requirement',
+    'add_another_requirement'                       =>  'Add Another Requirement',
+    'example:no_programming_experience_needed.you_will_learn_everything_you_need_to_know'   =>  'Example:No programming experience needed. You will learn everything you need to know',
 
 
 ];

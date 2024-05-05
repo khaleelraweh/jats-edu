@@ -1,5 +1,8 @@
 @extends('layouts.app-instructor')
 @section('style')
+    <!-- App favicon -->
+    {{-- <link rel="shortcut icon" href="{{ asset('frontend/wizard/assets/images/favicon.ico') }}"> --}}
+
     <!-- twitter-bootstrap-wizard css -->
     <link rel="stylesheet" href="{{ asset('frontend/wizard/assets/libs/twitter-bootstrap-wizard/prettify.css') }}">
 
@@ -13,7 +16,7 @@
 @endsection
 
 @section('content')
-    <div class="container mt-3">
+    <div class="container">
 
         <div class="row">
             <div class="col-lg-12">
@@ -46,12 +49,6 @@
                                     <a href="#confirm-detail" class="nav-link" data-toggle="tab">
                                         <span class="step-number">04</span>
                                         <span class="step-title">Confirm Detail</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#confirm-detail2" class="nav-link" data-toggle="tab">
-                                        <span class="step-number">05</span>
-                                        <span class="step-title">Confirm Detail2</span>
                                     </a>
                                 </li>
                             </ul>
@@ -245,25 +242,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="confirm-detail2">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-6">
-                                            <div class="text-center">
-                                                <div class="mb-4">
-                                                    <i class="mdi mdi-check-circle-outline text-success display-4"></i>
-                                                </div>
-                                                <div>
-                                                    <h5>Confirm Detail</h5>
-                                                    <p class="text-muted">If several languages coalesce,
-                                                        the grammar of the resulting</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
-                            <ul class="pager wizard twitter-bs-wizard-pager-link d-flex justify-content-between">
+                            <ul class="pager wizard twitter-bs-wizard-pager-link">
                                 <li class="previous"><a href="javascript: void(0);">Previous</a></li>
                                 <li class="next"><a href="javascript: void(0);">Next</a></li>
                             </ul>
@@ -284,5 +265,7 @@
     </script>
     <script src="{{ asset('frontend/wizard/assets/libs/twitter-bootstrap-wizard/prettify.js') }}"></script>
     <!-- form wizard init -->
-    <script src="{{ asset('frontend/wizard/assets/js/form-wizard.init.js') }}"></script>
+    <script src="{{ asset('frontend/wizard/assets/js/pages/form-wizard.init.js') }}"></script>
+
+    <script src="{{ asset('frontend/wizard/assets/js/app.js') }}"></script>
 @endsection

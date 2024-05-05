@@ -32,7 +32,7 @@
                                     </td>
                                     <td>
                                         <a href="#"
-                                            wire:click.prevent="removeObjective({{ $index }})">Delete</a>
+                                            wire:click.prevent="removeObjective({{ $index }})">{{ __('transf.delete') }}</a>
                                     </td>
                                 </tr>
                             @endforeach

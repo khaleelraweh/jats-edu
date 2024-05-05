@@ -382,6 +382,7 @@ return [
     'objective'                                     =>  'Objective',
     'add_another_objective'                         =>  'Add Another Objective',
     'save_objective'                                =>  'Save Objective',
+    'delete'                                        =>  'Delete',
 
 
 

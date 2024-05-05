@@ -3,6 +3,34 @@
 
     <p class="h6 py-3 text-muted">{{ __('transf.intended_description') }} </p>
 
+    {{-- @foreach ($course->requirements as $item)
+        <?php
+        $loopIndex = $loop->index;
+        ?>
+        @foreach (config('locales.languages') as $key => $val)
+            <tr class="cloning_row" id="{{ $loopIndex }}">
+                <td style="width: 30px !important;">
+                    @if ($loopIndex == 0)
+                        {{ '#' }}
+                    @else
+                        <button type="button" class="btn btn-danger btn-sm delegated-btn"><i
+                                class="fa fa-minus"></i></button>
+                    @endif
+                </td>
+                <td>{{ __('panel.requirement_in_' . $key) }} ({{ $loopIndex }})</td>
+                <td>
+                    <input type="text" name="course_requirement[{{ $loopIndex }}][{{ $key }}]"
+                        id="course_requirement"
+                        value="{{ old('course_requirement' . $key, $item->getTranslation('title', $key)) }}"
+                        class="course_requirement form-control">
+                    @error('course_requirement[{{ $loopIndex }}]' . $key)
+                        <span class="help-block text-danger">{{ $message }}</span>
+                    @enderror
+                </td>
+            </tr>
+        @endforeach
+    @endforeach --}}
+
     <form action="" method="POST">
         @csrf
 

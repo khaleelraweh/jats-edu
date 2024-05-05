@@ -414,7 +414,7 @@
                                 <!-- Image -->
 
                                 @php
-                                    if ($course->photos->first()->file_name != null) {
+                                    if ($course->photos->first() && $course->photos->first()->file_name != null) {
                                         $course_img = asset('assets/courses/' . $course->photos->first()->file_name);
 
                                         if (

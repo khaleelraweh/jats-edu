@@ -399,6 +399,14 @@ return [
     'add_another_requirement'                       =>  'إضافة مطلب آخر',
     'example:no_programming_experience_needed.you_will_learn_everything_you_need_to_know'   =>  'مثال: لا حاجة إلى خبرة في البرمجة. سوف تتعلم كل ما تحتاج إلى معرفته',
 
+    //Intended Learners
+    'who_is_this_course_for?'                       =>  'لمن هذه الدورة؟',
+    'who_is_this_course_for_tips'                   =>  'اكتب وصفًا واضحًا للمتعلمين المستهدفين للدورة التدريبية الخاصة بك والذين سيجدون محتوى الدورة التدريبية الخاص بك قيمًا. سيساعدك هذا على جذب المتعلمين المناسبين إلى دورتك التعليمية.',
+
+    'intended_learner'                              =>  'المتعلم المقصود',
+    'add_more_to_your_response'                     =>  'أضف المزيد إلى ردك',
+    'example:beginner_python_developers_curious_about_data_science' =>  'مثال: مطورو لغة بايثون المبتدئون مهتمون بعلم البيانات',
+
 
 
 

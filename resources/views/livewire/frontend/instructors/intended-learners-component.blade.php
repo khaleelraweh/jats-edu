@@ -10,7 +10,6 @@
 
     <form wire:submit.prevent="storeObjective">
 
-
         {{-- Objectives --}}
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-start">
@@ -144,6 +143,79 @@
                     <div class="col-md-12">
                         <button class="btn btn-sm btn-secondary" wire:click.prevent="addRequirement">
                             + {{ __('transf.add_another_requirement') }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Intended Learners --}}
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-start">
+                <div>
+                    <h4>{{ __('transf.who_is_this_course_for?') }}</h4>
+                    <h6>{{ __('transf.who_is_this_course_for_tips') }}</h6>
+
+                    <!-- Display validation errors -->
+                    @if ($errors->has('requirements'))
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->get('requirements') as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+                <div>
+                    @if ($requirementsValid || ($formSubmitted && !$errors->any()))
+                        <i class="mdi mdi-check-circle-outline text-success display-4"></i>
+                    @endif
+                </div>
+            </div>
+
+            <div class="card-body">
+
+                <table class="table" id="products_table">
+                    <thead>
+                        <tr>
+                            <th>{{ __('transf.intended_learner') }} </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($requirements as $index => $requirement)
+                            <tr>
+                                <td>
+
+                                    <div class="input-group">
+                                        <input type="text" name="requirements[{{ $index }}][title]"
+                                            class="form-control" wire:model="requirements.{{ $index }}.title"
+                                            placeholder="{{ __('transf.example:beginner_python_developers_curious_about_data_science') }}" />
+                                        <span
+                                            class="input-group-text">{{ 160 - strlen($requirements[$index]['title']) }}</span>
+                                    </div>
+
+
+                                    <!-- Display validation error for current requirement -->
+                                    @error('requirements.' . $index . '.title')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+
+                                </td>
+                                <td>
+                                    <a href="#"
+                                        wire:click.prevent="removeRequirement({{ $index }})">{{ __('transf.delete') }}</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-sm btn-secondary" wire:click.prevent="addRequirement">
+                            + {{ __('transf.add_more_to_your_response') }}
                         </button>
                     </div>
                 </div>

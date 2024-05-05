@@ -397,5 +397,12 @@ return [
     'add_another_requirement'                       =>  'Add Another Requirement',
     'example:no_programming_experience_needed.you_will_learn_everything_you_need_to_know'   =>  'Example:No programming experience needed. You will learn everything you need to know',
 
+    //Intended Learners
+    'who_is_this_course_for?'                       =>  'Who is this course for?',
+    'who_is_this_course_for_tips'                   =>  'Write a clear description of the intended learners for your course who will find your course content valuable. This will help you attract the right learners to your course.',
+
+    'intended_learner'                              =>  'Intended Learner',
+    'add_more_to_your_response'                     =>  'Add more to your response',
+    'example:beginner_python_developers_curious_about_data_science' =>  'Example: Beginner python developers curious about data science',
 
 ];

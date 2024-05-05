@@ -22,6 +22,9 @@ class IntendedLearnersComponent extends Component
     public $formSubmitted = false;
     public $databaseDataValid = false;
 
+    public $objectivesValid = false;
+    public $requirementsValid = false;
+
 
 
     public function mount($courseId)
@@ -61,47 +64,47 @@ class IntendedLearnersComponent extends Component
 
     protected function validateDatabaseData()
     {
-        $course = Course::where('id', $this->courseId)->first();
-
         // Validate objectives
+        $objectivesValid = true;
+        $course = Course::where('id', $this->courseId)->first();
         $objectivesCount = $course->objectives->count();
         if ($objectivesCount >= 4) {
             foreach ($course->objectives as $item) {
                 $validator = Validator::make(['title' => $item->title], [
                     'title' => ['required', 'string', 'min:10', 'max:160'],
                 ]);
-
                 if ($validator->fails()) {
-                    $this->databaseDataValid = false;
-                    return;
+                    $objectivesValid = false;
+                    break;
                 }
             }
         } else {
-            $this->databaseDataValid = false;
-            return;
+            $objectivesValid = false;
         }
 
         // Validate requirements
+        $requirementsValid = true;
         $requirementsCount = $course->requirements->count();
         if ($requirementsCount >= 1) {
             foreach ($course->requirements as $item) {
                 $validator = Validator::make(['title' => $item->title], [
                     'title' => ['required', 'string', 'min:10', 'max:160'],
                 ]);
-
                 if ($validator->fails()) {
-                    $this->databaseDataValid = false;
-                    return;
+                    $requirementsValid = false;
+                    break;
                 }
             }
         } else {
-            $this->databaseDataValid = false;
-            return;
+            $requirementsValid = false;
         }
 
-        // If all data passes validation
-        $this->databaseDataValid = true;
+        // Set flags for objectives and requirements validation
+        $this->databaseDataValid = $objectivesValid && $requirementsValid;
+        $this->objectivesValid = $objectivesValid;
+        $this->requirementsValid = $requirementsValid;
     }
+
 
 
 

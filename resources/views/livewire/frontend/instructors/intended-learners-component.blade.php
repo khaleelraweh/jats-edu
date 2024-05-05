@@ -8,7 +8,7 @@
     </header>
     <p class="h6 py-3 text-muted">{{ __('transf.intended_description') }} </p>
 
-    <form wire:submit.prevent="storeObjective">
+    <form wire:submit.prevent="storeIntended">
 
         {{-- Objectives --}}
         <div class="card">
@@ -224,7 +224,7 @@
 
         <br />
         <div class="">
-            <input class="btn btn-primary" type="submit" value="{{ __('transf.save_objective') }}">
+            <input class="btn btn-primary" type="submit" value="{{ __('transf.save') }}">
         </div>
     </form>
 </div>

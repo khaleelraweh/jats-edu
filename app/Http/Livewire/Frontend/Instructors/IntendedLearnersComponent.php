@@ -196,7 +196,8 @@ class IntendedLearnersComponent extends Component
         return view('livewire.frontend.instructors.intended-learners-component', compact('course_categories', 'course', 'instructors', 'courseinstructors'));
     }
 
-    public function storeObjective()
+    // public function storeObjective()
+    public function storeIntended()
     {
         // Validate objectives and requirements
         $this->validate([

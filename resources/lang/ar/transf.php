@@ -388,6 +388,7 @@ return [
     'objective'                                     =>  'الهدف',
     'add_another_objective'                         =>  'أضف هدفًا آخر',
     'save_objective'                                =>  'حفظ الهدف',
+    'save'                                          =>  'حفظ',
     'delete'                                        =>  'حذف',
     'example:define_the_roles_and_responsibilities_of_a_project_manager'    =>  'مثال: تحديد أدوار ومسؤوليات مدير المشروع',
 

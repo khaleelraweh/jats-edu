@@ -386,6 +386,7 @@ return [
     'objective'                                     =>  'Objective',
     'add_another_objective'                         =>  'Add Another Objective',
     'save_objective'                                =>  'Save Objective',
+    'save'                                          =>  'Save',
     'delete'                                        =>  'Delete',
     'example:define_the_roles_and_responsibilities_of_a_project_manager'    =>  'Example: Define the roles and responsibilities of a project manager',
 

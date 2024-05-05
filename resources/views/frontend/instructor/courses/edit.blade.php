@@ -1,15 +1,14 @@
 @extends('layouts.app-instructor')
 @section('style')
     <!-- twitter-bootstrap-wizard css -->
-    <link rel="stylesheet" href="{{ asset('frontend/wizard/assets/libs/twitter-bootstrap-wizard/prettify.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/libs/twitter-bootstrap-wizard/prettify.css') }}">
 
     <!-- Bootstrap Css -->
-    <link href="{{ asset('frontend/wizard/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="{{ asset('frontend/wizard/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="{{ asset('frontend/wizard/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -280,9 +279,8 @@
 
 @section('script')
     <!-- twitter-bootstrap-wizard js -->
-    <script src="{{ asset('frontend/wizard/assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}">
-    </script>
-    <script src="{{ asset('frontend/wizard/assets/libs/twitter-bootstrap-wizard/prettify.js') }}"></script>
+    <script src="{{ asset('frontend/assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/libs/twitter-bootstrap-wizard/prettify.js') }}"></script>
     <!-- form wizard init -->
-    <script src="{{ asset('frontend/wizard/assets/js/form-wizard.init.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/form-wizard.init.js') }}"></script>
 @endsection

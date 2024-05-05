@@ -55,7 +55,7 @@
                                 <tr>
                                     <td>{{ $key }}</td>
                                     <td>
-                                        {{-- <input type="text" name="objectives[{{ $index }}][quantity]" --}}
+                                        {{-- <input type="text" name="objectives[{{ $index }}][product_id]" --}}
                                         <input type="text" name="objectives[{{ $index }}][{{ $key }}]"
                                             class="form-control" wire:model="objectives.{{ $index }}.quantity" />
 

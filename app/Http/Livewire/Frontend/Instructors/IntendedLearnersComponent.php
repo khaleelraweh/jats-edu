@@ -22,13 +22,10 @@ class IntendedLearnersComponent extends Component
     public function mount($courseId)
     {
         $this->courseId = $courseId;
-
         $course = Course::where('id', $this->courseId)->first();
 
-
-
         // objectives
-        if ($course->objectives != null) {
+        if ($course->objectives != null && $course->objectives->isNotEmpty()) {
             foreach ($course->objectives as $item) {
                 $this->objectives[] = ['title' => $item->title];
             }
@@ -38,9 +35,7 @@ class IntendedLearnersComponent extends Component
             ];
         }
 
-
-        //requirements
-        if ($course->requirements != null) {
+        if ($course->requirements != null && $course->requirements->isNotEmpty()) {
             foreach ($course->requirements as $item) {
                 $this->requirements[] = ['title' => $item->title];
             }
@@ -50,6 +45,9 @@ class IntendedLearnersComponent extends Component
             ];
         }
     }
+
+
+
 
 
     // add Objective 
@@ -80,12 +78,8 @@ class IntendedLearnersComponent extends Component
 
     public function render()
     {
-
         $course = Course::where('id', $this->courseId)->first();
-
-
         $course_categories = CourseCategory::whereStatus(1)->get(['id', 'title']);
-
 
         // Get active instructor
         $instructors = User::whereHas('roles', function ($query) {

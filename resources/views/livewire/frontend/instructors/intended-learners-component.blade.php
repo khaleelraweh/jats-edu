@@ -8,6 +8,18 @@
 
 
         {{-- Objectives --}}
+
+        <!-- Display validation errors -->
+        @if ($errors->has('objectives'))
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->get('objectives') as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="card">
             <div class="card-header">
                 <h4>{{ __('transf.what_will_students_learn_in_your_course?') }}</h4>
@@ -29,6 +41,10 @@
                                     <input type="text" name="objectives[{{ $index }}][title]"
                                         class="form-control" wire:model="objectives.{{ $index }}.title"
                                         placeholder="{{ __('transf.example:define_the_roles_and_responsibilities_of_a_project_manager') }}" />
+                                    <!-- Display validation error for current objective -->
+                                    @error('objectives.' . $index . '.title')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </td>
                                 <td>
                                     <a href="#"
@@ -62,11 +78,6 @@
             </div>
         @endif
 
-
-        <!-- Display validation errors for requirements -->
-        {{-- @error('requirements.*.title')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror --}}
 
         <div class="card">
             <div class="card-header">

@@ -64,16 +64,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($objectives as $index => $objective)
+                        @foreach ($requirements as $index => $requirement)
                             <tr>
                                 <td>
-                                    <input type="text" name="objectives[{{ $index }}][title]"
-                                        class="form-control" wire:model="objectives.{{ $index }}.title"
+                                    <input type="text" name="requirements[{{ $index }}][title]"
+                                        class="form-control" wire:model="requirements.{{ $index }}.title"
                                         placeholder="{{ __('transf.example:no_programming_experience_needed.you_will_learn_everything_you_need_to_know') }}" />
                                 </td>
                                 <td>
                                     <a href="#"
-                                        wire:click.prevent="removeObjective({{ $index }})">{{ __('transf.delete') }}</a>
+                                        wire:click.prevent="removeRequirement({{ $index }})">{{ __('transf.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -82,7 +82,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <button class="btn btn-sm btn-secondary" wire:click.prevent="addObjective">
+                        <button class="btn btn-sm btn-secondary" wire:click.prevent="addRequirement">
                             + {{ __('transf.add_another_requirement') }}
                         </button>
                     </div>
@@ -91,7 +91,7 @@
         </div>
 
         <br />
-        <div class="d-none">
+        <div class="">
             <input class="btn btn-primary" type="submit" value="{{ __('transf.save_objective') }}">
         </div>
     </form>

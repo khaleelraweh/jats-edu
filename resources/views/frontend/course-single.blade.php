@@ -2,25 +2,16 @@
 
 @section('content')
     {{-- image set --}}
-    @php
-        if ($course->photos->first()->file_name != null) {
-            $course_img = asset('assets/courses/' . $course->photos->first()->file_name);
 
-            if (!file_exists(public_path('assets/courses/' . $course->photos->first()->file_name))) {
+    @php
+        $firstPhoto = $course->photos->first();
+        if ($firstPhoto && $firstPhoto->file_name != null) {
+            $course_img = asset('assets/courses/' . $firstPhoto->file_name);
+            if (!file_exists(public_path('assets/courses/' . $firstPhoto->file_name))) {
                 $course_img = asset('image/not_found/item_image_not_found.webp');
             }
         } else {
             $course_img = asset('image/not_found/item_image_not_found.webp');
-        }
-
-        if ($course->photos->last()->file_name != null) {
-            $course_cover = asset('assets/courses/' . $course->photos->last()->file_name);
-
-            if (!file_exists(public_path('assets/courses/' . $course->photos->last()->file_name))) {
-                $course_cover = asset('image/not_found/item_image_not_found.webp');
-            }
-        } else {
-            $course_cover = asset('image/not_found/item_image_not_found.webp');
         }
     @endphp
 
@@ -1724,7 +1715,10 @@
                     <div class="card border shadow-dark-hover p-2 sk-fade">
                         <!-- Image -->
                         @php
-                            if ($related_course->photos->first()->file_name != null) {
+                            if (
+                                $related_course->photos->first() &&
+                                $related_course->photos->first()->file_name != null
+                            ) {
                                 $related_course_img = asset(
                                     'assets/courses/' . $related_course->photos->first()->file_name,
                                 );
@@ -1740,6 +1734,8 @@
                                 $related_course_img = asset('image/not_found/item_image_not_found.webp');
                             }
                         @endphp
+
+
                         <div class="card-zoom position-relative">
                             <a href="{{ route('frontend.course_single', $related_course->slug) }}"
                                 class="card-img sk-thumbnail img-ratio-3 d-block">

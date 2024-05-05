@@ -24,7 +24,7 @@ class IntendedLearnersComponent extends Component
         $this->courseId = $courseId;
         $course = Course::where('id', $this->courseId)->first();
 
-        // objectives
+        // ================ initail objectives ===========//
         if ($course->objectives != null && $course->objectives->isNotEmpty()) {
             foreach ($course->objectives as $item) {
                 $this->objectives[] = ['title' => $item->title];
@@ -32,9 +32,12 @@ class IntendedLearnersComponent extends Component
         } else {
             $this->objectives = [
                 ['title' => ''],
+                ['title' => ''],
+                ['title' => ''],
             ];
         }
 
+        // ================ initail Requirements ===========//
         if ($course->requirements != null && $course->requirements->isNotEmpty()) {
             foreach ($course->requirements as $item) {
                 $this->requirements[] = ['title' => $item->title];

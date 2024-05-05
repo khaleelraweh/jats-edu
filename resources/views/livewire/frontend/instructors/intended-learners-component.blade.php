@@ -31,8 +31,8 @@
         @endforeach
     @endforeach --}}
 
-    <form action="" method="POST">
-        @csrf
+    <form wire:submit.prevent="storeObjective">
+
 
         <div class="card">
             <div class="card-header">

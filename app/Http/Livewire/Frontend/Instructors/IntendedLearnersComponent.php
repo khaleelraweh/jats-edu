@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Frontend\Instructors;
 
 use App\Models\Course;
 use App\Models\CourseCategory;
+use App\Models\Objective;
 use App\Models\User;
 use Livewire\Component;
 
@@ -58,5 +59,38 @@ class IntendedLearnersComponent extends Component
         $courseinstructors = $course->users->pluck(['id'])->toArray();
 
         return view('livewire.frontend.instructors.intended-learners-component', compact('course_categories', 'course', 'instructors', 'courseinstructors'));
+    }
+
+    public function storeObjective()
+    {
+
+        // dd("khaleel");
+
+        $course = Course::where('id', $this->courseId)->first();
+
+        // $validatedData = $this->validate([
+        //     'objectives' => 'required|string|max:255',
+        // ]);
+
+
+        dd($this->objectives);
+
+        // course objectives start 
+
+        $course->objectives()->delete();
+
+        if ($this->objectives != null) {
+            $objectives_list = [];
+            for ($i = 0; $i < count($this->objectives); $i++) {
+                $objectives_list[$i]['title'] = $this->objectives[$i];
+            }
+            // dd($requirements_list);
+            $objectives = $course->objectives()->createMany($objectives_list);
+        }
+
+
+        // $this->reset(['rating', 'title', 'message']);
+
+        $this->alert('success', __('Review submitted successfully!'));
     }
 }

@@ -8,25 +8,23 @@
 
 
         {{-- Objectives --}}
-
-        <!-- Display validation errors -->
-        @if ($errors->has('objectives'))
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->get('objectives') as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
         <div class="card">
             <div class="card-header">
                 <h4>{{ __('transf.what_will_students_learn_in_your_course?') }}</h4>
                 <h6>{{ __('transf.what_will_students_learn_tips') }}</h6>
             </div>
-
             <div class="card-body">
+                <!-- Display validation errors -->
+                @if ($errors->has('objectives'))
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->get('objectives') as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <table class="table" id="products_table">
                     <thead>
                         <tr>
@@ -38,11 +36,6 @@
                         @foreach ($objectives as $index => $objective)
                             <tr>
                                 <td>
-                                    {{-- <input type="text" name="objectives[{{ $index }}][title]"
-                                        class="form-control" wire:model="objectives.{{ $index }}.title"
-                                        placeholder="{{ __('transf.example:define_the_roles_and_responsibilities_of_a_project_manager') }}" /> --}}
-
-
                                     <div class="input-group">
                                         <input type="text" name="objectives[{{ $index }}][title]"
                                             class="form-control" wire:model="objectives.{{ $index }}.title"
@@ -76,19 +69,6 @@
         </div>
 
         {{-- Requirements --}}
-
-        <!-- Display validation errors -->
-        @if ($errors->has('requirements'))
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->get('requirements') as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-
         <div class="card">
             <div class="card-header">
                 <h4>{{ __('transf.what_are_the_requirements_or_prerequisites_for_taking_your_course?') }}</h4>
@@ -96,6 +76,16 @@
             </div>
 
             <div class="card-body">
+                <!-- Display validation errors -->
+                @if ($errors->has('requirements'))
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->get('requirements') as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <table class="table" id="products_table">
                     <thead>
                         <tr>

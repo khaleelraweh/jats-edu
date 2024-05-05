@@ -22,7 +22,7 @@ class IntendedLearnersComponent extends Component
         $this->courseId = $courseId;
         // start 
         $this->objectives = [
-            ['product_id' => '', 'quantity' => 1],
+            ['product_id' => '', 'quantity' => 'Enter title '],
         ];
         //end 
     }
@@ -31,7 +31,7 @@ class IntendedLearnersComponent extends Component
     // Start adding 
     public function addObjective()
     {
-        $this->objectives[] = ['product_id' => '', 'quantity' => 1];
+        $this->objectives[] = ['product_id' => '', 'quantity' => 'Enter title '];
     }
 
     public function removeObjective($index)

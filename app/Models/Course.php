@@ -221,7 +221,7 @@ class Course extends Model
 
     public function intendeds(): MorphMany
     {
-        return $this->morphMany(Objective::class, 'intendedable');
+        return $this->morphMany(Intended::class, 'intendedable');
     }
 
     public function sections()

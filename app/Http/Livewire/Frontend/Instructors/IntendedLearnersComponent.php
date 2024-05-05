@@ -18,12 +18,14 @@ class IntendedLearnersComponent extends Component
     public $courseId;
     public $objectives = [];
     public $requirements = [];
+    public $intendeds = [];
 
     public $formSubmitted = false;
     public $databaseDataValid = false;
 
     public $objectivesValid = false;
     public $requirementsValid = false;
+    public $intendedsValid = false;
 
 
 
@@ -53,6 +55,17 @@ class IntendedLearnersComponent extends Component
             }
         } else {
             $this->requirements = [
+                ['title' => ''],
+            ];
+        }
+
+        // Initialize Intendeds
+        if ($course->intendeds != null && $course->intendeds->isNotEmpty()) {
+            foreach ($course->intendeds as $item) {
+                $this->intendeds[] = ['title' => $item->title];
+            }
+        } else {
+            $this->intendeds = [
                 ['title' => ''],
             ];
         }
@@ -99,12 +112,30 @@ class IntendedLearnersComponent extends Component
             $requirementsValid = false;
         }
 
+        // Validate intendeds
+        $intendedsValid = true;
+        $intendedsCount = $course->intendeds->count();
+        if ($intendedsCount >= 1) {
+            foreach ($course->intendeds as $item) {
+                $validator = Validator::make(['title' => $item->title], [
+                    'title' => ['required', 'string', 'min:10', 'max:160'],
+                ]);
+                if ($validator->fails()) {
+                    $intendedsValid = false;
+                    break;
+                }
+            }
+        } else {
+            $intendedsValid = false;
+        }
+
         // Set flags for objectives and requirements validation
-        $this->databaseDataValid = $objectivesValid && $requirementsValid;
+        $this->databaseDataValid = $objectivesValid && $requirementsValid && $intendedsValid;
+
         $this->objectivesValid = $objectivesValid;
         $this->requirementsValid = $requirementsValid;
+        $this->intendedsValid = $intendedsValid;
     }
-
 
 
 
@@ -122,6 +153,12 @@ class IntendedLearnersComponent extends Component
         $this->requirements[] = ['title' => ''];
     }
 
+    //add Intended
+    public function addIntended()
+    {
+        $this->intendeds[] = ['title' => ''];
+    }
+
     // remove Objective
     public function removeObjective($index)
     {
@@ -134,6 +171,13 @@ class IntendedLearnersComponent extends Component
     {
         unset($this->requirements[$index]);
         $this->requirements = array_values($this->requirements);
+    }
+
+    // remove Intended
+    public function removeIntended($index)
+    {
+        unset($this->intendeds[$index]);
+        $this->intendeds = array_values($this->intendeds);
     }
 
     public function render()
@@ -160,6 +204,8 @@ class IntendedLearnersComponent extends Component
             'objectives.*.title' => ['required', 'string', 'min:10', 'max:160'],
             'requirements' => ['required', 'array', 'min:1'],
             'requirements.*.title' => ['required', 'string', 'min:10', 'max:160'],
+            'intendeds' => ['required', 'array', 'min:1'],
+            'intendeds.*.title' => ['required', 'string', 'min:10', 'max:160'],
         ], [
             'objectives.required' => 'At least four objectives are required.',
             'objectives.min' => 'At least four objectives are required.',
@@ -173,17 +219,30 @@ class IntendedLearnersComponent extends Component
             'requirements.*.title.string' => 'The requirement must be a string.',
             'requirements.*.title.min' => 'The requirement must be at least ten characters.',
             'requirements.*.title.max' => 'The requirement must not exceed 160 characters.',
+            'intendeds.required' => 'At least one intended is required.',
+            'intendeds.min' => 'At least one intended is required.',
+            'intendeds.*.title.required' => 'The intended field is required.',
+            'intendeds.*.title.string' => 'The intended must be a string.',
+            'intendeds.*.title.min' => 'The intended must be at least ten characters.',
+            'intendeds.*.title.max' => 'The intended must not exceed 160 characters.',
         ]);
 
         // Store objectives and requirements
         $course = Course::where('id', $this->courseId)->first();
+
         $course->objectives()->delete();
         if ($this->objectives != null) {
             $course->objectives()->createMany($this->objectives);
         }
+
         $course->requirements()->delete();
         if ($this->requirements != null) {
             $course->requirements()->createMany($this->requirements);
+        }
+
+        $course->intendeds()->delete();
+        if ($this->intendeds != null) {
+            $course->intendeds()->createMany($this->intendeds);
         }
 
         // Set $databaseDataValid to true

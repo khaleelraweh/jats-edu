@@ -373,6 +373,11 @@ return [
     'next'                                          =>  'التالي',
 
 
+    // Course Update Items 
+    //section 1 
+    'plan_your_course'                              =>  'خطط للدورة الخاصة بك',
+    'intended_learners'                              =>  'المتعلمون المقصودون',
+
 
 
 

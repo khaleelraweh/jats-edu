@@ -371,5 +371,10 @@ return [
     'previous'                                      =>  'Previous',
     'next'                                          =>  'Next',
 
+    // Course Update Items 
+    //section 1 
+    'plan_your_course'                              =>  'Plan your course',
+    'intended_learners'                              =>  'Intended learners',
+
 
 ];

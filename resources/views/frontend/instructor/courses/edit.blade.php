@@ -51,10 +51,11 @@
 
                         <div id="basic-pills-wizard" class="twitter-bs-wizard">
                             <ul class="twitter-bs-wizard-nav">
+                                <h6><strong>{{ __('transf.plan_your_course') }}</strong></h6>
                                 <li class="nav-item">
                                     <a href="#seller-details" class="nav-link" data-toggle="tab">
                                         <span class="step-number">01</span>
-                                        <span class="step-title">Seller Details</span>
+                                        <span class="step-title">{{ __('transf.intended_learners') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">

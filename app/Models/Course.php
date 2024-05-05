@@ -219,6 +219,11 @@ class Course extends Model
         return $this->morphMany(Objective::class, 'objectiveable');
     }
 
+    public function intendeds(): MorphMany
+    {
+        return $this->morphMany(Objective::class, 'intendedable');
+    }
+
     public function sections()
     {
         return $this->hasMany(CourseSection::class);

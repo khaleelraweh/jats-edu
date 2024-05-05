@@ -120,7 +120,7 @@ class IntendedLearnersComponent extends Component
 
         // Validate requirements
         $this->validate([
-            'requirements' => ['required', 'array', 'min:3'],
+            'requirements' => ['required', 'array', 'min:1'],
             'requirements.*.title' => ['required', 'string', 'min:10'],
         ], [
             'requirements.required' => 'At least three requirements are required.',

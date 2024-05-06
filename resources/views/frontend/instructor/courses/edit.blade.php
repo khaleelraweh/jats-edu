@@ -89,70 +89,10 @@
                             <div class="tab-content twitter-bs-wizard-tab-content">
                                 <div class="tab-pane" id="seller-details">
                                     @livewire('frontend.instructors.intended-learners-component', ['courseId' => $course->id])
-
                                 </div>
                                 <div class="tab-pane" id="company-document">
                                     <div>
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="basicpill-pancard-input">PAN
-                                                            Card</label>
-                                                        <input type="text" class="form-control"
-                                                            id="basicpill-pancard-input">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="basicpill-vatno-input">VAT/TIN
-                                                            No.</label>
-                                                        <input type="text" class="form-control"
-                                                            id="basicpill-vatno-input">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="basicpill-cstno-input">CST
-                                                            No.</label>
-                                                        <input type="text" class="form-control"
-                                                            id="basicpill-cstno-input">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="basicpill-servicetax-input">Service
-                                                            Tax
-                                                            No.</label>
-                                                        <input type="text" class="form-control"
-                                                            id="basicpill-servicetax-input">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="basicpill-companyuin-input">Company
-                                                            UIN</label>
-                                                        <input type="text" class="form-control"
-                                                            id="basicpill-companyuin-input">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label"
-                                                            for="basicpill-declaration-input">Declaration</label>
-                                                        <input type="text" class="form-control"
-                                                            id="basicpill-declaration-input">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
+                                        @livewire('frontend.instructors.curriculum-component', ['courseId' => $course->id])
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="bank-detail">

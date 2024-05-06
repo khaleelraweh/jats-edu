@@ -16,6 +16,7 @@
   'frontend.header.cart-counts-component' => 'App\\Http\\Livewire\\Frontend\\Header\\CartCountsComponent',
   'frontend.home.featured-courses-component' => 'App\\Http\\Livewire\\Frontend\\Home\\FeaturedCoursesComponent',
   'frontend.home.trending-categories-component' => 'App\\Http\\Livewire\\Frontend\\Home\\TrendingCategoriesComponent',
+  'frontend.instructors.curriculum-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\CurriculumComponent',
   'frontend.instructors.instructor-courses-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\InstructorCoursesComponent',
   'frontend.instructors.instructor-list-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\InstructorListComponent',
   'frontend.instructors.intended-learners-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\IntendedLearnersComponent',

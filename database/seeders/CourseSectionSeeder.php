@@ -31,6 +31,7 @@ class CourseSectionSeeder extends Seeder
                 'title' => ['ar' => 'تجهيز الملفات الاساسية', 'en' => 'Preparing basic files'],
                 'lectures_count' => 6,
                 'duration' => "1hr 31m",
+                'objective' => $faker->realText(),
                 'course_id' => $course->id,
 
                 'status' => true,

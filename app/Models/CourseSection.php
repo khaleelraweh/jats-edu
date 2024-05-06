@@ -19,7 +19,7 @@ class CourseSection extends Model
     protected $guarded = [];
 
     // for translatable field 
-    public $translatable = ['title', 'slug'];
+    public $translatable = ['title', 'slug', 'objective'];
 
 
     // searchable lab 

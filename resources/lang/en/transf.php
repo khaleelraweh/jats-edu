@@ -430,6 +430,11 @@ return [
     'create_your_content'                               =>  'Create your content',
     'curriculum'                                        =>  'Curriculum',
     'curriculum_description'                            =>  'Start putting together your course by creating sections, lectures and practice activities (quizzes, coding exercises and assignments). Use your course outline to structure your content and label your sections and lectures clearly. If you’re intending to offer your course for free, the total length of video content must be less than 2 hours.',
+    'section'                                           =>  'Section',
+    'add_another_section'                               =>  'Section',
+    'enter_a_title'                                     =>  'Enter a Title',
+    'enter_a_learning_objective'                        =>  'Enter a Learning Objective',
+    'add_section'                                       =>  'Add Section',
 
 
 ];

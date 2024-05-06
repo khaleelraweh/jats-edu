@@ -27,14 +27,12 @@ class CurriculumComponent extends Component
         // Initialize Sections
         if ($course->sections != null && $course->sections->isNotEmpty()) {
             foreach ($course->sections as $item) {
-                $this->sections[] = ['title' => $item->title];
+                $this->sections[] = ['title' => $item->title, 'objective' => $item->objective];
             }
         } else {
             $this->sections = [
-                ['title' => ''],
-                ['title' => ''],
-                ['title' => ''],
-                ['title' => ''],
+                ['title' => '', 'objective' => ''],
+
             ];
         }
     }
@@ -43,7 +41,7 @@ class CurriculumComponent extends Component
     // add section 
     public function addSection()
     {
-        $this->sections[] = ['title' => ''];
+        $this->sections[] = ['title' => '', 'objective' => ''];
     }
 
     // remove Section
@@ -77,14 +75,22 @@ class CurriculumComponent extends Component
         // Validate sections  
         $this->validate([
             'sections' => ['required', 'array', 'min:1'],
-            'sections.*.title' => ['required', 'string', 'min:10', 'max:160'],
+            'sections.*.title' => ['required', 'string', 'min:3', 'max:80'],
+            'sections.*.objective' => ['required', 'string', 'min:10', 'max:200'],
         ], [
-            'sections.required' => __('transf.At least four sections are required.'),
-            'sections.min' => __('transf.At least four sections are required.'),
+            'sections.required' => __('transf.At least one sections are required.'),
+            'sections.min' => __('transf.At least one sections are required.'),
+
             'sections.*.title.required' => __('transf.The section field is required.'),
             'sections.*.title.string' => __('transf.The section must be a string.'),
-            'sections.*.title.min' => __('transf.The section must be at least ten characters.'),
-            'sections.*.title.max' => __('transf.The section must not exceed 160 characters.'),
+            'sections.*.title.min' => __('transf.The section must be at least three characters.'),
+            'sections.*.title.max' => __('transf.The section must not exceed 80 characters.'),
+
+            'sections.*.objective.required' => __('transf.The section field is required.'),
+            'sections.*.objective.string' => __('transf.The section must be a string.'),
+            'sections.*.objective.min' => __('transf.The section must be at least ten characters.'),
+            'sections.*.objective.max' => __('transf.The section must not exceed 200 characters.'),
+
         ]);
 
         // Store sections

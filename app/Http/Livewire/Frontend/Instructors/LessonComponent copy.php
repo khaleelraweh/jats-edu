@@ -34,7 +34,7 @@ class LessonComponent extends Component
             foreach ($course->sections as $section) {
                 $sectionData = [
                     'title' => $section->title,
-                    'sectionId' => $section->id,
+                    // 'lessons' => [['title' => '', 'url' => '', 'duration_minutes' => '']]
                     'lessons' => []
                 ];
                 if ($section->lessons != null && $section->lessons->isNotEmpty()) {
@@ -48,7 +48,6 @@ class LessonComponent extends Component
                     }
                 } else {
                     $sectionData = [
-                        'sectionId' => $section->id,
                         'title' => $section->title,
                         'lessons' => [['title' => '', 'url' => '', 'duration_minutes' => '']]
                     ];
@@ -145,23 +144,16 @@ class LessonComponent extends Component
         // }
 
 
-        if ($course->sections != null && $course->sections->isNotEmpty()) {
-            foreach ($course->sections as $section) {
-                // dd($section->id);
-            }
-        }
-
         // Save sections and lessons to the database
         foreach ($this->sections as $index => $section) {
-            dd($this->sections[$index]['title']);
-            // dd($this->sections[$index]['lessons']);
-
-
-
-
+            $courseSection = CourseSection::updateOrCreate(
+                ['title' => $section['title'], 'course_id' => $this->courseId],
+                ['title' => $section['title']] // Add other fields as needed
+            );
             foreach ($section['lessons'] as $lesson) {
                 Lesson::updateOrCreate(
-                    ['title' => $lesson['title'], 'course_section_id' => $section->id],
+                    ['title' => $lesson['title'], 'course_section_id' => $courseSection->id],
+                    ['title' => $lesson['title'], 'duration_minutes' => $lesson['duration_minutes']] // Add other fields as needed
                 );
             }
         }

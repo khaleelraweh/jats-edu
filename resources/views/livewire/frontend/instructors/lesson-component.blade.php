@@ -8,8 +8,8 @@
     </header>
     <p class="h6 py-3 text-muted">{{ __('transf.intended_description') }}</p>
 
-    {{-- <form wire:submit.prevent="storeSections"> --}}
-    <form>
+    <form wire:submit.prevent="storeSections">
+        {{-- <form> --}}
 
         {{-- Sections --}}
         @foreach ($sections as $index => $section)
@@ -17,6 +17,7 @@
                 <div class="card-header d-flex justify-content-between align-items-start">
                     <div>
                         <h4>{{ $section['title'] }}</h4>
+                        <h4>{{ $section['sectionId'] }}</h4>
                     </div>
                     <div>
                         {{ $index }}

@@ -3,9 +3,7 @@
 
     @foreach ($sections as $index => $section)
         <form wire:submit.prevent="storeSection">
-
             {{-- Course Section --}}
-
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-start">
                     <div>
@@ -58,16 +56,20 @@
                         </tbody>
                     </table>
 
-                    <div class="">
-                        <input class="btn btn-primary" type="submit" value="{{ __('transf.add_section') }}">
+                    <div class=" d-flex justify-content-between align-items-start">
+                        <div class="">
+                            <input class="btn btn-primary" type="submit" value="{{ __('transf.add_section') }}">
+                        </div>
+                        <div class="">
+                            <a href="" class="btn btn-primary">
+                                add Curriculum
+                            </a>
+                        </div>
                     </div>
 
 
                 </div>
             </div>
-
-
-
         </form>
     @endforeach
 

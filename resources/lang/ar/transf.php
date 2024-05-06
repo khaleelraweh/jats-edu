@@ -427,6 +427,15 @@ return [
     'The intended must be at least ten characters.'     =>  'يجب أن يكون المتعلم المقصود عشرة أحرف على الأقل.',
     'The intended must not exceed 160 characters.'      =>  'يجب ألا يتجاوز المتعلم المقصود 160 حرفًا.',
 
+
+    // Section
+    'sections'                                              =>  'الاقسام',
+    'what_are_the_sections_affiliated_with_this_course?'    =>  'ما هي الأقسام التابعة لهذه الدورة؟',
+    'what_are_the_sections_tips'                            =>  'عملية تقيم الدورة الي مجموعة من الوحدات تساعد  الطالب في عملية التعلم واستجماع المعلومات بشكل اكثر تنظيما',
+    'section_title'                                         =>  'عنوان القسم',
+    'section_title_placeholder'                             =>  'ادخل عنوان',
+
+
     //Curriculum
     'create_your_content'                               =>  'قم بإنشاء المحتوى الخاص بك',
     'curriculum'                                        =>  'مقرر',

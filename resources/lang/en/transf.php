@@ -426,6 +426,12 @@ return [
     'The intended must not exceed 160 characters.'      =>  'The intended learner must not exceed 160 characters.',
 
     // Section
+    'sections'                                              =>  'Sections',
+    'what_are_the_sections_affiliated_with_this_course?'    =>  'What are the sections affiliated with this course?',
+    'what_are_the_sections_tips'                            =>  'The process of evaluating the course into a group of sections helps the student in the learning process and gathering information in a more organized manner',
+    'section_title'                                         =>  'Section Title',
+    'section_title_placeholder'                             =>  'Enter title',
+
 
     //Curriculum
     'create_your_content'                               =>  'Create your content',

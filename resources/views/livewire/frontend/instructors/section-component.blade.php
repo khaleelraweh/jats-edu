@@ -14,8 +14,8 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-start">
                 <div>
-                    <h4>{{ __('transf.course_sections') }}</h4>
-                    <h6>{{ __('transf.course_sections_tips') }}</h6>
+                    <h4>{{ __('transf.what_are_the_sections_affiliated_with_this_course?') }}</h4>
+                    <h6>{{ __('transf.what_are_the_sections_tips') }}</h6>
                     <!-- Display validation errors -->
                     @if ($errors->has('sections'))
                         <div class="alert alert-danger">

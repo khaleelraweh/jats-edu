@@ -17,40 +17,40 @@
                 <table class="table" id="products_table">
                     <thead>
                         <tr>
-                            <th>{{ __('transf.objective') }} </th>
+                            <th>{{ __('transf.section') }} </th>
                             <th></th>
                         </tr>
                     </thead>
-                    {{-- <tbody>
-                        @foreach ($objectives as $index => $objective)
+                    <tbody>
+                        @foreach ($sections as $index => $section)
                             <tr>
                                 <td>
                                     <div class="input-group">
-                                        <input type="text" name="objectives[{{ $index }}][title]"
-                                            class="form-control" wire:model="objectives.{{ $index }}.title"
+                                        <input type="text" name="sections[{{ $index }}][title]"
+                                            class="form-control" wire:model="sections.{{ $index }}.title"
                                             placeholder="{{ __('transf.example:define_the_roles_and_responsibilities_of_a_project_manager') }}" />
                                         <span
-                                            class="input-group-text">{{ 160 - strlen($objectives[$index]['title']) }}</span>
+                                            class="input-group-text">{{ 160 - strlen($sections[$index]['title']) }}</span>
                                     </div>
 
-                                    <!-- Display validation error for current objective -->
-                                    @error('objectives.' . $index . '.title')
+                                    <!-- Display validation error for current section -->
+                                    @error('sections.' . $index . '.title')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </td>
                                 <td>
                                     <a href="#"
-                                        wire:click.prevent="removeObjective({{ $index }})">{{ __('transf.delete') }}</a>
+                                        wire:click.prevent="removeSection({{ $index }})">{{ __('transf.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody> --}}
+                    </tbody>
                 </table>
 
                 <div class="row">
                     <div class="col-md-12">
                         <button class="btn btn-sm btn-secondary" wire:click.prevent="addSection">
-                            + {{ __('transf.add_another_objective') }}
+                            + {{ __('transf.add_another_section') }}
                         </button>
                     </div>
                 </div>

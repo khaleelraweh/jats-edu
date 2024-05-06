@@ -74,7 +74,6 @@ class IntendedLearnersComponent extends Component
         $this->validateDatabaseData();
     }
 
-
     protected function validateDatabaseData()
     {
         // Validate objectives
@@ -136,9 +135,6 @@ class IntendedLearnersComponent extends Component
         $this->requirementsValid = $requirementsValid;
         $this->intendedsValid = $intendedsValid;
     }
-
-
-
 
 
     // add Objective 

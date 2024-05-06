@@ -26,6 +26,7 @@ class LessonComponent extends Component
     public $databaseDataValid = false;
     public $sectionsValid = false;
 
+
     // Property to track the edit state of section title
     public $editSectionTitleIndex = null;
 

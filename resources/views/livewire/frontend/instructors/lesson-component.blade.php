@@ -23,6 +23,7 @@
                         @else
                             <input type="text" class="form-control" wire:model="sections.{{ $index }}.title">
                         @endif
+
                     </div>
                     <div class="d-flex">
                         <div class="me-2">

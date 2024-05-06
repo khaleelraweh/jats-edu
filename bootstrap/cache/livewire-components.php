@@ -19,6 +19,7 @@
   'frontend.instructors.instructor-courses-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\InstructorCoursesComponent',
   'frontend.instructors.instructor-list-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\InstructorListComponent',
   'frontend.instructors.intended-learners-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\IntendedLearnersComponent',
+  'frontend.instructors.lesson-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\LessonComponent',
   'frontend.instructors.section-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\SectionComponent',
   'frontend.modals.cart-modal-component' => 'App\\Http\\Livewire\\Frontend\\Modals\\CartModalComponent',
   'frontend.shop-cart.shop-cart-component' => 'App\\Http\\Livewire\\Frontend\\ShopCart\\ShopCartComponent',

@@ -19,7 +19,14 @@
                     <div>
                         <!-- Input field for section title -->
                         @if ($editSectionTitleIndex !== $index)
-                            <span>{{ $section['title'] }}</span>
+                            {{-- <span>{{ $section['title'] }}</span> --}}
+                            <!-- Input field for section title -->
+                            @if ($section['sectionId'] == -1)
+                                <input type="text" class="form-control" wire:model="sections.{{ $index }}.title"
+                                    placeholder="{{ __('Section Title') }}">
+                            @else
+                                <span>{{ $section['title'] }}</span>
+                            @endif
                         @else
                             <input type="text" class="form-control" wire:model="sections.{{ $index }}.title">
                         @endif
@@ -29,10 +36,17 @@
                         <div class="me-2">
                             <!-- Button to toggle edit state -->
                             @if ($editSectionTitleIndex !== $index)
-                                <button class="btn btn-sm btn-primary"
-                                    wire:click.prevent="toggleEditSectionTitle({{ $index }})">
-                                    {{ __('Edit Section') }}
-                                </button>
+                                @if ($section['sectionId'] == -1)
+                                    <button class="btn btn-sm btn-primary"
+                                        wire:click.prevent="saveSection({{ $index }})">
+                                        {{ __('Save Section') }}
+                                    </button>
+                                @else
+                                    <button class="btn btn-sm btn-primary"
+                                        wire:click.prevent="toggleEditSectionTitle({{ $index }})">
+                                        {{ __('Edit Section') }}
+                                    </button>
+                                @endif
                             @else
                                 <!-- Button to save section title -->
                                 <button class="btn btn-sm btn-primary"

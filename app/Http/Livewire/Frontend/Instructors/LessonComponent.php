@@ -133,7 +133,6 @@ class LessonComponent extends Component
             'lessons' => [],
             'sectionId' => -1, // Set sectionId as -1 for new section
             'saved' => false, // Initialize saved as false
-
         ];
     }
 

@@ -29,7 +29,7 @@
                         <button class="btn btn-sm btn-danger" wire:click.prevent="removeSection({{ $index }})">
                             {{ __('Remove Section') }}
                         </button>
-                        <!-- Button to add a new lesson for this section -->
+                        {{-- <!-- Button to add a new lesson for this section -->
                         <button class="btn btn-sm btn-secondary" wire:click.prevent="addLesson({{ $index }})">
                             + {{ __('Add Lesson') }}
                         </button>
@@ -37,7 +37,7 @@
                         <button class="btn btn-sm btn-success"
                             wire:click.prevent="saveLessonsInSection({{ $index }})">
                             {{ __('Save Lessons') }}
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
 
@@ -46,7 +46,6 @@
                     <table class="table">
                         <thead>
                             <tr>
-
                                 <th>{{ __('Lesson Title') }}</th>
                                 <th>{{ __('url') }}</th>
                                 <th>{{ __('Duration') }}</th>
@@ -82,7 +81,20 @@
                             @endforeach
 
                         </tbody>
+
                     </table>
+                    <div class="d-flex">
+                        <!-- Button to add a new lesson for this section -->
+                        <button class="btn btn-sm btn-secondary me-2"
+                            wire:click.prevent="addLesson({{ $index }})">
+                            + {{ __('Add Lesson') }}
+                        </button>
+                        <!-- Button to save lessons for this section -->
+                        <button class="btn btn-sm btn-success"
+                            wire:click.prevent="saveLessonsInSection({{ $index }})">
+                            {{ __('Save Lessons') }}
+                        </button>
+                    </div>
                 </div>
             </div>
         @endforeach

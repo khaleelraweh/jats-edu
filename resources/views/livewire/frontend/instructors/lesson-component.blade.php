@@ -8,7 +8,8 @@
     </header>
     <p class="h6 py-3 text-muted">{{ __('transf.intended_description') }}</p>
 
-    <form wire:submit.prevent="storeSections">
+    {{-- <form wire:submit.prevent="storeSections"> --}}
+    <form>
 
         {{-- Sections --}}
         @foreach ($sections as $index => $section)
@@ -18,8 +19,9 @@
                         <h4>{{ $section['title'] }}</h4>
                     </div>
                     <div>
+                        {{ $index }}
                         <!-- Button to add a new lesson for this section -->
-                        <button class="btn btn-sm btn-secondary" wire:click="addLesson({{ $index }})">
+                        <button class="btn btn-sm btn-secondary" wire:click.prevent="addLesson({{ $index }})">
                             + {{ __('Add Lesson') }}
                         </button>
                     </div>
@@ -29,6 +31,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+
                                 <th>{{ __('Lesson Title') }}</th>
                                 <th>{{ __('url') }}</th>
                                 <th>{{ __('Duration') }}</th>
@@ -56,7 +59,7 @@
                                     <td>
                                         <!-- Button to remove lesson -->
                                         <button class="btn btn-sm btn-danger"
-                                            wire:click="removeLesson({{ $index }}, {{ $lessonIndex }})">
+                                            wire:click.prevent="removeLesson({{ $index }}, {{ $lessonIndex }})">
                                             {{ __('Remove') }}
                                         </button>
                                     </td>

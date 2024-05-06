@@ -34,12 +34,14 @@ class LessonComponent extends Component
             foreach ($course->sections as $section) {
                 $sectionData = [
                     'title' => $section->title,
-                    'lessons' => [['title' => '']]
+                    // 'lessons' => [['title' => '', 'url' => '', 'duration_minutes' => '']]
+                    'lessons' => []
                 ];
                 // Populate lessons for each section
                 foreach ($section->lessons as $lesson) {
                     $sectionData['lessons'][] = [
                         'title' => $lesson->title,
+                        'url' => $lesson->url,
                         'duration_minutes' => $lesson->duration_minutes,
                     ];
                 }
@@ -161,7 +163,7 @@ class LessonComponent extends Component
     public function addLesson($sectionIndex)
     {
 
-        $this->sections[$sectionIndex]['lessons'][] = ['title' => '', 'duration_minutes' => ''];
+        $this->sections[$sectionIndex]['lessons'][] = ['title' => '', 'url' => '', 'duration_minutes' => ''];
     }
 
     public function removeLesson($sectionIndex, $lessonIndex)

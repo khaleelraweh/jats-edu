@@ -30,6 +30,7 @@
                         <thead>
                             <tr>
                                 <th>{{ __('Lesson Title') }}</th>
+                                <th>{{ __('url') }}</th>
                                 <th>{{ __('Duration') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>
@@ -41,6 +42,11 @@
                                         <input type="text" class="form-control"
                                             wire:model="sections.{{ $index }}.lessons.{{ $lessonIndex }}.title"
                                             placeholder="{{ __('Lesson Title') }}">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control"
+                                            wire:model="sections.{{ $index }}.lessons.{{ $lessonIndex }}.url"
+                                            placeholder="{{ __('url') }}">
                                     </td>
                                     <td>
                                         <input type="number" class="form-control"

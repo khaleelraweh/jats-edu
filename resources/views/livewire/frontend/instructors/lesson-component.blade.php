@@ -12,112 +12,114 @@
         {{-- <form> --}}
 
         {{-- Sections --}}
-        @foreach ($sections as $index => $section)
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-start">
+        @if (!empty($sections))
 
-                    <div>
-                        <!-- Input field for section title -->
-                        @if ($editSectionTitleIndex !== $index)
-                            {{-- <span>{{ $section['title'] }}</span> --}}
+            @foreach ($sections as $index => $section)
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-start">
+                        <div>
                             <!-- Input field for section title -->
-                            @if ($section['sectionId'] == -1)
-                                <input type="text" class="form-control" wire:model="sections.{{ $index }}.title"
-                                    placeholder="{{ __('Section Title') }}">
-                            @else
-                                <span>{{ $section['title'] }}</span>
-                            @endif
-                        @else
-                            <input type="text" class="form-control" wire:model="sections.{{ $index }}.title">
-                        @endif
-
-                    </div>
-                    <div class="d-flex">
-                        <div class="me-2">
-                            <!-- Button to toggle edit state -->
                             @if ($editSectionTitleIndex !== $index)
-                                @if ($section['sectionId'] == -1)
+                                @if (isset($section['sectionId']) && $section['sectionId'] == -1)
+                                    <input type="text" class="form-control"
+                                        wire:model="sections.{{ $index }}.title"
+                                        placeholder="{{ __('Section Title') }}">
+                                @else
+                                    <span>{{ $section['title'] }}</span>
+                                @endif
+                            @else
+                                <input type="text" class="form-control"
+                                    wire:model="sections.{{ $index }}.title">
+                            @endif
+                        </div>
+                        <div class="d-flex">
+                            <div class="me-2">
+                                <!-- Button to toggle edit state -->
+                                @if ($editSectionTitleIndex !== $index)
+                                    @if (isset($section['sectionId']) && $section['sectionId'] == -1)
+                                        <button class="btn btn-sm btn-primary"
+                                            wire:click.prevent="saveSection({{ $index }})">
+                                            {{ __('Save Section') }}
+                                        </button>
+                                    @else
+                                        <button class="btn btn-sm btn-primary"
+                                            wire:click.prevent="toggleEditSectionTitle({{ $index }})">
+                                            {{ __('Edit Section') }}
+                                        </button>
+                                    @endif
+                                @else
+                                    <!-- Button to save section title -->
                                     <button class="btn btn-sm btn-primary"
                                         wire:click.prevent="saveSection({{ $index }})">
                                         {{ __('Save Section') }}
                                     </button>
-                                @else
-                                    <button class="btn btn-sm btn-primary"
-                                        wire:click.prevent="toggleEditSectionTitle({{ $index }})">
-                                        {{ __('Edit Section') }}
-                                    </button>
                                 @endif
-                            @else
-                                <!-- Button to save section title -->
-                                <button class="btn btn-sm btn-primary"
-                                    wire:click.prevent="saveSection({{ $index }})">
-                                    {{ __('Save Section') }}
-                                </button>
-                            @endif
+                            </div>
+                            <button class="btn btn-sm btn-danger"
+                                wire:click.prevent="removeSection({{ $index }})">
+                                {{ __('Remove Section') }}
+                            </button>
                         </div>
-                        <button class="btn btn-sm btn-danger" wire:click.prevent="removeSection({{ $index }})">
-                            {{ __('Remove Section') }}
-                        </button>
                     </div>
+                    @if ($section['saved'])
+                        <div class="card-body">
+                            {{-- Lessons for this section --}}
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>{{ __('Lesson Title') }}</th>
+                                        <th>{{ __('url') }}</th>
+                                        <th>{{ __('Duration') }}</th>
+                                        <th>{{ __('Actions') }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($section['lessons'] as $lessonIndex => $lesson)
+                                        <tr>
+                                            <td>
+                                                <input type="text" class="form-control"
+                                                    wire:model="sections.{{ $index }}.lessons.{{ $lessonIndex }}.title"
+                                                    placeholder="{{ __('Lesson Title') }}">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control"
+                                                    wire:model="sections.{{ $index }}.lessons.{{ $lessonIndex }}.url"
+                                                    placeholder="{{ __('url') }}">
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control"
+                                                    wire:model="sections.{{ $index }}.lessons.{{ $lessonIndex }}.duration_minutes"
+                                                    placeholder="{{ __('Duration in minutes') }}">
+                                            </td>
+                                            <td>
+                                                <!-- Button to remove lesson -->
+                                                <button class="btn btn-sm btn-danger"
+                                                    wire:click.prevent="removeLesson({{ $index }}, {{ $lessonIndex }})">
+                                                    {{ __('Remove') }}
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <div class="d-flex">
+                                <!-- Button to add a new lesson for this section -->
+                                <button class="btn btn-sm btn-secondary me-2"
+                                    wire:click.prevent="addLesson({{ $index }})">
+                                    + {{ __('Add Lesson') }}
+                                </button>
+                                <!-- Button to save lessons for this section -->
+                                <button class="btn btn-sm btn-success"
+                                    wire:click.prevent="saveLessonsInSection({{ $index }})">
+                                    {{ __('Save Lessons') }}
+                                </button>
+                            </div>
+                        </div>
+                    @endif
                 </div>
+            @endforeach
+        @endif
 
-                <div class="card-body">
-                    {{-- Lessons for this section --}}
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>{{ __('Lesson Title') }}</th>
-                                <th>{{ __('url') }}</th>
-                                <th>{{ __('Duration') }}</th>
-                                <th>{{ __('Actions') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($section['lessons'] as $lessonIndex => $lesson)
-                                <tr>
-                                    <td>
-                                        <input type="text" class="form-control"
-                                            wire:model="sections.{{ $index }}.lessons.{{ $lessonIndex }}.title"
-                                            placeholder="{{ __('Lesson Title') }}">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control"
-                                            wire:model="sections.{{ $index }}.lessons.{{ $lessonIndex }}.url"
-                                            placeholder="{{ __('url') }}">
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control"
-                                            wire:model="sections.{{ $index }}.lessons.{{ $lessonIndex }}.duration_minutes"
-                                            placeholder="{{ __('Duration in minutes') }}">
-                                    </td>
-                                    <td>
-                                        <!-- Button to remove lesson -->
-                                        <button class="btn btn-sm btn-danger"
-                                            wire:click.prevent="removeLesson({{ $index }}, {{ $lessonIndex }})">
-                                            {{ __('Remove') }}
-                                        </button>
-                                    </td>
-                                </tr>
-                            @endforeach
-
-                        </tbody>
-
-                    </table>
-                    <div class="d-flex">
-                        <!-- Button to add a new lesson for this section -->
-                        <button class="btn btn-sm btn-secondary me-2"
-                            wire:click.prevent="addLesson({{ $index }})">
-                            + {{ __('Add Lesson') }}
-                        </button>
-                        <!-- Button to save lessons for this section -->
-                        <button class="btn btn-sm btn-success"
-                            wire:click.prevent="saveLessonsInSection({{ $index }})">
-                            {{ __('Save Lessons') }}
-                        </button>
-                    </div>
-                </div>
-            </div>
-        @endforeach
 
         <div class="d-flex justify-content-between" style="">
             <!-- Button to add a new section -->

@@ -66,9 +66,10 @@ class LessonComponent extends Component
                 $this->sections[] = $sectionData;
             }
         } else {
+            // If there are no sections, create a default section
             $this->sections = [
                 [
-                    'title' => '',
+                    'title' => 'Introduction',
                     'lessons' => [],
                     'saved' => false, // Track if section has been saved
                 ],
@@ -78,6 +79,7 @@ class LessonComponent extends Component
         // Validate database data
         $this->validateDatabaseData();
     }
+
 
 
     // Method to toggle the edit state of section title input field
@@ -153,8 +155,8 @@ class LessonComponent extends Component
             return;
         }
 
-        // If the section has an existing sectionId
-        if ($sectionData['sectionId'] !== -1) {
+        // Check if the 'sectionId' key exists in the $sectionData array
+        if (array_key_exists('sectionId', $sectionData) && $sectionData['sectionId'] !== -1) {
             // Update the existing section title
             $section = CourseSection::find($sectionData['sectionId']);
             if ($section) {
@@ -174,7 +176,6 @@ class LessonComponent extends Component
             $this->sections[$index]['sectionId'] = $section->id;
             $this->sections[$index]['saved'] = true; // Mark section as saved
 
-
             // Show success alert for creating new section
             $this->alert('success', __('transf.New section created successfully!'));
         }
@@ -184,6 +185,7 @@ class LessonComponent extends Component
         // Save lessons for the section
         // $this->saveLessonsInSection($index);
     }
+
 
 
     // Method to save lessons for a specific section

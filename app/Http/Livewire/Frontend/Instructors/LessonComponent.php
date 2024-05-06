@@ -11,6 +11,8 @@ use App\Models\User;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+
 
 class LessonComponent extends Component
 {
@@ -95,17 +97,111 @@ class LessonComponent extends Component
         $this->sectionsValid = $sectionsValid;
     }
 
-    // add Section 
+
+    // Method to add a new section
     public function addSection()
     {
-        $this->sections[] = ['title' => ''];
+        $this->sections[] = [
+            'title' => '', // Initialize title as empty
+            'lessons' => [],
+            'sectionId' => -1, // Set sectionId as -1 for new section
+        ];
     }
 
+    // Method to save the new section with provided title
+    public function saveSection($index)
+    {
+        $section = CourseSection::create([
+            'title' => $this->sections[$index]['title'], // Use the provided title
+            'slug' => Str::slug($this->sections[$index]['title']), // Generate slug from title
+            'course_id' => $this->courseId,
+        ]);
+
+        // Update the sectionId with the newly created section's id
+        $this->sections[$index]['sectionId'] = $section->id;
+    }
+
+
+
+
+
+
+    // add Section 
+    // public function addSection()
+    // {
+    //     $this->sections[] = ['title' => '', 'lessons' => [], 'sectionId' => -1];
+    // }
+
     // remove Section
+    // public function removeSection($index)
+    // {
+    //     unset($this->sections[$index]);
+    //     $this->sections = array_values($this->sections);
+    // }
+
+    // Method to remove a section along with its lessons
     public function removeSection($index)
     {
+        $sectionId = $this->sections[$index]['sectionId'];
+
+        // If the section exists in the database, delete it along with its lessons
+        if ($sectionId) {
+            // Find the section
+            $section = CourseSection::find($sectionId);
+
+            // If the section is found, delete it
+            if ($section) {
+                // Delete the lessons associated with the section
+                $section->lessons()->delete();
+
+                // Delete the section itself
+                $section->delete();
+            }
+        }
+
+        // Remove the section from the sections array
         unset($this->sections[$index]);
+
+        // Re-index the sections array
         $this->sections = array_values($this->sections);
+    }
+
+    // Method to save lessons for a specific section
+    public function saveLessonsInSection($sectionIndex)
+    {
+        // Get the section data
+        $sectionData = $this->sections[$sectionIndex];
+
+        // Validate lessons for the section
+        $validator = Validator::make($sectionData['lessons'], [
+            '*.title' => ['required', 'string', 'min:10', 'max:160'],
+            // '*.url' => ['required', 'url'],
+            '*.duration_minutes' => ['required', 'integer', 'min:1'],
+        ]);
+
+        // If validation fails, show an error alert
+        if ($validator->fails()) {
+            $this->alert('error', __('transf.Lesson data validation failed!'));
+            return;
+        }
+
+        // Get the section
+        $section = CourseSection::find($sectionData['sectionId']);
+
+        // If the section is found
+        if ($section) {
+            // Delete existing lessons for the section
+            $section->lessons()->delete();
+
+            // Create lessons for the section
+            foreach ($sectionData['lessons'] as $lessonData) {
+                $lesson = new Lesson($lessonData);
+                $section->lessons()->save($lesson);
+            }
+
+            // Show success alert
+            $this->alert('success', __('transf.Lessons for the section saved successfully!'));
+        }
     }
 
     public function render()
@@ -136,14 +232,25 @@ class LessonComponent extends Component
             'sections.*.title.max' => __('transf.The section title must not exceed 160 characters.'),
         ]);
 
-        // Store sections
-        $course = Course::findOrFail($this->courseId);
-
         // Loop through each section in the form
         foreach ($this->sections as $index => $sectionData) {
-            $section = CourseSection::find($sectionData['sectionId']);
+            // If the section doesn't have a valid sectionId, create a new section
+            if ($sectionData['sectionId'] == -1) {
+                $section = CourseSection::create([
+                    'title' => $sectionData['title'], // Use the provided title
+                    'slug' => Str::slug($sectionData['title']), // Generate slug from title
+                    'course_id' => $this->courseId,
+                ]);
+                $this->sections[$index]['sectionId'] = $section->id; // Update the sectionId
+            } else {
+                // If the section already exists, update its title
+                $section = CourseSection::find($sectionData['sectionId']);
+                if ($section) {
+                    $section->update(['title' => $sectionData['title']]);
+                }
+            }
 
-            // If the section is found
+            // If the section is found or created, update its lessons
             if ($section) {
                 // Delete existing lessons for the section
                 $section->lessons()->delete();
@@ -168,6 +275,7 @@ class LessonComponent extends Component
         // Show success alert
         $this->alert('success', __('transf.Sections updated successfully!'));
     }
+
 
 
 

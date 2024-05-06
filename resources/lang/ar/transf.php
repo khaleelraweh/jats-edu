@@ -446,6 +446,9 @@ return [
     'enter_a_learning_objective'                        =>  'أدخل هدفًا تعليميًا',
     'add_section'                                       =>  'إضافة قسم',
 
+    'save_in_one_click'                                 =>  'حفظ بنقرة واحدة',
+
+
 
 
 

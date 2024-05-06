@@ -442,6 +442,7 @@ return [
     'enter_a_title'                                     =>  'Enter a Title',
     'enter_a_learning_objective'                        =>  'Enter a Learning Objective',
     'add_section'                                       =>  'Add Section',
+    'save_in_one_click'                                 =>  'Save in one click',
 
 
 ];

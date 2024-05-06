@@ -87,17 +87,15 @@
             </div>
         @endforeach
 
-        <!-- Button to add a new section -->
-        <button class="btn btn-primary" wire:click.prevent="addSection()">
-            + {{ __('Add Section') }}
-        </button>
+        <div class="d-flex justify-content-between" style="">
+            <!-- Button to add a new section -->
+            <button class="btn btn-primary" wire:click.prevent="addSection()">
+                + {{ __('Add Section') }}
+            </button>
 
-
-
-
-        <br />
-        <div>
-            <input class="btn btn-primary" type="submit" value="{{ __('transf.save') }}">
+            <div>
+                <input class="btn btn-primary" type="submit" value="{{ __('transf.save_in_one_click') }}">
+            </div>
         </div>
     </form>
 </div>

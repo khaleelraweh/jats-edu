@@ -148,58 +148,17 @@ class LessonComponent extends Component
             // Show success alert for creating new section
             $this->alert('success', __('transf.New section created successfully!'));
         }
+
+        // Save lessons for the section
+        $this->saveLessonsInSection($index);
     }
 
-
-
-
-
-
-    // add Section 
-    // public function addSection()
-    // {
-    //     $this->sections[] = ['title' => '', 'lessons' => [], 'sectionId' => -1];
-    // }
-
-    // remove Section
-    // public function removeSection($index)
-    // {
-    //     unset($this->sections[$index]);
-    //     $this->sections = array_values($this->sections);
-    // }
-
-    // Method to remove a section along with its lessons
-    public function removeSection($index)
-    {
-        $sectionId = $this->sections[$index]['sectionId'];
-
-        // If the section exists in the database, delete it along with its lessons
-        if ($sectionId) {
-            // Find the section
-            $section = CourseSection::find($sectionId);
-
-            // If the section is found, delete it
-            if ($section) {
-                // Delete the lessons associated with the section
-                $section->lessons()->delete();
-
-                // Delete the section itself
-                $section->delete();
-            }
-        }
-
-        // Remove the section from the sections array
-        unset($this->sections[$index]);
-
-        // Re-index the sections array
-        $this->sections = array_values($this->sections);
-    }
 
     // Method to save lessons for a specific section
-    public function saveLessonsInSection($sectionIndex)
+    public function saveLessonsInSection($index)
     {
         // Get the section data
-        $sectionData = $this->sections[$sectionIndex];
+        $sectionData = $this->sections[$index];
 
         // Validate lessons for the section
         $validator = Validator::make($sectionData['lessons'], [
@@ -232,6 +191,41 @@ class LessonComponent extends Component
             $this->alert('success', __('transf.Lessons for the section saved successfully!'));
         }
     }
+
+
+
+
+
+
+
+    // Method to remove a section along with its lessons
+    public function removeSection($index)
+    {
+        $sectionId = $this->sections[$index]['sectionId'];
+
+        // If the section exists in the database, delete it along with its lessons
+        if ($sectionId) {
+            // Find the section
+            $section = CourseSection::find($sectionId);
+
+            // If the section is found, delete it
+            if ($section) {
+                // Delete the lessons associated with the section
+                $section->lessons()->delete();
+
+                // Delete the section itself
+                $section->delete();
+            }
+        }
+
+        // Remove the section from the sections array
+        unset($this->sections[$index]);
+
+        // Re-index the sections array
+        $this->sections = array_values($this->sections);
+    }
+
+
 
     public function render()
     {

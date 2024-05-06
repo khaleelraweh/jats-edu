@@ -111,14 +111,43 @@ class LessonComponent extends Component
     // Method to save the new section with provided title
     public function saveSection($index)
     {
-        $section = CourseSection::create([
-            'title' => $this->sections[$index]['title'], // Use the provided title
-            'slug' => Str::slug($this->sections[$index]['title']), // Generate slug from title
-            'course_id' => $this->courseId,
+        // Get the section data
+        $sectionData = $this->sections[$index];
+
+        // Validate the section title
+        $validator = Validator::make(['title' => $sectionData['title']], [
+            'title' => ['required', 'string', 'min:10', 'max:160'],
         ]);
 
-        // Update the sectionId with the newly created section's id
-        $this->sections[$index]['sectionId'] = $section->id;
+        // If validation fails, show an error alert
+        if ($validator->fails()) {
+            $this->alert('error', __('transf.Section title validation failed!'));
+            return;
+        }
+
+        // If the section has an existing sectionId
+        if ($sectionData['sectionId'] !== -1) {
+            // Update the existing section title
+            $section = CourseSection::find($sectionData['sectionId']);
+            if ($section) {
+                $section->update(['title' => $sectionData['title']]);
+                // Show success alert for updating section title
+                $this->alert('success', __('transf.Section title updated successfully!'));
+            }
+        } else {
+            // Create a new section
+            $section = CourseSection::create([
+                'title' => $sectionData['title'],
+                'slug' => Str::slug($sectionData['title']),
+                'course_id' => $this->courseId,
+            ]);
+
+            // Update the sectionId with the newly created section's id
+            $this->sections[$index]['sectionId'] = $section->id;
+
+            // Show success alert for creating new section
+            $this->alert('success', __('transf.New section created successfully!'));
+        }
     }
 
 

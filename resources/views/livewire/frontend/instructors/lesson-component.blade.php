@@ -15,29 +15,34 @@
         @foreach ($sections as $index => $section)
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-start">
+
                     <div>
                         <!-- Input field for section title -->
-                        <input type="text" class="form-control" wire:model="sections.{{ $index }}.title"
-                            placeholder="{{ __('Section Title') }}">
+                        @if ($editSectionTitleIndex !== $index)
+                            <span>{{ $section['title'] }}</span>
+                        @else
+                            <input type="text" class="form-control" wire:model="sections.{{ $index }}.title">
+                        @endif
                     </div>
-                    <div>
-                        <!-- Button to save section title -->
-                        <button class="btn btn-sm btn-primary" wire:click="saveSection({{ $index }})">
-                            {{ __('Save Section') }}
-                        </button>
-                        <!-- Button to remove section -->
+                    <div class="d-flex">
+                        <div class="me-2">
+                            <!-- Button to toggle edit state -->
+                            @if ($editSectionTitleIndex !== $index)
+                                <button class="btn btn-sm btn-primary"
+                                    wire:click.prevent="toggleEditSectionTitle({{ $index }})">
+                                    {{ __('Edit Section') }}
+                                </button>
+                            @else
+                                <!-- Button to save section title -->
+                                <button class="btn btn-sm btn-primary"
+                                    wire:click.prevent="saveSection({{ $index }})">
+                                    {{ __('Save Section') }}
+                                </button>
+                            @endif
+                        </div>
                         <button class="btn btn-sm btn-danger" wire:click.prevent="removeSection({{ $index }})">
                             {{ __('Remove Section') }}
                         </button>
-                        {{-- <!-- Button to add a new lesson for this section -->
-                        <button class="btn btn-sm btn-secondary" wire:click.prevent="addLesson({{ $index }})">
-                            + {{ __('Add Lesson') }}
-                        </button>
-                        <!-- Button to save lessons for this section -->
-                        <button class="btn btn-sm btn-success"
-                            wire:click.prevent="saveLessonsInSection({{ $index }})">
-                            {{ __('Save Lessons') }}
-                        </button> --}}
                     </div>
                 </div>
 

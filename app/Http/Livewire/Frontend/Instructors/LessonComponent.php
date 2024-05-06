@@ -26,6 +26,10 @@ class LessonComponent extends Component
     public $databaseDataValid = false;
     public $sectionsValid = false;
 
+    // Property to track the edit state of section title
+    public $editSectionTitleIndex = null;
+
+
     public function mount($courseId)
     {
         $this->courseId = $courseId;
@@ -37,7 +41,8 @@ class LessonComponent extends Component
                 $sectionData = [
                     'title' => $section->title,
                     'sectionId' => $section->id,
-                    'lessons' => []
+                    'lessons' => [],
+                    'saved' => false,
                 ];
                 if ($section->lessons != null && $section->lessons->isNotEmpty()) {
                     // Populate lessons for each section
@@ -52,7 +57,8 @@ class LessonComponent extends Component
                     $sectionData = [
                         'sectionId' => $section->id,
                         'title' => $section->title,
-                        'lessons' => [['title' => '', 'url' => '', 'duration_minutes' => '']]
+                        'lessons' => [['title' => '', 'url' => '', 'duration_minutes' => '']],
+                        'saved' => false, // Track if section has been saved
                     ];
                 }
 
@@ -63,6 +69,7 @@ class LessonComponent extends Component
                 [
                     'title' => '',
                     'lessons' => [],
+                    'saved' => false, // Track if section has been saved
                 ],
             ];
         }
@@ -70,6 +77,25 @@ class LessonComponent extends Component
         // Validate database data
         $this->validateDatabaseData();
     }
+
+
+    // Method to toggle the edit state of section title input field
+    public function toggleEditSectionTitle($index)
+    {
+        $this->editSectionTitleIndex = $index;
+    }
+
+    // Method to update the section title
+    public function updateSectionTitle($index)
+    {
+        $section = CourseSection::find($this->sections[$index]['sectionId']);
+
+        if ($section) {
+            $section->update(['title' => $this->sections[$index]['title']]);
+            $this->editSectionTitleIndex = null; // Reset edit state
+        }
+    }
+
 
     protected function validateDatabaseData()
     {
@@ -105,6 +131,8 @@ class LessonComponent extends Component
             'title' => '', // Initialize title as empty
             'lessons' => [],
             'sectionId' => -1, // Set sectionId as -1 for new section
+            'saved' => false, // Initialize saved as false
+
         ];
     }
 
@@ -144,10 +172,14 @@ class LessonComponent extends Component
 
             // Update the sectionId with the newly created section's id
             $this->sections[$index]['sectionId'] = $section->id;
+            $this->sections[$index]['saved'] = true; // Mark section as saved
+
 
             // Show success alert for creating new section
             $this->alert('success', __('transf.New section created successfully!'));
         }
+
+        $this->updateSectionTitle($index);
 
         // Save lessons for the section
         $this->saveLessonsInSection($index);
@@ -286,6 +318,13 @@ class LessonComponent extends Component
                         $section->lessons()->save($lesson);
                     }
                 }
+            }
+        }
+
+        // Mark saved sections as not saved to enable editing
+        foreach ($this->sections as $index => $section) {
+            if ($section['saved']) {
+                $this->sections[$index]['saved'] = false;
             }
         }
 

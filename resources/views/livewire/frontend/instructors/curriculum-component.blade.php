@@ -56,28 +56,23 @@
                         </tbody>
                     </table>
 
-                    <div class=" d-flex justify-content-between align-items-start">
-                        <div class="">
-                            <input class="btn btn-primary" type="submit" value="{{ __('transf.add_section') }}">
-                        </div>
-                        <div class="">
-                            <a href="" class="btn btn-primary">
-                                add Curriculum
-                            </a>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
         </form>
     @endforeach
 
-    <div class="row">
-        <div class="col-md-12">
-            <button class="btn btn-sm btn-secondary" wire:click.prevent="addSection">
-                + {{ __('transf.add_another_section') }}
-            </button>
+
+    <div class=" d-flex justify-content-between align-items-start">
+
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-sm btn-secondary" wire:click.prevent="addSection">
+                    + {{ __('transf.add_another_section') }}
+                </button>
+            </div>
+        </div>
+        <div class="">
+            <input class="btn btn-primary" type="submit" value="{{ __('transf.save') }}">
         </div>
     </div>
 

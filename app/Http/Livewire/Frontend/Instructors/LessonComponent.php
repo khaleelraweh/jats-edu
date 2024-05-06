@@ -37,14 +37,22 @@ class LessonComponent extends Component
                     // 'lessons' => [['title' => '', 'url' => '', 'duration_minutes' => '']]
                     'lessons' => []
                 ];
-                // Populate lessons for each section
-                foreach ($section->lessons as $lesson) {
-                    $sectionData['lessons'][] = [
-                        'title' => $lesson->title,
-                        'url' => $lesson->url,
-                        'duration_minutes' => $lesson->duration_minutes,
+                if ($section->lessons != null && $section->lessons->isNotEmpty()) {
+                    // Populate lessons for each section
+                    foreach ($section->lessons as $lesson) {
+                        $sectionData['lessons'][] = [
+                            'title' => $lesson->title,
+                            'url' => $lesson->url,
+                            'duration_minutes' => $lesson->duration_minutes,
+                        ];
+                    }
+                } else {
+                    $sectionData = [
+                        'title' => $section->title,
+                        'lessons' => [['title' => '', 'url' => '', 'duration_minutes' => '']]
                     ];
                 }
+
                 $this->sections[] = $sectionData;
             }
         } else {

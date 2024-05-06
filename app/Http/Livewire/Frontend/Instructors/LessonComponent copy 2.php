@@ -139,23 +139,44 @@ class LessonComponent extends Component
         // Store sections
         $course = Course::findOrFail($this->courseId);
 
-        // Loop through each section in the form
-        foreach ($this->sections as $index => $sectionData) {
-            $section = CourseSection::find($sectionData['sectionId']);
+        // $course->sections()->delete();
+        // if ($this->sections != null) {
+        //     $course->sections()->createMany($this->sections);
+        // }
 
-            // If the section is found
-            if ($section) {
-                // Delete existing lessons for the section
-                $section->lessons()->delete();
 
-                // Create lessons for the section
-                foreach ($sectionData['lessons'] as $lessonData) {
-                    // Check if the lesson title is not empty
-                    if (!empty($lessonData['title'])) {
-                        $lesson = new Lesson($lessonData);
-                        $section->lessons()->save($lesson);
-                    }
-                }
+        if ($course->sections != null && $course->sections->isNotEmpty()) {
+            foreach ($course->sections as $index => $section) {
+                $course->sections->lessons->createMany($this->sections[$index]['lessons']);
+            }
+        }
+
+        // Save sections and lessons to the database
+        foreach ($this->sections as $index => $section) {
+            // dd($this->sections[$index]['sectionId']);
+            // dd($this->sections[$index]['lessons']);
+
+
+
+
+            foreach ($section['lessons'] as $lesson) {
+                // Lesson::updateOrCreate(
+                //     ['title' => $lesson['title'], 'url' => $lesson['url'], 'course_section_id' => $this->sections[$index]['sectionId']],
+                // );
+
+
+                // Lesson::create([
+
+                //     'title' => $lesson['title'],
+                //     'url'      =>  $lesson['url'],
+                //     'duration_minutes' => $lesson['duration_minutes'],
+                //     'course_section_id' => $this->sections[$index]['sectionId'],
+
+                //     'status' => true,
+                //     'published_on' => now(),
+                //     'created_by' => now(),
+                //     'updated_by' => now(),
+                // ]);
             }
         }
 
@@ -168,8 +189,6 @@ class LessonComponent extends Component
         // Show success alert
         $this->alert('success', __('transf.Sections updated successfully!'));
     }
-
-
 
     public function addLesson($sectionIndex)
     {

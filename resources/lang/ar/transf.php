@@ -427,6 +427,10 @@ return [
     'The intended must be at least ten characters.'     =>  'يجب أن يكون المتعلم المقصود عشرة أحرف على الأقل.',
     'The intended must not exceed 160 characters.'      =>  'يجب ألا يتجاوز المتعلم المقصود 160 حرفًا.',
 
+    //Curriculum
+    'create_your_content'                               =>  'قم بإنشاء المحتوى الخاص بك',
+    'curriculum'                                        =>  'مقرر',
+
 
 
 

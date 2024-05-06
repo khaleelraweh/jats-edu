@@ -62,7 +62,7 @@
                                 <li class="nav-item">
                                     <a href="#company-document" class="nav-link" data-toggle="tab">
                                         <span class="step-number">02</span>
-                                        <span class="step-title">Company Document</span>
+                                        <span class="step-title">{{ __('transf.curriculum') }}</span>
                                     </a>
                                 </li>
 

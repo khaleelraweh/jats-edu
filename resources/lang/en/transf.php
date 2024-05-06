@@ -425,4 +425,9 @@ return [
     'The intended must be at least ten characters.'     =>  'The intended learner must be at least ten characters.',
     'The intended must not exceed 160 characters.'      =>  'The intended learner must not exceed 160 characters.',
 
+
+    //Curriculum
+    'create_your_content'                               =>  'Create your content',
+    'curriculum'                                        =>  'Curriculum',
+
 ];

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->json('title');
             $table->json('slug');
-            $table->json('objective');
+            $table->json('objective')->nullable();
             $table->integer('lectures_count')->nullable();
             $table->string('duration')->nullable();
             $table->unsignedBigInteger('course_id');

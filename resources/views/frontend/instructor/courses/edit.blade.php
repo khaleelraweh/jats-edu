@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="tab-pane" id="company-document">
                                     <div>
-                                        @livewire('frontend.instructors.curriculum-component', ['courseId' => $course->id])
+                                        @livewire('frontend.instructors.section-component', ['courseId' => $course->id])
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="bank-detail">

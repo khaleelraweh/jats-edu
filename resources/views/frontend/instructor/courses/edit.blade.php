@@ -10,6 +10,39 @@
     <!-- App Css-->
     <link href="{{ asset('frontend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 
+
+    {{-- new links  --}}
+    {{-- summernote for description field  --}}
+    <link rel="stylesheet" href="{{ asset('backend/vendor/summernote/summernote-bs4.min.css') }}">
+
+    {{-- pickadate calling css --}}
+    <link rel="stylesheet" href="{{ asset('backend/vendor/datepicker/themes/classic.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/vendor/datepicker/themes/classic.date.css') }}">
+
+    {{-- Select2 labs  --}}
+    <link rel="stylesheet" href="{{ asset('backend/vendor/select2/css/select2.min.css') }}">
+
+
+    {{-- Responsive fileInput --}}
+    <link rel="stylesheet" href="{{ asset('backend/vendor/bootstrap-fileinput/css/fileinput.min.css') }}">
+
+    <link href="<?php echo asset('backend/css/bootstrap.min.css'); ?>" id="bootstrap-style" rel="stylesheet" type="text/css">
+
+    <!-- Icons Css -->
+    <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+
+    <link href="<?php echo asset('backend/css/app.min.css'); ?>" id="app-style" rel="stylesheet" type="text/css">
+
+    <!-- Fontawesome icon -->
+    <link href="{{ asset('backend/vendor/fontawesome/fontawesome.css') }}" rel="stylesheet" />
+
+    <!-- fontawesome icon  picker  -->
+    <link href="{{ asset('backend/vendor/fontawesomepicker/css/fontawesome-iconpicker.css') }}" rel="stylesheet">
+    {{-- my custom css --}}
+    <link rel="stylesheet" href="{{ asset('backend/css/custom.css') }}">
+
+
+
     <style>
         #basic-pills-wizard {
             display: flex;
@@ -155,4 +188,230 @@
     <script src="{{ asset('frontend/assets/libs/twitter-bootstrap-wizard/prettify.js') }}"></script>
     <!-- form wizard init -->
     <script src="{{ asset('frontend/assets/js/form-wizard.init.js') }}"></script>
+
+
+
+    {{-- new links  --}}
+
+    <!-- Responsive fileInput js start -->
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/plugins/piexif.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/plugins/sortable.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/themes/fa5/theme.min.js') }}"></script>
+    <!-- Responsive fileInput js end -->
+
+    {{-- outer lab  --}}
+    {{-- summernote for description note field --}}
+    <script src="{{ asset('backend/vendor/summernote/summernote-bs4.min.js') }}"></script>
+
+    {{-- pickadate calling js --}}
+    <script src="{{ asset('backend/vendor/datepicker/picker.js') }}"></script>
+    <script src="{{ asset('backend/vendor/datepicker/picker.date.js') }}"></script>
+    <script src="{{ asset('backend/vendor/datepicker/picker.time.js') }}"></script>
+
+    {{-- Call select2 plugin --}}
+    <script src="{{ asset('backend/vendor/select2/js/select2.full.min.js') }}"></script>
+
+    {{-- Calling fontawesome icon picker   --}}
+    <script src="{{ asset('backend/vendor/fontawesomepicker/js/fontawesome-iconpicker.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+
+        $(function() {
+            $('.icon-picker').iconpicker();
+        });
+    </script>
+
+
+    <script>
+        $(function() {
+            $("#course_images").fileinput({
+                theme: "fa5",
+                maxFileCount: 5,
+                allowedFileTypes: ['image'],
+                showCancel: true,
+                showRemove: false,
+                showUpload: false,
+                overwriteInitial: false,
+                initialPreview: [
+                    @if ($course->photos()->count() > 0)
+                        @foreach ($course->photos as $media)
+                            "{{ asset('assets/courses/' . $media->file_name) }}",
+                        @endforeach
+                    @endif
+                ],
+                initialPreviewAsData: true,
+                initialPreviewFileType: 'image',
+                initialPreviewConfig: [
+                    @if ($course->photos()->count() > 0)
+                        @foreach ($course->photos as $media)
+                            {
+                                caption: "{{ $media->file_name }}",
+                                size: '{{ $media->file_size }}',
+                                width: "120px",
+                                // url : الراوت المستخدم لحذف الصورة
+                                url: "{{ route('admin.courses.remove_image', ['image_id' => $media->id, 'course_id' => $course->id, '_token' => csrf_token()]) }}",
+                                key: {{ $media->id }}
+                            },
+                        @endforeach
+                    @endif
+
+                ]
+            }).on('filesorted', function(event, params) {
+                console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
+            });
+
+            $('#published_on').pickadate({
+                format: 'yyyy-mm-dd',
+                min: new Date(),
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: true, // creates a dropdown to control years
+                clear: 'Clear',
+                close: 'OK',
+                colseOnSelect: true // Close Upon Selecting a date
+            });
+
+            var publishedOn = $('#published_on').pickadate(
+                'picker'); // set startdate in the picker to the start date in the #start_date elemet
+            $('#published_on').change(function() {
+                selected_ci_date = "";
+                selected_ci_date = now() // make selected start date in picker = start_date value  
+
+            });
+
+            $('#published_on_time').pickatime({
+                clear: ''
+            });
+
+            // deadline start 
+            $('#deadline').pickadate({
+                format: 'yyyy-mm-dd',
+                min: new Date(),
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: true, // creates a dropdown to control years
+                clear: 'Clear',
+                close: 'OK',
+                colseOnSelect: true // Close Upon Selecting a date
+            });
+
+            var deadline = $('#deadline').pickadate(
+                'picker'); // set startdate in the picker to the start date in the #start_date elemet
+            $('#deadline').change(function() {
+                selected_ci_date = "";
+                selected_ci_date = now() // make selected start date in picker = start_date value  
+
+            });
+
+            $('#offer_ends').pickadate({
+                format: 'yyyy-mm-dd',
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: true, // creates a dropdown to control years
+                clear: 'Clear',
+                close: 'OK',
+                colseOnSelect: true // Close Upon Selecting a date
+            });
+
+            var startdate = $('#offer_ends').pickadate(
+                'picker'); // set startdate in the picker to the start date in the #publish_date elemet
+
+            // when change date 
+            $('#offer_ends').change(function() {
+                selected_ci_date = "";
+                selected_ci_date = $('#publish_date')
+                    .val(); // make selected start date in picker = publish_date value
+                if (selected_ci_date != null) {
+                    var cidate = new Date(
+                        selected_ci_date
+                    ); // make cidate(start date ) = current date you selected in selected ci date (selected start date )
+                    min_codate = "";
+                    min_codate = new Date();
+                    min_codate.setDate(cidate.getDate() +
+                        1); // minimum selected date to be expired shoud be current date plus one 
+                    enddate.set('min', min_codate);
+                }
+
+            });
+
+            $('.summernote').summernote({
+                tabSize: 2,
+                height: 200,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+
+
+            //select2: code to search in data 
+            function matchStart(params, data) {
+                // If there are no search terms, return all of the data
+                if ($.trim(params.term) === '') {
+                    return data;
+                }
+
+                // Skip if there is no 'children' property
+                if (typeof data.children === 'undefined') {
+                    return null;
+                }
+
+                // `data.children` contains the actual options that we are matching against
+                var filteredChildren = [];
+                $.each(data.children, function(idx, child) {
+                    if (child.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
+                        filteredChildren.push(child);
+                    }
+                });
+
+                // If we matched any of the timezone group's children, then set the matched children on the group
+                // and return the group object
+                if (filteredChildren.length) {
+                    var modifiedData = $.extend({}, data, true);
+                    modifiedData.children = filteredChildren;
+
+                    // You can return modified objects from here
+                    // This includes matching the `children` how you want in nested data sets
+                    return modifiedData;
+                }
+
+                // Return `null` if the term should not be displayed
+                return null;
+            }
+
+            // select2 : .select2 : is  identifier used with element to be effected
+            $(".select2").select2({
+                tags: true,
+                colseOnSelect: false,
+                minimumResultsForSearch: Infinity,
+                matcher: matchStart
+            });
+
+        });
+    </script>
+
+    {{-- is related to select permision disable and enable by child class --}}
+    <script language="javascript">
+        var $cbox = $('.child').change(function() {
+            if (this.checked) {
+                $cbox.not(this).attr('disabled', 'disabled');
+            } else {
+                $cbox.removeAttr('disabled');
+            }
+        });
+
+        var $cbox2 = $('.child2').change(function() {
+            if (this.checked) {
+                $cbox2.not(this).attr('disabled', 'disabled');
+            } else {
+                $cbox2.removeAttr('disabled');
+            }
+        });
+    </script>
 @endsection

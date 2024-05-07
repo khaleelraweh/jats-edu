@@ -503,6 +503,8 @@ return [
     'Promotional video tip.'                            =>  'Your promo video is a quick and compelling way for students to preview what they’ll learn in your course. Students considering your course are more likely to enroll if your promo video is well-made. Learn how to make your promo video awesome!',
     'Insert the link to your YouTube promotional video.' =>  'Insert the link to your YouTube promotion video.',
 
+    'certificate_tip'                                   =>  'Determine whether the learner will receive a certificate after completing the course or not',
+
 
 
 

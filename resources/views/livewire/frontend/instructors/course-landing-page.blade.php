@@ -288,18 +288,8 @@
 
                         {{-- course deadline and certificate --}}
                         <div class="row deadline">
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <div class="form-group">
-                                    <label for="deadline">{{ __('panel.deadline') }}</label>
-                                    <input type="text" id="deadline" name="deadline"
-                                        value="{{ old('deadline', \Carbon\Carbon::parse($course->deadline)->Format('Y-m-d')) }}"
-                                        class="form-control">
-                                    @error('deadline')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6 pt-3">
+
+                            <div class="col-sm-12 col-md-12 pt-3">
                                 <label for="certificate">{{ __('panel.certificate') }}</label>
                                 <select name="certificate" class="form-control">
                                     <option value="1"
@@ -312,6 +302,9 @@
                                     </option>
 
                                 </select>
+                                <span class="text-muted d-inline-block mt-1">
+                                    <small>{{ __('transf.certificate_tip') }}</small>
+                                </span>
                                 @error('coruse_type')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -319,6 +312,20 @@
                             </div>
 
 
+                        </div>
+
+                        <div class="row d-none">
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <div class="form-group">
+                                    <label for="deadline">{{ __('panel.deadline') }}</label>
+                                    <input type="text" id="deadline" name="deadline"
+                                        value="{{ old('deadline', \Carbon\Carbon::parse($course->deadline)->Format('Y-m-d')) }}"
+                                        class="form-control">
+                                    @error('deadline')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
 
                     </div>

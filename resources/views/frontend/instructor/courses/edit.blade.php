@@ -115,12 +115,18 @@
                                 <li class="nav-item">
                                     <a href="#confirm-detail" class="nav-link" data-toggle="tab">
                                         <span class="step-number">04</span>
-                                        <span class="step-title">Confirm Detail</span>
+                                        <span class="step-title">Pricing</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#confirm-detail2" class="nav-link" data-toggle="tab">
                                         <span class="step-number">05</span>
+                                        <span class="step-title">Publish data</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#confirm-detail3" class="nav-link" data-toggle="tab">
+                                        <span class="step-number">06</span>
                                         <span class="step-title">Confirm Detail2</span>
                                     </a>
                                 </li>
@@ -157,6 +163,22 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="confirm-detail2">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6">
+                                            <div class="text-center">
+                                                <div class="mb-4">
+                                                    <i class="mdi mdi-check-circle-outline text-success display-4"></i>
+                                                </div>
+                                                <div>
+                                                    <h5>Confirm Detail</h5>
+                                                    <p class="text-muted">If several languages coalesce,
+                                                        the grammar of the resulting</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="confirm-detail3">
                                     <div class="row justify-content-center">
                                         <div class="col-lg-6">
                                             <div class="text-center">

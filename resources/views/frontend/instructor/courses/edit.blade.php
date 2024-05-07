@@ -62,14 +62,14 @@
                                 <li class="nav-item">
                                     <a href="#company-document" class="nav-link" data-toggle="tab">
                                         <span class="step-number">02</span>
-                                        <span class="step-title">{{ __('transf.sections') }}</span>
+                                        <span class="step-title">{{ __('transf.curriculum') }}</span>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a href="#bank-detail" class="nav-link" data-toggle="tab">
                                         <span class="step-number">03</span>
-                                        <span class="step-title">{{ __('transf.curriculum') }}</span>
+                                        <span class="step-title">Bank Detail</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -92,12 +92,14 @@
                                 </div>
                                 <div class="tab-pane" id="company-document">
                                     <div>
-                                        @livewire('frontend.instructors.section-component', ['courseId' => $course->id])
+                                        @livewire('frontend.instructors.lesson-component', ['courseId' => $course->id])
+
+                                        {{-- @livewire('frontend.instructors.section-component', ['courseId' => $course->id]) --}}
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="bank-detail">
                                     <div>
-                                        @livewire('frontend.instructors.lesson-component', ['courseId' => $course->id])
+                                        Band detail
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="confirm-detail">

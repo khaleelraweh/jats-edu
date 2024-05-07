@@ -467,9 +467,10 @@ return [
 
     'course_content_tab'                                =>  'Course',
     'course_info_tab'                                   =>  'Basic Info',
-    'promotion_tab'                                     =>  'Promotion Info',
-    'price_tab'                                         =>  'Pricing',
-    'published_tab'                                     =>  'Publish Data',
+
+    'Insert your course title.'                         =>  'Insert your course title.',
+
+
 
 
 

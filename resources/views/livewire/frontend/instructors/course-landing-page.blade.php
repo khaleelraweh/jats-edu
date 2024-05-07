@@ -60,42 +60,24 @@
                 <div class="tab-content" id="myTabContent">
 
 
-
+                    {{-- Course info --}}
                     <div class="tab-pane fade show active" id="course_content" role="tabpanel"
                         aria-labelledby="course_content-tab">
 
                         <div class="row">
                             {{-- البيانات الاساسية --}}
-                            <div class="col-md-7 col-sm-12 ">
-
-                                {{-- category name  field --}}
-                                <div class="row ">
-                                    <div class="col-12 pt-4">
-                                        <label for="category_id"> {{ __('panel.course_title') }}</label>
-                                        <select name="course_category_id" class="form-control">
-                                            <option value=""> {{ __('panel.main_category') }} __
-                                            </option>
-                                            @forelse ($course_categories as $course_category)
-                                                <option value="{{ $course_category->id }}"
-                                                    {{ old('course_category_id', $course->course_category_id) == $course_category->id ? 'selected' : null }}>
-                                                    {{ $course_category->title }} </option>
-                                            @empty
-                                            @endforelse
-                                        </select>
-                                    </div>
-                                </div>
-
+                            <div class="col-md-12 col-sm-12 ">
                                 {{-- course name field --}}
                                 <div class="row ">
                                     <div class="col-sm-12 pt-3">
                                         <div class="form-group">
                                             <label for="title">
-                                                {{ __('panel.title') }}
-                                                {{ __('panel.in') }}
+                                                {{ __('transf.course_title') }}
                                             </label>
                                             <input type="text" name="title" id="title"
                                                 value="{{ old('title.ar', $course->getTranslation('title', 'ar')) }}"
-                                                class="form-control">
+                                                class="form-control"
+                                                placeholder="{{ __('transf.Insert your course title.') }}">
                                             @error('title')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -139,7 +121,7 @@
                             </div>
 
                             {{-- مرفق الصور  --}}
-                            <div class="col-md-5 col-sm-12 ">
+                            {{-- <div class="col-md-5 col-sm-12 ">
 
                                 <div class="row">
                                     <div class="col-12 pt-4">
@@ -156,13 +138,30 @@
                                     </div>
                                 </div>
 
-                            </div>
+                            </div> --}}
                         </div>
 
                     </div>
 
-                    {{-- Course info --}}
+                    {{-- Course basic info --}}
                     <div class="tab-pane fade" id="course_info" role="tabpanel" aria-labelledby="course_info-tab">
+
+                        {{-- category name  field --}}
+                        <div class="row ">
+                            <div class="col-12 pt-4">
+                                <label for="category_id"> {{ __('panel.course_title') }}</label>
+                                <select name="course_category_id" class="form-control">
+                                    <option value=""> {{ __('panel.main_category') }} __
+                                    </option>
+                                    @forelse ($course_categories as $course_category)
+                                        <option value="{{ $course_category->id }}"
+                                            {{ old('course_category_id', $course->course_category_id) == $course_category->id ? 'selected' : null }}>
+                                            {{ $course_category->title }} </option>
+                                    @empty
+                                    @endforelse
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-3">

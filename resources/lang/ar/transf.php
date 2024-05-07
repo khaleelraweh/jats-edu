@@ -470,9 +470,9 @@ return [
 
     'course_content_tab'                                =>  'الدورة',
     'course_info_tab'                                   =>  'معلومات أساسية',
-    'promotion_tab'                                     =>  'معلومات الترويج',
-    'price_tab'                                         =>  'التسعيرة',
-    'published_tab'                                     =>  ' بيانات النشر',
+
+
+    'Insert your course title.'                         =>  'أدخل عنوان الدورة التدريبية الخاصة بك.',
 
 
 

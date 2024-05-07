@@ -125,7 +125,7 @@
         <div class="d-flex justify-content-between" style="">
             <!-- Button to add a new section -->
             <button class="btn btn-primary" wire:click.prevent="addSection()">
-                + {{ __('Add Section') }}
+                + {{ __('transf.Add Section') }}
             </button>
 
             <div>

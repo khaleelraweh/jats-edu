@@ -53,17 +53,14 @@
 
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    @foreach (config('locales.languages') as $key => $val)
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link {{ $loop->index == 0 ? 'active' : '' }}"
-                                id="{{ $key }}-tab" data-bs-toggle="tab" data-bs-target="#{{ $key }}"
-                                type="button" role="tab" aria-controls="{{ $key }}" aria-selected="true">
-                                {{ __('panel.content_tab') }}({{ $key }})
-                            </button>
-                        </li>
-                    @endforeach
 
 
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="course_content-tab" data-bs-toggle="tab"
+                            data-bs-target="#course_content" type="button" role="tab"
+                            aria-controls="course_content" aria-selected="true">{{ __('panel.course_content_tab') }}
+                        </button>
+                    </li>
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="course_info-tab" data-bs-toggle="tab" data-bs-target="#course_info"
@@ -103,110 +100,108 @@
                 <div class="tab-content" id="myTabContent">
 
                     {{-- Content Tab --}}
-                    @foreach (config('locales.languages') as $key => $val)
-                        <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }}"
-                            id="{{ $key }}" role="tabpanel" aria-labelledby="{{ $key }}">
-                            <div class="row">
-                                {{-- البيانات الاساسية --}}
-                                <div class="{{ $loop->index == 0 ? 'col-md-7' : '' }} col-sm-12 ">
 
-                                    {{-- category name  field --}}
-                                    @if ($loop->first)
-                                        <div class="row ">
-                                            <div class="col-12 pt-4">
-                                                <label for="category_id"> {{ __('panel.course_title') }}</label>
-                                                <select name="course_category_id" class="form-control">
-                                                    <option value=""> {{ __('panel.main_category') }} __
-                                                    </option>
-                                                    @forelse ($course_categories as $course_category)
-                                                        <option value="{{ $course_category->id }}"
-                                                            {{ old('course_category_id', $course->course_category_id) == $course_category->id ? 'selected' : null }}>
-                                                            {{ $course_category->title }} </option>
-                                                    @empty
-                                                    @endforelse
-                                                </select>
-                                            </div>
-                                        </div>
-                                    @endif
 
-                                    {{-- course name field --}}
-                                    <div class="row ">
-                                        <div class="col-sm-12 pt-3">
-                                            <div class="form-group">
-                                                <label for="title[{{ $key }}]">
-                                                    {{ __('panel.title') }}
-                                                    {{ __('panel.in') }} {{ __('panel.' . $key) }}
-                                                </label>
-                                                <input type="text" name="title[{{ $key }}]"
-                                                    id="title[{{ $key }}]"
-                                                    value="{{ old('title.' . $key, $course->getTranslation('title', $key)) }}"
-                                                    class="form-control">
-                                                @error('title.' . $key)
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
+                    {{-- Course Content --}}
+                    <div class="tab-pane fade show active" id="course_content" role="tabpanel"
+                        aria-labelledby="course_content-tab">
+
+                        <div class="row">
+                            {{-- البيانات الاساسية --}}
+                            <div class="col-md-7 col-sm-12 ">
+
+                                {{-- category name  field --}}
+                                <div class="row ">
+                                    <div class="col-12 pt-4">
+                                        <label for="category_id"> {{ __('panel.course_title') }}</label>
+                                        <select name="course_category_id" class="form-control">
+                                            <option value=""> {{ __('panel.main_category') }} __
+                                            </option>
+                                            @forelse ($course_categories as $course_category)
+                                                <option value="{{ $course_category->id }}"
+                                                    {{ old('course_category_id', $course->course_category_id) == $course_category->id ? 'selected' : null }}>
+                                                    {{ $course_category->title }} </option>
+                                            @empty
+                                            @endforelse
+                                        </select>
                                     </div>
+                                </div>
 
-                                    {{-- course subtitle field --}}
-                                    <div class="row ">
-                                        <div class="col-sm-12 pt-3">
-                                            <div class="form-group">
-                                                <label for="subtitle[{{ $key }}]">
-                                                    {{ __('panel.subtitle') }}
-                                                    {{ __('panel.in') }} {{ __('panel.' . $key) }}
-                                                </label>
-                                                <input type="text" name="subtitle[{{ $key }}]"
-                                                    id="subtitle[{{ $key }}]"
-                                                    value="{{ old('subtitle.' . $key, $course->getTranslation('title', $key)) }}"
-                                                    class="form-control">
-                                                @error('subtitle.' . $key)
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {{--  description field --}}
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 pt-4">
-                                            <label for="description[{{ $key }}]">
-                                                {{ __('panel.description') }}
-                                                {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                {{-- course name field --}}
+                                <div class="row ">
+                                    <div class="col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="title">
+                                                {{ __('panel.title') }}
+                                                {{ __('panel.in') }}
                                             </label>
-                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
-                                            {!! old('description.' . $key, $course->getTranslation('description', $key)) !!}
-                                        </textarea>
-                                            @error('description.' . $key)
+                                            <input type="text" name="title" id="title"
+                                                value="{{ old('title.ar', $course->getTranslation('title', 'ar')) }}"
+                                                class="form-control">
+                                            @error('title')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
 
-                                {{-- مرفق الصور  --}}
-                                <div class="{{ $loop->index == 0 ? 'col-md-5' : 'd-none' }} col-sm-12 ">
-
-                                    <div class="row">
-                                        <div class="col-12 pt-4">
-                                            <label for="images">{{ __('panel.image') }}/
-                                                {{ __('panel.images') }}</label>
-                                            <br>
-                                            <div class="file-loading">
-                                                <input type="file" name="images[]" id="course_images"
-                                                    class="file-input-overview" multiple="multiple">
-                                                @error('images')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+                                {{-- course subtitle field --}}
+                                <div class="row ">
+                                    <div class="col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="subtitle">
+                                                {{ __('panel.subtitle') }}
+                                                {{ __('panel.in') }}
+                                            </label>
+                                            <input type="text" name="subtitle" id="subtitle"
+                                                value="{{ old('subtitle.ar', $course->getTranslation('title', 'ar')) }}"
+                                                class="form-control">
+                                            @error('subtitle')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
+                                </div>
 
+                                {{--  description field --}}
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 pt-4">
+                                        <label for="description">
+                                            {{ __('panel.description') }}
+                                            {{ __('panel.in') }}
+                                        </label>
+                                        <textarea name="description" rows="10" class="form-control summernote">
+                                            {!! old('description.ar', $course->getTranslation('description', 'ar')) !!}
+                                        </textarea>
+                                        @error('description')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
 
+                            {{-- مرفق الصور  --}}
+                            <div class="col-md-5 col-sm-12 ">
+
+                                <div class="row">
+                                    <div class="col-12 pt-4">
+                                        <label for="images">{{ __('panel.image') }}/
+                                            {{ __('panel.images') }}</label>
+                                        <br>
+                                        <div class="file-loading">
+                                            <input type="file" name="images[]" id="course_images"
+                                                class="file-input-overview" multiple="multiple">
+                                            @error('images')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
 
                     {{-- Course info --}}
                     <div class="tab-pane fade" id="course_info" role="tabpanel" aria-labelledby="course_info-tab">

@@ -425,24 +425,24 @@ return [
     'The intended must be at least ten characters.'     =>  'The intended learner must be at least ten characters.',
     'The intended must not exceed 160 characters.'      =>  'The intended learner must not exceed 160 characters.',
 
-    // Section
+
+
+
+    //Curriculum
     'sections'                                              =>  'Sections',
-    'what_are_the_sections_affiliated_with_this_course?'    =>  'What are the sections affiliated with this course?',
-    'what_are_the_sections_tips'                            =>  'The process of evaluating the course into a group of sections helps the student in the learning process and gathering information in a more organized manner',
+    'section'                                               =>  'Section',
+    'add_another_section'                                   =>  'Section',
     'section_title'                                         =>  'Section Title',
     'section_title_placeholder'                             =>  'Enter title',
 
 
-    //Curriculum
-    'create_your_content'                               =>  'Create your content',
     'curriculum'                                        =>  'Curriculum',
     'curriculum_description'                            =>  'Start putting together your course by creating sections, lectures and practice activities (quizzes, coding exercises and assignments). Use your course outline to structure your content and label your sections and lectures clearly. If you’re intending to offer your course for free, the total length of video content must be less than 2 hours.',
-    'section'                                           =>  'Section',
-    'add_another_section'                               =>  'Section',
     'enter_a_title'                                     =>  'Enter a Title',
     'enter_a_learning_objective'                        =>  'Enter a Learning Objective',
     'add_section'                                       =>  'Add Section',
     'save_in_one_click'                                 =>  'Save in one click',
+
 
 
 ];

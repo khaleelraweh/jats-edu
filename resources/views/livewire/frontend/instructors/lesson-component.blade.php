@@ -6,7 +6,7 @@
             @endif
         </div>
     </header>
-    <p class="h6 py-3 text-muted">{{ __('transf.intended_description') }}</p>
+    <p class="h6 py-3 text-muted">{{ __('transf.what_are_the_sections_tips') }}</p>
 
     <form wire:submit.prevent="storeSections">
         {{-- <form> --}}

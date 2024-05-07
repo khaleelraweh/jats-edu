@@ -75,8 +75,7 @@
                                                 {{ __('transf.course_title') }}
                                             </label>
                                             <input type="text" name="title" id="title"
-                                                value="{{ old('title.ar', $course->getTranslation('title', 'ar')) }}"
-                                                class="form-control"
+                                                value="{{ old('title', $course->title) }}" class="form-control"
                                                 placeholder="{{ __('transf.Insert your course title.') }}">
                                             @error('title')
                                                 <span class="text-danger">{{ $message }}</span>

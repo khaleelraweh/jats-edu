@@ -87,20 +87,20 @@
                                 <li class="nav-item">
                                     <a href="#seller-details" class="nav-link" data-toggle="tab">
                                         <span class="step-number">01</span>
-                                        <span class="step-title">{{ __('transf.intended_learners') }}</span>
+                                        <span class="step-title">{{ __('transf.Course Landing Page') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#company-document" class="nav-link" data-toggle="tab">
                                         <span class="step-number">02</span>
-                                        <span class="step-title">{{ __('transf.curriculum') }}</span>
+                                        <span class="step-title">{{ __('transf.intended_learners') }}</span>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a href="#bank-detail" class="nav-link" data-toggle="tab">
                                         <span class="step-number">03</span>
-                                        <span class="step-title">{{ __('transf.Course Landing Page') }}</span>
+                                        <span class="step-title">{{ __('transf.curriculum') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -119,16 +119,16 @@
 
                             <div class="tab-content twitter-bs-wizard-tab-content">
                                 <div class="tab-pane" id="seller-details">
-                                    @livewire('frontend.instructors.intended-learners-component', ['courseId' => $course->id])
+                                    @livewire('frontend.instructors.course-landing-page', ['courseId' => $course->id])
                                 </div>
                                 <div class="tab-pane" id="company-document">
                                     <div>
-                                        @livewire('frontend.instructors.lesson-component', ['courseId' => $course->id])
+                                        @livewire('frontend.instructors.intended-learners-component', ['courseId' => $course->id])
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="bank-detail">
                                     <div>
-                                        @livewire('frontend.instructors.course-landing-page', ['courseId' => $course->id])
+                                        @livewire('frontend.instructors.lesson-component', ['courseId' => $course->id])
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="confirm-detail">

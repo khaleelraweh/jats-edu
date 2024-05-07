@@ -41,8 +41,6 @@
     {{-- my custom css --}}
     <link rel="stylesheet" href="{{ asset('backend/css/custom.css') }}">
 
-
-
     <style>
         #basic-pills-wizard {
             display: flex;

@@ -6,7 +6,7 @@
             @endif
         </div>
     </header>
-    <p class="h6 py-3 text-muted">{{ __('transf.what_are_the_sections_tips') }}</p>
+    <p class="h6 py-3 text-muted">{{ __('transf.curriculum_description') }}</p>
 
     <form wire:submit.prevent="storeSections">
         {{-- <form> --}}
@@ -23,7 +23,7 @@
                                 @if (isset($section['sectionId']) && $section['sectionId'] == -1)
                                     <input type="text" class="form-control"
                                         wire:model="sections.{{ $index }}.title"
-                                        placeholder="{{ __('Section Title') }}">
+                                        placeholder="{{ __('transf.Enter a Section Title') }}">
                                 @else
                                     <span>{{ $section['title'] }}</span>
                                 @endif
@@ -39,25 +39,25 @@
                                     @if (isset($section['sectionId']) && $section['sectionId'] == -1)
                                         <button class="btn btn-sm btn-primary"
                                             wire:click.prevent="saveSection({{ $index }})">
-                                            {{ __('Save Section') }}
+                                            {{ __('transf.Save Section') }}
                                         </button>
                                     @else
                                         <button class="btn btn-sm btn-primary"
                                             wire:click.prevent="toggleEditSectionTitle({{ $index }})">
-                                            {{ __('Edit Section') }}
+                                            {{ __('transf.Edit Section') }}
                                         </button>
                                     @endif
                                 @else
                                     <!-- Button to save section title -->
                                     <button class="btn btn-sm btn-primary"
                                         wire:click.prevent="saveSection({{ $index }})">
-                                        {{ __('Save Section') }}
+                                        {{ __('transf.Save Section') }}
                                     </button>
                                 @endif
                             </div>
                             <button class="btn btn-sm btn-danger"
                                 wire:click.prevent="removeSection({{ $index }})">
-                                {{ __('Remove Section') }}
+                                {{ __('transf.Remove Section') }}
                             </button>
                         </div>
                     </div>
@@ -68,10 +68,10 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>{{ __('Lesson Title') }}</th>
-                                        <th>{{ __('url') }}</th>
-                                        <th>{{ __('Duration') }}</th>
-                                        <th>{{ __('Actions') }}</th>
+                                        <th>{{ __('transf.Lesson Title') }}</th>
+                                        <th>{{ __('transf.Url') }}</th>
+                                        <th>{{ __('transf.Duration') }}</th>
+                                        <th>{{ __('transf.Actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -80,23 +80,23 @@
                                             <td>
                                                 <input type="text" class="form-control"
                                                     wire:model="sections.{{ $index }}.lessons.{{ $lessonIndex }}.title"
-                                                    placeholder="{{ __('Lesson Title') }}">
+                                                    placeholder="{{ __('transf.Enter a Lesson Title') }}">
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control"
                                                     wire:model="sections.{{ $index }}.lessons.{{ $lessonIndex }}.url"
-                                                    placeholder="{{ __('url') }}">
+                                                    placeholder="{{ __('transf.Enter a Youtube Lesson Url') }}">
                                             </td>
                                             <td>
                                                 <input type="number" class="form-control"
                                                     wire:model="sections.{{ $index }}.lessons.{{ $lessonIndex }}.duration_minutes"
-                                                    placeholder="{{ __('Duration in minutes') }}">
+                                                    placeholder="{{ __('transf.Enter a Lesson  Duration in Minutes') }}">
                                             </td>
                                             <td>
                                                 <!-- Button to remove lesson -->
                                                 <button class="btn btn-sm btn-danger"
                                                     wire:click.prevent="removeLesson({{ $index }}, {{ $lessonIndex }})">
-                                                    {{ __('Remove') }}
+                                                    {{ __('transf.Remove') }}
                                                 </button>
                                             </td>
                                         </tr>
@@ -107,12 +107,12 @@
                                 <!-- Button to add a new lesson for this section -->
                                 <button class="btn btn-sm btn-secondary me-2"
                                     wire:click.prevent="addLesson({{ $index }})">
-                                    + {{ __('Add Lesson') }}
+                                    + {{ __('transf.Add Lesson') }}
                                 </button>
                                 <!-- Button to save lessons for this section -->
                                 <button class="btn btn-sm btn-success"
                                     wire:click.prevent="saveLessonsInSection({{ $index }})">
-                                    {{ __('Save Lessons') }}
+                                    {{ __('transf.Save Lessons') }}
                                 </button>
                             </div>
                         </div>

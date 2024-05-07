@@ -429,11 +429,15 @@ return [
 
 
     //Curriculum
-    'sections'                                              =>  'Sections',
-    'section'                                               =>  'Section',
-    'add_another_section'                                   =>  'Section',
-    'section_title'                                         =>  'Section Title',
-    'section_title_placeholder'                             =>  'Enter title',
+    'sections'                                          =>  'Sections',
+    'section'                                           =>  'Section',
+    'add_another_section'                               =>  'Section',
+    'Enter a Section Title'                             =>  'Enter a Section Title',
+    'section_title_placeholder'                         =>  'Enter title',
+
+    'Save Section'                                      =>  'Save Section',
+    'Edit Section'                                      =>  'Edit Section',
+    'Remove Section'                                    =>  'Remove Section',
 
 
     'curriculum'                                        =>  'Curriculum',
@@ -442,6 +446,21 @@ return [
     'enter_a_learning_objective'                        =>  'Enter a Learning Objective',
     'add_section'                                       =>  'Add Section',
     'save_in_one_click'                                 =>  'Save in one click',
+
+    'Lesson Title'                                      =>  'Lesson Title',
+    'Url'                                               =>  'Url',
+    'Duration'                                          =>  'Duration',
+    'Actions'                                           =>  'Actions',
+
+    'Enter a Lesson Title'                              =>  'Enter a Lesson Title',
+    'Enter a Youtube Lesson Url'                        =>  'Enter the lesson link on YouTube',
+    'Enter a Lesson  Duration in Minutes'               =>  'Enter a Lesson  Duration in Minutes',
+
+    'Remove'                                            =>  'Remove',
+    'Add Lesson'                                        =>  'Add Lesson',
+    'Save Lessons'                                      =>  'Save Lessons',
+
+
 
 
 

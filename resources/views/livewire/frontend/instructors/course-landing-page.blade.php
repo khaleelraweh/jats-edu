@@ -77,6 +77,9 @@
                                             <input type="text" name="title" id="title"
                                                 value="{{ old('title', $course->title) }}" class="form-control"
                                                 placeholder="{{ __('transf.Insert your course title.') }}">
+                                            <span class="text-muted">
+                                                {{ __('transf.Insert your course title tip.') }}
+                                            </span>
                                             @error('title')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -89,12 +92,11 @@
                                     <div class="col-sm-12 pt-3">
                                         <div class="form-group">
                                             <label for="subtitle">
-                                                {{ __('panel.subtitle') }}
-                                                {{ __('panel.in') }}
+                                                {{ __('transf.Course subtitle') }}
+
                                             </label>
                                             <input type="text" name="subtitle" id="subtitle"
-                                                value="{{ old('subtitle.ar', $course->getTranslation('title', 'ar')) }}"
-                                                class="form-control">
+                                                value="{{ old('subtitle', $course->subtitle) }}" class="form-control">
                                             @error('subtitle')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror

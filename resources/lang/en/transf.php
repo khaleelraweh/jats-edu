@@ -469,7 +469,12 @@ return [
     'course_info_tab'                                   =>  'Basic Info',
 
     'Insert your course title.'                         =>  'Insert your course title.',
+    'Insert your course title tip.'                     =>  'Your title should be a mix of attention-grabbing, informative, and optimized for search',
 
+
+    'Course subtitle'                                   =>  'Course subtitle',
+    'Insert your course subtitle.'                      =>  'Insert your course subtitle.',
+    'Course subtitle tip.'                              =>  'Use 1 or 2 related keywords, and mention 3-4 of the most important areas that you\'ve covered during your course.',
 
 
 

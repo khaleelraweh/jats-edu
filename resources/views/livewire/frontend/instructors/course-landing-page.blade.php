@@ -10,23 +10,8 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_course') }}
+                    {{ __('transf.Course Landing Page') }}
                 </h3>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
-                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-                            <i class="fa fa-solid fa-chevron-left chevron"></i>
-                        @else
-                            <i class="fa fa-solid fa-chevron-right chevron"></i>
-                        @endif
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.courses.index') }}">
-                            {{ __('panel.show_courses') }}
-                        </a>
-                    </li>
-                </ul>
             </div>
 
         </div>
@@ -54,35 +39,31 @@
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
 
-
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="course_content-tab" data-bs-toggle="tab"
                             data-bs-target="#course_content" type="button" role="tab"
-                            aria-controls="course_content" aria-selected="true">{{ __('panel.course_content_tab') }}
+                            aria-controls="course_content" aria-selected="true">{{ __('transf.course_content_tab') }}
                         </button>
                     </li>
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="course_info-tab" data-bs-toggle="tab" data-bs-target="#course_info"
                             type="button" role="tab" aria-controls="course_info"
-                            aria-selected="true">{{ __('panel.course_info_tab') }}
+                            aria-selected="true">{{ __('transf.course_info_tab') }}
+                        </button>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="promotion-tab" data-bs-toggle="tab" data-bs-target="#promotion"
+                            type="button" role="tab" aria-controls="promotion"
+                            aria-selected="true">{{ __('transf.promotion_tab') }}
                         </button>
                     </li>
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="price-tab" data-bs-toggle="tab" data-bs-target="#price"
                             type="button" role="tab" aria-controls="price"
-                            aria-selected="true">{{ __('panel.price_tab') }}
-                        </button>
-                    </li>
-
-
-
-
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="instructor-tab" data-bs-toggle="tab" data-bs-target="#instructor"
-                            type="button" role="tab" aria-controls="instructor"
-                            aria-selected="false">{{ __('panel.instructor_tab') }}
+                            aria-selected="true">{{ __('transf.price_tab') }}
                         </button>
                     </li>
 
@@ -90,7 +71,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
                             type="button" role="tab" aria-controls="published"
-                            aria-selected="false">{{ __('panel.published_tab') }}
+                            aria-selected="false">{{ __('transf.published_tab') }}
                         </button>
                     </li>
 
@@ -410,6 +391,49 @@
 
                     {{-- price Tab --}}
                     <div class="tab-pane fade" id="price" role="tabpanel" aria-labelledby="price-tab">
+
+                        {{-- course price  --}}
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 pt-3">
+                                <label for="price"> {{ __('panel.price') }} </label>
+                                <input type="text" name="price" id="price"
+                                    value="{{ old('price', $course->price) }}" class="form-control">
+                                @error('price')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- offer price  --}}
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 pt-3">
+                                <label for="offer_price"> {{ __('panel.offer_price') }} </label>
+                                <input type="text" id="offer_price" name="offer_price"
+                                    value="{{ old('offer_price', $course->offer_price) }}" class="form-control">
+                                @error('offer_price')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- offer_ends  --}}
+                        <div class="row">
+                            <div class="col-md-12 com-sm-12 pt-4">
+                                <label for="offer_ends" class="control-label"><span> {{ __('panel.offer_ends') }}
+                                    </span><span class="require red">*</span></label>
+                                <div class="form-group">
+                                    <input type="text" id="offer_ends" name="offer_ends"
+                                        value="{{ old('offer_ends', $course->offer_ends) }}" class="form-control">
+                                    @error('offer_ends')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- promotion Tab --}}
+                    <div class="tab-pane fade" id="promotion" role="tabpanel" aria-labelledby="promotion-tab">
 
                         {{-- course price  --}}
                         <div class="row">

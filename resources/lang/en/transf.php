@@ -465,6 +465,11 @@ return [
     'Course Landing Page'                               =>  'Course Landing Page',
     'Course Landing Page Description'                   =>  'Your course landing page is crucial to your success on Jats. If it’s done right, it can also help you gain visibility in search engines like Google. As you complete this section, think about creating a compelling Course Landing Page that demonstrates why someone would want to enroll in your course. Learn more about creating your course landing page and course title standards.',
 
+    'course_content_tab'                                =>  'Course',
+    'course_info_tab'                                   =>  'Basic Info',
+    'promotion_tab'                                     =>  'Promotion Info',
+    'price_tab'                                         =>  'Pricing',
+    'published_tab'                                     =>  'Publish Data',
 
 
 

@@ -358,7 +358,7 @@ return [
 
     // Step2 : Course Category title 
     'category_title'                                =>  'Category Title',
-    'course_category_title'                         =>  'Course Category Title',
+    'course_category_title'                         =>  'Course category title',
     'what_category_best_fits_the_knowledge_you_will_shire'                  =>  'What category best fits the knowledge you will shire',
     'if_you_are_not_sure_about_the_right_category,you_can_change_it_later'  =>  'If you are not sure about the right category,you can change it later',
 
@@ -480,7 +480,20 @@ return [
     'Insert your course description.'                   =>  'Insert your course description.',
     'Course description tip.'                           =>  'Description should have minimum 200 words.',
 
+    'Course Image'                                      =>  'Course Image',
+    'Course Image tip.'                                 =>  'Upload your course image here. It must meet our course image quality standards to be accepted. Important guidelines: 750x422 pixels; .jpg, .jpeg,. gif, or .png. no text on the image.',
 
+
+    'Course Language'                                   =>  'Course langugae',
+
+    'Course Level'                                      =>  'Course level',
+    'Select Level'                                      =>  'Select Level',
+    'Beginner Level'                                    =>  'Beginner Level',
+    'Intermediate Level'                                =>  'Intermediate Level',
+    'Advance Level'                                     =>  'Advance Level',
+    'All Levels'                                        =>  'All Levels',
+
+    'Select Category'                                   =>  'Select Category',
 
 
 

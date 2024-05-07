@@ -484,6 +484,20 @@ return [
     'Insert your course description.'                   =>  'أدخل وصف الدورة التدريبية الخاصة بك.',
     'Course description tip.'                           =>  'يجب أن يحتوي الوصف على 200 كلمة على الأقل.',
 
+    'Course Image'                                      =>  'صورة الدورة',
+    'Course Image tip.'                                 =>  'قم بتحميل صورة الدورة التدريبية الخاصة بك هنا. يجب أن تستوفي معايير جودة صورة الدورة التدريبية الخاصة بنا حتى يتم قبولها. إرشادات مهمة: 750 × 422 بكسل؛ .jpg، .jpeg،. gif أو png. لا يوجد نص على الصورة.',
+
+    'Course Language'                                   =>  'لغة الدورة',
+
+    'Course Level'                                      =>  'مستوى الدورة',
+    'Select Level'                                      =>  'اختار مستوى',
+    'Beginner Level'                                    =>  'المستوى المبتدئ',
+    'Intermediate Level'                                =>  'المستوى المتوسط',
+    'Advance Level'                                     =>  'المستوى المتقدم',
+    'All Levels'                                        =>  ' كل المستويات',
+
+    'Select Category'                                   =>  'اختر الفئة',
+
 
 
 

@@ -134,8 +134,17 @@
                                 </div>
                             </div>
 
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 pt-5">
+                                <p>
+                                    {{ __('transf.Course Image tip.') }}
+                                </p>
+                            </div>
                             {{-- مرفق الصور  --}}
-                            {{-- <div class="col-md-5 col-sm-12 ">
+                            <div class="col-md-6 col-sm-12 ">
 
                                 <div class="row">
                                     <div class="col-12 pt-4">
@@ -152,7 +161,7 @@
                                     </div>
                                 </div>
 
-                            </div> --}}
+                            </div>
                         </div>
 
                     </div>
@@ -160,47 +169,11 @@
                     {{-- Course basic info --}}
                     <div class="tab-pane fade" id="course_info" role="tabpanel" aria-labelledby="course_info-tab">
 
-                        {{-- category name  field --}}
-                        <div class="row ">
-                            <div class="col-12 pt-4">
-                                <label for="category_id"> {{ __('panel.course_title') }}</label>
-                                <select name="course_category_id" class="form-control">
-                                    <option value=""> {{ __('panel.main_category') }} __
-                                    </option>
-                                    @forelse ($course_categories as $course_category)
-                                        <option value="{{ $course_category->id }}"
-                                            {{ old('course_category_id', $course->course_category_id) == $course_category->id ? 'selected' : null }}>
-                                            {{ $course_category->title }} </option>
-                                    @empty
-                                    @endforelse
-                                </select>
-                            </div>
-                        </div>
+
 
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="skill_level">{{ __('panel.skill_level') }}</label>
-                                <select name="skill_level" class="form-control">
-                                    <option value="1"
-                                        {{ old('skill_level', $course->skill_level) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.skill_level_beginner') }}
-                                    </option>
-                                    <option value="2"
-                                        {{ old('skill_level', $course->skill_level) == '2' ? 'selected' : null }}>
-                                        {{ __('panel.skill_level_intermediate') }}
-                                    </option>
-                                    <option value="3"
-                                        {{ old('skill_level', $course->skill_level) == '3' ? 'selected' : null }}>
-                                        {{ __('panel.skill_level_advance') }}
-                                    </option>
-                                </select>
-                                @error('skill_level')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                            </div>
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="language">{{ __('panel.language') }}</label>
+                                <label for="language">{{ __('transf.Course Language') }}</label>
                                 <select name="language" class="form-control">
                                     <option value="1"
                                         {{ old('language', $course->language) == '1' ? 'selected' : null }}>
@@ -216,6 +189,52 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="skill_level">{{ __('transf.Course Level') }}</label>
+                                <select name="skill_level" class="form-control">
+                                    <option value=""> -- {{ __('transf.Select Level') }} --
+                                    <option value="1"
+                                        {{ old('skill_level', $course->skill_level) == '1' ? 'selected' : null }}>
+                                        {{ __('panel.skill_level_beginner') }}
+                                    </option>
+                                    <option value="2"
+                                        {{ old('skill_level', $course->skill_level) == '2' ? 'selected' : null }}>
+                                        {{ __('panel.skill_level_intermediate') }}
+                                    </option>
+                                    <option value="3"
+                                        {{ old('skill_level', $course->skill_level) == '3' ? 'selected' : null }}>
+                                        {{ __('panel.skill_level_advance') }}
+                                    </option>
+                                    <option value="4"
+                                        {{ old('skill_level', $course->skill_level) == '4' ? 'selected' : null }}>
+                                        {{ __('panel.skill_level_advance') }}
+                                    </option>
+                                </select>
+                                @error('skill_level')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+
+                        </div>
+
+
+                        {{-- category name  field --}}
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="category_id"> {{ __('transf.course_category_title') }}</label>
+                                <select name="course_category_id" class="form-control" style="height: 45px;">
+                                    <option value=""> -- {{ __('transf.Select Category') }} --
+                                    </option>
+                                    @forelse ($course_categories as $course_category)
+                                        <option value="{{ $course_category->id }}"
+                                            {{ old('course_category_id', $course->course_category_id) == $course_category->id ? 'selected' : null }}>
+                                            {{ $course_category->title }} </option>
+                                    @empty
+                                    @endforelse
+                                </select>
                             </div>
                         </div>
 

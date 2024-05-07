@@ -63,6 +63,8 @@
                         </li>
                     @endforeach
 
+
+
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="course_info-tab" data-bs-toggle="tab" data-bs-target="#course_info"
                             type="button" role="tab" aria-controls="course_info"
@@ -77,20 +79,8 @@
                         </button>
                     </li>
 
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="course_topics-tab" data-bs-toggle="tab"
-                            data-bs-target="#course_topics" type="button" role="tab" aria-controls="course_topics"
-                            aria-selected="true">{{ __('panel.course_topics_tab') }}
-                        </button>
-                    </li>
 
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="course_requirements-tab" data-bs-toggle="tab"
-                            data-bs-target="#course_requirements" type="button" role="tab"
-                            aria-controls="course_requirements"
-                            aria-selected="true">{{ __('panel.course_requirements_tab') }}
-                        </button>
-                    </li>
+
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="instructor-tab" data-bs-toggle="tab" data-bs-target="#instructor"
@@ -466,126 +456,6 @@
                         </div>
                     </div>
 
-
-
-                    {{-- course topic content  --}}
-                    <div class="tab-pane fade" id="course_topics" role="tabpanel"
-                        aria-labelledby="course_topics-tab">
-
-
-                        <div class="table-responsive">
-                            <table class="table" id="course_topics_details">
-                                <thead>
-                                    <tr class="pt-4">
-                                        <th width="30px">{{ __('panel.act') }}</th>
-                                        <th width="160px">{{ __('panel.type') }}</th>
-                                        <th>{{ __('panel.txt_course_topics') }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($course->topics as $item)
-                                        <?php
-                                        $loopIndex = $loop->index;
-                                        ?>
-                                        @foreach (config('locales.languages') as $key => $val)
-                                            <tr class="cloning_row" id="{{ $loopIndex }}">
-                                                <td style="width: 30px !important;">
-                                                    @if ($loopIndex == 0)
-                                                        {{ '#' }}
-                                                    @else
-                                                        <button type="button"
-                                                            class="btn btn-danger btn-sm delegated-btn"><i
-                                                                class="fa fa-minus"></i></button>
-                                                    @endif
-                                                </td>
-                                                <td>{{ __('panel.topic_in_' . $key) }} ({{ $loopIndex }})</td>
-                                                <td>
-                                                    <input type="text"
-                                                        name="course_topic[{{ $loopIndex }}][{{ $key }}]"
-                                                        id="course_topic"
-                                                        value="{{ old('course_topic' . $key, $item->getTranslation('title', $key)) }}"
-                                                        class="course_topic form-control">
-                                                    @error('course_topic[{{ $loopIndex }}]' . $key)
-                                                        <span class="help-block text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    @endforeach
-                                </tbody>
-
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="3" class="text-end">
-                                            <button type="button"
-                                                class="btn_add btn btn-primary">{{ __('panel.btn_add_another_topic') }}</button>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-
-                    </div>
-
-                    {{-- course requirement content --}}
-                    <div class="tab-pane fade" id="course_requirements" role="tabpanel"
-                        aria-labelledby="course_requirements-tab">
-
-
-                        <div class="table-responsive">
-                            <table class="table" id="course_requirements_details">
-                                <thead>
-                                    <tr class="pt-4">
-                                        <th width="30px">{{ __('panel.act') }}</th>
-                                        <th width="160px">{{ __('panel.type') }}</th>
-                                        <th>{{ __('panel.txt_course_requirements') }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($course->requirements as $item)
-                                        <?php
-                                        $loopIndex = $loop->index;
-                                        ?>
-                                        @foreach (config('locales.languages') as $key => $val)
-                                            <tr class="cloning_row" id="{{ $loopIndex }}">
-                                                <td style="width: 30px !important;">
-                                                    @if ($loopIndex == 0)
-                                                        {{ '#' }}
-                                                    @else
-                                                        <button type="button"
-                                                            class="btn btn-danger btn-sm delegated-btn"><i
-                                                                class="fa fa-minus"></i></button>
-                                                    @endif
-                                                </td>
-                                                <td>{{ __('panel.requirement_in_' . $key) }} ({{ $loopIndex }})
-                                                </td>
-                                                <td>
-                                                    <input type="text"
-                                                        name="course_requirement[{{ $loopIndex }}][{{ $key }}]"
-                                                        id="course_requirement"
-                                                        value="{{ old('course_requirement' . $key, $item->getTranslation('title', $key)) }}"
-                                                        class="course_requirement form-control">
-                                                    @error('course_requirement[{{ $loopIndex }}]' . $key)
-                                                        <span class="help-block text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    @endforeach
-                                </tbody>
-
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="3" class="text-end">
-                                            <button type="button"
-                                                class="btn_add_requirement btn btn-primary">{{ __('panel.btn_add_another_requirement') }}</button>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-
-                    </div>
 
                     {{-- instructor tab --}}
                     <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">

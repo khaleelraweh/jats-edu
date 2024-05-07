@@ -493,7 +493,16 @@ return [
     'Advance Level'                                     =>  'Advance Level',
     'All Levels'                                        =>  'All Levels',
 
+    'Course type'                                       =>  'Course type',
+    'Course presence'                                   =>  'Presence',
+    'Course enrolled'                                   =>  'Enrolled',
+
     'Select Category'                                   =>  'Select Category',
+
+    'Promotional video'                                 =>  'Promotional video',
+    'Promotional video tip.'                            =>  'Your promo video is a quick and compelling way for students to preview what they’ll learn in your course. Students considering your course are more likely to enroll if your promo video is well-made. Learn how to make your promo video awesome!',
+    'Insert the link to your YouTube promotional video.' =>  'Insert the link to your YouTube promotion video.',
+
 
 
 

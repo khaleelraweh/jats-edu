@@ -138,11 +138,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6 col-sm-12 pt-5">
-                                <p>
-                                    {{ __('transf.Course Image tip.') }}
-                                </p>
-                            </div>
+
                             {{-- مرفق الصور  --}}
                             <div class="col-md-6 col-sm-12 ">
 
@@ -162,6 +158,31 @@
                                 </div>
 
                             </div>
+
+                            <div class="col-md-6 col-sm-12 pt-5">
+                                <p>
+                                    {{ __('transf.Course Image tip.') }}
+                                </p>
+                            </div>
+                        </div>
+
+
+                        {{-- video promo and description  --}}
+                        <div class="row pt-5">
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="video_promo">{{ __('transf.Promotional video') }}</label>
+                                <input type="text" name="video_promo" id="video_promo"
+                                    value="{{ old('video_promo', $course->video_promo) }}" class="form-control"
+                                    placeholder="{{ __('transf.Insert the link to your YouTube promotional video.') }}">
+                                @error('video_promo')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                {{ __('transf.Promotional video tip.') }}
+                            </div>
+
                         </div>
 
                     </div>
@@ -223,6 +244,26 @@
 
                         {{-- category name  field --}}
                         <div class="row ">
+
+                            <div class="col-sm-12 col-md-6 pt-3">
+                                <label for="course_type">{{ __('transf.Course type') }}</label>
+                                <select name="course_type" class="form-control">
+                                    <option value="1"
+                                        {{ old('course_type', $course->course_type) == '1' ? 'selected' : null }}>
+                                        {{ __('transf.Course presence') }}
+                                    </option>
+                                    <option value="2"
+                                        {{ old('course_type', $course->course_type) == '2' ? 'selected' : null }}>
+                                        {{ __('transf.Course enrolled') }}
+                                    </option>
+
+                                </select>
+                                @error('coruse_type')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="category_id"> {{ __('transf.course_category_title') }}</label>
                                 <select name="course_category_id" class="form-control" style="height: 45px;">
@@ -236,102 +277,14 @@
                                     @endforelse
                                 </select>
                             </div>
+
+
                         </div>
 
 
-                        {{-- lecture numbers and course duration --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="lecture_numbers">{{ __('panel.lecture_numbers') }}</label>
-                                <input type="number" name="lecture_numbers" id="lecture_numbers"
-                                    value="{{ old('lecture_numbers', $course->lecture_numbers) }}"
-                                    class="form-control">
-                                @error('lecture_numbers')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
 
-                            </div>
 
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="course_duration">{{ __('panel.course_duration') }}</label>
-                                <input type="text" name="course_duration" id="course_duration"
-                                    value="{{ old('course_duration', $course->course_duration) }}"
-                                    class="form-control" placeholder="8h 17m">
-                                @error('course_duration')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
 
-                            </div>
-                        </div>
-
-                        {{-- video promo and description  --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="video_promo">{{ __('panel.video_promo') }}</label>
-                                <input type="text" name="video_promo" id="video_promo"
-                                    value="{{ old('video_promo', $course->video_promo) }}" class="form-control">
-                                @error('video_promo')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                            </div>
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="video_description">{{ __('panel.video_description') }}</label>
-                                <input type="text" name="video_description" id="video_description"
-                                    value="{{ old('video_description', $course->video_description) }}"
-                                    class="form-control" placeholder="https://video-link">
-                                @error('video_description')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                            </div>
-
-                        </div>
-
-                        {{-- course type and evaluation --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="course_type">{{ __('panel.course_type') }}</label>
-                                <select name="course_type" class="form-control">
-                                    <option value="1"
-                                        {{ old('course_type', $course->course_type) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.course_type_presence') }}
-                                    </option>
-                                    <option value="2"
-                                        {{ old('course_type', $course->course_type) == '2' ? 'selected' : null }}>
-                                        {{ __('panel.course_type_enrolled') }}
-                                    </option>
-
-                                </select>
-                                @error('coruse_type')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                            </div>
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="evaluation">{{ __('panel.evaluation') }}</label>
-                                <select name="evaluation" class="form-control">
-                                    <option value="1"
-                                        {{ old('evaluation', $course->evaluation) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_normal') }}
-                                    </option>
-                                    <option value="2"
-                                        {{ old('evaluation', $course->evaluation) == '2' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_featured') }}
-                                    </option>
-                                    <option value="3"
-                                        {{ old('evaluation', $course->evaluation) == '3' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_best_seller') }}
-                                    </option>
-
-                                </select>
-                                @error('evaluation')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                            </div>
-
-                        </div>
 
                         {{-- course deadline and certificate --}}
                         <div class="row deadline">

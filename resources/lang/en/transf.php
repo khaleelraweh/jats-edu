@@ -351,7 +351,7 @@ return [
 
     'its_ok_if_you_cant_think_of_a_good_title_now_you_can_change_it_later'  =>  'It\'s ok if you can\'t think of a good title now. You can change it later.',
 
-    'course_title'                                  =>  'Course Title',
+    'course_title'                                  =>  'Course title',
     'in_language'                                   =>  'in',
     'ar'                                            =>  'Arabic',
     'en'                                            =>  'English',
@@ -475,6 +475,14 @@ return [
     'Course subtitle'                                   =>  'Course subtitle',
     'Insert your course subtitle.'                      =>  'Insert your course subtitle.',
     'Course subtitle tip.'                              =>  'Use 1 or 2 related keywords, and mention 3-4 of the most important areas that you\'ve covered during your course.',
+
+    'Course description'                                =>  'Course description',
+    'Insert your course description.'                   =>  'Insert your course description.',
+    'Course description tip.'                           =>  'Description should have minimum 200 words.',
+
+
+
+
 
 
 

@@ -76,9 +76,12 @@
                                             </label>
                                             <input type="text" name="title" id="title"
                                                 value="{{ old('title', $course->title) }}" class="form-control"
-                                                placeholder="{{ __('transf.Insert your course title.') }}">
-                                            <span class="text-muted">
-                                                {{ __('transf.Insert your course title tip.') }}
+                                                placeholder="{{ __('transf.Insert your course title.') }}"
+                                                style="height: 45px;">
+                                            <span class="text-muted d-inline-block mt-1">
+                                                <small>
+                                                    {{ __('transf.Insert your course title tip.') }}
+                                                </small>
                                             </span>
                                             @error('title')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -96,7 +99,14 @@
 
                                             </label>
                                             <input type="text" name="subtitle" id="subtitle"
-                                                value="{{ old('subtitle', $course->subtitle) }}" class="form-control">
+                                                value="{{ old('subtitle', $course->subtitle) }}" class="form-control"
+                                                placeholder="{{ __('transf.Insert your course subtitle.') }}"
+                                                style="height: 45px;">
+                                            <span class="text-muted d-inline-block mt-1">
+                                                <small>
+                                                    {{ __('transf.Course subtitle tip.') }}
+                                                </small>
+                                            </span>
                                             @error('subtitle')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -108,12 +118,15 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 pt-4">
                                         <label for="description">
-                                            {{ __('panel.description') }}
-                                            {{ __('panel.in') }}
+                                            {{ __('transf.Course description') }}
                                         </label>
-                                        <textarea name="description" rows="10" class="form-control summernote">
-                                            {!! old('description.ar', $course->getTranslation('description', 'ar')) !!}
-                                        </textarea>
+                                        <textarea name="description" rows="10" class="form-control summernote"
+                                            placeholder="{{ __('transf.Insert your course description.') }}">{!! old('description', $course->description) !!}</textarea>
+                                        <span class="text-muted d-inline-block mt-1">
+                                            <small>
+                                                {{ __('transf.Course description tip.') }}
+                                            </small>
+                                        </span>
                                         @error('description')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror

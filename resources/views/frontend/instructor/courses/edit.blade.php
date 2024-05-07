@@ -69,6 +69,10 @@
         .step-title {
             display: inline !important;
         }
+
+        .note-editor.note-frame.card {
+            margin-bottom: 0 !important;
+        }
     </style>
 @endsection
 

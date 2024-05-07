@@ -464,6 +464,10 @@ return [
     'Save Lessons'                                      =>  'حفظ الدروس',
 
 
+    // Course Landing Page 
+    'Course Landing Page'                               =>  'الصفحة المقصودة للدورة',
+
+
 
 
 

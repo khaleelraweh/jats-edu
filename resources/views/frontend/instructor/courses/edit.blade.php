@@ -69,7 +69,7 @@
                                 <li class="nav-item">
                                     <a href="#bank-detail" class="nav-link" data-toggle="tab">
                                         <span class="step-number">03</span>
-                                        <span class="step-title">Bank Detail</span>
+                                        <span class="step-title">{{ __('transf.Course Landing Page') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -93,13 +93,11 @@
                                 <div class="tab-pane" id="company-document">
                                     <div>
                                         @livewire('frontend.instructors.lesson-component', ['courseId' => $course->id])
-
-                                        {{-- @livewire('frontend.instructors.section-component', ['courseId' => $course->id]) --}}
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="bank-detail">
                                     <div>
-                                        Band detail
+                                        @livewire('frontend.instructors.course-landing-page', ['courseId' => $course->id])
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="confirm-detail">

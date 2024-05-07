@@ -461,6 +461,9 @@ return [
     'Save Lessons'                                      =>  'Save Lessons',
 
 
+    // Course Landing Page 
+    'Course Landing Page'                               =>  'Course Landing Page',
+
 
 
 

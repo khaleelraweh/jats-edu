@@ -53,37 +53,14 @@
                         </button>
                     </li>
 
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="promotion-tab" data-bs-toggle="tab" data-bs-target="#promotion"
-                            type="button" role="tab" aria-controls="promotion"
-                            aria-selected="true">{{ __('transf.promotion_tab') }}
-                        </button>
-                    </li>
-
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="price-tab" data-bs-toggle="tab" data-bs-target="#price"
-                            type="button" role="tab" aria-controls="price"
-                            aria-selected="true">{{ __('transf.price_tab') }}
-                        </button>
-                    </li>
-
-
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
-                            type="button" role="tab" aria-controls="published"
-                            aria-selected="false">{{ __('transf.published_tab') }}
-                        </button>
-                    </li>
 
                 </ul>
 
                 {{-- contents of links tabs  --}}
                 <div class="tab-content" id="myTabContent">
 
-                    {{-- Content Tab --}}
 
 
-                    {{-- Course Content --}}
                     <div class="tab-pane fade show active" id="course_content" role="tabpanel"
                         aria-labelledby="course_content-tab">
 
@@ -230,32 +207,6 @@
                         </div>
 
 
-
-                        <div class="row d-none">
-                            <div class="col-sm-12 pt-3">
-                                <label for="evaluation">{{ __('panel.evaluation') }}</label>
-                                <select name="evaluation" class="form-control">
-                                    <option value="1"
-                                        {{ old('evaluation', $course->evaluation) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_normal') }}
-                                    </option>
-                                    <option value="2"
-                                        {{ old('evaluation', $course->evaluation) == '2' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_featured') }}
-                                    </option>
-                                    <option value="3"
-                                        {{ old('evaluation', $course->evaluation) == '3' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_best_seller') }}
-                                    </option>
-
-                                </select>
-                                @error('evaluation')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                            </div>
-                        </div>
-
                         {{-- lecture numbers and course duration --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-3">
@@ -385,191 +336,10 @@
 
                         </div>
 
-
-
-                    </div>
-
-                    {{-- price Tab --}}
-                    <div class="tab-pane fade" id="price" role="tabpanel" aria-labelledby="price-tab">
-
-                        {{-- course price  --}}
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                <label for="price"> {{ __('panel.price') }} </label>
-                                <input type="text" name="price" id="price"
-                                    value="{{ old('price', $course->price) }}" class="form-control">
-                                @error('price')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        {{-- offer price  --}}
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                <label for="offer_price"> {{ __('panel.offer_price') }} </label>
-                                <input type="text" id="offer_price" name="offer_price"
-                                    value="{{ old('offer_price', $course->offer_price) }}" class="form-control">
-                                @error('offer_price')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        {{-- offer_ends  --}}
-                        <div class="row">
-                            <div class="col-md-12 com-sm-12 pt-4">
-                                <label for="offer_ends" class="control-label"><span> {{ __('panel.offer_ends') }}
-                                    </span><span class="require red">*</span></label>
-                                <div class="form-group">
-                                    <input type="text" id="offer_ends" name="offer_ends"
-                                        value="{{ old('offer_ends', $course->offer_ends) }}" class="form-control">
-                                    @error('offer_ends')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- promotion Tab --}}
-                    <div class="tab-pane fade" id="promotion" role="tabpanel" aria-labelledby="promotion-tab">
-
-                        {{-- course price  --}}
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                <label for="price"> {{ __('panel.price') }} </label>
-                                <input type="text" name="price" id="price"
-                                    value="{{ old('price', $course->price) }}" class="form-control">
-                                @error('price')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        {{-- offer price  --}}
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                <label for="offer_price"> {{ __('panel.offer_price') }} </label>
-                                <input type="text" id="offer_price" name="offer_price"
-                                    value="{{ old('offer_price', $course->offer_price) }}" class="form-control">
-                                @error('offer_price')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        {{-- offer_ends  --}}
-                        <div class="row">
-                            <div class="col-md-12 com-sm-12 pt-4">
-                                <label for="offer_ends" class="control-label"><span> {{ __('panel.offer_ends') }}
-                                    </span><span class="require red">*</span></label>
-                                <div class="form-group">
-                                    <input type="text" id="offer_ends" name="offer_ends"
-                                        value="{{ old('offer_ends', $course->offer_ends) }}" class="form-control">
-                                    @error('offer_ends')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
 
-                    {{-- instructor tab --}}
-                    <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
-                        {{-- instructors row --}}
-                        <div class="row pt-4">
-                            <div class="col-12">
-                                <label for="instructors">{{ __('panel.instructors') }}</label>
-                                <select name="instructors[]" class="form-control select2 child" multiple="multiple">
-                                    @forelse ($instructors as $instructor)
-                                        <option value="{{ $instructor->id }}"
-                                            {{ in_array($instructor->id, old('instructors', $courseinstructors)) ? 'selected' : null }}>
-                                            {{ $instructor->first_name }} {{ $instructor->last_name }}</option>
-                                    @empty
-                                    @endforelse
-                                </select>
 
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- Published Tab --}}
-                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
-
-                        {{-- published_on and published_on_time  --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4">
-                                <div class="form-group">
-                                    <label for="published_on"> {{ __('panel.published_date') }}</label>
-                                    <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', \Carbon\Carbon::parse($course->published_on)->Format('Y-m-d')) }}"
-                                        class="form-control">
-                                    @error('published_on')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4">
-                                <div class="form-group">
-                                    <label for="published_on_time">{{ __('panel.published_time') }}</label>
-                                    <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', \Carbon\Carbon::parse($course->published_on)->Format('h:i A')) }}"
-                                        class="form-control">
-                                    @error('published_on_time')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                <label for="status" class="control-label col-md-2 col-sm-12 ">
-                                    <span>{{ __('panel.status') }}</span>
-                                </label>
-                                <select name="status" class="form-control">
-                                    <option value="1"
-                                        {{ old('status', $course->status) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.status_active') }}
-                                    </option>
-                                    <option value="0"
-                                        {{ old('status', $course->status) == '0' ? 'selected' : null }}>
-                                        {{ __('panel.status_inactive') }}
-                                    </option>
-                                </select>
-                                @error('status')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        {{-- featured field --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4">
-                                <label for="featured">{{ __('panel.featured') }}</label>
-                                <select name="featured" class="form-control">
-                                    <option value="1"
-                                        {{ old('featured', $course->featured) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.yes') }}
-                                    </option>
-                                    <option value="0"
-                                        {{ old('featured', $course->featured) == '0' ? 'selected' : null }}>
-                                        {{ __('panel.no') }}
-                                    </option>
-                                </select>
-                                @error('featured')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                    </div>
 
                     <div class="form-group pt-4">
                         <button type="submit" name="submit" class="btn btn-primary">

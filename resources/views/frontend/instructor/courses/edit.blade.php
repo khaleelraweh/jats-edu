@@ -73,6 +73,11 @@
         .note-editor.note-frame.card {
             margin-bottom: 0 !important;
         }
+
+        input,
+        select {
+            height: 45px !important;
+        }
     </style>
 @endsection
 

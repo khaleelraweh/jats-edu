@@ -61,6 +61,7 @@
                             </button>
                         </div>
                     </div>
+
                     @if ($section['saved'])
                         <div class="card-body">
                             {{-- Lessons for this section --}}

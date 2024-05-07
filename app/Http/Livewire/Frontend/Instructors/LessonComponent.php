@@ -43,7 +43,7 @@ class LessonComponent extends Component
                     'title' => $section->title,
                     'sectionId' => $section->id,
                     'lessons' => [],
-                    'saved' => false,
+                    'saved' => true,
                 ];
                 if ($section->lessons != null && $section->lessons->isNotEmpty()) {
                     // Populate lessons for each section

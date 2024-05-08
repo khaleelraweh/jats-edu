@@ -138,7 +138,7 @@
                                 <li class="nav-item">
                                     <a href="#confirm-detail2" class="nav-link" data-toggle="tab">
                                         <span class="step-number">05</span>
-                                        <span class="step-title">Publish data</span>
+                                        <span class="step-title">{{ __('transf.Publish Data') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -169,18 +169,9 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="confirm-detail2">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-6">
-                                            <div class="text-center">
-                                                <div class="mb-4">
-                                                    <i class="mdi mdi-check-circle-outline text-success display-4"></i>
-                                                </div>
-                                                <div>
-                                                    <h5>Confirm Detail</h5>
-                                                    <p class="text-muted">If several languages coalesce,
-                                                        the grammar of the resulting</p>
-                                                </div>
-                                            </div>
+                                    <div>
+                                        <div>
+                                            @livewire('frontend.instructors.course-publish-data-component', ['courseId' => $course->id])
                                         </div>
                                     </div>
                                 </div>

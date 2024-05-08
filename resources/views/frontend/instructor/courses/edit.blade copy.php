@@ -655,27 +655,6 @@
                                 @enderror
                             </div>
                         </div>
-
-                        {{-- featured field --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4">
-                                <label for="featured">{{ __('panel.featured') }}</label>
-                                <select name="featured" class="form-control">
-                                    <option value="1"
-                                        {{ old('featured', $course->featured) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.yes') }}
-                                    </option>
-                                    <option value="0"
-                                        {{ old('featured', $course->featured) == '0' ? 'selected' : null }}>
-                                        {{ __('panel.no') }}
-                                    </option>
-                                </select>
-                                @error('featured')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
                     </div>
 
                     <div class="form-group pt-4">

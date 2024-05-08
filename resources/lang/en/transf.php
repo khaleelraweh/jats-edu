@@ -511,6 +511,9 @@ return [
     'Pricing'                                           =>  'Pricing',
 
 
+    // publish Data
+    'Publish Data'                                      =>  'Publish Data',
+
 
 
 ];

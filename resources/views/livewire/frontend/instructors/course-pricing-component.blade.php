@@ -30,7 +30,7 @@
                 <label for="offer_ends" class="control-label"><span> {{ __('panel.offer_ends') }}
                     </span><span class="require red">*</span></label>
                 <div class="form-group">
-                    <input type="text" id="offer_ends" name="offer_ends" wire:model.prevent="offer_ends"
+                    <input type="text" id="offer_ends" name="offer_ends" wire:model="offer_ends"
                         value="{{ old('offer_ends', $course->offer_ends) }}" class="form-control">
                     @error('offer_ends')
                         <span class="text-danger">{{ $message }}</span>
@@ -38,6 +38,24 @@
                 </div>
             </div>
         </div>
+
+
+        {{-- offer_ends  --}}
+        {{-- <div class="row">
+            <div class="col-md-12 com-sm-12 pt-4">
+                <label for="offer_ends" class="control-label">
+                    <span>{{ __('panel.offer_ends') }}</span>
+                    <span class="require red">*</span>
+                </label>
+                <div class="form-group">
+                    <input type="text" id="offer_ends" name="offer_ends" wire:model="offer_ends"
+                        class="form-control">
+                    @error('offer_ends')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+        </div> --}}
 
 
         <div class="row">

@@ -515,6 +515,8 @@ return [
     // Pricing section 
     'Pricing'                                           =>  'التسعير',
 
+    // publish Data
+    'Publish Data'                                      =>  'بيانات النشر',
 
 
 

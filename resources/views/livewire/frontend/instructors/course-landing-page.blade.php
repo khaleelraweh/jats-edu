@@ -143,7 +143,7 @@
 
                                 <div class="row">
                                     <div class="col-12 pt-4">
-                                        <label for="images">{{ __('panel.image') }}/{{ __('panel.images') }}</label>
+                                        <label for="images">{{ __('transf.Course Image') }}</label>
                                         <input type="file" wire:model="images" id="images" class="form-control"
                                             multiple>
                                         @error('images')
@@ -200,11 +200,11 @@
                                 <select name="language" wire:model.defer="language" class="form-control">
                                     <option value="1"
                                         {{ old($language, $course->language) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.language_ar') }}
+                                        {{ __('transf.lang_ar') }}
                                     </option>
                                     <option value="2"
                                         {{ old($language, $course->language) == '2' ? 'selected' : null }}>
-                                        {{ __('panel.language_en') }}
+                                        {{ __('transf.lang_en') }}
                                     </option>
 
                                 </select>
@@ -220,19 +220,19 @@
                                     <option value=""> -- {{ __('transf.Select Level') }} --
                                     <option value="1"
                                         {{ old($skill_level, $course->skill_level) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.skill_level_beginner') }}
+                                        {{ __('transf.Beginner Level') }}
                                     </option>
                                     <option value="2"
                                         {{ old($skill_level, $course->skill_level) == '2' ? 'selected' : null }}>
-                                        {{ __('panel.skill_level_intermediate') }}
+                                        {{ __('transf.Intermediate Level') }}
                                     </option>
                                     <option value="3"
                                         {{ old($skill_level, $course->skill_level) == '3' ? 'selected' : null }}>
-                                        {{ __('panel.skill_level_advance') }}
+                                        {{ __('transf.Advance Level') }}
                                     </option>
                                     <option value="4"
                                         {{ old($skill_level, $course->skill_level) == '4' ? 'selected' : null }}>
-                                        {{ __('panel.skill_level_advance') }}
+                                        {{ __('transf.All Levels') }}
                                     </option>
                                 </select>
                                 @error('skill_level')
@@ -294,32 +294,10 @@
                         {{-- course deadline and certificate --}}
                         <div class="row ">
 
-                            {{-- <div class="col-sm-12 col-md-12 pt-3">
-                                <label for="certificate">{{ __('panel.certificate') }}</label>
-                                <select name="certificate"  wire:model.defer="certificate" class="form-control">
-                                    <option value="1"
-                                        {{ old($certificate, $course->certificate) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.certificate_yes') }}
-                                    </option>
-                                    <option value="2"
-                                        {{ old($certificate, $course->certificate) == '0' ? 'selected' : null }}>
-                                        {{ __('panel.certificate_no') }}
-                                    </option>
-
-                                </select>
-                                <span class="text-muted d-inline-block mt-1">
-                                    <small>{{ __('transf.certificate_tip') }}</small>
-                                </span>
-                                @error('coruse_type')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                            </div> --}}
-
                             <div class="col-sm-12 col-md-12 pt-3">
 
                                 <div class="form-group">
-                                    <label for="certificate">{{ __('panel.certificate') }}</label>
+                                    <label for="certificate">{{ __('transf.certificate') }}</label>
                                     <input style="width: 100%" type="checkbox" wire:model.defer="certificate"
                                         id="certificate" class="form-check-input">
                                     <span class="text-muted d-inline-block mt-1">
@@ -337,7 +315,7 @@
                         <div class="row d-none">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <div class="form-group">
-                                    <label for="deadline">{{ __('panel.deadline') }}</label>
+                                    <label for="deadline">{{ __('transf.deadline') }}</label>
                                     <input type="text" id="deadline" name="deadline" wire:model.defer="deadline"
                                         value="{{ old('deadline', \Carbon\Carbon::parse($course->deadline)->Format('Y-m-d')) }}"
                                         class="form-control">
@@ -355,7 +333,7 @@
 
                     <div class="form-group pt-4">
                         <button type="submit" name="submit" class="btn btn-primary">
-                            {{ __('panel.update_data') }}
+                            {{ __('transf.Update Data') }}
                         </button>
                     </div>
 

@@ -505,7 +505,7 @@ return [
 
     'certificate_tip'                                   =>  'Determine whether the learner will receive a certificate after completing the course or not',
 
-
+    'Update Data'                                       =>  'Update Data',
 
 
 

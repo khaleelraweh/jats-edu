@@ -164,19 +164,8 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="confirm-detail">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-6">
-                                            <div class="text-center">
-                                                <div class="mb-4">
-                                                    <i class="mdi mdi-check-circle-outline text-success display-4"></i>
-                                                </div>
-                                                <div>
-                                                    <h5>Confirm Detail</h5>
-                                                    <p class="text-muted">If several languages coalesce,
-                                                        the grammar of the resulting</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div>
+                                        @livewire('frontend.instructors.course-pricing-component', ['courseId' => $course->id])
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="confirm-detail2">
@@ -275,44 +264,7 @@
     <script>
         $(function() {
 
-            // $("#course_images").fileinput({
-            //     theme: "fa5",
-            //     maxFileCount: 5,
-            //     allowedFileTypes: ['image'],
-            //     showCancel: true,
-            //     showRemove: false,
-            //     showUpload: false,
-            //     overwriteInitial: false,
-            //     // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
-            //     // delete images from photos and assets/products 
-            //     // because there are maybe more than one image we will go for each image and show them in the edit page 
-            //     initialPreview: [
-            //         @if ($course->photos()->count() > 0)
-            //             @foreach ($course->photos as $media)
-            //                 "{{ asset('assets/courses/' . $media->file_name) }}",
-            //             @endforeach
-            //         @endif
-            //     ],
-            //     initialPreviewAsData: true,
-            //     initialPreviewFileType: 'image',
-            //     initialPreviewConfig: [
-            //         @if ($course->photos()->count() > 0)
-            //             @foreach ($course->photos as $media)
-            //                 {
-            //                     caption: "{{ $media->file_name }}",
-            //                     size: '{{ $media->file_size }}',
-            //                     width: "120px",
-            //                     // url : الراوت المستخدم لحذف الصورة
-            //                     url: "{{ route('admin.courses.remove_image', ['image_id' => $media->id, 'course_id' => $course->id, '_token' => csrf_token()]) }}",
-            //                     key: {{ $media->id }}
-            //                 },
-            //             @endforeach
-            //         @endif
 
-            //     ]
-            // }).on('filesorted', function(event, params) {
-            //     console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
-            // });
 
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',

@@ -17,6 +17,7 @@
   'frontend.home.featured-courses-component' => 'App\\Http\\Livewire\\Frontend\\Home\\FeaturedCoursesComponent',
   'frontend.home.trending-categories-component' => 'App\\Http\\Livewire\\Frontend\\Home\\TrendingCategoriesComponent',
   'frontend.instructors.course-landing-page' => 'App\\Http\\Livewire\\Frontend\\Instructors\\CourseLandingPage',
+  'frontend.instructors.course-pricing-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\CoursePricingComponent',
   'frontend.instructors.instructor-courses-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\InstructorCoursesComponent',
   'frontend.instructors.instructor-list-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\InstructorListComponent',
   'frontend.instructors.intended-learners-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\IntendedLearnersComponent',

@@ -370,3 +370,66 @@
 
     </div>
 </div>
+
+@section('script')
+    <!-- twitter-bootstrap-wizard js -->
+    <script src="{{ asset('frontend/assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/libs/twitter-bootstrap-wizard/prettify.js') }}"></script>
+    <!-- form wizard init -->
+    <script src="{{ asset('frontend/assets/js/form-wizard.init.js') }}"></script>
+
+
+
+    <!-- Responsive fileInput js start -->
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/plugins/piexif.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/plugins/sortable.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/bootstrap-fileinput/themes/fa5/theme.min.js') }}"></script>
+    <!-- Responsive fileInput js end -->
+
+
+
+
+    <script>
+        $(function() {
+
+            $("#course_images").fileinput({
+                theme: "fa5",
+                maxFileCount: 5,
+                allowedFileTypes: ['image'],
+                showCancel: true,
+                showRemove: false,
+                showUpload: false,
+                overwriteInitial: false,
+                initialPreview: [
+                    @if ($course->photos()->count() > 0)
+                        @foreach ($course->photos as $media)
+                            "{{ asset('assets/courses/' . $media->file_name) }}",
+                        @endforeach
+                    @endif
+                ],
+                initialPreviewAsData: true,
+                initialPreviewFileType: 'image',
+                initialPreviewConfig: [
+                    @if ($course->photos()->count() > 0)
+                        @foreach ($course->photos as $media)
+                            {
+                                caption: "{{ $media->file_name }}",
+                                size: '{{ $media->file_size }}',
+                                width: "120px",
+                                // url : الراوت المستخدم لحذف الصورة
+                                url: "{{ route('admin.courses.remove_image', ['image_id' => $media->id, 'course_id' => $course->id, '_token' => csrf_token()]) }}",
+                                key: {{ $media->id }}
+                            },
+                        @endforeach
+                    @endif
+
+                ]
+            }).on('filesorted', function(event, params) {
+                console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
+            });
+
+
+        });
+    </script>
+@endsection

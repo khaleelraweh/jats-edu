@@ -275,44 +275,44 @@
     <script>
         $(function() {
 
-            $("#course_images").fileinput({
-                theme: "fa5",
-                maxFileCount: 5,
-                allowedFileTypes: ['image'],
-                showCancel: true,
-                showRemove: false,
-                showUpload: false,
-                overwriteInitial: false,
-                // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
-                // delete images from photos and assets/products 
-                // because there are maybe more than one image we will go for each image and show them in the edit page 
-                initialPreview: [
-                    @if ($course->photos()->count() > 0)
-                        @foreach ($course->photos as $media)
-                            "{{ asset('assets/courses/' . $media->file_name) }}",
-                        @endforeach
-                    @endif
-                ],
-                initialPreviewAsData: true,
-                initialPreviewFileType: 'image',
-                initialPreviewConfig: [
-                    @if ($course->photos()->count() > 0)
-                        @foreach ($course->photos as $media)
-                            {
-                                caption: "{{ $media->file_name }}",
-                                size: '{{ $media->file_size }}',
-                                width: "120px",
-                                // url : الراوت المستخدم لحذف الصورة
-                                url: "{{ route('admin.courses.remove_image', ['image_id' => $media->id, 'course_id' => $course->id, '_token' => csrf_token()]) }}",
-                                key: {{ $media->id }}
-                            },
-                        @endforeach
-                    @endif
+            // $("#course_images").fileinput({
+            //     theme: "fa5",
+            //     maxFileCount: 5,
+            //     allowedFileTypes: ['image'],
+            //     showCancel: true,
+            //     showRemove: false,
+            //     showUpload: false,
+            //     overwriteInitial: false,
+            //     // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
+            //     // delete images from photos and assets/products 
+            //     // because there are maybe more than one image we will go for each image and show them in the edit page 
+            //     initialPreview: [
+            //         @if ($course->photos()->count() > 0)
+            //             @foreach ($course->photos as $media)
+            //                 "{{ asset('assets/courses/' . $media->file_name) }}",
+            //             @endforeach
+            //         @endif
+            //     ],
+            //     initialPreviewAsData: true,
+            //     initialPreviewFileType: 'image',
+            //     initialPreviewConfig: [
+            //         @if ($course->photos()->count() > 0)
+            //             @foreach ($course->photos as $media)
+            //                 {
+            //                     caption: "{{ $media->file_name }}",
+            //                     size: '{{ $media->file_size }}',
+            //                     width: "120px",
+            //                     // url : الراوت المستخدم لحذف الصورة
+            //                     url: "{{ route('admin.courses.remove_image', ['image_id' => $media->id, 'course_id' => $course->id, '_token' => csrf_token()]) }}",
+            //                     key: {{ $media->id }}
+            //                 },
+            //             @endforeach
+            //         @endif
 
-                ]
-            }).on('filesorted', function(event, params) {
-                console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
-            });
+            //     ]
+            // }).on('filesorted', function(event, params) {
+            //     console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
+            // });
 
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',

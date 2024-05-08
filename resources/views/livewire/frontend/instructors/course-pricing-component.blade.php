@@ -1,4 +1,4 @@
-<div>
+<div wire:ignore>
     <form wire:submit.prevent="save">
         {{-- course price  --}}
         <div class="row">
@@ -30,7 +30,7 @@
                 <label for="offer_ends" class="control-label"><span> {{ __('panel.offer_ends') }}
                     </span><span class="require red">*</span></label>
                 <div class="form-group">
-                    <input type="text" id="offer_ends" name="offer_ends" wire:model.defer="offer_ends"
+                    <input type="text" id="offer_ends" name="offer_ends" wire:model.prevent="offer_ends"
                         value="{{ old('offer_ends', $course->offer_ends) }}" class="form-control">
                     @error('offer_ends')
                         <span class="text-danger">{{ $message }}</span>

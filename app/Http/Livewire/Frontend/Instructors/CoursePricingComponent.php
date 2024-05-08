@@ -42,8 +42,6 @@ class CoursePricingComponent extends Component
             'offer_ends' => $this->offer_ends,
         ]);
 
-        // session()->flash('success', 'Course pricing information updated successfully.');
-
 
         // You can redirect to another page or emit an event if needed
     }

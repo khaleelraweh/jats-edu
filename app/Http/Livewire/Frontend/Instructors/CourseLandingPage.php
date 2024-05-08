@@ -104,6 +104,8 @@ class CourseLandingPage extends Component
             'deadline' => $this->deadline,
         ]);
 
+        $course->photos()->delete();
+
         // Handle image uploads
         if ($this->images && count($this->images) > 0) {
             $i = $course->photos->count() + 1;

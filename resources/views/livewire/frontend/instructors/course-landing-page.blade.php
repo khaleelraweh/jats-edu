@@ -144,20 +144,33 @@
                                 <div class="row">
                                     <div class="col-12 pt-4">
                                         <label for="images">{{ __('transf.Course Image') }}</label>
-                                        <input type="file" wire:model="images" id="images" class="form-control"
-                                            multiple>
-                                        @error('images')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+
+                                        @php
+                                            if ($course->firstMedia != null && $course->firstMedia->file_name != null) {
+                                                $course_img = asset('assets/courses/' . $course->firstMedia->file_name);
+
+                                                if (
+                                                    !file_exists(
+                                                        public_path('assets/courses/' . $course->firstMedia->file_name),
+                                                    )
+                                                ) {
+                                                    $course_img = asset('image/not_found/item_image_not_found.webp');
+                                                }
+                                            } else {
+                                                $course_img = asset('image/not_found/item_image_not_found.webp');
+                                            }
+                                        @endphp
+                                        <img src="{{ $course_img }}" style="display: block;width:100%;height:200px;"
+                                            alt="{{ $course->title }}">
+
                                     </div>
                                 </div>
 
-                                <!-- Display Current Image -->
-                                @if ($currentImage)
-                                    <div>
-                                        <img src="{{ asset($currentImage) }}" alt="Current Course Image">
-                                    </div>
-                                @endif
+                                {{-- {{ dd($course->photos()->first()->file_name) }} --}}
+
+
+
+
 
                             </div>
 
@@ -165,6 +178,11 @@
                                 <p>
                                     {{ __('transf.Course Image tip.') }}
                                 </p>
+                                <input type="file" wire:model="images" id="images" class="form-control" multiple
+                                    style="height: 39px !important;">
+                                @error('images')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
@@ -173,8 +191,9 @@
                         <div class="row pt-5">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="video_promo">{{ __('transf.Promotional video') }}</label>
-                                <input type="text" name="video_promo" wire:model.defer="video_promo" id="video_promo"
-                                    value="{{ old('video_promo', $course->video_promo) }}" class="form-control"
+                                <input type="text" name="video_promo" wire:model.defer="video_promo"
+                                    id="video_promo" value="{{ old('video_promo', $course->video_promo) }}"
+                                    class="form-control"
                                     placeholder="{{ __('transf.Insert the link to your YouTube promotional video.') }}">
                                 @error('video_promo')
                                     <span class="text-danger">{{ $message }}</span>

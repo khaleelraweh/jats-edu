@@ -55,7 +55,7 @@ class CourseLandingPage extends Component
     public function mount($courseId)
     {
         $this->courseId = $courseId;
-        $course = Course::findOrFail($this->courseId);
+        $course = Course::with('photos', 'firstMedia')->findOrFail($this->courseId);
         $this->title = $course->title;
         $this->subtitle = $course->subtitle;
         $this->description = $course->description;
@@ -70,13 +70,16 @@ class CourseLandingPage extends Component
         $this->deadline = $course->deadline ? $course->deadline->format('Y-m-d') : null;
 
         $this->images = $course->images;
+
+
+        $this->currentImage = $course->images;
     }
 
 
 
     public function render()
     {
-        $course = Course::where('id', $this->courseId)->first();
+        $course = Course::with('photos', 'firstMedia')->where('id', $this->courseId)->first();
         $course_categories = CourseCategory::whereStatus(1)->get(['id', 'title']);
 
         return view('livewire.frontend.instructors.course-landing-page', compact('course_categories', 'course'));
@@ -85,7 +88,7 @@ class CourseLandingPage extends Component
     public function updateCourse()
     {
         $this->validate();
-        $course = Course::findOrFail($this->courseId);
+        $course = Course::with('photos', 'firstMedia')->findOrFail($this->courseId);
         $course->update([
             'title' => $this->title,
             'subtitle' => $this->subtitle,
@@ -111,7 +114,7 @@ class CourseLandingPage extends Component
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/courses/' . $file_name);
-                $image->storeAs('public/courses', $file_name);
+                Image::make($image->getRealPath())->save($path);
 
                 // Create a new photo record in the database
                 $course->photos()->create([

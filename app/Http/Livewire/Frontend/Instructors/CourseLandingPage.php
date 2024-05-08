@@ -67,7 +67,7 @@ class CourseLandingPage extends Component
         $this->course_type = $course->course_type;
         $this->course_category_id = $course->course_category_id;
         $this->certificate = $course->certificate;
-        $this->deadline = $course->deadline ? $course->deadline->format('Y-m-d') : null;
+        // $this->deadline = $course->deadline ? $course->deadline->format('Y-m-d') : null;
 
         $this->images = $course->images;
 

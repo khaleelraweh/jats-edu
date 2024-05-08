@@ -325,7 +325,7 @@
 
                         </div>
 
-                        <div class="row d-none">
+                        {{-- <div class="row d-none">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <div class="form-group">
                                     <label for="deadline">{{ __('transf.deadline') }}</label>
@@ -337,7 +337,7 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
 

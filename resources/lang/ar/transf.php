@@ -512,6 +512,9 @@ return [
     'Update Data'                                       =>  'حفظ التغييرات',
 
 
+    // Pricing section 
+    'Pricing'                                           =>  'التسعير',
+
 
 
 

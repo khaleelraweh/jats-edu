@@ -507,6 +507,8 @@ return [
 
     'Update Data'                                       =>  'Update Data',
 
+    // Pricing section 
+    'Pricing'                                           =>  'Pricing',
 
 
 

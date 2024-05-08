@@ -11,17 +11,18 @@ use Livewire\WithFileUploads;
 
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class CourseLandingPage extends Component
 {
     use WithFileUploads;
+    use LivewireAlert;
 
     public $courseId;
     public $title;
     public $subtitle;
     public $description;
     // Add more properties for other fields
-    public $images;
     public $video_promo;
     public $language;
     public $skill_level;
@@ -29,6 +30,9 @@ class CourseLandingPage extends Component
     public $course_category_id;
     public $certificate;
     public $deadline;
+
+    public $images; // For image uploads
+    public $currentImage; // For displaying the current image
 
 
 
@@ -65,9 +69,10 @@ class CourseLandingPage extends Component
         $this->certificate = $course->certificate;
         $this->deadline = $course->deadline ? $course->deadline->format('Y-m-d') : null;
 
-        // Retrieve image URLs or paths
         $this->images = $course->images;
     }
+
+
 
     public function render()
     {
@@ -105,6 +110,8 @@ class CourseLandingPage extends Component
             'deadline' => $this->deadline,
         ]);
 
+
+
         // Handle image uploads
         if ($this->images && count($this->images) > 0) {
             $i = $course->photos->count() + 1;
@@ -131,40 +138,6 @@ class CourseLandingPage extends Component
         }
 
 
-        // Handle image uploads
-        foreach ($this->images as $key => $image) {
-            // Store the image in the storage
-            $path = $image->store('public/courses');
-
-            // Create a new photo record in the database
-            $course->photos()->create([
-                'file_name' => $image->hashName(),
-                'file_path' => $path,
-                // Add other attributes as needed
-            ]);
-        }
-
-        // $this->images = [];
-
-
-        session()->flash('message', 'Course updated successfully.');
-
-        // return redirect()->route('admin.courses.update', $course->id);
-    }
-
-    public function removeImage($imageId)
-    {
-        $photo = Photo::find($imageId);
-
-        if ($photo) {
-            // Delete the image record from the database
-            $photo->delete();
-
-            // Return a JSON response indicating success
-            return response()->json(['success' => true]);
-        }
-
-        // Return a JSON response indicating failure
-        return response()->json(['success' => false]);
+        $this->alert('success', __('transf.intended_learners') . ' ' . __('transf.completed_successfully!'));
     }
 }

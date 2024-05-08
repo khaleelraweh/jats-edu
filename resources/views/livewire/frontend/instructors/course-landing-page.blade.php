@@ -141,10 +141,9 @@
 
                         <div class="row">
 
-                            {{-- مرفق الصور  --}}
                             <div class="col-md-6 col-sm-12 ">
 
-                                <div class="row">
+                                {{-- <div class="row">
                                     <div class="row">
                                         <div class="col-12 pt-4">
                                             <label for="images">{{ __('panel.image') }}/
@@ -159,7 +158,24 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div> --}}
+
+                                <div class="col-12 pt-4">
+                                    <label for="images">{{ __('panel.image') }}/{{ __('panel.images') }}</label>
+                                    <input type="file" wire:model="images" id="images" class="form-control"
+                                        multiple>
+                                    @error('images')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
+
+
+                                <!-- Display Current Image -->
+                                @if ($currentImage)
+                                    <div>
+                                        <img src="{{ asset($currentImage) }}" alt="Current Course Image">
+                                    </div>
+                                @endif
 
                             </div>
 
@@ -175,9 +191,8 @@
                         <div class="row pt-5">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="video_promo">{{ __('transf.Promotional video') }}</label>
-                                <input type="text" name="video_promo" wire:model.defer="video_promo"
-                                    id="video_promo" value="{{ old('video_promo', $course->video_promo) }}"
-                                    class="form-control"
+                                <input type="text" name="video_promo" wire:model.defer="video_promo" id="video_promo"
+                                    value="{{ old('video_promo', $course->video_promo) }}" class="form-control"
                                     placeholder="{{ __('transf.Insert the link to your YouTube promotional video.') }}">
                                 @error('video_promo')
                                     <span class="text-danger">{{ $message }}</span>

@@ -166,12 +166,6 @@
                                     </div>
                                 </div>
 
-                                {{-- {{ dd($course->photos()->first()->file_name) }} --}}
-
-
-
-
-
                             </div>
 
                             <div class="col-md-6 col-sm-12 pt-5">
@@ -188,8 +182,8 @@
 
 
                         {{-- video promo and description  --}}
-                        <div class="row pt-5">
-                            <div class="col-sm-12 col-md-6 pt-3">
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-6 pt-4">
                                 <label for="video_promo">{{ __('transf.Promotional video') }}</label>
                                 <input type="text" name="video_promo" wire:model.defer="video_promo"
                                     id="video_promo" value="{{ old('video_promo', $course->video_promo) }}"
@@ -200,7 +194,7 @@
                                 @enderror
 
                             </div>
-                            <div class="col-sm-12 col-md-6 pt-3">
+                            <div class="col-sm-12 col-md-6 pt-4">
                                 {{ __('transf.Promotional video tip.') }}
                             </div>
 

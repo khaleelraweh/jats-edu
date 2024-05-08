@@ -33,7 +33,6 @@ class CoursePricingComponent extends Component
     public function save()
     {
 
-        dd($this->offer_ends);
         $this->validate();
 
         $course = Course::findOrFail($this->courseId);

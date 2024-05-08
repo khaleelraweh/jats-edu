@@ -309,6 +309,7 @@
 
             $('#offer_ends').pickadate({
                 format: 'yyyy-mm-dd',
+                min: new Date(),
                 selectMonths: true, // Creates a dropdown to control month
                 selectYears: true, // creates a dropdown to control years
                 clear: 'Clear',
@@ -316,26 +317,14 @@
                 colseOnSelect: true // Close Upon Selecting a date
             });
 
-            var startdate = $('#offer_ends').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #publish_date elemet
-
-            // when change date 
+            var publishedOn = $('#offer_ends').pickadate(
+                'picker'); // set startdate in the picker to the start date in the #start_date elemet
             $('#offer_ends').change(function() {
                 selected_ci_date = "";
-                selected_ci_date = $('#publish_date')
-                    .val(); // make selected start date in picker = publish_date value
-                if (selected_ci_date != null) {
-                    var cidate = new Date(
-                        selected_ci_date
-                    ); // make cidate(start date ) = current date you selected in selected ci date (selected start date )
-                    min_codate = "";
-                    min_codate = new Date();
-                    min_codate.setDate(cidate.getDate() +
-                        1); // minimum selected date to be expired shoud be current date plus one 
-                    enddate.set('min', min_codate);
-                }
+                selected_ci_date = now() // make selected start date in picker = start_date value  
 
             });
+
 
             $('.summernote').summernote({
                 tabSize: 2,

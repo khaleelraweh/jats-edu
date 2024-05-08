@@ -31,8 +31,9 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form id="my_form_id" action="{{ route('admin.courses.update', $course->id) }}" method="post"
-                enctype="multipart/form-data">
+            {{-- <form id="my_form_id" action="{{ route('admin.courses.update', $course->id) }}" method="post"
+                enctype="multipart/form-data"> --}}
+            <form wire:submit.prevent="updateCourse" id="my_form_id">
                 @csrf
                 @method('PATCH')
 
@@ -74,7 +75,7 @@
                                             <label for="title">
                                                 {{ __('transf.course_title') }}
                                             </label>
-                                            <input type="text" name="title" id="title"
+                                            <input type="text" name="title" id="title" wire:model.defer="title"
                                                 value="{{ old('title', $course->title) }}" class="form-control"
                                                 placeholder="{{ __('transf.Insert your course title.') }}"
                                                 style="height: 45px;">
@@ -99,6 +100,7 @@
 
                                             </label>
                                             <input type="text" name="subtitle" id="subtitle"
+                                                wire:model.defer="subtitle"
                                                 value="{{ old('subtitle', $course->subtitle) }}" class="form-control"
                                                 placeholder="{{ __('transf.Insert your course subtitle.') }}"
                                                 style="height: 45px;">
@@ -120,7 +122,7 @@
                                         <label for="description">
                                             {{ __('transf.Course description') }}
                                         </label>
-                                        <textarea name="description" rows="10" class="form-control summernote"
+                                        <textarea name="description" rows="10" class="form-control summernote" wire:model.defer="description"
                                             placeholder="{{ __('transf.Insert your course description.') }}">{!! old('description', $course->description) !!}</textarea>
                                         <span class="text-muted d-inline-block mt-1">
                                             <small>
@@ -171,7 +173,7 @@
                         <div class="row pt-5">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="video_promo">{{ __('transf.Promotional video') }}</label>
-                                <input type="text" name="video_promo" id="video_promo"
+                                <input type="text" name="video_promo" wire:model.defer="video_promo" id="video_promo"
                                     value="{{ old('video_promo', $course->video_promo) }}" class="form-control"
                                     placeholder="{{ __('transf.Insert the link to your YouTube promotional video.') }}">
                                 @error('video_promo')
@@ -195,13 +197,13 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="language">{{ __('transf.Course Language') }}</label>
-                                <select name="language" class="form-control">
+                                <select name="language" wire:model.defer="language" class="form-control">
                                     <option value="1"
-                                        {{ old('language', $course->language) == '1' ? 'selected' : null }}>
+                                        {{ old($language, $course->language) == '1' ? 'selected' : null }}>
                                         {{ __('panel.language_ar') }}
                                     </option>
                                     <option value="2"
-                                        {{ old('language', $course->language) == '2' ? 'selected' : null }}>
+                                        {{ old($language, $course->language) == '2' ? 'selected' : null }}>
                                         {{ __('panel.language_en') }}
                                     </option>
 
@@ -214,22 +216,22 @@
 
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="skill_level">{{ __('transf.Course Level') }}</label>
-                                <select name="skill_level" class="form-control">
+                                <select name="skill_level" wire:model.defer="skill_level" class="form-control">
                                     <option value=""> -- {{ __('transf.Select Level') }} --
                                     <option value="1"
-                                        {{ old('skill_level', $course->skill_level) == '1' ? 'selected' : null }}>
+                                        {{ old($skill_level, $course->skill_level) == '1' ? 'selected' : null }}>
                                         {{ __('panel.skill_level_beginner') }}
                                     </option>
                                     <option value="2"
-                                        {{ old('skill_level', $course->skill_level) == '2' ? 'selected' : null }}>
+                                        {{ old($skill_level, $course->skill_level) == '2' ? 'selected' : null }}>
                                         {{ __('panel.skill_level_intermediate') }}
                                     </option>
                                     <option value="3"
-                                        {{ old('skill_level', $course->skill_level) == '3' ? 'selected' : null }}>
+                                        {{ old($skill_level, $course->skill_level) == '3' ? 'selected' : null }}>
                                         {{ __('panel.skill_level_advance') }}
                                     </option>
                                     <option value="4"
-                                        {{ old('skill_level', $course->skill_level) == '4' ? 'selected' : null }}>
+                                        {{ old($skill_level, $course->skill_level) == '4' ? 'selected' : null }}>
                                         {{ __('panel.skill_level_advance') }}
                                     </option>
                                 </select>
@@ -247,13 +249,13 @@
 
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="course_type">{{ __('transf.Course type') }}</label>
-                                <select name="course_type" class="form-control">
+                                <select name="course_type" wire:model.defer="course_type" class="form-control">
                                     <option value="1"
-                                        {{ old('course_type', $course->course_type) == '1' ? 'selected' : null }}>
+                                        {{ old($course_type, $course->course_type) == '1' ? 'selected' : null }}>
                                         {{ __('transf.Course presence') }}
                                     </option>
                                     <option value="2"
-                                        {{ old('course_type', $course->course_type) == '2' ? 'selected' : null }}>
+                                        {{ old($course_type, $course->course_type) == '2' ? 'selected' : null }}>
                                         {{ __('transf.Course enrolled') }}
                                     </option>
 
@@ -266,7 +268,8 @@
 
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="category_id"> {{ __('transf.course_category_title') }}</label>
-                                <select name="course_category_id" class="form-control" style="height: 45px;">
+                                <select name="course_category_id" wire:model="course_category_id"
+                                    class="form-control" style="height: 45px;">
                                     <option value=""> -- {{ __('transf.Select Category') }} --
                                     </option>
                                     @forelse ($course_categories as $course_category)
@@ -276,6 +279,8 @@
                                     @empty
                                     @endforelse
                                 </select>
+
+
                             </div>
 
 
@@ -287,17 +292,17 @@
 
 
                         {{-- course deadline and certificate --}}
-                        <div class="row deadline">
+                        <div class="row ">
 
-                            <div class="col-sm-12 col-md-12 pt-3">
+                            {{-- <div class="col-sm-12 col-md-12 pt-3">
                                 <label for="certificate">{{ __('panel.certificate') }}</label>
-                                <select name="certificate" class="form-control">
+                                <select name="certificate"  wire:model.defer="certificate" class="form-control">
                                     <option value="1"
-                                        {{ old('certificate', $course->certificate) == '1' ? 'selected' : null }}>
+                                        {{ old($certificate, $course->certificate) == '1' ? 'selected' : null }}>
                                         {{ __('panel.certificate_yes') }}
                                     </option>
                                     <option value="2"
-                                        {{ old('certificate', $course->certificate) == '0' ? 'selected' : null }}>
+                                        {{ old($certificate, $course->certificate) == '0' ? 'selected' : null }}>
                                         {{ __('panel.certificate_no') }}
                                     </option>
 
@@ -309,8 +314,23 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
 
-                            </div>
+                            </div> --}}
 
+                            <div class="col-sm-12 col-md-12 pt-3">
+
+                                <div class="form-group">
+                                    <label for="certificate">{{ __('panel.certificate') }}</label>
+                                    <input style="width: 100%" type="checkbox" wire:model.defer="certificate"
+                                        id="certificate" class="form-check-input">
+                                    <span class="text-muted d-inline-block mt-1">
+                                        <small>{{ __('transf.certificate_tip') }}</small>
+                                    </span>
+                                    @error('certificate')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                            </div>
 
                         </div>
 
@@ -318,7 +338,7 @@
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <div class="form-group">
                                     <label for="deadline">{{ __('panel.deadline') }}</label>
-                                    <input type="text" id="deadline" name="deadline"
+                                    <input type="text" id="deadline" name="deadline" wire:model.defer="deadline"
                                         value="{{ old('deadline', \Carbon\Carbon::parse($course->deadline)->Format('Y-m-d')) }}"
                                         class="form-control">
                                     @error('deadline')

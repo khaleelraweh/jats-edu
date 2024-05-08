@@ -41,42 +41,59 @@
     {{-- my custom css --}}
     <link rel="stylesheet" href="{{ asset('backend/css/custom.css') }}">
 
+
     <style>
-        #basic-pills-wizard {
-            display: flex;
-        }
-
-        .twitter-bs-wizard-nav {
-            display: flex;
-            flex-direction: column;
-            min-width: 20%;
-        }
-
-        .tab-content.twitter-bs-wizard-tab-content {
-            flex: 1;
-            padding: 10px;
-        }
-
-        .twitter-bs-wizard .twitter-bs-wizard-nav::before {
-            width: 0 !important;
-        }
-
-        .nav-item {
-            text-align: start !important;
-            flex-grow: 0 !important;
-        }
-
-        .step-title {
-            display: inline !important;
-        }
-
-        .note-editor.note-frame.card {
-            margin-bottom: 0 !important;
-        }
-
         input,
         select {
             height: 45px !important;
+        }
+
+        /* Styles for small devices (up to 768px) */
+        @media screen and (max-width: 768px) {
+            .nav-item {
+                width: 20px !important;
+            }
+        }
+
+
+        /* Styles for medium devices (between 768px and 992px) */
+        @media screen and (min-width: 768px) and (max-width: 992px) {}
+
+        /* Styles for large devices (above 992px) */
+        @media screen and (min-width: 992px) {
+            #basic-pills-wizard {
+                display: flex;
+            }
+
+            .twitter-bs-wizard-nav {
+                display: flex;
+                flex-direction: column;
+                min-width: 20%;
+            }
+
+            .tab-content.twitter-bs-wizard-tab-content {
+                flex: 1;
+                padding: 10px;
+            }
+
+            .twitter-bs-wizard .twitter-bs-wizard-nav::before {
+                width: 0 !important;
+            }
+
+            .nav-item {
+                text-align: start !important;
+                flex-grow: 0 !important;
+            }
+
+            .step-title {
+                display: inline !important;
+            }
+
+            .note-editor.note-frame.card {
+                margin-bottom: 0 !important;
+            }
+
+
         }
     </style>
 @endsection
@@ -92,7 +109,7 @@
 
                         <div id="basic-pills-wizard" class="twitter-bs-wizard">
                             <ul class="twitter-bs-wizard-nav">
-                                <h6><strong>{{ __('transf.plan_your_course') }}</strong></h6>
+                                {{-- <h6><strong>{{ __('transf.plan_your_course') }}</strong></h6> --}}
                                 <li class="nav-item">
                                     <a href="#seller-details" class="nav-link" data-toggle="tab">
                                         <span class="step-number">01</span>

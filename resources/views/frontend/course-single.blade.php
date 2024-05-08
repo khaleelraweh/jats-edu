@@ -151,8 +151,8 @@
 
                         <h3 class="mb-5">{{ __('transf.txt_what_you_will_learn') }}</h3>
                         <div class="row row-cols-lg-2 mb-8 list-style-v1 list-unstyled ">
-                            @foreach ($course->topics as $topic)
-                                <li class="col-sm-6">{{ $topic->title }}</li>
+                            @foreach ($course->objectives as $objective)
+                                <li class="col-sm-6">{{ $objective->title }}</li>
                             @endforeach
                         </div>
 

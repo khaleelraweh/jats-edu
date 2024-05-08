@@ -30,9 +30,7 @@
                 </div>
             @endif
 
-            {{-- enctype used cause we will save images  --}}
-            {{-- <form id="my_form_id" action="{{ route('admin.courses.update', $course->id) }}" method="post"
-                enctype="multipart/form-data"> --}}
+
             <form wire:submit.prevent="updateCourse" id="my_form_id" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
@@ -143,32 +141,16 @@
 
                             <div class="col-md-6 col-sm-12 ">
 
-                                {{-- <div class="row">
-                                    <div class="row">
-                                        <div class="col-12 pt-4">
-                                            <label for="images">{{ __('panel.image') }}/
-                                                {{ __('panel.images') }}</label>
-                                            <br>
-                                            <div class="file-loading">
-                                                <input type="file" name="images[]" id="course_images"
-                                                    class="file-input-overview" multiple="multiple">
-                                                @error('images')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-12 pt-4">
+                                        <label for="images">{{ __('panel.image') }}/{{ __('panel.images') }}</label>
+                                        <input type="file" wire:model="images" id="images" class="form-control"
+                                            multiple>
+                                        @error('images')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
-                                </div> --}}
-
-                                <div class="col-12 pt-4">
-                                    <label for="images">{{ __('panel.image') }}/{{ __('panel.images') }}</label>
-                                    <input type="file" wire:model="images" id="images" class="form-control"
-                                        multiple>
-                                    @error('images')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
                                 </div>
-
 
                                 <!-- Display Current Image -->
                                 @if ($currentImage)
@@ -286,7 +268,7 @@
 
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="category_id"> {{ __('transf.course_category_title') }}</label>
-                                <select name="course_category_id" wire:model="course_category_id"
+                                <select name="course_category_id" wire:model.defer="course_category_id"
                                     class="form-control" style="height: 45px;">
                                     <option value=""> -- {{ __('transf.Select Category') }} --
                                     </option>
@@ -385,66 +367,3 @@
 
     </div>
 </div>
-
-@section('script')
-    <!-- twitter-bootstrap-wizard js -->
-    <script src="{{ asset('frontend/assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/libs/twitter-bootstrap-wizard/prettify.js') }}"></script>
-    <!-- form wizard init -->
-    <script src="{{ asset('frontend/assets/js/form-wizard.init.js') }}"></script>
-
-
-
-    <!-- Responsive fileInput js start -->
-    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/plugins/piexif.min.js') }}"></script>
-    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/plugins/sortable.min.js') }}"></script>
-    <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
-    <script src="{{ asset('backend/vendor/bootstrap-fileinput/themes/fa5/theme.min.js') }}"></script>
-    <!-- Responsive fileInput js end -->
-
-
-
-
-    <script>
-        $(function() {
-
-            $("#course_images").fileinput({
-                theme: "fa5",
-                maxFileCount: 5,
-                allowedFileTypes: ['image'],
-                showCancel: true,
-                showRemove: false,
-                showUpload: false,
-                overwriteInitial: false,
-                initialPreview: [
-                    @if ($course->photos()->count() > 0)
-                        @foreach ($course->photos as $media)
-                            "{{ asset('assets/courses/' . $media->file_name) }}",
-                        @endforeach
-                    @endif
-                ],
-                initialPreviewAsData: true,
-                initialPreviewFileType: 'image',
-                initialPreviewConfig: [
-                    @if ($course->photos()->count() > 0)
-                        @foreach ($course->photos as $media)
-                            {
-                                caption: "{{ $media->file_name }}",
-                                size: '{{ $media->file_size }}',
-                                width: "120px",
-                                // url : الراوت المستخدم لحذف الصورة
-                                url: "{{ route('admin.courses.remove_image', ['image_id' => $media->id, 'course_id' => $course->id, '_token' => csrf_token()]) }}",
-                                key: {{ $media->id }}
-                            },
-                        @endforeach
-                    @endif
-
-                ]
-            }).on('filesorted', function(event, params) {
-                console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
-            });
-
-
-        });
-    </script>
-@endsection

@@ -4,11 +4,18 @@ namespace App\Http\Livewire\Frontend\Instructors;
 
 use App\Models\Course;
 use App\Models\CourseCategory;
+use App\Models\Photo;
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class CourseLandingPage extends Component
 {
+    use WithFileUploads;
+
     public $courseId;
     public $title;
     public $subtitle;
@@ -31,7 +38,7 @@ class CourseLandingPage extends Component
         'title' => 'required|string|max:255',
         'subtitle' => 'required|string|max:255',
         'description' => 'required|string',
-        'images.*' => 'nullable|image|max:2048', // Example validation for images (nullable and max size 2MB)
+        'images.*' => 'nullable|image|max:2048', // Validation rule for images (nullable and max size 2MB)
         'video_promo' => 'nullable|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
         'language' => 'required|in:1,2', // Example validation for language (required and should be one of the given values)
         'skill_level' => 'required|in:1,2,3,4', // Example validation for skill_level (required and should be one of the given values)
@@ -98,8 +105,66 @@ class CourseLandingPage extends Component
             'deadline' => $this->deadline,
         ]);
 
+        // Handle image uploads
+        if ($this->images && count($this->images) > 0) {
+            $i = $course->photos->count() + 1;
+
+            foreach ($this->images as $image) {
+                // Save the image to the storage
+                $file_name = $course->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_size = $image->getSize();
+                $file_type = $image->getMimeType();
+                $path = public_path('assets/courses/' . $file_name);
+                $image->storeAs('public/courses', $file_name);
+
+                // Create a new photo record in the database
+                $course->photos()->create([
+                    'file_name' => $file_name,
+                    'file_size' => $file_size,
+                    'file_type' => $file_type,
+                    'file_status' => 'true',
+                    'file_sort' => $i,
+                ]);
+
+                $i++;
+            }
+        }
+
+
+        // Handle image uploads
+        foreach ($this->images as $key => $image) {
+            // Store the image in the storage
+            $path = $image->store('public/courses');
+
+            // Create a new photo record in the database
+            $course->photos()->create([
+                'file_name' => $image->hashName(),
+                'file_path' => $path,
+                // Add other attributes as needed
+            ]);
+        }
+
+        // $this->images = [];
+
+
         session()->flash('message', 'Course updated successfully.');
 
         // return redirect()->route('admin.courses.update', $course->id);
+    }
+
+    public function removeImage($imageId)
+    {
+        $photo = Photo::find($imageId);
+
+        if ($photo) {
+            // Delete the image record from the database
+            $photo->delete();
+
+            // Return a JSON response indicating success
+            return response()->json(['success' => true]);
+        }
+
+        // Return a JSON response indicating failure
+        return response()->json(['success' => false]);
     }
 }

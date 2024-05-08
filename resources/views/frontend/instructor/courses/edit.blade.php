@@ -274,6 +274,7 @@
 
     <script>
         $(function() {
+
             $("#course_images").fileinput({
                 theme: "fa5",
                 maxFileCount: 5,
@@ -282,6 +283,9 @@
                 showRemove: false,
                 showUpload: false,
                 overwriteInitial: false,
+                // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
+                // delete images from photos and assets/products 
+                // because there are maybe more than one image we will go for each image and show them in the edit page 
                 initialPreview: [
                     @if ($course->photos()->count() > 0)
                         @foreach ($course->photos as $media)

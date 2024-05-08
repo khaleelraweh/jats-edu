@@ -33,7 +33,7 @@
             {{-- enctype used cause we will save images  --}}
             {{-- <form id="my_form_id" action="{{ route('admin.courses.update', $course->id) }}" method="post"
                 enctype="multipart/form-data"> --}}
-            <form wire:submit.prevent="updateCourse" id="my_form_id">
+            <form wire:submit.prevent="updateCourse" id="my_form_id" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -145,16 +145,18 @@
                             <div class="col-md-6 col-sm-12 ">
 
                                 <div class="row">
-                                    <div class="col-12 pt-4">
-                                        <label for="images">{{ __('panel.image') }}/
-                                            {{ __('panel.images') }}</label>
-                                        <br>
-                                        <div class="file-loading">
-                                            <input type="file" name="images[]" id="course_images"
-                                                class="file-input-overview" multiple="multiple">
-                                            @error('images')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+                                    <div class="row">
+                                        <div class="col-12 pt-4">
+                                            <label for="images">{{ __('panel.image') }}/
+                                                {{ __('panel.images') }}</label>
+                                            <br>
+                                            <div class="file-loading">
+                                                <input type="file" name="images[]" id="course_images"
+                                                    class="file-input-overview" multiple="multiple">
+                                                @error('images')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -173,8 +175,9 @@
                         <div class="row pt-5">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="video_promo">{{ __('transf.Promotional video') }}</label>
-                                <input type="text" name="video_promo" wire:model.defer="video_promo" id="video_promo"
-                                    value="{{ old('video_promo', $course->video_promo) }}" class="form-control"
+                                <input type="text" name="video_promo" wire:model.defer="video_promo"
+                                    id="video_promo" value="{{ old('video_promo', $course->video_promo) }}"
+                                    class="form-control"
                                     placeholder="{{ __('transf.Insert the link to your YouTube promotional video.') }}">
                                 @error('video_promo')
                                     <span class="text-danger">{{ $message }}</span>

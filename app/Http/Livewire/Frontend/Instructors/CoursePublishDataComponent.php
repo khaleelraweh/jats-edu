@@ -22,8 +22,9 @@ class CoursePublishDataComponent extends Component
 
     public function save()
     {
-
+        // dd($this->status);
         $course = Course::findOrFail($this->courseId);
+
 
         $published = $this->published_on . ' ' . $this->published_on_time;
         $published = new DateTimeImmutable($published);

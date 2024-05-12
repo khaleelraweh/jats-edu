@@ -9,7 +9,7 @@
                     <span class="require red">*</span>
                 </label>
                 <div class="form-group">
-                    <input type="text" name="published_on" class="form-control flatpickr"
+                    <input type="text" name="published_on" class="form-control flatpickr_publihsed_on"
                         wire:model.defer="published_on">
                     @error('published_on')
                         <span class="text-danger">{{ $message }}</span>
@@ -44,11 +44,15 @@
 </div>
 
 
-@push('scripts')
+@push('script')
     <script>
         document.addEventListener('livewire:load', function() {
             flatpickr('.flatpickr', {
-                dateFormat: 'Y-m-d',
+                enableTime: true, // Enable time selection
+                dateFormat: 'Y-m-d H:i k', // Date and time format
+                // Other Flatpickr options...
+            }).on('change', function(selectedDates, dateStr, instance) {
+                @this.set('date', dateStr); // Update Livewire component's date property
             });
         });
     </script>

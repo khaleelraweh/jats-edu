@@ -259,7 +259,15 @@
         $(function() {
 
             // for offer ends
-            flatpickr('.flatpickr', {});
+            flatpickr('.flatpickr', {
+
+            });
+
+            // for offer ends
+            flatpickr('.flatpickr_publihsed_on', {
+                enableTime: true,
+                dateFormat: 'Y-m-d H:i K', // Date and time format
+            });
 
 
             $('.summernote').summernote({

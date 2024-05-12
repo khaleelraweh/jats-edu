@@ -308,26 +308,9 @@
 
             });
 
-            $('#offer_ends').pickadate({
-                format: 'yyyy-mm-dd',
-                min: new Date(),
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
-                clear: 'Clear',
-                close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
-            });
 
-            var publishedOn = $('#offer_ends').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
-            $('#offer_ends').change(function() {
-                selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
-
-            });
-
+            // for offer ends
             flatpickr('.flatpickr', {});
-
 
 
             $('.summernote').summernote({

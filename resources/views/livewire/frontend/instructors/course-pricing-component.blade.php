@@ -31,8 +31,7 @@
                     <span class="require red">*</span>
                 </label>
                 <div class="form-group">
-                    <input type="text" id="offer_ends1" name="offer_ends" class="form-control flatpickr"
-                        wire:model="offer_ends">
+                    <input type="text" name="offer_ends" class="form-control flatpickr" wire:model="offer_ends">
                     @error('offer_ends')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror

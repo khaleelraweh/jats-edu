@@ -6,6 +6,9 @@ use App\Models\Course;
 use Illuminate\Support\Carbon;
 use Livewire\Component;
 
+
+
+
 class CoursePricingComponent extends Component
 {
     public $courseId;

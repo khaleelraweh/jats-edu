@@ -8,46 +8,41 @@ use Livewire\Component;
 
 class CoursePublishDataComponent extends Component
 {
+
     public $courseId;
-    public $published_on;
-    public $published_on_time;
     public $status;
+    public $published_on;
+
+    public $date;
+
+    protected $rules = [
+        'status' => ['required', 'numeric', 'min:0'],
+    ];
+
+
 
     public function mount($courseId)
     {
         $this->courseId = $courseId;
         $course = Course::findOrFail($this->courseId);
-
-        // Ensure $course->published_on is not null before formatting
-        // if ($course->published_on) {
-        //     $this->published_on = $course->published_on->format('Y-m-d');
-        //     $this->published_on_time = $course->published_on->format('H:i');
-        // }
+        $this->status = $course->status;
+        $this->published_on = $course->published_on;
     }
+
 
     public function save()
     {
-        $this->validate([
-            'published_on' => 'required|date',
-            'published_on_time' => 'required|date_format:H:i',
-        ]);
+        // dd($this->published_on);
+        $this->validate();
 
         $course = Course::findOrFail($this->courseId);
+        $course->update([
+            'status' => $this->status,
+            'published_on' => $this->published_on,
+        ]);
 
-        $published = $this->published_on . ' ' . $this->published_on_time;
-        $published = new DateTimeImmutable($published);
 
-        try {
-            $course->update([
-                'published_on' => $published,
-                'status' => 1
-            ]);
-
-            session()->flash('message', 'Course published successfully!');
-        } catch (\Exception $e) {
-            session()->flash('error', 'Failed to publish course.');
-            // You may log the error for debugging purposes
-        }
+        // You can redirect to another page or emit an event if needed
     }
 
     public function render()

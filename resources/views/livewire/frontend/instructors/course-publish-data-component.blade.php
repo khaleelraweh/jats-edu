@@ -1,12 +1,16 @@
-<div>
+<div wire:ignore>
     <form wire:submit.prevent="save">
-        {{-- published_on and published_on_time  --}}
+        {{-- published_on --}}
+
         <div class="row">
-            <div class="col-sm-12 col-md-12 pt-4">
+            <div class="col-md-12 com-sm-12 pt-4">
+                <label for="published_on" class="control-label">
+                    <span>{{ __('panel.published_date') }}</span>
+                    <span class="require red">*</span>
+                </label>
                 <div class="form-group">
-                    <label for="published_on"> {{ __('panel.published_date') }}</label>
-                    <input type="text" id="published_on" name="published_on" wire:model="published_on"
-                        class="form-control">
+                    <input type="text" name="published_on" class="form-control flatpickr"
+                        wire:model.defer="published_on">
                     @error('published_on')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -14,25 +18,14 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-sm-12 col-md-12 pt-4">
-                <div class="form-group">
-                    <label for="published_on_time">{{ __('panel.published_time') }}</label>
-                    <input type="text" id="published_on_time" name="published_on_time" wire:model="published_on_time"
-                        class="form-control">
-                    @error('published_on_time')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-        </div>
+
 
         <div class="row">
-            <div class="col-md-12 col-sm-12 pt-3">
+            <div class="col-md-12 col-sm-12 pt-3" wire.ignore>
                 <label for="status" class="control-label col-md-2 col-sm-12 ">
                     <span>{{ __('panel.status') }}</span>
                 </label>
-                <select name="status" class="form-control" wire:model="status">
+                <select name="status" class="form-control" wire:model.defer="status">
                     <option value="1">{{ __('panel.status_active') }}</option>
                     <option value="0">{{ __('panel.status_inactive') }}</option>
                 </select>
@@ -49,3 +42,14 @@
         </div>
     </form>
 </div>
+
+
+@push('scripts')
+    <script>
+        document.addEventListener('livewire:load', function() {
+            flatpickr('.flatpickr', {
+                dateFormat: 'Y-m-d',
+            });
+        });
+    </script>
+@endpush

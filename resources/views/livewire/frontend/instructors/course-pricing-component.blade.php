@@ -29,8 +29,8 @@
             <div class="col-md-12 com-sm-12 pt-4">
                 <label for="offer_ends" class="control-label"><span> {{ __('panel.offer_ends') }}
                     </span><span class="require red">*</span></label>
-                <div class="form-group">
-                    <input type="text" id="offer_ends" name="offer_ends" wire:model="offer_ends"
+                <div class="form-group" wire:ignore>
+                    <input type="text" id="offer_ends" name="offer_ends" wire:model.defer="offer_ends"
                         value="{{ old('offer_ends', $course->offer_ends) }}" class="form-control">
                     @error('offer_ends')
                         <span class="text-danger">{{ $message }}</span>

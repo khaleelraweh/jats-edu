@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Frontend\Instructors;
 
 use App\Models\Course;
+use Illuminate\Support\Carbon;
 use Livewire\Component;
 
 class CoursePricingComponent extends Component
@@ -32,7 +33,7 @@ class CoursePricingComponent extends Component
 
     public function save()
     {
-
+        dd($this->offer_ends);
         $this->validate();
 
         $course = Course::findOrFail($this->courseId);

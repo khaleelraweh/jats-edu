@@ -13,29 +13,41 @@ class CoursePublishDataComponent extends Component
     public $published_on_time;
     public $status;
 
-
     public function mount($courseId)
     {
         $this->courseId = $courseId;
         $course = Course::findOrFail($this->courseId);
+
+        // Ensure $course->published_on is not null before formatting
+        // if ($course->published_on) {
+        //     $this->published_on = $course->published_on->format('Y-m-d');
+        //     $this->published_on_time = $course->published_on->format('H:i');
+        // }
     }
 
     public function save()
     {
-        // dd($this->status);
-        $course = Course::findOrFail($this->courseId);
+        $this->validate([
+            'published_on' => 'required|date',
+            'published_on_time' => 'required|date_format:H:i',
+        ]);
 
+        $course = Course::findOrFail($this->courseId);
 
         $published = $this->published_on . ' ' . $this->published_on_time;
         $published = new DateTimeImmutable($published);
 
-        $course->update([
-            'published_on' => $published,
-            'status' => $this->status
-        ]);
+        try {
+            $course->update([
+                'published_on' => $published,
+                'status' => 1
+            ]);
 
-
-        // You can redirect to another page or emit an event if needed
+            session()->flash('message', 'Course published successfully!');
+        } catch (\Exception $e) {
+            session()->flash('error', 'Failed to publish course.');
+            // You may log the error for debugging purposes
+        }
     }
 
     public function render()

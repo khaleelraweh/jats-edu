@@ -255,6 +255,8 @@
     </script>
 
 
+
+
     <script>
         $(function() {
 
@@ -266,7 +268,9 @@
             // for offer ends
             flatpickr('.flatpickr_publihsed_on', {
                 enableTime: true,
-                dateFormat: 'Y-m-d H:i K', // Date and time format
+                dateFormat: "Y-m-d H:i K",
+                minDate: "today"
+
             });
 
 

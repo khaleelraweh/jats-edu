@@ -1,4 +1,4 @@
-<div wire:ignore>
+<div>
     <form wire:submit.prevent="save">
         {{-- published_on --}}
 
@@ -10,7 +10,7 @@
                 </label>
                 <div class="form-group">
                     <input type="text" name="published_on" class="form-control flatpickr_publihsed_on"
-                        wire:model.defer="published_on">
+                        wire:model="published_on">
                     @error('published_on')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -43,16 +43,16 @@
     </form>
 </div>
 
-
-@push('script')
+@push('scripts')
     <script>
         document.addEventListener('livewire:load', function() {
-            flatpickr('.flatpickr', {
-                enableTime: true, // Enable time selection
-                dateFormat: 'Y-m-d H:i k', // Date and time format
-                // Other Flatpickr options...
-            }).on('change', function(selectedDates, dateStr, instance) {
-                @this.set('date', dateStr); // Update Livewire component's date property
+            flatpickr('.flatpickr_publihsed_on', {
+                enableTime: true,
+                dateFormat: 'Y-m-d H:i', // Date and time format
+                onChange: function(selectedDates, dateStr, instance) {
+                    @this.set('published_on',
+                        dateStr); // Update Livewire component's published_on property
+                }
             });
         });
     </script>

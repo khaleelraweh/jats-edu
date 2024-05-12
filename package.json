@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "@furcan/iconpicker": "^1.5.0",
-        "alpinejs": "^3.13.3"
+        "alpinejs": "^3.13.3",
+        "flatpickr": "^4.6.13"
     }
 }

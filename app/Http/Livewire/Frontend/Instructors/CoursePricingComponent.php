@@ -13,6 +13,8 @@ class CoursePricingComponent extends Component
     public $offer_price;
     public $offer_ends;
 
+    public $date;
+
     protected $rules = [
         'price' => ['required', 'numeric', 'min:0'],
         'offer_price' => ['nullable', 'numeric', 'min:0'],
@@ -33,7 +35,7 @@ class CoursePricingComponent extends Component
 
     public function save()
     {
-        dd($this->offer_ends);
+        // dd($this->offer_ends);
         $this->validate();
 
         $course = Course::findOrFail($this->courseId);

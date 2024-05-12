@@ -42,6 +42,10 @@
     <link rel="stylesheet" href="{{ asset('backend/css/custom.css') }}">
 
 
+    {{-- flat picker --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+
     <style>
         input,
         select {
@@ -241,6 +245,10 @@
     {{-- Calling fontawesome icon picker   --}}
     <script src="{{ asset('backend/vendor/fontawesomepicker/js/fontawesome-iconpicker.js') }}"></script>
 
+
+    {{-- flat picker date --}}
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <script>
         $(document).ready(function() {
             $('.select2').select2();
@@ -315,6 +323,9 @@
                 selected_ci_date = now() // make selected start date in picker = start_date value  
 
             });
+
+            flatpickr('.flatpickr', {});
+
 
 
             $('.summernote').summernote({

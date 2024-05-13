@@ -99,12 +99,21 @@ class Course extends Model
     public function skill_level()
     {
         if ($this->skill_level == 1)
-            return __('panel.skill_level_beginner');
+            return __('transf.Beginner Level');
         else if ($this->skill_level == 2)
-            return __('panel.skill_level_intermediate');
+            return __('transf.Intermediate Level');
         else if ($this->skill_level == 3) {
-            return __('panel.skill_level_advance');
+            return __('transf.Advance Level');
+        } else if ($this->skill_level == 4) {
+            return __('transf.All Levels');
         }
+    }
+    public function course_type()
+    {
+        if ($this->course_type == 1)
+            return __('transf.Course presence');
+        else if ($this->course_type == 2)
+            return __('transf.Course enrolled');
     }
 
     public function featured()

@@ -124,7 +124,7 @@
 
                             {{-- specializations row --}}
                             <div class="col-lg-12 form-group pt-3">
-                                <label for="specializations">{{ __('panel.specializations') }}</label>
+                                <label for="specializations">{{ __('panel.specializations_you_are_working_with') }}</label>
                                 <select name="specializations[]" class="form-control select2 child" multiple="multiple">
                                     @forelse ($specializations as $specialization)
                                         <option value="{{ $specialization->id }}"

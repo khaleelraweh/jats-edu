@@ -644,6 +644,8 @@ return [
 
     // ........... commons in specialization   ....... //
     'specializations'           =>  'التخصصات',
+    'specializations_you_are_working_with'           =>  'التخصصات التي تعمل بها',
+
     'specialization'            =>  'التخصص',
 
 

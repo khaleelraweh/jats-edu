@@ -674,6 +674,7 @@ return [
 
     // ........... commons in specialization   ....... //
     'specializations'           =>  'Specializations',
+    'specializations_you_are_working_with'           =>  'Specializations you are working with',
     'specialization'            =>  'Specialization',
 
     ##############################################################

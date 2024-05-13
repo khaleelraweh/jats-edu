@@ -183,11 +183,6 @@ class Course extends Model
         return $this->belongsToMany(Order::class);
     }
 
-    // public function instructors(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(User::class);
-    // }
-
     public function instructors(): MorphToMany
     {
         return $this->morphToMany(User::class, 'userable');

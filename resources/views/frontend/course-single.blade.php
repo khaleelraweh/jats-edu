@@ -513,7 +513,7 @@
 
                                 </div>
                                 <h6 class="mb-0 ms-3 me-auto">{{ __('transf.course_duration') }}</h6>
-                                = <span>
+                                <span>
                                     @if ($hours > 0)
                                         ({{ $hours }} hr @if ($minutes > 0)
                                             {{ $minutes }} min

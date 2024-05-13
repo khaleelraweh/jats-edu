@@ -146,7 +146,7 @@ return [
     'lecture_numbers'                                   =>  'عدد المحاضرات',
     'language'                                          =>  'لغة الدورة',
     'skill_level'                                       =>  'مستوي الدورة',
-    'deadline'                                          =>  'موعد الانتهاء',
+    'deadline'                                          =>  ' موعد الإنتهاء من الدورة',
     'certificate'                                       =>  'الشهادة',
     'created_by'                                        =>  'انشأ من قبل',
     'categories'                                        =>  'الفئات',

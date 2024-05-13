@@ -145,7 +145,7 @@ return [
     'lecture_numbers'                                   =>  'Lectures',
     'language'                                          =>  'Language',
     'skill_level'                                       =>  'Skill Level',
-    'deadline'                                          =>  'DeadLine',
+    'deadline'                                          =>  'DeadLine of the course',
     'certificate'                                       =>  'Certificate',
     'created_by'                                        =>  'Created by',
     'categories'                                        =>  'Categories',

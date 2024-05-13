@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ProfileRequest;
+use App\Models\Specialization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
@@ -18,13 +20,19 @@ class InstructorController extends Controller
 
     public function profile()
     {
-        return view('frontend.instructor.profile');
+        $instructor = Auth::user();
+        $specializations = Specialization::get(['id', 'name']);
+        $instructorSpecializations = $instructor->specializations->pluck(['id'])->toArray();
+
+        return view('frontend.instructor.profile', compact('specializations', 'instructorSpecializations'));
     }
 
     public function update_profile(ProfileRequest $request)
     {
 
-        $user = auth()->user();
+
+        $user = Auth()->user();
+
         $data['first_name'] = $request->first_name;
         $data['last_name'] = $request->last_name;
         $data['email'] = $request->email;
@@ -51,6 +59,13 @@ class InstructorController extends Controller
         }
 
         $user->update($data);
+
+
+
+        //update specifications
+        if (isset($request->specializations) && count($request->specializations) > 0) {
+            $user->specializations()->sync($request->specializations);
+        }
 
         // toast('Profile updated' , 'success');
         return back();

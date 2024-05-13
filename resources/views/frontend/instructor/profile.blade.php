@@ -30,7 +30,7 @@
             <div class="col-lg-12 ">
                 <div class="container">
                     {{-- <h2 class="h5 text-uppercase mb-4">General Information</h2> --}}
-                    <form class="pref" action="{{ route('customer.update_profile') }}" method="POST"
+                    <form class="pref" action="{{ route('instructor.update_profile') }}" method="POST"
                         enctype="multipart/form-data" autocomplete="off">
                         @csrf
                         @method('patch')
@@ -120,6 +120,20 @@
                                 @error('user_image')
                                     <span class="text-danger"> {{ $message }}</span>
                                 @enderror
+                            </div>
+
+                            {{-- specializations row --}}
+                            <div class="col-lg-12 form-group pt-3">
+                                <label for="specializations">{{ __('panel.specializations') }}</label>
+                                <select name="specializations[]" class="form-control select2 child" multiple="multiple">
+                                    @forelse ($specializations as $specialization)
+                                        <option value="{{ $specialization->id }}"
+                                            {{ in_array($specialization->id, old('specializations', $instructorSpecializations)) ? 'selected' : null }}>
+                                            {{ $specialization->name }}</option>
+                                    @empty
+                                    @endforelse
+                                </select>
+
                             </div>
 
                             <div class="col-lg-12 form-group pt-3">

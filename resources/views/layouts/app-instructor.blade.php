@@ -43,6 +43,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/libs/quill/dist/quill.core.css') }}" />
 
 
+    {{-- Select2 labs  --}}
+    <link rel="stylesheet" href="{{ asset('backend/vendor/select2/css/select2.min.css') }}">
 
     <link rel="stylesheet"
         href="{{ $rtl == 'rtl' ? asset('frontend/assets/css/theme-rtl.min.css') : asset('frontend/assets/css/theme.min.css') }}">
@@ -113,6 +115,15 @@
     <script src="{{ asset('frontend/assets/libs/quill/dist/quill.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/libs/smooth-scroll/dist/smooth-scroll.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/libs/typed.js/lib/typed.min.js') }}"></script>
+
+    {{-- Call select2 plugin --}}
+    <script src="{{ asset('backend/vendor/select2/js/select2.full.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
 
     <!-- Theme JS -->
     <script src="{{ asset('frontend/assets/js/theme.min.js') }}"></script>

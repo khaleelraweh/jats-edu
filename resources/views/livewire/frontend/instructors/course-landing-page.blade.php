@@ -324,9 +324,9 @@
                                 <div class="form-group">
                                     <label for="deadline"
                                         class="d-block text-center">{{ __('transf.deadline') }}</label>
-                                    <input type="text" id="deadline" name="deadline" wire:model.defer="deadline"
+                                    <input type="text" name="deadline" wire:model.defer="deadline"
                                         value="{{ old('deadline', \Carbon\Carbon::parse($course->deadline)->Format('Y-m-d')) }}"
-                                        class="form-control">
+                                        class="form-control flatpickr_deadLine">
                                     @error('deadline')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

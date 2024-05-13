@@ -273,6 +273,14 @@
 
             });
 
+            // for offer ends
+            flatpickr('.flatpickr_deadLine', {
+                enableTime: true,
+                dateFormat: "Y-m-d H:i K",
+                minDate: "today"
+
+            });
+
 
             $('.summernote').summernote({
                 tabSize: 2,

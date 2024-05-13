@@ -291,4 +291,25 @@
 
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const courseTypeSelect = document.getElementById('course_type');
+            const deadlineField = document.getElementById('deadline-field');
+
+            // Function to toggle deadline field visibility
+            function toggleDeadlineFieldVisibility() {
+                if (courseTypeSelect.value === '1') {
+                    deadlineField.style.display = 'flex';
+                } else {
+                    deadlineField.style.display = 'none';
+                }
+            }
+
+            // Initial call to toggle visibility based on initial select value
+            toggleDeadlineFieldVisibility();
+
+            // Add event listener to toggle visibility when course type changes
+            courseTypeSelect.addEventListener('change', toggleDeadlineFieldVisibility);
+        });
+    </script>
 @endsection

@@ -277,12 +277,11 @@
                         </div>
 
 
-                        {{-- category name  field --}}
                         <div class="row ">
 
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="course_type">{{ __('transf.Course type') }}</label>
-                                <select name="course_type" wire:model.defer="course_type" class="form-control">
+                                <select name="course_type" id="course_type" class="form-control">
                                     <option value="1"
                                         {{ old($course_type, $course->course_type) == '1' ? 'selected' : null }}>
                                         {{ __('transf.Course presence') }}
@@ -291,13 +290,12 @@
                                         {{ old($course_type, $course->course_type) == '2' ? 'selected' : null }}>
                                         {{ __('transf.Course enrolled') }}
                                     </option>
-
                                 </select>
-                                @error('coruse_type')
+                                @error('course_type')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
-
                             </div>
+
 
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="category_id"> {{ __('transf.course_category_title') }}</label>
@@ -320,11 +318,27 @@
                         </div>
 
 
+                        <div id="deadline-field" class="row" style="display: none">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8  pt-3">
+                                <div class="form-group">
+                                    <label for="deadline"
+                                        class="d-block text-center">{{ __('transf.deadline') }}</label>
+                                    <input type="text" id="deadline" name="deadline" wire:model.defer="deadline"
+                                        value="{{ old('deadline', \Carbon\Carbon::parse($course->deadline)->Format('Y-m-d')) }}"
+                                        class="form-control">
+                                    @error('deadline')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                        </div>
 
 
 
 
-                        {{-- course deadline and certificate --}}
+                        {{-- course   certificate --}}
                         <div class="row ">
 
                             <div class="col-sm-12 col-md-12 pt-3">
@@ -345,19 +359,7 @@
 
                         </div>
 
-                        {{-- <div class="row d-none">
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <div class="form-group">
-                                    <label for="deadline">{{ __('transf.deadline') }}</label>
-                                    <input type="text" id="deadline" name="deadline" wire:model.defer="deadline"
-                                        value="{{ old('deadline', \Carbon\Carbon::parse($course->deadline)->Format('Y-m-d')) }}"
-                                        class="form-control">
-                                    @error('deadline')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div> --}}
+
 
                     </div>
 
@@ -375,6 +377,11 @@
 
             </form>
         </div>
+
+
+
+
+
 
     </div>
 </div>

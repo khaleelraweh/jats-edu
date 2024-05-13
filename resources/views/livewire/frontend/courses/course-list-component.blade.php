@@ -197,15 +197,16 @@
 
                                     <label class="custom-control-label font-size-base" for="pricecustomradio1">
                                         {{ __('transf.all') }}
-                                        ({{ count($courses) ?? 0 }})
+                                        ({{ count($menuCounts) ?? 0 }})
                                     </label>
                                 </li>
+
                                 <li class="custom-control custom-radio">
                                     <input type="radio" wire:model="priceInput" id="pricecustomradio2"
                                         name="customRadio" value="free" class="custom-control-input">
                                     <label class="custom-control-label font-size-base" for="pricecustomradio2">
                                         {{ __('transf.free') }}
-                                        ({{ count($courses->where('price', '=', 0)) ?? 0 }})
+                                        ({{ count($menuCounts->where('price', '=', 0)) ?? 0 }})
                                     </label>
                                 </li>
                                 <li class="custom-control custom-radio">
@@ -213,7 +214,7 @@
                                         name="customRadio" value="paid" class="custom-control-input">
                                     <label class="custom-control-label font-size-base" for="pricecustomradio3">
                                         {{ __('transf.paid') }}
-                                        ({{ count($courses->where('price', '>', 0)) ?? 0 }})
+                                        ({{ count($menuCounts->where('price', '>', 0)) ?? 0 }})
                                     </label>
                                 </li>
                             </ul>
@@ -257,7 +258,7 @@
 
                                     <label class="custom-control-label font-size-base" for="levelcustomcheck1">
                                         {{ __('transf.beginner') }}
-                                        ({{ count($courses->where('skill_level', 1)) ?? 0 }})
+                                        ({{ count($menuCounts->where('skill_level', 1)) ?? 0 }})
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
@@ -267,7 +268,7 @@
 
                                     <label class="custom-control-label font-size-base"
                                         for="levelcustomcheck2">{{ __('transf.intermediate') }}
-                                        ({{ count($courses->where('skill_level', 2)) ?? 0 }})
+                                        ({{ count($menuCounts->where('skill_level', 2)) ?? 0 }})
                                     </label>
                                 </li>
                                 <li class="custom-control custom-checkbox">
@@ -277,7 +278,7 @@
 
                                     <label class="custom-control-label font-size-base"
                                         for="levelcustomcheck3">{{ __('transf.advance') }}
-                                        ({{ count($courses->where('skill_level', 3)) ?? 0 }})
+                                        ({{ count($menuCounts->where('skill_level', 3)) ?? 0 }})
                                     </label>
                                 </li>
                             </ul>

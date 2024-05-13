@@ -166,7 +166,7 @@
                                 <button
                                     class="p-6 text-dark fw-medium d-flex align-items-center collapse-accordion-toggle line-height-one"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#coursefiltercollapse3"
-                                    aria-expanded="true" aria-controls="coursefiltercollapse3">
+                                    aria-expanded="false" aria-controls="coursefiltercollapse3">
                                     {{ __('transf.prices') }}
                                     <span class="ms-auto text-dark d-flex">
                                         <!-- Icon -->
@@ -186,7 +186,7 @@
                             </h4>
                         </div>
 
-                        <div id="coursefiltercollapse3" class="collapse show mt-n2 px-6 pb-6"
+                        <div id="coursefiltercollapse3" class="collapse  mt-n2 px-6 pb-6"
                             aria-labelledby="coursefilter3" data-parent="#courseSidebar">
                             <ul class="list-unstyled list-group list-checkbox">
 
@@ -228,7 +228,7 @@
                                 <button
                                     class="p-6 text-dark fw-medium d-flex align-items-center collapse-accordion-toggle line-height-one"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#coursefiltercollapse4"
-                                    aria-expanded="true" aria-controls="coursefiltercollapse4">
+                                    aria-expanded="false" aria-controls="coursefiltercollapse4">
                                     {{ __('transf.levels') }}
                                     <span class="ms-auto text-dark d-flex">
                                         <!-- Icon -->
@@ -248,7 +248,7 @@
                             </h4>
                         </div>
 
-                        <div id="coursefiltercollapse4" class="collapse show mt-n2 px-6 pb-6"
+                        <div id="coursefiltercollapse4" class="collapse  mt-n2 px-6 pb-6"
                             aria-labelledby="coursefilter4" data-parent="#courseSidebar">
                             <ul class="list-unstyled list-group list-checkbox">
                                 <li class="custom-control custom-checkbox">
@@ -293,7 +293,7 @@
                                 <button
                                     class="p-6 text-dark fw-medium d-flex align-items-center collapse-accordion-toggle line-height-one"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#coursefiltercollapse5"
-                                    aria-expanded="true" aria-controls="coursefiltercollapse5">
+                                    aria-expanded="false" aria-controls="coursefiltercollapse5">
                                     {{ __('transf.ratings') }}
                                     <span class="ms-auto text-dark d-flex">
                                         <!-- Icon -->
@@ -313,7 +313,7 @@
                             </h4>
                         </div>
 
-                        <div id="coursefiltercollapse5" class="collapse show mt-n2 px-6 pb-6"
+                        <div id="coursefiltercollapse5" class="collapse  mt-n2 px-6 pb-6"
                             aria-labelledby="coursefilter5" data-parent="#courseSidebar">
                             <ul class="list-unstyled list-group list-checkbox">
                                 <li class="custom-control custom-checkbox">

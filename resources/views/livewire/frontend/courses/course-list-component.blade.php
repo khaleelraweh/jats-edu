@@ -322,7 +322,7 @@
                                     <label class="custom-control-label font-size-base" for="ratingcustomcheck1">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
-                                                <span class="rating" style="width:90%;"></span>
+                                                <span class="rating" style="width:93%;"></span>
                                             </span>
 
                                             <span class="ms-3">
@@ -337,7 +337,7 @@
                                     <label class="custom-control-label font-size-base" for="ratingcustomcheck2">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
-                                                <span class="rating" style="width:70%;"></span>
+                                                <span class="rating" style="width:72%;"></span>
                                             </span>
 
                                             <span class="ms-3">
@@ -382,7 +382,7 @@
                                     <label class="custom-control-label font-size-base" for="ratingcustomcheck5">
                                         <span class="d-flex align-items-end">
                                             <span class="star-rating">
-                                                <span class="rating" style="width:10%;"></span>
+                                                <span class="rating" style="width:13%;"></span>
                                             </span>
 
                                             <span class="ms-3">

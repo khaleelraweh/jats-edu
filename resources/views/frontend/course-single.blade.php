@@ -296,7 +296,7 @@
                             {{ __('transf.txt_about_this_instructors') }}
                         </h3>
 
-                        @foreach ($course->users as $instructor)
+                        @foreach ($course->instructors as $instructor)
                             <div class="d-flex align-items-center mb-6">
                                 <div class="d-inline-block rounded-circle border me-6 p-2">
                                     <div class="avatar avatar-size-120">

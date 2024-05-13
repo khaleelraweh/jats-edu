@@ -194,10 +194,19 @@ class Course extends Model
         return $this->belongsToMany(Order::class);
     }
 
+    // public function instructors(): MorphToMany
+    // {
+    //     return $this->morphToMany(User::class, 'userable');
+    // }
+
     public function instructors(): MorphToMany
     {
-        return $this->morphToMany(User::class, 'userable');
+        return $this->morphToMany(User::class, 'userable')
+            ->whereHas('roles', function ($query) {
+                $query->where('name', 'instructor');
+            });
     }
+
 
     public function users(): MorphToMany
     {

@@ -30,8 +30,8 @@ class CourseLandingPage extends Component
     public $course_type;
     public $course_category_id;
     public $certificate;
-    public $deadline;
-    public $showDeadline = true;
+    public $deadline = null; // Set deadline to null by default
+    public $showDeadline;
 
     public $images; // For image uploads
     public $currentImage; // For displaying the current image
@@ -71,26 +71,28 @@ class CourseLandingPage extends Component
         $this->language = $course->language;
         $this->skill_level = $course->skill_level;
         $this->course_type = $course->course_type;
-        $this->showDeadline = ($this->course_type == '1'); // Set the initial value of showDeadline based on course_type
 
         $this->course_category_id = $course->course_category_id;
         $this->certificate = $course->certificate;
         // $this->deadline = $course->deadline ? $course->deadline->format('Y-m-d') : null;
 
         $this->images = $course->images;
-
-
         $this->currentImage = $course->images;
+
+        $this->course_type = $course->course_type;
+        $this->showDeadline = true; // Default value
     }
 
     public function updatedCourseType($value)
     {
-        $this->showDeadline = ($value == '1'); // Update showDeadline whenever course_type changes
+        $this->showDeadline = ($value == '1');
     }
-    public function updatingCourseType($value)
+
+    public function updatingdCourseType($value)
     {
-        $this->showDeadline = ($value == '1'); // Update showDeadline whenever course_type changes
+        $this->showDeadline = ($value == '1');
     }
+
 
 
 

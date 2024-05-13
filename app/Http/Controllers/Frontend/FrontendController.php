@@ -91,12 +91,21 @@ class FrontendController extends Controller
             ->take(4)
             ->get();
 
+        $totalDurations = 0;
+        foreach ($course->sections as $section) {
+            $totalDurations +=  $section->lessons->sum('duration_minutes');
+        }
+
+        $hours = floor($totalDurations / 60);
+        $minutes = $totalDurations % 60;
+
+
 
 
         // Generate WhatsApp share URL
         $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($course->name . ': ' . route('frontend.course_single', $course->slug));
 
-        return view('frontend.course-single', compact('course', 'exposedText', 'hiddenText', 'related_courses', 'latest_courses', 'whatsappShareUrl'));
+        return view('frontend.course-single', compact('course', 'exposedText', 'hiddenText', 'related_courses', 'latest_courses', 'whatsappShareUrl', 'totalDurations', 'hours', 'minutes'));
     }
 
     public function event_list($slug = null)

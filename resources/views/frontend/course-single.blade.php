@@ -1480,7 +1480,15 @@
 
                                 </div>
                                 <h6 class="mb-0 ms-3 me-auto">{{ __('transf.course_duration') }}</h6>
-                                <span>{{ $course->course_duration }}</span>
+=                                <span>
+                                    @if ($hours > 0)
+                                        ({{ $hours }} hr @if ($minutes > 0)
+                                            {{ $minutes }} min
+                                        @endif)
+                                    @else
+                                        ( {{ $minutes }} min)
+                                    @endif
+                                </span>
                             </li>
                             <li class="list-group-item d-flex align-items-center py-3">
                                 <div class="text-secondary d-flex icon-uxs">
@@ -1494,7 +1502,7 @@
 
                                 </div>
                                 <h6 class="mb-0 ms-3 me-auto">{{ __('transf.lecture_numbers') }}</h6>
-                                <span>{{ $course->lecture_numbers }}</span>
+                                <span>{{ $course->totalLessonsCount() }}</span>
                             </li>
                             <li class="list-group-item d-flex align-items-center py-3 d-none">
                                 <div class="text-secondary d-flex icon-uxs">

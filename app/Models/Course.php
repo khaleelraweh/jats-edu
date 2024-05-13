@@ -223,4 +223,12 @@ class Course extends Model
     {
         return $this->hasMany(CourseSection::class);
     }
+
+    public function totalLessonsCount()
+    {
+        // Sum the count of lessons in each course section
+        return $this->sections->sum(function ($section) {
+            return $section->lessons->count();
+        });
+    }
 }

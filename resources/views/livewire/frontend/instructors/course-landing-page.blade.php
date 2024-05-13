@@ -347,7 +347,7 @@
 
                             <div id="deadline-field" style="display: none" wire:ignore class="col-md-6  pt-3">
                                 <div class="form-group">
-                                    <label for="deadline">{{ __('transf.deadline') }}</label>
+                                    <label for="deadline">{{ __('transf.deadline_of_the_course') }}</label>
                                     <input type="text" name="deadline" wire:model.defer="deadline"
                                         value="{{ old('deadline', \Carbon\Carbon::parse($course->deadline)->Format('Y-m-d')) }}"
                                         class="form-control flatpickr_deadLine">

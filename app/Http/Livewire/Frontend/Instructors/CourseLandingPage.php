@@ -24,6 +24,7 @@ class CourseLandingPage extends Component
     public $description;
     // Add more properties for other fields
     public $video_promo;
+    public $video_description;
     public $language;
     public $skill_level;
     public $course_type;
@@ -44,6 +45,7 @@ class CourseLandingPage extends Component
         'description' => 'required|string',
         'images.*' => 'nullable|image|max:2048', // Validation rule for images (nullable and max size 2MB)
         'video_promo' => 'nullable|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
+        'video_description' => 'nullable|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
         'language' => 'required|in:1,2', // Example validation for language (required and should be one of the given values)
         'skill_level' => 'required|in:1,2,3,4', // Example validation for skill_level (required and should be one of the given values)
         'course_type' => 'required|in:1,2', // Example validation for course_type (required and should be one of the given values)
@@ -62,6 +64,7 @@ class CourseLandingPage extends Component
         // Set other properties for other fields
 
         $this->video_promo = $course->video_promo;
+        $this->video_description = $course->video_description;
         $this->language = $course->language;
         $this->skill_level = $course->skill_level;
         $this->course_type = $course->course_type;
@@ -96,6 +99,7 @@ class CourseLandingPage extends Component
             // Update other fields similarly
 
             'video_promo' => $this->video_promo,
+            'video_description' => $this->video_description,
             'language' => $this->language,
             'skill_level' => $this->skill_level,
             'course_type' => $this->course_type,

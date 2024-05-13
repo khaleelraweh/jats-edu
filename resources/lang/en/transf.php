@@ -503,6 +503,11 @@ return [
     'Promotional video tip.'                            =>  'Your promo video is a quick and compelling way for students to preview what they’ll learn in your course. Students considering your course are more likely to enroll if your promo video is well-made. Learn how to make your promo video awesome!',
     'Insert the link to your YouTube promotional video.' =>  'Insert the link to your YouTube promotion video.',
 
+    'Descriptional video'                                 =>  'Descriptional video',
+    'Descriptional video tip.'                            =>  'Your descriptive video is a quick way to learn more about the course content in more detail than a promotional video. Students who are a little hesitant will likely be satisfied enough with the course content to enroll',
+    'Insert the link to your YouTube Descriptional video.' =>  'Insert the link to your YouTube Descriptional video.',
+
+
     'certificate_tip'                                   =>  'Determine whether the learner will receive a certificate after completing the course or not',
 
     'Update Data'                                       =>  'Update Data',

@@ -181,7 +181,7 @@
                         </div>
 
 
-                        {{-- video promo and description  --}}
+                        {{-- video promo   --}}
                         <div class="row ">
                             <div class="col-sm-12 col-md-6 pt-4">
                                 <label for="video_promo">{{ __('transf.Promotional video') }}</label>
@@ -196,6 +196,26 @@
                             </div>
                             <div class="col-sm-12 col-md-6 pt-4">
                                 {{ __('transf.Promotional video tip.') }}
+                            </div>
+
+                        </div>
+
+                        {{-- video description   --}}
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <label for="video_description">{{ __('transf.Descriptional video') }}</label>
+                                <input type="text" name="video_description" wire:model.defer="video_description"
+                                    id="video_description"
+                                    value="{{ old('video_description', $course->video_description) }}"
+                                    class="form-control"
+                                    placeholder="{{ __('transf.Insert the link to your YouTube Descriptional video.') }}">
+                                @error('video_description')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                {{ __('transf.Descriptional video tip.') }}
                             </div>
 
                         </div>

@@ -90,6 +90,7 @@ class CourseLandingPage extends Component
 
     public function updateCourse()
     {
+
         $this->validate();
         $course = Course::with('photos', 'firstMedia')->findOrFail($this->courseId);
         $course->update([

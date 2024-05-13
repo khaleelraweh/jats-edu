@@ -189,7 +189,10 @@ class CourseListComponent extends Component
 
 
 
-        $course_categories_menu = CourseCategory::withCount('courses')->has('courses')->get();
+        // $course_categories_menu = CourseCategory::withCount('courses')->has('courses')->get();
+        $course_categories_menu = CourseCategory::withCount(['courses' => function ($query) {
+            return $query->where('section', 1);
+        }])->has('courses')->get();
 
         return view('livewire.frontend.courses.course-list-component', [
             'courses'   =>  $courses,

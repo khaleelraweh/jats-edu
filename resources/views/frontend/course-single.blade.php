@@ -135,7 +135,7 @@
 
 
                         {{-- <a href="https://www.youtube.com/watch?v=9I-Y6VQ6tyI" class="d-block sk-thumbnail rounded mb-8" --}}
-                        <a href="{{ $course->video_description }}" class="d-block sk-thumbnail rounded mb-8" data-fancybox>
+                        {{-- <a href="{{ $course->video_description }}" class="d-block sk-thumbnail rounded mb-8" data-fancybox>
                             <div
                                 class="h-90p w-90p rounded-circle bg-white size-30-all d-inline-flex align-items-center justify-content-center position-absolute center z-index-1">
                                 <!-- Icon -->
@@ -147,7 +147,18 @@
 
                             </div>
                             <img class="rounded shadow-light-lg" src="{{ $course_img }}" alt="...">
-                        </a>
+                        </a> --}}
+
+                        @if ($course->video_description != null)
+                            <div class="d-block rounded mb-8">
+                                <iframe name="fancybox-frame1715613880222" class=" w-100 h-300p "
+                                    allowfullscreen="allowfullscreen" allow="autoplay; fullscreen"
+                                    src="{{ $course->video_description }}=1&amp;autohide=1&amp;fs=1&amp;rel=0&amp;hd=1&amp;wmode=transparent&amp;enablejsapi=1&amp;html5=1&amp;si=Amfzfmcicimk7U_V"
+                                    scrolling="no"></iframe>
+                            </div>
+                        @endif
+
+
 
                         <h3 class="mb-5">{{ __('transf.txt_what_you_will_learn') }}</h3>
                         <div class="row row-cols-lg-2 mb-8 list-style-v1 list-unstyled ">
@@ -166,8 +177,7 @@
                         </ul>
                     </div>
 
-                    <div class="tab-pane fade" id="pills-curriculum" role="tabpanel"
-                        aria-labelledby="pills-curriculum-tab">
+                    <div class="tab-pane fade" id="pills-curriculum" role="tabpanel" aria-labelledby="pills-curriculum-tab">
                         <div id="accordionCurriculum">
 
                             @foreach ($course->sections as $index => $section)

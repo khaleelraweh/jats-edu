@@ -28,6 +28,11 @@ class Course extends Model
     public $translatable = ['title', 'subtitle', 'slug', 'description', 'address'];
 
 
+    protected $dates = [
+        'deadline',
+    ];
+
+
     // searchable lab 
     protected $searchable = [
         'columns' => [

@@ -413,6 +413,11 @@
                         @livewire('frontend.courses.course-review-component', ['courseId' => $course->id])
 
                     </div>
+
+                    {{-- <iframe name="fancybox-frame1715613880222" class="" allowfullscreen="allowfullscreen"
+                        allow="autoplay; fullscreen"
+                        src="https://www.youtube-nocookie.com/embed/szSS74HbStk?autoplay=1&amp;autohide=1&amp;fs=1&amp;rel=0&amp;hd=1&amp;wmode=transparent&amp;enablejsapi=1&amp;html5=1&amp;si=Amfzfmcicimk7U_V"
+                        scrolling="no"></iframe> --}}
                 </div>
             </div>
 

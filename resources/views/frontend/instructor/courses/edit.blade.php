@@ -241,8 +241,13 @@
     <script src="{{ asset('backend/vendor/fontawesomepicker/js/fontawesome-iconpicker.js') }}"></script>
 
 
-    {{-- flat picker date --}}
+
+
+    <!-- Include the Flatpickr JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/{{ app()->getLocale() }}.js"></script>
+
+
 
     <script>
         $(document).ready(function() {
@@ -277,7 +282,9 @@
                 enableTime: true,
                 dateFormat: "Y-m-d h:i K", // Use 'h' for 12-hour format
                 minDate: "today",
-                time_24hr: false // Set to false for 12-hour format
+                time_24hr: false, // Set to false for 12-hour format
+                locale: "{{ app()->getLocale() }}"
+
             });
 
 

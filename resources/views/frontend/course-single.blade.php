@@ -621,7 +621,8 @@
 
                                 </div>
                                 <h6 class="mb-0 ms-3 me-auto">{{ __('transf.deadline') }}</h6>
-                                <span>{{ $course->deadline->translatedFormat('Y-m-d h:i A') }}</span>
+                                {{-- <span>{{ $course->deadline->translatedFormat('Y-m-d h:i A') }}</span> --}}
+                                <span>{{ \Carbon\Carbon::parse($course->deadline)->translatedFormat('Y-m-d h:i A') }}</span>
                             </li>
                             <li class="list-group-item d-flex align-items-center py-3">
                                 <div class="text-secondary d-flex icon-uxs">

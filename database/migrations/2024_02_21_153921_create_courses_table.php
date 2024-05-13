@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('video_description')->nullable();
             $table->tinyInteger('course_type')->nullable();   //  1: mean presence 2 : enrolled
 
-            $table->date('deadline')->nullable();
+            $table->dateTime('deadline')->nullable();
             $table->boolean('certificate')->nullable()->default(true);
 
 

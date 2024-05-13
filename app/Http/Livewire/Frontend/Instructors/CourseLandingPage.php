@@ -31,7 +31,6 @@ class CourseLandingPage extends Component
     public $course_category_id;
     public $certificate;
     public $deadline = null; // Set deadline to null by default
-    public $showDeadline;
 
     public $images; // For image uploads
     public $currentImage; // For displaying the current image
@@ -54,7 +53,7 @@ class CourseLandingPage extends Component
         'course_type' => 'required|in:1,2', // Example validation for course_type (required and should be one of the given values)
         'course_category_id' => 'required|exists:course_categories,id', // Example validation for course_category_id (required and should exist in course_categories table)
         'certificate' => 'required|boolean', // Example validation for certificate (required and should be boolean)
-        'deadline' => 'nullable|date', // Example validation for deadline (nullable and should be a date)
+        // 'deadline' => 'nullable|date_format:Y-m-d H:i K', // Valid datetime format
     ];
 
     public function mount($courseId)
@@ -74,24 +73,13 @@ class CourseLandingPage extends Component
 
         $this->course_category_id = $course->course_category_id;
         $this->certificate = $course->certificate;
-        // $this->deadline = $course->deadline ? $course->deadline->format('Y-m-d') : null;
+        $this->deadline = $course->deadline;
 
         $this->images = $course->images;
         $this->currentImage = $course->images;
-
-        $this->course_type = $course->course_type;
-        $this->showDeadline = true; // Default value
     }
 
-    public function updatedCourseType($value)
-    {
-        $this->showDeadline = ($value == '1');
-    }
 
-    public function updatingdCourseType($value)
-    {
-        $this->showDeadline = ($value == '1');
-    }
 
 
 

@@ -307,7 +307,7 @@
             // Function to toggle deadline field visibility
             function toggleDeadlineFieldVisibility() {
                 if (courseTypeSelect.value === '1') {
-                    deadlineField.style.display = 'flex';
+                    deadlineField.style.display = 'block';
                 } else {
                     deadlineField.style.display = 'none';
                 }

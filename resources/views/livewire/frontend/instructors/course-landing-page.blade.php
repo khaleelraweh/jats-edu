@@ -319,23 +319,8 @@
                         </div>
 
 
-                        <div id="deadline-field" class="row" style="display: none" wire:ignore>
-                            <div class="col-md-2"></div>
-                            <div class="col-md-8  pt-3">
-                                <div class="form-group">
-                                    <label for="deadline"
-                                        class="d-block text-center">{{ __('transf.deadline') }}</label>
-                                    <input type="text" name="deadline" wire:model.defer="deadline"
-                                        value="{{ old('deadline', \Carbon\Carbon::parse($course->deadline)->Format('Y-m-d')) }}"
-                                        class="form-control flatpickr_deadLine">
 
-                                    @error('deadline')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
 
-                        </div>
 
 
 
@@ -344,7 +329,7 @@
                         {{-- course   certificate --}}
                         <div class="row ">
 
-                            <div class="col-sm-12 col-md-12 pt-3">
+                            <div class="col-sm-12 col-md-6 pt-3">
 
                                 <div class="form-group">
                                     <label for="certificate">{{ __('transf.certificate') }}</label>
@@ -358,6 +343,19 @@
                                     @enderror
                                 </div>
 
+                            </div>
+
+                            <div id="deadline-field" style="display: none" wire:ignore class="col-md-6  pt-3">
+                                <div class="form-group">
+                                    <label for="deadline">{{ __('transf.deadline') }}</label>
+                                    <input type="text" name="deadline" wire:model.defer="deadline"
+                                        value="{{ old('deadline', \Carbon\Carbon::parse($course->deadline)->Format('Y-m-d')) }}"
+                                        class="form-control flatpickr_deadLine">
+
+                                    @error('deadline')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
 
                         </div>

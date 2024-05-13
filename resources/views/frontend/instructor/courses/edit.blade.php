@@ -273,13 +273,13 @@
 
             });
 
-            // for offer ends
             flatpickr('.flatpickr_deadLine', {
                 enableTime: true,
-                dateFormat: "Y-m-d H:i K",
-                minDate: "today"
-
+                dateFormat: "Y-m-d h:i K", // Use 'h' for 12-hour format
+                minDate: "today",
+                time_24hr: false // Set to false for 12-hour format
             });
+
 
 
             $('.summernote').summernote({

@@ -319,22 +319,24 @@
                         </div>
 
 
-                        <div id="deadline-field" class="row" style="display: none">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-8  pt-3">
-                                <div class="form-group">
-                                    <label for="deadline"
-                                        class="d-block text-center">{{ __('transf.deadline') }}</label>
-                                    <input type="text" name="deadline" wire:model.defer="deadline"
-                                        value="{{ old('deadline', \Carbon\Carbon::parse($course->deadline)->Format('Y-m-d')) }}"
-                                        class="form-control flatpickr_deadLine">
-                                    @error('deadline')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                        @if ($showDeadline)
+                            <div id="deadline-field" class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8  pt-3">
+                                    <div class="form-group">
+                                        <label for="deadline"
+                                            class="d-block text-center">{{ __('transf.deadline') }}</label>
+                                        <input type="text" name="deadline" wire:model.defer="deadline"
+                                            value="{{ old('deadline', \Carbon\Carbon::parse($course->deadline)->Format('Y-m-d')) }}"
+                                            class="form-control flatpickr_deadLine">
+                                        @error('deadline')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>
+                            </div>
+                        @endif
 
 
 

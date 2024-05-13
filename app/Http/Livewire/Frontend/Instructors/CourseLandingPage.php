@@ -38,6 +38,8 @@ class CourseLandingPage extends Component
 
 
 
+
+
     protected $rules = [
 
         'title' => 'required|string|max:255',

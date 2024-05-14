@@ -138,9 +138,9 @@
 
                             @php
                                 if ($instructor->user_image != null) {
-                                    $instructor_img = asset('assets/instructors/' . $instructor->user_image);
+                                    $instructor_img = asset('assets/users/' . $instructor->user_image);
 
-                                    if (!file_exists(public_path('assets/instructors/' . $instructor->user_image))) {
+                                    if (!file_exists(public_path('assets/users/' . $instructor->user_image))) {
                                         $instructor_img = asset('image/not_found/avator1.webp');
                                     }
                                 } else {

@@ -170,8 +170,8 @@
                                     <div class="col-lg-12 form-group pt-3">
                                         <label
                                             for="specializations">{{ __('panel.specializations_you_are_working_with') }}</label>
-                                        <select name="specializations[]" class="form-control select2 child"
-                                            multiple="multiple">
+                                        <select name="specializations[]"
+                                            class=" form-control form-control-lg select2 child" multiple="multiple">
                                             @forelse ($specializations as $specialization)
                                                 <option value="{{ $specialization->id }}"
                                                     {{ in_array($specialization->id, old('specializations', $instructorSpecializations)) ? 'selected' : null }}>
@@ -182,13 +182,7 @@
 
                                     </div>
 
-                                    <div class="col-lg-12 form-group pt-3">
-                                        <button class="btn text-white-all btn-coral btn-wide d-none d-lg-inline-block"
-                                            data-aos-duration="200" data-aos="fade-up" type="submit">
-                                            {{ __('panel.update') }}
-                                            {{ __('panel.f_profile') }} </button>
 
-                                    </div>
 
                                 </div>
                             </div>
@@ -238,6 +232,14 @@
                                         </div>
                                     </div>
                                 </div>
+
+                            </div>
+
+                            <div class="col-lg-12 form-group pt-4">
+                                <button class="btn text-white-all btn-coral btn-wide d-none d-lg-inline-block"
+                                    data-aos-duration="200" data-aos="fade-up" type="submit">
+                                    {{ __('panel.update') }}
+                                    {{ __('panel.f_profile') }} </button>
 
                             </div>
 

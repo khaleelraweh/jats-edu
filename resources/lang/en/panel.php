@@ -651,16 +651,16 @@ return [
 
     // ........... commons in Insturctor   ....... //
     'name'                              =>  'Name',
-    'instructor_description'              =>  'instructor Description',
-    'instructor_motavation'               =>  'instructor Motavation',
+    'instructor_description'            =>  'instructor Description',
+    'instructor_motavation'             =>  'instructor Motavation',
     'motavation_tab'                    =>  'Motavation',
     'social_tab'                        =>  'Social',
     'facebook'                          =>  'Facebook',
     'twitter'                           =>  'twitter',
     'instagram'                         =>  'Instagram',
     'linkedin'                          =>  'Linkedin',
-    'youtube'                          =>  'Youtube',
-    'website'                          =>  'Website',
+    'youtube'                           =>  'Youtube',
+    'website'                           =>  'Website',
 
 
     ##############################################################

@@ -30,6 +30,7 @@ class InstructorController extends Controller
     public function update_profile(ProfileRequest $request)
     {
 
+        dd($request);
 
         $user = Auth()->user();
 
@@ -37,6 +38,13 @@ class InstructorController extends Controller
         $data['last_name'] = $request->last_name;
         $data['email'] = $request->email;
         $data['mobile'] = $request->mobile;
+
+        $data['facebook'] = $request->facebook;
+        $data['twitter'] = $request->twitter;
+        $data['instagram'] = $request->instagram;
+        $data['linkedin'] = $request->linkedin;
+        $data['youtube'] = $request->youtube;
+        $data['website'] = $request->website;
 
         if (!empty($request->password) && !Hash::check($request->password, $user->password)) {
             $data['password'] = bcrypt($request->password);

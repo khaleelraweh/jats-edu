@@ -73,7 +73,7 @@
                                 aria-labelledby="instructor_profile-tab">
 
                                 <div class="row">
-                                    <div class="col-lg-12 text-center mb-4">
+                                    <div class="col-lg-12 text-center mb-4 pt-3">
                                         @if (auth()->user()->user_image != '')
                                             <img src="{{ asset('assets/users/' . auth()->user()->user_image) }}"
                                                 alt="{{ auth()->user()->full_name }}" class="img-thumbnail rounded-pill"
@@ -388,8 +388,8 @@
                             </div>
 
                             <div class="col-lg-12 form-group pt-4">
-                                <button class="btn text-white-all btn-coral btn-wide d-none d-lg-inline-block"
-                                    data-aos-duration="50" data-aos="fade-up" type="submit">
+                                {{-- <button class="btn text-white-all btn-coral btn-wide d-none d-lg-inline-block" --}}
+                                <button class="btn text-white-all btn-coral btn-wide d-lg-inline-block" type="submit">
                                     {{ __('panel.update') }}
                                     {{ __('panel.f_profile') }} </button>
 

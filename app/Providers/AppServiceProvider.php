@@ -39,8 +39,8 @@ class AppServiceProvider extends ServiceProvider
     {
 
 
+        // make validation rule called min_words
         Validator::extend('min_words', [CustomValidationRules::class, 'minWords']);
-
 
 
         // Site setting calling to cache in 5 hours refresh

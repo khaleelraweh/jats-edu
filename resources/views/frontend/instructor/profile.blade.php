@@ -411,3 +411,46 @@
         </div>
     </section>
 @endsection
+
+@section('script')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get all input fields for large devices
+            const largeInputs = document.querySelectorAll('.d-lg-flex input');
+
+            // Add event listener for each input field
+            largeInputs.forEach(function(input) {
+                input.addEventListener('input', function() {
+                    // Get the corresponding small device input field
+                    const smallInput = document.querySelector(`#${input.id}-sm`);
+
+                    // Copy the value from large device input to small device input
+                    smallInput.value = input.value;
+                });
+            });
+
+            // to make the opisite change 
+
+            // Get all input fields for small devices
+            const smallInputs = document.querySelectorAll('.d-block .input-group input');
+
+            // Add event listener for each input field
+            smallInputs.forEach(function(input) {
+                input.addEventListener('input', function() {
+                    // Get the corresponding large device input field
+                    const largeInput = document.querySelector(`#${input.id.replace('-sm', '')}`);
+
+                    // Copy the value from small device input to large device input
+                    largeInput.value = input.value;
+                });
+            });
+
+        });
+    </script>
+
+    {{-- <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          
+        });
+    </script> --}}
+@endsection

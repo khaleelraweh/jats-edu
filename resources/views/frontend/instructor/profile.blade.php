@@ -192,18 +192,35 @@
                                         <label class="text-small text-uppercase" for="facebook">
                                             {{ __('panel.facebook') }}
                                         </label>
-                                        <input class="form-control form-control-lg" name="facebook" type="text"
-                                            value="{{ old('facebook', auth()->user()->facebook) }}">
+                                        <div class="input-group">
+                                            <div class="input-group-append">
+                                                <label for="facebook"
+                                                    class="d-block mb-0  border-radius-none btn btn-secondary text-white">
+                                                    http://www.facebook.com/
+                                                </label>
+                                            </div>
+                                            <input class="form-control form-control-lg" id="facebook" name="facebook"
+                                                type="text" value="{{ old('facebook', auth()->user()->facebook) }}">
+                                        </div>
                                         @error('facebook')
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
+
                                     </div>
                                     <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="twitter">
                                             {{ __('panel.twitter') }}
                                         </label>
-                                        <input class="form-control form-control-lg" name="twitter" type="text"
-                                            value="{{ old('twitter', auth()->user()->twitter) }}">
+                                        <div class="input-group">
+                                            <div class="input-group-append">
+                                                <label for="twitter"
+                                                    class="d-block mb-0  border-radius-none btn btn-secondary text-white">
+                                                    http://www.twitter.com/
+                                                </label>
+                                            </div>
+                                            <input class="form-control form-control-lg" id="twitter" name="twitter"
+                                                type="text" value="{{ old('twitter', auth()->user()->twitter) }}">
+                                        </div>
                                         @error('twitter')
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
@@ -212,8 +229,16 @@
                                         <label class="text-small text-uppercase" for="instagram">
                                             {{ __('panel.instagram') }}
                                         </label>
-                                        <input class="form-control form-control-lg" name="instagram" type="text"
-                                            value="{{ old('instagram', auth()->user()->instagram) }}">
+                                        <div class="input-group">
+                                            <div class="input-group-append">
+                                                <label for="instagram"
+                                                    class="d-block mb-0  border-radius-none btn btn-secondary text-white">
+                                                    http://www.instagram.com/
+                                                </label>
+                                            </div>
+                                            <input class="form-control form-control-lg" id="instagram" name="instagram"
+                                                type="text" value="{{ old('instagram', auth()->user()->instagram) }}">
+                                        </div>
                                         @error('instagram')
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
@@ -222,8 +247,16 @@
                                         <label class="text-small text-uppercase" for="linkedin">
                                             {{ __('panel.linkedin') }}
                                         </label>
-                                        <input class="form-control form-control-lg" name="linkedin" type="text"
-                                            value="{{ old('linkedin', auth()->user()->linkedin) }}">
+                                        <div class="input-group">
+                                            <div class="input-group-append">
+                                                <label for="linkedin"
+                                                    class="d-block mb-0 border-radius-none btn btn-secondary text-white">
+                                                    http://www.linkedin.com/
+                                                </label>
+                                            </div>
+                                            <input class="form-control form-control-lg" id="linkedin" name="linkedin"
+                                                type="text" value="{{ old('linkedin', auth()->user()->linkedin) }}">
+                                        </div>
                                         @error('linkedin')
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
@@ -232,8 +265,16 @@
                                         <label class="text-small text-uppercase" for="youtube">
                                             {{ __('panel.youtube') }}
                                         </label>
-                                        <input class="form-control form-control-lg" name="youtube" type="text"
-                                            value="{{ old('youtube', auth()->user()->youtube) }}">
+                                        <div class="input-group">
+                                            <div class="input-group-append">
+                                                <label for="youtube"
+                                                    class="d-block mb-0  border-radius-none btn btn-secondary text-white">
+                                                    http://www.youtube.com/
+                                                </label>
+                                            </div>
+                                            <input class="form-control form-control-lg" id="youtube" name="youtube"
+                                                type="text" value="{{ old('youtube', auth()->user()->youtube) }}">
+                                        </div>
                                         @error('youtube')
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror

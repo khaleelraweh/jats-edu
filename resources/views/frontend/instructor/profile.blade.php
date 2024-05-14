@@ -188,7 +188,7 @@
                             <div class="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab">
 
                                 <div class="row">
-                                    <div class="col-lg-12 form-group pt-3">
+                                    <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="facebook">
                                             {{ __('panel.facebook') }}
                                         </label>
@@ -198,7 +198,7 @@
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-12 form-group pt-3">
+                                    <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="twitter">
                                             {{ __('panel.twitter') }}
                                         </label>
@@ -208,7 +208,7 @@
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-12 form-group pt-3">
+                                    <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="instagram">
                                             {{ __('panel.instagram') }}
                                         </label>
@@ -218,7 +218,7 @@
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-12 form-group pt-3">
+                                    <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="linkedin">
                                             {{ __('panel.linkedin') }}
                                         </label>
@@ -228,7 +228,7 @@
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-12 form-group pt-3">
+                                    <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="youtube">
                                             {{ __('panel.youtube') }}
                                         </label>
@@ -238,7 +238,7 @@
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-12 form-group pt-3">
+                                    <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="website">
                                             {{ __('panel.website') }}
                                         </label>

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -35,6 +36,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        Validator::extend('min_words', function ($attribute, $value, $parameters, $validator) {
+            $minWords = $parameters[0] ?? 0;
+            $wordCount = str_word_count($value);
+            return $wordCount >= $minWords;
+        });
+
+        Validator::replacer('min_words', function ($message, $attribute, $rule, $parameters) {
+            return str_replace(':min_words', $parameters[0], 'Please enter at least :min_words words for ' . $attribute . ' field');
+        });
+
 
         // Site setting calling to cache in 5 hours refresh
         $siteSettings = Cache()->remember(

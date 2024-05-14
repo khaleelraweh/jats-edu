@@ -10,6 +10,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
@@ -36,6 +37,14 @@ class CourseLandingPage extends Component
     public $currentImage; // For displaying the current image
 
 
+    // checking validation 
+    public $databaseDataValid = false;
+    public $formSubmitted = false;
+
+    public $titleValid = false;
+    public $subtitleValid = false;
+    public $descriptionValid = false;
+    public $video_promoValid = false;
 
 
 
@@ -44,9 +53,9 @@ class CourseLandingPage extends Component
 
         'title' => 'required|string|max:255',
         'subtitle' => 'required|string|max:255',
-        'description' => 'required|string',
+        'description' => 'required|string|min_words:200',  // min_words came from AppServiceProvider I made it 
         'images.*' => 'nullable|image|max:2048', // Validation rule for images (nullable and max size 2MB)
-        'video_promo' => 'nullable|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
+        'video_promo' => 'required|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
         'video_description' => 'nullable|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
         'language' => 'required|in:1,2', // Example validation for language (required and should be one of the given values)
         'skill_level' => 'required|in:1,2,3,4', // Example validation for skill_level (required and should be one of the given values)
@@ -77,12 +86,67 @@ class CourseLandingPage extends Component
 
         $this->images = $course->images;
         $this->currentImage = $course->images;
+
+        // Validate database data
+        $this->validateDatabaseData();
     }
 
+    protected function validateDatabaseData()
+    {
+        $course = Course::where('id', $this->courseId)->first();
 
+        // Validate title
+        $titleValid = true;
+        $validator = Validator::make(['title' => $course->title], [
+            'title' => ['required', 'string', 'min:10', 'max:160'],
+        ]);
+        if ($validator->fails()) {
+            $titleValid = false;
+        }
 
+        // Validate subtitle
+        $subtitleValid = true;
+        $validator = Validator::make(['subtitle' => $course->subtitle], [
+            'subtitle' => ['required', 'string', 'min:10', 'max:160'],
+        ]);
+        if ($validator->fails()) {
+            $subtitleValid = false;
+        }
 
+        // Validate description
+        $descriptionValid = true;
+        $validator = Validator::make(['description' => $course->description], [
+            'description' => ['required', 'string', 'min:10', 'max:200'],
+        ]);
+        if ($validator->fails()) {
+            $descriptionValid = false;
+        }
 
+        // Validate description
+        $descriptionValid = true;
+        $validator = Validator::make(['description' => $course->description], [
+            'description' => ['required', 'string', 'min:10', 'max:200'],
+        ]);
+        if ($validator->fails()) {
+            $descriptionValid = false;
+        }
+
+        // Validate video promotional
+        $video_promoValid = true;
+        $validator = Validator::make(['video_promo' => $course->video_promo], [
+            'video_promo' => ['required', 'url', 'min:10'],
+        ]);
+        if ($validator->fails()) {
+            $video_promoValid = false;
+        }
+
+        $this->databaseDataValid = $titleValid && $subtitleValid && $descriptionValid && $video_promoValid;
+
+        $this->titleValid = $titleValid;
+        $this->subtitleValid = $subtitleValid;
+        $this->descriptionValid = $descriptionValid;
+        $this->video_promoValid = $video_promoValid;
+    }
 
     public function render()
     {
@@ -139,6 +203,12 @@ class CourseLandingPage extends Component
                 $i++;
             }
         }
+
+        // Set $databaseDataValid to true
+        $this->databaseDataValid = true;
+
+        // Set formSubmitted to true on successful submission
+        $this->formSubmitted = true;
 
         $this->alert('success', 'Course Updated Successfully! ');
     }

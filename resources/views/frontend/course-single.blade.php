@@ -325,7 +325,7 @@
                                     <h4 class="mb-0">{{ $instructor->full_name }}</h4>
                                     <span>
                                         @if (count($instructor->specializations) > 0)
-                                            @foreach ($instructor->specializations as $specialization)
+                                            @foreach ($instructor->specializations->take(3) as $specialization)
                                                 {{ $specialization->name }}
 
                                                 @if (!$loop->last)

@@ -286,6 +286,7 @@
 
                         <div class="row ">
 
+
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="course_type">{{ __('transf.Course type') }}</label>
                                 <select name="course_type" id="course_type" class="form-control"

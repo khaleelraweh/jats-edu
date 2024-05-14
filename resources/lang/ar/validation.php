@@ -138,5 +138,20 @@ return [
     "uppercase" => "يجب أن يحتوي الحقل :attribute على حروف كبيرة.",
     "url" => "صيغة رابط حقل :attribute غير صحيحة.",
     "user" => "لم يتم العثور على أيّ حسابٍ بهذا العنوان الإلكتروني.",
-    "uuid" => "حقل :attribute يجب أن يكون بصيغة UUID سليمة."
+    "uuid" => "حقل :attribute يجب أن يكون بصيغة UUID سليمة.",
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Validation Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify custom validation messages for attributes using the
+    | convention "attribute.rule" to name the lines. This makes it quick to
+    | specify a specific custom language line for a given attribute rule.
+    |
+    */
+
+    'min_words' => 'حقل :attribute يجب ان يحتوى على الاقل على :min_words كلمات.',
+
 ];

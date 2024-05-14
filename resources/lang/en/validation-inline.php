@@ -126,5 +126,8 @@ return [
     "uploaded" => "This field failed to upload.",
     "uppercase" => "This field must be uppercase.",
     "url" => "This field must be a valid URL.",
-    "uuid" => "This field must be a valid UUID."
+    "uuid" => "This field must be a valid UUID.",
+
+    'min_words' => 'The :attribute must contain at least :min_words words.',
+
 ];

@@ -526,6 +526,8 @@ return [
 
 
 
+    // Instructor Profile 
+    'instructor_profile_tab'                            =>  'ملف المعلم',
 
 
 

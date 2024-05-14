@@ -40,9 +40,10 @@
 
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="course_info-tab" data-bs-toggle="tab"
-                                    data-bs-target="#course_info" type="button" role="tab" aria-controls="course_info"
-                                    aria-selected="true">{{ __('panel.course_info_tab') }}
+                                <button class="nav-link active" id="instructor_profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#instructor_profile" type="button" role="tab"
+                                    aria-controls="instructor_profile"
+                                    aria-selected="true">{{ __('transf.instructor_profile_tab') }}
                                 </button>
                             </li>
 
@@ -68,8 +69,8 @@
 
                         <div class="tab-content" id="myTabContent">
                             {{-- Course info --}}
-                            <div class="tab-pane fade show active" id="course_info" role="tabpanel"
-                                aria-labelledby="course_info-tab">
+                            <div class="tab-pane fade show active" id="instructor_profile" role="tabpanel"
+                                aria-labelledby="instructor_profile-tab">
 
                                 <div class="row">
                                     <div class="col-lg-12 text-center mb-4">
@@ -190,6 +191,54 @@
                                     </div>
 
                                 </div>
+                            </div>
+
+                            {{-- Pricing Tab --}}
+                            <div class="tab-pane fade" id="price" role="tabpanel" aria-labelledby="price-tab">
+
+
+                                {{-- course price and offer_price fields --}}
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 pt-3">
+                                        <label for="price"> {{ __('panel.price') }} </label>
+                                        <input type="number" name="price" id="price" value="{{ old('price') }}"
+                                            class="form-control" min="1">
+                                        @error('price')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 pt-3">
+                                        <label for="offer_price"> {{ __('panel.offer_price') }} </label>
+                                        <input type="number" name="offer_price" id="offer_price"
+                                            value="{{ old('offer_price') }}" class="form-control" min="0">
+                                        @error('offer_price')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- offer_ends for price --}}
+                                <div class="row">
+                                    <div class="col-md-12 com-sm-12 pt-3">
+                                        <label for="offer_ends" class="control-label">
+                                            <span> {{ __('panel.offer_ends') }}
+                                            </span>
+                                            <span class="require red">*</span>
+                                        </label>
+                                        <div class="form-group" id="offer_ends_group">
+                                            <input type="text" id="offer_ends" name="offer_ends"
+                                                value="{{ old('offer_ends', now()->format('Y-m-d')) }}"
+                                                class="form-control">
+                                            @error('offer_ends')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
                         </div>

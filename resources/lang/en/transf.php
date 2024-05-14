@@ -520,6 +520,10 @@ return [
     // publish Data
     'Publish Data'                                      =>  'Publish Data',
 
+    // Instructor Profile 
+    'instructor_profile_tab'                            =>  'Instructor Profile',
+
+
 
 
 ];

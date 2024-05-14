@@ -152,6 +152,5 @@ return [
     |
     */
 
-    'min_words' => 'حقل :attribute يجب ان يحتوى على الاقل على :min_words كلمات.',
-
+    "min_words" => "حقل :attribute يجب ان يحتوى على الأقل :min_words كلمات.",
 ];

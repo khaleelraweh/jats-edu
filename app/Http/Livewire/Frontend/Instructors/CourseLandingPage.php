@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Illuminate\Validation\Rule;
 
 class CourseLandingPage extends Component
 {
@@ -44,26 +45,64 @@ class CourseLandingPage extends Component
     public $titleValid = false;
     public $subtitleValid = false;
     public $descriptionValid = false;
-    public $video_promoValid = false;
+    public $videopromoValid = false;
+    public $imagesValid = false;
 
 
 
 
-    protected $rules = [
+    protected function rules()
+    {
+        $rules = [
+            'title' => 'required|string|max:255',
+            'subtitle' => 'required|string|max:255',
+            'description' => 'required|string|min_words:200',
+            'video_promo' => 'required|url|max:255',
+            'video_description' => 'nullable|url|max:255',
+            'language' => 'required|in:1,2',
+            'skill_level' => 'required|in:1,2,3,4',
+            'course_type' => 'required|in:1,2',
+            'course_category_id' => 'required|exists:course_categories,id',
+            'certificate' => 'required|boolean',
+        ];
 
-        'title' => 'required|string|max:255',
-        'subtitle' => 'required|string|max:255',
-        'description' => 'required|string|min_words:200',  // min_words came from AppServiceProvider I made it 
-        'images.*' => 'nullable|image|max:2048', // Validation rule for images (nullable and max size 2MB)
-        'video_promo' => 'required|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
-        'video_description' => 'nullable|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
-        'language' => 'required|in:1,2', // Example validation for language (required and should be one of the given values)
-        'skill_level' => 'required|in:1,2,3,4', // Example validation for skill_level (required and should be one of the given values)
-        'course_type' => 'required|in:1,2', // Example validation for course_type (required and should be one of the given values)
-        'course_category_id' => 'required|exists:course_categories,id', // Example validation for course_category_id (required and should exist in course_categories table)
-        'certificate' => 'required|boolean', // Example validation for certificate (required and should be boolean)
-        // 'deadline' => 'nullable|date_format:Y-m-d H:i K', // Valid datetime format
-    ];
+        // Add a custom validation rule for images
+        $rules['images'] = [
+            'nullable', // Images are nullable
+            Rule::requiredIf(function () {
+                // Check if there are any images associated with the course
+                return !empty($this->currentImage);
+            }),
+            'array', // Images should be an array
+            'max:3', // Maximum 3 images allowed
+            function ($attribute, $value, $fail) {
+                if (empty($this->images) && empty($this->currentImage)) {
+                    // Fail validation if no images are selected or saved
+                    $fail('Please upload at least one image.');
+                }
+            }
+        ];
+
+        return $rules;
+    }
+
+
+
+    // protected $rules = [
+
+    //     'title' => 'required|string|max:255',
+    //     'subtitle' => 'required|string|max:255',
+    //     'description' => 'required|string|min_words:200',  // min_words came from AppServiceProvider I made it 
+    //     'images.*' => 'required|image|max:2048', // Validation rule for images (nullable and max size 2MB)
+    //     'video_promo' => 'required|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
+    //     'video_description' => 'nullable|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
+    //     'language' => 'required|in:1,2', // Example validation for language (required and should be one of the given values)
+    //     'skill_level' => 'required|in:1,2,3,4', // Example validation for skill_level (required and should be one of the given values)
+    //     'course_type' => 'required|in:1,2', // Example validation for course_type (required and should be one of the given values)
+    //     'course_category_id' => 'required|exists:course_categories,id', // Example validation for course_category_id (required and should exist in course_categories table)
+    //     'certificate' => 'required|boolean', // Example validation for certificate (required and should be boolean)
+    //     // 'deadline' => 'nullable|date_format:Y-m-d H:i K', // Valid datetime format
+    // ];
 
     public function mount($courseId)
     {
@@ -113,39 +152,41 @@ class CourseLandingPage extends Component
             $subtitleValid = false;
         }
 
-        // Validate description
-        $descriptionValid = true;
-        $validator = Validator::make(['description' => $course->description], [
-            'description' => ['required', 'string', 'min:10', 'max:200'],
-        ]);
-        if ($validator->fails()) {
-            $descriptionValid = false;
-        }
 
         // Validate description
         $descriptionValid = true;
         $validator = Validator::make(['description' => $course->description], [
-            'description' => ['required', 'string', 'min:10', 'max:200'],
+            'description' => ['required', 'string', 'min_words:200'],
         ]);
         if ($validator->fails()) {
             $descriptionValid = false;
         }
 
         // Validate video promotional
-        $video_promoValid = true;
+        $videopromoValid = true;
         $validator = Validator::make(['video_promo' => $course->video_promo], [
             'video_promo' => ['required', 'url', 'min:10'],
         ]);
         if ($validator->fails()) {
-            $video_promoValid = false;
+            $videopromoValid = false;
         }
 
-        $this->databaseDataValid = $titleValid && $subtitleValid && $descriptionValid && $video_promoValid;
+        // Validate video promotional
+        $imagesValid = true;
+        $validator = Validator::make(['images' => $course->images], [
+            'images' => ['required', 'image', 'max:2048'],
+        ]);
+        if ($validator->fails()) {
+            $imagesValid = false;
+        }
+
+        $this->databaseDataValid = $titleValid && $subtitleValid && $descriptionValid && $videopromoValid && $imagesValid;
 
         $this->titleValid = $titleValid;
         $this->subtitleValid = $subtitleValid;
         $this->descriptionValid = $descriptionValid;
-        $this->video_promoValid = $video_promoValid;
+        $this->videopromoValid = $videopromoValid;
+        $this->imagesValid = $imagesValid;
     }
 
     public function render()

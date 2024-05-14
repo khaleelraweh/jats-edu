@@ -659,6 +659,8 @@ return [
     'twitter'                           =>  'twitter',
     'instagram'                         =>  'Instagram',
     'linkedin'                          =>  'Linkedin',
+    'youtube'                          =>  'Youtube',
+    'website'                          =>  'Website',
 
 
     ##############################################################

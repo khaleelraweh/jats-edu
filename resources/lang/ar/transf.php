@@ -528,6 +528,8 @@ return [
 
     // Instructor Profile 
     'instructor_profile_tab'                            =>  'ملف المعلم',
+    'social_tab'                                        =>  'مواقع التواصل',
+
 
 
 

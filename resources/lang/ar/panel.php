@@ -631,6 +631,8 @@ return [
     'twitter'                           =>  'تويتر',
     'instagram'                         =>  'إنستجرام',
     'linkedin'                          =>  'لنكد إن',
+    'youtube'                          =>  'يوتيوب',
+    'website'                          =>  'موقع ويب',
 
 
     // =============  Manage specialization  ===============//

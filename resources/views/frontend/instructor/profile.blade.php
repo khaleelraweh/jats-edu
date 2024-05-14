@@ -48,9 +48,9 @@
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="price-tab" data-bs-toggle="tab" data-bs-target="#price"
-                                    type="button" role="tab" aria-controls="price"
-                                    aria-selected="true">{{ __('panel.price_tab') }}
+                                <button class="nav-link" id="social-tab" data-bs-toggle="tab" data-bs-target="#social"
+                                    type="button" role="tab" aria-controls="social"
+                                    aria-selected="true">{{ __('transf.social_tab') }}
                                 </button>
                             </li>
 
@@ -166,7 +166,6 @@
                                         @enderror
                                     </div>
 
-                                    {{-- specializations row --}}
                                     <div class="col-lg-12 form-group pt-3">
                                         <label
                                             for="specializations">{{ __('panel.specializations_you_are_working_with') }}</label>
@@ -182,54 +181,72 @@
 
                                     </div>
 
-
-
                                 </div>
                             </div>
 
                             {{-- Pricing Tab --}}
-                            <div class="tab-pane fade" id="price" role="tabpanel" aria-labelledby="price-tab">
-
-
-                                {{-- course price and offer_price fields --}}
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12 pt-3">
-                                        <label for="price"> {{ __('panel.price') }} </label>
-                                        <input type="number" name="price" id="price" value="{{ old('price') }}"
-                                            class="form-control" min="1">
-                                        @error('price')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
+                            <div class="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab">
 
                                 <div class="row">
-                                    <div class="col-md-12 col-sm-12 pt-3">
-                                        <label for="offer_price"> {{ __('panel.offer_price') }} </label>
-                                        <input type="number" name="offer_price" id="offer_price"
-                                            value="{{ old('offer_price') }}" class="form-control" min="0">
-                                        @error('offer_price')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                {{-- offer_ends for price --}}
-                                <div class="row">
-                                    <div class="col-md-12 com-sm-12 pt-3">
-                                        <label for="offer_ends" class="control-label">
-                                            <span> {{ __('panel.offer_ends') }}
-                                            </span>
-                                            <span class="require red">*</span>
+                                    <div class="col-lg-12 form-group pt-3">
+                                        <label class="text-small text-uppercase" for="facebook">
+                                            {{ __('panel.facebook') }}
                                         </label>
-                                        <div class="form-group" id="offer_ends_group">
-                                            <input type="text" id="offer_ends" name="offer_ends"
-                                                value="{{ old('offer_ends', now()->format('Y-m-d')) }}"
-                                                class="form-control">
-                                            @error('offer_ends')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
+                                        <input class="form-control form-control-lg" name="facebook" type="text"
+                                            value="{{ old('facebook', auth()->user()->facebook) }}">
+                                        @error('facebook')
+                                            <span class="text-danger"> {{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg-12 form-group pt-3">
+                                        <label class="text-small text-uppercase" for="twitter">
+                                            {{ __('panel.twitter') }}
+                                        </label>
+                                        <input class="form-control form-control-lg" name="twitter" type="text"
+                                            value="{{ old('twitter', auth()->user()->twitter) }}">
+                                        @error('twitter')
+                                            <span class="text-danger"> {{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg-12 form-group pt-3">
+                                        <label class="text-small text-uppercase" for="instagram">
+                                            {{ __('panel.instagram') }}
+                                        </label>
+                                        <input class="form-control form-control-lg" name="instagram" type="text"
+                                            value="{{ old('instagram', auth()->user()->instagram) }}">
+                                        @error('instagram')
+                                            <span class="text-danger"> {{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg-12 form-group pt-3">
+                                        <label class="text-small text-uppercase" for="linkedin">
+                                            {{ __('panel.linkedin') }}
+                                        </label>
+                                        <input class="form-control form-control-lg" name="linkedin" type="text"
+                                            value="{{ old('linkedin', auth()->user()->linkedin) }}">
+                                        @error('linkedin')
+                                            <span class="text-danger"> {{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg-12 form-group pt-3">
+                                        <label class="text-small text-uppercase" for="youtube">
+                                            {{ __('panel.youtube') }}
+                                        </label>
+                                        <input class="form-control form-control-lg" name="youtube" type="text"
+                                            value="{{ old('youtube', auth()->user()->youtube) }}">
+                                        @error('youtube')
+                                            <span class="text-danger"> {{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg-12 form-group pt-3">
+                                        <label class="text-small text-uppercase" for="website">
+                                            {{ __('panel.website') }}
+                                        </label>
+                                        <input class="form-control form-control-lg" name="website" type="text"
+                                            value="{{ old('website', auth()->user()->website) }}">
+                                        @error('website')
+                                            <span class="text-danger"> {{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
 

@@ -522,6 +522,7 @@ return [
 
     // Instructor Profile 
     'instructor_profile_tab'                            =>  'Instructor Profile',
+    'social_tab'                                        =>  'Social',
 
 
 

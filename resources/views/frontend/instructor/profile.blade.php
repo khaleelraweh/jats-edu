@@ -184,7 +184,6 @@
                                 </div>
                             </div>
 
-                            {{-- Pricing Tab --}}
                             <div class="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab">
 
                                 <div class="row">
@@ -200,7 +199,8 @@
                                                 </label>
                                             </div>
                                             <input class="form-control form-control-lg" id="facebook" name="facebook"
-                                                type="text" value="{{ old('facebook', auth()->user()->facebook) }}">
+                                                type="text" value="{{ old('facebook', auth()->user()->facebook) }}"
+                                                placeholder="{{ __('transf.Username') }}">
                                         </div>
                                         @error('facebook')
                                             <span class="text-danger"> {{ $message }}</span>
@@ -219,7 +219,8 @@
                                                 </label>
                                             </div>
                                             <input class="form-control form-control-lg" id="twitter" name="twitter"
-                                                type="text" value="{{ old('twitter', auth()->user()->twitter) }}">
+                                                type="text" value="{{ old('twitter', auth()->user()->twitter) }}"
+                                                placeholder="{{ __('transf.Username') }}">
                                         </div>
                                         @error('twitter')
                                             <span class="text-danger"> {{ $message }}</span>
@@ -237,7 +238,8 @@
                                                 </label>
                                             </div>
                                             <input class="form-control form-control-lg" id="instagram" name="instagram"
-                                                type="text" value="{{ old('instagram', auth()->user()->instagram) }}">
+                                                type="text" value="{{ old('instagram', auth()->user()->instagram) }}"
+                                                placeholder="{{ __('transf.Username') }}">
                                         </div>
                                         @error('instagram')
                                             <span class="text-danger"> {{ $message }}</span>
@@ -255,7 +257,8 @@
                                                 </label>
                                             </div>
                                             <input class="form-control form-control-lg" id="linkedin" name="linkedin"
-                                                type="text" value="{{ old('linkedin', auth()->user()->linkedin) }}">
+                                                type="text" value="{{ old('linkedin', auth()->user()->linkedin) }}"
+                                                placeholder="{{ __('transf.Resource ID') }}">
                                         </div>
                                         @error('linkedin')
                                             <span class="text-danger"> {{ $message }}</span>
@@ -273,7 +276,8 @@
                                                 </label>
                                             </div>
                                             <input class="form-control form-control-lg" id="youtube" name="youtube"
-                                                type="text" value="{{ old('youtube', auth()->user()->youtube) }}">
+                                                type="text" value="{{ old('youtube', auth()->user()->youtube) }}"
+                                                placeholder="{{ __('transf.Username') }}">
                                         </div>
                                         @error('youtube')
                                             <span class="text-danger"> {{ $message }}</span>
@@ -284,7 +288,8 @@
                                             {{ __('panel.website') }}
                                         </label>
                                         <input class="form-control form-control-lg" name="website" type="text"
-                                            value="{{ old('website', auth()->user()->website) }}">
+                                            value="{{ old('website', auth()->user()->website) }}"
+                                            placeholder="{{ __('transf.Url') }}">
                                         @error('website')
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
@@ -295,7 +300,7 @@
 
                             <div class="col-lg-12 form-group pt-4">
                                 <button class="btn text-white-all btn-coral btn-wide d-none d-lg-inline-block"
-                                    data-aos-duration="200" data-aos="fade-up" type="submit">
+                                    data-aos-duration="50" data-aos="fade-up" type="submit">
                                     {{ __('panel.update') }}
                                     {{ __('panel.f_profile') }} </button>
 

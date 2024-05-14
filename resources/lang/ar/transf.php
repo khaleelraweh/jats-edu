@@ -529,6 +529,8 @@ return [
     // Instructor Profile 
     'instructor_profile_tab'                            =>  'ملف المعلم',
     'social_tab'                                        =>  'مواقع التواصل',
+    'Username'                                          =>  'إسم المستخدم',
+    'Resource ID'                                       =>  'معرف المورد',
 
 
 

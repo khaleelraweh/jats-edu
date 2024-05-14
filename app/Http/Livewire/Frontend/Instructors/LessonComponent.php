@@ -24,7 +24,10 @@ class LessonComponent extends Component
 
     public $formSubmitted = false;
     public $databaseDataValid = false;
+
     public $sectionsValid = false;
+    public $duration_30_minutes_Valid = false;
+    public $totalLessonsValid = false;
 
 
     // Property to track the edit state of section title
@@ -109,7 +112,7 @@ class LessonComponent extends Component
         if ($sectionsCount > 0) {
             foreach ($course->sections as $section) {
                 $validator = Validator::make(['title' => $section->title], [
-                    'title' => ['required', 'string', 'min:10', 'max:160'],
+                    'title' => ['required', 'string', 'min:3', 'max:80'],
                 ]);
                 if ($validator->fails()) {
                     $sectionsValid = false;
@@ -120,10 +123,31 @@ class LessonComponent extends Component
             $sectionsValid = false;
         }
 
+        // duration validation more than or equal to 30 minutes 
+        $duration_30_minutes_Valid = true;
+        $totalDurations = 0;
+        foreach ($course->sections as $section) {
+            $totalDurations += $section->lessons->sum(
+                'duration_minutes',
+            );
+        }
+        if ($totalDurations < 30) {
+            $duration_30_minutes_Valid = false;
+        }
+
+        // lesson total more than 5 lectures 
+        $totalLessonsValid = true;
+        if ($course->totalLessonsCount() < 5) {
+            $totalLessonsValid = false;
+        }
+
+
         // Set flags for sections validation
-        $this->databaseDataValid = $sectionsValid;
+        $this->databaseDataValid = $sectionsValid && $duration_30_minutes_Valid && $totalLessonsValid;
 
         $this->sectionsValid = $sectionsValid;
+        $this->duration_30_minutes_Valid = $duration_30_minutes_Valid;
+        $this->totalLessonsValid = $totalLessonsValid;
     }
 
 
@@ -228,10 +252,6 @@ class LessonComponent extends Component
 
 
 
-
-
-
-
     // Method to remove a section along with its lessons
     public function removeSection($index)
     {
@@ -258,7 +278,6 @@ class LessonComponent extends Component
         // Re-index the sections array
         $this->sections = array_values($this->sections);
     }
-
 
 
     public function render()
@@ -330,8 +349,7 @@ class LessonComponent extends Component
             }
         }
 
-        // Set $databaseDataValid to true
-        $this->databaseDataValid = true;
+        $this->validateDatabaseData();
 
         // Set formSubmitted to true on successful submission
         $this->formSubmitted = true;

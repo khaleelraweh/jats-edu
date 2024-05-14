@@ -186,7 +186,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mx-n2 align-items-end">
+                                    <div class="row mx-n2 align-items-end mt-2">
                                         <div class="col px-2">
                                             <ul class="nav mx-n3">
                                                 <li class="nav-item px-3">
@@ -237,11 +237,11 @@
                                                             @endphp
 
                                                             @if ($hours > 0)
-                                                                {{ $hours }} hr @if ($minutes > 0)
-                                                                    {{ $minutes }} min
+                                                                {{ $hours }} {{ __('transf.hr') }} @if ($minutes > 0)
+                                                                    {{ $minutes }} {{ __('transf.min') }}
                                                                 @endif
                                                             @else
-                                                                {{ $minutes }} min
+                                                                {{ $minutes }} {{ __('transf.min') }}
                                                             @endif
 
 

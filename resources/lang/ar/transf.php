@@ -185,6 +185,9 @@ return [
 
     'txt_comments'                                      =>  'التعليقات',
 
+    'hr'                                                =>  'س',
+    'min'                                               =>  'د',
+
     // Instructors-single 
     'Bio'                                              =>   'السيرة الذاتية',
     'instructors'                                       =>  'المحاضرون',

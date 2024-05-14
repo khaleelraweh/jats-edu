@@ -184,6 +184,9 @@ return [
 
     'txt_comments'                                      =>  'Comments',
 
+    'hr'                                                =>  'hr',
+    'min'                                               =>  'min',
+
     // Instructors-single 
     'Bio'                                              =>   'Bio',
     'instructors'                                       =>  'Instructors',

@@ -141,6 +141,9 @@ return [
     |
     */
 
+    'min_words' => 'The :attribute must contain at least :min_words words.',
+
+
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',

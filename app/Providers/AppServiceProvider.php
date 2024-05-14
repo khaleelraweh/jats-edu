@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Currency;
 use App\Models\SiteSetting;
 use App\Models\WebMenu;
+use App\Services\CustomValidationRules;
 use Carbon\Carbon;
 use GuzzleHttp\Cookie\SetCookie;
 use Illuminate\Pagination\Paginator;
@@ -37,15 +38,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        Validator::extend('min_words', function ($attribute, $value, $parameters, $validator) {
-            $minWords = $parameters[0] ?? 0;
-            $wordCount = str_word_count($value);
-            return $wordCount >= $minWords;
-        });
 
-        Validator::replacer('min_words', function ($message, $attribute, $rule, $parameters) {
-            return str_replace(':min_words', $parameters[0], 'Please enter at least :min_words words for ' . $attribute . ' field');
-        });
+        Validator::extend('min_words', [CustomValidationRules::class, 'minWords']);
+
 
 
         // Site setting calling to cache in 5 hours refresh

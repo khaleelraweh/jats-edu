@@ -30,8 +30,6 @@ class InstructorController extends Controller
     public function update_profile(ProfileRequest $request)
     {
 
-
-
         $user = Auth()->user();
 
         $data['first_name'] = $request->first_name;
@@ -39,6 +37,7 @@ class InstructorController extends Controller
         $data['email'] = $request->email;
         $data['mobile'] = $request->mobile;
 
+        $data['biography'] = $request->biography;
         $data['facebook'] = $request->facebook;
         $data['twitter'] = $request->twitter;
         $data['instagram'] = $request->instagram;

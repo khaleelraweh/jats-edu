@@ -31,7 +31,7 @@ return new class extends Migration
             $table->json('description')->nullable();
             $table->json('motavation')->nullable();
 
-            $table->string('Biography')->nullable();
+            $table->string('biography')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();

@@ -399,7 +399,7 @@
                                             {{ __('transf.Biography') }}
 
                                         </label>
-                                        <textarea name="biography" rows="10" class="form-control summernote">{!! old('biography') !!}</textarea>
+                                        <textarea name="biography" rows="10" class="form-control summernote">{!! old('biography', auth()->user()->biography) !!}</textarea>
                                         <span class="d-block mt-1 text-muted">
                                             <small>
                                                 {{ __('transf.Biography_tips') }}

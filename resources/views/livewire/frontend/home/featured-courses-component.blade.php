@@ -202,7 +202,7 @@
 
                                                         </div>
                                                         <div class="font-size-sm">
-                                                            {{ $featured_course->lecture_numbers }}
+                                                            {{ $featured_course->totalLessonsCount() }}
                                                             {{ __('transf.lessons') }}
                                                         </div>
                                                     </div>
@@ -223,7 +223,28 @@
 
                                                         </div>
                                                         <div class="font-size-sm">
-                                                            {{ $featured_course->Duration }}
+
+                                                            @php
+                                                                $totalDurations = 0;
+                                                                foreach ($featured_course->sections as $section) {
+                                                                    $totalDurations += $section->lessons->sum(
+                                                                        'duration_minutes',
+                                                                    );
+                                                                }
+
+                                                                $hours = floor($totalDurations / 60);
+                                                                $minutes = $totalDurations % 60;
+                                                            @endphp
+
+                                                            @if ($hours > 0)
+                                                                {{ $hours }} hr @if ($minutes > 0)
+                                                                    {{ $minutes }} min
+                                                                @endif
+                                                            @else
+                                                                {{ $minutes }} min
+                                                            @endif
+
+
                                                         </div>
                                                     </div>
                                                 </li>

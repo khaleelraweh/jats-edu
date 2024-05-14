@@ -96,6 +96,9 @@ class FeaturedCoursesComponent extends Component
             $this->showMoreBtn = false;
         }
 
+
+
+
         return view(
             'livewire.frontend.home.featured-courses-component',
             [

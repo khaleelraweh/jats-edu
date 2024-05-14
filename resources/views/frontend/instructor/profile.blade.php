@@ -1,4 +1,15 @@
 @extends('layouts.app-instructor')
+
+@section('style')
+    {{-- summernote for description field  --}}
+    <link rel="stylesheet" href="{{ asset('backend/vendor/summernote/summernote-bs4.min.css') }}">
+
+    <style>
+        span.select2 {
+            width: 100% !important;
+        }
+    </style>
+@endsection
 @section('content')
     <header class="py-6 py-md-8" style="background-image: none;">
         <div class="container text-center py-xl-2">
@@ -48,6 +59,13 @@
                             </li>
 
                             <li class="nav-item" role="presentation">
+                                <button class="nav-link " id="profile_image-tab" data-bs-toggle="tab"
+                                    data-bs-target="#profile_image" type="button" role="tab"
+                                    aria-controls="profile_image" aria-selected="true">{{ __('transf.profile_image_tab') }}
+                                </button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="social-tab" data-bs-toggle="tab" data-bs-target="#social"
                                     type="button" role="tab" aria-controls="social"
                                     aria-selected="true">{{ __('transf.social_tab') }}
@@ -55,40 +73,22 @@
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="course_topics-tab" data-bs-toggle="tab"
-                                    data-bs-target="#course_topics" type="button" role="tab"
-                                    aria-controls="course_topics" aria-selected="true">{{ __('panel.course_topics_tab') }}
+                                <button class="nav-link" id="biography-tab" data-bs-toggle="tab" data-bs-target="#biography"
+                                    type="button" role="tab" aria-controls="biography"
+                                    aria-selected="true">{{ __('transf.biography_tab') }}
                                 </button>
                             </li>
-
-
 
 
                         </ul>
 
 
                         <div class="tab-content" id="myTabContent">
-                            {{-- Course info --}}
+
+                            {{-- instructor profile  --}}
                             <div class="tab-pane fade show active" id="instructor_profile" role="tabpanel"
                                 aria-labelledby="instructor_profile-tab">
-
                                 <div class="row">
-                                    <div class="col-lg-12 text-center mb-4 pt-3">
-                                        @if (auth()->user()->user_image != '')
-                                            <img src="{{ asset('assets/users/' . auth()->user()->user_image) }}"
-                                                alt="{{ auth()->user()->full_name }}" class="img-thumbnail rounded-pill"
-                                                width="120">
-
-                                            <div class="mt-2">
-                                                <a href="{{ route('customer.remove_profile_image') }}"
-                                                    class="btn btn-sm btn-outline-danger bg-danger  btn-slide slide-white btn-wide shadow mb-4 mb-md-0 me-md-5 text-uppercase">{{ __('panel.f_delete_image') }}</a>
-                                            </div>
-                                        @else
-                                            <img src="{{ asset('image/not_found/avator2.webp') }}"
-                                                alt="{{ auth()->user()->full_name }}" class="img-thumbnail rounded-pill"
-                                                width="120">
-                                        @endif
-                                    </div>
 
                                     <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="first_name">
@@ -155,6 +155,28 @@
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade  " id="profile_image" role="tabpanel"
+                                aria-labelledby="profile_image-tab">
+                                <div class="row">
+                                    <div class="col-lg-12 text-center mb-4 pt-3">
+                                        @if (auth()->user()->user_image != '')
+                                            <img src="{{ asset('assets/users/' . auth()->user()->user_image) }}"
+                                                alt="{{ auth()->user()->full_name }}" class="img-thumbnail rounded-pill"
+                                                width="120" style="width: 150px; height:150px;">
+
+                                            <div class="mt-2">
+                                                <a href="{{ route('customer.remove_profile_image') }}"
+                                                    class="btn btn-sm btn-outline-danger bg-danger  btn-slide slide-white btn-wide shadow mb-4 mb-md-0 me-md-5 text-uppercase">{{ __('panel.f_delete_image') }}</a>
+                                            </div>
+                                        @else
+                                            <img src="{{ asset('image/not_found/avator2.webp') }}"
+                                                alt="{{ auth()->user()->full_name }}" class="img-thumbnail rounded-pill"
+                                                width="120">
+                                        @endif
+                                    </div>
 
                                     <div class="col-lg-12 form-group pt-3">
                                         <label class="text-small text-uppercase"
@@ -165,29 +187,11 @@
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
                                     </div>
-
-                                    <div class="col-lg-12 form-group pt-3">
-                                        <label
-                                            for="specializations">{{ __('panel.specializations_you_are_working_with') }}</label>
-                                        <select name="specializations[]"
-                                            class=" form-control form-control-lg select2 child" multiple="multiple">
-                                            @forelse ($specializations as $specialization)
-                                                <option value="{{ $specialization->id }}"
-                                                    {{ in_array($specialization->id, old('specializations', $instructorSpecializations)) ? 'selected' : null }}>
-                                                    {{ $specialization->name }}</option>
-                                            @empty
-                                            @endforelse
-                                        </select>
-
-                                    </div>
-
                                 </div>
                             </div>
 
                             <div class="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab">
-
                                 <div class="row">
-
                                     {{-- facebook --}}
                                     <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="facebook">
@@ -388,6 +392,40 @@
 
                             </div>
 
+                            <div class="tab-pane fade" id="biography" role="tabpanel" aria-labelledby="biography-tab">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-7 pt-3">
+                                        <label for="biography">
+                                            {{ __('transf.Biography') }}
+
+                                        </label>
+                                        <textarea name="biography" rows="10" class="form-control summernote">{!! old('biography') !!}</textarea>
+                                        <span class="d-block mt-1 text-muted">
+                                            <small>
+                                                {{ __('transf.Biography_tips') }}
+                                            </small>
+                                        </span>
+                                        @error('biography')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-sm-12 col-md-5  pt-3">
+                                        <label class="d-block"
+                                            for="specializations">{{ __('panel.specializations_you_are_working_with') }}</label>
+                                        <select name="specializations[]"
+                                            class=" form-control form-control-lg select2 child w-100" multiple="multiple">
+                                            @forelse ($specializations as $specialization)
+                                                <option value="{{ $specialization->id }}"
+                                                    {{ in_array($specialization->id, old('specializations', $instructorSpecializations)) ? 'selected' : null }}>
+                                                    {{ $specialization->name }}</option>
+                                            @empty
+                                            @endforelse
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-lg-12 form-group pt-4">
                                 {{-- <button class="btn text-white-all btn-coral btn-wide d-none d-lg-inline-block" --}}
                                 <button class="btn text-white-all btn-coral btn-wide d-lg-inline-block" type="submit">
@@ -414,6 +452,30 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('backend/vendor/summernote/summernote-bs4.min.js') }}"></script>
+
+    <script>
+        $(function() {
+
+
+            $('.summernote').summernote({
+                tabSize: 2,
+                height: 150,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+
+
+        });
+    </script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Get all input fields for large devices

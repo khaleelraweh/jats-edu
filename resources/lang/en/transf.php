@@ -525,6 +525,9 @@ return [
     'social_tab'                                        =>  'Social',
     'Username'                                          =>  'Username',
     'Resource ID'                                       =>  'Resource ID',
+    'profile_image_tab'                                 =>  'Profile Image',
+
+    'biography_tab'                                     =>  'Biography',
     'Biography'                                         =>  'Biography',
     'Biography_tips'                                    =>  'To help learners learn more about you, your bio should reflect your Credibility, Empathy, Passion, and Personality. Your biography should have at least 50 words, links and coupon codes are not permitted.',
 

@@ -16,7 +16,8 @@
     @endphp
 
     <!-- PAGE HEADER -->
-    <div class="position-relative pt-8 pt-xl-11">
+    {{-- <div class="position-relative pt-8 pt-xl-11"> --}}
+    <div class="position-relative pt-8 pt-xl-10">
         <div class="position-absolute top-0 right-0 left-0 overlay overlay-custom-left d-none d-xl-block">
 
         </div>
@@ -27,10 +28,12 @@
         <div class="row mb-8">
             <div class="col-lg-8 mb-6 mb-lg-0 position-relative">
                 <div class="course-single-white">
-                    <h1 class="me-xl-14 text-white">
+                    {{-- <h1 class="me-xl-14 text-white"> --}}
+                    <h1 class="me-xl-10 text-white">
                         {{ $course->title }}
                     </h1>
-                    <p class="me-xl-13 mb-5 text-white">
+                    {{-- <p class="me-xl-13 mb-5 text-white"> --}}
+                    <p class="me-xl-10 mb-5 text-white">
                         {{ $course->subtitle }}
                     </p>
 

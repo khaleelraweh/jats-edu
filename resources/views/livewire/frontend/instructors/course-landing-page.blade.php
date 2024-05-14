@@ -86,7 +86,7 @@
                                                     value="{{ old('title', $course->title) }}" class="form-control"
                                                     placeholder="{{ __('transf.Insert your course title.') }}"
                                                     style="height: 45px;">
-                                                <span class="input-group-text">{{ 160 - strlen($title) }}</span>
+                                                <span class="input-group-text">{{ 60 - strlen($title) }}</span>
                                             </div>
                                             <span class="text-muted d-inline-block mt-1">
                                                 <small>
@@ -108,11 +108,17 @@
                                                 {{ __('transf.Course subtitle') }}
 
                                             </label>
-                                            <input type="text" name="subtitle" id="subtitle"
-                                                wire:model.defer="subtitle"
-                                                value="{{ old('subtitle', $course->subtitle) }}" class="form-control"
-                                                placeholder="{{ __('transf.Insert your course subtitle.') }}"
-                                                style="height: 45px;">
+                                            <div class="input-group">
+                                                <input type="text" name="subtitle" id="subtitle"
+                                                    wire:model="subtitle"
+                                                    value="{{ old('subtitle', $course->subtitle) }}"
+                                                    class="form-control"
+                                                    placeholder="{{ __('transf.Insert your course subtitle.') }}"
+                                                    style="height: 45px;">
+                                                <span class="input-group-text">{{ 120 - strlen($subtitle) }}</span>
+                                            </div>
+
+
                                             <span class="text-muted d-inline-block mt-1">
                                                 <small>
                                                     {{ __('transf.Course subtitle tip.') }}
@@ -131,7 +137,7 @@
                                         <label for="description">
                                             {{ __('transf.Course description') }}
                                         </label>
-                                        <textarea name="description" rows="10" class="form-control summernote" wire:model.defer="description"
+                                        <textarea name="description" rows="10" class="form-control summernote" wire:model="description"
                                             placeholder="{{ __('transf.Insert your course description.') }}">{!! old('description', $course->description) !!}</textarea>
                                         <span class="text-muted d-inline-block mt-1">
                                             <small>

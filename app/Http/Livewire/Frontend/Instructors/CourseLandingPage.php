@@ -48,16 +48,10 @@ class CourseLandingPage extends Component
     public $videopromoValid = false;
 
 
-
-
-
-
-
-
     protected $rules = [
 
-        'title' => 'required|string|max:255',
-        'subtitle' => 'required|string|max:255',
+        'title' => 'required|string|max:60',
+        'subtitle' => 'required|string|max:120',
         'description' => 'required|string|min_words:200',  // min_words came from AppServiceProvider I made it 
         'images.*' => 'required|image|max:2048', // Validation rule for images (nullable and max size 2MB)
         'video_promo' => 'required|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
@@ -103,7 +97,7 @@ class CourseLandingPage extends Component
         // Validate title
         $titleValid = true;
         $validator = Validator::make(['title' => $course->title], [
-            'title' => ['required', 'string', 'min:10', 'max:160'],
+            'title' => ['required', 'string', 'min:10', 'max:60'],
         ]);
         if ($validator->fails()) {
             $titleValid = false;
@@ -112,7 +106,7 @@ class CourseLandingPage extends Component
         // Validate subtitle
         $subtitleValid = true;
         $validator = Validator::make(['subtitle' => $course->subtitle], [
-            'subtitle' => ['required', 'string', 'min:10', 'max:160'],
+            'subtitle' => ['required', 'string', 'min:10', 'max:120'],
         ]);
         if ($validator->fails()) {
             $subtitleValid = false;

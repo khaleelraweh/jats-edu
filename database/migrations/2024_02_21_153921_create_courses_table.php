@@ -29,7 +29,7 @@ return new class extends Migration
             // added by alyamany
             $table->string('video_promo')->nullable();
             $table->string('video_description')->nullable();
-            $table->tinyInteger('course_type')->nullable();   //  1: mean presence 2 : enrolled
+            $table->tinyInteger('course_type')->nullable()->default(1);   //  1: mean presence 2 : enrolled
 
             $table->dateTime('deadline')->nullable();
             $table->boolean('certificate')->nullable()->default(true);

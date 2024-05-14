@@ -194,7 +194,7 @@
                                             {{ __('panel.facebook') }}
                                         </label>
                                         {{-- for large device  --}}
-                                        <div class="input-group d-none d-lg-block">
+                                        <div class="input-group d-none d-lg-flex">
                                             <div class="input-group-append">
                                                 <label for="facebook"
                                                     class="d-block mb-0  border-radius-none btn btn-secondary text-white">

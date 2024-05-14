@@ -114,7 +114,6 @@
                         @foreach ($requirements as $index => $requirement)
                             <tr>
                                 <td>
-
                                     <div class="input-group">
                                         <input type="text" name="requirements[{{ $index }}][title]"
                                             class="form-control" wire:model="requirements.{{ $index }}.title"

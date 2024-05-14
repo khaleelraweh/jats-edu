@@ -80,10 +80,14 @@
                                             <label for="title">
                                                 {{ __('transf.course_title') }}
                                             </label>
-                                            <input type="text" name="title" id="title" wire:model.defer="title"
-                                                value="{{ old('title', $course->title) }}" class="form-control"
-                                                placeholder="{{ __('transf.Insert your course title.') }}"
-                                                style="height: 45px;">
+
+                                            <div class="input-group">
+                                                <input type="text" name="title" id="title" wire:model="title"
+                                                    value="{{ old('title', $course->title) }}" class="form-control"
+                                                    placeholder="{{ __('transf.Insert your course title.') }}"
+                                                    style="height: 45px;">
+                                                <span class="input-group-text">{{ 160 - strlen($title) }}</span>
+                                            </div>
                                             <span class="text-muted d-inline-block mt-1">
                                                 <small>
                                                     {{ __('transf.Insert your course title tip.') }}

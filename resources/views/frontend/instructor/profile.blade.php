@@ -193,6 +193,7 @@
                                         <label class="text-small text-uppercase" for="facebook">
                                             {{ __('panel.facebook') }}
                                         </label>
+
                                         {{-- for large device  --}}
                                         <div class="input-group d-none d-lg-flex">
                                             <div class="input-group-append">
@@ -432,7 +433,7 @@
             // to make the opisite change 
 
             // Get all input fields for small devices
-            const smallInputs = document.querySelectorAll('.d-block .input-group input');
+            const smallInputs = document.querySelectorAll('.d-lg-none  input');
 
             // Add event listener for each input field
             smallInputs.forEach(function(input) {

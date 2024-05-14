@@ -30,6 +30,8 @@ return new class extends Migration
             // new info for instructor start  
             $table->json('description')->nullable();
             $table->json('motavation')->nullable();
+
+            $table->string('Biography')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();

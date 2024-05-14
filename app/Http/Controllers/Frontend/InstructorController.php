@@ -30,7 +30,7 @@ class InstructorController extends Controller
     public function update_profile(ProfileRequest $request)
     {
 
-        dd($request);
+
 
         $user = Auth()->user();
 

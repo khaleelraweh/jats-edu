@@ -82,12 +82,16 @@ class FrontendController extends Controller
             $query->whereId($course->course_category_id)->whereStatus(true);
         })->inRandomOrder()
             ->Active()
+            ->Course()
+            ->where('id', '<>', $course->id)
             ->take(8)
             ->get();
 
         $latest_courses = Course::with('firstMedia', 'photos', 'courseCategory')
             ->orderBy('created_at', 'desc') // Order by creation date in descending order
             ->Active()
+            ->Course()
+            ->where('id', '<>', $course->id)
             ->take(4)
             ->get();
 

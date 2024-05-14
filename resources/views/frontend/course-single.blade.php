@@ -405,11 +405,11 @@
                             </div>
 
                             <p class="mb-6 line-height-md">
-                                {!! $instructor->description !!}
+                                {!! $instructor->biography !!}
                             </p>
-                            <p class="mb-6 line-height-md">
+                            {{-- <p class="mb-6 line-height-md">
                                 {!! $instructor->motavation !!}
-                            </p>
+                            </p> --}}
                         @endforeach
                     </div>
 

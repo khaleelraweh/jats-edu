@@ -187,11 +187,14 @@
                             <div class="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab">
 
                                 <div class="row">
+
+                                    {{-- facebook --}}
                                     <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="facebook">
                                             {{ __('panel.facebook') }}
                                         </label>
-                                        <div class="input-group">
+                                        {{-- for large device  --}}
+                                        <div class="input-group d-none d-lg-block">
                                             <div class="input-group-append">
                                                 <label for="facebook"
                                                     class="d-block mb-0  border-radius-none btn btn-secondary text-white">
@@ -202,16 +205,34 @@
                                                 type="text" value="{{ old('facebook', auth()->user()->facebook) }}"
                                                 placeholder="{{ __('transf.Username') }}">
                                         </div>
+
+                                        {{-- for small device  --}}
+                                        <div class="d-block d-lg-none">
+                                            <div class="input-group-append">
+                                                <label for="facebook-sm"
+                                                    class="d-block mb-0 w-100  border-radius-none btn btn-secondary text-white">
+                                                    http://www.facebook.com/
+                                                </label>
+                                            </div>
+                                            <input class="form-control form-control-lg text-center" id="facebook-sm"
+                                                name="facebook" type="text"
+                                                value="{{ old('facebook', auth()->user()->facebook) }}"
+                                                placeholder="{{ __('transf.Username') }}">
+                                        </div>
                                         @error('facebook')
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
 
                                     </div>
+
+                                    {{-- twitter  --}}
                                     <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="twitter">
                                             {{ __('panel.twitter') }}
                                         </label>
-                                        <div class="input-group">
+
+                                        {{-- for large device  --}}
+                                        <div class="input-group d-none d-lg-flex">
                                             <div class="input-group-append">
                                                 <label for="twitter"
                                                     class="d-block mb-0  border-radius-none btn btn-secondary text-white">
@@ -222,15 +243,33 @@
                                                 type="text" value="{{ old('twitter', auth()->user()->twitter) }}"
                                                 placeholder="{{ __('transf.Username') }}">
                                         </div>
+
+                                        {{-- for small device  --}}
+                                        <div class="d-block d-lg-none">
+                                            <div class="input-group-append">
+                                                <label for="twitter-sm"
+                                                    class="d-block mb-0 w-100  border-radius-none btn btn-secondary text-white">
+                                                    http://www.twitter.com/
+                                                </label>
+                                            </div>
+                                            <input class="form-control form-control-lg text-center" id="twitter-sm"
+                                                name="twitter" type="text"
+                                                value="{{ old('twitter', auth()->user()->twitter) }}"
+                                                placeholder="{{ __('transf.Username') }}">
+                                        </div>
                                         @error('twitter')
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
                                     </div>
+
+                                    {{-- instagram --}}
                                     <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="instagram">
                                             {{ __('panel.instagram') }}
                                         </label>
-                                        <div class="input-group">
+
+                                        {{-- for large device --}}
+                                        <div class="input-group d-none d-lg-flex">
                                             <div class="input-group-append">
                                                 <label for="instagram"
                                                     class="d-block mb-0  border-radius-none btn btn-secondary text-white">
@@ -241,15 +280,33 @@
                                                 type="text" value="{{ old('instagram', auth()->user()->instagram) }}"
                                                 placeholder="{{ __('transf.Username') }}">
                                         </div>
+
+                                        {{-- for small device --}}
+                                        <div class="d-block d-lg-none">
+                                            <div class="input-group-append">
+                                                <label for="instagram-sm"
+                                                    class="d-block mb-0 w-100 border-radius-none btn btn-secondary text-white">
+                                                    http://www.instagram.com/
+                                                </label>
+                                            </div>
+                                            <input class="form-control form-control-lg text-center" id="instagram-sm"
+                                                name="instagram" type="text"
+                                                value="{{ old('instagram', auth()->user()->instagram) }}"
+                                                placeholder="{{ __('transf.Username') }}">
+                                        </div>
                                         @error('instagram')
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
                                     </div>
+
+                                    {{-- linked In --}}
                                     <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="linkedin">
                                             {{ __('panel.linkedin') }}
                                         </label>
-                                        <div class="input-group">
+
+                                        {{-- for large device --}}
+                                        <div class="input-group d-none d-lg-flex">
                                             <div class="input-group-append">
                                                 <label for="linkedin"
                                                     class="d-block mb-0 border-radius-none btn btn-secondary text-white">
@@ -260,15 +317,33 @@
                                                 type="text" value="{{ old('linkedin', auth()->user()->linkedin) }}"
                                                 placeholder="{{ __('transf.Resource ID') }}">
                                         </div>
+
+                                        {{-- for small device --}}
+                                        <div class="d-block d-lg-none">
+                                            <div class="input-group-append">
+                                                <label for="linkedin-sm"
+                                                    class="d-block mb-0 w-100 border-radius-none btn btn-secondary text-white">
+                                                    http://www.linkedin.com/
+                                                </label>
+                                            </div>
+                                            <input class="form-control form-control-lg text-center" id="linkedin-sm"
+                                                name="linkedin" type="text"
+                                                value="{{ old('linkedin', auth()->user()->linkedin) }}"
+                                                placeholder="{{ __('transf.Resource ID') }}">
+                                        </div>
                                         @error('linkedin')
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
                                     </div>
+
+                                    {{-- youtube --}}
                                     <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="youtube">
                                             {{ __('panel.youtube') }}
                                         </label>
-                                        <div class="input-group">
+
+                                        {{-- for large device --}}
+                                        <div class="input-group d-none d-lg-flex">
                                             <div class="input-group-append">
                                                 <label for="youtube"
                                                     class="d-block mb-0  border-radius-none btn btn-secondary text-white">
@@ -279,10 +354,24 @@
                                                 type="text" value="{{ old('youtube', auth()->user()->youtube) }}"
                                                 placeholder="{{ __('transf.Username') }}">
                                         </div>
+                                        {{-- for small device --}}
+                                        <div class="d-block d-lg-none">
+                                            <div class="input-group-append ">
+                                                <label for="youtube-sm"
+                                                    class="d-block mb-0  w-100 border-radius-none btn btn-secondary text-white">
+                                                    http://www.youtube.com/
+                                                </label>
+                                            </div>
+                                            <input class="form-control form-control-lg text-center" id="youtube-sm"
+                                                name="youtube" type="text"
+                                                value="{{ old('youtube', auth()->user()->youtube) }}"
+                                                placeholder="{{ __('transf.Username') }}">
+                                        </div>
                                         @error('youtube')
                                             <span class="text-danger"> {{ $message }}</span>
                                         @enderror
                                     </div>
+
                                     <div class="col-lg-6 form-group pt-3">
                                         <label class="text-small text-uppercase" for="website">
                                             {{ __('panel.website') }}

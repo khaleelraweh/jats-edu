@@ -21,7 +21,13 @@ class CourseDetailsConfirmationComponent extends Component
     public $coursePublishedTabValid     = false; //done 
 
 
+
     // Field validation 
+
+    public $objectivesValid = false;
+    public $requirementsValid = false;
+    public $intendedsValid = false;
+
     public $sectionsValid = false;
     public $duration_30_minutes_Valid = false;
     public $totalLessonsValid = false;
@@ -30,6 +36,7 @@ class CourseDetailsConfirmationComponent extends Component
 
     public $published_onValid = false;
     public $statusValid = false;
+
 
 
     protected $rules = [
@@ -52,6 +59,69 @@ class CourseDetailsConfirmationComponent extends Component
     protected function validateDatabaseData()
     {
         $course = Course::where('id', $this->courseId)->first();
+
+
+        // ===================== Start Objective Tab Validation ===============//
+
+        // Validate objectives
+        $objectivesValid = true;
+        $objectivesCount = $course->objectives->count();
+        if ($objectivesCount >= 4) {
+            foreach ($course->objectives as $item) {
+                $validator = Validator::make(['title' => $item->title], [
+                    'title' => ['required', 'string', 'min:10', 'max:160'],
+                ]);
+                if ($validator->fails()) {
+                    $objectivesValid = false;
+                    break;
+                }
+            }
+        } else {
+            $objectivesValid = false;
+        }
+
+        // Validate requirements
+        $requirementsValid = true;
+        $requirementsCount = $course->requirements->count();
+        if ($requirementsCount >= 1) {
+            foreach ($course->requirements as $item) {
+                $validator = Validator::make(['title' => $item->title], [
+                    'title' => ['required', 'string', 'min:10', 'max:160'],
+                ]);
+                if ($validator->fails()) {
+                    $requirementsValid = false;
+                    break;
+                }
+            }
+        } else {
+            $requirementsValid = false;
+        }
+
+        // Validate intendeds
+        $intendedsValid = true;
+        $intendedsCount = $course->intendeds->count();
+        if ($intendedsCount >= 1) {
+            foreach ($course->intendeds as $item) {
+                $validator = Validator::make(['title' => $item->title], [
+                    'title' => ['required', 'string', 'min:10', 'max:160'],
+                ]);
+                if ($validator->fails()) {
+                    $intendedsValid = false;
+                    break;
+                }
+            }
+        } else {
+            $intendedsValid = false;
+        }
+
+        $this->objectivesValid = $objectivesValid;
+        $this->requirementsValid = $requirementsValid;
+        $this->intendedsValid = $intendedsValid;
+
+        $this->courseObjectiveTabValid = $objectivesValid && $requirementsValid && $intendedsValid;
+
+
+        // ===================== End Objective Tab Validation ===============//
 
 
         // ===================== Start Curriculum Tab Validation ===============//
@@ -143,7 +213,7 @@ class CourseDetailsConfirmationComponent extends Component
 
         // ===================== End publish Tab Validation ===============//
 
-        $this->databaseDataValid = $this->courseCurriculumTabValid && $this->coursePricingTabValid && $this->coursePublishedTabValid;
+        $this->databaseDataValid = $this->courseObjectiveTabValid && $this->courseCurriculumTabValid && $this->coursePricingTabValid && $this->coursePublishedTabValid;
     }
 
     public function render()

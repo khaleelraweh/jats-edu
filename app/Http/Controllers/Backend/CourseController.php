@@ -116,7 +116,7 @@ class CourseController extends Controller
             }
 
             // dd($topics_list);
-            $topics = $course->topics()->createMany($topics_list);
+            $topics = $course->objectives()->createMany($topics_list);
         }
         // course topics start 
 
@@ -263,7 +263,7 @@ class CourseController extends Controller
         }
 
         // course topics start 
-        $course->topics()->delete();
+        $course->objectives()->delete();
 
         if ($request->course_topic != null) {
             $topics_list = [];
@@ -271,7 +271,7 @@ class CourseController extends Controller
                 $topics_list[$i]['title'] = $request->course_topic[$i];
             }
             // dd($topics_list);
-            $topics = $course->topics()->createMany($topics_list);
+            $topics = $course->objectives()->createMany($topics_list);
         }
         // course topics start 
 

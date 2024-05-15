@@ -489,7 +489,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($course->topics as $item)
+                                    @foreach ($course->objectives as $item)
                                         <?php
                                         $loopIndex = $loop->index;
                                         ?>

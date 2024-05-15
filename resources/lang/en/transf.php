@@ -539,6 +539,10 @@ return [
     'Course Data Confirmed successfully'                =>  'Course Data Confirmed successfully',
     'Course Data Confirmed successfully tips'           =>  'All fields in which data must be entered have been verified in accordance with the rules applied to these fields',
 
+    'Confirm the compulsory course information'         => 'Confirm the compulsory course information',
+    'Confirm the compulsory course information tips'    => 'All mandatory fields must be entered in order for the course to be approved by the administration to allow it to be published on the site for students',
+
+
 
 
 

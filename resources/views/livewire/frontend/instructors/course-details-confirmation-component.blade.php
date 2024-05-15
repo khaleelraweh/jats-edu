@@ -21,12 +21,12 @@
                     </div>
                 @else
                     <div class="mb-4">
-                        <i class="mdi mdi-debug-step-into text-warning display-4"></i>
+                        <i class="mdi mdi-alert-circle-outline text-warning display-4"></i>
                     </div>
                     <div>
 
                         <h5>{{ __('transf.Course Data Confirmed successfully') }}</h5>
-                        <p class="text-muted">{{ __('transf.Course Data Confirmed successfully tips') }}</p>
+                        <p class="text-muted">{{ __('transf.Confirm the compulsory course information tips') }}</p>
 
                     </div>
                 @endif

@@ -150,7 +150,7 @@
                                 <li class="nav-item">
                                     <a href="#confirm-detail3" class="nav-link" data-toggle="tab">
                                         <span class="step-number">06</span>
-                                        <span class="step-title">Confirm Detail2</span>
+                                        <span class="step-title">{{ __('transf.Details Confirmation') }}</span>
                                     </a>
                                 </li>
                             </ul>

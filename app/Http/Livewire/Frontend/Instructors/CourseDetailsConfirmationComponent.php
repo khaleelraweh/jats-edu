@@ -17,8 +17,8 @@ class CourseDetailsConfirmationComponent extends Component
     public $courseLandingTabValid       = false;
     public $courseObjectiveTabValid     = false;
     public $courseCurriculumTabValid    = false;
-    public $coursePricingTabValid       = false;
-    public $coursePublishedTabValid     = false;
+    public $coursePricingTabValid       = false;  //doen 
+    public $coursePublishedTabValid     = false; //done 
 
 
     // Field validation 

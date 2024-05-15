@@ -121,12 +121,14 @@ class InstructorCoursesComponent extends Component
                     });
             })
             ->when($this->selectedRatings, function ($query) {
-                // Filter courses based on reviews rating 
-                foreach ($this->selectedRatings as $rating) {
-                    $query->whereHas('reviews', function ($subQuery) use ($rating) {
-                        $subQuery->where('rating', '>=', $rating);
-                    });
-                }
+                // Filter courses based on average reviews rating
+                $query->whereHas('reviews', function ($subQuery) {
+                    // Calculate the average rating
+                    $subQuery->selectRaw('avg(rating) as average_rating')
+                        ->groupBy('reviewable_id');
+                    // Filter courses where the average rating is >= any of the selected ratings
+                    $subQuery->havingRaw('max(rating) >= ?', [min($this->selectedRatings)]);
+                });
             })
             ->whereHas('users', function ($query) {
                 return $query->where('user_id', Auth()->user()->id);

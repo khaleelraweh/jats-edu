@@ -1,10 +1,17 @@
 <div wire:ignore>
+    <header class="d-flex justify-content-end">
+        <div class="completed-section-badge">
+            @if ($databaseDataValid || ($formSubmitted && !$errors->any()))
+                <i class="mdi mdi-check-circle-outline text-success display-4"></i>
+            @endif
+        </div>
+    </header>
     <form wire:submit.prevent="save">
         {{-- course price  --}}
         <div class="row">
             <div class="col-md-12 col-sm-12 pt-3">
                 <label for="price"> {{ __('panel.price') }} </label>
-                <input type="text" name="price" wire:model.defer="price" id="price"
+                <input type="text" name="price" wire:model="price" id="price"
                     value="{{ old('price', $course->price) }}" class="form-control">
                 @error('price')
                     <span class="text-danger">{{ $message }}</span>

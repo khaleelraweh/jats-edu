@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Frontend\Instructors;
 
 use App\Models\Course;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Validator;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
@@ -16,7 +17,10 @@ class CoursePricingComponent extends Component
     public $offer_price;
     public $offer_ends;
 
+    // validation check 
     public $formSubmitted = false;
+    public $databaseDataValid = false;
+    public $priceValid = false;
 
     public $date;
 
@@ -35,6 +39,8 @@ class CoursePricingComponent extends Component
         $this->price = $course->price;
         $this->offer_price = $course->offer_price;
         $this->offer_ends = $course->offer_ends;
+
+        $this->validateDatabaseData();
     }
 
 
@@ -53,6 +59,24 @@ class CoursePricingComponent extends Component
         $this->formSubmitted = true;
 
         $this->alert('success', 'Price Updated Successfully!');
+    }
+
+    protected function validateDatabaseData()
+    {
+        $course = Course::where('id', $this->courseId)->first();
+
+        // Validate title
+        $priceValid = true;
+        $validator = Validator::make(['price' => $course->price], [
+            'price' => ['required', 'numeric', 'min:0'],
+        ]);
+        if ($validator->fails()) {
+            $priceValid = false;
+        }
+
+
+        $this->databaseDataValid = $priceValid;
+        $this->priceValid = $priceValid;
     }
 
     public function render()

@@ -543,6 +543,8 @@ return [
     // Confirmation tab 
     'Details Confirmation'                              =>  'تاكيد التفاصيل',
     'Course Data Confirmed successfully'                =>  'تم تأكيد بيانات الدورة بنجاح',
+    'Course Data Confirmed successfully tips'           =>  'تم التحقق من كافة الحقول التي يجب إدخال البيانات فيها وفقاً للقواعد المطبقة على هذه الحقول',
+
 
 
 

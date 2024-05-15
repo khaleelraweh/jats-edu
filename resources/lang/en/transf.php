@@ -537,6 +537,7 @@ return [
     // Confirmation tab 
     'Details Confirmation'                              =>  'Details Confirmation ',
     'Course Data Confirmed successfully'                =>  'Course Data Confirmed successfully',
+    'Course Data Confirmed successfully tips'           =>  'All fields in which data must be entered have been verified in accordance with the rules applied to these fields',
 
 
 

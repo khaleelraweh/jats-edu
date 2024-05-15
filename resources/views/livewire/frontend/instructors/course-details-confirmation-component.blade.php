@@ -13,9 +13,8 @@
                     <i class="mdi mdi-check-circle-outline text-success display-4"></i>
                 </div>
                 <div>
-                    <h5>Confirm Detail</h5>
-                    <p class="text-muted">If several languages coalesce,
-                        the grammar of the resulting</p>
+                    <h5>{{ __('transf.Course Data Confirmed successfully') }}</h5>
+                    <p class="text-muted">{{ __('transf.Course Data Confirmed successfully tips') }}</p>
                 </div>
             </div>
         </div>

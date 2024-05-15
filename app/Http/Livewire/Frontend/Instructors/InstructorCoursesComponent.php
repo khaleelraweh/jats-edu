@@ -148,11 +148,14 @@ class InstructorCoursesComponent extends Component
             });
         })->get();
 
+        $menuCounts = Course::where('section', 1)->get();
+
 
         return view('livewire.frontend.instructors.instructor-courses-component', [
             'courses'   =>  $courses,
             'course_categories_menu' => $course_categories_menu,
             'sortingBy' => $this->sortingBy,
+            'menuCounts'    => $menuCounts,
 
         ]);
     }

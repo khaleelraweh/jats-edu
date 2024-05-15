@@ -187,10 +187,6 @@ class CourseListComponent extends Component
                 });
             })
 
-
-
-
-
             ->orderBy($sort_field, $sort_type)
             ->paginate($this->paginationLimit);
 

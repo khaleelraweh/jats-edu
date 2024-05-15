@@ -122,7 +122,7 @@ class CourseSeeder extends Seeder
                 'lecture_numbers' => 5,
                 'course_duration' => "8h 12m",
                 'video_promo' => "https://www.youtube.com/watch?v=9vn_e_XPV4s&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO",
-                'video_description' => "https://www.youtube.com/watch?v=N2EfGEPI_q8&list=PL_hXcCj5NytUlkH1XgfsjHAhJ0QHXM_xO&index=4",
+                'video_description' => "https://www.youtube.com/embed/1bTRzuWzX8Y?si=6WjMubVTEdD8Ow1o",
                 'course_type' => 1,
                 'deadline' => "2024-03-11",
                 'certificate' => 1,

@@ -23,6 +23,11 @@ class CourseDetailsConfirmationComponent extends Component
 
 
     // Field validation 
+    public $titleValid = false;
+    public $subtitleValid = false;
+    public $descriptionValid = false;
+    public $videopromoValid = false;
+
 
     public $objectivesValid = false;
     public $requirementsValid = false;
@@ -59,6 +64,57 @@ class CourseDetailsConfirmationComponent extends Component
     protected function validateDatabaseData()
     {
         $course = Course::where('id', $this->courseId)->first();
+
+
+        // ===================== Start Course Landing  Tab Validation ===============//
+
+
+        // Validate title
+        $titleValid = true;
+        $validator = Validator::make(['title' => $course->title], [
+            'title' => ['required', 'string', 'min:10', 'max:60'],
+        ]);
+        if ($validator->fails()) {
+            $titleValid = false;
+        }
+
+        // Validate subtitle
+        $subtitleValid = true;
+        $validator = Validator::make(['subtitle' => $course->subtitle], [
+            'subtitle' => ['required', 'string', 'min:10', 'max:120'],
+        ]);
+        if ($validator->fails()) {
+            $subtitleValid = false;
+        }
+
+
+        // Validate description
+        $descriptionValid = true;
+        $validator = Validator::make(['description' => $course->description], [
+            'description' => ['required', 'string', 'min_words:200'],
+        ]);
+        if ($validator->fails()) {
+            $descriptionValid = false;
+        }
+
+        // Validate video promotional
+        $videopromoValid = true;
+        $validator = Validator::make(['video_promo' => $course->video_promo], [
+            'video_promo' => ['required', 'url', 'min:10'],
+        ]);
+        if ($validator->fails()) {
+            $videopromoValid = false;
+        }
+
+        $this->titleValid = $titleValid;
+        $this->subtitleValid = $subtitleValid;
+        $this->descriptionValid = $descriptionValid;
+        $this->videopromoValid = $videopromoValid;
+
+        $this->courseLandingTabValid = $titleValid && $subtitleValid && $descriptionValid && $videopromoValid;
+
+
+        // ===================== End  Course Landing Tab Validation ===============//
 
 
         // ===================== Start Objective Tab Validation ===============//
@@ -213,7 +269,7 @@ class CourseDetailsConfirmationComponent extends Component
 
         // ===================== End publish Tab Validation ===============//
 
-        $this->databaseDataValid = $this->courseObjectiveTabValid && $this->courseCurriculumTabValid && $this->coursePricingTabValid && $this->coursePublishedTabValid;
+        $this->databaseDataValid = $this->courseLandingTabValid && $this->courseObjectiveTabValid && $this->courseCurriculumTabValid && $this->coursePricingTabValid && $this->coursePublishedTabValid;
     }
 
     public function render()

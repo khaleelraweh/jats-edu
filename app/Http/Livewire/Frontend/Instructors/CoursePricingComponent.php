@@ -4,17 +4,19 @@ namespace App\Http\Livewire\Frontend\Instructors;
 
 use App\Models\Course;
 use Illuminate\Support\Carbon;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-
-
-
 
 class CoursePricingComponent extends Component
 {
+    use LivewireAlert;
+
     public $courseId;
     public $price;
     public $offer_price;
     public $offer_ends;
+
+    public $formSubmitted = false;
 
     public $date;
 
@@ -48,8 +50,9 @@ class CoursePricingComponent extends Component
             'offer_ends' => $this->offer_ends,
         ]);
 
+        $this->formSubmitted = true;
 
-        // You can redirect to another page or emit an event if needed
+        $this->alert('success', 'Price Updated Successfully!');
     }
 
     public function render()

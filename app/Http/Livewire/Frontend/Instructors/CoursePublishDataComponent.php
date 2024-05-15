@@ -4,14 +4,19 @@ namespace App\Http\Livewire\Frontend\Instructors;
 
 use App\Models\Course;
 use DateTimeImmutable;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class CoursePublishDataComponent extends Component
 {
 
+    use LivewireAlert;
+
     public $courseId;
     public $status;
     public $published_on;
+
+    public $formSubmitted = false;
 
     public $date;
 
@@ -41,8 +46,9 @@ class CoursePublishDataComponent extends Component
             'published_on' => $this->published_on,
         ]);
 
+        $this->formSubmitted = true;
 
-        // You can redirect to another page or emit an event if needed
+        $this->alert('success', 'PublishData Updated Successfully!');
     }
 
     public function render()

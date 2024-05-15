@@ -542,6 +542,9 @@ return [
     'Confirm the compulsory course information'         => 'Confirm the compulsory course information',
     'Confirm the compulsory course information tips'    => 'All mandatory fields must be entered in order for the course to be approved by the administration to allow it to be published on the site for students',
 
+    // instructors edit course
+    'Back to Courses'                                   =>  'Back to Courses',
+    'switch_to_instructor_dashboard_here'               =>  'Switch to the Instructor dashboard here - get back to the courses you’re teaching.',
 
 
 

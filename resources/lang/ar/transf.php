@@ -548,6 +548,10 @@ return [
     'Confirm the compulsory course information tips'    => 'يجب إدخال جميع الحقول الإجبارية من اجل المصادقة على الدورة من قبل الإدارة للسماح بنشرها في الموقع للطلبة ',
 
 
+    // instructors edit course
+    'Back to Courses'                                   =>  'العودة إلى الدورات',
+    'switch_to_instructor_dashboard_here'               =>  'قم بالتبديل إلى لوحة تحكم المدرب هنا - ارجع إلى الدورات التدريبية التي تقوم بتدريسها.',
+
 
 
 

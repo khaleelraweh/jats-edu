@@ -10,15 +10,38 @@
         <ul class="navbar-nav flex-row ms-auto ms-xl-0 me-n2 me-md-n4">
 
             <li class="nav-item border-0 px-0">
-                <!-- Student view -->
-                <a type="button" href="{{ route('frontend.index') }}"
-                    class="nav-link d-none d-md-flex px-3 px-md-4  text-secondary icon-sm" style="line-height: 2.2"
-                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="{{ __('transf.switch_to_student_view_here') }}">
-                    <span width="20" height="20" class="d-inline-block">
-                        {{ __('transf.student') }}
-                    </span>
-                </a>
+
+                @if (!request()->routeIs('instructor.courses.edit'))
+                    <!-- Student view -->
+                    <a type="button" href="{{ route('frontend.index') }}"
+                        class="nav-link d-none d-md-flex px-3 px-md-4  text-secondary icon-sm" style="line-height: 2.2"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        title="{{ __('transf.switch_to_student_view_here') }}">
+                        <span width="20" height="20" class="d-inline-block">
+                            {{ __('transf.student') }}
+                        </span>
+                    </a>
+                @else
+                    {{-- instructor dashboard --}}
+                    <a type="button" href="{{ route('frontend.index') }}"
+                        class="nav-link d-none d-md-flex px-3 px-md-4  text-secondary icon-sm" style="line-height: 2.2"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        title="{{ __('transf.switch_to_instructor_dashboard_here') }}">
+                        <span width="20" height="20" class="d-inline-block">
+                            {{ __('transf.Back to Courses') }}
+
+                            @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                                <i class="fa fa-solid fa-chevron-left chevron"></i>
+                            @else
+                                <i class="fa fa-solid fa-chevron-right chevron"></i>
+                            @endif
+                        </span>
+                    </a>
+
+
+
+
+                @endif
 
             </li>
 

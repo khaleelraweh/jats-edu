@@ -22,7 +22,12 @@ class CourseDetailsConfirmationComponent extends Component
 
 
     // Field validation 
+    public $sectionsValid = false;
+    public $duration_30_minutes_Valid = false;
+    public $totalLessonsValid = false;
+
     public $priceValid = false;
+
     public $published_onValid = false;
     public $statusValid = false;
 
@@ -31,6 +36,8 @@ class CourseDetailsConfirmationComponent extends Component
         'price' => ['required', 'numeric', 'min:0'],
         'published_on' => ['required'],
         'status' => ['required', 'numeric', 'min:0'],
+        'sections' => ['required', 'array', 'min:1'],
+        'sections.*.title' => ['required', 'string', 'min:10', 'max:160'],
     ];
 
 
@@ -45,6 +52,53 @@ class CourseDetailsConfirmationComponent extends Component
     protected function validateDatabaseData()
     {
         $course = Course::where('id', $this->courseId)->first();
+
+
+        // ===================== Start Curriculum Tab Validation ===============//
+        // Validate sections
+        $sectionsValid = true;
+
+        $sectionsCount = $course->sections->count();
+
+        if ($sectionsCount > 0) {
+            foreach ($course->sections as $section) {
+                $validator = Validator::make(['title' => $section->title], [
+                    'title' => ['required', 'string', 'min:3', 'max:80'],
+                ]);
+                if ($validator->fails()) {
+                    $sectionsValid = false;
+                    break;
+                }
+            }
+        } else {
+            $sectionsValid = false;
+        }
+
+        // duration validation more than or equal to 30 minutes 
+        $duration_30_minutes_Valid = true;
+        $totalDurations = 0;
+        foreach ($course->sections as $section) {
+            $totalDurations += $section->lessons->sum(
+                'duration_minutes',
+            );
+        }
+        if ($totalDurations < 30) {
+            $duration_30_minutes_Valid = false;
+        }
+
+        // lesson total more than 5 lectures 
+        $totalLessonsValid = true;
+        if ($course->totalLessonsCount() < 5) {
+            $totalLessonsValid = false;
+        }
+
+        $this->sectionsValid = $sectionsValid;
+        $this->duration_30_minutes_Valid = $duration_30_minutes_Valid;
+        $this->totalLessonsValid = $totalLessonsValid;
+
+        $this->courseCurriculumTabValid = $sectionsValid && $duration_30_minutes_Valid && $totalLessonsValid;
+
+        // ===================== End Curriculum Tab Validation ===============//
 
 
         // ===================== Start Price Tab Validation ===============//
@@ -89,7 +143,7 @@ class CourseDetailsConfirmationComponent extends Component
 
         // ===================== End publish Tab Validation ===============//
 
-        $this->databaseDataValid = $this->coursePricingTabValid && $this->coursePublishedTabValid;
+        $this->databaseDataValid = $this->courseCurriculumTabValid && $this->coursePricingTabValid && $this->coursePublishedTabValid;
     }
 
     public function render()

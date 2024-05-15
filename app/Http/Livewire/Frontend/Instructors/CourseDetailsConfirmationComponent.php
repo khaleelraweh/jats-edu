@@ -43,23 +43,10 @@ class CourseDetailsConfirmationComponent extends Component
     public $statusValid = false;
 
 
-
-    protected $rules = [
-        'price' => ['required', 'numeric', 'min:0'],
-        'published_on' => ['required'],
-        'status' => ['required', 'numeric', 'min:0'],
-        'sections' => ['required', 'array', 'min:1'],
-        'sections.*.title' => ['required', 'string', 'min:10', 'max:160'],
-    ];
-
-
-
     public function mount($courseId)
     {
         $this->validateDatabaseData();
     }
-
-
 
     protected function validateDatabaseData()
     {

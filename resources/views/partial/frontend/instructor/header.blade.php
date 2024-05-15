@@ -23,7 +23,7 @@
                     </a>
                 @else
                     {{-- instructor dashboard --}}
-                    <a type="button" href="{{ route('frontend.index') }}"
+                    <a type="button" href="{{ route('instructor.dashboard') }}"
                         class="nav-link d-none d-md-flex px-3 px-md-4  text-secondary icon-sm" style="line-height: 2.2"
                         data-bs-toggle="tooltip" data-bs-placement="bottom"
                         title="{{ __('transf.switch_to_instructor_dashboard_here') }}">

@@ -93,16 +93,22 @@
                             @if (auth()->user()->roles->first()->allowed_route != '')
                             @else
                                 <ul>
-                                    <li>
+                                    {{-- <li>
                                         <a href="{{ route('frontend.index') }}">
                                             {{ __('transf.student') }}
                                         </a>
                                     </li>
 
-                                    <div class="hr"></div>
+                                    <div class="hr"></div> --}}
                                     <li>
                                         <a href="{{ route('instructor.profile') }}">
                                             {{ __('transf.instructor_profile') }}
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('instructor.dashboard') }}">
+                                            {{ __('panel.f_instructor_dashboard') }}
                                         </a>
                                     </li>
 

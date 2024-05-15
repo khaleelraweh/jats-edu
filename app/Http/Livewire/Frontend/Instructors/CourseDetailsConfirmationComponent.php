@@ -56,6 +56,7 @@ class CourseDetailsConfirmationComponent extends Component
 
     public function mount($courseId)
     {
+
         $this->validateDatabaseData();
     }
 
@@ -66,56 +67,7 @@ class CourseDetailsConfirmationComponent extends Component
         $course = Course::where('id', $this->courseId)->first();
 
 
-        // ===================== Start Course Landing  Tab Validation ===============//
-
-
-        // Validate title
-        $titleValid = true;
-        $validator = Validator::make(['title' => $course->title], [
-            'title' => ['required', 'string', 'min:10', 'max:60'],
-        ]);
-        if ($validator->fails()) {
-            $titleValid = false;
-        }
-
-        // Validate subtitle
-        $subtitleValid = true;
-        $validator = Validator::make(['subtitle' => $course->subtitle], [
-            'subtitle' => ['required', 'string', 'min:10', 'max:120'],
-        ]);
-        if ($validator->fails()) {
-            $subtitleValid = false;
-        }
-
-
-        // Validate description
-        $descriptionValid = true;
-        $validator = Validator::make(['description' => $course->description], [
-            'description' => ['required', 'string', 'min_words:200'],
-        ]);
-        if ($validator->fails()) {
-            $descriptionValid = false;
-        }
-
-        // Validate video promotional
-        $videopromoValid = true;
-        $validator = Validator::make(['video_promo' => $course->video_promo], [
-            'video_promo' => ['required', 'url', 'min:10'],
-        ]);
-        if ($validator->fails()) {
-            $videopromoValid = false;
-        }
-
-        $this->titleValid = $titleValid;
-        $this->subtitleValid = $subtitleValid;
-        $this->descriptionValid = $descriptionValid;
-        $this->videopromoValid = $videopromoValid;
-
-        $this->courseLandingTabValid = $titleValid && $subtitleValid && $descriptionValid && $videopromoValid;
-
-
-        // ===================== End  Course Landing Tab Validation ===============//
-
+        $this->validateCourseLanding();
 
         // ===================== Start Objective Tab Validation ===============//
 
@@ -276,5 +228,60 @@ class CourseDetailsConfirmationComponent extends Component
     {
         $course = Course::where('id', $this->courseId)->first();
         return view('livewire.frontend.instructors.course-details-confirmation-component', compact('course'));
+    }
+
+    protected function validateCourseLanding()
+    {
+        $course = Course::where('id', $this->courseId)->first();
+
+        // ===================== Start Course Landing  Tab Validation ===============//
+
+        // Validate title
+        $titleValid = true;
+        $validator = Validator::make(['title' => $course->title], [
+            'title' => ['required', 'string', 'min:10', 'max:60'],
+        ]);
+        if ($validator->fails()) {
+            $titleValid = false;
+        }
+
+        // Validate subtitle
+        $subtitleValid = true;
+        $validator = Validator::make(['subtitle' => $course->subtitle], [
+            'subtitle' => ['required', 'string', 'min:10', 'max:120'],
+        ]);
+        if ($validator->fails()) {
+            $subtitleValid = false;
+        }
+
+
+        // Validate description
+        $descriptionValid = true;
+        $validator = Validator::make(['description' => $course->description], [
+            'description' => ['required', 'string', 'min_words:200'],
+        ]);
+        if ($validator->fails()) {
+            $descriptionValid = false;
+        }
+
+        // Validate video promotional
+        $videopromoValid = true;
+        $validator = Validator::make(['video_promo' => $course->video_promo], [
+            'video_promo' => ['required', 'url', 'min:10'],
+        ]);
+        if ($validator->fails()) {
+            $videopromoValid = false;
+        }
+
+        $this->titleValid = $titleValid;
+        $this->subtitleValid = $subtitleValid;
+        $this->descriptionValid = $descriptionValid;
+        $this->videopromoValid = $videopromoValid;
+
+        $this->courseLandingTabValid = $titleValid && $subtitleValid && $descriptionValid && $videopromoValid;
+
+
+        // ===================== End  Course Landing Tab Validation ===============//
+
     }
 }

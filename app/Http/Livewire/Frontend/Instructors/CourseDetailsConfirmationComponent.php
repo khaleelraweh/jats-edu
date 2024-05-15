@@ -56,7 +56,6 @@ class CourseDetailsConfirmationComponent extends Component
 
     public function mount($courseId)
     {
-
         $this->validateDatabaseData();
     }
 
@@ -66,10 +65,72 @@ class CourseDetailsConfirmationComponent extends Component
     {
         $course = Course::where('id', $this->courseId)->first();
 
-
         $this->validateCourseLanding();
+        $this->validateObjective();
+        $this->validateCurriculum();
+        $this->validatePricing();
+        $this->validatePublishData();
 
-        // ===================== Start Objective Tab Validation ===============//
+        $this->databaseDataValid = $this->courseLandingTabValid && $this->courseObjectiveTabValid && $this->courseCurriculumTabValid && $this->coursePricingTabValid && $this->coursePublishedTabValid;
+    }
+
+    public function render()
+    {
+        $course = Course::where('id', $this->courseId)->first();
+        return view('livewire.frontend.instructors.course-details-confirmation-component', compact('course'));
+    }
+
+    protected function validateCourseLanding()
+    {
+        $course = Course::where('id', $this->courseId)->first();
+
+        // Validate title
+        $titleValid = true;
+        $validator = Validator::make(['title' => $course->title], [
+            'title' => ['required', 'string', 'min:10', 'max:60'],
+        ]);
+        if ($validator->fails()) {
+            $titleValid = false;
+        }
+
+        // Validate subtitle
+        $subtitleValid = true;
+        $validator = Validator::make(['subtitle' => $course->subtitle], [
+            'subtitle' => ['required', 'string', 'min:10', 'max:120'],
+        ]);
+        if ($validator->fails()) {
+            $subtitleValid = false;
+        }
+
+        // Validate description
+        $descriptionValid = true;
+        $validator = Validator::make(['description' => $course->description], [
+            'description' => ['required', 'string', 'min_words:200'],
+        ]);
+        if ($validator->fails()) {
+            $descriptionValid = false;
+        }
+
+        // Validate video promotional
+        $videopromoValid = true;
+        $validator = Validator::make(['video_promo' => $course->video_promo], [
+            'video_promo' => ['required', 'url', 'min:10'],
+        ]);
+        if ($validator->fails()) {
+            $videopromoValid = false;
+        }
+
+        $this->titleValid = $titleValid;
+        $this->subtitleValid = $subtitleValid;
+        $this->descriptionValid = $descriptionValid;
+        $this->videopromoValid = $videopromoValid;
+
+        $this->courseLandingTabValid = $titleValid && $subtitleValid && $descriptionValid && $videopromoValid;
+    }
+
+    protected function validateObjective()
+    {
+        $course = Course::where('id', $this->courseId)->first();
 
         // Validate objectives
         $objectivesValid = true;
@@ -127,12 +188,12 @@ class CourseDetailsConfirmationComponent extends Component
         $this->intendedsValid = $intendedsValid;
 
         $this->courseObjectiveTabValid = $objectivesValid && $requirementsValid && $intendedsValid;
+    }
 
+    protected function validateCurriculum()
+    {
+        $course = Course::where('id', $this->courseId)->first();
 
-        // ===================== End Objective Tab Validation ===============//
-
-
-        // ===================== Start Curriculum Tab Validation ===============//
         // Validate sections
         $sectionsValid = true;
 
@@ -175,11 +236,12 @@ class CourseDetailsConfirmationComponent extends Component
         $this->totalLessonsValid = $totalLessonsValid;
 
         $this->courseCurriculumTabValid = $sectionsValid && $duration_30_minutes_Valid && $totalLessonsValid;
+    }
 
-        // ===================== End Curriculum Tab Validation ===============//
+    protected function validatePricing()
+    {
+        $course = Course::where('id', $this->courseId)->first();
 
-
-        // ===================== Start Price Tab Validation ===============//
         // Validate price 
         $priceValid = true;
         $validator = Validator::make(['price' => $course->price], [
@@ -191,10 +253,12 @@ class CourseDetailsConfirmationComponent extends Component
 
         $this->priceValid = $priceValid;
         $this->coursePricingTabValid = $priceValid;
+    }
 
-        // ===================== End Price Tab Validation ===============//
+    protected function validatePublishData()
+    {
+        $course = Course::where('id', $this->courseId)->first();
 
-        // ===================== Start publish Tab Validation ===============//
         // Validate published_on
         $published_onValid = true;
         $validator = Validator::make(['published_on' => $course->published_on], [
@@ -204,7 +268,6 @@ class CourseDetailsConfirmationComponent extends Component
             $published_onValid = false;
         }
 
-        $this->published_onValid = $published_onValid;
 
         // Validate Status
         $statusValid = true;
@@ -215,73 +278,9 @@ class CourseDetailsConfirmationComponent extends Component
             $statusValid = false;
         }
 
+        $this->published_onValid = $published_onValid;
         $this->statusValid = $statusValid;
 
         $this->coursePublishedTabValid = $published_onValid && $statusValid;
-
-        // ===================== End publish Tab Validation ===============//
-
-        $this->databaseDataValid = $this->courseLandingTabValid && $this->courseObjectiveTabValid && $this->courseCurriculumTabValid && $this->coursePricingTabValid && $this->coursePublishedTabValid;
-    }
-
-    public function render()
-    {
-        $course = Course::where('id', $this->courseId)->first();
-        return view('livewire.frontend.instructors.course-details-confirmation-component', compact('course'));
-    }
-
-    protected function validateCourseLanding()
-    {
-        $course = Course::where('id', $this->courseId)->first();
-
-        // ===================== Start Course Landing  Tab Validation ===============//
-
-        // Validate title
-        $titleValid = true;
-        $validator = Validator::make(['title' => $course->title], [
-            'title' => ['required', 'string', 'min:10', 'max:60'],
-        ]);
-        if ($validator->fails()) {
-            $titleValid = false;
-        }
-
-        // Validate subtitle
-        $subtitleValid = true;
-        $validator = Validator::make(['subtitle' => $course->subtitle], [
-            'subtitle' => ['required', 'string', 'min:10', 'max:120'],
-        ]);
-        if ($validator->fails()) {
-            $subtitleValid = false;
-        }
-
-
-        // Validate description
-        $descriptionValid = true;
-        $validator = Validator::make(['description' => $course->description], [
-            'description' => ['required', 'string', 'min_words:200'],
-        ]);
-        if ($validator->fails()) {
-            $descriptionValid = false;
-        }
-
-        // Validate video promotional
-        $videopromoValid = true;
-        $validator = Validator::make(['video_promo' => $course->video_promo], [
-            'video_promo' => ['required', 'url', 'min:10'],
-        ]);
-        if ($validator->fails()) {
-            $videopromoValid = false;
-        }
-
-        $this->titleValid = $titleValid;
-        $this->subtitleValid = $subtitleValid;
-        $this->descriptionValid = $descriptionValid;
-        $this->videopromoValid = $videopromoValid;
-
-        $this->courseLandingTabValid = $titleValid && $subtitleValid && $descriptionValid && $videopromoValid;
-
-
-        // ===================== End  Course Landing Tab Validation ===============//
-
     }
 }

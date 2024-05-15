@@ -182,20 +182,7 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="confirm-detail3">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-6">
-                                            <div class="text-center">
-                                                <div class="mb-4">
-                                                    <i class="mdi mdi-check-circle-outline text-success display-4"></i>
-                                                </div>
-                                                <div>
-                                                    <h5>Confirm Detail</h5>
-                                                    <p class="text-muted">If several languages coalesce,
-                                                        the grammar of the resulting</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @livewire('frontend.instructors.course-details-confirmation-component', ['courseId' => $course->id])
                                 </div>
                                 <ul class="pager wizard twitter-bs-wizard-pager-link d-flex justify-content-between">
                                     <li class="previous"><a href="javascript: void(0);">{{ __('transf.previous') }}</a>

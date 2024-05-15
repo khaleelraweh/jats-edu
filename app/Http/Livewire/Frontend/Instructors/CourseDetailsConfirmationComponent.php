@@ -23,10 +23,14 @@ class CourseDetailsConfirmationComponent extends Component
 
     // Field validation 
     public $priceValid = false;
+    public $published_onValid = false;
+    public $statusValid = false;
 
 
     protected $rules = [
         'price' => ['required', 'numeric', 'min:0'],
+        'published_on' => ['required'],
+        'status' => ['required', 'numeric', 'min:0'],
     ];
 
 
@@ -58,7 +62,34 @@ class CourseDetailsConfirmationComponent extends Component
 
         // ===================== End Price Tab Validation ===============//
 
-        $this->databaseDataValid = $this->coursePricingTabValid;
+        // ===================== Start publish Tab Validation ===============//
+        // Validate published_on
+        $published_onValid = true;
+        $validator = Validator::make(['published_on' => $course->published_on], [
+            'published_on' => ['required'],
+        ]);
+        if ($validator->fails()) {
+            $published_onValid = false;
+        }
+
+        $this->published_onValid = $published_onValid;
+
+        // Validate Status
+        $statusValid = true;
+        $validator = Validator::make(['status' => $course->status], [
+            'status' => ['required', 'numeric', 'min:0'],
+        ]);
+        if ($validator->fails()) {
+            $statusValid = false;
+        }
+
+        $this->statusValid = $statusValid;
+
+        $this->coursePublishedTabValid = $published_onValid && $statusValid;
+
+        // ===================== End publish Tab Validation ===============//
+
+        $this->databaseDataValid = $this->coursePricingTabValid && $this->coursePublishedTabValid;
     }
 
     public function render()

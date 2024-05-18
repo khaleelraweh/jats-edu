@@ -59,16 +59,20 @@
                             <button class="nav-link {{ $loop->index == 0 ? 'active' : '' }}" id="{{ $key }}-tab"
                                 data-bs-toggle="tab" data-bs-target="#{{ $key }}" type="button" role="tab"
                                 aria-controls="{{ $key }}" aria-selected="true">
-                                {{ __('panel.content_tab') }}({{ $key }})
+                                {{ __('panel.content_tab') }}({{ __('panel.' . $key) }})
                             </button>
                         </li>
                     @endforeach
 
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="url-tab" data-bs-toggle="tab" data-bs-target="#url" type="button"
-                            role="tab" aria-controls="url" aria-selected="true">{{ __('panel.url_tab') }}
-                        </button>
-                    </li>
+                    @foreach (config('locales.languages') as $key => $val)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="url-{{ $key }}-tab" data-bs-toggle="tab"
+                                data-bs-target="#url-{{ $key }}" type="button" role="tab"
+                                aria-controls="url-{{ $key }}" aria-selected="true">{{ __('panel.url_tab') }}
+                                ({{ __('panel.' . $key) }})
+                            </button>
+                        </li>
+                    @endforeach
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
@@ -149,42 +153,43 @@
                     @endforeach
 
                     {{-- url Tab --}}
-                    <div class="tab-pane fade" id="url" role="tabpanel" aria-labelledby="url-tab">
+                    @foreach (config('locales.languages') as $key => $val)
+                        <div class="tab-pane fade" id="url-{{ $key }}" role="tabpanel"
+                            aria-labelledby="url-{{ $key }}-tab">
 
-                        {{-- url fields --}}
-                        <div class="row">
-                            {{-- url field --}}
-                            <div class="col-md-12 col-sm-12 pt-4">
-                                <label for="url">{{ __('panel.url_link') }}</label>
-                                <input type="text" name="url" id="url"
-                                    value="{{ old('url', $callAction->url) }}" class="form-control"
-                                    placeholder="http://youtlinks.com ">
-                                @error('url')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                            {{-- btn name fields --}}
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 pt-4">
+                                    <label for="btn_name[{{ $key }}]">{{ __('panel.btn_name') }}
+                                        {{ __('panel.in') }} {{ __('panel.' . $key) }}</label>
+                                    <input type="text" name="btn_name[{{ $key }}]"
+                                        id="btn_name[{{ $key }}]"
+                                        value="{{ old('btn_name.' . $key, $callAction->getTranslation('btn_name', $key)) }}"
+                                        class="form-control" placeholder="http://youtlinks.com ">
+                                    @error('btn_name.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        {{--  target  fields --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4 pt-4">
-                                <label for="target">{{ __('panel.url_target') }} </label>
-                                <select name="target" class="form-control">
-                                    <option value="_self"
-                                        {{ old('target', $callAction->target) == '_self' ? 'selected' : null }}>
-                                        {{ __('panel.in_the_same_tab') }}
-                                    </option>
-                                    <option value="_blank"
-                                        {{ old('target', $callAction->target) == '_blank' ? 'selected' : null }}>
-                                        {{ __('panel.in_new_tab') }}
-                                    </option>
-                                </select>
-                                @error('target')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                            {{-- btn link fields --}}
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 pt-4">
+                                    <label for="btn_link[{{ $key }}]">{{ __('panel.btn_link') }}
+                                        {{ __('panel.in') }} {{ __('panel.' . $key) }}</label>
+                                    <input type="text" name="btn_link[{{ $key }}]"
+                                        id="btn_link[{{ $key }}]"
+                                        value="{{ old('btn_link.' . $key, $callAction->getTranslation('btn_link', $key)) }}"
+                                        class="form-control" placeholder="http://youtlinks.com ">
+                                    @error('btn_link.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
+
+
                         </div>
-                    </div>
+                    @endforeach
 
 
                     {{-- Published Tab --}}
@@ -256,6 +261,26 @@
                                     </option>
                                 </select>
                                 @error('showInfo')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{--  target  fields --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 pt-4 pt-4">
+                                <label for="target">{{ __('panel.url_target') }} </label>
+                                <select name="target" class="form-control">
+                                    <option value="_self"
+                                        {{ old('target', $callAction->target) == '_self' ? 'selected' : null }}>
+                                        {{ __('panel.in_the_same_tab') }}
+                                    </option>
+                                    <option value="_blank"
+                                        {{ old('target', $callAction->target) == '_blank' ? 'selected' : null }}>
+                                        {{ __('panel.in_new_tab') }}
+                                    </option>
+                                </select>
+                                @error('target')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

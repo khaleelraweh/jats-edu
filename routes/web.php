@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdvertisorSliderController;
 use App\Http\Controllers\Backend\BackendController;
+use App\Http\Controllers\Backend\CallActionsController;
 use App\Http\Controllers\Backend\CardCategoriesController;
 use App\Http\Controllers\Backend\CardCodeController;
 use App\Http\Controllers\Backend\CardController;
@@ -220,6 +221,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::post('events/remove-image', [EventController::class, 'remove_image'])->name('events.remove_image');
         Route::resource('events', EventController::class);
+
+        // ==============   Call Actions Tab   ==============  //
+        Route::post('call_actions/remove-image', [CallActionsController::class, 'remove_image'])->name('call_actions.remove_image');
+        Route::resource('call_actions', CallActionsController::class);
 
 
         // ==============   Users Tab   ==============  //

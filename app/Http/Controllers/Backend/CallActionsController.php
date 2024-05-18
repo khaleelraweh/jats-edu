@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\CallActionRequest;
 use App\Models\CallAction;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class CallActionsController extends Controller
 {
@@ -38,45 +42,41 @@ class CallActionsController extends Controller
         return view('backend.call_actions.create');
     }
 
-    public function store(MainSliderRequest $request)
+    public function store(CallActionRequest $request)
     {
 
         if (!auth()->user()->ability('admin', 'create_call_actions')) {
             return redirect('admin/index');
         }
 
-        $input['title']          =   $request->title;
-        $input['description']        =   $request->description;
-        $input['url']            =   $request->url;
-        $input['target']         =   $request->target;
-        $input['section']        =   1;
+        $input['title']                 =   $request->title;
+        $input['description']           =   $request->description;
+        $input['btn_name']              =   $request->btn_name;
+        $input['btn_link']              =   $request->btn_link;
+        $input['target']                =   $request->target;
+        $input['section']               =   1;
 
-        $input['showInfo']            =   $request->showInfo;
-        $input['status']            =   $request->status;
-        $input['created_by']        =   auth()->user()->full_name;
+        $input['showInfo']              =   $request->showInfo;
+        $input['status']                =   $request->status;
+        $input['created_by']            =   auth()->user()->full_name;
         $published_on = $request->published_on . ' ' . $request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        $mainSlider = Slider::create($input);
+        $callAction = CallAction::create($input);
 
-        $mainSlider->tags()->attach($request->tags);
 
         if ($request->images && count($request->images) > 0) {
             $i = 1;
             foreach ($request->images as $image) {
-                $file_name = $mainSlider->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $callAction->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/call_actions/' . $file_name);
 
-                // Image::make($image->getRealPath())->resize(500,null,function($constraint){
-                //     $constraint->aspectRatio();
-                // })->save($path,100);
-
                 Image::make($image->getRealPath())->save($path);
 
-                $mainSlider->photos()->create([
+                $callAction->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -88,7 +88,7 @@ class CallActionsController extends Controller
             }
         }
 
-        if ($mainSlider) {
+        if ($callAction) {
             return redirect()->route('admin.call_actions.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'

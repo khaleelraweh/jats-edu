@@ -197,6 +197,18 @@ return [
     'event_address'                                 =>  'مكان انعقاد الحدث',
 
 
+    ########################### Manage Call Actions  ##################################
+
+    // =============  Manage Call Action  ===============//
+    'manage_call_actions'                            => 'إدارة إجراءات الاتصال',
+
+    // --------------- Course Categories --------------//
+    'show_call_actions'                    => 'إجرائات الاتصال',
+    'add_new_call_action'                   => 'إضافة إجراء إتصال جديد',
+    'edit_existing_call_action'             => 'تعديل بيانات إجراء الإتصال',
+
+    // ........... commons in Categories ....... //
+
 
 
     #################################### Manage Tags ##########################

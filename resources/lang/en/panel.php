@@ -196,6 +196,23 @@ return [
 
     'event_address'                             =>  'Event Address',
 
+
+
+
+    ########################### Manage Call Actions  ##################################
+
+    // =============  Manage Call Action  ===============//
+    'manage_call_actions'                            => 'Manage Call Actions',
+
+    // --------------- Course Categories --------------//
+    'show_call_actions'                    => 'Call Actions',
+    'add_new_call_action'                   => 'Add New Call Action',
+    'edit_existing_call_action'             => 'Edit Existing Call Action',
+
+    // ........... commons in Categories ....... //
+
+
+
     ##############################################################
 
     // =============  Manage Tags  ===============//

@@ -23,7 +23,7 @@
                         @endif
                     </li>
                     <li>
-                        {{ __('panel.show_main_slider') }}
+                        {{ __('panel.show_call_actions') }}
                     </li>
                 </ul>
             </div>
@@ -34,7 +34,7 @@
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
-                        <span class="text">{{ __('panel.add_new_slider') }}</span>
+                        <span class="text">{{ __('panel.add_new_call_action') }}</span>
                     </a>
                 @endability
             </div>
@@ -62,37 +62,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($callActions as $slider)
+                        @forelse ($callActions as $callAction)
                             <tr>
                                 <td>
-                                    @if ($slider->firstMedia)
-                                        <img src="{{ asset('assets/call_actions/' . $slider->firstMedia->file_name) }}"
-                                            width="60" height="60" alt="{{ $slider->title }}">
+                                    @if ($callAction->firstMedia)
+                                        <img src="{{ asset('assets/call_actions/' . $callAction->firstMedia->file_name) }}"
+                                            width="60" height="60" alt="{{ $callAction->title }}">
                                     @else
                                         <img src="{{ asset('image/not_found/item_image_not_found.png') }}" width="60"
-                                            height="60" alt="{{ $slider->title }}">
+                                            height="60" alt="{{ $callAction->title }}">
                                     @endif
 
                                 </td>
-                                <td>{{ $slider->title }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $slider->created_by }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $slider->created_at }}</td>
-                                <td>{{ $slider->status() }}</td>
+                                <td>{{ $callAction->title }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $callAction->created_by }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $callAction->created_at }}</td>
+                                <td>{{ $callAction->status() }}</td>
                                 <td>
 
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.call_actions.edit', $slider->id) }}"
+                                        <a href="{{ route('admin.call_actions.edit', $callAction->id) }}"
                                             class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-{{ $slider->id }}').submit();}else{return false;}"
+                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-{{ $callAction->id }}').submit();}else{return false;}"
                                             class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.call_actions.destroy', $slider->id) }}" method="post"
-                                        class="d-none" id="delete-product-{{ $slider->id }}">
+                                    <form action="{{ route('admin.call_actions.destroy', $callAction->id) }}"
+                                        method="post" class="d-none" id="delete-product-{{ $callAction->id }}">
                                         @csrf
                                         @method('DELETE')
                                     </form>

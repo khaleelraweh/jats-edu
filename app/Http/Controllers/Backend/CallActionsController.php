@@ -112,15 +112,14 @@ class CallActionsController extends Controller
     }
 
 
-    public function edit($mainSlider)
+    public function edit($callAction)
     {
         if (!auth()->user()->ability('admin', 'update_call_actions')) {
             return redirect('admin/index');
         }
 
-        $mainSlider =  Slider::where('id', $mainSlider)->first();
-        $tags = Tag::whereStatus(1)->get(['id', 'name']);
-        return view('backend.call_actions.edit', compact('tags', 'mainSlider'));
+        $callAction =  CallAction::where('id', $callAction)->first();
+        return view('backend.call_actions.edit', compact('callAction'));
     }
 
     public function update(MainSliderRequest $request,  $mainSlider)

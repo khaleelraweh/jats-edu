@@ -11,7 +11,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_slider') }}
+                    {{ __('panel.edit_existing_call_action') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -23,8 +23,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.main_sliders.index') }}">
-                            {{ __('panel.show_main_slider') }}
+                        <a href="{{ route('admin.call_actions.index') }}">
+                            {{ __('panel.show_call_actions') }}
                         </a>
                     </li>
                 </ul>
@@ -47,7 +47,7 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form action="{{ route('admin.main_sliders.update', $mainSlider->id) }}" method="post"
+            <form action="{{ route('admin.call_actions.update', $callAction->id) }}" method="post"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
@@ -91,7 +91,7 @@
                                 {{-- البيانات الاساسية --}}
                                 <div class=" {{ $loop->index == 0 ? 'col-md-7' : '' }} col-sm-12 ">
 
-                                    {{-- slider title field --}}
+                                    {{-- call action title field --}}
                                     <div class="row ">
                                         <div class="col-sm-12 pt-3">
                                             <div class="form-group">
@@ -101,7 +101,7 @@
                                                 </label>
                                                 <input type="text" name="title[{{ $key }}]"
                                                     id="title[{{ $key }}]"
-                                                    value="{{ old('title.' . $key, $mainSlider->getTranslation('title', $key)) }}"
+                                                    value="{{ old('title.' . $key, $callAction->getTranslation('title', $key)) }}"
                                                     class="form-control">
                                                 @error('title.' . $key)
                                                     <span class="text-danger">{{ $message }}</span>
@@ -118,7 +118,7 @@
                                                 {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                             </label>
                                             <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
-                                            {!! old('description.' . $key, $mainSlider->getTranslation('description', $key)) !!}
+                                            {!! old('description.' . $key, $callAction->getTranslation('description', $key)) !!}
                                         </textarea>
                                         </div>
                                     </div>
@@ -133,7 +133,7 @@
                                                 {{ __('panel.images') }}</label>
                                             <br>
                                             <div class="file-loading">
-                                                <input type="file" name="images[]" id="slider_images"
+                                                <input type="file" name="images[]" id="call_action_images"
                                                     class="file-input-overview" multiple="multiple">
                                                 @error('images')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -157,7 +157,7 @@
                             <div class="col-md-12 col-sm-12 pt-4">
                                 <label for="url">{{ __('panel.url_link') }}</label>
                                 <input type="text" name="url" id="url"
-                                    value="{{ old('url', $mainSlider->url) }}" class="form-control"
+                                    value="{{ old('url', $callAction->url) }}" class="form-control"
                                     placeholder="http://youtlinks.com ">
                                 @error('url')
                                     <span class="text-danger">{{ $message }}</span>
@@ -171,11 +171,11 @@
                                 <label for="target">{{ __('panel.url_target') }} </label>
                                 <select name="target" class="form-control">
                                     <option value="_self"
-                                        {{ old('target', $mainSlider->target) == '_self' ? 'selected' : null }}>
+                                        {{ old('target', $callAction->target) == '_self' ? 'selected' : null }}>
                                         {{ __('panel.in_the_same_tab') }}
                                     </option>
                                     <option value="_blank"
-                                        {{ old('target', $mainSlider->target) == '_blank' ? 'selected' : null }}>
+                                        {{ old('target', $callAction->target) == '_blank' ? 'selected' : null }}>
                                         {{ __('panel.in_new_tab') }}
                                     </option>
                                 </select>
@@ -196,7 +196,7 @@
                                 <div class="form-group">
                                     <label for="published_on"> {{ __('panel.published_date') }}</label>
                                     <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', \Carbon\Carbon::parse($mainSlider->published_on)->Format('Y-m-d')) }}"
+                                        value="{{ old('published_on', \Carbon\Carbon::parse($callAction->published_on)->Format('Y-m-d')) }}"
                                         class="form-control">
                                     @error('published_on')
                                         <span class="text-danger">{{ $message }}</span>
@@ -210,7 +210,7 @@
                                 <div class="form-group">
                                     <label for="published_on_time">{{ __('panel.published_time') }}</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', \Carbon\Carbon::parse($mainSlider->published_on)->Format('h:i A')) }}"
+                                        value="{{ old('published_on_time', \Carbon\Carbon::parse($callAction->published_on)->Format('h:i A')) }}"
                                         class="form-control">
                                     @error('published_on_time')
                                         <span class="text-danger">{{ $message }}</span>
@@ -227,11 +227,11 @@
                                 </label>
                                 <select name="status" class="form-control">
                                     <option value="1"
-                                        {{ old('status', $mainSlider->status) == '1' ? 'selected' : null }}>
+                                        {{ old('status', $callAction->status) == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}
                                     </option>
                                     <option value="0"
-                                        {{ old('status', $mainSlider->status) == '0' ? 'selected' : null }}>
+                                        {{ old('status', $callAction->status) == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
@@ -247,11 +247,11 @@
                                 <label for="showInfo">{{ __('panel.show_slider_info') }}</label>
                                 <select name="showInfo" class="form-control">
                                     <option value="1"
-                                        {{ old('showInfo', $mainSlider->showInfo) == '1' ? 'selected' : null }}>
+                                        {{ old('showInfo', $callAction->showInfo) == '1' ? 'selected' : null }}>
                                         {{ __('panel.yes') }}
                                     </option>
                                     <option value="0"
-                                        {{ old('showInfo', $mainSlider->showInfo) == '0' ? 'selected' : null }}>
+                                        {{ old('showInfo', $callAction->showInfo) == '0' ? 'selected' : null }}>
                                         {{ __('panel.no') }}
                                     </option>
                                 </select>
@@ -282,7 +282,7 @@
     <script>
         $(function() {
 
-            $("#slider_images").fileinput({
+            $("#call_action_images").fileinput({
                 theme: "fa5",
                 maxFileCount: 5,
                 allowedFileTypes: ['image'],
@@ -291,26 +291,26 @@
                 showUpload: false,
                 overwriteInitial: false,
                 // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
-                // delete images from photos and assets/sliders 
+                // delete images from photos and assets/call actions 
                 // because there are maybe more than one image we will go for each image and show them in the edit page 
                 initialPreview: [
-                    @if ($mainSlider->photos()->count() > 0)
-                        @foreach ($mainSlider->photos as $media)
-                            "{{ asset('assets/main_sliders/' . $media->file_name) }}",
+                    @if ($callAction->photos()->count() > 0)
+                        @foreach ($callAction->photos as $media)
+                            "{{ asset('assets/call_actions/' . $media->file_name) }}",
                         @endforeach
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($mainSlider->photos()->count() > 0)
-                        @foreach ($mainSlider->photos as $media)
+                    @if ($callAction->photos()->count() > 0)
+                        @foreach ($callAction->photos as $media)
                             {
                                 caption: "{{ $media->file_name }}",
                                 size: '{{ $media->file_size }}',
                                 width: "120px",
                                 // url : الراوت المستخدم لحذف الصورة
-                                url: "{{ route('admin.main_sliders.remove_image', ['image_id' => $media->id, 'slider_id' => $mainSlider->id, '_token' => csrf_token()]) }}",
+                                url: "{{ route('admin.call_actions.remove_image', ['image_id' => $media->id, 'call_action_id' => $callAction->id, '_token' => csrf_token()]) }}",
                                 key: {{ $media->id }}
                             },
                         @endforeach

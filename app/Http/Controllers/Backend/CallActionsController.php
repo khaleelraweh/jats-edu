@@ -45,7 +45,6 @@ class CallActionsController extends Controller
     public function store(CallActionRequest $request)
     {
 
-        dd($request);
 
         if (!auth()->user()->ability('admin', 'create_call_actions')) {
             return redirect('admin/index');

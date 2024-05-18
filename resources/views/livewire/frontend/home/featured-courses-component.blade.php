@@ -32,7 +32,7 @@
                         </div>
                         <div wire:ignore class="col-md-auto mb-4 mb-lg-0">
                             <select wire:model="priceInput"
-                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
+                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium">
                                 <option value="all">{{ __('transf.all') }}</option>
                                 <option value="free">{{ __('transf.free') }}</option>
                                 <option value="paid">{{ __('transf.paid') }}</option>

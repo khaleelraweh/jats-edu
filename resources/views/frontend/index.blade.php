@@ -78,8 +78,9 @@
     {{--  FEATURED PRODUCT --}}
     @livewire('frontend.home.featured-courses-component')
 
+
     {{-- CALL ACTION --}}
-    <section class="py-6 py-md-12 jarallax" data-jarallax data-speed=".8"
+    {{-- <section class="py-6 py-md-12 jarallax" data-jarallax data-speed=".8"
         style="background-image: url({{ asset('frontend/assets/img/covers/cover-5.jpg') }})">
         <div class="container text-center py-xl-9 text-capitalize" data-aos="fade-up">
             <h1 class="text-white text-uppercase">{{ __('transf.txt_enhance_your_skin') }}</h1>
@@ -87,6 +88,17 @@
             <div class="mx-auto">
                 <a href="{{ route('frontend.courses') }}"
                     class="btn btn-sienna btn-x-wide lift d-inline-block text-white">{{ __('transf.btn_get_started_now') }}</a>
+            </div>
+        </div>
+    </section> --}}
+    <section class="py-6 py-md-12 jarallax" data-jarallax data-speed=".8"
+        style="background-image: url({{ asset('frontend/assets/img/covers/cover-5.jpg') }})">
+        <div class="container text-center py-xl-9 text-capitalize" data-aos="fade-up">
+            <h1 class="text-white text-uppercase">{{ $callActions->title }}</h1>
+            <div class="font-size-lg mb-md-6 mb-4 text-white">{{ $callActions->description }}</div>
+            <div class="mx-auto">
+                <a href="{{ route('frontend.courses') }}"
+                    class="btn btn-sienna btn-x-wide lift d-inline-block text-white">{{ $callActions->btn_name }}</a>
             </div>
         </div>
     </section>

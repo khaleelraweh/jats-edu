@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\CallAction;
 use App\Models\Course;
 use App\Models\Post;
 use App\Models\Slider;
@@ -43,9 +44,11 @@ class FrontendController extends Controller
         $events = Course::with('photos')->where('section', 2)->orderBy('created_at', 'ASC')->get();
         $posts = Post::with('photos')->where('section', 1)->orderBy('created_at', 'ASC')->get();
 
+        $callActions = CallAction::with('photos')->first();
 
 
-        return view('frontend.index', compact('main_sliders', 'instructors', 'events', 'posts'));
+
+        return view('frontend.index', compact('main_sliders', 'instructors', 'events', 'posts', 'callActions'));
     }
 
     public function home()

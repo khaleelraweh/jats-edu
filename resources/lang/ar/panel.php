@@ -202,12 +202,14 @@ return [
     // =============  Manage Call Action  ===============//
     'manage_call_actions'                            => 'إدارة إجراءات الاتصال',
 
-    // --------------- Course Categories --------------//
+    // --------------- Call Actions --------------//
     'show_call_actions'                    => 'إجرائات الاتصال',
     'add_new_call_action'                   => 'إضافة إجراء إتصال جديد',
     'edit_existing_call_action'             => 'تعديل بيانات إجراء الإتصال',
 
-    // ........... commons in Categories ....... //
+    // ........... commons in Call Actions  ....... //
+    'btn_name'                              =>  'اسم الزر',
+    'btn_link'                              =>  'رابط الزر',
 
 
 

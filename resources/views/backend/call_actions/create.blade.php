@@ -115,6 +115,9 @@
                                         </textarea>
                                         </div>
                                     </div>
+
+
+
                                 </div>
 
                                 {{-- مرفق الصور  --}}
@@ -148,14 +151,25 @@
                     {{-- url Tab --}}
                     <div class="tab-pane fade" id="url" role="tabpanel" aria-labelledby="url-tab">
 
-                        {{-- url fields --}}
+                        {{-- btn_name fields --}}
                         <div class="row">
-                            {{-- url field --}}
+                            {{-- btn name field --}}
                             <div class="col-md-12 col-sm-12 pt-4">
-                                <label for="url">{{ __('panel.url_link') }}</label>
-                                <input type="text" name="url" id="url" value="{{ old('url') }}"
+                                <label for="btn_name">{{ __('panel.btn_name') }}</label>
+                                <input type="text" name="btn_name" id="btn_name" value="{{ old('btn_name') }}"
                                     class="form-control" placeholder="http://youtlinks.com ">
-                                @error('url')
+                                @error('btn_name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        {{-- btn_link --}}
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 pt-4">
+                                <label for="btn_link">{{ __('panel.btn_link') }}</label>
+                                <input type="text" name="btn_link" id="btn_link" value="{{ old('btn_link') }}"
+                                    class="form-control" placeholder="http://youtlinks.com ">
+                                @error('btn_link')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

@@ -204,12 +204,14 @@ return [
     // =============  Manage Call Action  ===============//
     'manage_call_actions'                            => 'Manage Call Actions',
 
-    // --------------- Course Categories --------------//
+    // --------------- Call Actions  --------------//
     'show_call_actions'                    => 'Call Actions',
     'add_new_call_action'                   => 'Add New Call Action',
     'edit_existing_call_action'             => 'Edit Existing Call Action',
 
-    // ........... commons in Categories ....... //
+    // ........... commons in Call Actions ....... //
+    'btn_name'                              =>  'Button Name',
+    'btn_link'                              =>  'Button Link',
 
 
 

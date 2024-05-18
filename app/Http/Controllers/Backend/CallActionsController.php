@@ -35,9 +35,7 @@ class CallActionsController extends Controller
             return redirect('admin/index');
         }
 
-        $tags = Tag::whereStatus(1)->get(['id', 'name']);
-
-        return view('backend.call_actions.create', compact('tags'));
+        return view('backend.call_actions.create');
     }
 
     public function store(MainSliderRequest $request)

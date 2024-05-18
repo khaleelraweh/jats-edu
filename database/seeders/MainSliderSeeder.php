@@ -20,9 +20,7 @@ class MainSliderSeeder extends Seeder
 
 
             $faker = Factory::create();
-
             $target = ['_self', '_blank'];
-
 
             for ($i = 1; $i <= 1; $i++) {
                 $sliders[] = [

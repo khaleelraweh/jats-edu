@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->json('title');
             $table->json('slug');
-            $table->json('subtitle');
+            $table->json('description');
 
             $table->json('btn_name');
             $table->string('btn_link')->nullable();

@@ -9,7 +9,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_slider') }}
+                    {{ __('panel.add_new_call_action') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -21,8 +21,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.main_sliders.index') }}">
-                            {{ __('panel.show_main_slider') }}
+                        <a href="{{ route('admin.call_actions.index') }}">
+                            {{ __('panel.show_call_actions') }}
                         </a>
                     </li>
                 </ul>

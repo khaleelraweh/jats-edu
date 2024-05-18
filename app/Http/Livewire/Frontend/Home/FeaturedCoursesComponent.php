@@ -24,15 +24,49 @@ class FeaturedCoursesComponent extends Component
     public $priceInput;
 
     //To sort by 
-    public $sortingBy;
+    public $sortingBy = "default";
 
-    protected $queryString = ['categoryInputs', 'courseLevels', 'priceInput', 'sortingBy'];
+    protected $queryString = ['categoryInputs', 'courseLevels', 'priceInput'];
 
+
+    public function resetFilters()
+    {
+        $this->sortingBy = "default";
+        $this->priceInput = '';
+        $this->courseLevels = [];
+        $this->categoryInputs = [];
+    }
 
 
 
     public function render()
     {
+
+        switch ($this->sortingBy) {
+            case 'popularity':
+                $sort_field = "id";
+                $sort_type = "asc";
+                break;
+            case 'new-courses':
+                $sort_field = "created_at";
+                $sort_type = "asc";
+                break;
+
+            case 'low-high':
+                $sort_field = "price";
+                $sort_type = "asc";
+                break;
+
+            case 'high-low':
+                $sort_field = "price";
+                $sort_type = "desc";
+                break;
+
+            default:
+                $sort_field = "id";
+                $sort_type = "asc";
+        }
+
 
         $course_categories_menu = CourseCategory::withCount('courses')->get();
 
@@ -60,24 +94,7 @@ class FeaturedCoursesComponent extends Component
                         $query2->where('price', '>', 0);
                     });
             })
-            ->when($this->sortingBy, function ($query) {
-                $query
-                    ->when($this->sortingBy == 'default', function ($query2) {
-                        $query2->orderBy('id', 'ASC');
-                    })
-                    ->when($this->sortingBy == 'popularity', function ($query2) {
-                        $query2->orderBy('id', 'ASC');
-                    })
-                    ->when($this->sortingBy == 'new-courses', function ($query2) {
-                        $query2->orderBy('created_at', 'ASC');
-                    })
-                    ->when($this->sortingBy == 'low-high', function ($query2) {
-                        $query2->orderBy('price', 'ASC');
-                    })
-                    ->when($this->sortingBy == 'high-low', function ($query2) {
-                        $query2->orderBy('price', 'DESC');
-                    });
-            })
+            ->orderBy($sort_field, $sort_type)
             ->get();
 
         if (count($this->featured_courses) > 8) {
@@ -103,7 +120,8 @@ class FeaturedCoursesComponent extends Component
             'livewire.frontend.home.featured-courses-component',
             [
                 'featured_courses'  =>  $this->featured_courses,
-                'course_categories_menu'    =>  $course_categories_menu
+                'course_categories_menu'    =>  $course_categories_menu,
+                'sortingBy' => $this->sortingBy,
             ]
         );
     }

@@ -53,6 +53,8 @@
                         <option value="low-high">{{ __('transf.sort_price_low_to_high') }} </option>
                         <option value="high-low">{{ __('transf.sort_price_high_to_low') }} </option>
                     </select>
+
+
                 </div>
             </div>
 

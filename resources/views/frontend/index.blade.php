@@ -97,7 +97,7 @@
             <h1 class="text-white text-uppercase">{{ $callActions->title }}</h1>
             <div class="font-size-lg mb-md-6 mb-4 text-white">{{ $callActions->description }}</div>
             <div class="mx-auto">
-                <a href="{{ route('frontend.courses') }}"
+                <a href="{{ url($callActions->btn_link) }}"
                     class="btn btn-sienna btn-x-wide lift d-inline-block text-white">{{ $callActions->btn_name }}</a>
             </div>
         </div>

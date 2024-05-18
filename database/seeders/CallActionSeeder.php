@@ -27,7 +27,7 @@ class CallActionSeeder extends Seeder
                 'description'   => json_encode(['ar' => 'البدء بالتعلم عبر الإنترنت', 'en' => 'STARTING ONLINE LEARNING']),
 
                 'btn_name'      => json_encode(['ar' => 'لنبداء الآن', 'en' => 'GET STARTED NOW']),
-                'btn_link'      =>  $faker->url(),
+                'btn_link'      => json_encode(['ar' => $faker->url(), 'en' => $faker->url()]),
                 'target'        =>  Arr::random($target),
                 'published_on'  =>  $faker->dateTime(),
                 'created_by'    =>  $faker->realTextBetween(10, 12),

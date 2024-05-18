@@ -43,7 +43,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.main_sliders.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.call_actions.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 {{-- links of tabs --}}
@@ -161,23 +161,28 @@
                             <div class="row">
                                 {{-- btn name field --}}
                                 <div class="col-md-12 col-sm-12 pt-4">
-                                    <label for="btn_name">{{ __('panel.btn_name') }} {{ __('panel.in') }}
+                                    <label for="btn_name[{{ $key }}]">{{ __('panel.btn_name') }}
+                                        {{ __('panel.in') }}
                                         {{ __('panel.' . $key) }}</label>
-                                    <input type="text" name="btn_name" id="btn_name" value="{{ old('btn_name') }}"
+                                    <input type="text" name="btn_name[{{ $key }}]"
+                                        id="btn_name[{{ $key }}]" value="{{ old('btn_name.' . $key) }}"
                                         class="form-control" placeholder="">
-                                    @error('btn_name')
+                                    @error('btn_name.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
+
                             {{-- btn_link --}}
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 pt-4">
-                                    <label for="btn_link">{{ __('panel.btn_link') }} {{ __('panel.in') }}
+                                    <label for="btn_link[{{ $key }}]">{{ __('panel.btn_link') }}
+                                        {{ __('panel.in') }}
                                         {{ __('panel.' . $key) }}</label>
-                                    <input type="text" name="btn_link" id="btn_link" value="{{ old('btn_link') }}"
+                                    <input type="text" name="btn_link[{{ $key }}]"
+                                        id="btn_link[{{ $key }}]" value="{{ old('btn_link.' . $key) }}"
                                         class="form-control" placeholder="">
-                                    @error('btn_link')
+                                    @error('btn_link.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

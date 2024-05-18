@@ -19,9 +19,9 @@ return new class extends Migration
             $table->json('title');
             $table->json('slug');
             $table->json('description');
-
             $table->json('btn_name');
-            $table->string('btn_link')->nullable();
+            $table->json('btn_link');
+
             $table->string('target')->default('_self');
             $table->unsignedBigInteger('section')->default(1);
 

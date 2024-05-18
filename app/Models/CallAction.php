@@ -18,7 +18,7 @@ class CallAction extends Model
     use HasFactory, HasTranslations, HasTranslatableSlug, SearchableTrait;
 
     protected $guarded = [];
-    public $translatable = ['title', 'slug', 'subtitle', 'btn_name'];
+    public $translatable = ['title', 'slug', 'subtitle', 'btn_name', 'btn_link'];
 
 
     protected $casts = [

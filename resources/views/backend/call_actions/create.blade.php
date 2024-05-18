@@ -58,11 +58,15 @@
                         </li>
                     @endforeach
 
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="url-tab" data-bs-toggle="tab" data-bs-target="#url" type="button"
-                            role="tab" aria-controls="url" aria-selected="true">{{ __('panel.url_tab') }}
-                        </button>
-                    </li>
+                    @foreach (config('locales.languages') as $key => $val)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="url-{{ $key }}-tab" data-bs-toggle="tab"
+                                data-bs-target="#url-{{ $key }}" type="button" role="tab"
+                                aria-controls="url-{{ $key }}" aria-selected="true">{{ __('panel.url_tab') }}
+                                ({{ $key }})
+                            </button>
+                        </li>
+                    @endforeach
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
@@ -149,51 +153,54 @@
                     @endforeach
 
                     {{-- url Tab --}}
-                    <div class="tab-pane fade" id="url" role="tabpanel" aria-labelledby="url-tab">
+                    @foreach (config('locales.languages') as $key => $val)
+                        <div class="tab-pane fade" id="url-{{ $key }}" role="tabpanel"
+                            aria-labelledby="url-{{ $key }}-tab">
 
-                        {{-- btn_name fields --}}
-                        <div class="row">
-                            {{-- btn name field --}}
-                            <div class="col-md-12 col-sm-12 pt-4">
-                                <label for="btn_name">{{ __('panel.btn_name') }}</label>
-                                <input type="text" name="btn_name" id="btn_name" value="{{ old('btn_name') }}"
-                                    class="form-control" placeholder="http://youtlinks.com ">
-                                @error('btn_name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                            {{-- btn_name fields --}}
+                            <div class="row">
+                                {{-- btn name field --}}
+                                <div class="col-md-12 col-sm-12 pt-4">
+                                    <label for="btn_name">{{ __('panel.btn_name') }}</label>
+                                    <input type="text" name="btn_name" id="btn_name" value="{{ old('btn_name') }}"
+                                        class="form-control" placeholder="">
+                                    @error('btn_name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-                        {{-- btn_link --}}
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-4">
-                                <label for="btn_link">{{ __('panel.btn_link') }}</label>
-                                <input type="text" name="btn_link" id="btn_link" value="{{ old('btn_link') }}"
-                                    class="form-control" placeholder="http://youtlinks.com ">
-                                @error('btn_link')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                            {{-- btn_link --}}
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 pt-4">
+                                    <label for="btn_link">{{ __('panel.btn_link') }}</label>
+                                    <input type="text" name="btn_link" id="btn_link" value="{{ old('btn_link') }}"
+                                        class="form-control" placeholder="">
+                                    @error('btn_link')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        {{--  target  fields --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4 pt-4">
-                                <label for="target">{{ __('panel.url_target') }} </label>
-                                <select name="target" class="form-control">
-                                    <option value="_self" {{ old('target') == '1' ? 'selected' : null }}>
-                                        {{ __('panel.in_the_same_tab') }}
-                                    </option>
-                                    <option value="_blanck" {{ old('target') == '0' ? 'selected' : null }}>
-                                        {{ __('panel.in_new_tab') }}
-                                    </option>
-                                </select>
-                                @error('target')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                            {{--  target  fields --}}
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 pt-4 pt-4">
+                                    <label for="target">{{ __('panel.url_target') }} </label>
+                                    <select name="target" class="form-control">
+                                        <option value="_self" {{ old('target') == '1' ? 'selected' : null }}>
+                                            {{ __('panel.in_the_same_tab') }}
+                                        </option>
+                                        <option value="_blanck" {{ old('target') == '0' ? 'selected' : null }}>
+                                            {{ __('panel.in_new_tab') }}
+                                        </option>
+                                    </select>
+                                    @error('target')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                    </div>
+                        </div>
+                    @endforeach
 
                     {{-- Published Tab --}}
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">

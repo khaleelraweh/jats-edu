@@ -23,7 +23,7 @@
                         </div>
                         <div wire:ignore class="col-md-auto mb-4 mb-lg-0">
                             <select wire:model="courseLevels"
-                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
+                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium">
                                 <option value="">{{ __('transf.chose_levels') }}</option>
                                 <option value="1">{{ __('transf.beginner') }}</option>
                                 <option value="2">{{ __('transf.intermediate') }}</option>

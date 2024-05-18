@@ -122,22 +122,22 @@ class CallActionsController extends Controller
         return view('backend.call_actions.edit', compact('callAction'));
     }
 
-    public function update(MainSliderRequest $request,  $mainSlider)
+    public function update(CallActionRequest $request,  $callAction)
     {
         if (!auth()->user()->ability('admin', 'update_call_actions')) {
             return redirect('admin/index');
         }
 
-        $mainSlider = Slider::where('id', $mainSlider)->first();
+        $callAction = CallAction::where('id', $callAction)->first();
 
 
         $input['title']          =   $request->title;
         $input['description']        =   $request->description;
-        $input['url']            =   $request->url;
+        $input['btn_name']            =   $request->btn_name;
+        $input['btn_link']            =   $request->btn_link;
         $input['target']         =   $request->target;
         $input['section']        =   1;
-        //  $input['start_date']        =   $request->start_date;
-        //  $input['expire_date']       =   $request->expire_date;
+
 
         $input['showInfo']            =   $request->showInfo;
         $input['status']            =   $request->status;
@@ -146,26 +146,23 @@ class CallActionsController extends Controller
         $published_on = $request->published_on . ' ' . $request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
-        $mainSlider->update($input);
-        $mainSlider->tags()->sync($request->tags);
+        $callAction->update($input);
 
         if ($request->images && count($request->images) > 0) {
 
-            $i = $mainSlider->photos->count() + 1;
+            $i = $callAction->photos->count() + 1;
 
             foreach ($request->images as $image) {
 
-                $file_name = $mainSlider->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_name = $callAction->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/call_actions/' . $file_name);
 
-                // Image::make($image->getRealPath())->resize(500,null,function($constraint){
-                //     $constraint->aspectRatio();
-                // })->save($path,100);
+
 
                 Image::make($image->getRealPath())->save($path);
-                $mainSlider->photos()->create([
+                $callAction->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -177,7 +174,7 @@ class CallActionsController extends Controller
             }
         }
 
-        if ($mainSlider) {
+        if ($callAction) {
             return redirect()->route('admin.call_actions.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -191,17 +188,17 @@ class CallActionsController extends Controller
 
 
 
-    public function destroy($mainSlider)
+    public function destroy($callAction)
     {
         if (!auth()->user()->ability('admin', 'delete_call_actions')) {
             return redirect('admin/index');
         }
 
-        $mainSlider = Slider::where('id', $mainSlider)->first();
+        $callAction = CallAction::where('id', $callAction)->first();
 
 
-        if ($mainSlider->photos->count() > 0) {
-            foreach ($mainSlider->photos as $photo) {
+        if ($callAction->photos->count() > 0) {
+            foreach ($callAction->photos as $photo) {
                 if (File::exists('assets/call_actions/' . $photo->file_name)) {
                     unlink('assets/call_actions/' . $photo->file_name);
                 }
@@ -209,9 +206,9 @@ class CallActionsController extends Controller
             }
         }
 
-        $mainSlider->delete();
+        $callAction->delete();
 
-        if ($mainSlider) {
+        if ($callAction) {
             return redirect()->route('admin.call_actions.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
@@ -232,9 +229,9 @@ class CallActionsController extends Controller
         }
 
 
-        $slider = Slider::findOrFail($request->slider_id);
+        $callAction = CallAction::findOrFail($request->call_action_id);
 
-        $image = $slider->photos()->where('id', $request->image_id)->first();
+        $image = $callAction->photos()->where('id', $request->image_id)->first();
 
         if (File::exists('assets/call_actions/' . $image->file_name)) {
             unlink('assets/call_actions/' . $image->file_name);

@@ -12,7 +12,7 @@
                     <div class="row">
                         <div wire:ignore class="col-md-auto mb-4 mb-lg-0">
                             <select wire:model="categoryInputs" {{-- class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices> --}}
-                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices>
+                                class="form-select form-select-sm ps-5 text-primary shadow fw-medium">
                                 <option value="">{{ __('transf.chose_categories') }}</option>
                                 @foreach ($course_categories_menu as $category_item)
                                     <option value="{{ $category_item->id }}">{{ $category_item->title }}

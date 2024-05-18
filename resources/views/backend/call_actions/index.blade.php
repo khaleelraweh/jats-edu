@@ -11,7 +11,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_sliders') }}
+                    {{ __('panel.manage_call_actions') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -29,8 +29,8 @@
             </div>
 
             <div class="ml-auto">
-                @ability('admin', 'create_main_sliders')
-                    <a href="{{ route('admin.main_sliders.create') }}" class="btn btn-primary">
+                @ability('admin', 'create_call_actions')
+                    <a href="{{ route('admin.call_actions.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
@@ -44,7 +44,7 @@
         <div class="card-body">
 
             {{-- filter form part  --}}
-            @include('backend.main_sliders.filter.filter')
+            @include('backend.call_actions.filter.filter')
 
             {{-- table part --}}
             <div class="table-responsive">
@@ -62,11 +62,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($mainSliders as $slider)
+                        @forelse ($callActions as $slider)
                             <tr>
                                 <td>
                                     @if ($slider->firstMedia)
-                                        <img src="{{ asset('assets/main_sliders/' . $slider->firstMedia->file_name) }}"
+                                        <img src="{{ asset('assets/call_actions/' . $slider->firstMedia->file_name) }}"
                                             width="60" height="60" alt="{{ $slider->title }}">
                                     @else
                                         <img src="{{ asset('image/not_found/item_image_not_found.png') }}" width="60"
@@ -81,7 +81,7 @@
                                 <td>
 
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.main_sliders.edit', $slider->id) }}"
+                                        <a href="{{ route('admin.call_actions.edit', $slider->id) }}"
                                             class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
@@ -91,7 +91,7 @@
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.main_sliders.destroy', $slider->id) }}" method="post"
+                                    <form action="{{ route('admin.call_actions.destroy', $slider->id) }}" method="post"
                                         class="d-none" id="delete-product-{{ $slider->id }}">
                                         @csrf
                                         @method('DELETE')
@@ -108,7 +108,7 @@
                         <tr>
                             <td colspan="6">
                                 <div class="float-right">
-                                    {!! $mainSliders->appends(request()->all())->links() !!}
+                                    {!! $callActions->appends(request()->all())->links() !!}
                                 </div>
                             </td>
                         </tr>

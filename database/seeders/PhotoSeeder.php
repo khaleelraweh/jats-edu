@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CallAction;
 use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\Post;
@@ -47,6 +48,11 @@ class PhotoSeeder extends Seeder
             //slider photo faker 
             Slider::all()->each(function ($slider) use ($images) {
                 $slider->photos()->createMany(Arr::random($images, rand(1, 1)));
+            });
+
+            //slider photo faker 
+            CallAction::all()->each(function ($callAction) use ($images) {
+                $callAction->photos()->createMany(Arr::random($images, rand(1, 1)));
             });
         }
     }

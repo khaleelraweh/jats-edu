@@ -53,7 +53,7 @@
                             <button class="nav-link {{ $loop->index == 0 ? 'active' : '' }}" id="{{ $key }}-tab"
                                 data-bs-toggle="tab" data-bs-target="#{{ $key }}" type="button" role="tab"
                                 aria-controls="{{ $key }}" aria-selected="true">
-                                {{ __('panel.content_tab') }}({{ $key }})
+                                {{ __('panel.content_tab') }}({{ __('panel.' . $key) }})
                             </button>
                         </li>
                     @endforeach
@@ -63,7 +63,7 @@
                             <button class="nav-link" id="url-{{ $key }}-tab" data-bs-toggle="tab"
                                 data-bs-target="#url-{{ $key }}" type="button" role="tab"
                                 aria-controls="url-{{ $key }}" aria-selected="true">{{ __('panel.url_tab') }}
-                                ({{ $key }})
+                                ({{ __('panel.' . $key) }})
                             </button>
                         </li>
                     @endforeach
@@ -161,7 +161,8 @@
                             <div class="row">
                                 {{-- btn name field --}}
                                 <div class="col-md-12 col-sm-12 pt-4">
-                                    <label for="btn_name">{{ __('panel.btn_name') }}</label>
+                                    <label for="btn_name">{{ __('panel.btn_name') }} {{ __('panel.in') }}
+                                        {{ __('panel.' . $key) }}</label>
                                     <input type="text" name="btn_name" id="btn_name" value="{{ old('btn_name') }}"
                                         class="form-control" placeholder="">
                                     @error('btn_name')
@@ -172,7 +173,8 @@
                             {{-- btn_link --}}
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 pt-4">
-                                    <label for="btn_link">{{ __('panel.btn_link') }}</label>
+                                    <label for="btn_link">{{ __('panel.btn_link') }} {{ __('panel.in') }}
+                                        {{ __('panel.' . $key) }}</label>
                                     <input type="text" name="btn_link" id="btn_link" value="{{ old('btn_link') }}"
                                         class="form-control" placeholder="">
                                     @error('btn_link')
@@ -181,23 +183,7 @@
                                 </div>
                             </div>
 
-                            {{--  target  fields --}}
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 pt-4 pt-4">
-                                    <label for="target">{{ __('panel.url_target') }} </label>
-                                    <select name="target" class="form-control">
-                                        <option value="_self" {{ old('target') == '1' ? 'selected' : null }}>
-                                            {{ __('panel.in_the_same_tab') }}
-                                        </option>
-                                        <option value="_blanck" {{ old('target') == '0' ? 'selected' : null }}>
-                                            {{ __('panel.in_new_tab') }}
-                                        </option>
-                                    </select>
-                                    @error('target')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
+
 
                         </div>
                     @endforeach
@@ -265,6 +251,24 @@
                                     </option>
                                 </select>
                                 @error('showInfo')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{--  target  fields --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 pt-4 pt-4">
+                                <label for="target">{{ __('panel.url_target') }} </label>
+                                <select name="target" class="form-control">
+                                    <option value="_self" {{ old('target') == '1' ? 'selected' : null }}>
+                                        {{ __('panel.in_the_same_tab') }}
+                                    </option>
+                                    <option value="_blanck" {{ old('target') == '0' ? 'selected' : null }}>
+                                        {{ __('panel.in_new_tab') }}
+                                    </option>
+                                </select>
+                                @error('target')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

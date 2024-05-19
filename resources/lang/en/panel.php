@@ -680,6 +680,7 @@ return [
     'linkedin'                          =>  'Linkedin',
     'youtube'                           =>  'Youtube',
     'website'                           =>  'Website',
+    'copied'                           =>  'Copied',
 
 
     ##############################################################

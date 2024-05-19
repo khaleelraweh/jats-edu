@@ -647,6 +647,8 @@ return [
     'linkedin'                          =>  'لنكد إن',
     'youtube'                          =>  'يوتيوب',
     'website'                          =>  'موقع ويب',
+    'copied'                           =>  'تم النسخ',
+
 
 
     // =============  Manage specialization  ===============//

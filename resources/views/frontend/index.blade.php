@@ -112,18 +112,22 @@
 
     <div class="mx-n4 bg-is-selected"
         data-flickity='{"pageDots": true, "prevNextButtons": false, "cellAlign": "center", "wrapAround": true, "imagesLoaded": true}'>
-        <div class="col-md-12 py-6 py-md-12 jarallax" data-jarallax data-speed=".8"
-            style="background-image: url({{ asset('frontend/assets/img/covers/cover-5.jpg') }})" data-aos="fade-up"
-            data-aos-delay="50">
-            <div class="container text-center py-xl-9 text-capitalize" data-aos="fade-up">
-                <h1 class="text-white text-uppercase">{{ $callActions->title }}</h1>
-                <div class="font-size-lg mb-md-6 mb-4 text-white">{{ $callActions->description }}</div>
-                <div class="mx-auto">
-                    <a href="{{ url($callActions->btn_link) }}"
-                        class="btn btn-sienna btn-x-wide lift d-inline-block text-white">{{ $callActions->btn_name }}</a>
+
+        @foreach ($callActions as $callAction)
+            <div class="col-md-12 py-6 py-md-12 jarallax" data-jarallax data-speed=".8"
+                style="background-image: url({{ asset('frontend/assets/img/covers/cover-5.jpg') }})" data-aos="fade-up"
+                data-aos-delay="50">
+                <div class="container text-center py-xl-9 text-capitalize" data-aos="fade-up">
+                    <h1 class="text-white text-uppercase">{{ $callAction->title }}</h1>
+                    <div class="font-size-lg mb-md-6 mb-4 text-white">{{ $callAction->description }}</div>
+                    <div class="mx-auto">
+                        <a href="{{ url($callAction->btn_link) }}"
+                            class="btn btn-sienna btn-x-wide lift d-inline-block text-white">{{ $callAction->btn_name }}</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
+
         {{-- 
         <div class="col-md-12 py-6 py-md-12 jarallax" data-jarallax data-speed=".8"
             style="background-image: url({{ asset('frontend/assets/img/covers/cover-5.jpg') }})" data-aos="fade-up"

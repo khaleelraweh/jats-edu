@@ -44,7 +44,7 @@ class FrontendController extends Controller
         $events = Course::with('photos')->where('section', 2)->orderBy('created_at', 'ASC')->get();
         $posts = Post::with('photos')->where('section', 1)->orderBy('created_at', 'ASC')->get();
 
-        $callActions = CallAction::with('photos')->first();
+        $callActions = CallAction::with('photos')->get();
 
 
 

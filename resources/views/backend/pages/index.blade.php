@@ -79,16 +79,18 @@
                                             title="Edit the page">
                                             <i class="fa fa-edit"></i>
                                         </a>
+                                        <a href="javascript:void(0);" class="btn btn-success copyButton"
+                                            data-copy-text="pages/{{ $page->slug }}" title="Copy the link">
+                                            <i class="far fa-copy"></i>
+                                        </a>
+                                        <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
+
                                         <a href="javascript:void(0);"
                                             onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $page->id }}').submit();}else{return false;}"
                                             class="btn btn-danger" title="Delete the page">
                                             <i class="fa fa-trash"></i>
                                         </a>
-                                        <a href="javascript:void(0);" class="btn btn-primary copyButton"
-                                            data-copy-text="pages/{{ $page->slug }}" title="Copy the link">
-                                            <i class="far fa-copy"></i>
-                                        </a>
-                                        <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
+
                                     </div>
                                     <form action="{{ route('admin.pages.destroy', $page->id) }}" method="post"
                                         class="d-none" id="delete-product-category-{{ $page->id }}">

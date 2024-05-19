@@ -77,7 +77,8 @@
                                 <select name="parent_id" class="form-control">
                                     <option value="">{{ __('panel.main_category') }} __</option>
 
-                                    @foreach ($main_menus->where('section', 1) as $main_menu)
+                                    {{-- @foreach ($main_menus->where('section', 1) as $main_menu) --}}
+                                    @foreach ($main_menus as $main_menu)
                                         @if (count($main_menu->appearedChildren) == false)
                                             <option style="color: black;font-weight: bold;font-size:18px;"
                                                 value="{{ $main_menu->id }}"

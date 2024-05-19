@@ -36,91 +36,84 @@
             </div>
         </div>
 
+        {{-- @include('backend.pages.filter.filter') --}}
+
         <div class="card-body">
 
-            {{-- filter form part --}}
-            @include('backend.pages.filter.filter')
-
-            {{-- table part --}}
-            <div class="table-responsive">
-                <table class="table table-hover table-striped table-bordered dt-responsive nowrap"
-                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>{{ __('panel.title') }}</th>
-                            <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
-                            <th>{{ __('panel.status') }}</th>
-                            <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
-                            <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($pages as $page)
-                            <tr>
-                                <td>
-                                    {{ $page->title }}
-                                    <br>
-                                    @if ($page->parent != null)
-                                        <small
-                                            style="background: #17a2b8;color:white;padding:1px 3px;border-radius: 5px; font-size:11px">
-                                            {{-- تابع للقائمة: --}}
-                                            <span>{{ $page->parent?->title }}</span> </small>
-                                    @endif
-                                </td>
-                                <td class="d-none d-sm-table-cell">{{ $page->created_by }}</td>
-                                <td>
-                                    <span
-                                        class="btn btn-round rounded-pill btn-success btn-xs">{{ $page->status() }}</span>
-                                </td>
-                                <td class="d-none d-sm-table-cell">{{ $page->created_at }}</td>
-                                <td>
-                                    <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.pages.edit', $page->id) }}" class="btn btn-primary"
-                                            title="Edit the page">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                            data-copy-text="pages/{{ $page->slug }}" title="Copy the link">
-                                            <i class="far fa-copy"></i>
-                                        </a>
-                                        <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
-
-                                        <a href="javascript:void(0);"
-                                            onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $page->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger" title="Delete the page">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-
-                                    </div>
-                                    <form action="{{ route('admin.pages.destroy', $page->id) }}" method="post"
-                                        class="d-none" id="delete-product-category-{{ $page->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="6" class="text-center">{{ __('panel.no_found_item') }}</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-                <tfoot>
+            <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
+                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <thead>
                     <tr>
-                        <td colspan="6">
-                            <div class="float-right">
-                                {!! $pages->appends(request()->all())->links() !!}
-                            </div>
-                        </td>
-                    </tr>
-                </tfoot>
-            </div>
-        </div>
-    </div>
-@endsection
+                        <th>{{ __('panel.title') }}</th>
+                        <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
+                        <th>{{ __('panel.status') }}</th>
+                        <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
+                        <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
 
-@section('script')
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    @forelse ($pages as $page)
+                        <tr>
+                            <td>
+                                {{ $page->title }}
+                                <br>
+                                @if ($page->parent != null)
+                                    <small
+                                        style="background: #17a2b8;color:white;padding:1px 3px;border-radius: 5px; font-size:11px">
+                                        {{-- تابع للقائمة: --}}
+                                        <span>{{ $page->parent?->title }}</span> </small>
+                                @endif
+                            </td>
+                            <td class="d-none d-sm-table-cell">{{ $page->created_by }}</td>
+                            <td>
+                                <span class="btn btn-round rounded-pill btn-success btn-xs">{{ $page->status() }}</span>
+                            </td>
+                            <td class="d-none d-sm-table-cell">{{ $page->created_at }}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="{{ route('admin.pages.edit', $page->id) }}" class="btn btn-primary"
+                                        title="Edit the page">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-success copyButton"
+                                        data-copy-text="pages/{{ $page->slug }}" title="Copy the link">
+                                        <i class="far fa-copy"></i>
+                                    </a>
+                                    <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
+
+                                    <a href="javascript:void(0);"
+                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $page->id }}').submit();}else{return false;}"
+                                        class="btn btn-danger" title="Delete the page">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+
+                                </div>
+                                <form action="{{ route('admin.pages.destroy', $page->id) }}" method="post" class="d-none"
+                                    id="delete-product-category-{{ $page->id }}">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="6" class="text-center">{{ __('panel.no_found_item') }}</td>
+                        </tr>
+                    @endforelse
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    @endsection @section('script')
     <style>
         .copyButton {
             position: relative;

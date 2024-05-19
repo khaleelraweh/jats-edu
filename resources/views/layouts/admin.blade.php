@@ -74,6 +74,27 @@
     <link href="{{ asset('backend/vendor/fontawesomepicker/css/fontawesome-iconpicker.css') }}" rel="stylesheet">
 
 
+    {{-- start new  --}}
+    <!-- DataTables -->
+    <link
+        href="{{ asset('backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css') }}" />
+    <link
+        href="{{ asset('backend/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet"
+                                        type="text/css') }}" />
+    <link
+        href="{{ asset('backend/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet"
+                                        type="text/css') }}" />
+
+    <!-- Responsive datatable examples -->
+    <link
+        href="{{ asset('backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet"
+                                        type="text/css') }}" />
+
+    {{-- end  new  --}}
+
+
+
+
     {{-- my custom css --}}
     <link rel="stylesheet" href="{{ asset('backend/css/custom.css') }}">
 
@@ -195,6 +216,29 @@
     {{-- <script src="{{ asset('backend/js/pages/form-editor.init.js') }}"></script> --}}
 
     <script src="{{ asset('backend/js/pages/form-editor.js') }}"></script>
+
+
+    {{-- start new --}}
+
+    <!-- Buttons examples -->
+    <script src="{{ asset('backend/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/pdfmake/build/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('backend/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
+
+    <script src="{{ asset('backend/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+
+
+    <!-- Datatable init js -->
+    <script src="{{ asset('backend/js/pages/datatables.init.js') }}"></script>
+
+    {{-- end new --}}
+
     <!-- App js -->
     <script src="{{ asset('backend/js/app.js') }}"></script>
     <script src="{{ asset('backend/js/custom.js') }}"></script>

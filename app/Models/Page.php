@@ -17,7 +17,7 @@ class Page extends Model
     protected $guarded = [];
 
     // for translatable field 
-    public $translatable = ['title', 'content', 'slug'];
+    public $translatable = ['title', 'slug', 'content'];
 
     // searchable lab 
     protected $searchable = [
@@ -58,10 +58,10 @@ class Page extends Model
         return json_encode($value, JSON_UNESCAPED_UNICODE);
     }
 
-    // public function getRouteKeyName()
-    // {
-    //     return 'slug';
-    // }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function status()
     {

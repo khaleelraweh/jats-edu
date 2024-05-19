@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\PageRequest;
 use App\Models\Page;
 use App\Models\WebMenu;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -12,7 +14,7 @@ class PagesController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_web_menus , show_web_menus')) {
+        if (!auth()->user()->ability('admin', 'manage_pages , show_pages')) {
             return redirect('admin/index');
         }
 
@@ -42,18 +44,17 @@ class PagesController extends Controller
         return view('backend.pages.create', compact('main_menus'));
     }
 
-    public function store(WebMenuRequest $request)
+    public function store(PageRequest $request)
     {
-        if (!auth()->user()->ability('admin', 'create_web_menus')) {
+        if (!auth()->user()->ability('admin', 'create_pages')) {
             return redirect('admin/index');
         }
 
-        $input['title'] = $request->title;
-        $input['link'] = $request->link;
-        $input['icon'] = $request->icon;
-        $input['parent_id'] = $request->parent_id;
 
-        $input['section'] = 1;
+
+        $input['title'] = $request->title;
+        $input['content'] = $request->content;
+        $input['web_menu_id'] = $request->parent_id;
 
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;

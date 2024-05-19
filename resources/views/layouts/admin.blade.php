@@ -45,6 +45,24 @@
     <!-- Plugins css -->
     {{-- <link href="{{ asset('backend/css/bootstrap-editable.css') }}" rel="stylesheet" type="text/css"> --}}
 
+    {{-- start new  --}}
+    <!-- DataTables -->
+    <link
+        href="{{ asset('backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css') }}" />
+    <link
+        href="{{ asset('backend/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet"
+                                                                                                                                                                                                                        type="text/css') }}" />
+    <link
+        href="{{ asset('backend/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet"
+                                                                                                                                                                                                                        type="text/css') }}" />
+
+    <!-- Responsive datatable examples -->
+    <link
+        href="{{ asset('backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet"
+                                                                                                                                                                                                                        type="text/css') }}" />
+
+    {{-- end  new  --}}
+
     <!-- Bootstrap Css -->
     <link href="<?php echo asset('backend/css/bootstrap' . $dark . $rtl . '.min.css'); ?>" id="bootstrap-style" rel="stylesheet" type="text/css">
 
@@ -56,43 +74,11 @@
     <link href="<?php echo asset('backend/css/app' . $dark . $rtl . '.min.css'); ?>" id="app-style" rel="stylesheet" type="text/css">
 
 
-    {{-- is used to make tab-content --}}
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
-    </script>
-
     <!-- Fontawesome icon -->
     <link href="{{ asset('backend/vendor/fontawesome/fontawesome.css') }}" rel="stylesheet" />
 
     <!-- fontawesome icon  picker  -->
     <link href="{{ asset('backend/vendor/fontawesomepicker/css/fontawesome-iconpicker.css') }}" rel="stylesheet">
-
-
-    {{-- start new  --}}
-    <!-- DataTables -->
-    <link
-        href="{{ asset('backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css') }}" />
-    <link
-        href="{{ asset('backend/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet"
-                                        type="text/css') }}" />
-    <link
-        href="{{ asset('backend/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet"
-                                        type="text/css') }}" />
-
-    <!-- Responsive datatable examples -->
-    <link
-        href="{{ asset('backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet"
-                                        type="text/css') }}" />
-
-    {{-- end  new  --}}
-
-
 
 
     {{-- my custom css --}}
@@ -164,62 +150,38 @@
     <script src="{{ asset('backend/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('backend/libs/metismenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('backend/libs/simplebar/simplebar.min.js') }}"></script>
-    {{-- <script src="{{ asset('backend/libs/node-waves/waves.min.js') }}"></script> --}}
+    <script src="{{ asset('backend/libs/node-waves/waves.min.js') }}"></script>
 
     <!-- apexcharts -->
-    {{-- <script src="{{ asset('backend/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
-
+    <script src="{{ asset('backend/libs/apexcharts/apexcharts.min.js') }}"></script>
     <!-- jquery.vectormap map -->
     <script src="{{ asset('backend/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
     <script src="{{ asset('backend/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js') }}">
     </script>
-
-    <!-- Required datatable js -->
-    <script src="{{ asset('backend/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('backend/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-
-    <!-- Responsive examples -->
-    <script src="{{ asset('backend/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('backend/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
-
     <!-- Responsive fileInput js start -->
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/plugins/piexif.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/plugins/sortable.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/themes/fa5/theme.min.js') }}"></script>
-    <!-- Responsive fileInput js end -->
-
-
     <!-- Datatable init js -->
-    {{-- <script src="{{ asset('backend/js/pages/dashboard.init.js') }}"></script> --}}
-
-    {{-- outer lab  --}}
+    <script src="{{ asset('backend/js/pages/dashboard.init.js') }}"></script>
     {{-- summernote for description note field --}}
     <script src="{{ asset('backend/vendor/summernote/summernote-bs4.min.js') }}"></script>
-
     {{-- pickadate calling js --}}
     <script src="{{ asset('backend/vendor/datepicker/picker.js') }}"></script>
     <script src="{{ asset('backend/vendor/datepicker/picker.date.js') }}"></script>
     <script src="{{ asset('backend/vendor/datepicker/picker.time.js') }}"></script>
-
     {{-- Call select2 plugin --}}
     <script src="{{ asset('backend/vendor/select2/js/select2.full.min.js') }}"></script>
-
     {{-- Calling fontawesome icon picker   --}}
     <script src="{{ asset('backend/vendor/fontawesomepicker/js/fontawesome-iconpicker.js') }}"></script>
-
-
-
-    <!--tinymce js-->
+    <!--tinymce js for editor -->
     <script src="{{ asset('backend/libs/tinymce/tinymce.min.js') }}"></script>
-
-    {{-- <script src="{{ asset('backend/js/pages/form-editor.init.js') }}"></script> --}}
-
     <script src="{{ asset('backend/js/pages/form-editor.js') }}"></script>
 
-
-    {{-- start new --}}
-
+    <!-- Required datatable js -->
+    <script src="{{ asset('backend/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <!-- Buttons examples -->
     <script src="{{ asset('backend/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('backend/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
@@ -230,14 +192,17 @@
     <script src="{{ asset('backend/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('backend/libs/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
 
+
     <script src="{{ asset('backend/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
     <script src="{{ asset('backend/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
 
+    <!-- Responsive examples -->
+    <script src="{{ asset('backend/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
 
     <!-- Datatable init js -->
     <script src="{{ asset('backend/js/pages/datatables.init.js') }}"></script>
 
-    {{-- end new --}}
 
     <!-- App js -->
     <script src="{{ asset('backend/js/app.js') }}"></script>

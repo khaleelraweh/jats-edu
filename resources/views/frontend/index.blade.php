@@ -115,37 +115,16 @@
         <div class="col-md-12 py-6 py-md-12 jarallax" data-jarallax data-speed=".8"
             style="background-image: url({{ asset('frontend/assets/img/covers/cover-5.jpg') }})" data-aos="fade-up"
             data-aos-delay="50">
-            <!-- Card -->
-            <div class=" text-center p-8 py-lg-8 px-lg-9 w-lg-96 mx-auto rounded-xl lift-md bg-transparent">
-                <!-- Image -->
-                <div class="position-relative">
-                    <div class="card-float top-0 left-0">
-                        <!-- Icon -->
-                        <svg width="36" height="23" viewBox="0 0 36 23" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M9.5 23L15.5 -4.76837e-06H10L2.98023e-08 23H9.5ZM29.5 23L35.5 -4.76837e-06H30L20 23H29.5Z"
-                                fill="currentColor" />
-                        </svg>
-
-                    </div>
-
-                    <div class="avatar avatar-custom mb-5">
-                        <img src="assets/img/avatars/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-                    </div>
-                    <div class="media-body">
-                        <h5 class="mb-0">Albert Cole</h5>
-                        <span>Designer</span>
-                    </div>
-                </div>
-
-                <!-- Footer -->
-                <div class="card-footer px-0 pb-0 pt-4">
-                    <p class="mb-0 text-capitalize">“ I believe in lifelong learning and Skola is a great place
-                        to learn from experts. I've learned a lot and recommend it to all my friends “</p>
+            <div class="container text-center py-xl-9 text-capitalize" data-aos="fade-up">
+                <h1 class="text-white text-uppercase">{{ $callActions->title }}</h1>
+                <div class="font-size-lg mb-md-6 mb-4 text-white">{{ $callActions->description }}</div>
+                <div class="mx-auto">
+                    <a href="{{ url($callActions->btn_link) }}"
+                        class="btn btn-sienna btn-x-wide lift d-inline-block text-white">{{ $callActions->btn_name }}</a>
                 </div>
             </div>
         </div>
-
+        {{-- 
         <div class="col-md-12 py-6 py-md-12 jarallax" data-jarallax data-speed=".8"
             style="background-image: url({{ asset('frontend/assets/img/covers/cover-5.jpg') }})" data-aos="fade-up"
             data-aos-delay="100">
@@ -246,7 +225,7 @@
                         to learn from experts. I've learned a lot and recommend it to all my friends “</p>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
 

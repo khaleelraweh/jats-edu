@@ -10,7 +10,8 @@
                 <div class="col-md mb-4 mb-md-0 d-lg-flex align-items-center">
                     <label class="me-lg-4 mb-lg-0">{{ __('transf.txt_filter_by') }}</label>
                     <div class="row">
-                        <div wire:ignore class="col-md-auto mb-4 mb-lg-0">
+                        {{-- <div wire:ignore class="col-md-auto mb-4 mb-lg-0"> --}}
+                        <div wire:ignore class="col-md-auto mb-4 px-1 mb-lg-0">
                             <select wire:model="categoryInputs" {{-- class="form-select form-select-sm ps-5 text-primary shadow fw-medium" data-choices> --}}
                                 class="form-select form-select-sm ps-5 text-primary shadow fw-medium">
                                 <option value="">{{ __('transf.chose_categories') }}</option>
@@ -21,7 +22,7 @@
 
                             </select>
                         </div>
-                        <div wire:ignore class="col-md-auto mb-4 mb-lg-0">
+                        <div wire:ignore class="col-md-auto mb-4 px-1 mb-lg-0">
                             <select wire:model="courseLevels"
                                 class="form-select form-select-sm ps-5 text-primary shadow fw-medium">
                                 <option value="">{{ __('transf.chose_levels') }}</option>
@@ -30,7 +31,7 @@
                                 <option value="3">{{ __('transf.advance') }}</option>
                             </select>
                         </div>
-                        <div wire:ignore class="col-md-auto mb-4 mb-lg-0">
+                        <div wire:ignore class="col-md-auto mb-4 px-1 mb-lg-0">
                             <select wire:model="priceInput"
                                 class="form-select form-select-sm ps-5 text-primary shadow fw-medium">
                                 <option value="all">{{ __('transf.all') }}</option>

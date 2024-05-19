@@ -18,7 +18,6 @@ return new class extends Migration
             $table->json('title');
             $table->json('slug');
             $table->json('content');
-            $table->foreignId('web_menu_id')->constrained()->cascadeOnDelete();
 
             // will be use always
             $table->boolean('status')->nullable()->default(true);

@@ -39,9 +39,8 @@ class PagesController extends Controller
             return redirect('admin/index');
         }
 
-        $main_menus = WebMenu::tree();
 
-        return view('backend.pages.create', compact('main_menus'));
+        return view('backend.pages.create');
     }
 
     public function store(PageRequest $request)
@@ -54,7 +53,6 @@ class PagesController extends Controller
 
         $input['title'] = $request->title;
         $input['content'] = $request->content;
-        $input['web_menu_id'] = $request->parent_id;
 
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
@@ -94,11 +92,10 @@ class PagesController extends Controller
             return redirect('admin/index');
         }
 
-        $main_menus = WebMenu::tree();
 
         $page = Page::where('id', $page)->first();
 
-        return view('backend.pages.edit', compact('main_menus', 'page'));
+        return view('backend.pages.edit', compact('page'));
     }
 
     public function update(PageRequest $request, $page)
@@ -108,7 +105,6 @@ class PagesController extends Controller
 
         $input['title'] = $request->title;
         $input['content'] = $request->content;
-        $input['web_menu_id'] = $request->parent_id;
 
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
@@ -132,15 +128,15 @@ class PagesController extends Controller
     }
 
 
-    public function destroy($webMenu)
+    public function destroy($page)
     {
         if (!auth()->user()->ability('admin', 'delete_pages')) {
             return redirect('admin/index');
         }
 
-        $webMenu = WebMenu::where('id', $webMenu)->first()->delete();
+        $page = Page::where('id', $page)->first()->delete();
 
-        if ($webMenu) {
+        if ($page) {
             return redirect()->route('admin.pages.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'

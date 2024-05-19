@@ -19,13 +19,11 @@ class PageSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        $webMenus = WebMenu::where('id', '<>', 1)->get();
 
         $course = Page::create([
             'title' => ['ar' => 'العنوان', 'en' => 'title'],
             'content' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
             'status' => true,
-            'web_menu_id' => $webMenus->random()->id,
             'published_on' => Carbon::now(),
             'created_by' => $faker->realTextBetween(10, 20),
             'updated_by' => $faker->realTextBetween(10, 20), // Assuming you want this as well

@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- PAGE TITLE  -->
-    <header class="py-8 py-md-8" style="background-image: none;">
+    <header class="py-6 py-md-6" style="background-image: none;">
         <div class="container text-center py-xl-2">
             <h1 class="display-4 fw-semi-bold mb-0">{{ $page->title }}</h1>
             <nav aria-label="breadcrumb">
@@ -28,13 +28,10 @@
     <div class="container pb-4 pb-xl-7">
         <div class="text-center mb-md-6 mb-4">
 
-            <p class="font-size-lg mb-5 text-capitalize">Discover your perfect program in our courses.</p>
-
             <p class="w-xl-80 mx-auto line-height-md">
                 {!! $page->content !!}
             </p>
         </div>
-
 
 
 

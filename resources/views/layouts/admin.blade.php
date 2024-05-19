@@ -187,6 +187,14 @@
     {{-- Calling fontawesome icon picker   --}}
     <script src="{{ asset('backend/vendor/fontawesomepicker/js/fontawesome-iconpicker.js') }}"></script>
 
+
+
+    <!--tinymce js-->
+    <script src="{{ asset('backend/libs/tinymce/tinymce.min.js') }}"></script>
+
+    {{-- <script src="{{ asset('backend/js/pages/form-editor.init.js') }}"></script> --}}
+
+    <script src="{{ asset('backend/js/pages/form-editor.js') }}"></script>
     <!-- App js -->
     <script src="{{ asset('backend/js/app.js') }}"></script>
     <script src="{{ asset('backend/js/custom.js') }}"></script>

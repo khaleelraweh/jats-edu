@@ -156,9 +156,11 @@
                                             {{ __('panel.in') }}
                                             ({{ __('panel.' . $key) }})
                                         </label>
-                                        <textarea name="content[{{ $key }}]" rows="10" class="form-control summernote">
-                                                {!! old('content.' . $key, $page->getTranslation('content', $key)) !!}
-                                            </textarea>
+                                        <textarea id="elm1" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $page->getTranslation('content', $key)) !!}</textarea>
+
+                                        {{-- <textarea id="elm1"  name="area"></textarea> --}}
+
+
                                         @error('content.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -166,6 +168,7 @@
                                 </div>
                             @endforeach
                         </div>
+
                     </div>
 
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">

@@ -24,6 +24,7 @@ use App\Http\Controllers\Backend\LocaleController;
 use App\Http\Controllers\Backend\MainSliderController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\PagesController;
 use App\Http\Controllers\Backend\PaymentCategoriesController;
 use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\PaymentMethodOfflineController;
@@ -202,6 +203,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('topics_menus', TopicsMenuController::class);
         Route::resource('tracks_menus', TracksMenuController::class);
         Route::resource('support_menus', SupportMenuController::class);
+
+        // ==============   Pages Tab   ==============  //
+        Route::resource('pages', PagesController::class);
 
 
         // ==============   Sliders Tab   ==============  //

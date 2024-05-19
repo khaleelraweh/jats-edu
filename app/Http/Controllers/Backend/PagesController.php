@@ -62,17 +62,17 @@ class PagesController extends Controller
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        $webMenu = WebMenu::create($input);
+        $page = Page::create($input);
 
 
-        if ($webMenu) {
-            return redirect()->route('admin.web_menus.index')->with([
+        if ($page) {
+            return redirect()->route('admin.pages.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.web_menus.index')->with([
+        return redirect()->route('admin.pages.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);

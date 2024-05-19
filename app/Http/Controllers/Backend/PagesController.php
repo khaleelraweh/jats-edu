@@ -101,16 +101,14 @@ class PagesController extends Controller
         return view('backend.pages.edit', compact('main_menus', 'page'));
     }
 
-    public function update(WebMenuRequest $request, $webMenu)
+    public function update(PageRequest $request, $page)
     {
 
-        $webMenu = WebMenu::where('id', $webMenu)->first();
+        $page = Page::where('id', $page)->first();
 
         $input['title'] = $request->title;
-        $input['link'] = $request->link;
-        $input['icon'] = $request->icon;
-        $input['parent_id'] = $request->parent_id;
-        $input['section'] = 1;
+        $input['content'] = $request->content;
+        $input['web_menu_id'] = $request->parent_id;
 
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
@@ -118,9 +116,9 @@ class PagesController extends Controller
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        $webMenu->update($input);
+        $page->update($input);
 
-        if ($webMenu) {
+        if ($page) {
             return redirect()->route('admin.pages.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -132,38 +130,6 @@ class PagesController extends Controller
             'alert-type' => 'danger'
         ]);
     }
-
-    // public function update(WebMenuRequest $request, WebMenu $webMenu)
-    // {
-    //     if(!auth()->user()->ability('admin','update_pages')){
-    //         return redirect('admin/index');
-    //     }
-
-
-    //     $input['title']   = $request->title;
-    //     $input['name_en']   = $request->name_en;
-
-    //     $input['link']      = $request->link;
-
-    //     $input['parent_id'] = $request->parent_id;
-
-    //     $input['status']    =   $request->status;
-    //     $input['updated_by']=   auth()->user()->full_name;
-
-    //     $published_on = $request->published_on.' '.$request->published_on_time;
-    //     $published_on = new DateTimeImmutable($published_on);
-    //     $input['published_on'] = $published_on;
-
-    //     $webMenu->update($input);
-
-
-    //     return redirect()->route('admin.pages.index')->with([
-    //         'message' => 'تم التعديل بنجاح',
-    //         'alert-type' => 'success'
-    //     ]);
-    // }
-
-
 
 
     public function destroy($webMenu)

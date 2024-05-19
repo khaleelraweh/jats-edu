@@ -70,7 +70,6 @@
 
                         <div class="row ">
 
-
                             <div class="col-sm-12 col-md-12 pt-3">
                                 <label for="parent_id" class="control-label">
                                     {{ __('panel.category_menu') }}
@@ -78,18 +77,17 @@
                                 <select name="parent_id" class="form-control">
                                     <option value="">{{ __('panel.main_category') }} __</option>
 
-                                    {{-- @foreach ($main_menus->where('section', '<>', 1) as $main_menu) --}}
-                                    @foreach ($main_menus as $main_menu)
+                                    @foreach ($main_menus->where('section', 1) as $main_menu)
                                         @if (count($main_menu->appearedChildren) == false)
                                             <option style="color: black;font-weight: bold;font-size:18px;"
                                                 value="{{ $main_menu->id }}"
-                                                {{ old('parent_id', $page->parent_id) == $main_menu->id ? 'selected' : null }}>
+                                                {{ old('parent_id', $page->web_menu_id) == $main_menu->id ? 'selected' : null }}>
                                                 {{ $main_menu->title }}
                                             </option>
                                         @else
                                             <option style="color: black;font-weight: bold;font-size:18px;"
                                                 value="{{ $main_menu->id }}"
-                                                {{ old('parent_id', $page->parent_id) == $main_menu->id ? 'selected' : null }}>
+                                                {{ old('parent_id', $page->web_menu_id) == $main_menu->id ? 'selected' : null }}>
                                                 {{ $main_menu->title }}
                                             </option>
                                             @if ($main_menu->appearedChildren !== null && count($main_menu->appearedChildren) > 0)
@@ -97,20 +95,20 @@
                                                     @if (count($sub_menu->appearedChildren) == false)
                                                         <option style="color:blue;font-weight:bold;font-size:15px;"
                                                             value="{{ $sub_menu->id }}"
-                                                            {{ old('parent_id', $page->parent_id) == $sub_menu->id ? 'selected' : null }}>
+                                                            {{ old('parent_id', $page->web_menu_id) == $sub_menu->id ? 'selected' : null }}>
                                                             &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
                                                         </option>
                                                     @else
                                                         <option style="color:blue;font-weight:bold;font-size:15px;"
                                                             value="{{ $sub_menu->id }}"
-                                                            {{ old('parent_id', $page->parent_id) == $sub_menu->id ? 'selected' : null }}>
+                                                            {{ old('parent_id', $page->web_menu_id) == $sub_menu->id ? 'selected' : null }}>
                                                             &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
                                                         </option>
                                                         @if ($sub_menu->appearedChildren !== null && count($sub_menu->appearedChildren) > 0)
                                                             @foreach ($sub_menu->appearedChildren as $sub_menu_2)
                                                                 <option style="font-size: 14px;"
                                                                     value="{{ $sub_menu_2->id }}"
-                                                                    {{ old('parent_id', $page->parent_id) == $sub_menu_2->id ? 'selected' : null }}>
+                                                                    {{ old('parent_id', $page->web_menu_id) == $sub_menu_2->id ? 'selected' : null }}>
                                                                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                                                     &nbsp;{{ $sub_menu_2->title }}
                                                                 </option>

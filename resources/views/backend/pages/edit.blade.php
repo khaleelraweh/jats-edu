@@ -202,15 +202,7 @@
 
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div>
-                                    <p id="partCopy">pages/{{ $page->slug }}</p>
-                                    <button type="button" id="copyButton">Copy Text</button>
-                                    <span id="copyMessage" style="display:none;">Text copied!</span>
-                                </div>
-                            </div>
-                        </div>
+
 
                         <div class="row">
                             <div class="col-md-12 col-sm-12 pt-3">
@@ -258,21 +250,6 @@
 
 @section('script')
     <script>
-        document.getElementById("copyButton").addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent form submission
-            var textToCopy = document.getElementById("partCopy").innerText; // Get the dynamic text
-            var tempInput = document.createElement("input");
-            tempInput.value = textToCopy;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-            document.getElementById("copyMessage").style.display = "inline";
-            setTimeout(function() {
-                document.getElementById("copyMessage").style.display = "none";
-            }, 2000); // Hide the message after 2 seconds
-        });
-
         $(function() {
             $('.summernote').summernote({
                 tabSize: 2,

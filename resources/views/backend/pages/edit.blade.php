@@ -10,7 +10,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_link') }}
+                    {{ __('panel.edit_existing_page') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -22,8 +22,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.web_menus.index') }}">
-                            {{ __('panel.show_web_menus') }}
+                        <a href="{{ route('admin.pages.index') }}">
+                            {{ __('panel.show_pages') }}
                         </a>
                     </li>
                 </ul>
@@ -44,7 +44,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.web_menus.update', $webMenu->id) }}" method="post">
+            <form action="{{ route('admin.pages.update', $page->id) }}" method="post">
                 @csrf
                 @method('PATCH')
 
@@ -69,44 +69,27 @@
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
                         <div class="row ">
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <div class="form-group">
-                                    <label for="icon"> {{ __('panel.choose_icon') }} </label>
 
-                                    <div class="input-group iconpicker-container ">
-                                        <input data-placement="bottomRight"
-                                            class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
-                                            value=" {{ old('icon', $webMenu->icon) ?? 'fas fa-archive' }}" type="text"
-                                            name="icon">
-                                        <span class="input-group-addon btn btn-primary">
-                                            <i class="{{ $webMenu->icon ?? 'fas fa-archive' }}"></i>
-                                        </span>
-                                    </div>
 
-                                    @error('icon')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-sm-12 col-md-6 pt-3">
+                            <div class="col-sm-12 col-md-12 pt-3">
                                 <label for="parent_id" class="control-label">
                                     {{ __('panel.category_menu') }}
                                 </label>
                                 <select name="parent_id" class="form-control">
                                     <option value="">{{ __('panel.main_category') }} __</option>
 
-                                    @foreach ($main_menus->where('section', 1) as $main_menu)
+                                    {{-- @foreach ($main_menus->where('section', '<>', 1) as $main_menu) --}}
+                                    @foreach ($main_menus as $main_menu)
                                         @if (count($main_menu->appearedChildren) == false)
                                             <option style="color: black;font-weight: bold;font-size:18px;"
                                                 value="{{ $main_menu->id }}"
-                                                {{ old('parent_id', $webMenu->parent_id) == $main_menu->id ? 'selected' : null }}>
+                                                {{ old('parent_id', $page->parent_id) == $main_menu->id ? 'selected' : null }}>
                                                 {{ $main_menu->title }}
                                             </option>
                                         @else
                                             <option style="color: black;font-weight: bold;font-size:18px;"
                                                 value="{{ $main_menu->id }}"
-                                                {{ old('parent_id', $webMenu->parent_id) == $main_menu->id ? 'selected' : null }}>
+                                                {{ old('parent_id', $page->parent_id) == $main_menu->id ? 'selected' : null }}>
                                                 {{ $main_menu->title }}
                                             </option>
                                             @if ($main_menu->appearedChildren !== null && count($main_menu->appearedChildren) > 0)
@@ -114,20 +97,20 @@
                                                     @if (count($sub_menu->appearedChildren) == false)
                                                         <option style="color:blue;font-weight:bold;font-size:15px;"
                                                             value="{{ $sub_menu->id }}"
-                                                            {{ old('parent_id', $webMenu->parent_id) == $sub_menu->id ? 'selected' : null }}>
+                                                            {{ old('parent_id', $page->parent_id) == $sub_menu->id ? 'selected' : null }}>
                                                             &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
                                                         </option>
                                                     @else
                                                         <option style="color:blue;font-weight:bold;font-size:15px;"
                                                             value="{{ $sub_menu->id }}"
-                                                            {{ old('parent_id', $webMenu->parent_id) == $sub_menu->id ? 'selected' : null }}>
+                                                            {{ old('parent_id', $page->parent_id) == $sub_menu->id ? 'selected' : null }}>
                                                             &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
                                                         </option>
                                                         @if ($sub_menu->appearedChildren !== null && count($sub_menu->appearedChildren) > 0)
                                                             @foreach ($sub_menu->appearedChildren as $sub_menu_2)
                                                                 <option style="font-size: 14px;"
                                                                     value="{{ $sub_menu_2->id }}"
-                                                                    {{ old('parent_id', $webMenu->parent_id) == $sub_menu_2->id ? 'selected' : null }}>
+                                                                    {{ old('parent_id', $page->parent_id) == $sub_menu_2->id ? 'selected' : null }}>
                                                                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                                                     &nbsp;{{ $sub_menu_2->title }}
                                                                 </option>
@@ -143,60 +126,7 @@
                             </div>
                         </div>
 
-                        {{-- <div class="row">
-                            <div class="col-sm-12 pt-3">
-                                <label for="parent_id" class="control-label">
-                                    {{ __('panel.category_menu') }}
-                                </label>
-                                <select name="parent_id" class="form-control">
-                                    <option value="">{{ __('panel.main_category') }} __</option>
 
-                                    @foreach ($main_menus->where('section', 1) as $main_menu)
-                                        @if (count($main_menu->appearedChildren) == false)
-                                            <option style="color: black;font-weight: bold;font-size:18px;"
-                                                value="{{ $main_menu->id }}"
-                                                {{ old('parent_id', $webMenu->parent_id) == $main_menu->id ? 'selected' : null }}>
-                                                {{ $main_menu->title }}
-                                            </option>
-                                        @else
-                                            <option style="color: black;font-weight: bold;font-size:18px;"
-                                                value="{{ $main_menu->id }}"
-                                                {{ old('parent_id', $webMenu->parent_id) == $main_menu->id ? 'selected' : null }}>
-                                                {{ $main_menu->title }}
-                                            </option>
-                                            @if ($main_menu->appearedChildren !== null && count($main_menu->appearedChildren) > 0)
-                                                @foreach ($main_menu->appearedChildren as $sub_menu)
-                                                    @if (count($sub_menu->appearedChildren) == false)
-                                                        <option style="color:blue;font-weight:bold;font-size:15px;"
-                                                            value="{{ $sub_menu->id }}"
-                                                            {{ old('parent_id', $webMenu->parent_id) == $sub_menu->id ? 'selected' : null }}>
-                                                            &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
-                                                        </option>
-                                                    @else
-                                                        <option style="color:blue;font-weight:bold;font-size:15px;"
-                                                            value="{{ $sub_menu->id }}"
-                                                            {{ old('parent_id', $webMenu->parent_id) == $sub_menu->id ? 'selected' : null }}>
-                                                            &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
-                                                        </option>
-                                                        @if ($sub_menu->appearedChildren !== null && count($sub_menu->appearedChildren) > 0)
-                                                            @foreach ($sub_menu->appearedChildren as $sub_menu_2)
-                                                                <option style="font-size: 14px;"
-                                                                    value="{{ $sub_menu_2->id }}"
-                                                                    {{ old('parent_id', $webMenu->parent_id) == $sub_menu_2->id ? 'selected' : null }}>
-                                                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                                                    &nbsp;{{ $sub_menu_2->title }}
-                                                                </option>
-                                                            @endforeach
-                                                        @endif
-                                                    @endif
-                                                @endforeach
-                                            @endif
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div> --}}
 
                         <div class="row ">
                             @foreach (config('locales.languages') as $key => $val)
@@ -209,7 +139,7 @@
                                         </label>
                                         <input type="text" name="title[{{ $key }}]"
                                             id="title[{{ $key }}]"
-                                            value="{{ old('title.' . $key, $webMenu->getTranslation('title', $key)) }}"
+                                            value="{{ old('title.' . $key, $page->getTranslation('title', $key)) }}"
                                             class="form-control">
                                         @error('title.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
@@ -223,16 +153,15 @@
                             @foreach (config('locales.languages') as $key => $val)
                                 <div class="col-sm-12 col-md-6 pt-3">
                                     <div class="form-group">
-                                        <label for="link[{{ $key }}]">
-                                            {{ __('panel.link') }}
+                                        <label for="content[{{ $key }}]">
+                                            {{ __('panel.f_content') }}
                                             {{ __('panel.in') }}
                                             ({{ __('panel.' . $key) }})
                                         </label>
-                                        <input type="text" id="link[{{ $key }}]"
-                                            name="link[{{ $key }}]"
-                                            value="{{ old('link.' . $key, $webMenu->getTranslation('link', $key)) }}"
-                                            class="form-control">
-                                        @error('link.' . $key)
+                                        <textarea name="content[{{ $key }}]" rows="10" class="form-control summernote">
+                                                {!! old('content.' . $key, $page->getTranslation('content', $key)) !!}
+                                            </textarea>
+                                        @error('content.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -318,6 +247,19 @@
 @section('script')
     <script>
         $(function() {
+            $('.summernote').summernote({
+                tabSize: 2,
+                height: 200,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
 
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',

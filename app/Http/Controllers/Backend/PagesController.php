@@ -35,7 +35,7 @@ class PagesController extends Controller
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_web_menus')) {
+        if (!auth()->user()->ability('admin', 'create_pages')) {
             return redirect('admin/index');
         }
 
@@ -82,24 +82,23 @@ class PagesController extends Controller
 
     public function show($id)
     {
-        if (!auth()->user()->ability('admin', 'display_web_menus')) {
+        if (!auth()->user()->ability('admin', 'display_pages')) {
             return redirect('admin/index');
         }
-        return view('backend.web_menus.show');
+        return view('backend.pages.show');
     }
 
-    public function edit($webMenu)
+    public function edit($page)
     {
-        if (!auth()->user()->ability('admin', 'update_web_menus')) {
+        if (!auth()->user()->ability('admin', 'update_pages')) {
             return redirect('admin/index');
         }
-
 
         $main_menus = WebMenu::tree();
 
-        $webMenu = WebMenu::where('id', $webMenu)->first();
+        $page = Page::where('id', $page)->first();
 
-        return view('backend.web_menus.edit', compact('main_menus', 'webMenu'));
+        return view('backend.pages.edit', compact('main_menus', 'page'));
     }
 
     public function update(WebMenuRequest $request, $webMenu)
@@ -122,13 +121,13 @@ class PagesController extends Controller
         $webMenu->update($input);
 
         if ($webMenu) {
-            return redirect()->route('admin.web_menus.index')->with([
+            return redirect()->route('admin.pages.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.web_menus.index')->with([
+        return redirect()->route('admin.pages.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -136,7 +135,7 @@ class PagesController extends Controller
 
     // public function update(WebMenuRequest $request, WebMenu $webMenu)
     // {
-    //     if(!auth()->user()->ability('admin','update_web_menus')){
+    //     if(!auth()->user()->ability('admin','update_pages')){
     //         return redirect('admin/index');
     //     }
 
@@ -158,7 +157,7 @@ class PagesController extends Controller
     //     $webMenu->update($input);
 
 
-    //     return redirect()->route('admin.web_menus.index')->with([
+    //     return redirect()->route('admin.pages.index')->with([
     //         'message' => 'تم التعديل بنجاح',
     //         'alert-type' => 'success'
     //     ]);
@@ -169,20 +168,20 @@ class PagesController extends Controller
 
     public function destroy($webMenu)
     {
-        if (!auth()->user()->ability('admin', 'delete_web_menus')) {
+        if (!auth()->user()->ability('admin', 'delete_pages')) {
             return redirect('admin/index');
         }
 
         $webMenu = WebMenu::where('id', $webMenu)->first()->delete();
 
         if ($webMenu) {
-            return redirect()->route('admin.web_menus.index')->with([
+            return redirect()->route('admin.pages.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.web_menus.index')->with([
+        return redirect()->route('admin.pages.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);

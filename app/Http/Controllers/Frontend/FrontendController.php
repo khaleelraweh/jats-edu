@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\CallAction;
 use App\Models\Course;
+use App\Models\Page;
 use App\Models\Post;
 use App\Models\Slider;
 use App\Models\User;
@@ -215,5 +216,12 @@ class FrontendController extends Controller
     public function service()
     {
         return view('frontend.terms_of_service');
+    }
+
+    public function pages($slug)
+    {
+        $page = Page::where('slug->' . app()->getLocale(), $slug)
+            ->firstOrFail();
+        return view('frontend.pages', compact('page'));
     }
 }

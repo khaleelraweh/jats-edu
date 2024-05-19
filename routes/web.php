@@ -93,6 +93,9 @@ Route::post('currency_load', [CurrenciesController::class, 'currencyLoad'])->nam
 Route::get('/change-language/{locale}',     [LocaleController::class, 'switch'])->name('change.language');
 
 
+// Route::get('/pages/{slug?}', [FrontendController::class, 'pages'])->name('frontend.pages');
+Route::get('/pages/{slug}', [FrontendController::class, 'pages'])->name('frontend.pages');
+
 
 
 // ######################################################### //

@@ -3,7 +3,7 @@
 @section('content')
     <div class="card shadow mb-4">
 
-        {{-- breadcrumb part  --}}
+        {{-- breadcrumb part --}}
         <div class="card-header py-3 d-flex justify-content-between">
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
@@ -34,12 +34,11 @@
                     </a>
                 @endability
             </div>
-
         </div>
 
         <div class="card-body">
 
-            {{-- filter form part  --}}
+            {{-- filter form part --}}
             @include('backend.pages.filter.filter')
 
             {{-- table part --}}
@@ -67,25 +66,29 @@
                                             {{-- تابع للقائمة: --}}
                                             <span>{{ $page->parent?->title }}</span> </small>
                                     @endif
-
                                 </td>
                                 <td class="d-none d-sm-table-cell">{{ $page->created_by }}</td>
                                 <td>
                                     <span
-                                        class="btn btn-round  rounded-pill btn-success btn-xs">{{ $page->status() }}</span>
+                                        class="btn btn-round rounded-pill btn-success btn-xs">{{ $page->status() }}</span>
                                 </td>
                                 <td class="d-none d-sm-table-cell">{{ $page->created_at }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-
-                                        <a href="{{ route('admin.pages.edit', $page->id) }}" class="btn btn-primary">
+                                        <a href="{{ route('admin.pages.edit', $page->id) }}" class="btn btn-primary"
+                                            title="Edit the page">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-category-{{ $page->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
+                                            onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $page->id }}').submit();}else{return false;}"
+                                            class="btn btn-danger" title="Delete the page">
                                             <i class="fa fa-trash"></i>
                                         </a>
+                                        <a href="javascript:void(0);" class="btn btn-primary copyButton"
+                                            data-copy-text="pages/{{ $page->slug }}" title="Copy the link">
+                                            <i class="far fa-copy"></i>
+                                        </a>
+                                        <span class="copyMessage" style="display:none;">Text copied!</span>
                                     </div>
                                     <form action="{{ route('admin.pages.destroy', $page->id) }}" method="post"
                                         class="d-none" id="delete-product-category-{{ $page->id }}">
@@ -100,7 +103,6 @@
                             </tr>
                         @endforelse
                     </tbody>
-
                 </table>
                 <tfoot>
                     <tr>
@@ -112,7 +114,53 @@
                     </tr>
                 </tfoot>
             </div>
-
         </div>
     </div>
+@endsection
+
+@section('script')
+    <style>
+        .copyButton {
+            position: relative;
+        }
+
+        .copyMessage {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: none;
+            z-index: 1000;
+            font-size: 12px;
+            width: auto;
+            /* Ensure width fits content */
+            white-space: nowrap;
+            /* Prevents line break to ensure width fits content */
+        }
+    </style>
+
+    <script>
+        document.querySelectorAll(".copyButton").forEach(function(button) {
+            button.addEventListener("click", function(event) {
+                event.preventDefault(); // Prevent form submission
+                var textToCopy = button.getAttribute("data-copy-text"); // Get the dynamic text
+                var tempInput = document.createElement("input");
+                tempInput.value = textToCopy;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+
+                var copyMessage = button.nextElementSibling; // Get the copyMessage span
+                copyMessage.style.display = "inline";
+                setTimeout(function() {
+                    copyMessage.style.display = "none";
+                }, 2000); // Hide the message after 2 seconds
+            });
+        });
+    </script>
 @endsection

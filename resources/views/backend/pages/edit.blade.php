@@ -205,7 +205,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div>
-                                    <p id="partCopy">raweh</p>
+                                    <p id="partCopy">pages/{{ $page->slug }}</p>
                                     <button type="button" id="copyButton">Copy Text</button>
                                     <span id="copyMessage" style="display:none;">Text copied!</span>
                                 </div>

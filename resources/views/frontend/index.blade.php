@@ -84,8 +84,20 @@
         data-flickity='{"pageDots": true, "prevNextButtons": false, "cellAlign": "center", "wrapAround": true, "imagesLoaded": true}'>
 
         @foreach ($callActions as $index => $callAction)
+            @php
+                if ($callAction->photos->first() != null && $callAction->photos->first()->file_name != null) {
+                    $callAction_img = asset('assets/call_actions/' . $callAction->photos->first()->file_name);
+
+                    if (!file_exists(public_path('assets/call_actions/' . $callAction->photos->first()->file_name))) {
+                        $callAction_img = asset('image/not_found/item_image_not_found.webp');
+                    }
+                } else {
+                    $callAction_img = asset('image/not_found/item_image_not_found.webp');
+                }
+            @endphp
+
             <div class="col-md-12 py-6 py-md-12 jarallax" data-jarallax data-speed=".8"
-                style="background-image: url({{ asset('frontend/assets/img/covers/cover-5.jpg') }})" data-aos="fade-up"
+                style="background-image: url({{ $callAction_img }})" data-aos="fade-up"
                 data-aos-delay="{{ ($index + 1) * 50 }}">
                 <div class="container text-center py-xl-9 text-capitalize" data-aos="fade-up">
                     <h1 class="text-white text-uppercase">{{ $callAction->title }}</h1>

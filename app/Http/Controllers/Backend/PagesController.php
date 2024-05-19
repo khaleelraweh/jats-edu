@@ -39,7 +39,7 @@ class PagesController extends Controller
 
         $main_menus = WebMenu::tree();
 
-        return view('backend.web_menus.create', compact('main_menus'));
+        return view('backend.pages.create', compact('main_menus'));
     }
 
     public function store(WebMenuRequest $request)

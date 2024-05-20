@@ -128,8 +128,10 @@
 
                                             <div class="col">
                                                 <a href="{{ route('instructor.courses.edit', $course->id) }}"
-                                                    class="col-auto  d-lg-flex text-dodger text-underline pe-xl-5 fw-semi-bold">
-                                                    <div class="progress w-100">
+                                                    class="col-auto  d-lg-flex justify-content-center align-items-center text-dodger text-underline pe-xl-5 fw-semi-bold">
+                                                    <span class="d-inline-block" style="width:200px;">Complete Your
+                                                        Course</span>
+                                                    <div class="progress " style="width: 80%">
                                                         <div class="progress-bar" role="progressbar" style="width: 45%;"
                                                             aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%
                                                         </div>

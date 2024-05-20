@@ -479,8 +479,7 @@
             </div> --}}
 
             <div class="col-xl-12">
-                <!-- EVENTS
-    ================================================== -->
+                <!-- EVENTS -->
                 <section class="pt-5 pb-9 py-md-7 bg-white">
                     <div class="container">
                         <div class="text-center mb-md-8 mb-5 text-capitalize">

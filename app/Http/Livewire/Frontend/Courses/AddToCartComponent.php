@@ -42,4 +42,21 @@ class AddToCartComponent extends Component
 
         $this->emit('updateCartCount');
     }
+
+    public function BuyNow()
+    {
+        $course = Course::whereId($this->courseId)->firstOrFail();
+
+        $duplicates = Cart::instance('default')->search(function ($cartItem, $rowId) use ($course) {
+            return $cartItem->id === $course->id;
+        });
+
+        if ($duplicates->isNotEmpty()) {
+            redirect()->route("frontend.shop_checkout");
+        } else {
+            Cart::instance('default')->add($course->id, $course->title, 1, $course->price)->associate(Course::class);
+            $this->emit('updateCartCount');
+            redirect()->route("frontend.shop_checkout");
+        }
+    }
 }

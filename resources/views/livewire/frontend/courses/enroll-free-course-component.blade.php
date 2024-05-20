@@ -13,8 +13,11 @@
     @endphp
 
     @if ($isEnrolled)
-        <button class="btn btn-blue btn-block mb-6" type="button"
-            name="button">{{ __('transf.btn_go_to_course') }}</button>
+        @php
+            $course = App\Models\Course::whereId($courseId)->firstOrFail();
+        @endphp
+        <a href="{{ route('customer.lesson_single', $course->slug) }}"
+            class="btn btn-blue btn-block mb-6">{{ __('transf.btn_go_to_course') }}</a>
     @else
         <button wire:click.prevent="enrollCourse()" class="btn btn-orange btn-block mb-6" type="button"
             name="button">{{ __('transf.btn_enroll') }}</button>

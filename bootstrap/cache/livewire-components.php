@@ -6,6 +6,7 @@
   'frontend.courses.add-to-wishlist-component' => 'App\\Http\\Livewire\\Frontend\\Courses\\AddToWishlistComponent',
   'frontend.courses.course-list-component' => 'App\\Http\\Livewire\\Frontend\\Courses\\CourseListComponent',
   'frontend.courses.course-review-component' => 'App\\Http\\Livewire\\Frontend\\Courses\\CourseReviewComponent',
+  'frontend.courses.enroll-free-course-component' => 'App\\Http\\Livewire\\Frontend\\Courses\\EnrollFreeCourseComponent',
   'frontend.courses.review-component' => 'App\\Http\\Livewire\\Frontend\\Courses\\ReviewComponent',
   'frontend.customer.addresses-component' => 'App\\Http\\Livewire\\Frontend\\Customer\\AddressesComponent',
   'frontend.customer.course-list-component' => 'App\\Http\\Livewire\\Frontend\\Customer\\CourseListComponent',

@@ -1,0 +1,64 @@
+<?php
+
+namespace App\Http\Livewire\Frontend\Courses;
+
+use App\Models\Course;
+use App\Models\CourseOrder;
+use App\Models\Order;
+use App\Models\OrderTransaction;
+use Livewire\Component;
+use Illuminate\Support\Str;
+
+class EnrollFreeCourseComponent extends Component
+{
+
+    public $courseId;
+
+    public $payment_method = 3; //mean free
+
+    public function render()
+    {
+        return view('livewire.frontend.courses.enroll-free-course-component');
+    }
+
+    public function enrollCourse()
+    {
+        $course = Course::whereId($this->courseId)->firstOrFail();
+        $ref_id = 'ORD-' . Str::random(15);
+
+        $order = Order::create([
+            'ref_id'                => $ref_id,
+            'user_id'               => auth()->id(),
+            'payment_method_id'     => $this->payment_method,
+            'subtotal'              => 0,
+            'offer_discount'        => 0,
+            'discount_code'         =>  null,
+            'discount'              => getNumbers()->get('discount_coupon'),
+            'shipping'              => getNumbers()->get('shipping'),
+            'tax'                   => getNumbers()->get('courseTaxes'),
+            'total'                 => 0,
+            'currency'              => 'USD',
+            'order_status'          => 0
+        ]);
+
+        CourseOrder::create([
+            'course_id' => $this->courseId,
+            'order_id' => $order->id,
+            'quantity' => 1
+        ]);
+
+        $order->transactions()->create(
+            ['transaction' => OrderTransaction::NEW_ORDER]
+        );
+
+
+        $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
+        $order->transactions()->create([
+            'transaction' => OrderTransaction::PAYMENT_COMPLETED,
+            'transaction_number' => $ref_id,
+            'payment_result' => 'success',
+        ]);
+
+        redirect()->route("customer.courses");
+    }
+}

@@ -502,8 +502,7 @@
                         </div>
 
                         @if ($course->price == 0)
-                            <button class="btn btn-orange btn-block mb-6" type="button"
-                                name="button">{{ __('transf.btn_enroll') }}</button>
+                            @livewire('frontend.courses.enroll-free-course-component', ['courseId' => $course->id])
                         @else
                             @livewire('frontend.courses.add-to-cart-component', ['courseId' => $course->id])
                         @endif

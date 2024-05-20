@@ -115,7 +115,7 @@
                                             </div>
 
                                             <!-- Body -->
-                                            <div class="">
+                                            <div class="col">
                                                 <div class="card-body py-0 px-md-6 px-3">
                                                     <a href="{{ route('instructor.courses.edit', $course->id) }}"
                                                         class="d-block me-xl-10">
@@ -129,7 +129,7 @@
                                             <div class="col">
                                                 <a href="{{ route('instructor.courses.edit', $course->id) }}"
                                                     class="col-auto  d-lg-flex justify-content-center align-items-center text-dodger text-underline pe-xl-5 fw-semi-bold">
-                                                    <span class="d-inline-block" style="width:200px;">Complete Your
+                                                    <span class="d-inline-block" style="width:230px;">Complete Your
                                                         Course</span>
                                                     <div class="progress " style="width: 80%">
                                                         <div class="progress-bar" role="progressbar" style="width: 45%;"

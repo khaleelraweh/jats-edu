@@ -450,7 +450,8 @@
                     var currsection = this.formsections[this.formstate];
                     var inputfields = document.querySelectorAll(currsection + " input");
                     for (var i = 0; i < inputfields.length; i++) {
-                        if (inputfields[i].value.length === 0) {
+                        // if (inputfields[i].value.length === 0) {
+                        if (inputfields[i].value.length < 3) {
                             inputfields[i].classList.add("is-invalid");
                             this.emptyInputs++;
                         }

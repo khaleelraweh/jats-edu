@@ -263,7 +263,11 @@
                                                 id="title-counter">{{ 60 - strlen(old('title')) }}</span>
                                         </div>
                                     </div>
-
+                                    <span class="text-muted d-inline-block mt-1 ms-6">
+                                        <small>
+                                            {{ __('transf.Insert your course title tip.') }}
+                                        </small>
+                                    </span>
                                     @error('title')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -290,6 +294,12 @@
                                                 id="subtitle-counter">{{ 120 - strlen(old('subtitle')) }}</span>
                                         </div>
                                     </div>
+
+                                    <span class="text-muted d-inline-block mt-1 ms-6">
+                                        <small>
+                                            {{ __('transf.Course subtitle tip.') }}
+                                        </small>
+                                    </span>
 
                                     @error('subtitle')
                                         <span class="text-danger">{{ $message }}</span>

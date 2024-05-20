@@ -79,6 +79,7 @@ class InstructorCoursesComponent extends Component
         }
 
         $courses = Course::with('photos', 'firstMedia')->Course();
+
         if ($this->slug == null) {
             $courses = $courses->ActiveCourseCategory();
             if ($this->categoryInputs != null) {
@@ -98,10 +99,6 @@ class InstructorCoursesComponent extends Component
                 $courses = $courses->whereIn('course_category_id', $courseCategoryIds);
             }
         }
-
-
-
-
 
 
         $courses = $courses->active()
@@ -150,7 +147,9 @@ class InstructorCoursesComponent extends Component
             });
         })->get();
 
-        $menuCounts = Course::where('section', 1)->get();
+        $menuCounts = Course::where('section', 1)->whereHas('users', function ($query) {
+            return $query->where('user_id', Auth()->user()->id);
+        })->get();
 
 
         return view('livewire.frontend.instructors.instructor-courses-component', [

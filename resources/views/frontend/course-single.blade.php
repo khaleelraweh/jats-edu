@@ -458,7 +458,7 @@
                     <div class="pt-5 pb-4 px-5 px-lg-3 px-xl-5">
                         <div class="d-flex align-items-center mb-2">
                             @if ($course->offer_price > 0)
-                                <ins class="h2 mb-0">{{ currency_converter($course->price - $course->offer_price) }}</ins>
+                                <ins class="h3 mb-0">{{ currency_converter($course->price - $course->offer_price) }}</ins>
                                 <del class="ms-3">{{ currency_converter($course->price) }}</del>
                                 <div class="badge badge-lg badge-purple text-white ms-auto fw-normal">
                                     {{ number_format(($course->offer_price / $course->price) * 100, 0, '.', ',') }}% Off

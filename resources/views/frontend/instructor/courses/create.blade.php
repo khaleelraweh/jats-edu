@@ -253,9 +253,17 @@
                                         <span style="color: #cc1818;">*</span>
                                     </label>
 
-                                    <input type="text" class="form-control form-control-lg" name="title" id="title"
-                                        value="{{ old('title') }}" required
-                                        placeholder="{{ __('transf.ex_learn_photoshop_cs6_from_scratch') }}">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control form-control-lg" name="title"
+                                            id="title" value="{{ old('title') }}" required
+                                            placeholder="{{ __('transf.ex_learn_photoshop_cs6_from_scratch') }}"
+                                            maxlength="60">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"
+                                                id="title-counter">{{ 60 - strlen(old('title')) }}</span>
+                                        </div>
+                                    </div>
+
                                     @error('title')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -273,9 +281,16 @@
                                         <span style="color: #cc1818;">*</span>
                                     </label>
 
-                                    <input type="text" class="form-control form-control-lg" name="subtitle"
-                                        id="subtitle" value="{{ old('subtitle') }}" required
-                                        placeholder="{{ __('transf.Insert your course subtitle.') }}">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control form-control-lg" name="subtitle"
+                                            id="subtitle" value="{{ old('subtitle') }}" required
+                                            placeholder="{{ __('transf.Insert your course subtitle.') }}" maxlength="120">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"
+                                                id="subtitle-counter">{{ 120 - strlen(old('subtitle')) }}</span>
+                                        </div>
+                                    </div>
+
                                     @error('subtitle')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -347,9 +362,7 @@
 
 @section('script')
     <script>
-        // JavaScript Document
         (function() {
-
             var wizard = {
                 formstate: 0,
                 emptyInputs: 0,
@@ -375,9 +388,7 @@
                         var inactiveCircles = document.querySelector(this.circlesections[this.inactiveSections[
                             1]]);
                         inactiveCircles.classList.remove("activecirculo");
-
                     }
-
                 },
                 formsections: ['#aboutcont', '#addrescont', '#verifycont'],
                 circlesections: ['.aboutblock .circulo', '.addressblock .circulo', '.verifyblock .circulo'],
@@ -385,15 +396,10 @@
                 nextbtn: 'nextbtn',
 
                 initiateForm: function() {
-
                     var currsection = document.querySelector(this.formsections[this.formstate]);
                     var inactiveSecta = document.querySelector(this.formsections[this.inactiveSections[0]]);
                     var inactiveSectb = document.querySelector(this.formsections[this.inactiveSections[1]]);
-
-
                     var currcircle = document.querySelector(this.circlesections[this.formstate]);
-
-
                     var progressbar = document.querySelector('#progresswizard');
                     var currsectionprogress = currsection.getAttribute('data-progress');
 
@@ -401,7 +407,6 @@
                     currsection.style.display = "block";
                     inactiveSecta.style.display = "none";
                     inactiveSectb.style.display = "none";
-
 
                     if (this.formstate === 0) {
                         document.getElementById(this.prevbtn).style.display = "none";
@@ -411,7 +416,6 @@
 
                     currcircle.classList.add("activecirculo");
                     this.setInactiveCircles();
-
 
                     if (this.formstate === 2) {
                         document.querySelector("#nextbtn").style.display = "none";
@@ -427,13 +431,11 @@
                     this.validateInput();
                     if (this.emptyInputs === 0) {
                         if (this.formstate < 2) {
-
                             this.formstate++;
                             this.setInactiveSections();
                             wizard.initiateForm();
                         }
                     }
-
                 },
                 prevSection: function() {
                     if (this.emptyInputs === 0) {
@@ -445,10 +447,7 @@
                     }
                 },
                 validateInput: function() {
-
                     var currsection = this.formsections[this.formstate];
-
-
                     var inputfields = document.querySelectorAll(currsection + " input");
                     for (var i = 0; i < inputfields.length; i++) {
                         if (inputfields[i].value.length === 0) {
@@ -456,11 +455,8 @@
                             this.emptyInputs++;
                         }
                     }
-
-
                 },
                 checkInput: function() {
-
                     var currsection = this.formsections[this.formstate];
                     var inputfields = document.querySelectorAll(currsection + " input");
                     for (var i = 0; i < inputfields.length; i++) {
@@ -469,21 +465,16 @@
                     }
 
                     function inputValidation(event) {
-                        console.log(event.target.id);
-
                         var currentInput = document.getElementById(event.target.id);
-
                         if (currentInput.value.length > 3) {
                             currentInput.classList.remove("is-invalid");
                             if (wizard.emptyInputs > 0) {
                                 wizard.emptyInputs--;
                             }
                         }
-                        console.log(wizard.emptyInputs);
                     }
                 }
             };
-
 
             wizard.initiateForm();
 
@@ -494,8 +485,29 @@
                 wizard.prevSection();
             });
 
+            // For subtitle field
+            const subtitleInput = document.getElementById('subtitle');
+            const subtitleCounter = document.getElementById('subtitle-counter');
 
+            subtitleInput.addEventListener('input', function() {
+                const remaining = 120 - subtitleInput.value.length;
+                subtitleCounter.textContent = remaining;
+            });
 
+            // Trigger input event on page load to set initial counter value
+            subtitleInput.dispatchEvent(new Event('input'));
+
+            // For title field
+            const titleInput = document.getElementById('title');
+            const titleCounter = document.getElementById('title-counter');
+
+            titleInput.addEventListener('input', function() {
+                const remaining = 60 - titleInput.value.length;
+                titleCounter.textContent = remaining;
+            });
+
+            // Trigger input event on page load to set initial counter value
+            titleInput.dispatchEvent(new Event('input'));
 
         })();
     </script>

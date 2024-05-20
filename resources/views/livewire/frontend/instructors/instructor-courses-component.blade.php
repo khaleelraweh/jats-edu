@@ -1,3 +1,34 @@
+<style>
+    .card {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .overlay {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+
+    .card:hover .overlay {
+        opacity: 1;
+    }
+</style>
+
+
+
+
 <div>
 
     {{-- CONTROL BAR --}}
@@ -454,7 +485,7 @@
                     <div class="container">
                         <div class="text-center mb-md-8 mb-5 text-capitalize">
                             <h1 class="mb-1">Instructor Courses</h1>
-                            <p class="font-size-lg mb-0">Edit and Manage Your Coures </p>
+                            <p class="font-size-lg mb-0">Edit and Manage Your Courses here </p>
                         </div>
 
                         @foreach ($courses as $course)
@@ -480,9 +511,14 @@
                                         @endphp
                                         <a href="{{ route('instructor.courses.edit', $course->id) }}"
                                             class="col-auto d-block">
-                                            <img class="img-fluid  shadow-light-lg w-90p h-90p h-md-120p w-md-120p o-f-c"
+                                            <img class="img-fluid shadow-light-lg w-90p h-90p h-md-120p w-md-120p o-f-c"
                                                 src="{{ $course_img }}" alt="{{ $course->title }}">
                                         </a>
+
+                                        <!-- Overlay -->
+                                        <div class="overlay">
+                                            <span>Edit/Manage your Course</span>
+                                        </div>
 
                                         <!-- Body -->
                                         <div class="col">
@@ -496,26 +532,24 @@
                                             </div>
                                         </div>
 
-
-
-                                        <div class="col"><a
-                                                href="{{ route('instructor.courses.edit', $course->id) }}"
+                                        <div class="col">
+                                            <a href="{{ route('instructor.courses.edit', $course->id) }}"
                                                 class="col-auto d-none d-lg-flex text-dodger text-underline pe-xl-5 fw-semi-bold">
-
                                                 <div class="progress w-100">
                                                     <div class="progress-bar" role="progressbar" style="width: 45%;"
                                                         aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%
                                                     </div>
                                                 </div>
-
-
-                                            </a></div>
-
-
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
+
+
+
+
 
 
                         <div class="text-center mt-8">
@@ -545,3 +579,13 @@
 
     </div>
 </div>
+
+
+<script>
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', () => {
+            const url = card.querySelector('a').getAttribute('href');
+            window.location.href = url;
+        });
+    });
+</script>

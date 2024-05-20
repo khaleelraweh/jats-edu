@@ -13,6 +13,16 @@ class AddToCartComponent extends Component
 
     public $courseId;
 
+    protected $listeners = [
+        'updateCartCount' => 'render'
+    ];
+
+
+
+    public function render()
+    {
+        return view('livewire.frontend.courses.add-to-cart-component');
+    }
 
     public function addToCart()
     {
@@ -29,11 +39,7 @@ class AddToCartComponent extends Component
             $this->emit('updateCartCount');
             $this->alert('success', __('panel.f_m_item_add_to_shop_cart'));
         }
-    }
 
-
-    public function render()
-    {
-        return view('livewire.frontend.courses.add-to-cart-component');
+        $this->emit('updateCartCount');
     }
 }

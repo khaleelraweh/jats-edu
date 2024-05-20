@@ -183,6 +183,17 @@
                     <div class="tab-pane fade" id="pills-curriculum" role="tabpanel" aria-labelledby="pills-curriculum-tab">
                         <div id="accordionCurriculum">
 
+
+                            @php
+                                $totalDurations = 0;
+                                foreach ($course->sections as $section) {
+                                    $totalDurations += $section->lessons->sum('duration_minutes');
+                                }
+
+                                $hours = floor($totalDurations / 60);
+                                $minutes = $totalDurations % 60;
+                            @endphp
+
                             @foreach ($course->sections as $index => $section)
                                 <div class="border rounded shadow mb-6 overflow-hidden">
 
@@ -253,17 +264,14 @@
                                                     class="d-flex align-items-center overflow-auto overflow-md-visible flex-shrink-all">
 
                                                     <div class="badge btn-blue-soft me-5 font-size-sm fw-normal py-2">
-                                                        @php
-                                                            $totalDuration = $lesson->duration_minutes;
-                                                            $hours = floor($totalDuration / 60);
-                                                            $minutes = $totalDuration % 60;
-                                                        @endphp
+
+
                                                         @if ($hours > 0)
-                                                            {{ $hours }} hr @if ($minutes > 0)
-                                                                {{ $minutes }} min
+                                                            {{ $hours }} {{ __('transf.hr') }} @if ($minutes > 0)
+                                                                {{ $minutes }} {{ __('transf.min') }}
                                                             @endif
                                                         @else
-                                                            {{ $minutes }} min
+                                                            {{ $minutes }} {{ __('transf.min') }}
                                                         @endif
                                                     </div>
                                                     <a href="#" class="text-secondary d-flex">

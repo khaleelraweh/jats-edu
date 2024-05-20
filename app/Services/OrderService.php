@@ -40,7 +40,8 @@ class OrderService
             'order_status'          => 0
         ]);
 
-        foreach (Cart::content() as $item) {
+        // foreach (Cart::content() as $item) {
+        foreach (Cart::instance('default')->content() as $item) {
 
             CourseOrder::create([
                 'course_id' => $item->model->id,

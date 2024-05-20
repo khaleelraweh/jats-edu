@@ -505,8 +505,26 @@
                             <button class="btn btn-orange btn-block mb-6" type="button"
                                 name="button">{{ __('transf.btn_enroll') }}</button>
                         @else
-                            {{-- Add to cart --}}
-                            @livewire('frontend.courses.add-to-cart-component', ['courseId' => $course->id])
+                            @php
+                                $duplicates = Cart::instance('default')->search(function ($cartItem, $rowId) use (
+                                    $course,
+                                ) {
+                                    return $cartItem->id === $course->id;
+                                });
+                            @endphp
+
+                            @if ($duplicates->isNotEmpty())
+                                <a href="{{ route('frontend.shop_cart') }}" class="btn btn-primary btn-block mb-3">
+                                    {{ __('transf.btn_go_to_cart') }}
+                                </a>
+                                <a href="{{ route('frontend.shop_checkout') }}"
+                                    class=" btn btn-teal btn-block text-white mb-3">{{ __('transf.btn_buy_now') }}</a>
+                            @else
+                                {{-- Add to cart --}}
+                                @livewire('frontend.courses.add-to-cart-component', ['courseId' => $course->id])
+                                <a href="{{ route('frontend.shop_checkout') }}"
+                                    class=" btn btn-teal btn-block text-white mb-3">{{ __('transf.btn_buy_now') }}</a>
+                            @endif
                         @endif
 
 

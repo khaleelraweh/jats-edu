@@ -141,6 +141,8 @@ return [
 
     //course single 
     'btn_buy_now'                                       =>  'اشتري الآن',
+    'btn_add_to_cart'                                   =>   'إضافة الى السلة',
+    'btn_go_to_cart'                                    =>   'الذهاب الى السلة',
     'btn_enroll'                                        =>  'سجل الآن',
     'course_duration'                                   =>  'مدة الكورس',
     'lecture_numbers'                                   =>  'عدد المحاضرات',

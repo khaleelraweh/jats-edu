@@ -26,6 +26,7 @@ class EnrollFreeCourseComponent extends Component
         $course = Course::whereId($this->courseId)->firstOrFail();
         $ref_id = 'ORD-' . Str::random(15);
 
+        //make free order to free course
         $order = Order::create([
             'ref_id'                => $ref_id,
             'user_id'               => auth()->id(),
@@ -41,24 +42,30 @@ class EnrollFreeCourseComponent extends Component
             'order_status'          => 0
         ]);
 
+        //register it to course order 
         CourseOrder::create([
             'course_id' => $this->courseId,
             'order_id' => $order->id,
             'quantity' => 1
         ]);
 
+        // make transaction new order for free course 
         $order->transactions()->create(
             ['transaction' => OrderTransaction::NEW_ORDER]
         );
 
 
+        // update  order to payment completed == change it to free  
         $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
+
+        // update order transaction to completed == change it to free
         $order->transactions()->create([
             'transaction' => OrderTransaction::PAYMENT_COMPLETED,
             'transaction_number' => $ref_id,
             'payment_result' => 'success',
         ]);
 
+        // redirect student to his enrolled coursed to see his new course 
         redirect()->route("customer.courses");
     }
 }

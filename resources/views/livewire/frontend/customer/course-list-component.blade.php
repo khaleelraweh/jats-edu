@@ -479,7 +479,8 @@
 
                                                             </div>
                                                             <div class="font-size-sm">
-                                                                {{ $course->lecture_numbers }}
+                                                                {{ $course->totalLessonsCount() }}
+
                                                                 {{ __('transf.lessons') }}
                                                             </div>
                                                         </div>

@@ -144,6 +144,7 @@ return [
     'btn_add_to_cart'                                   =>   'إضافة الى السلة',
     'btn_go_to_cart'                                    =>   'الذهاب الى السلة',
     'btn_go_to_course'                                  =>   'الذهاب الى الدورة',
+    'btn_go_to_your_course_dashboard'                   =>   'انتقل إلى لوحة تحكم الدورة التدريبية الخاصة بك',
     'btn_enroll'                                        =>  'سجل الآن',
     'course_duration'                                   =>  'مدة الكورس',
     'lecture_numbers'                                   =>  'عدد المحاضرات',

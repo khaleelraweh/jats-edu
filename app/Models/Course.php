@@ -207,6 +207,12 @@ class Course extends Model
             });
     }
 
+    // check if the user is instructor 
+    public function isInstructor($userId)
+    {
+        return $this->instructors()->where('user_id', $userId)->exists();
+    }
+
 
     public function users(): MorphToMany
     {

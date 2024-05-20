@@ -427,26 +427,7 @@
 
                         </div>
 
-                        <div class="form-group mb-5">
-                            <label for="account_tyle">
-                                <i class="fa fa-user custom-color"></i>
-                                {{ __('panel.f_account_type') }}
-                                <span class="required">*</span>
-                            </label>
 
-                            <select name="account_tyle" id="account_tyle" class="form-select"
-                                aria-label="Default select example">
-                                <option value="customer">Student</option>
-                                <option value="instructor">Instructor</option>
-                            </select>
-
-                            @error('account_tyle')
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-
-                        </div>
 
 
                         <!-- Submit -->

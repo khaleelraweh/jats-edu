@@ -39,8 +39,6 @@ class AddToCartComponent extends Component
             $this->emit('updateCartCount');
             $this->alert('success', __('panel.f_m_item_add_to_shop_cart'));
         }
-
-        $this->emit('updateCartCount');
     }
 
     public function BuyNow()

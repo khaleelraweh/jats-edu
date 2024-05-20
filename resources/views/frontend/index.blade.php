@@ -101,7 +101,7 @@
                 data-aos-delay="{{ ($index + 1) * 50 }}">
                 <div class="container text-center py-xl-9 text-capitalize" data-aos="fade-up">
                     <h1 class="text-white text-uppercase">{{ $callAction->title }}</h1>
-                    <div class="font-size-lg mb-md-6 mb-4 text-white">{{ $callAction->description }}</div>
+                    <div class="font-size-lg mb-md-6 mb-4 text-white">{!! $callAction->description !!}</div>
                     <div class="mx-auto">
                         <a href="{{ url($callAction->btn_link) }}"
                             class="btn btn-sienna btn-x-wide lift d-inline-block text-white">{{ $callAction->btn_name }}</a>

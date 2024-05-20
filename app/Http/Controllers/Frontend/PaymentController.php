@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
+use App\Models\Course;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\OrderTransaction;
@@ -52,17 +53,6 @@ class PaymentController extends Controller
             if (isset($response['id']) && $response['id'] != null) {
                 foreach ($response['links'] as $link) {
                     if ($link['rel'] === 'approve') {
-
-                        // $users = User::whereHas('roles',function ($query){
-                        //     $query->whereIn('name',['admin','supervisor']);
-                        // })->get();
-
-                        // if(auth()->user()){
-                        //     foreach($users as $user){
-                        //         $user->notify(new OrderCreatedNotification($order));
-                        //     }
-                        // }
-
                         return redirect()->away($link['href']);
                     }
                 }
@@ -146,11 +136,7 @@ class PaymentController extends Controller
                 'shipping',
             ]);
 
-            // User::whereHas('roles',function ($query){
-            //     $query->whereIn('name' , ['admin','supervisor']);
-            // })->each(function ($admin , $key) use ($order){
-            //     $admin->notify(new OrderCreatedNotification($order));
-            // });
+
 
             // toast('Your recent payment is successful with reference code : '. $response->getTransactionReference() , 'success');
             toast(__('panel.f_your_recent_payment_successful_with_refrence_code') . $response['id'], 'success');
@@ -168,10 +154,10 @@ class PaymentController extends Controller
             'order_status' => Order::CANCELED
         ]);
 
-        $order->products()->each(function ($order_product) {
-            $product = Product::whereId($order_product->pivot->product_id)->first();
-            $product->update([
-                'quantity' => $product->quantity + $order_product->quantity
+        $order->courses()->each(function ($order_course) {
+            $course = Course::whereId($order_course->pivot->course_id)->first();
+            $course->update([
+                'quantity' => $course->quantity + $order_course->quantity
             ]);
         });
 

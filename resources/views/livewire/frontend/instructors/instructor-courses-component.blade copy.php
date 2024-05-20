@@ -1,5 +1,7 @@
 <div>
 
+
+
     {{-- CONTROL BAR --}}
     <div class="container mb-6 mb-xl-8 z-index-2">
         <div class="d-lg-flex align-items-center mb-6 mb-xl-0">
@@ -38,7 +40,8 @@
 
 
         <div class="row">
-            {{-- <div class="col-xl-3 mb-5 mb-xl-0">
+            <div class="col-xl-3 mb-5 mb-xl-0">
+                {{-- SIDEBAR FILTER --}}
                 <div class=" vertical-scroll" id="courseSidebar">
                     <div class="border rounded mb-6 bg-white">
                         <!-- Heading -->
@@ -215,7 +218,7 @@
                         </div>
                     </div>
 
-                    <!-- filter by rating  -->
+                    {{-- filter by rating  --}}
                     <div class="border rounded mb-6 bg-white ">
                         <!-- Heading -->
                         <div id="coursefilter5">
@@ -328,14 +331,15 @@
 
 
 
+                    {{-- <a href="#" class="btn btn-primary btn-block mb-10">CLEAR FILTER </a> --}}
                     <a href="#" class="btn btn-primary btn-block mb-10" wire:click="resetFilters">
                         {{ __('transf.reset_filter') }}
                     </a>
                 </div>
 
-            </div> --}}
+            </div>
 
-            {{-- <div class="col-xl-9">
+            <div class="col-xl-9">
                 <div class="row row-cols-md-2 row-cols-lg-3 mb-3 ">
                     @foreach ($courses as $course)
                         <div class="col-md pb-4 pb-md-7">
@@ -356,6 +360,7 @@
                                 @endphp
 
                                 <div class="card-zoom position-relative">
+                                    {{-- <a href="{{ route('frontend.course_single', $course->slug) }}" --}}
                                     <a href="{{ route('instructor.courses.edit', $course->id) }}"
                                         class="card-img sk-thumbnail img-ratio-3 d-block">
                                         <img class="rounded shadow-light-lg" src="{{ $course_img }}"
@@ -389,6 +394,7 @@
 
                                     <!-- Heading -->
                                     <div class="position-relative">
+                                        {{-- <a href="{{ route('frontend.course_single', $course->slug) }}" --}}
                                         <a href="{{ route('instructor.courses.edit', $course->id) }}"
                                             class="d-block stretched-link">
                                             <h5 class="line-clamp-2 h-md-48 h-lg-58 me-md-8 me-lg-10 me-xl-4 mb-2">
@@ -435,113 +441,19 @@
                         </div>
                     @endforeach
 
+
+
+
                 </div>
-                <!-- PAGINATION -->
+
+                {{-- PAGINATION --}}
                 <nav class="mb-11" aria-label="Page navigationa">
                     <ul class="pagination justify-content-center">
                         {!! $courses->appends(request()->all())->onEachSide(3)->links() !!}
                     </ul>
                 </nav>
 
-
-
-            </div> --}}
-
-            <div class="col-xl-12">
-                <!-- EVENTS
-    ================================================== -->
-                <section class="pt-5 pb-9 py-md-7 bg-white">
-                    <div class="container">
-                        <div class="text-center mb-md-8 mb-5 text-capitalize">
-                            <h1 class="mb-1">Instructor Courses</h1>
-                            <p class="font-size-lg mb-0">Edit and Manage Your Coures </p>
-                        </div>
-
-                        @foreach ($courses as $course)
-                            <div class="mb-5">
-                                <!-- Card -->
-                                <div class="card border shadow p-3">
-                                    <div class="row gx-0 align-items-center">
-                                        <!-- Image -->
-                                        @php
-                                            $firstPhoto = $course->photos->first();
-                                            if ($firstPhoto && $firstPhoto->file_name != null) {
-                                                $course_img = asset('assets/courses/' . $firstPhoto->file_name);
-                                                if (
-                                                    !file_exists(
-                                                        public_path('assets/courses/' . $firstPhoto->file_name),
-                                                    )
-                                                ) {
-                                                    $course_img = asset('image/not_found/item_image_not_found.webp');
-                                                }
-                                            } else {
-                                                $course_img = asset('image/not_found/item_image_not_found.webp');
-                                            }
-                                        @endphp
-                                        <a href="{{ route('instructor.courses.edit', $course->id) }}"
-                                            class="col-auto d-block">
-                                            <img class="img-fluid  shadow-light-lg w-90p h-90p h-md-120p w-md-120p o-f-c"
-                                                src="{{ $course_img }}" alt="{{ $course->title }}">
-                                        </a>
-
-                                        <!-- Body -->
-                                        <div class="col">
-                                            <div class="card-body py-0 px-md-6 px-3">
-                                                <a href="{{ route('instructor.courses.edit', $course->id) }}"
-                                                    class="d-block me-xl-10">
-                                                    <h5 class="line-clamp-2 mb-0">
-                                                        {{ $course->title }}
-                                                    </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="col"><a
-                                                href="{{ route('instructor.courses.edit', $course->id) }}"
-                                                class="col-auto d-none d-lg-flex text-dodger text-underline pe-xl-5 fw-semi-bold">
-
-                                                <div class="progress w-100">
-                                                    <div class="progress-bar" role="progressbar" style="width: 45%;"
-                                                        aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%
-                                                    </div>
-                                                </div>
-
-
-                                            </a></div>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-
-
-                        <div class="text-center mt-8">
-                            <a href="event-list.html" class="d-inline-flex align-items-center fw-medium">
-                                Browse All
-                                <div class="ms-2 d-flex">
-                                    <!-- Icon -->
-                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M7.7779 4.6098L3.32777 0.159755C3.22485 0.0567475 3.08745 0 2.94095 0C2.79445 0 2.65705 0.0567475 2.55412 0.159755L2.2264 0.487394C2.01315 0.700889 2.01315 1.04788 2.2264 1.26105L5.96328 4.99793L2.22225 8.73895C2.11933 8.84196 2.0625 8.97928 2.0625 9.1257C2.0625 9.27228 2.11933 9.4096 2.22225 9.51269L2.54998 9.84025C2.65298 9.94325 2.7903 10 2.9368 10C3.0833 10 3.2207 9.94325 3.32363 9.84025L7.7779 5.38614C7.88107 5.2828 7.93774 5.14484 7.93741 4.99817C7.93774 4.85094 7.88107 4.71305 7.7779 4.6098Z"
-                                            fill="currentColor" />
-                                    </svg>
-
-                                </div>
-                            </a>
-                        </div>
-
-
-                    </div>
-                </section>
             </div>
-
-
         </div>
-
-
     </div>
 </div>

@@ -1,5 +1,7 @@
 <div>
 
+
+
     {{-- CONTROL BAR --}}
     <div class="container mb-6 mb-xl-8 z-index-2">
         <div class="d-lg-flex align-items-center mb-6 mb-xl-0">
@@ -38,7 +40,8 @@
 
 
         <div class="row">
-            {{-- <div class="col-xl-3 mb-5 mb-xl-0">
+            <div class="col-xl-3 mb-5 mb-xl-0">
+                {{-- SIDEBAR FILTER --}}
                 <div class=" vertical-scroll" id="courseSidebar">
                     <div class="border rounded mb-6 bg-white">
                         <!-- Heading -->
@@ -215,7 +218,7 @@
                         </div>
                     </div>
 
-                    <!-- filter by rating  -->
+                    {{-- filter by rating  --}}
                     <div class="border rounded mb-6 bg-white ">
                         <!-- Heading -->
                         <div id="coursefilter5">
@@ -328,12 +331,13 @@
 
 
 
+                    {{-- <a href="#" class="btn btn-primary btn-block mb-10">CLEAR FILTER </a> --}}
                     <a href="#" class="btn btn-primary btn-block mb-10" wire:click="resetFilters">
                         {{ __('transf.reset_filter') }}
                     </a>
                 </div>
 
-            </div> --}}
+            </div>
 
             {{-- <div class="col-xl-9">
                 <div class="row row-cols-md-2 row-cols-lg-3 mb-3 ">
@@ -447,7 +451,7 @@
 
             </div> --}}
 
-            <div class="col-xl-12">
+            <div class="col-xl-9">
                 <!-- EVENTS
     ================================================== -->
                 <section class="pt-5 pb-9 py-md-7 bg-white">
@@ -498,16 +502,15 @@
 
 
 
-                                        <div class="col"><a
-                                                href="{{ route('instructor.courses.edit', $course->id) }}"
+                                        <div class="col"><a href="event-single.html"
                                                 class="col-auto d-none d-lg-flex text-dodger text-underline pe-xl-5 fw-semi-bold">
 
-                                                <div class="progress w-100">
+                                                <div>Finish your Course</div>
+                                                <div class="progress" style="width: 100%">
                                                     <div class="progress-bar" role="progressbar" style="width: 45%;"
                                                         aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%
                                                     </div>
                                                 </div>
-
 
                                             </a></div>
 

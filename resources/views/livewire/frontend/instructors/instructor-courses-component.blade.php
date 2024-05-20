@@ -374,7 +374,12 @@
                                             </ins>
                                         @else
                                             <ins class="h4 mb-0 d-block mb-lg-n1">
-                                                {{ currency_converter($course->price) }}
+                                                @if ($course->price == 0)
+                                                    {{ __('transf.free') }}
+                                                @else
+                                                    {{ currency_converter($course->price) }}
+                                                @endif
+
                                             </ins>
                                         @endif
                                     </span>

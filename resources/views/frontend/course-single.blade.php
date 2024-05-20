@@ -464,7 +464,13 @@
                                     {{ number_format(($course->offer_price / $course->price) * 100, 0, '.', ',') }}% Off
                                 </div>
                             @else
-                                <ins class="h2 mb-0">{{ currency_converter($course->price) }}</ins>
+                                <ins class="h2 mb-0">
+                                    @if ($course->price == 0)
+                                        {{ __('transf.free') }}
+                                    @else
+                                        {{ currency_converter($course->price) }}
+                                    @endif
+                                </ins>
                             @endif
 
                         </div>

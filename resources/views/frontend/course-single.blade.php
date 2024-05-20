@@ -501,11 +501,16 @@
                             <span class="ms-2 ">2 days left at this price!</span>
                         </div>
 
-                        {{-- Add to cart --}}
-                        @livewire('frontend.courses.add-to-cart-component', ['courseId' => $course->id])
+                        @if ($course->price == 0)
+                            <button class="btn btn-orange btn-block mb-6" type="button"
+                                name="button">{{ __('transf.btn_enroll') }}</button>
+                        @else
+                            {{-- Add to cart --}}
+                            @livewire('frontend.courses.add-to-cart-component', ['courseId' => $course->id])
+                        @endif
 
-                        <button class="btn btn-orange btn-block mb-6" type="button"
-                            name="button">{{ __('transf.btn_enroll') }}</button>
+
+
 
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex align-items-center py-3">

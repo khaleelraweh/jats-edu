@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- PAGE TITLE
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
     {{-- <header class="bg-white py-8 py-lg-12 position-relative mb-8" style="background-image: none;"> --}}
     {{-- <header class="bg-white py-3 py-lg-3 position-relative mb-3" style="background-image: none;"> --}}
     <header class="bg-white py-5 py-lg-5 position-relative mb-5" style="background-image: none;">
@@ -33,7 +33,7 @@
 
 
         <img class="position-absolute position-center-y right-0 mw-300p mw-xl-450p me-md-6 d-none d-lg-block img-fluid"
-            src="{{ asset('assets/courses/il1.png') }}" alt="...">
+            src="{{ asset('image/global/illustration-1.webp') }}" alt="...">
     </header>
 
     @livewire('frontend.courses.course-list-component', ['slug' => $slug])

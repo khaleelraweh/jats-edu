@@ -245,33 +245,47 @@
                         <h2 class="text-center">{{ __('transf.how_about_working_title') }} </h2>
                         <p class="text-center h6">
                             {{ __('transf.its_ok_if_you_cant_think_of_a_good_title_now_you_can_change_it_later') }}</p>
-                        @foreach (config('locales.languages') as $key => $val)
-                            <div class="row pt-4">
-                                <div class="col-12">
-                                    <div class="form-group">
+                        <div class="row pt-4">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="title">{{ __('transf.course_title') }}
 
-                                        <label for="title[{{ $key }}]">{{ __('transf.course_title') }}
-                                            {{ __('transf.in_language') }} {{ __('transf.' . $key) }}
-                                            <span style="color: #cc1818;">*</span>
-                                        </label>
+                                        <span style="color: #cc1818;">*</span>
+                                    </label>
 
-                                        <input type="text" class="form-control form-control-lg"
-                                            name="title[{{ $key }}]" id="title[{{ $key }}]"
-                                            value="{{ old('title.' . $key) }}" required
-                                            placeholder="{{ __('transf.ex_learn_photoshop_cs6_from_scratch_' . $key) }}">
-                                        @error('title.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                    <input type="text" class="form-control form-control-lg" name="title" id="title"
+                                        value="{{ old('title') }}" required
+                                        placeholder="{{ __('transf.ex_learn_photoshop_cs6_from_scratch') }}">
+                                    @error('title')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
 
-                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row pt-4">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="subtitle">
+                                        {{ __('transf.Course subtitle') }}
+
+                                        <span style="color: #cc1818;">*</span>
+                                    </label>
+
+                                    <input type="text" class="form-control form-control-lg" name="subtitle"
+                                        id="subtitle" value="{{ old('subtitle') }}" required
+                                        placeholder="{{ __('transf.Insert your course subtitle.') }}">
+                                    @error('subtitle')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
 
                                 </div>
 
                             </div>
-                        @endforeach
 
 
-
+                        </div>
                     </div>
                     <div id="addrescont" data-progress="50%">
 

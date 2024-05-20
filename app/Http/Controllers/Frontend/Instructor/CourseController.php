@@ -54,6 +54,7 @@ class CourseController extends Controller
     {
 
         $input['title']                         =   $request->title;
+        $input['subtitle']                      =   $request->subtitle;
         $input['course_category_id']            =   $request->course_category_id;
         $input['created_by']                    =   auth()->user()->full_name;
         $course                                 =   Course::create($input);

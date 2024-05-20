@@ -355,6 +355,7 @@ return [
     // Step2 : Course Title 
     'how_about_working_title'                       =>  'ماذا عن عنوان العمل؟',
 
+    'ex_learn_photoshop_cs6_from_scratch'           =>  'على سبيل المثال, تعلم فوتوشوب من الصفر',
     'ex_learn_photoshop_cs6_from_scratch_ar'        =>  'على سبيل المثال, تعلم فوتوشوب من الصفر',
     'ex_learn_photoshop_cs6_from_scratch_en'        =>  'ex. Learn Photoshop Cs6 From Scratch',
 

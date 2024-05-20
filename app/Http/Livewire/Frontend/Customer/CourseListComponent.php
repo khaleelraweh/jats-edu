@@ -93,10 +93,7 @@ class CourseListComponent extends Component
             }
         }
 
-        $instructors_menu = User::whereHasRoles('instructor')
-            ->whereHas('courses', function ($query) use ($orderedCourseIds) {
-                $query->whereIn('courses.id', $orderedCourseIds); // Specify courses.id here
-            })
+        $instructors_menu = User::whereHasRoles('instructor')->hasCourses()
             ->orderBy('first_name')
             ->orderBy('last_name')
             ->when($this->searchQuery, function ($query) {
@@ -105,7 +102,9 @@ class CourseListComponent extends Component
                         ->orWhere('last_name', 'LIKE', '%' . $this->searchQuery . '%');
                 });
             })
-            ->withCount('courses') // Load the count of associated courses for each instructor
+            ->withCount(['courses' => function ($query) {
+                $query->where('section', 1); // Count only courses where section is 1
+            }])
             ->get()
             ->groupBy(function ($user) {
                 return $user->first_name . ' ' . $user->last_name;
@@ -117,6 +116,7 @@ class CourseListComponent extends Component
                 $coursesCount = $group->sum('courses_count');
                 return compact('instructorsCount', 'coursesCount');
             });
+
 
 
 

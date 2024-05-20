@@ -14,6 +14,7 @@ class EnrollFreeCourseComponent extends Component
 
     public $courseId;
 
+
     public $payment_method = 3; //mean free
 
     public function render()

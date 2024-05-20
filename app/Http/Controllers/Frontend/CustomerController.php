@@ -123,6 +123,7 @@ class CustomerController extends Controller
             $user->attachRole($instructorRoleId);
         }
 
-        return view('frontend.customer.instructor-greating');
+        // return view('frontend.customer.instructor-greating');
+        return view('frontend.instructor.dashboard');
     }
 }

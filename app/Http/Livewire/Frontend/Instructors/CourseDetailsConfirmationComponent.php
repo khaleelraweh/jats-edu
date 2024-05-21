@@ -79,6 +79,20 @@ class CourseDetailsConfirmationComponent extends Component
         return !$validator->fails();
     }
 
+    protected function validateCollection($collection, $field, $rules, $minCount = 0)
+    {
+        if ($collection->count() < $minCount) {
+            return false;
+        }
+
+        foreach ($collection as $item) {
+            if (!$this->validateField($item->{$field}, $field, $rules)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     protected function validateCourseLanding()
     {
@@ -96,64 +110,13 @@ class CourseDetailsConfirmationComponent extends Component
 
     protected function validateObjective()
     {
-        $course = Course::where('id', $this->courseId)->first();
+        $course = $this->course;
 
-        // Validate objectives
-        $objectivesValid = true;
-        $objectivesCount = $course->objectives->count();
-        if ($objectivesCount >= 4) {
-            foreach ($course->objectives as $item) {
-                $validator = Validator::make(['title' => $item->title], [
-                    'title' => ['required', 'string', 'min:10', 'max:160'],
-                ]);
-                if ($validator->fails()) {
-                    $objectivesValid = false;
-                    break;
-                }
-            }
-        } else {
-            $objectivesValid = false;
-        }
+        $this->objectivesValid = $this->validateCollection($course->objectives, 'title', ['required', 'string', 'min:10', 'max:160'], 4);
+        $this->requirementsValid = $this->validateCollection($course->requirements, 'title', ['required', 'string', 'min:10', 'max:160'], 1);
+        $this->intendedsValid = $this->validateCollection($course->intendeds, 'title', ['required', 'string', 'min:10', 'max:160'], 1);
 
-        // Validate requirements
-        $requirementsValid = true;
-        $requirementsCount = $course->requirements->count();
-        if ($requirementsCount >= 1) {
-            foreach ($course->requirements as $item) {
-                $validator = Validator::make(['title' => $item->title], [
-                    'title' => ['required', 'string', 'min:10', 'max:160'],
-                ]);
-                if ($validator->fails()) {
-                    $requirementsValid = false;
-                    break;
-                }
-            }
-        } else {
-            $requirementsValid = false;
-        }
-
-        // Validate intendeds
-        $intendedsValid = true;
-        $intendedsCount = $course->intendeds->count();
-        if ($intendedsCount >= 1) {
-            foreach ($course->intendeds as $item) {
-                $validator = Validator::make(['title' => $item->title], [
-                    'title' => ['required', 'string', 'min:10', 'max:160'],
-                ]);
-                if ($validator->fails()) {
-                    $intendedsValid = false;
-                    break;
-                }
-            }
-        } else {
-            $intendedsValid = false;
-        }
-
-        $this->objectivesValid = $objectivesValid;
-        $this->requirementsValid = $requirementsValid;
-        $this->intendedsValid = $intendedsValid;
-
-        $this->courseObjectiveTabValid = $objectivesValid && $requirementsValid && $intendedsValid;
+        $this->courseObjectiveTabValid = $this->objectivesValid && $this->requirementsValid && $this->intendedsValid;
     }
 
     protected function validateCurriculum()

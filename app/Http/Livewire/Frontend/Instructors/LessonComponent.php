@@ -208,8 +208,23 @@ class LessonComponent extends Component
             ]);
 
             // Update the sectionId with the newly created section's id
-            $this->sections[$index]['sectionId'] = $section->id;
+            // $this->sections[$index]['sectionId'] = $section->id;
+            // $this->sections[$index]['saved'] = true; // Mark section as saved
+
+
+
+            $sectionData = [
+                'sectionId' => $section->id,
+                'title' => $section->title,
+                'lessons' => [
+                    ['title' => '', 'url' => '', 'duration_minutes' => ''],
+                ],
+                'saved' => true, // Track if section has been saved
+            ];
+
+            $this->sections[$index] = $sectionData;
             $this->sections[$index]['saved'] = true; // Mark section as saved
+
 
 
             // Show success alert for creating new section

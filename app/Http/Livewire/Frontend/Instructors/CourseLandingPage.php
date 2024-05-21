@@ -207,6 +207,7 @@ class CourseLandingPage extends Component
 
 
         $this->emit('updateCourseLanding', $this->courseId);
+        $this->emit('updateCourseDEtailsConfirmation', $this->courseId);
 
         $this->formSubmitted = true;
         $this->alert('success', 'Course Updated Successfully!');

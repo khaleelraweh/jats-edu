@@ -28,6 +28,7 @@ class CourseDetailsConfirmationComponent extends Component
     public $subtitleValid = false;
     public $descriptionValid = false;
     public $videopromoValid = false;
+    public $courseImageValid = false;
 
 
     public $objectivesValid = false;
@@ -43,10 +44,14 @@ class CourseDetailsConfirmationComponent extends Component
     public $published_onValid = false;
     public $statusValid = false;
 
+    protected $listeners = [
+        'updateCourseDEtailsConfirmation' => 'mount'
+    ];
 
 
     public function mount($courseId)
     {
+
         $this->validateDatabaseData();
     }
 
@@ -56,11 +61,15 @@ class CourseDetailsConfirmationComponent extends Component
 
         $this->validateCourseLanding();
         $this->validateObjective();
-        $this->validateCurriculum();
-        $this->validatePricing();
-        $this->validatePublishData();
+        // $this->validateCurriculum();
+        // $this->validatePricing();
+        // $this->validatePublishData();
 
-        $this->databaseDataValid = $this->courseLandingTabValid && $this->courseObjectiveTabValid && $this->courseCurriculumTabValid && $this->coursePricingTabValid && $this->coursePublishedTabValid;
+        $this->databaseDataValid =
+            $this->courseLandingTabValid;
+        // &&
+        // $this->courseObjectiveTabValid;
+        // && $this->courseCurriculumTabValid && $this->coursePricingTabValid && $this->coursePublishedTabValid;
     }
 
     public function render()
@@ -94,7 +103,7 @@ class CourseDetailsConfirmationComponent extends Component
         // Validate description
         $descriptionValid = true;
         $validator = Validator::make(['description' => $course->description], [
-            'description' => ['required', 'string', 'min_words:200'],
+            'description' => ['required', 'string', 'min_words:100'],
         ]);
         if ($validator->fails()) {
             $descriptionValid = false;
@@ -109,10 +118,24 @@ class CourseDetailsConfirmationComponent extends Component
             $videopromoValid = false;
         }
 
-        $this->titleValid = $titleValid;
-        $this->subtitleValid = $subtitleValid;
+        // validate course Image 
+        $courseImageValid = true;
+
+        $courseImageValid = true;
+        if ($course->firstMedia != null && $course->firstMedia->file_name != null) {
+            $courseImageValid = true;
+            if (!file_exists(public_path('assets/courses/' . $course->firstMedia->file_name))) {
+                $courseImageValid = false;
+            }
+        } else {
+            $courseImageValid = false;
+        }
+
+        $this->titleValid       = $titleValid;
+        $this->subtitleValid    = $subtitleValid;
         $this->descriptionValid = $descriptionValid;
-        $this->videopromoValid = $videopromoValid;
+        $this->videopromoValid  = $videopromoValid;
+        $this->courseImageValid = $courseImageValid;
 
         $this->courseLandingTabValid = $titleValid && $subtitleValid && $descriptionValid && $videopromoValid;
     }

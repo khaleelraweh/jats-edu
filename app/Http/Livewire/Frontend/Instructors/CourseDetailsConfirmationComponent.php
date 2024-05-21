@@ -43,9 +43,6 @@ class CourseDetailsConfirmationComponent extends Component
     public $published_onValid = false;
     public $statusValid = false;
 
-    protected $listeners = [
-        'UpdateDetailsConfirmation' => 'validateDatabaseData'
-    ];
 
 
     public function mount($courseId)

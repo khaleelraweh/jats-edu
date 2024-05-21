@@ -48,10 +48,10 @@ class CourseDetailsConfirmationComponent extends Component
     {
         $this->courseId = $courseId;
         $this->course = Course::find($this->courseId);
-        $this->validateDatabaseData();
+        $this->validateDatabaseData($courseId);
     }
 
-    protected function validateDatabaseData()
+    protected function validateDatabaseData($courseId)
     {
 
         $this->validateCourseLanding();
@@ -60,12 +60,25 @@ class CourseDetailsConfirmationComponent extends Component
         $this->validatePricing();
         $this->validatePublishData();
 
-        $this->databaseDataValid =
-            $this->courseLandingTabValid &&
-            $this->courseObjectiveTabValid &&
-            $this->courseCurriculumTabValid &&
-            $this->coursePricingTabValid &&
-            $this->coursePublishedTabValid;
+
+        $validations = [
+            $this->courseLandingTabValid,
+            $this->courseObjectiveTabValid,
+            $this->courseCurriculumTabValid,
+            $this->coursePricingTabValid,
+            $this->coursePublishedTabValid,
+        ];
+
+
+        $completedValidations = count(array_filter($validations));
+        $totalValidations = count($validations);
+        $progressPercentage = ($completedValidations / $totalValidations) * 100;
+
+        $this->databaseDataValid = $completedValidations === $totalValidations;
+
+        $this->emit('updateCourseProgressPercentage', $progressPercentage);
+
+        return $progressPercentage;
     }
 
     public function render()

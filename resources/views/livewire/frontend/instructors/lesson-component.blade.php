@@ -6,7 +6,18 @@
             @endif
         </div>
     </header>
-    <p class="h6 py-3 text-muted">{{ __('transf.curriculum_description') }}</p>
+    <p class="h6 py-2 text-muted mb-1">
+        {{ __('transf.curriculum_description') }}
+
+    </p>
+
+
+    <span class="d-inline-block text-muted">{{ __('transf.curriculum_need') }}</span>
+    <ul class="h6 pb-3 text-muted ">
+
+        <li>{{ __('transf.curriculum_need_lessons') }} </li>
+        <li>{{ __('transf.curriculum_need_video_records') }} </li>
+    </ul>
 
     <form wire:submit.prevent="storeSections">
         {{-- <form> --}}

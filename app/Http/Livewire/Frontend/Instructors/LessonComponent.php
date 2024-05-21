@@ -33,10 +33,6 @@ class LessonComponent extends Component
     // Property to track the edit state of section title
     public $editSectionTitleIndex = null;
 
-    protected $listeners = [
-        'mount' => 'mount'
-    ];
-
 
 
     public function mount($courseId)

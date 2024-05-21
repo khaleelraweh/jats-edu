@@ -121,26 +121,16 @@ class CourseDetailsConfirmationComponent extends Component
 
     protected function validateCurriculum()
     {
-        $course = Course::where('id', $this->courseId)->first();
+        $course = $this->course;
 
-        // Validate sections
-        $sectionsValid = true;
+        $this->sectionsValid = $this->validateCollection($course->sections, 'title', ['required', 'string', 'min:3', 'max:80']);
 
-        $sectionsCount = $course->sections->count();
+        // $duration_30_minutes_Valid = $course->sections->reduce(function ($carry, $section) {
+        //     return $carry + $section->lessons->sum('duration_minutes');
+        // }, 0) >= 30;
+        // $this->duration_30_minutes_Valid = $duration_30_minutes_Valid;
 
-        if ($sectionsCount > 0) {
-            foreach ($course->sections as $section) {
-                $validator = Validator::make(['title' => $section->title], [
-                    'title' => ['required', 'string', 'min:3', 'max:80'],
-                ]);
-                if ($validator->fails()) {
-                    $sectionsValid = false;
-                    break;
-                }
-            }
-        } else {
-            $sectionsValid = false;
-        }
+        $this->totalLessonsValid = $course->totalLessonsCount() >= 5;
 
         // duration validation more than or equal to 30 minutes 
         $duration_30_minutes_Valid = true;
@@ -153,63 +143,26 @@ class CourseDetailsConfirmationComponent extends Component
         if ($totalDurations < 30) {
             $duration_30_minutes_Valid = false;
         }
-
-        // lesson total more than 5 lectures 
-        $totalLessonsValid = true;
-        if ($course->totalLessonsCount() < 5) {
-            $totalLessonsValid = false;
-        }
-
-        $this->sectionsValid = $sectionsValid;
         $this->duration_30_minutes_Valid = $duration_30_minutes_Valid;
-        $this->totalLessonsValid = $totalLessonsValid;
 
-        $this->courseCurriculumTabValid = $sectionsValid && $duration_30_minutes_Valid && $totalLessonsValid;
+        $this->courseCurriculumTabValid = $this->sectionsValid && $this->duration_30_minutes_Valid && $this->totalLessonsValid;
     }
 
     protected function validatePricing()
     {
-        $course = Course::where('id', $this->courseId)->first();
+        $course = $this->course;
 
-        // Validate price 
-        $priceValid = true;
-        $validator = Validator::make(['price' => $course->price], [
-            'price' => ['required', 'numeric', 'min:0'],
-        ]);
-        if ($validator->fails()) {
-            $priceValid = false;
-        }
-
-        $this->priceValid = $priceValid;
-        $this->coursePricingTabValid = $priceValid;
+        $this->priceValid = $this->validateField($course->price, 'price', ['required', 'numeric', 'min:0']);
+        $this->coursePricingTabValid = $this->priceValid;
     }
 
     protected function validatePublishData()
     {
-        $course = Course::where('id', $this->courseId)->first();
+        $course = $this->course;
 
-        // Validate published_on
-        $published_onValid = true;
-        $validator = Validator::make(['published_on' => $course->published_on], [
-            'published_on' => ['required'],
-        ]);
-        if ($validator->fails()) {
-            $published_onValid = false;
-        }
+        $this->published_onValid = $this->validateField($course->published_on, 'published_on', ['required']);
+        $this->statusValid = $this->validateField($course->status, 'status', ['required', 'numeric', 'min:0']);
 
-
-        // Validate Status
-        $statusValid = true;
-        $validator = Validator::make(['status' => $course->status], [
-            'status' => ['required', 'numeric', 'min:0'],
-        ]);
-        if ($validator->fails()) {
-            $statusValid = false;
-        }
-
-        $this->published_onValid = $published_onValid;
-        $this->statusValid = $statusValid;
-
-        $this->coursePublishedTabValid = $published_onValid && $statusValid;
+        $this->coursePublishedTabValid = $this->published_onValid && $this->statusValid;
     }
 }

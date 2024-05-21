@@ -11,10 +11,11 @@ class CourseDetailsConfirmationComponent extends Component
 
 
     public $courseId;
+    public $course;
+
 
     // General validation 
     public $databaseDataValid           = false;
-
     public $courseLandingTabValid       = false;
     public $courseObjectiveTabValid     = false;
     public $courseCurriculumTabValid    = false;
@@ -29,18 +30,13 @@ class CourseDetailsConfirmationComponent extends Component
     public $descriptionValid = false;
     public $videopromoValid = false;
     public $courseImageValid = false;
-
-
     public $objectivesValid = false;
     public $requirementsValid = false;
     public $intendedsValid = false;
-
     public $sectionsValid = false;
     public $duration_30_minutes_Valid = false;
     public $totalLessonsValid = false;
-
     public $priceValid = false;
-
     public $published_onValid = false;
     public $statusValid = false;
 
@@ -48,16 +44,15 @@ class CourseDetailsConfirmationComponent extends Component
         'updateCourseDEtailsConfirmation' => 'mount'
     ];
 
-
     public function mount($courseId)
     {
-
+        $this->courseId = $courseId;
+        $this->course = Course::find($this->courseId);
         $this->validateDatabaseData();
     }
 
     protected function validateDatabaseData()
     {
-        $course = Course::where('id', $this->courseId)->first();
 
         $this->validateCourseLanding();
         $this->validateObjective();
@@ -75,70 +70,28 @@ class CourseDetailsConfirmationComponent extends Component
 
     public function render()
     {
-        $course = Course::where('id', $this->courseId)->first();
-        return view('livewire.frontend.instructors.course-details-confirmation-component', compact('course'));
+        return view('livewire.frontend.instructors.course-details-confirmation-component', ['course' => $this->course]);
     }
+
+    protected function validateField($value, $field, $rules)
+    {
+        $validator = Validator::make([$field => $value], [$field => $rules]);
+        return !$validator->fails();
+    }
+
 
     protected function validateCourseLanding()
     {
-        $course = Course::where('id', $this->courseId)->first();
+        $course = $this->course;
 
-        // Validate title
-        $titleValid = true;
-        $validator = Validator::make(['title' => $course->title], [
-            'title' => ['required', 'string', 'min:10', 'max:60'],
-        ]);
-        if ($validator->fails()) {
-            $titleValid = false;
-        }
+        $this->titleValid = $this->validateField($course->title, 'title', ['required', 'string', 'min:10', 'max:60']);
+        $this->subtitleValid = $this->validateField($course->subtitle, 'subtitle', ['required', 'string', 'min:10', 'max:120']);
+        $this->descriptionValid = $this->validateField($course->description, 'description', ['required', 'string', 'min_words:100']);
+        $this->videopromoValid = $this->validateField($course->video_promo, 'video_promo', ['required', 'url', 'min:10']);
 
-        // Validate subtitle
-        $subtitleValid = true;
-        $validator = Validator::make(['subtitle' => $course->subtitle], [
-            'subtitle' => ['required', 'string', 'min:10', 'max:120'],
-        ]);
-        if ($validator->fails()) {
-            $subtitleValid = false;
-        }
+        $this->courseImageValid = $course->firstMedia && file_exists(public_path('assets/courses/' . $course->firstMedia->file_name));
 
-        // Validate description
-        $descriptionValid = true;
-        $validator = Validator::make(['description' => $course->description], [
-            'description' => ['required', 'string', 'min_words:100'],
-        ]);
-        if ($validator->fails()) {
-            $descriptionValid = false;
-        }
-
-        // Validate video promotional
-        $videopromoValid = true;
-        $validator = Validator::make(['video_promo' => $course->video_promo], [
-            'video_promo' => ['required', 'url', 'min:10'],
-        ]);
-        if ($validator->fails()) {
-            $videopromoValid = false;
-        }
-
-        // validate course Image 
-        $courseImageValid = true;
-
-        $courseImageValid = true;
-        if ($course->firstMedia != null && $course->firstMedia->file_name != null) {
-            $courseImageValid = true;
-            if (!file_exists(public_path('assets/courses/' . $course->firstMedia->file_name))) {
-                $courseImageValid = false;
-            }
-        } else {
-            $courseImageValid = false;
-        }
-
-        $this->titleValid       = $titleValid;
-        $this->subtitleValid    = $subtitleValid;
-        $this->descriptionValid = $descriptionValid;
-        $this->videopromoValid  = $videopromoValid;
-        $this->courseImageValid = $courseImageValid;
-
-        $this->courseLandingTabValid = $titleValid && $subtitleValid && $descriptionValid && $videopromoValid;
+        $this->courseLandingTabValid = $this->titleValid && $this->subtitleValid && $this->descriptionValid && $this->videopromoValid && $this->courseImageValid;
     }
 
     protected function validateObjective()

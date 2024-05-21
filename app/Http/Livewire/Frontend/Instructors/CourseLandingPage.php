@@ -177,6 +177,24 @@ class CourseLandingPage extends Component
         // Check if at least one image is uploaded or exists in the database
         $course = Course::with('photos', 'firstMedia')->findOrFail($this->courseId);
 
+        $image_file_name  = $course->firstMedia->file_name;
+
+        if ($course->firstMedia != null && $image_file_name != null) {
+            $isExist = true;
+            if (!file_exists(public_path('assets/courses/' . $image_file_name))) {
+                $isExist = false;
+            }
+        } else {
+            $isExist = true;
+        }
+
+
+        if ($isExist == false && empty($this->images)) {
+            $this->addError('images', 'At least one image is required.');
+            return;
+        }
+
+
         // Update the course with the validated data
         $course->update($validatedData);
 

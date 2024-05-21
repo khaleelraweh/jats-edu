@@ -33,6 +33,11 @@ class LessonComponent extends Component
     // Property to track the edit state of section title
     public $editSectionTitleIndex = null;
 
+    protected $listeners = [
+        'mount' => 'mount'
+    ];
+
+
 
     public function mount($courseId)
     {
@@ -200,6 +205,7 @@ class LessonComponent extends Component
             $this->sections[$index]['sectionId'] = $section->id;
             $this->sections[$index]['saved'] = true; // Mark section as saved
 
+
             // Show success alert for creating new section
             $this->alert('success', __('transf.New section created successfully!'));
         }
@@ -244,6 +250,9 @@ class LessonComponent extends Component
                 $lesson = new Lesson($lessonData);
                 $section->lessons()->save($lesson);
             }
+
+            // Validate database data
+            $this->validateDatabaseData();
 
             // Show success alert
             $this->alert('success', __('transf.Lessons for the section saved successfully!'));

@@ -191,7 +191,7 @@
                                 </p>
                                 <input type="file" wire:model="images" id="images" class="form-control" multiple
                                     style="height: 39px !important;">
-                                @error('images')
+                                @error('images.*')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

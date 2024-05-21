@@ -61,7 +61,7 @@ class CourseLandingPage extends Component
         'course_type' => 'required|in:1,2', // Example validation for course_type (required and should be one of the given values)
         'course_category_id' => 'required|exists:course_categories,id', // Example validation for course_category_id (required and should exist in course_categories table)
         'certificate' => 'required|boolean', // Example validation for certificate (required and should be boolean)
-        // 'deadline' => 'nullable|date_format:Y-m-d H:i K', // Valid datetime format
+        'deadline' => 'nullable|date_format:Y-m-d H:i:s',
     ];
 
     public function mount($courseId)
@@ -150,57 +150,49 @@ class CourseLandingPage extends Component
     public function updateCourse()
     {
 
-        $this->validate();
+        // Validate the data
+        $validatedData = $this->validate();
+
+        // Remove the images field from validated data
+        unset($validatedData['images']);
+
+        // Check if at least one image is uploaded or exists in the database
         $course = Course::with('photos', 'firstMedia')->findOrFail($this->courseId);
-        $course->update([
-            'title' => $this->title,
-            'subtitle' => $this->subtitle,
-            'description' => $this->description,
-            // Update other fields similarly
 
-            'video_promo' => $this->video_promo,
-            'video_description' => $this->video_description,
-            'language' => $this->language,
-            'skill_level' => $this->skill_level,
-            'course_type' => $this->course_type,
-            'course_category_id' => $this->course_category_id,
-            'certificate' => $this->certificate,
-            'deadline' => $this->deadline,
-        ]);
+        // Update the course with the validated data
+        $course->update($validatedData);
 
-        $course->photos()->delete();
+        // Handle images if any new ones are uploaded
+        if (!empty($this->images)) {
+            // Delete existing photos if new images are uploaded
+            $course->photos()->delete();
 
-        // Handle image uploads
-        if ($this->images && count($this->images) > 0) {
-            $i = $course->photos->count() + 1;
-
-            foreach ($this->images as $image) {
-                // Save the image to the storage
-                $file_name = $course->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
-                $file_size = $image->getSize();
-                $file_type = $image->getMimeType();
-                $path = public_path('assets/courses/' . $file_name);
-                Image::make($image->getRealPath())->save($path);
-
-                // Create a new photo record in the database
-                $course->photos()->create([
-                    'file_name' => $file_name,
-                    'file_size' => $file_size,
-                    'file_type' => $file_type,
-                    'file_status' => 'true',
-                    'file_sort' => $i,
-                ]);
-
-                $i++;
-            }
+            $this->handleImageUpload($course);
         }
 
-        // Set $databaseDataValid to true
-        $this->databaseDataValid = true;
-
-        // Set formSubmitted to true on successful submission
         $this->formSubmitted = true;
+        $this->alert('success', 'Course Updated Successfully!');
+    }
 
-        $this->alert('success', 'Course Updated Successfully! ');
+    protected function handleImageUpload($course)
+    {
+        foreach ($this->images as $image) {
+            $file_name = $this->saveImage($image, $course);
+            $course->photos()->create([
+                'file_name' => $file_name,
+                'file_size' => $image->getSize(),
+                'file_type' => $image->getMimeType(),
+                'file_status' => 'true',
+                'file_sort' => $course->photos->count() + 1,
+            ]);
+        }
+    }
+
+    protected function saveImage($image, $course)
+    {
+        $file_name = $course->slug . '_' . time() . '.' . $image->getClientOriginalExtension();
+        $path = public_path('assets/courses/' . $file_name);
+        Image::make($image->getRealPath())->save($path);
+        return $file_name;
     }
 }

@@ -162,21 +162,6 @@
                                     <div class="col-12 pt-4">
                                         <label for="images">{{ __('transf.Course Image') }}</label>
 
-                                        @php
-                                            if ($course->firstMedia != null && $course->firstMedia->file_name != null) {
-                                                $course_img = asset('assets/courses/' . $course->firstMedia->file_name);
-
-                                                if (
-                                                    !file_exists(
-                                                        public_path('assets/courses/' . $course->firstMedia->file_name),
-                                                    )
-                                                ) {
-                                                    $course_img = asset('image/not_found/item_image_not_found.webp');
-                                                }
-                                            } else {
-                                                $course_img = asset('image/not_found/item_image_not_found.webp');
-                                            }
-                                        @endphp
                                         <img src="{{ $currentImage }}" style="display: block;width:100%;height:200px;"
                                             alt="{{ $course->title }}">
 

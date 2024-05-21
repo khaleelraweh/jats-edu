@@ -52,7 +52,7 @@ class CourseLandingPage extends Component
 
         'title' => 'required|string|max:60',
         'subtitle' => 'required|string|max:120',
-        'description' => 'required|string|min_words:200',  // min_words came from AppServiceProvider I made it 
+        'description' => 'required|string|min_words:100',  // min_words came from AppServiceProvider I made it 
         'images.*' => 'required|image|max:2048', // Validation rule for images (nullable and max size 2MB)
         'video_promo' => 'required|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
         'video_description' => 'nullable|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
@@ -116,7 +116,7 @@ class CourseLandingPage extends Component
         // Validate description
         $descriptionValid = true;
         $validator = Validator::make(['description' => $course->description], [
-            'description' => ['required', 'string', 'min_words:200'],
+            'description' => ['required', 'string', 'min_words:100'],
         ]);
         if ($validator->fails()) {
             $descriptionValid = false;

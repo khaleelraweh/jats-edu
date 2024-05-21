@@ -81,9 +81,8 @@ class LessonComponent extends Component
             $this->sections = [
                 [
                     'title' => 'Introduction',
+                    'sectionId' => -1,
                     'lessons' => [],
-                    // 'lessons' =>
-                    // ['title' => '', 'url' => '', 'duration_minutes' => ''],
 
                     'saved' => false, // Track if section has been saved
                 ],
@@ -102,6 +101,17 @@ class LessonComponent extends Component
         $this->editSectionTitleIndex = $index;
     }
 
+
+    // Method to update the section title
+    public function updateSectionTitle($index)
+    {
+        $section = CourseSection::find($this->sections[$index]['sectionId']);
+
+        if ($section) {
+            $section->update(['title' => $this->sections[$index]['title']]);
+            $this->editSectionTitleIndex = null; // Reset edit state
+        }
+    }
 
 
 
@@ -223,8 +233,10 @@ class LessonComponent extends Component
 
         $this->editSectionTitleIndex = null;
 
+        $this->updateSectionTitle($index);
+
         // Save lessons for the section
-        $this->saveLessonsInSection($index);
+        // $this->saveLessonsInSection($index);
 
         // we are here
     }
@@ -234,6 +246,7 @@ class LessonComponent extends Component
     // Method to save lessons for a specific section
     public function saveLessonsInSection($index)
     {
+
         // Get the section data
         $sectionData = $this->sections[$index];
 

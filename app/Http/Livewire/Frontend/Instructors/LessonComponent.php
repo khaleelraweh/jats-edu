@@ -201,6 +201,7 @@ class LessonComponent extends Component
             if ($section) {
                 $section->update(['title' => $sectionData['title']]);
                 // Show success alert for updating section title
+                $this->sections[$index]['saved'] = true;
                 $this->alert('success', __('transf.Section title updated successfully!'));
             }
         } else {
@@ -390,6 +391,7 @@ class LessonComponent extends Component
         }
 
         // Mark saved sections as not saved to enable editing
+        // لاغلاق جميع الاقسام 
         foreach ($this->sections as $index => $section) {
             if ($section['saved']) {
                 $this->sections[$index]['saved'] = false;

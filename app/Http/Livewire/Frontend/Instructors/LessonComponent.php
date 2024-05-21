@@ -68,10 +68,7 @@ class LessonComponent extends Component
                         'title' => $section->title,
                         'lessons' => [
                             ['title' => '', 'url' => '', 'duration_minutes' => ''],
-                            ['title' => '', 'url' => '', 'duration_minutes' => ''],
-                            ['title' => '', 'url' => '', 'duration_minutes' => ''],
-                            ['title' => '', 'url' => '', 'duration_minutes' => ''],
-                            ['title' => '', 'url' => '', 'duration_minutes' => ''],
+
                         ],
                         'saved' => true, // Track if section has been saved
                     ];

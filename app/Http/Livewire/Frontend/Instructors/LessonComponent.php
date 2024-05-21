@@ -82,6 +82,9 @@ class LessonComponent extends Component
                 [
                     'title' => 'Introduction',
                     'lessons' => [],
+                    // 'lessons' =>
+                    // ['title' => '', 'url' => '', 'duration_minutes' => ''],
+
                     'saved' => false, // Track if section has been saved
                 ],
             ];
@@ -99,16 +102,7 @@ class LessonComponent extends Component
         $this->editSectionTitleIndex = $index;
     }
 
-    // Method to update the section title
-    public function updateSectionTitle($index)
-    {
-        $section = CourseSection::find($this->sections[$index]['sectionId']);
 
-        if ($section) {
-            $section->update(['title' => $this->sections[$index]['title']]);
-            $this->editSectionTitleIndex = null; // Reset edit state
-        }
-    }
 
 
     protected function validateDatabaseData()
@@ -173,12 +167,14 @@ class LessonComponent extends Component
     // Method to save the new section with provided title
     public function saveSection($index)
     {
+
+
         // Get the section data
         $sectionData = $this->sections[$index];
 
         // Validate the section title
         $validator = Validator::make(['title' => $sectionData['title']], [
-            'title' => ['required', 'string', 'min:10', 'max:160'],
+            'title' => ['required', 'string', 'min:3', 'max:80'],
         ]);
 
         // If validation fails, show an error alert
@@ -187,7 +183,8 @@ class LessonComponent extends Component
             return;
         }
 
-        // Check if the 'sectionId' key exists in the $sectionData array
+
+        // Check if the 'sectionId' key exists in the $sectionData array to only update the section title because it saved before 
         if (array_key_exists('sectionId', $sectionData) && $sectionData['sectionId'] !== -1) {
             // Update the existing section title
             $section = CourseSection::find($sectionData['sectionId']);
@@ -204,12 +201,9 @@ class LessonComponent extends Component
                 'course_id' => $this->courseId,
             ]);
 
+
+
             // Update the sectionId with the newly created section's id
-            // $this->sections[$index]['sectionId'] = $section->id;
-            // $this->sections[$index]['saved'] = true; // Mark section as saved
-
-
-
             $sectionData = [
                 'sectionId' => $section->id,
                 'title' => $section->title,
@@ -223,15 +217,16 @@ class LessonComponent extends Component
             $this->sections[$index]['saved'] = true; // Mark section as saved
 
 
-
             // Show success alert for creating new section
             $this->alert('success', __('transf.New section created successfully!'));
         }
 
-        $this->updateSectionTitle($index);
+        $this->editSectionTitleIndex = null;
 
         // Save lessons for the section
-        // $this->saveLessonsInSection($index);
+        $this->saveLessonsInSection($index);
+
+        // we are here
     }
 
 

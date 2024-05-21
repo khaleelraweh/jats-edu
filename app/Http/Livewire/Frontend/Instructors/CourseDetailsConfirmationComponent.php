@@ -62,14 +62,15 @@ class CourseDetailsConfirmationComponent extends Component
         $this->validateCourseLanding();
         $this->validateObjective();
         $this->validateCurriculum();
-        // $this->validatePricing();
+        $this->validatePricing();
         // $this->validatePublishData();
 
         $this->databaseDataValid =
             $this->courseLandingTabValid &&
             $this->courseObjectiveTabValid &&
-            $this->courseCurriculumTabValid;
-        //  && $this->coursePricingTabValid && $this->coursePublishedTabValid;
+            $this->courseCurriculumTabValid &&
+            $this->coursePricingTabValid;
+        // && $this->coursePublishedTabValid;
     }
 
     public function render()

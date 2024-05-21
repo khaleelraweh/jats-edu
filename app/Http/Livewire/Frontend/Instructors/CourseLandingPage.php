@@ -54,8 +54,8 @@ class CourseLandingPage extends Component
 
     protected $rules = [
 
-        'title' => 'required|string|max:60',
-        'subtitle' => 'required|string|max:120',
+        'title' => 'required|string|min:3|max:60',
+        'subtitle' => 'required|string|min:3|max:120',
         'description' => 'required|string|min_words:100',  // min_words came from AppServiceProvider I made it 
         'images.*' => 'required|image|max:2048', // Validation rule for images (nullable and max size 2MB)
         'video_promo' => 'required|url|max:255', // Example validation for video_promo (nullable, url, max length 255)

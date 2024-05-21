@@ -248,6 +248,8 @@ class IntendedLearnersComponent extends Component
         // Set formSubmitted to true on successful submission
         $this->formSubmitted = true;
 
+        $this->emit('updateCourseDEtailsConfirmation', $this->courseId);
+
         // Show success alert
         $this->alert('success', __('transf.intended_learners') . ' ' . __('transf.completed_successfully!'));
     }

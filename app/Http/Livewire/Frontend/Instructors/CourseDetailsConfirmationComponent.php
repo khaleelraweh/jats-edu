@@ -66,9 +66,8 @@ class CourseDetailsConfirmationComponent extends Component
         // $this->validatePublishData();
 
         $this->databaseDataValid =
-            $this->courseLandingTabValid;
-        // &&
-        // $this->courseObjectiveTabValid;
+            $this->courseLandingTabValid &&
+            $this->courseObjectiveTabValid;
         // && $this->courseCurriculumTabValid && $this->coursePricingTabValid && $this->coursePublishedTabValid;
     }
 

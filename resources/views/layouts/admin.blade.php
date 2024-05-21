@@ -51,15 +51,15 @@
         href="{{ asset('backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css') }}" />
     <link
         href="{{ asset('backend/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                        type="text/css') }}" />
+                                                                                                                                                                                                                                type="text/css') }}" />
     <link
         href="{{ asset('backend/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                        type="text/css') }}" />
+                                                                                                                                                                                                                                type="text/css') }}" />
 
     <!-- Responsive datatable examples -->
     <link
         href="{{ asset('backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                        type="text/css') }}" />
+                                                                                                                                                                                                                                type="text/css') }}" />
 
     {{-- end  new  --}}
 
@@ -175,6 +175,7 @@
     <script src="{{ asset('backend/vendor/select2/js/select2.full.min.js') }}"></script>
     {{-- Calling fontawesome icon picker   --}}
     <script src="{{ asset('backend/vendor/fontawesomepicker/js/fontawesome-iconpicker.js') }}"></script>
+
     <!--tinymce js for editor -->
     <script src="{{ asset('backend/libs/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('backend/js/pages/form-editor.js') }}"></script>

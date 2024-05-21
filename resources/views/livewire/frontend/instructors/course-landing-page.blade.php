@@ -137,7 +137,7 @@
                                         <label for="description">
                                             {{ __('transf.Course description') }}
                                         </label>
-                                        <textarea name="description" rows="10" class="form-control summernote" wire:model="description"
+                                        <textarea id="elm1" name="description" rows="10" class="form-control " wire:model.defer="description"
                                             placeholder="{{ __('transf.Insert your course description.') }}">{!! old('description', $course->description) !!}</textarea>
                                         <span class="text-muted d-inline-block mt-1">
                                             <small>

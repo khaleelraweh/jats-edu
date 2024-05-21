@@ -119,6 +119,10 @@
     {{-- Call select2 plugin --}}
     <script src="{{ asset('backend/vendor/select2/js/select2.full.min.js') }}"></script>
 
+    <!--tinymce js for editor -->
+    <script src="{{ asset('backend/libs/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('backend/js/pages/form-editor.js') }}"></script>
+
     <script>
         $(document).ready(function() {
             $('.select2').select2();

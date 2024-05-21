@@ -264,7 +264,14 @@ class LessonComponent extends Component
     // Method to remove a section along with its lessons
     public function removeSection($index)
     {
-        $sectionId = $this->sections[$index]['sectionId'];
+        // Check if the section exists in the sections array
+        if (!isset($this->sections[$index])) {
+            $this->alert('error', 'Section not found.');
+            return;
+        }
+
+        // Get the sectionId, if it exists
+        $sectionId = $this->sections[$index]['sectionId'] ?? null;
 
         // If the section exists in the database, delete it along with its lessons
         if ($sectionId) {
@@ -286,6 +293,11 @@ class LessonComponent extends Component
 
         // Re-index the sections array
         $this->sections = array_values($this->sections);
+
+        // Validate database data
+        $this->validateDatabaseData();
+
+        $this->alert('success', 'Section removed successfully.');
     }
 
 

@@ -48,6 +48,10 @@ class CourseLandingPage extends Component
     public $videopromoValid = false;
 
 
+    protected $listeners = [
+        'mount' => 'mount'
+    ];
+
     protected $rules = [
 
         'title' => 'required|string|max:60',
@@ -84,7 +88,21 @@ class CourseLandingPage extends Component
         $this->deadline = $course->deadline;
 
         $this->images = $course->images;
-        $this->currentImage = $course->images;
+
+        if ($course->firstMedia != null && $course->firstMedia->file_name != null) {
+            $this->currentImage = asset('assets/courses/' . $course->firstMedia->file_name);
+
+            if (
+                !file_exists(
+                    public_path('assets/courses/' . $course->firstMedia->file_name),
+                )
+            ) {
+                $this->currentImage = asset('image/not_found/item_image_not_found.webp');
+            }
+        } else {
+            $this->currentImage = asset('image/not_found/item_image_not_found.webp');
+        }
+
 
         // Validate database data
         $this->validateDatabaseData();
@@ -169,6 +187,10 @@ class CourseLandingPage extends Component
 
             $this->handleImageUpload($course);
         }
+
+
+
+        $this->emit('mount', $this->courseId);
 
         $this->formSubmitted = true;
         $this->alert('success', 'Course Updated Successfully!');

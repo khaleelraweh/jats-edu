@@ -177,7 +177,7 @@
                                                 $course_img = asset('image/not_found/item_image_not_found.webp');
                                             }
                                         @endphp
-                                        <img src="{{ $course_img }}" style="display: block;width:100%;height:200px;"
+                                        <img src="{{ $currentImage }}" style="display: block;width:100%;height:200px;"
                                             alt="{{ $course->title }}">
 
                                     </div>

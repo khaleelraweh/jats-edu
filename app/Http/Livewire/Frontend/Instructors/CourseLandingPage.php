@@ -49,7 +49,7 @@ class CourseLandingPage extends Component
 
 
     protected $listeners = [
-        'mount' => 'mount'
+        'updateCourseLanding' => 'mount'
     ];
 
     protected $rules = [
@@ -188,14 +188,10 @@ class CourseLandingPage extends Component
         }
 
 
-
-
-
         if ($isExist == false && empty($this->images)) {
             $this->addError('images', 'At least one image is required.');
             return;
         }
-
 
         // Update the course with the validated data
         $course->update($validatedData);
@@ -210,7 +206,7 @@ class CourseLandingPage extends Component
 
 
 
-        $this->emit('mount', $this->courseId);
+        $this->emit('updateCourseLanding', $this->courseId);
 
         $this->formSubmitted = true;
         $this->alert('success', 'Course Updated Successfully!');

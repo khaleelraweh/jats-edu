@@ -236,6 +236,7 @@ class LessonComponent extends Component
         // $this->saveLessonsInSection($index);
 
         // we are here
+        $this->emit('updateCourseDEtailsConfirmation', $this->courseId);
     }
 
 
@@ -276,6 +277,8 @@ class LessonComponent extends Component
 
             // Validate database data
             $this->validateDatabaseData();
+
+            $this->emit('updateCourseDEtailsConfirmation', $this->courseId);
 
             // Show success alert
             $this->alert('success', __('transf.Lessons for the section saved successfully!'));
@@ -319,6 +322,8 @@ class LessonComponent extends Component
 
         // Validate database data
         $this->validateDatabaseData();
+
+        $this->emit('updateCourseDEtailsConfirmation', $this->courseId);
 
         $this->alert('success', 'Section removed successfully.');
     }
@@ -395,6 +400,8 @@ class LessonComponent extends Component
         }
 
         $this->validateDatabaseData();
+
+        $this->emit('updateCourseDEtailsConfirmation', $this->courseId);
 
         // Set formSubmitted to true on successful submission
         $this->formSubmitted = true;

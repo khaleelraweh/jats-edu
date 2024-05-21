@@ -56,6 +56,8 @@ class CoursePublishDataComponent extends Component
 
         $this->formSubmitted = true;
 
+        $this->emit('updateCourseDEtailsConfirmation', $this->courseId);
+
         $this->alert('success', 'PublishData Updated Successfully!');
     }
 

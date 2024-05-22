@@ -101,7 +101,7 @@ class InstructorCoursesComponent extends Component
         }
 
 
-        $courses = $courses->active()
+        $courses = $courses
             ->when($this->courseLevels, function ($query) {
                 $query->whereIn('skill_level', $this->courseLevels);
             })

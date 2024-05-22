@@ -41,6 +41,7 @@ return new class extends Migration
             $table->boolean('featured')->default(false);
             $table->foreignId('course_category_id')->constrained()->cascadeOnDelete();
             // $table->foreignId('instructor_id')->constrained()->cascadeOnDelete();
+            $table->integer('progress')->default(10);
 
             $table->integer('views')->default(0);
 

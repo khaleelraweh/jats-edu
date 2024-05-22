@@ -76,7 +76,13 @@ class CourseDetailsConfirmationComponent extends Component
 
         $this->databaseDataValid = $completedValidations === $totalValidations;
 
-        $this->emit('updateCourseProgressPercentage', $progressPercentage);
+
+        $course = $this->course;
+
+        $course->update([
+            'progress' => $progressPercentage
+        ]);
+
 
         return $progressPercentage;
     }

@@ -19,7 +19,10 @@
                             </button>
                         @else
                             <span
-                                class="d-inline-block bg-info px-3 py-2 text-white border rounded">{{ __('transf.Course send for admin review successfully!') }}</span>
+                                class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
+                                <i class="mdi mdi-check-circle-outline text-white display-6 me-3"></i>
+                                {{ __('transf.Course send for admin review successfully!') }}
+                            </span>
                         @endif
 
 

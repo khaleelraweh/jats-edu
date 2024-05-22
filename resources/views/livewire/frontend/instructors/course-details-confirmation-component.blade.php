@@ -12,6 +12,10 @@
                         <h5>{{ __('transf.Course Data Confirmed successfully') }}</h5>
                         <p class="text-muted">{{ __('transf.Course Data Confirmed successfully tips') }}</p>
 
+                        <button class="btn btn-sm btn-primary px-2 py-2" wire:click.prevent="sendForReview()">
+                            {{ __('transf.Send For Review') }}
+                        </button>
+
                     </div>
                 @else
                     <div class="mb-4">
@@ -19,7 +23,7 @@
                     </div>
                     <div>
 
-                        <h5>{{ __('transf.Course Data Confirmed successfully') }}</h5>
+                        <h5>{{ __('transf.Confirm the compulsory course information') }}</h5>
                         <p class="text-muted">{{ __('transf.Confirm the compulsory course information tips') }}</p>
 
                     </div>

@@ -54,6 +54,8 @@ return new class extends Migration
 
             $table->json('address')->nullable();
 
+            $table->boolean('send_for_review')->nullable()->default(true);
+
             //end for events only 
             $table->unsignedBigInteger('section')->default(1); // one is course , two is event 
 

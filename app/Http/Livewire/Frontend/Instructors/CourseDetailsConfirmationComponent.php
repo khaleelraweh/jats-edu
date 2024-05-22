@@ -4,11 +4,13 @@ namespace App\Http\Livewire\Frontend\Instructors;
 
 use App\Models\Course;
 use Illuminate\Support\Facades\Validator;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class CourseDetailsConfirmationComponent extends Component
 {
 
+    use LivewireAlert;
 
     public $courseId;
     public $course;
@@ -184,5 +186,16 @@ class CourseDetailsConfirmationComponent extends Component
         $this->statusValid = $this->validateField($course->status, 'status', ['required', 'numeric', 'min:0']);
 
         $this->coursePublishedTabValid = $this->published_onValid && $this->statusValid;
+    }
+
+    public function sendForReview()
+    {
+        $course = $this->course;
+
+        $course->update([
+            'send_for_review'   =>  true,
+        ]);
+
+        $this->alert('success', 'Course send for admin review successfully !');
     }
 }

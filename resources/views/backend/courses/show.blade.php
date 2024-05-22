@@ -169,15 +169,14 @@
                 </h3>
 
             </div>
-
-            <div class="ml-auto mt-3 mt-sm-0">
+            <div class="card-naving">
 
             </div>
         </div>
 
 
         <div class="row">
-            <div class="col-xs-12 col-sm-8">
+            <div class="col-xs-12 col-sm-6">
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <tbody>
@@ -214,7 +213,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-4">
+            <div class="col-xs-12 col-sm-6">
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <tbody>
@@ -228,8 +227,7 @@
                                     {{ $course->offer_price }}
                                 </td>
                             </tr>
-                            <tr>
-                            </tr>
+
                             <tr>
                                 <th> {{ __('panel.offer_ends') }} </th>
                                 <td>{{ $course->offer_ends }}</td>

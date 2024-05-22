@@ -54,7 +54,7 @@ return new class extends Migration
 
             $table->json('address')->nullable();
 
-            $table->boolean('send_for_review')->nullable()->default(false);
+            $table->unsignedTinyInteger('course_status')->default(0);
             $table->boolean('admin_review')->nullable()->default(false);
 
             //end for events only 

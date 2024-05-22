@@ -88,6 +88,12 @@ class CourseDetailsConfirmationComponent extends Component
             'progress' => $progressPercentage
         ]);
 
+        if ($progressPercentage == 100) {
+            $course->update([
+                'course_status'  => Course::COURSE_COMPLETED,
+            ]);
+        }
+
 
         return $progressPercentage;
     }
@@ -195,7 +201,7 @@ class CourseDetailsConfirmationComponent extends Component
         $course = $this->course;
 
         $course->update([
-            'send_for_review'   =>  true,
+            'course_status'   =>  Course::UNDER_PROCESS,
         ]);
 
         // $this->sendViewStatus = true;

@@ -558,6 +558,11 @@ return [
     'Send For Review'                                   =>  'إرسال من اجل المراجعة',
     'Course send for admin review successfully!'        =>  'تم إرسال الدورة لمراجعة المشرف بنجاح!',
 
+    'Course review finished by adminstration successfully!' =>  'انتهت مراجعة الدورة من قبل الإدارة بنجاح!',
+    'The course was successfully accepted and published by the administration'  =>  'تم قبول الدورة ونشرها من قبل الإدارة بنجاح',
+    'The course was rejected because it did not meet our publishing standards. Please check the course contents and try again' => 'تم رفض الدورة لأنها لم تستوف معايير النشر لدينا. يرجى التحقق من محتويات الدورة والمحاولة مرة أخرى',
+
+
 
     'Confirm the compulsory course information'         => 'تاكيد بيانات الدورة الاجبارية',
     'Confirm the compulsory course information tips'    => 'يجب إدخال جميع الحقول الإجبارية من اجل المصادقة على الدورة من قبل الإدارة للسماح بنشرها في الموقع للطلبة ',

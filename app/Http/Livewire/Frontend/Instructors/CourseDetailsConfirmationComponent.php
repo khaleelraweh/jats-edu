@@ -51,6 +51,7 @@ class CourseDetailsConfirmationComponent extends Component
         $this->validateDatabaseData($courseId);
     }
 
+    //no nead fo sending the $courseId in this fuction but it is ok if you do it 
     protected function validateDatabaseData($courseId)
     {
 

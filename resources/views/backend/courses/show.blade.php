@@ -8,7 +8,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_order') }}
+                    {{ __('transf.Course Landing Page') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -51,9 +51,7 @@
                     </div>
                 </form>
             </div>
-
         </div>
-
 
         {{-- <div class="row">
             <div class="col-xs-12 col-sm-8">

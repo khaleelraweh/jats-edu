@@ -29,7 +29,7 @@
             </div>
 
             <div class="ml-auto mt-3 mt-sm-0">
-                <form action="{{ route('admin.courses.update', $course->id) }}" method="post">
+                <form action="{{ route('admin.courses.update_course_status', $course->id) }}" method="post">
                     @csrf
                     @method('PUT')
                     <div class="form-row align-items-center">

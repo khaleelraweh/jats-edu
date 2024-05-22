@@ -226,6 +226,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('courses/remove-image', [CourseController::class, 'remove_image'])->name('courses.remove_image');
         Route::resource('courses', CourseController::class);
 
+        Route::match(['put', 'patch'], 'admin/courses/{course}/status', [CourseController::class, 'updateStatus'])
+            ->name('courses.update_course_status');
+
         Route::post('events/remove-image', [EventController::class, 'remove_image'])->name('events.remove_image');
         Route::resource('events', EventController::class);
 

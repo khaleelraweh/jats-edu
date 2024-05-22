@@ -401,4 +401,16 @@ class CourseController extends Controller
 
         return true;
     }
+
+
+    public function updateStatus(Request $request, $course)
+    {
+        $course = Course::where('id', $course)->first();
+        $course->update(['course_status' => $request->course_status]);
+
+        return back()->with([
+            'message' => 'updated successfully',
+            'alert-type' => 'success',
+        ]);
+    }
 }

@@ -53,7 +53,7 @@
                             <th>{{ __('panel.price') }}</th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
                             <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
-                            <th class="d-none d-sm-table-cell"> {{ __('panel.views') }} </th>
+                            <th class="d-none d-sm-table-cell"> {{ __('panel.send_for_review') }} </th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.status') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
@@ -87,7 +87,7 @@
                                 <td>{{ $course->price }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $course->created_by }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $course->created_at }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $course->views }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $course->send_for_review }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $course->status() }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">

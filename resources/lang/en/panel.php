@@ -151,6 +151,7 @@ return [
     'instructor_tab'                =>  'instructors',
     'instructors'                   =>  'instructors',
     'instructor'                    =>  'instructor',
+    'send_for_review'               =>  'Send for Review',
 
 
     // Course Topics  

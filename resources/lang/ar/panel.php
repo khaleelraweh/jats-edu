@@ -151,6 +151,8 @@ return [
     'instructors'                 =>  'المحاضرون',
     'instructor'                  =>  'المحاضر',
 
+    'send_for_review'               =>  'ارسلت للتحقق',
+
 
 
     // course topics  

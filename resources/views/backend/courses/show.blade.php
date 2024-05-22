@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+    {{-- first section --}}
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -100,6 +101,7 @@
 
     </div>
 
+    {{-- second section  --}}
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -148,6 +150,82 @@
                     </div>
                     <div class="col-sm-12"></div>
                 </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    {{-- third sectin  --}}
+    <div class="card shadow mb-4">
+
+        {{-- breadcrumb part  --}}
+        <div class="card-header py-3 d-flex flex-column flex-sm-row justify-content-between">
+
+            <div class="card-naving">
+                <h3 class="font-weight-bold text-primary">
+                    <i class="fa fa-edit"></i>
+                    {{ __('transf.course_info_tab') }}
+                </h3>
+
+            </div>
+
+            <div class="ml-auto mt-3 mt-sm-0">
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-8">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th>{{ __('transf.Course Language') }}</th>
+                                <td>{{ $course->language }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('transf.Course Level') }}</th>
+                                <td>
+                                    {{ $course->skill_level }}
+                                </td>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                                <th> {{ __('transf.Course type') }} </th>
+                                <td>{{ $course->course_type }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('transf.course_category_title') }}</th>
+                                <td>{{ $course->courseCategory->title }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('transf.certificate') }}</th>
+                                <td>{{ $course->certificate }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('transf.deadline_of_the_course') }}</th>
+                                <td>{{ $course->deadline }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                @php
+                    if ($course->photos->first() != null && $course->photos->first()->file_name != null) {
+                        $course_image = asset('assets/courses/' . $course->photos->first()->file_name);
+
+                        if (!file_exists(public_path('assets/courses/' . $course->photos->first()->file_name))) {
+                            $course_image = asset('image/not_found/item_image_not_found.webp');
+                        }
+                    } else {
+                        $course_image = asset('image/not_found/item_image_not_found.webp');
+                    }
+                @endphp
+                <img src="{{ $course_image }}" style="display: block;width:100%;height:200px;" alt="{{ $course->title }}">
             </div>
         </div>
 

@@ -145,7 +145,7 @@ class Course extends Model
 
     public function certificate()
     {
-        return $this->status ? __('panel.certificate_yes') : __('panel.certificate_no');
+        return $this->certificate ? __('panel.certificate_yes') : __('panel.certificate_no');
     }
 
     public function language()

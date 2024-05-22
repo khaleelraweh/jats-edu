@@ -183,19 +183,19 @@
                         <tbody>
                             <tr>
                                 <th>{{ __('transf.Course Language') }}</th>
-                                <td>{{ $course->language }}</td>
+                                <td>{{ $course->language() }}</td>
                             </tr>
                             <tr>
                                 <th>{{ __('transf.Course Level') }}</th>
                                 <td>
-                                    {{ $course->skill_level }}
+                                    {{ $course->skill_level() }}
                                 </td>
                             </tr>
                             <tr>
                             </tr>
                             <tr>
                                 <th> {{ __('transf.Course type') }} </th>
-                                <td>{{ $course->course_type }}</td>
+                                <td>{{ $course->course_type() }}</td>
                             </tr>
                             <tr>
                                 <th>{{ __('transf.course_category_title') }}</th>
@@ -203,11 +203,12 @@
                             </tr>
                             <tr>
                                 <th>{{ __('transf.certificate') }}</th>
-                                <td>{{ $course->certificate }}</td>
+                                <td>{{ $course->certificate() }}</td>
                             </tr>
                             <tr>
                                 <th>{{ __('transf.deadline_of_the_course') }}</th>
                                 <td>{{ $course->deadline }}</td>
+
                             </tr>
                         </tbody>
                     </table>

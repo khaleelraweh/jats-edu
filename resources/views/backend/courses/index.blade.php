@@ -91,6 +91,9 @@
                                 <td class="d-none d-sm-table-cell">{{ $course->status() }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
+                                        <a href="{{ route('admin.courses.show', $course->id) }}" class="btn btn-success">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
                                         <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>

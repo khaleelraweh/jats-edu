@@ -76,7 +76,7 @@ class Course extends Model
     public function statusWithLabel()
     {
 
-        switch ($this->order_status) {
+        switch ($this->course_status) {
             case 0:
                 $result = '<label class="badge bg-success text-light">' .  __('panel.course_new_course')  . '</label>';
                 break;

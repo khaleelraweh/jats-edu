@@ -172,13 +172,35 @@ class CourseController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show($course)
     {
         if (!auth()->user()->ability('admin', 'display_courses')) {
             return redirect('admin/index');
         }
 
-        return view('backend.courses.show');
+
+        $course = Course::where('id', $course)->first();
+
+
+        $course_status_array = [
+            '0' =>  __('panel.course_new_course'),
+            '1' =>  __('panel.course_completed'),
+            '2' =>  __('panel.course_under_process'),
+            '3' =>  __('panel.course_review_finished'),
+            '4' =>  __('panel.course_published'),
+            '5' =>  __('panel.coure_rejected'),
+        ];
+
+        $key = array_search($course->course_status, array_keys($course_status_array));
+
+        // This will delete order status element from order_status_array if its key is les or equail t order status in the table orders
+        foreach ($course_status_array as $k => $v) {
+            if ($k <= $key) {
+                unset($course_status_array[$k]);
+            }
+        }
+
+        return view('backend.courses.show', compact('course', 'course_status_array'));
     }
 
     public function edit($course)

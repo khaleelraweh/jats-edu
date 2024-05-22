@@ -13,7 +13,7 @@
                         <p class="text-muted">{{ __('transf.Course Data Confirmed successfully tips') }}</p>
 
                         {{-- @if (!$sendViewStatus || !$course->send_for_review == true) --}}
-                        @if ($course->course_status == \App\Models\Course::COURSE_COMPLETED)
+                        @if ($course->course_status == 1 && $course->course_status > 2)
                             <button class="btn btn-sm btn-primary px-2 py-2" wire:click.prevent="sendForReview()">
                                 {{ __('transf.Send For Review') }}
                             </button>

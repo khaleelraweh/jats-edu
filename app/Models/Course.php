@@ -39,9 +39,9 @@ class Course extends Model
 
 
 
-    const NEW_COURSE = 0; // when he start the course
+    const NEW_COURSE = 0;        // when he start the course
     const COURSE_COMPLETED = 1;  // when the validation is finished
-    const UNDER_PROCESS = 2;    // When he clicked to send for  review Course
+    const UNDER_PROCESS = 2;     // When he clicked to send for  review Course
     const FINISHED = 3;         // when the admin is finishing the review 
     const PUBLISHED = 5;        // when admin allow to publish the course the status will be true 
     const REJECTED = 4;         // when admin reject published course or reject course the status will be false

@@ -22,7 +22,7 @@
                         @if ($course->course_status == 2)
                             <span
                                 class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
-                                <i class="mdi mdi-check-circle-outline text-white display-6 me-3"></i>
+                                <i class="mdi mdi-book-open-page-variant text-white display-6 me-3"></i>
                                 {{ __('transf.Course send for admin review successfully!') }}
                             </span>
                         @endif

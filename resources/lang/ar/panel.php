@@ -154,6 +154,16 @@ return [
     'send_for_review'               =>  'ارسلت للتحقق',
 
 
+    // Course status 
+    'course_new_course'             =>  'جديد',
+    'course_completed'              =>  'مكتمل',
+    'course_under_process'          =>  'تحت المعالجة',
+    'course_review_finished'        =>  'انتهت المراجعة',
+    'course_published'              =>  'نشرت',
+    'coure_rejected'                =>  'مرفوض',
+
+
+
 
     // course topics  
     'course_topics_tab'                         =>  'مواضيع الدورة',

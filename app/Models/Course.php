@@ -47,6 +47,58 @@ class Course extends Model
     const REJECTED = 5;         // when admin reject published course or reject course the status will be false
 
 
+    public function course_status()
+    {
+
+        switch ($this->course_status) {
+            case 0:
+                $result = __('panel.course_new_course');
+                break;
+            case 1:
+                $result = __('panel.course_completed');
+                break;
+            case 2:
+                $result = __('panel.course_under_process');
+                break;
+            case 3:
+                $result = __('panel.course_review_finished');
+                break;
+            case 4:
+                $result = __('panel.course_published');
+                break;
+            case 5:
+                $result = __('panel.coure_rejected');
+                break;
+        }
+        return $result;
+    }
+
+    public function statusWithLabel()
+    {
+
+        switch ($this->order_status) {
+            case 0:
+                $result = '<label class="badge bg-success text-light">' .  __('panel.course_new_course')  . '</label>';
+                break;
+            case 1:
+                $result = '<label class="badge bg-warning text-light">' . __('panel.course_completed') . '</label>';
+                break;
+            case 2:
+                $result = '<label class="badge bg-warning text-light">' .  __('panel.course_under_process') . '</label>';
+                break;
+            case 3:
+                $result = '<label class="badge bg-primary text-light">' . __('panel.course_review_finished') . '</label>';
+                break;
+            case 4:
+                $result = '<label class="badge bg-danger text-light">' . __('panel.course_published') . '</label>';
+                break;
+            case 5:
+                $result = '<label class="badge bg-dark text-light">' . __('panel.coure_rejected') . '</label>';
+                break;
+        }
+        return $result;
+    }
+
 
     // for slug 
     public function getSlugOptions(): SlugOptions

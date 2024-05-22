@@ -21,7 +21,7 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.courses.index') }}">
-                            {{ __('panel.show_course') }}
+                            {{ __('panel.show_courses') }}
                         </a>
                     </li>
                 </ul>

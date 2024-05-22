@@ -162,6 +162,10 @@ return [
     'course_published'              =>  'نشرت',
     'coure_rejected'                =>  'مرفوض',
 
+    'course_status'                             =>  'حالة الدورة',
+    'course_choose_appropriate_event'           =>  'اختر الحدث المناسب',
+
+
 
 
 

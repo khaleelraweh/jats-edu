@@ -154,12 +154,16 @@ return [
     'send_for_review'               =>  'Send for Review',
 
     // Course status 
-    'course_new_course'             =>  'New',
-    'course_completed'              =>  ' Completed',
-    'course_under_process'          =>  'Under Proccess',
-    'course_review_finished'        =>  'Finished Review',
-    'course_published'              =>  'Published',
-    'coure_rejected'                =>  'Rejected',
+    'course_new_course'                         =>  'New',
+    'course_completed'                          =>  ' Completed',
+    'course_under_process'                      =>  'Under Proccess',
+    'course_review_finished'                    =>  'Finished Review',
+    'course_published'                          =>  'Published',
+    'coure_rejected'                            =>  'Rejected',
+
+    'course_status'                             =>  'Course Status',
+    'course_choose_appropriate_event'           =>  'Choose the appropriate event',
+
 
 
     // Course Topics  

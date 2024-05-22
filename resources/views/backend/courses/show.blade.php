@@ -132,7 +132,7 @@
                             <a href="{{ $course->video_promo }}"
                                 class="d-flex justify-content-center align-items-center sk-thumbnail rounded mb-1"
                                 data-fancybox>
-                                <div
+                                <div style="width: 50px;height:50px;"
                                     class="h-60p w-60p rounded-circle bg-white size-20-all d-inline-flex align-items-center justify-content-center position-absolute center z-index-1">
                                     <!-- Icon -->
                                     <svg width="14" height="16" viewBox="0 0 14 16"
@@ -144,7 +144,8 @@
 
                                 </div>
 
-                                <img class="rounded shadow-light-lg" src="{{ $course_image }}" alt="...">
+                                <img class="rounded shadow-light-lg" style="width:350px;height:200px;"
+                                    src="{{ $course_image }}" alt="...">
                             </a>
                         </div>
                     </div>

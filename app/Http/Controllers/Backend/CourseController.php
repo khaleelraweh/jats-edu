@@ -408,6 +408,12 @@ class CourseController extends Controller
         $course = Course::where('id', $course)->first();
         $course->update(['course_status' => $request->course_status]);
 
+        if ($request->course_status == 4) {
+            $course->update(['status' => true]);
+        } else if ($request->course_status == 5) {
+            $course->update(['status' => false]);
+        }
+
         return back()->with([
             'message' => 'updated successfully',
             'alert-type' => 'success',

@@ -12,7 +12,8 @@
                         <h5>{{ __('transf.Course Data Confirmed successfully') }}</h5>
                         <p class="text-muted">{{ __('transf.Course Data Confirmed successfully tips') }}</p>
 
-                        @if (!$sendViewStatus)
+                        {{-- @if (!$sendViewStatus || !$course->send_for_review == true) --}}
+                        @if ($course->send_for_review == false)
                             <button class="btn btn-sm btn-primary px-2 py-2" wire:click.prevent="sendForReview()">
                                 {{ __('transf.Send For Review') }}
                             </button>

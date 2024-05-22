@@ -43,7 +43,7 @@
                         @if ($course->course_status == 5)
                             <span
                                 class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
-                                <i class="mdi mdi-check-circle-outline text-white display-6 me-3"></i>
+                                <i class="mdi mdi-alert-circle text-white display-6 me-3"></i>
                                 {{ __('transf.The course was rejected because it did not meet our publishing standards. Please check the course contents and try again') }}
                             </span>
                         @endif

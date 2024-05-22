@@ -15,6 +15,8 @@ class CourseDetailsConfirmationComponent extends Component
     public $courseId;
     public $course;
 
+    public $sendViewStatus = false;
+
 
     // General validation 
     public $databaseDataValid           = false;
@@ -196,6 +198,8 @@ class CourseDetailsConfirmationComponent extends Component
             'send_for_review'   =>  true,
         ]);
 
-        $this->alert('success', 'Course send for admin review successfully !');
+        $this->sendViewStatus = true;
+
+        $this->alert('success', __('transf.Course send for admin review successfully!'));
     }
 }

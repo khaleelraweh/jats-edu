@@ -556,6 +556,8 @@ return [
     'Course Data Confirmed successfully'                =>  'تم تأكيد بيانات الدورة بنجاح',
     'Course Data Confirmed successfully tips'           =>  'تم التحقق من كافة الحقول التي يجب إدخال البيانات فيها وفقاً للقواعد المطبقة على هذه الحقول',
     'Send For Review'                                   =>  'إرسال من اجل المراجعة',
+    'Course send for admin review successfully!'        =>  'تم إرسال الدورة لمراجعة المشرف بنجاح!',
+
 
     'Confirm the compulsory course information'         => 'تاكيد بيانات الدورة الاجبارية',
     'Confirm the compulsory course information tips'    => 'يجب إدخال جميع الحقول الإجبارية من اجل المصادقة على الدورة من قبل الإدارة للسماح بنشرها في الموقع للطلبة ',

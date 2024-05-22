@@ -34,7 +34,7 @@
                 <label for="status" class="control-label col-md-2 col-sm-12 ">
                     <span>{{ __('panel.status') }}</span>
                 </label>
-                <select name="status" class="form-control" wire:model.defer="status">
+                <select disabled name="status" class="form-control" wire:model.defer="status">
                     <option value="1">{{ __('panel.status_active') }}</option>
                     <option value="0">{{ __('panel.status_inactive') }}</option>
                 </select>

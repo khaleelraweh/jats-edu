@@ -215,18 +215,44 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-4">
-                @php
-                    if ($course->photos->first() != null && $course->photos->first()->file_name != null) {
-                        $course_image = asset('assets/courses/' . $course->photos->first()->file_name);
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th>{{ __('panel.price') }} </th>
+                                <td>{{ $course->price }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('panel.offer_price') }}</th>
+                                <td>
+                                    {{ $course->offer_price }}
+                                </td>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                                <th> {{ __('panel.offer_ends') }} </th>
+                                <td>{{ $course->offer_ends }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('panel.published_date') }}</th>
+                                <td>{{ $course->published_on }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('panel.status') }}</th>
+                                <td>{{ $course->status() }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('transf.Descriptional video') }}</th>
+                                <td>
+                                    <a href="{{ $course->video_description }}">Click here to see</a>
 
-                        if (!file_exists(public_path('assets/courses/' . $course->photos->first()->file_name))) {
-                            $course_image = asset('image/not_found/item_image_not_found.webp');
-                        }
-                    } else {
-                        $course_image = asset('image/not_found/item_image_not_found.webp');
-                    }
-                @endphp
-                <img src="{{ $course_image }}" style="display: block;width:100%;height:200px;" alt="{{ $course->title }}">
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 

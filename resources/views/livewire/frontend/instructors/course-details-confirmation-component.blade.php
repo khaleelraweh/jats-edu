@@ -13,15 +13,38 @@
                         <p class="text-muted">{{ __('transf.Course Data Confirmed successfully tips') }}</p>
 
                         {{-- @if (!$sendViewStatus || !$course->send_for_review == true) --}}
-                        @if ($course->course_status == 1 && $course->course_status > 2)
+                        @if ($course->course_status == 1)
                             <button class="btn btn-sm btn-primary px-2 py-2" wire:click.prevent="sendForReview()">
                                 {{ __('transf.Send For Review') }}
                             </button>
-                        @else
+                        @endif
+
+                        @if ($course->course_status == 2)
                             <span
                                 class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
                                 <i class="mdi mdi-check-circle-outline text-white display-6 me-3"></i>
                                 {{ __('transf.Course send for admin review successfully!') }}
+                            </span>
+                        @endif
+                        @if ($course->course_status == 3)
+                            <span
+                                class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
+                                <i class="mdi mdi-check-circle-outline text-white display-6 me-3"></i>
+                                {{ __('transf.Course review finished by adminstration successfully!') }}
+                            </span>
+                        @endif
+                        @if ($course->course_status == 4)
+                            <span
+                                class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
+                                <i class="mdi mdi-check-circle-outline text-white display-6 me-3"></i>
+                                {{ __('transf.The course was successfully accepted and published by the administration') }}
+                            </span>
+                        @endif
+                        @if ($course->course_status == 5)
+                            <span
+                                class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
+                                <i class="mdi mdi-check-circle-outline text-white display-6 me-3"></i>
+                                {{ __('transf.The course was rejected because it did not meet our publishing standards. Please check the course contents and try again') }}
                             </span>
                         @endif
 

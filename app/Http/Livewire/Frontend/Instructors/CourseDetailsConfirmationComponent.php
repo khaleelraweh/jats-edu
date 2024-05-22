@@ -89,9 +89,11 @@ class CourseDetailsConfirmationComponent extends Component
         ]);
 
         if ($progressPercentage == 100) {
-            $course->update([
-                'course_status'  => Course::COURSE_COMPLETED,
-            ]);
+            if ($course->course_status <= 1) {
+                $course->update([
+                    'course_status'  => Course::COURSE_COMPLETED,
+                ]);
+            }
         }
 
 

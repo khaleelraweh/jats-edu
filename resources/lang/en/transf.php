@@ -551,6 +551,11 @@ return [
     'Send For Review'                                   =>  'Send For Review',
     'Course send for admin review successfully!'        =>  'Course send for admin review successfully!',
 
+    'Course review finished by adminstration successfully!' =>  'Course review finished by adminstration successfully!',
+    'The course was successfully accepted and published by the administration'  =>  'The course was successfully accepted and published by the administration',
+    'The course was rejected because it did not meet our publishing standards. Please check the course contents and try again' => 'The course was rejected because it did not meet our publishing standards. Please check the course contents and try again',
+
+
     'Confirm the compulsory course information'         => 'Confirm the compulsory course information',
     'Confirm the compulsory course information tips'    => 'All mandatory fields must be entered in order for the course to be approved by the administration to allow it to be published on the site for students',
 

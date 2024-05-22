@@ -125,9 +125,11 @@
             </div>
             <div class="col-xs-12 col-sm-4">
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 p-4">
                         <div class="d-block d-block rounded border p-2 shadow mb-6 bg-white">
-                            <a href="{{ $course->video_promo }}" class="d-block sk-thumbnail rounded mb-1" data-fancybox>
+                            <a href="{{ $course->video_promo }}"
+                                class="d-flex justify-content-center align-items-center sk-thumbnail rounded mb-1"
+                                data-fancybox>
                                 <div
                                     class="h-60p w-60p rounded-circle bg-white size-20-all d-inline-flex align-items-center justify-content-center position-absolute center z-index-1">
                                     <!-- Icon -->

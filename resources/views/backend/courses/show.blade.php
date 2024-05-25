@@ -266,7 +266,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    Objectives and Requirements
+                    {{ __('transf.intended_learners') }}
                 </h3>
 
             </div>

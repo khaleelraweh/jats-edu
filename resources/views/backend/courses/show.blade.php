@@ -257,6 +257,7 @@
 
 
     </div>
+
     {{-- Course Objective  --}}
     <div class="card shadow mb-4">
 
@@ -343,6 +344,69 @@
                     </table>
                 </div>
             </div>
+        </div>
+
+
+    </div>
+
+
+    {{-- Course Curriculum  --}}
+    <div class="card shadow mb-4">
+
+        {{-- breadcrumb part  --}}
+        <div class="card-header py-3 d-flex flex-column flex-sm-row justify-content-between">
+
+            <div class="card-naving">
+                <h3 class="font-weight-bold text-primary">
+                    <i class="fa fa-edit"></i>
+                    {{ __('transf.curriculum') }}
+                </h3>
+
+            </div>
+            <div class="card-naving">
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+
+                @if ($course->sections != null && $course->sections->isNotEmpty())
+                    @foreach ($course->sections as $section)
+                        <div class="card-naving pt-3">
+                            <h3 class="font-weight-bold text-primary h4">
+                                <i class="fa fa-edit"></i>
+                                {{ $section->title }}
+                            </h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <th>Title</th>
+                                    <th>Url</th>
+                                    <th>Duration</th>
+                                </thead>
+                                <tbody>
+                                    @if ($section->lessons != null && $section->lessons->isNotEmpty())
+                                        @foreach ($section->lessons as $lesson)
+                                            <tr>
+                                                <th>{{ $lesson->title }}</th>
+                                                <td> <a href="{{ $lesson->url }}">click here to see video</a></td>
+                                                <td> {{ $lesson->duration_minutes }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+
+                                </tbody>
+                            </table>
+                        </div>
+                    @endforeach
+                @endif
+
+
+            </div>
+
         </div>
 
 

@@ -78,22 +78,22 @@ class Course extends Model
 
         switch ($this->course_status) {
             case 0:
-                $result = '<label class="badge bg-success text-light">' .  __('panel.course_new_course')  . '</label>';
+                $result = '<label class="badge bg-success text-light p-2">' .  __('panel.course_new_course')  . '</label>';
                 break;
             case 1:
-                $result = '<label class="badge bg-warning text-light">' . __('panel.course_completed') . '</label>';
+                $result = '<label class="badge bg-warning text-light p-2">' . __('panel.course_completed') . '</label>';
                 break;
             case 2:
-                $result = '<label class="badge bg-warning text-light">' .  __('panel.course_under_process') . '</label>';
+                $result = '<label class="badge bg-warning text-light p-2">' .  __('panel.course_under_process') . '</label>';
                 break;
             case 3:
-                $result = '<label class="badge bg-primary text-light">' . __('panel.course_review_finished') . '</label>';
+                $result = '<label class="badge bg-primary text-light p-2">' . __('panel.course_review_finished') . '</label>';
                 break;
             case 4:
-                $result = '<label class="badge bg-danger text-light">' . __('panel.course_published') . '</label>';
+                $result = '<label class="badge bg-danger text-light p-2">' . __('panel.course_published') . '</label>';
                 break;
             case 5:
-                $result = '<label class="badge bg-dark text-light">' . __('panel.coure_rejected') . '</label>';
+                $result = '<label class="badge bg-dark text-light p-2">' . __('panel.coure_rejected') . '</label>';
                 break;
         }
         return $result;

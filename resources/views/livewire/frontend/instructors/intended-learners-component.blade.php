@@ -148,7 +148,7 @@
             </div>
         </div>
 
-        {{-- Intended Learners --}}
+        {{-- Intended Learnerss --}}
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-start">
                 <div>

@@ -257,4 +257,93 @@
 
 
     </div>
+    {{-- Course Objective  --}}
+    <div class="card shadow mb-4">
+
+        {{-- breadcrumb part  --}}
+        <div class="card-header py-3 d-flex flex-column flex-sm-row justify-content-between">
+
+            <div class="card-naving">
+                <h3 class="font-weight-bold text-primary">
+                    <i class="fa fa-edit"></i>
+                    Objectives and Requirements
+                </h3>
+
+            </div>
+            <div class="card-naving">
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="card-naving pt-3">
+                    <h3 class="font-weight-bold text-primary">
+                        <i class="fa fa-edit"></i>
+                        {{ __('transf.what_will_students_learn_in_your_course?') }}
+                    </h3>
+
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+
+                            @if ($course->objectives != null && $course->objectives->isNotEmpty())
+                                @foreach ($course->objectives as $index => $item)
+                                    <tr>
+                                        <th style="width: 45px;">{{ $index }} - </th>
+                                        <td> {{ $item->title }}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th>{{ __('panel.price') }} </th>
+                                <td>{{ $course->price }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('panel.offer_price') }}</th>
+                                <td>
+                                    {{ $course->offer_price }}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th> {{ __('panel.offer_ends') }} </th>
+                                <td>{{ $course->offer_ends }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('panel.published_date') }}</th>
+                                <td>{{ $course->published_on }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('panel.status') }}</th>
+                                <td>{{ $course->status() }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('transf.Descriptional video') }}</th>
+                                <td>
+                                    <a href="{{ $course->video_description }}">Click here to see</a>
+
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 @endsection

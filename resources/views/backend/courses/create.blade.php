@@ -89,7 +89,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="course_topics-tab" data-bs-toggle="tab" data-bs-target="#course_topics"
                             type="button" role="tab" aria-controls="course_topics"
-                            aria-selected="true">{{ __('panel.course_topics_tab') }}
+                            aria-selected="true">{{ __('panel.course_objectives_tab') }}
                         </button>
                     </li>
 
@@ -274,7 +274,7 @@
 
                         </div>
 
-                        {{-- course type and evaluation --}}
+                        {{-- course type  --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="course_type">{{ __('panel.course_type') }}</label>
@@ -411,7 +411,7 @@
                                 <tbody>
                                     <tr class="cloning_row" id="0">
                                         <td>#</td>
-                                        <td>course topic (0) </td>
+                                        <td>{{ __('panel.course_objective') }} (0) </td>
                                         <td>
                                             <input type="text" name="course_topic[0]" id="course_topic"
                                                 class="course_topic form-control">
@@ -794,7 +794,7 @@
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
                     '<td>' +
-                    '<span>{{ __('panel.course_topic') }} (' + numberIncr + ')</span></td>' +
+                    '<span>{{ __('panel.course_objective') }} (' + numberIncr + ')</span></td>' +
                     '<td><input type="text" name="course_topic[' + numberIncr +
                     ']" class="course_topic form-control"></td>' +
                     '</tr>'));

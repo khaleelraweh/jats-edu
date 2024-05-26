@@ -31,6 +31,8 @@ class PaymentController extends Controller
     public function checkout_now(Request $request)
     {
 
+
+
         if ($request->paymentMethod == 'paypal') {
             $order = (new OrderService)->createOrder($request->except(['_token', 'submit']));
             $paypal = new PaypalService('PayPal_Rest');
@@ -105,26 +107,26 @@ class PaymentController extends Controller
             $order = (new OrderService)->createOrder($request->except(['_token', 'submit']));
 
             if ($order) {
+
+                // Handle the file upload
+                if ($request->hasFile('bankReceipt')) {
+                    $file = $request->file('bankReceipt');
+                    $filename = time() . '_' . $file->getClientOriginalName();
+                    $path = $file->storeAs('orders', $filename, 'public');
+
+                    // Update the order with the file path
+                    $order->update([
+                        'bankAccNumber' =>  $request->bankAccNumber,
+                        'bankReceipt'   =>  $path,
+                    ]);
+                }
+
                 $order->update([
                     'bankAccNumber' =>  $request->bankAccNumber,
                     'bankReceipt'   =>  $request->bankReceipt,
                 ]);
 
-
-
-                if ($request->bankReceipt && count($request->bankReceipt) > 0) {
-                    foreach ($request->bankReceipt as $image) {
-
-                        $file_name = $order->id . '_' . time()  . '.' . $image->getClientOriginalExtension();
-                        $file_size = $image->getSize();
-                        $file_type = $image->getMimeType();
-                        $path = public_path('assets/orders/' . $file_name);
-
-                        Image::make($image->getRealPath())->save($path);
-                    }
-                    dd($request->bankReceipt);
-                }
-
+                // upload image to assets/orders 
 
 
                 $order->transactions()->create(

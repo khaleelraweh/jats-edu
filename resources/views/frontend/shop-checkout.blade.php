@@ -25,8 +25,8 @@
 
     <!-- SHOP CHECKOUT -->
     <div class="container pb-6 pb-xl-10">
-        <form action="{{ route('checkout.payment') }}" name="checkout" method="post" class="checkout woocommerce-checkout"
-            novalidate="">
+        <form action="{{ route('checkout.payment') }}" name="checkout" method="post" enctype="multipart/form-data"
+            class="checkout woocommerce-checkout" novalidate="">
             @csrf
 
             <div class="col2-set" id="customer_details">
@@ -190,14 +190,13 @@
                                                     </p>
                                                     <p class="form-row form-row-last validate-required validate-email"
                                                         id="billing_email_field" data-priority="110">
-                                                        <label for="bankReceipt" class="">
+                                                        <label for="images" class="">
                                                             {{ __('panel.f_copy_of_the_transfer_receipt') }}
                                                             <abbr class="required" title="required">*</abbr>
                                                         </label>
-                                                        <input type="file" name="bankReceipt" id="bankReceipt"
+                                                        <input type="file" name="bankReceipt" id="images"
                                                             class="form-control input-text form-control--sm ">
                                                     </p>
-
                                                 </div>
                                             </div>
                                         </div>

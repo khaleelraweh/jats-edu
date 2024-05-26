@@ -110,9 +110,11 @@ class PaymentController extends Controller
 
                 // Handle the file upload
                 if ($request->hasFile('bankReceipt')) {
-                    $file = $request->file('bankReceipt');
-                    $filename = time() . '_' . $file->getClientOriginalName();
-                    $path = $file->storeAs('orders', $filename, 'public');
+                    $image  = $request->bankReceipt;
+                    $file_name = $order->id . '_' . time() . '.' . $image->getClientOriginalExtension();
+                    $path = public_path('assets/orders/' . $file_name);
+                    Image::make($image->getRealPath())->save($path);
+
 
                     $order->update([
                         'bankAccNumber' =>  $request->bankAccNumber,
@@ -121,7 +123,9 @@ class PaymentController extends Controller
                 }
 
 
-                // upload image to assets/orders 
+
+
+
 
 
                 $order->transactions()->create(

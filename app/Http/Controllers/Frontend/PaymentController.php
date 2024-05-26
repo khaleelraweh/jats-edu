@@ -118,15 +118,9 @@ class PaymentController extends Controller
 
                     $order->update([
                         'bankAccNumber' =>  $request->bankAccNumber,
-                        'bankReceipt'   =>  $request->bankReceipt,
+                        'bankReceipt'   =>  $file_name,
                     ]);
                 }
-
-
-
-
-
-
 
                 $order->transactions()->create(
                     ['transaction' => OrderTransaction::NEW_ORDER]

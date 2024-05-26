@@ -152,7 +152,7 @@
                                     <div class="col-sm-12 pt-3">
                                         <div class="form-group">
                                             <label for="subtitle">
-                                                {{ __('panel.subtitle') }}
+                                                {{ __('transf.Course subtitle') }}
                                             </label>
                                             <div class="input-group">
                                                 <input type="text" name="subtitle" id="subtitle"

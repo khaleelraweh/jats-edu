@@ -103,6 +103,37 @@ class PaymentController extends Controller
             $order = (new OrderService)->createOrder($request->except(['_token', 'submit']));
 
             if ($order) {
+                $order->update([
+                    'bankAccNumber' =>  $request->bankAccNumber,
+                    'bankReceipt'   =>  $request->bankReceipt,
+                ]);
+
+                $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
+                $order->transactions()->create([
+                    'transaction' => OrderTransaction::PAYMENT_COMPLETED,
+                    // 'transaction_number' => $response->getTransactionReference(),
+                    'transaction_number' => 4,
+                    'payment_result' => 'success',
+                ]);
+
+                if (session()->has('coupon')) {
+                    $coupon = Coupon::where('code->' . app()->getLocale(), session()->get('coupon')['code'])->first();
+                    $coupon->increment('used_times');
+                }
+
+                Cart::instance('default')->destroy();
+                session()->forget([
+                    'coupon',
+                    'saved_customer_address_id',
+                    'saved_shipping_company_id',
+                    'saved_payment_method_id',
+                    'shipping',
+                ]);
+
+
+                toast(__('panel.f_your_recent_payment_successful_with_refrence_code') . '10', 'success');
+
+                return redirect()->route('frontend.index');
             }
         }
     }

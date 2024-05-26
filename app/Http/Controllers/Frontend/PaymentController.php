@@ -16,6 +16,8 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Paytabscom\Laravel_paytabs\Facades\paypage;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class PaymentController extends Controller
 {
@@ -107,6 +109,20 @@ class PaymentController extends Controller
                     'bankAccNumber' =>  $request->bankAccNumber,
                     'bankReceipt'   =>  $request->bankReceipt,
                 ]);
+
+                if ($order_image = $request->file('bankReceipt')) {
+                    if ($order->bankReceipt != '') {
+                        if (File::exists('assets/orders/' . $order->bankReceipt)) {
+                            unlink('assets/orders/' . $order->bankReceipt);
+                        }
+                    }
+
+                    $file_name = $order->id . '.' . $order_image->extension();
+                    $path = public_path('assets/orders/' . $file_name);
+                    Image::make($order_image->getRealPath())->resize(300, null, function ($constraints) {
+                        $constraints->aspectRatio();
+                    })->save($path, 100);
+                }
 
                 $order->transactions()->create(
                     ['transaction' => OrderTransaction::NEW_ORDER]

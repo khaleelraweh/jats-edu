@@ -69,9 +69,6 @@ class CourseController extends Controller
 
         $input['skill_level']                   =   $request->skill_level;
         $input['language']                      =   $request->language;
-        $input['evaluation']                    =   $request->evaluation;
-        $input['lecture_numbers']               =   $request->lecture_numbers;
-        $input['course_duration']               =   $request->course_duration;
 
         // by alyemeni
         $input['video_promo']                   =  $request->video_promo;

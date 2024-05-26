@@ -548,11 +548,11 @@
                             <div class="col-sm-12 col-md-12 pt-3">
                                 <label for="status">{{ __('panel.status') }}</label>
                                 <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
-                                        {{ __('panel.status_active') }}
-                                    </option>
                                     <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
+                                    </option>
+                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
+                                        {{ __('panel.status_active') }}
                                     </option>
                                 </select>
                                 @error('status')
@@ -899,7 +899,8 @@
 
                 if (!isValid) {
                     alert(
-                    '{{ __('panel.msg_please_fill_in_all_requirement_fields_before_adding_new') }}');
+                        '{{ __('panel.msg_please_fill_in_all_requirement_fields_before_adding_new') }}'
+                    );
                     return false; // Prevent adding a new row if existing fields are empty
                 }
 

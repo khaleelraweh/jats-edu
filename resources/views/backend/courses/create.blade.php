@@ -414,8 +414,12 @@
                                         <td>#</td>
                                         <td>{{ __('panel.course_objective') }} (0) </td>
                                         <td>
-                                            <input type="text" name="course_objective[0]" id="course_objective"
-                                                class="course_objective form-control">
+                                            <div class="input-group">
+                                                <input type="text" name="course_objective[0]" id="course_objective"
+                                                    class="course_objective form-control" maxlength="160">
+                                                <span class="input-group-text" id="charCountCourseObjective">160</span>
+                                            </div>
+
                                             @error('course_objective')
                                                 <span class="help-block text-danger">{{ $message }}</span>
                                             @enderror
@@ -747,6 +751,20 @@
     <script>
         $(document).ready(function() {
 
+            // Function to initialize character counter for a specific input field
+            function initializeCharCounter($input) {
+                var $counter = $input.parent().find('.input-group-text');
+
+                // Update character count on input
+                $input.on('input', function() {
+                    var remainingChars = 160 - $(this).val().length;
+                    $counter.text(remainingChars);
+                });
+
+                // Trigger input event to update counter initially
+                $input.trigger('input');
+            }
+
             // Submit event handler for the form
             $('#my_form_id').on('submit', function(event) {
                 // Flag to track whether there are empty fields
@@ -789,24 +807,33 @@
                 }
 
                 // Add new row
+                var newRow = $('<tr class="cloning_row" id="' + numberIncr + '">' +
+                    '<td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
+                    '<td><span>{{ __('panel.course_objective') }} (' + numberIncr + ')</span></td>' +
+                    '<td>' +
+                    '<div class="input-group">' +
+                    '<input type="text" name="course_objective[' + numberIncr +
+                    ']" class="course_objective form-control" maxlength="160">' +
+                    '<span class="input-group-text">160</span>' +
+                    '</div>' +
+                    '</td>' +
+                    '</tr>');
+                $('#course_objectives_details tbody').append(newRow);
 
-                $('#course_objectives_details').find('tbody').append($('' +
-                    '<tr class="cloning_row" id="' + numberIncr + '">' +
-                    '<td>' +
-                    '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
-                    '<td>' +
-                    '<span>{{ __('panel.course_objective') }} (' + numberIncr + ')</span></td>' +
-                    '<td><input type="text" name="course_objective[' + numberIncr +
-                    ']" class="course_objective form-control"></td>' +
-                    '</tr>'));
+                // Initialize character counter for the new row
+                initializeCharCounter(newRow.find('input.course_objective'));
             });
-        });
 
+            // Initialize character counters for existing rows
+            $('#course_objectives_details tbody').find('input.course_objective').each(function() {
+                initializeCharCounter($(this));
+            });
 
-        $(document).on('click', '.delegated-btn', function(e) {
-            e.preventDefault();
-            $(this).parent().parent().remove();
-
+            // Remove row when delete button is clicked
+            $(document).on('click', '.delegated-btn', function(e) {
+                e.preventDefault();
+                $(this).closest('tr').remove();
+            });
         });
     </script>
 

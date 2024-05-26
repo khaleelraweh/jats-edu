@@ -171,6 +171,7 @@ return [
     'course_objectives_tab'                     =>  'Course Objectives',
     'txt_course_topics'                         =>  'Course Topics',
     'course_objective'                          =>  'Course Objective',
+    'course_objectives'                         =>  'Course Objectives',
     'btn_add_another_topic'                     =>  'Add another topic',
     'topic_in_ar'                               =>  'Topic in arabic',
     'topic_in_en'                               =>  'Topic in english',

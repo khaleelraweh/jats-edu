@@ -106,11 +106,11 @@ class CourseController extends Controller
         }
 
         // course topics start 
-        if ($request->course_topic != null) {
+        if ($request->course_objective != null) {
 
             $topics_list = [];
-            for ($i = 0; $i < count($request->course_topic); $i++) {
-                $topics_list[$i]['title'] = $request->course_topic[$i];
+            for ($i = 0; $i < count($request->course_objective); $i++) {
+                $topics_list[$i]['title'] = $request->course_objective[$i];
             }
 
             // dd($topics_list);

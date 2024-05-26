@@ -173,14 +173,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($order->courses as $product)
+                    @forelse ($order->courses as $course)
                         <tr>
                             {{-- <td><a
                                     href="{{ route('admin.products.show', $product->id) }}">{{ $product->product_name }}</a>
                             </td> --}}
-                            <td><a href="#">{{ $product->title }}</a>
+                            <td><a href="#">{{ $course->title }}</a>
                             </td>
-                            <td>{{ $product->pivot->quantity }}</td>
+                            <td>{{ $course->pivot->quantity }}</td>
                         </tr>
                     @empty
                         <tr>

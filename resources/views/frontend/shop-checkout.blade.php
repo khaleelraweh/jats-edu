@@ -103,7 +103,8 @@
                                     data-bs-parent="#accordionCurriculum">
                                     <!-- Content for Credit/Debit Card -->
                                     <div class="border-top px-5 py-4 min-height-70 d-md-flex align-items-center">
-                                        <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
+                                        you can pay using any type you want
+                                        <div class="d-none align-items-center me-auto mb-4 mb-md-0">
                                             <div class="ms-4">
                                                 <div class="woocommerce-billing-fields__field-wrapper">
                                                     <p class="form-row form-row-last validate-required validate-email"

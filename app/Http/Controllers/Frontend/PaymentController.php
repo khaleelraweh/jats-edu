@@ -101,6 +101,9 @@ class PaymentController extends Controller
             return $response;
         } elseif ($request->paymentMethod == 'kurimaBank') {
             $order = (new OrderService)->createOrder($request->except(['_token', 'submit']));
+
+            if ($order) {
+            }
         }
     }
 

@@ -153,28 +153,23 @@
                                 <!-- Accordion heading as radio button -->
                                 <div class="d-flex align-items-center" id="curriculumheadingThree">
                                     <h5 class="mb-0 w-100">
-
                                         <label
                                             class="d-flex align-items-center justify-content-between p-5 min-height-80 text-dark fw-medium collapse-accordion-toggle line-height-one">
-
                                             <label class="d-flex payment-card-head">
                                                 <input type="radio" class="accordion-radio me-4 text-dark d-flex"
                                                     name="paymentMethod" value="kurimaBank" data-bs-toggle="collapse"
                                                     data-bs-target="#CurriculumcollapseThree" aria-expanded="false"
                                                     aria-controls="CurriculumcollapseThree">
                                                 <i class="fas fa-credit-card mx-2"></i>
-                                                {{ __('transf.burima Bank') }}
+                                                {{ __('transf.Kurima Bank') }}
                                             </label>
-
-
                                             <label class="payment-card-icons">
                                                 <i class="fab fa-cc-visa"></i>
-
                                             </label>
-
                                         </label>
                                     </h5>
                                 </div>
+
                                 <!-- Accordion content -->
                                 <div id="CurriculumcollapseThree" class="collapse"
                                     aria-labelledby="curriculumheadingThree" data-bs-parent="#accordionCurriculum">
@@ -193,15 +188,12 @@
                                                             id="billing_number" placeholder="1234 5678 9012 3456"
                                                             value="" autocomplete="number">
                                                     </p>
-
-
                                                     <p class="form-row form-row-last validate-required validate-email"
                                                         id="billing_email_field" data-priority="110">
                                                         <label for="bankReceipt" class="">
                                                             {{ __('panel.f_copy_of_the_transfer_receipt') }}
                                                             <abbr class="required" title="required">*</abbr>
                                                         </label>
-
                                                         <input type="file" name="bankReceipt" id="bankReceipt"
                                                             class="form-control input-text form-control--sm ">
                                                     </p>

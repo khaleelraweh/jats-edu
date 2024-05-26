@@ -108,6 +108,10 @@ class PaymentController extends Controller
                     'bankReceipt'   =>  $request->bankReceipt,
                 ]);
 
+                $order->transactions()->create(
+                    ['transaction' => OrderTransaction::NEW_ORDER]
+                );
+
                 $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
                 $order->transactions()->create([
                     'transaction' => OrderTransaction::PAYMENT_COMPLETED,

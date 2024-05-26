@@ -114,17 +114,12 @@ class PaymentController extends Controller
                     $filename = time() . '_' . $file->getClientOriginalName();
                     $path = $file->storeAs('orders', $filename, 'public');
 
-                    // Update the order with the file path
                     $order->update([
                         'bankAccNumber' =>  $request->bankAccNumber,
-                        'bankReceipt'   =>  $path,
+                        'bankReceipt'   =>  $request->bankReceipt,
                     ]);
                 }
 
-                $order->update([
-                    'bankAccNumber' =>  $request->bankAccNumber,
-                    'bankReceipt'   =>  $request->bankReceipt,
-                ]);
 
                 // upload image to assets/orders 
 

@@ -169,9 +169,7 @@
 
                                             <label class="payment-card-icons">
                                                 <i class="fab fa-cc-visa"></i>
-                                                <i class="fab fa-cc-mastercard"></i>
-                                                <i class="fab fa-cc-amex"></i>
-                                                <i class="fab fa-cc-discover"></i>
+
                                             </label>
 
                                         </label>

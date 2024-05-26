@@ -124,6 +124,56 @@
             </div>
         </div>
     </div>
+
+
+    @if ($order->payment_method && $order->payment_method->name)
+        <div class="card shadow mb-4">
+
+            {{-- breadcrumb part  --}}
+            <div class="card-header py-3 d-flex flex-column flex-sm-row justify-content-between">
+                <div class="card-naving">
+                    <h3 class="font-weight-bold text-primary">
+                        <i class="fa fa-edit"></i>
+                        {{ __('panel.edit_existing_order') }}
+                    </h3>
+                </div>
+                <div class="ml-auto mt-3 mt-sm-0">
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-8">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tbody>
+
+                                <tr>
+                                    <th> {{ __('customer Bank ') }}</th>
+                                    <td>{{ $order->bankAccNumber }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    @php
+                        if ($order->bankReceipt != null) {
+                            $order_image = asset('assets/orders/' . $order->bankReceipt);
+
+                            if (!file_exists(public_path('assets/orders/' . $order->bankReceipt))) {
+                                $order_image = asset('image/not_found/item_image_not_found.webp');
+                            }
+                        } else {
+                            $order_image = asset('image/not_found/item_image_not_found.webp');
+                        }
+                    @endphp
+                    <img src="{{ $order_image }}" style="display: block;width:100%;height:200px;" alt="no image founded">
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">{{ __('panel.order_operations_on_demand') }}</h6>

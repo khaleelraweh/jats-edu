@@ -22,8 +22,9 @@ class OrderService
             $this->payment_method = 1;
         } elseif ($request['paymentMethod'] == 'creditDebit') {
             $this->payment_method = 2;
+        } elseif ($request['paymentMethod'] == 'kurimaBank') {
+            $this->payment_method = 4;
         }
-
 
         $order = Order::create([
             'ref_id'                => 'ORD-' . Str::random(15),

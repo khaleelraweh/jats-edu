@@ -146,6 +146,7 @@ return [
     'btn_go_to_course'                                  =>   'الذهاب الى الدورة',
     'btn_go_to_your_course_dashboard'                   =>   'انتقل إلى لوحة تحكم الدورة التدريبية الخاصة بك',
     'btn_enroll'                                        =>  'سجل الآن',
+    'btn_waiting_for_supervisor_check'                  =>  'في انتظار فحص المشرف لبيانات الدفع',
     'course_duration'                                   =>  'مدة الكورس',
     'lecture_numbers'                                   =>  'عدد المحاضرات',
     'language'                                          =>  'لغة الدورة',

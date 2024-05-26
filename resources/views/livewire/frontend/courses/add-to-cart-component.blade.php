@@ -15,8 +15,25 @@
     @endphp
 
     @if ($isEnrolled)
-        <a href="{{ route('customer.lesson_single', $course->slug) }}"
-            class="btn btn-blue btn-block mb-6">{{ __('transf.btn_go_to_course') }}</a>
+        {{-- to check if the order is finished or not  --}}
+
+        @php
+            // Check if the user is already enrolled in the course
+            $isOrderFinished = App\Models\Order::where('user_id', $userId)
+                ->whereHas('courses', function ($query) use ($courseId) {
+                    $query->where('course_id', $courseId);
+                })
+                ->where('order_status', 3)
+                ->exists();
+        @endphp
+
+        @if ($isOrderFinished)
+            <a href="{{ route('customer.lesson_single', $course->slug) }}"
+                class="btn btn-blue btn-block mb-6">{{ __('transf.btn_go_to_course') }}</a>
+        @else
+            <a href="javascript::void()"
+                class="btn btn-blue btn-block mb-6">{{ __('transf.btn_waiting_for_supervisor_check') }}</a>
+        @endif
     @else
         @php
             $duplicates = Cart::instance('default')->search(function ($cartItem, $rowId) use ($courseId) {

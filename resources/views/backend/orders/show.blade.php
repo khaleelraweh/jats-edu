@@ -178,7 +178,7 @@
                             {{-- <td><a
                                     href="{{ route('admin.products.show', $product->id) }}">{{ $product->product_name }}</a>
                             </td> --}}
-                            <td><a href="#">{{ $product->product_name }}</a>
+                            <td><a href="#">{{ $product->title }}</a>
                             </td>
                             <td>{{ $product->pivot->quantity }}</td>
                         </tr>

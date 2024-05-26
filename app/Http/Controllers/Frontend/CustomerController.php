@@ -94,6 +94,7 @@ class CustomerController extends Controller
         if ($user) {
 
             $orders = $user->orders()->where('order_status', 1)->get();
+            $orders = $user->orders()->where('order_status', 3)->get();
 
 
             $courses = [];

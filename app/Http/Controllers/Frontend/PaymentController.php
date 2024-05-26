@@ -131,7 +131,7 @@ class PaymentController extends Controller
                 ]);
 
 
-                toast(__('panel.f_your_recent_payment_successful_with_refrence_code') . '10', 'success');
+                toast(__('panel.f_your_recent_payment_successful_with_refrence_code') . '4', 'success');
 
                 return redirect()->route('frontend.index');
             }

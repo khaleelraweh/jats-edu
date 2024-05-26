@@ -111,6 +111,8 @@ class PaymentController extends Controller
                 ]);
 
                 if ($order_image = $request->file('bankReceipt')) {
+
+                    dd($order_image);
                     if ($order->bankReceipt != '') {
                         if (File::exists('assets/orders/' . $order->bankReceipt)) {
                             unlink('assets/orders/' . $order->bankReceipt);

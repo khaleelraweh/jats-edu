@@ -147,7 +147,7 @@ return [
     'btn_go_to_your_course_dashboard'                   =>   'انتقل إلى لوحة تحكم الدورة التدريبية الخاصة بك',
     'btn_enroll'                                        =>  'سجل الآن',
     'btn_waiting_for_supervisor_check'                  =>  'في انتظار تحقق المشرف من بيانات الدفع',
-    'This proccess may takes from 2 to 3 days !'        =>  'عملية التحقق قد تستغرق من 2 اي 3 يوم !',
+    'This proccess may takes from 2 to 3 days !'        =>  'عملية التحقق قد تستغرق من 2 الى 3 يوم',
     'course_duration'                                   =>  'مدة الكورس',
     'lecture_numbers'                                   =>  'عدد المحاضرات',
     'language'                                          =>  'لغة الدورة',

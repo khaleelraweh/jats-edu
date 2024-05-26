@@ -146,7 +146,7 @@ return [
     'btn_go_to_your_course_dashboard'                   =>   'Go To Your Course Dashboard ',
     'btn_enroll'                                        =>  'Enroll',
     'btn_waiting_for_supervisor_check'                  =>  'Waiting for the admin to check the payment information',
-    'This proccess may takes from 2 to 3 days !'        =>  'This proccess may takes from 2 to 3 days !',
+    'This proccess may takes from 2 to 3 days !'        =>  'This proccess may takes from 2 to 3 days',
     'course_duration'                                   =>  'Duration',
     'lecture_numbers'                                   =>  'Lectures',
     'language'                                          =>  'Language',

@@ -38,7 +38,7 @@ class OrderService
             'tax'                   => getNumbers()->get('courseTaxes'),
             'total'                 => getNumbers()->get('total'),
             'currency'              => 'USD',
-            'order_status'          => 0
+            'order_status'          => 0, // new order 
         ]);
 
         // foreach (Cart::content() as $item) {

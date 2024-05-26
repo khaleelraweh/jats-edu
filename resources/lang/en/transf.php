@@ -564,7 +564,8 @@ return [
     'switch_to_instructor_dashboard_here'               =>  'Switch to the Instructor dashboard here - get back to the courses you’re teaching.',
 
 
-    // Course
+    // order 
+    'Kurima Bank'                                       =>  'Kurima Bank',
 
 
 ];

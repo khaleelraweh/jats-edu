@@ -107,6 +107,7 @@ class CourseController extends Controller
 
         // course topics start 
         if ($request->course_topic != null) {
+
             $topics_list = [];
             for ($i = 0; $i < count($request->course_topic); $i++) {
                 $topics_list[$i]['title'] = $request->course_topic[$i];
@@ -120,6 +121,7 @@ class CourseController extends Controller
 
         // course requirement start 
         if ($request->course_requirement != null) {
+
             $requirements_list = [];
             for ($i = 0; $i < count($request->course_requirement); $i++) {
                 $requirements_list[$i]['title'] = $request->course_requirement[$i];

@@ -405,20 +405,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (config('locales.languages') as $key => $val)
-                                        <tr class="cloning_row" id="0">
-                                            <td>#</td>
-                                            <td>{{ __('panel.topic_in_' . $key) }} (0)</td>
-                                            <td>
-                                                <input type="text" name="course_topic[0][{{ $key }}]"
-                                                    id="course_topic" class="course_topic form-control">
-                                                @error('course_topic')
-                                                    <span class="help-block text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </td>
+                                    <tr class="cloning_row" id="0">
+                                        <td>#</td>
+                                        <td>course topic (0) </td>
+                                        <td>
+                                            <input type="text" name="course_topic[0]" id="course_topic"
+                                                class="course_topic form-control">
+                                            @error('course_topic')
+                                                <span class="help-block text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </td>
 
-                                        </tr>
-                                    @endforeach
+                                    </tr>
+
                                 </tbody>
 
                                 <tfoot>
@@ -448,20 +447,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (config('locales.languages') as $key => $val)
-                                        <tr class="cloning_row" id="0">
-                                            <td>#</td>
-                                            <td>{{ __('panel.requirement_in_' . $key) }} (0)</td>
-                                            <td>
-                                                <input type="text" name="course_requirement[0][{{ $key }}]"
-                                                    id="course_requirement" class="course_requirement form-control">
-                                                @error('course_requirement')
-                                                    <span class="help-block text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </td>
+                                    <tr class="cloning_row" id="0">
+                                        <td>#</td>
+                                        <td>{{ __('panel.course requirement') }} (0)</td>
+                                        <td>
+                                            <input type="text" name="course_requirement[0]" id="course_requirement"
+                                                class="course_requirement form-control">
+                                            @error('course_requirement')
+                                                <span class="help-block text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </td>
 
-                                        </tr>
-                                    @endforeach
+                                    </tr>
+
                                 </tbody>
 
                                 <tfoot>
@@ -742,17 +740,16 @@
                 }
 
                 // Add new row
-                <?php foreach (config('locales.languages') as $key => $val){ ?>
+
                 $('#course_topics_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
                     '<td>' +
-                    '<span>{{ __('panel.topic_in_' . $key) }} (' + numberIncr + ')</span></td>' +
+                    '<span>{{ __('panel.course_topic') }} (' + numberIncr + ')</span></td>' +
                     '<td><input type="text" name="course_topic[' + numberIncr +
-                    '][<?php echo $key; ?>]" class="course_topic form-control"></td>' +
+                    ']" class="course_topic form-control"></td>' +
                     '</tr>'));
-                <?php } ?>
             });
         });
 
@@ -765,7 +762,6 @@
     </script>
 
 
-    // script course requirements
     <script>
         $(document).ready(function() {
 
@@ -813,17 +809,16 @@
                 }
 
                 // Add new row
-                <?php foreach (config('locales.languages') as $key => $val){ ?>
                 $('#course_requirements_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
                     '<td>' +
-                    '<span>{{ __('panel.topic_in_' . $key) }} (' + numberIncr + ')</span></td>' +
+                    '<span>{{ __('panel.course_requirement') }} (' + numberIncr +
+                    ')</span></td>' +
                     '<td><input type="text" name="course_requirement[' + numberIncr +
-                    '][<?php echo $key; ?>]" class="course_requirement form-control"></td>' +
+                    ']" class="course_requirement form-control"></td>' +
                     '</tr>'));
-                <?php } ?>
             });
         });
 

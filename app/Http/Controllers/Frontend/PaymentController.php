@@ -155,12 +155,27 @@ class PaymentController extends Controller
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
-            $order->transactions()->create([
+            $transfaction =  $order->transactions()->create([
                 'transaction' => OrderTransaction::PAYMENT_COMPLETED,
                 // 'transaction_number' => $response->getTransactionReference(),
                 'transaction_number' => $response['id'],
                 'payment_result' => 'success',
             ]);
+
+            // ================= Start to finish the order request automaticly ========================//
+
+            // start under  proccess 
+            $order->update(['order_status' => Order::UNDER_PROCESS]);
+            $transfaction->update(['transaction' => OrderTransaction::UNDER_PROCESS]);
+            // end under  proccess 
+
+            // Start finish 
+            $order->update(['order_status' => Order::FINISHED]);
+            $transfaction->update(['transaction' => OrderTransaction::FINISHED]);
+            // End finish
+
+            // ================= End to finish the order request automaticly ========================//
+
 
             // if (session()->has('coupon')) {
             //     $coupon = Coupon::whereCode(session()->get('coupon')['code'])->first();
@@ -218,12 +233,28 @@ class PaymentController extends Controller
         $order = Order::find($order_id);
 
         $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
-        $order->transactions()->create([
+        $transfaction = $order->transactions()->create([
             'transaction' => OrderTransaction::PAYMENT_COMPLETED,
             // 'transaction_number' => $response->getTransactionReference(),
             'transaction_number' => 10,
             'payment_result' => 'success',
         ]);
+
+
+        // ================= Start to finish the order request automaticly ========================//
+
+        // start under  proccess 
+        $order->update(['order_status' => Order::UNDER_PROCESS]);
+        $transfaction->update(['transaction' => OrderTransaction::UNDER_PROCESS]);
+        // end under  proccess 
+
+        // Start finish 
+        $order->update(['order_status' => Order::FINISHED]);
+        $transfaction->update(['transaction' => OrderTransaction::FINISHED]);
+        // End finish
+
+        // ================= End to finish the order request automaticly ========================//
+
 
         if (session()->has('coupon')) {
             $coupon = Coupon::where('code->' . app()->getLocale(), session()->get('coupon')['code'])->first();

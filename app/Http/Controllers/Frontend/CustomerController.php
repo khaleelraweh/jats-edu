@@ -97,9 +97,11 @@ class CustomerController extends Controller
             $orders = $user->orders()->where('order_status', 3)->get();
 
 
+
             $courses = [];
 
             foreach ($orders as $order) {
+
                 $courses = array_merge($courses, $order->courses()->get()->toArray());
             }
         }

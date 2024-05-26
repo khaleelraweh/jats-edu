@@ -76,7 +76,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="course_info-tab" data-bs-toggle="tab" data-bs-target="#course_info"
                             type="button" role="tab" aria-controls="course_info"
-                            aria-selected="true">{{ __('panel.course_info_tab') }}
+                            aria-selected="true">{{ __('transf.course_info_tab') }}
                         </button>
                     </li>
 
@@ -128,18 +128,18 @@
                             <div class="col-md-7 col-sm-12 ">
                                 {{-- category name  field --}}
 
-
-
-
                                 {{-- course title field --}}
-                                <div class="row ">
+                                <div class="row">
                                     <div class="col-sm-12 pt-3">
                                         <div class="form-group">
                                             <label for="title">
-                                                {{ __('panel.title') }}
+                                                {{ __('transf.course_title') }}
                                             </label>
-                                            <input type="text" name="title" id="title"
-                                                value="{{ old('title') }}" class="form-control">
+                                            <div class="input-group">
+                                                <input type="text" name="title" id="title"
+                                                    value="{{ old('title') }}" class="form-control" maxlength="60">
+                                                <span class="input-group-text" id="charCount">60</span>
+                                            </div>
                                             @error('title')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -154,8 +154,12 @@
                                             <label for="subtitle">
                                                 {{ __('panel.subtitle') }}
                                             </label>
-                                            <input type="text" name="subtitle" id="subtitle"
-                                                value="{{ old('subtitle') }}" class="form-control">
+                                            <div class="input-group">
+                                                <input type="text" name="subtitle" id="subtitle"
+                                                    value="{{ old('subtitle') }}" class="form-control" maxlength="60">
+                                                <span class="input-group-text" id="charCountSubtitle">120</span>
+                                            </div>
+
                                             @error('subtitle')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -583,6 +587,50 @@
 @section('script')
     {{-- Call select2 plugin --}}
     <script src="{{ asset('backend/vendor/select2/js/select2.full.min.js') }}"></script>
+
+
+    {{-- Title counter  --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const titleInput = document.getElementById('title');
+            const charCount = document.getElementById('charCount');
+            const maxChars = 60;
+
+            // Function to update the character count
+            function updateCharCount() {
+                const remainingChars = maxChars - titleInput.value.length;
+                charCount.textContent = remainingChars;
+            }
+
+            // Initialize the character count on page load
+            updateCharCount();
+
+            // Update the character count on input
+            titleInput.addEventListener('input', updateCharCount);
+        });
+    </script>
+
+    {{-- subtitle counter  --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const subtitleInput = document.getElementById('subtitle');
+            const charCountSubtitle = document.getElementById('charCountSubtitle');
+            const maxChars = 120;
+
+            // Function to update the character count
+            function updateCharCountSucharCountSubtitle() {
+                const remainingChars = maxChars - subtitleInput.value.length;
+                charCountSubtitle.textContent = remainingChars;
+            }
+
+            // Initialize the character count on page load
+            updateCharCountSucharCountSubtitle();
+
+            // Update the character count on input
+            subtitleInput.addEventListener('input', updateCharCountSucharCountSubtitle);
+        });
+    </script>
+
 
     <script>
         $(function() {

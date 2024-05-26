@@ -110,21 +110,22 @@ class PaymentController extends Controller
                     'bankReceipt'   =>  $request->bankReceipt,
                 ]);
 
-                if ($order_image = $request->file('bankReceipt')) {
 
-                    dd($order_image);
-                    if ($order->bankReceipt != '') {
-                        if (File::exists('assets/orders/' . $order->bankReceipt)) {
-                            unlink('assets/orders/' . $order->bankReceipt);
-                        }
+
+                if ($request->bankReceipt && count($request->bankReceipt) > 0) {
+                    foreach ($request->bankReceipt as $image) {
+
+                        $file_name = $order->id . '_' . time()  . '.' . $image->getClientOriginalExtension();
+                        $file_size = $image->getSize();
+                        $file_type = $image->getMimeType();
+                        $path = public_path('assets/orders/' . $file_name);
+
+                        Image::make($image->getRealPath())->save($path);
                     }
-
-                    $file_name = $order->id . '.' . $order_image->extension();
-                    $path = public_path('assets/orders/' . $file_name);
-                    Image::make($order_image->getRealPath())->resize(300, null, function ($constraints) {
-                        $constraints->aspectRatio();
-                    })->save($path, 100);
+                    dd($request->bankReceipt);
                 }
+
+
 
                 $order->transactions()->create(
                     ['transaction' => OrderTransaction::NEW_ORDER]

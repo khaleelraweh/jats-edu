@@ -454,7 +454,7 @@
                                 <tbody>
                                     <tr class="cloning_row" id="0">
                                         <td>#</td>
-                                        <td>{{ __('panel.course requirement') }} (0)</td>
+                                        <td>{{ __('panel.course_requirement') }} (0)</td>
                                         <td>
                                             <input type="text" name="course_requirement[0]" id="course_requirement"
                                                 class="course_requirement form-control">

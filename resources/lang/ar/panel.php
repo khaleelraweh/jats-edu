@@ -175,6 +175,8 @@ return [
     'txt_course_topics'                         =>  'المواضيع',
     'course_objective'                          =>  'هدف الدورة',
     'course_objectives'                          =>  'اهداف الدورة',
+    'course_requirements'                       =>  'متطلبات الدورة',
+    'course_requirement'                        =>  'متطلب الدورة',
     'btn_add_another_topic'                     =>  'إضافة موضوع جديد',
     'topic_in_ar'                               =>  'الموضوع بالعربي',
     'topic_in_en'                               =>  'الموضوع بالانجليزي',

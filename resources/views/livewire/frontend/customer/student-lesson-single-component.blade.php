@@ -119,7 +119,7 @@
 
                                     @foreach ($section->lessons as $lesson)
                                         <div
-                                            class="border-top px-5 border-color-20 py-4 min-height-70 d-md-flex align-items-center">
+                                            class="border-top px-5 border-color-20 py-4 min-height-70 d-md-flex align-items-center @if ($selectedLessonUrl == $lesson->url) bg-secondary text-white @endif">
                                             <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
                                                 <div class="text-secondary d-flex">
                                                     <svg width="14" height="18" viewBox="0 0 14 18"

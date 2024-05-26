@@ -8,8 +8,8 @@ use Livewire\Component;
 class StudentLessonSingleComponent extends Component
 {
     public $slug;
-
     public $videoUrl;
+    public $selectedLessonUrl;
 
 
     public function mount()
@@ -19,6 +19,8 @@ class StudentLessonSingleComponent extends Component
 
         if (empty($this->videoUrl)) {
             $this->videoUrl = $url;
+            $this->selectedLessonUrl = $url; // Initialize the selected lesson URL
+
         }
     }
 
@@ -38,8 +40,7 @@ class StudentLessonSingleComponent extends Component
     public function updateVideoUrl($url)
     {
         $this->videoUrl = $url;
+        $this->selectedLessonUrl = $url; // Update the selected lesson URL
 
-        // Refresh the Livewire component to update the video
-        $this->render();
     }
 }

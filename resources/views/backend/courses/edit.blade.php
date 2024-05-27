@@ -154,8 +154,14 @@
                                                 {{ __('panel.subtitle') }}
 
                                             </label>
-                                            <input type="text" name="subtitle" id="subtitle"
-                                                value="{{ old('subtitle', $course->subtitle) }}" class="form-control">
+
+                                            <div class="input-group">
+                                                <input type="text" name="subtitle" id="subtitle"
+                                                    value="{{ old('subtitle', $course->subtitle) }}" class="form-control"
+                                                    maxlength="60">
+                                                <span class="input-group-text" id="charCountSubtitle">120</span>
+                                            </div>
+
                                             @error('subtitle')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -672,6 +678,29 @@
             titleInput.addEventListener('input', updateCharCount);
         });
     </script>
+
+    {{-- subtitle counter  --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const subtitleInput = document.getElementById('subtitle');
+            const charCountSubtitle = document.getElementById('charCountSubtitle');
+            const maxChars = 120;
+
+            // Function to update the character count
+            function updateCharCountSucharCountSubtitle() {
+                const remainingChars = maxChars - subtitleInput.value.length;
+                charCountSubtitle.textContent = remainingChars;
+            }
+
+            // Initialize the character count on page load
+            updateCharCountSucharCountSubtitle();
+
+            // Update the character count on input
+            subtitleInput.addEventListener('input', updateCharCountSucharCountSubtitle);
+        });
+    </script>
+
+
     <script>
         $(function() {
             const link = document.getElementById('checkIn');

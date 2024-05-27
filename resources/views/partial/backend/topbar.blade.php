@@ -145,17 +145,38 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="{{ route('admin.account_settings') }}"><i
-                            class="ri-user-line align-middle me-1"></i> Profile</a>
+                    <a class="dropdown-item" href="{{ route('admin.account_settings') }}">
+                        <i class="ri-user-line align-middle me-1"></i>
+                        Profile
+                    </a>
+
+                    @if (auth()->user()->hasRole('instructor'))
+                        <a class="dropdown-item" href="{{ route('instructor.dashboard') }}">
+                            <i class="ri-user-line align-middle me-1"></i>
+                            {{ __('panel.f_instructor_dashboard') }}
+                        </a>
+                    @else
+                        <a class="dropdown-item" href="{{ route('customer.teach_on_jats') }}">
+                            <i class="ri-user-line align-middle me-1"></i>
+                            {{ __('panel.f_teach_on_jats') }}
+                        </a>
+                    @endif
 
 
-                    <a class="dropdown-item" href="#"><i class="ri-wallet-2-line align-middle me-1"></i> My
-                        Wallet</a>
-                    <a class="dropdown-item d-block" href="#"><span
-                            class="badge bg-success float-end mt-1">11</span><i
-                            class="ri-settings-2-line align-middle me-1"></i> Settings</a>
-                    <a class="dropdown-item" href="#"><i class="ri-lock-unlock-line align-middle me-1"></i>
-                        Lock screen</a>
+                    <a class="dropdown-item d-none" href="#">
+                        <i class="ri-wallet-2-line align-middle me-1"></i> My
+                        Wallet
+                    </a>
+                    <a class="dropdown-item d-block" href="{{ route('admin.settings.site_main_infos.show') }}">
+                        <span class="badge bg-success float-end mt-1 ">11</span>
+                        <i class="ri-settings-2-line align-middle me-1"></i>
+                        {{ __('panel.site_settings') }}
+                    </a>
+
+                    <a class="dropdown-item" href="#">
+                        <i class="ri-lock-unlock-line align-middle me-1"></i>
+                        Lock screen
+                    </a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="javascript:void(0)"
                         onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i

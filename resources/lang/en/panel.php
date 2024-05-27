@@ -553,6 +553,7 @@ return [
 
     // =============  Manage Site Settings   ===============//
     'manage_site_settings'                      => 'Manage Site Settings',
+    'site_settings'                             => ' Site Settings',
 
     // --------------- Site Information    --------------//
     'show_site_information'                        => 'Basic Site Information ',

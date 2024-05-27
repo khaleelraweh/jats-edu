@@ -526,6 +526,7 @@ return [
 
     ################################ Manage Site Settings  ###########################
     'manage_site_settings'          => 'إدارة إعدادات الموقع',
+    'site_settings'                 => 'إعدادات الموقع',
 
     // --------------- Site Information    --------------//
     'show_site_information'         => 'بيانات الموقع الاساسية',

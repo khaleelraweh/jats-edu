@@ -410,34 +410,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($course->objectives as $item)
-                                        <?php
-                                        $loopIndex = $loop->index;
-                                        ?>
-                                        @foreach (config('locales.languages') as $key => $val)
-                                            <tr class="cloning_row" id="{{ $loopIndex }}">
-                                                <td style="width: 30px !important;">
-                                                    @if ($loopIndex == 0)
-                                                        {{ '#' }}
-                                                    @else
-                                                        <button type="button"
-                                                            class="btn btn-danger btn-sm delegated-btn"><i
-                                                                class="fa fa-minus"></i></button>
-                                                    @endif
-                                                </td>
-                                                <td>{{ __('panel.topic_in_' . $key) }} ({{ $loopIndex }})</td>
-                                                <td>
-                                                    <input type="text"
-                                                        name="course_topic[{{ $loopIndex }}][{{ $key }}]"
-                                                        id="course_topic"
-                                                        value="{{ old('course_topic' . $key, $item->getTranslation('title', $key)) }}"
-                                                        class="course_topic form-control">
-                                                    @error('course_topic[{{ $loopIndex }}]' . $key)
-                                                        <span class="help-block text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                    @foreach ($course->objectives as $index => $item)
+                                        <tr class="cloning_row" id="{{ $index }}">
+                                            <td style="width: 30px !important;">
+                                                @if ($index == 0)
+                                                    {{ '#' }}
+                                                @else
+                                                    <button type="button" class="btn btn-danger btn-sm delegated-btn"><i
+                                                            class="fa fa-minus"></i></button>
+                                                @endif
+                                            </td>
+                                            <td>{{ __('panel.course_objective') }} ({{ $index }})</td>
+                                            <td>
+                                                <input type="text" name="course_objective[{{ $index }}]"
+                                                    id="course_objective"
+                                                    value="{{ old('course_objective', $item->title) }}"
+                                                    class="course_objective form-control">
+                                                @error('course_objective[{{ $index }}]')
+                                                    <span class="help-block text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
 
@@ -892,7 +885,7 @@
                 let isEmpty = false;
 
                 // Loop through each input field and check if it's empty
-                $('input.course_topic').each(function() {
+                $('input.course_objective').each(function() {
                     if ($(this).val() === '') {
                         isEmpty = true;
                         return false; // Exit the loop if any field is empty
@@ -917,7 +910,7 @@
                 let isEmpty = false;
 
                 // Loop through each input field and check if it's empty
-                $('#course_objectives_details').find('input.course_topic').each(function() {
+                $('#course_objectives_details').find('input.course_objective').each(function() {
                     if ($(this).val() === '') {
                         isEmpty = true;
                         return false; // Exit the loop if any field is empty
@@ -938,8 +931,8 @@
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
                     '<td>' +
                     '<span>{{ __('panel.topic_in_' . $key) }} (' + numberIncr + ')</span></td>' +
-                    '<td><input type="text" name="course_topic[' + numberIncr +
-                    '][<?php echo $key; ?>]" class="course_topic form-control"></td>' +
+                    '<td><input type="text" name="course_objective[' + numberIncr +
+                    '][<?php echo $key; ?>]" class="course_objective form-control"></td>' +
                     '</tr>'));
                 <?php } ?>
             });

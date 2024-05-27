@@ -232,6 +232,20 @@ return [
     'btn_link'                              =>  'Button Link',
 
 
+    ########################### Manage Pages  ##################################
+
+    // =============  Manage Pages  ===============//
+    'manage_pages'                          => 'Manage Pages',
+
+    // --------------- Pages  --------------//
+    'show_pages'                            => 'Pages',
+    'add_new_page'                          => 'Add New Page',
+    'edit_existing_page'                    => 'Edit Existing Page',
+
+    // ........... commons in Pages ....... //
+
+
+
 
     ##############################################################
 

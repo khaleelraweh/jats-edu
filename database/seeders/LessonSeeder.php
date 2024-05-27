@@ -18,35 +18,89 @@ class LessonSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        // Retrieve all course sections
-        $sections = CourseSection::all();
-        $urls = [
-            "https://www.youtube.com/embed/UuPc7yh7dvA?si=xkO8D_HtH6R240qe",
-            "https://www.youtube.com/embed/0XTkzDQIz7k?si=z1p6kW7VdKwsFsBb",
-            "https://www.youtube.com/embed/0XTkzDQIz7k?si=avyjek9Ry8KfNlGo",
-            "https://www.youtube.com/embed/iLhRTH1UW28?si=fbaGzn_Nb32muGVu",
-            "https://www.youtube.com/embed/iLhRTH1UW28?si=BF_h9mC2l_LxpkZf",
-            // Add more URLs as needed
-        ];
 
-        foreach ($sections as $section) {
-            // Generate lessons based on lectures_count
-            for ($i = 0; $i < $section->lectures_count; $i++) {
-                Lesson::create([
+        // one 
+        Lesson::create([
+            'title' => ['ar' => 'مقدمة مهمة جدا', 'en' => 'Very Important Introduction'],
+            'url'      =>  'https://www.youtube.com/embed/4OGWPn-Q__I?si=Rrw3o9boTvacjX4M',
 
-                    'title' => ['ar' => $faker->sentence(3), 'en' => $faker->sentence(3)],
-                    // 'url'      =>  $faker->url,
-                    'url'      =>  $urls[array_rand($urls)],
+            'duration_minutes' => '12',
+            'course_section_id' => 1,
 
-                    'duration_minutes' => $faker->time('H:i', 'now'),
-                    'course_section_id' => $section->id,
+            'status' => true,
+            'published_on' => $faker->dateTime(),
+            'created_by' => $faker->name(),
+            'updated_by' => $faker->name(),
+        ]);
 
-                    'status' => true,
-                    'published_on' => $faker->dateTime(),
-                    'created_by' => $faker->name(),
-                    'updated_by' => $faker->name(),
-                ]);
-            }
-        }
+        // tow 
+        Lesson::create([
+            'title' => ['ar' => 'الشريط الجانبي الجزء 1 وإنشاء الإطار', 'en' => 'Sidebar part 1 and Framework create '],
+            'url'      =>  'https://www.youtube.com/embed/DjLINOE4auA?si=_EqOOsx11EXwbQKC',
+
+            'duration_minutes' => '15',
+            'course_section_id' => 1,
+
+            'status' => true,
+            'published_on' => $faker->dateTime(),
+            'created_by' => $faker->name(),
+            'updated_by' => $faker->name(),
+        ]);
+
+        // three
+        Lesson::create([
+            'title' => ['ar' => 'الشريط الجانبي الجزء 2 والعمل الكامل', 'en' => ' Sidebar part 2 and Complete Work'],
+            'url'      =>  'https://www.youtube.com/embed/Rnhv3_tiJhw?si=C4XiDXv-XINCDzae',
+
+            'duration_minutes' => '16',
+            'course_section_id' => 1,
+
+            'status' => true,
+            'published_on' => $faker->dateTime(),
+            'created_by' => $faker->name(),
+            'updated_by' => $faker->name(),
+        ]);
+
+        // four
+        Lesson::create([
+            'title' => ['ar' => 'إنشاء عنوان منطقة المحتوى', 'en' => 'Create Content Area Heading'],
+            'url'      =>  'https://www.youtube.com/embed/Lk0PTNu8ato?si=8m4O_EdzmOIeewaY',
+
+            'duration_minutes' => '15',
+            'course_section_id' => 1,
+
+            'status' => true,
+            'published_on' => $faker->dateTime(),
+            'created_by' => $faker->name(),
+            'updated_by' => $faker->name(),
+        ]);
+
+        // five
+        Lesson::create([
+            'title' => ['ar' => 'إنشاء عنوان الصفحة والتمرير', 'en' => 'Create Page Heading and Scrall'],
+            'url'      =>  'https://www.youtube.com/embed/4Qgfg6KTCs0?si=RQhl9rS8goRMhDft',
+
+            'duration_minutes' => '4',
+            'course_section_id' => 1,
+
+            'status' => true,
+            'published_on' => $faker->dateTime(),
+            'created_by' => $faker->name(),
+            'updated_by' => $faker->name(),
+        ]);
+
+        //six 
+        Lesson::create([
+            'title' => ['ar' => 'إنشاء غلاف ومربعات القطعة', 'en' => 'Create Wrapper and Widget Boxes'],
+            'url'      =>  'https://www.youtube.com/embed/NS5orQh7Q5U?si=WpdfNrbU72h4NfYx',
+
+            'duration_minutes' => '7',
+            'course_section_id' => 1,
+
+            'status' => true,
+            'published_on' => $faker->dateTime(),
+            'created_by' => $faker->name(),
+            'updated_by' => $faker->name(),
+        ]);
     }
 }

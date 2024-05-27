@@ -161,20 +161,13 @@
                     <div class="dropdown-divider"></div>
 
 
-                    <a class="dropdown-item d-none" href="#">
-                        <i class="ri-wallet-2-line align-middle me-1"></i> My
-                        Wallet
-                    </a>
                     <a class="dropdown-item d-block" href="{{ route('admin.settings.site_main_infos.show') }}">
                         <span class="badge bg-success float-end mt-1 ">11</span>
                         <i class="ri-settings-2-line align-middle me-1"></i>
                         {{ __('panel.site_settings') }}
                     </a>
 
-                    <a class="dropdown-item d-none" href="#">
-                        <i class="ri-lock-unlock-line align-middle me-1"></i>
-                        Lock screen
-                    </a>
+
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="javascript:void(0)"
                         onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i

@@ -108,10 +108,6 @@
                         @endif
                     @endforeach
 
-
-
-
-
                 </div>
             </div>
 
@@ -161,6 +157,8 @@
                             {{ __('panel.f_teach_on_jats') }}
                         </a>
                     @endif
+
+                    <div class="dropdown-divider"></div>
 
 
                     <a class="dropdown-item d-none" href="#">

@@ -129,11 +129,19 @@
                                     <div class="col-sm-12 pt-3">
                                         <div class="form-group">
                                             <label for="title">
-                                                {{ __('panel.title') }}
-
+                                                {{ __('transf.course_title') }}
                                             </label>
-                                            <input type="text" name="title" id="title"
-                                                value="{{ old('title', $course->title) }}" class="form-control">
+                                            {{-- <input type="text" name="title" id="title"
+                                                value="{{ old('title', $course->title) }}" class="form-control"> --}}
+
+
+                                            <div class="input-group">
+                                                <input type="text" name="title" id="title"
+                                                    value="{{ old('title', $course->title) }}" class="form-control"
+                                                    maxlength="60">
+                                                <span class="input-group-text" id="charCount">60</span>
+                                            </div>
+
                                             @error('title')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -647,6 +655,26 @@
 @endsection
 
 @section('script')
+    {{-- Title counter  --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const titleInput = document.getElementById('title');
+            const charCount = document.getElementById('charCount');
+            const maxChars = 60;
+
+            // Function to update the character count
+            function updateCharCount() {
+                const remainingChars = maxChars - titleInput.value.length;
+                charCount.textContent = remainingChars;
+            }
+
+            // Initialize the character count on page load
+            updateCharCount();
+
+            // Update the character count on input
+            titleInput.addEventListener('input', updateCharCount);
+        });
+    </script>
     <script>
         $(function() {
             const link = document.getElementById('checkIn');

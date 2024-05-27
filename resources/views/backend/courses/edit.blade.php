@@ -462,34 +462,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($course->requirements as $item)
-                                        <?php
-                                        $loopIndex = $loop->index;
-                                        ?>
-                                        @foreach (config('locales.languages') as $key => $val)
-                                            <tr class="cloning_row" id="{{ $loopIndex }}">
-                                                <td style="width: 30px !important;">
-                                                    @if ($loopIndex == 0)
-                                                        {{ '#' }}
-                                                    @else
-                                                        <button type="button"
-                                                            class="btn btn-danger btn-sm delegated-btn"><i
-                                                                class="fa fa-minus"></i></button>
-                                                    @endif
-                                                </td>
-                                                <td>{{ __('panel.requirement_in_' . $key) }} ({{ $loopIndex }})</td>
-                                                <td>
-                                                    <input type="text"
-                                                        name="course_requirement[{{ $loopIndex }}][{{ $key }}]"
-                                                        id="course_requirement"
-                                                        value="{{ old('course_requirement' . $key, $item->getTranslation('title', $key)) }}"
-                                                        class="course_requirement form-control">
-                                                    @error('course_requirement[{{ $loopIndex }}]' . $key)
-                                                        <span class="help-block text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                    @foreach ($course->requirements as $index => $item)
+                                        <tr class="cloning_row" id="{{ $index }}">
+                                            <td style="width: 30px !important;">
+                                                @if ($index == 0)
+                                                    {{ '#' }}
+                                                @else
+                                                    <button type="button" class="btn btn-danger btn-sm delegated-btn"><i
+                                                            class="fa fa-minus"></i></button>
+                                                @endif
+                                            </td>
+                                            <td>{{ __('panel.course_requirement') }} ({{ $index }})</td>
+                                            <td>
+                                                <input type="text" name="course_requirement[{{ $index }}]"
+                                                    id="course_requirement"
+                                                    value="{{ old('course_requirement', $item->title) }}"
+                                                    class="course_requirement form-control">
+                                                @error('course_requirement[{{ $index }}]')
+                                                    <span class="help-block text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
 
@@ -992,18 +985,17 @@
                     return false; // Prevent the form from submitting
                 }
 
-                <?php foreach (config('locales.languages') as $key => $val){ ?>
                 $('#course_requirements_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
                     '<td>' +
-                    '<span>{{ __('panel.requirement_in_' . $key) }} (' + numberIncr +
+                    '<span>{{ __('panel.course_requirement') }} (' + numberIncr +
                     ')</span></td>' +
                     '<td><input type="text" name="course_requirement[' + numberIncr +
-                    '][<?php echo $key; ?>]" class="course_requirement form-control"></td>' +
+                    ']" class="course_requirement form-control"></td>' +
                     '</tr>'));
-                <?php } ?>
+
             });
         });
 

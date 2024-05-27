@@ -465,7 +465,6 @@
                                                     id="course_requirement" class="course_requirement form-control"
                                                     maxlength="160">
                                                 <span class="input-group-text" id="charCountCourseRequirement">160</span>
-
                                             </div>
                                             @error('course_requirement')
                                                 <span class="help-block text-danger">{{ $message }}</span>

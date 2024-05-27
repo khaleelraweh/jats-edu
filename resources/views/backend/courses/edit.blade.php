@@ -131,9 +131,6 @@
                                             <label for="title">
                                                 {{ __('transf.course_title') }}
                                             </label>
-                                            {{-- <input type="text" name="title" id="title"
-                                                value="{{ old('title', $course->title) }}" class="form-control"> --}}
-
 
                                             <div class="input-group">
                                                 <input type="text" name="title" id="title"

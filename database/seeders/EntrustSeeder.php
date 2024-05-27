@@ -131,6 +131,7 @@ class EntrustSeeder extends Seeder
 
         //------------- 03- AttachRoles To  Users  ------------//
         $admin->attachRole($adminRole);
+        $admin->attachRole($instructorRole);
         $supervisor->attachRole($supervisorRole);
         $customer->attachRole($customerRole);
         $instructor->attachRole($instructorRole);

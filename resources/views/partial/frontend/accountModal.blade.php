@@ -189,6 +189,20 @@
                                         </a>
                                     </li>
 
+                                    @if (auth()->user()->hasRole('instructor'))
+                                        <li>
+                                            <a href="{{ route('instructor.dashboard') }}">
+                                                {{ __('panel.f_instructor_dashboard') }}
+                                            </a>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a href="{{ route('customer.teach_on_jats') }}">
+                                                {{ __('panel.f_teach_on_jats') }}
+                                            </a>
+                                        </li>
+                                    @endif
+
 
                                     <div class="hr"></div>
 
@@ -227,9 +241,11 @@
                                             </a>
                                         </li>
                                     @else
-                                        <a href="{{ route('customer.teach_on_jats') }}">
-                                            {{ __('panel.f_teach_on_jats') }}
-                                        </a>
+                                        <li>
+                                            <a href="{{ route('customer.teach_on_jats') }}">
+                                                {{ __('panel.f_teach_on_jats') }}
+                                            </a>
+                                        </li>
                                     @endif
 
                                     <div class="hr"></div>

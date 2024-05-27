@@ -52,7 +52,10 @@ class DatabaseSeeder extends Seeder
 
         // last called 
         $this->call(TopicSeeder::class);
+        $this->call(ObjectiveSeeder::class);
         $this->call(RequirementSeeder::class);
+        $this->call(IntendedSeeder::class);
+
         $this->call(PhotoSeeder::class);
         $this->call(ReviewSeeder::class);
 

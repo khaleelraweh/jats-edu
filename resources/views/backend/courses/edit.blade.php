@@ -84,9 +84,9 @@
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="course_topics-tab" data-bs-toggle="tab" data-bs-target="#course_topics"
-                            type="button" role="tab" aria-controls="course_topics"
-                            aria-selected="true">{{ __('panel.course_topics_tab') }}
+                        <button class="nav-link" id="course_objectives-tab" data-bs-toggle="tab"
+                            data-bs-target="#course_objectives" type="button" role="tab"
+                            aria-controls="course_objectives" aria-selected="true">{{ __('panel.course_objectives_tab') }}
                         </button>
                     </li>
 
@@ -397,15 +397,16 @@
 
 
 
-                    {{-- course topic content  --}}
-                    <div class="tab-pane fade" id="course_topics" role="tabpanel" aria-labelledby="course_topics-tab">
+                    {{-- course objectives contents   --}}
+                    <div class="tab-pane fade" id="course_objectives" role="tabpanel"
+                        aria-labelledby="course_objectives-tab">
                         <div class="table-responsive">
-                            <table class="table" id="course_topics_details">
+                            <table class="table" id="course_objectives_details">
                                 <thead>
                                     <tr class="pt-4">
                                         <th width="30px">{{ __('panel.act') }}</th>
                                         <th width="160px">{{ __('panel.type') }}</th>
-                                        <th>{{ __('panel.txt_course_topics') }}</th>
+                                        <th>{{ __('panel.course_objectives') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -907,8 +908,8 @@
 
             // Click event handler for adding new rows
             $(document).on('click', '.btn_add', function() {
-                let trCount = $('#course_topics_details').find('tr.cloning_row:last').length;
-                let numberIncr = trCount > 0 ? parseInt($('#course_topics_details').find(
+                let trCount = $('#course_objectives_details').find('tr.cloning_row:last').length;
+                let numberIncr = trCount > 0 ? parseInt($('#course_objectives_details').find(
                         'tr.cloning_row:last')
                     .attr('id')) + 1 : 0;
 
@@ -916,7 +917,7 @@
                 let isEmpty = false;
 
                 // Loop through each input field and check if it's empty
-                $('#course_topics_details').find('input.course_topic').each(function() {
+                $('#course_objectives_details').find('input.course_topic').each(function() {
                     if ($(this).val() === '') {
                         isEmpty = true;
                         return false; // Exit the loop if any field is empty
@@ -931,7 +932,7 @@
                 }
 
                 <?php foreach (config('locales.languages') as $key => $val){ ?>
-                $('#course_topics_details').find('tbody').append($('' +
+                $('#course_objectives_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +

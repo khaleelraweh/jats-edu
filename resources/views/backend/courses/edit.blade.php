@@ -876,8 +876,26 @@
 
 
     <script>
-        // check if topic field is not empty before sending form 
         $(document).ready(function() {
+            // Function to initialize character counter for a specific input field
+            function initializeCharCounter($input) {
+                var $counter = $input.parent().find('.input-group-text');
+
+                // Update character count on input
+                $input.on('input', function() {
+                    var remainingChars = 160 - $(this).val().length;
+                    $counter.text(remainingChars);
+                });
+
+                // Trigger input event to update counter initially
+                $input.trigger('input');
+            }
+
+            // Initialize character counters for existing rows
+            $('#course_objectives_details').find('input.course_objective').each(function() {
+                initializeCharCounter($(this));
+            });
+
             // Submit event handler for the form
             $('#my_form_id').on('submit', function(event) {
                 // Flag to track whether there are empty fields
@@ -918,27 +936,34 @@
 
                 // If any field is empty, display an alert
                 if (isEmpty) {
-                    alert(
-                        '{{ __('panel.msg_please_fill_in_all_topic_fields_before_adding_new') }}.');
+                    alert('{{ __('panel.msg_please_fill_in_all_topic_fields_before_adding_new') }}.');
                     return false; // Prevent the form from submitting
                 }
 
-                $('#course_objectives_details').find('tbody').append($('' +
-                    '<tr class="cloning_row" id="' + numberIncr + '">' +
+                // Add new row
+                var newRow = $('<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
+                    '<td>{{ __('panel.course_objective') }} (' + numberIncr + ')</td>' +
                     '<td>' +
-                    '<span>{{ __('panel.course_objective') }} (' + numberIncr + ')</span></td>' +
-                    '<td><input type="text" name="course_objective[' + numberIncr +
-                    ']" class="course_objective form-control"></td>' +
-                    '</tr>'));
+                    '<div class="input-group">' +
+                    '<input type="text" name="course_objective[' + numberIncr +
+                    ']" class="course_objective form-control" maxlength="160">' +
+                    '<span class="input-group-text">160</span>' +
+                    '</div>' +
+                    '</td>' +
+                    '</tr>');
+                $('#course_objectives_details tbody').append(newRow);
+
+                // Initialize character counter for the new row
+                initializeCharCounter(newRow.find('input.course_objective'));
             });
-        });
 
-        $(document).on('click', '.delegated-btn', function(e) {
-            e.preventDefault();
-            $(this).parent().parent().remove();
-
+            // Remove row when delete button is clicked
+            $(document).on('click', '.delegated-btn', function(e) {
+                e.preventDefault();
+                $(this).closest('tr').remove();
+            });
         });
     </script>
 

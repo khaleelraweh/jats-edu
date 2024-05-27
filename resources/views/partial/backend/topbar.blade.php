@@ -180,7 +180,8 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="javascript:void(0)"
                         onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
-                            class="ri-shut-down-line align-middle me-1 text-danger"></i> {{ __('panel.f_logout') }}</a>
+                            class="ri-shut-down-line align-middle me-1 text-danger"></i>
+                        {{ __('panel.f_logout') }}</a>
                     <form action="{{ route('logout') }}" method="POST" id="logout-form" class="d-none">
                         @csrf
                     </form>

@@ -255,35 +255,6 @@
                             </div>
                         </div>
 
-
-
-                        <div class="row d-none">
-                            <div class="col-sm-12 pt-3">
-                                <label for="evaluation">{{ __('panel.evaluation') }}</label>
-                                <select name="evaluation" class="form-control">
-                                    <option value="1"
-                                        {{ old('evaluation', $course->evaluation) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_normal') }}
-                                    </option>
-                                    <option value="2"
-                                        {{ old('evaluation', $course->evaluation) == '2' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_featured') }}
-                                    </option>
-                                    <option value="3"
-                                        {{ old('evaluation', $course->evaluation) == '3' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_best_seller') }}
-                                    </option>
-
-                                </select>
-                                @error('evaluation')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                            </div>
-                        </div>
-
-
-
                         {{-- video promo and description  --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-3">
@@ -428,8 +399,6 @@
 
                     {{-- course topic content  --}}
                     <div class="tab-pane fade" id="course_topics" role="tabpanel" aria-labelledby="course_topics-tab">
-
-
                         <div class="table-responsive">
                             <table class="table" id="course_topics_details">
                                 <thead>

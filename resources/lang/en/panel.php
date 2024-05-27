@@ -7,6 +7,8 @@ return [
     'centerpay'                 => 'CenterPay',
     'centerpay_show'            => 'CenterPay Show',
     'menu'                      => 'Menu',
+    'crafted_with'              =>  'Crafted with',
+    'by_era_team'               =>  'by ERA Team',
 
     ############################ Manage Web Menus #################################
     'manage_menus'              => 'Manage Web Menus',

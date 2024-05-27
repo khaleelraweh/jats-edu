@@ -422,10 +422,16 @@
                                             </td>
                                             <td>{{ __('panel.course_objective') }} ({{ $index }})</td>
                                             <td>
-                                                <input type="text" name="course_objective[{{ $index }}]"
-                                                    id="course_objective"
-                                                    value="{{ old('course_objective', $item->title) }}"
-                                                    class="course_objective form-control">
+                                                <div class="input-group">
+                                                    <input type="text" name="course_objective[{{ $index }}]"
+                                                        id="course_objective"
+                                                        value="{{ old('course_objective', $item->title) }}"
+                                                        class="course_objective form-control" maxlength="160">
+
+                                                    <span class="input-group-text"
+                                                        id="charCountCourseObjective">160</span>
+                                                </div>
+
                                                 @error('course_objective[{{ $index }}]')
                                                     <span class="help-block text-danger">{{ $message }}</span>
                                                 @enderror

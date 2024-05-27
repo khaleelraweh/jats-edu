@@ -101,7 +101,7 @@ Route::get('/pages/{slug}', [FrontendController::class, 'pages'])->name('fronten
 // ######################################################### //
 // ###############   Customer Authed Route   ############### //
 // ######################################################### //
-Route::group(['middleware' => ['roles', 'role:customer', 'verified']], function () {
+Route::group(['middleware' => ['roles', 'role:customer|supervisor', 'verified']], function () {
 
     // ==============  Customer Profile Setting   ==============  //
     Route::get('/dashboard', [FrontendCustomerController::class, 'dashboard'])->name('customer.dashboard');

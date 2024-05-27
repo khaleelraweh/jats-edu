@@ -568,13 +568,13 @@
                                     <span>{{ __('panel.status') }}</span>
                                 </label>
                                 <select name="status" class="form-control">
-                                    <option value="1"
-                                        {{ old('status', $course->status) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.status_active') }}
-                                    </option>
                                     <option value="0"
                                         {{ old('status', $course->status) == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
+                                    </option>
+                                    <option value="1"
+                                        {{ old('status', $course->status) == '1' ? 'selected' : null }}>
+                                        {{ __('panel.status_active') }}
                                     </option>
                                 </select>
                                 @error('status')
@@ -1034,7 +1034,8 @@
                 // If any field is empty, display an alert
                 if (isEmpty) {
                     alert(
-                        '{{ __('panel.msg_please_fill_in_all_requirement_fields_before_adding_new') }}.');
+                        '{{ __('panel.msg_please_fill_in_all_requirement_fields_before_adding_new') }}.'
+                    );
                     return false; // Prevent the form from submitting
                 }
 

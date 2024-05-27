@@ -924,21 +924,17 @@
                     return false; // Prevent the form from submitting
                 }
 
-                <?php foreach (config('locales.languages') as $key => $val){ ?>
                 $('#course_objectives_details').find('tbody').append($('' +
                     '<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
                     '<td>' +
-                    '<span>{{ __('panel.topic_in_' . $key) }} (' + numberIncr + ')</span></td>' +
+                    '<span>{{ __('panel.course_objective') }} (' + numberIncr + ')</span></td>' +
                     '<td><input type="text" name="course_objective[' + numberIncr +
-                    '][<?php echo $key; ?>]" class="course_objective form-control"></td>' +
+                    ']" class="course_objective form-control"></td>' +
                     '</tr>'));
-                <?php } ?>
             });
         });
-
-
 
         $(document).on('click', '.delegated-btn', function(e) {
             e.preventDefault();

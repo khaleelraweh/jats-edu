@@ -124,24 +124,6 @@
                             {{-- البيانات الاساسية --}}
                             <div class="col-md-7 col-sm-12 ">
 
-                                {{-- category name  field --}}
-
-                                <div class="row ">
-                                    <div class="col-12 pt-4">
-                                        <label for="category_id"> {{ __('panel.course_title') }}</label>
-                                        <select name="course_category_id" class="form-control">
-                                            <option value=""> {{ __('panel.main_category') }} __ </option>
-                                            @forelse ($course_categories as $course_category)
-                                                <option value="{{ $course_category->id }}"
-                                                    {{ old('course_category_id', $course->course_category_id) == $course_category->id ? 'selected' : null }}>
-                                                    {{ $course_category->title }} </option>
-                                            @empty
-                                            @endforelse
-                                        </select>
-                                    </div>
-                                </div>
-
-
                                 {{-- course name field --}}
                                 <div class="row ">
                                     <div class="col-sm-12 pt-3">
@@ -289,29 +271,7 @@
                             </div>
                         </div>
 
-                        {{-- lecture numbers and course duration --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="lecture_numbers">{{ __('panel.lecture_numbers') }}</label>
-                                <input type="number" name="lecture_numbers" id="lecture_numbers"
-                                    value="{{ old('lecture_numbers', $course->lecture_numbers) }}" class="form-control">
-                                @error('lecture_numbers')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
 
-                            </div>
-
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="course_duration">{{ __('panel.course_duration') }}</label>
-                                <input type="text" name="course_duration" id="course_duration"
-                                    value="{{ old('course_duration', $course->course_duration) }}" class="form-control"
-                                    placeholder="8h 17m">
-                                @error('course_duration')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                            </div>
-                        </div>
 
                         {{-- video promo and description  --}}
                         <div class="row">
@@ -337,7 +297,7 @@
 
                         </div>
 
-                        {{-- course type and evaluation --}}
+                        {{-- course type  --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="course_type">{{ __('panel.course_type') }}</label>
@@ -357,29 +317,18 @@
                                 @enderror
 
                             </div>
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="evaluation">{{ __('panel.evaluation') }}</label>
-                                <select name="evaluation" class="form-control">
-                                    <option value="1"
-                                        {{ old('evaluation', $course->evaluation) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_normal') }}
-                                    </option>
-                                    <option value="2"
-                                        {{ old('evaluation', $course->evaluation) == '2' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_featured') }}
-                                    </option>
-                                    <option value="3"
-                                        {{ old('evaluation', $course->evaluation) == '3' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_best_seller') }}
-                                    </option>
-
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <label for="category_id"> {{ __('panel.course_title') }}</label>
+                                <select name="course_category_id" class="form-control">
+                                    <option value=""> {{ __('panel.main_category') }} __ </option>
+                                    @forelse ($course_categories as $course_category)
+                                        <option value="{{ $course_category->id }}"
+                                            {{ old('course_category_id', $course->course_category_id) == $course_category->id ? 'selected' : null }}>
+                                            {{ $course_category->title }} </option>
+                                    @empty
+                                    @endforelse
                                 </select>
-                                @error('evaluation')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
                             </div>
-
                         </div>
 
                         {{-- course deadline and certificate --}}

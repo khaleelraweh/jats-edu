@@ -76,8 +76,8 @@
                 <section class="pt-5 pb-9 py-md-7 bg-white">
                     <div class="container">
                         <div class="text-center mb-md-8 mb-5 text-capitalize">
-                            <h1 class="mb-1">Instructor Courses</h1>
-                            <p class="font-size-lg mb-0">Edit and Manage Your Courses here </p>
+                            <h1 class="mb-1">{{ __('transf.instructor_courses') }}</h1>
+                            <p class="font-size-lg mb-0">{{ __('transf.edit_manage_your_courses_here') }}</p>
                         </div>
 
                         @foreach ($courses as $course)
@@ -111,7 +111,7 @@
                                             class="col khaleel w-90p h-90p h-md-120p w-md-120p  d-flex justify-content-center align-items-center">
                                             <!-- Overlay -->
                                             <div class="overlay">
-                                                <span>Edit/Manage your Course</span>
+                                                <span>{{ __('transf.edit_manage_your_course') }}</span>
                                             </div>
 
                                             <!-- Body -->
@@ -128,9 +128,9 @@
 
                                             <div class="col">
                                                 <a href="{{ route('instructor.courses.edit', $course->id) }}"
-                                                    class="col-auto  d-lg-flex justify-content-center align-items-center text-dodger text-underline pe-xl-5 fw-semi-bold">
-                                                    <span class="d-inline-block" style="width:230px;">Complete Your
-                                                        Course
+                                                    class="col-auto  d-lg-flex justify-content-center align-items-center text-dodger text-none pe-xl-5 fw-semi-bold">
+                                                    <span class="d-inline-block " style="width:230px;">
+                                                        {{ __('transf.complete_your_course') }}
 
                                                     </span>
 
@@ -154,9 +154,9 @@
 
 
 
-                        <div class="text-center mt-8">
+                        <div class="text-center mt-8 d-none">
                             <a href="event-list.html" class="d-inline-flex align-items-center fw-medium">
-                                Browse All
+                                {{ __('transf.browse_all') }}
                                 <div class="ms-2 d-flex">
                                     <!-- Icon -->
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"

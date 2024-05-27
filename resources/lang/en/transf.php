@@ -350,6 +350,12 @@ return [
     'of_courses'                                    =>  'of Courses',
     'txt_related_to_you'                            =>  'Related To You',
 
+    // instructor dashboard 
+    'instructor_courses'                            =>  'Instructor Courses',
+    'edit_manage_your_courses_here'                 =>  'Edit and Manage Your Courses here',
+    'edit_manage_your_course'                       =>  'Edit/Manage your Course',
+    'complete_your_course'                          =>  'Complete your course',
+
     // instructor create Course
 
     'course_generators'                             =>  'Course Generators',
@@ -568,6 +574,8 @@ return [
 
     // order 
     'Kurima Bank'                                       =>  'Kurima Bank',
+
+
 
 
 ];

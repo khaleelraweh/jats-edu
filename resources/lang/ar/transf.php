@@ -349,6 +349,12 @@ return [
     'of_courses'                                    =>  'من الدورات',
     'txt_related_to_you'                            =>  'تابعة لحاسبك',
 
+    // instructor dashboard 
+    'instructor_courses'                            =>  'دورات المدربين',
+    'edit_manage_your_courses_here'                 =>  'تحرير وإدارة الدورات الخاصة بك هنا',
+    'edit_manage_your_course'                       =>  'تحرير/إدارة الدورة التدريبية الخاصة بك',
+    'complete_your_course'                          =>  'أكمل الدورة الخاصة بك',
+
 
     // instructor create Course
 

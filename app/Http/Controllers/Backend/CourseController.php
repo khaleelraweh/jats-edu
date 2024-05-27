@@ -105,7 +105,7 @@ class CourseController extends Controller
             $course->users()->sync([$loggedInUser->id]);
         }
 
-        // course topics start 
+        // course objective start 
         if ($request->course_objective != null) {
 
             $topics_list = [];
@@ -244,9 +244,6 @@ class CourseController extends Controller
 
         $input['skill_level']                      =   $request->skill_level;
         $input['language']                       =   $request->language;
-        $input['evaluation']                 =   $request->evaluation;
-        $input['lecture_numbers']             =   $request->lecture_numbers;
-        $input['course_duration']               =   $request->course_duration;
 
         $input['video_promo']           =  $request->video_promo;
         $input['video_description']           =  $request->video_description;
@@ -286,10 +283,10 @@ class CourseController extends Controller
         // course topics start 
         $course->objectives()->delete();
 
-        if ($request->course_topic != null) {
+        if ($request->course_objective != null) {
             $topics_list = [];
-            for ($i = 0; $i < count($request->course_topic); $i++) {
-                $topics_list[$i]['title'] = $request->course_topic[$i];
+            for ($i = 0; $i < count($request->course_objective); $i++) {
+                $topics_list[$i]['title'] = $request->course_objective[$i];
             }
             // dd($topics_list);
             $topics = $course->objectives()->createMany($topics_list);

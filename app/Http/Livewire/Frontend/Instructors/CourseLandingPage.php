@@ -77,7 +77,7 @@ class CourseLandingPage extends Component
         $this->certificate = $course->certificate ?? '';
         $this->deadline = $course->deadline;
 
-        $this->images = $course->photos->pluck('file_name')->toArray();
+        $this->images = $course->images;
 
         if ($course->firstMedia && $course->firstMedia->file_name) {
             $this->currentImage = asset('assets/courses/' . $course->firstMedia->file_name);

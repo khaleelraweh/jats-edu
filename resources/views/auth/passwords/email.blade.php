@@ -41,8 +41,8 @@
                                 </label>
 
                                 <input type="email" name="email" id="email"
-                                    class="form-control form-control--sm rounded-pill" value=""
-                                    placeholder="your@email.com" autocomplete="email" autocapitalize="none">
+                                    class="form-control form-control--sm mt-3" value="" placeholder="your@email.com"
+                                    autocomplete="email" autocapitalize="none">
 
                                 @error('email')
                                     <span class="invalid-feedback text-danger" role="alert">
@@ -56,7 +56,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-2">
-                                <button type="submit" class="btn mt-3 col-sm-12 rounded-pill ">
+                                <button type="submit" class="btn btn-block btn-primary mt-3">
                                     {{ __('panel.f_send_reset_link') }}
 
                                 </button>

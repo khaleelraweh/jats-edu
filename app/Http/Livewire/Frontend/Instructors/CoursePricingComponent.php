@@ -58,7 +58,7 @@ class CoursePricingComponent extends Component
 
         $this->formSubmitted = true;
 
-        $this->alert('success', 'Price Updated Successfully!');
+        $this->alert('success', __('transf.Price Updated Successfully!'));
     }
 
     protected function validateDatabaseData()

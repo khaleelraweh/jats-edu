@@ -360,6 +360,13 @@ return [
 
     'course_generators'                             =>  'مولد الدورات',
 
+
+    //generators Message 
+    'Course Updated Successfully!'                  =>  'تم تحديث الدورة بنجاح!',
+    'Price Updated Successfully!'                   =>  'تم تحديث السعر بنجاح!',
+    'PublishData Updated Successfully!'             =>  'تم تحديث بيانات النشر بنجاح!',
+
+
     // Step2 : Course Title 
     'how_about_working_title'                       =>  'ماذا عن عنوان العمل؟',
 

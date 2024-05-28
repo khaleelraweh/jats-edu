@@ -58,7 +58,7 @@ class CoursePublishDataComponent extends Component
 
         $this->emit('updateCourseDEtailsConfirmation', $this->courseId);
 
-        $this->alert('success', 'PublishData Updated Successfully!');
+        $this->alert('success', __('transf.PublishData Updated Successfully!'));
     }
 
     protected function validateDatabaseData()

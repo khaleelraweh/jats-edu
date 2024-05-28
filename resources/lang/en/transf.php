@@ -359,6 +359,12 @@ return [
     // instructor create Course
 
     'course_generators'                             =>  'Course Generators',
+
+    //generators Message 
+    'Course Updated Successfully!'                  =>  'Course Updated Successfully!',
+    'Price Updated Successfully!'                   =>  'Price Updated Successfully!',
+    'PublishData Updated Successfully!'             =>  'PublishData Updated Successfully!',
+
     //step1 : course Title 
     'how_about_working_title'                       =>  'How About a Working Title?',
 

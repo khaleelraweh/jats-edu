@@ -123,7 +123,7 @@ return [
     'lbl_email'                                     =>  'البريد الإلكتروني',
     'holder_your_email'                             =>  'youremail@gmail.com',
     'btn_sign_up'                                   =>  'اشتراك',
-    'txt_already_have_an_account'                   =>  'هل لديك حساب',
+    'txt_already_have_an_account'                   =>  'هل لديك حساب بالفعل ؟',
     'lnk_login'                                     =>  'تسجيل الدخول',
 
     'txt_recover_password'                          =>  'إستعادة كلمة المرور!',

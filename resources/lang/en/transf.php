@@ -123,7 +123,7 @@ return [
     'lbl_email'                                     =>  'Email',
     'holder_your_email'                             =>  'YourEmail@gmail.com',
     'btn_sign_up'                                   =>  'Sign Up',
-    'txt_already_have_an_account'                   =>  'Already have an account',
+    'txt_already_have_an_account'                   =>  'Already have an account ?',
     'lnk_login'                                     =>  'Login',
 
     'txt_recover_password'                          =>  'Recover password!',

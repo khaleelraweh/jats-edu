@@ -379,6 +379,14 @@ return [
     'words'                                         =>  'words',
     'Remaining words to reach the minimum number of words for the description field' =>  'Remaining words to reach the minimum number of words for the description field',
 
+    //coupon
+    'Coupon is invalid !'                           =>  'Coupon is invalid !',
+    'coupon is applied successfully'                =>  'Coupon is applied successfully',
+    'Course coupon is invalid or expired !'         =>  'Course coupon is invalid or expired !',
+    'Course coupon is used more than its permition which !' =>  'Course coupon is used more than its permition which !',
+    'No Courses available in your cart'             =>  'No Courses available in your cart !',
+    'Coupon is removed'                             =>  'Coupon is removed !',
+
     //step1 : course Title 
     'how_about_working_title'                       =>  'How About a Working Title?',
 

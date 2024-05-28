@@ -119,7 +119,7 @@ class ShopCartComponent extends Component
             if (!$coupon) {
                 // give alert and make coupon_code as null for getting new coupon
                 $this->coupon_code = '';
-                $this->alert('error', 'Coupon is invalid !');
+                $this->alert('error', __('transf.Coupon is invalid !'));
             } else {
 
                 // if there is coupon in db then use discount function from model to get the discount to cart_subtotal 
@@ -138,16 +138,16 @@ class ShopCartComponent extends Component
                     $this->coupon_code = session()->get('coupon')['code'];
                     $this->emit('updateCart');
 
-                    $this->alert('success', 'coupon is applied successfully');
+                    $this->alert('success', __('transf.coupon is applied successfully'));
                 } else if ($couponValue == 0) { // means checkDate() says date is expired
-                    $this->alert('error', 'product coupon is invalid or expired');
+                    $this->alert('error', __('transf.Course coupon is invalid or expired !'));
                 } else { // means checkUsedTimes() in productCoupon model says we losed all try of coupon because we used it
-                    $this->alert('error', 'product coupon is used more than its permition which ' . $coupon->use_times . ' time/s ');
+                    $this->alert('error', __('transf.Course coupon is used more than its permition which !') . $coupon->use_times . ' time/s ');
                 }
             }
         } else {
             $this->coupon_code = '';
-            $this->alert('error', 'No products available in your cart');
+            $this->alert('error', __('transf.No Courses available in your cart'));
         }
     }
 
@@ -157,6 +157,6 @@ class ShopCartComponent extends Component
         session()->remove('coupon'); // it will remove coupon session so it will remove discount from getNumbers() function in GeneralHelper.php
         $this->coupon_code = '';
         $this->emit('updateCart');
-        $this->alert('success', 'Coupon is removed');
+        $this->alert('success', __('transf.Coupon is removed'));
     }
 }

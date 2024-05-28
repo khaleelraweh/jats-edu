@@ -368,6 +368,17 @@ return [
     'words'                                         =>  'كلمات',
     'Remaining words to reach the minimum number of words for the description field' =>  'الكلمات المتبقية للوصول إلى الحد الأدنى من كلمات حقل الوصف',
 
+    //coupon 
+    'Coupon is invalid !'                           =>  'القسيمة غير صالحة!',
+    'coupon is applied successfully'                =>  'تم تطبيق القسيمة بنجاح',
+    'Course coupon is invalid or expired !'         =>  'قسيمة الدورة غير صالحة أو منتهية الصلاحية !',
+    'Course coupon is used more than its permition which !' =>  'يتم استخدام قسيمة الدورة أكثر من المسموح بها !',
+    'No Courses available in your cart'             =>  'لا توجد دورات متاحة في سلة التسوق الخاصة بك !',
+    'Coupon is removed'                             =>  'تمت إزالة القسيمة !',
+
+
+
+
 
 
 

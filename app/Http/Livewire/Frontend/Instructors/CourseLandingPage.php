@@ -65,22 +65,22 @@ class CourseLandingPage extends Component
     {
         $course = Course::with('photos', 'firstMedia')->findOrFail($this->courseId);
 
-        $this->title = $course->title;
-        $this->subtitle = $course->subtitle;
-        $this->description = $course->description;
-        $this->video_promo = $course->video_promo;
-        $this->video_description = $course->video_description;
-        $this->language = $course->language;
-        $this->skill_level = $course->skill_level;
-        $this->course_type = $course->course_type;
-        $this->course_category_id = $course->course_category_id;
-        $this->certificate = $course->certificate;
+        $this->title = $course->title ?? '';
+        $this->subtitle = $course->subtitle ?? '';
+        $this->description = $course->description ?? '';
+        $this->video_promo = $course->video_promo ?? '';
+        $this->video_description = $course->video_description ?? '';
+        $this->language = $course->language ?? '';
+        $this->skill_level = $course->skill_level ?? '';
+        $this->course_type = $course->course_type ?? '';
+        $this->course_category_id = $course->course_category_id ?? '';
+        $this->certificate = $course->certificate ?? '';
         $this->deadline = $course->deadline;
-        $this->images = $course->images;
+
+        $this->images = $course->photos->pluck('file_name')->toArray();
 
         if ($course->firstMedia && $course->firstMedia->file_name) {
             $this->currentImage = asset('assets/courses/' . $course->firstMedia->file_name);
-
             if (!file_exists(public_path('assets/courses/' . $course->firstMedia->file_name))) {
                 $this->currentImage = asset('image/not_found/item_image_not_found.webp');
             }
@@ -88,6 +88,7 @@ class CourseLandingPage extends Component
             $this->currentImage = asset('image/not_found/item_image_not_found.webp');
         }
     }
+
 
     private function validateDatabaseData(): void
     {

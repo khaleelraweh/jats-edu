@@ -132,73 +132,40 @@
                                 </div>
 
                                 {{--  description field --}}
-                                {{-- <div class="row">
-                                    <div class="col-sm-12 col-md-12 pt-4">
-                                        <label for="description">
-                                            {{ __('transf.Course description') }}
-                                        </label>
-                                        <textarea name="description" rows="10" class="form-control" wire:model.defer="description"
-                                            placeholder="{{ __('transf.Insert your course description.') }}">{!! old('description', $course->description) !!}</textarea>
-                                        <span class="text-muted d-inline-block mt-1">
-                                            <small>
-                                                {{ __('transf.Course description tip.') }}
-                                            </small>
-                                        </span>
-                                        @error('description')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div> --}}
-
-                                {{-- <div class="row">
-                                    <div class="col-sm-12 col-md-12 pt-4">
-                                        <label for="description">{{ __('transf.Course description') }}</label>
-                                        <textarea name="description" id="descriptionTextarea" rows="10" class="form-control" wire:model.defer="description"
-                                            placeholder="{{ __('transf.Insert your course description.') }}"></textarea>
-                                        <span class="text-muted d-inline-block mt-1">
-                                            <small>{{ __('transf.Course description tip.') }}</small>
-                                        </span>
-                                        @error('description')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div> --}}
-
-                                {{-- Display word count and remaining words --}}
-                                {{-- <div class="row mt-3">
-                                    <div class="col-sm-12">
-                                        <span id="wordCount">0</span> / 100 words
-                                    </div>
-                                </div> --}}
-
-
-                                {{-- Your Blade view --}}
-                                {{-- Include a textarea for the description field --}}
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 pt-4">
                                         <label for="description">{{ __('transf.Course description') }}</label>
                                         <textarea name="description" id="descriptionTextarea" rows="10" class="form-control" wire:model.defer="description"
                                             placeholder="{{ __('transf.Insert your course description.') }}"></textarea>
-                                        <span class="text-muted d-inline-block mt-1">
-                                            <small>{{ __('transf.Course description tip.') }}</small>
-                                        </span>
+
+                                        <div class=" d-flex justify-content-between">
+                                            <div class="card-naving">
+                                                <small>
+                                                    {{ __('transf.Course description tip.') }}
+                                                </small>
+                                                <small>
+                                                    {{ __('transf.Remaining words to reach the minimum number of words for the description field') }}
+                                                    {{ $remainingWords }}
+                                                </small>
+
+                                            </div>
+                                            <div class="card-naving">
+                                                <small>
+                                                    <span id="wordCount">
+                                                        {{ $wordCount }}
+                                                    </span>
+                                                    {{ __('transf.words') }}
+                                                </small>
+                                            </div>
+                                        </div>
+
                                         @error('description')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
 
-                                {{-- Display word count and remaining words --}}
-                                <div class="row mt-3">
-                                    <div class="col-sm-12">
-                                        <span id="wordCount">{{ $wordCount }}</span> / {{ $remainingWords }} words
-                                    </div>
-                                </div>
-
-
-
                             </div>
-
 
                         </div>
 
@@ -212,7 +179,6 @@
 
                                         <img src="{{ $currentImage }}" style="display: block;width:100%;height:200px;"
                                             alt="{{ $course->title }}">
-
                                     </div>
                                 </div>
 
@@ -436,37 +402,6 @@
     </div>
 </div>
 
-
-{{-- JavaScript to count words and update the word count --}}
-{{-- <script>
-    document.addEventListener('livewire:load', function() {
-        // Get the textarea element
-        var textarea = document.getElementById('descriptionTextarea');
-        // Get the word count element
-        var wordCountElement = document.getElementById('wordCount');
-
-        // Event listener for input changes in the textarea
-        textarea.addEventListener('input', function() {
-            // Get the current text in the textarea
-            var text = textarea.value;
-            // Split the text into words
-            var words = text.match(/\S+/g) || [];
-            // Get the current word count
-            var wordCount = words.length;
-            // Update the word count display
-            wordCountElement.textContent = wordCount;
-
-            // Calculate remaining words needed to reach 100
-            var remainingWords = 100 - wordCount;
-            if (remainingWords < 0) {
-                // If the user exceeds 100 words, display 0 remaining
-                wordCountElement.textContent = '100+';
-            } else {
-                wordCountElement.textContent = remainingWords;
-            }
-        });
-    });
-</script> --}}
 
 <script>
     document.addEventListener('livewire:load', function() {

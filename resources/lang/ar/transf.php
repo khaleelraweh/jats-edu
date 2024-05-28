@@ -365,6 +365,8 @@ return [
     'At least one image is required!'               =>  'مطلوب صورة واحدة على الأقل!',
     'The description field must contain at least'   =>  'يجب أن يحتوي حقل الوصف على الأقل',
     'words!'                                        =>  'كلمات !',
+    'words'                                         =>  'كلمات',
+    'Remaining words to reach the minimum number of words for the description field' =>  'الكلمات المتبقية للوصول إلى الحد الأدنى من كلمات حقل الوصف',
 
 
 

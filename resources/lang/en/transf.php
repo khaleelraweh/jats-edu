@@ -376,6 +376,8 @@ return [
     'At least one image is required!'               =>  'At least one image is required!',
     'The description field must contain at least'   =>  'The description field must contain at least',
     'words!'                                        =>  'words !',
+    'words'                                         =>  'words',
+    'Remaining words to reach the minimum number of words for the description field' =>  'Remaining words to reach the minimum number of words for the description field',
 
     //step1 : course Title 
     'how_about_working_title'                       =>  'How About a Working Title?',

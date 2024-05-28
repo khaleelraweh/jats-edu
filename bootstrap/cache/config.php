@@ -4,14 +4,14 @@
     'name' => 'Jats Edu أكاديمية جاتس',
     'env' => 'local',
     'debug' => true,
-    'url' => 'https://authenticate.test',
+    'url' => 'https://era-t.com',
     'asset_url' => NULL,
     'timezone' => 'UTC',
     'locale' => 'ar',
     'currency' => 'USD',
     'fallback_locale' => 'ar',
     'faker_locale' => 'ar_SA',
-    'key' => 'base64:3gdBxy7dxaWxACJ8Or+BAYmQ/NKwkhhd8BzxsLmKgvI=',
+    'key' => 'base64:jKdJ6Vh7YQMrJ3lel5bt31QBsz2ZwyT7fwATeLw00jw=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -402,7 +402,7 @@
       array (
         'driver' => 'local',
         'root' => 'C:\\xampp\\htdocs\\instatutes\\storage\\app/public',
-        'url' => 'https://authenticate.test/storage',
+        'url' => 'https://era-t.com/storage',
         'visibility' => 'public',
       ),
       's3' => 
@@ -871,7 +871,7 @@
       2 => '127.0.0.1',
       3 => '127.0.0.1:8000',
       4 => '::1',
-      5 => 'authenticate.test',
+      5 => 'era-t.com',
     ),
     'guard' => 
     array (

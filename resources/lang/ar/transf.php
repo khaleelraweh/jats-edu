@@ -109,6 +109,7 @@ return [
     'lbl_password'                                  =>  'كلمة المرور',
     'New user'                                      =>  'مستخدم جديد ؟',
     'Create a new account'                          =>  'انشاء حساب جديد',
+    'Do you have an account ?'                      =>  'هل لديك حساب ؟',
     'holder_stars'                                  =>  '*********',
     'lbl_remember_me'                               =>  'تذكرنى',
     'lnk_forgot_password'                           =>  'هل نسيت كلمة السر',

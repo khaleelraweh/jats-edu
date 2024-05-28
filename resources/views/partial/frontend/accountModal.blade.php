@@ -391,7 +391,6 @@
 
                         </div>
 
-
                         <div class="form-group mb-5">
 
                             <label for="mobile">
@@ -442,8 +441,6 @@
                             @enderror
 
                         </div>
-
-
 
 
                         <!-- Submit -->

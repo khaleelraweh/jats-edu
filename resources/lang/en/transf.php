@@ -109,6 +109,7 @@ return [
     'lbl_password'                                  =>  'Password',
     'New user'                                      =>  'New User ?',
     'Create a new account'                          =>  'Create a new account',
+    'Do you have an account ?'                      =>  'Do you have an account ?',
     'holder_stars'                                  =>  '*********',
     'lbl_remember_me'                               =>  'Remember me',
     'lnk_forgot_password'                           =>  'Forgot Password',

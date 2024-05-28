@@ -4,27 +4,20 @@ namespace App\Http\Livewire\Frontend\Instructors;
 
 use App\Models\Course;
 use App\Models\CourseCategory;
-use App\Models\Photo;
-use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Illuminate\Validation\Rule;
 
 class CourseLandingPage extends Component
 {
-    use WithFileUploads;
-    use LivewireAlert;
+    use WithFileUploads, LivewireAlert;
 
     public $courseId;
     public $title;
     public $subtitle;
     public $description;
-    // Add more properties for other fields
     public $video_promo;
     public $video_description;
     public $language;
@@ -32,189 +25,137 @@ class CourseLandingPage extends Component
     public $course_type;
     public $course_category_id;
     public $certificate;
-    public $deadline = null; // Set deadline to null by default
-
-    public $images; // For image uploads
-    public $currentImage; // For displaying the current image
-
-
-    // checking validation 
+    public $deadline = null;
+    public $images;
+    public $currentImage;
     public $databaseDataValid = false;
     public $formSubmitted = false;
-
     public $titleValid = false;
     public $subtitleValid = false;
     public $descriptionValid = false;
     public $videopromoValid = false;
-
 
     protected $listeners = [
         'updateCourseLanding' => 'mount'
     ];
 
     protected $rules = [
-
-        'title' => 'required|string|min:3|max:60',
-        'subtitle' => 'required|string|min:3|max:120',
-        'description' => 'required|string|min_words:100',  // min_words came from AppServiceProvider I made it 
-        'images.*' => 'required|image|max:2048', // Validation rule for images (nullable and max size 2MB)
-        'video_promo' => 'required|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
-        'video_description' => 'nullable|url|max:255', // Example validation for video_promo (nullable, url, max length 255)
-        'language' => 'required|in:1,2', // Example validation for language (required and should be one of the given values)
-        'skill_level' => 'required|in:1,2,3,4', // Example validation for skill_level (required and should be one of the given values)
-        'course_type' => 'required|in:1,2', // Example validation for course_type (required and should be one of the given values)
-        'course_category_id' => 'required|exists:course_categories,id', // Example validation for course_category_id (required and should exist in course_categories table)
-        'certificate' => 'required|boolean', // Example validation for certificate (required and should be boolean)
+        'title' => 'required|string|min:10|max:60',
+        'subtitle' => 'required|string|min:10|max:120',
+        'description' => 'required|string|min_words:100',
+        'images.*' => 'required|image|max:2048',
+        'video_promo' => 'required|url|max:255',
+        'video_description' => 'nullable|url|max:255',
+        'language' => 'required|in:1,2',
+        'skill_level' => 'required|in:1,2,3,4',
+        'course_type' => 'required|in:1,2',
+        'course_category_id' => 'required|exists:course_categories,id',
+        'certificate' => 'required|boolean',
         'deadline' => 'nullable|date_format:Y-m-d H:i:s',
     ];
 
-    public function mount($courseId)
+    public function mount($courseId): void
     {
         $this->courseId = $courseId;
+        $this->loadCourseData();
+        $this->validateDatabaseData();
+    }
+
+    private function loadCourseData(): void
+    {
         $course = Course::with('photos', 'firstMedia')->findOrFail($this->courseId);
+
         $this->title = $course->title;
         $this->subtitle = $course->subtitle;
         $this->description = $course->description;
-        // Set other properties for other fields
-
         $this->video_promo = $course->video_promo;
         $this->video_description = $course->video_description;
         $this->language = $course->language;
         $this->skill_level = $course->skill_level;
         $this->course_type = $course->course_type;
-
         $this->course_category_id = $course->course_category_id;
         $this->certificate = $course->certificate;
         $this->deadline = $course->deadline;
-
         $this->images = $course->images;
 
-        if ($course->firstMedia != null && $course->firstMedia->file_name != null) {
+        if ($course->firstMedia && $course->firstMedia->file_name) {
             $this->currentImage = asset('assets/courses/' . $course->firstMedia->file_name);
 
-            if (
-                !file_exists(
-                    public_path('assets/courses/' . $course->firstMedia->file_name),
-                )
-            ) {
+            if (!file_exists(public_path('assets/courses/' . $course->firstMedia->file_name))) {
                 $this->currentImage = asset('image/not_found/item_image_not_found.webp');
             }
         } else {
             $this->currentImage = asset('image/not_found/item_image_not_found.webp');
         }
-
-
-        // Validate database data
-        $this->validateDatabaseData();
     }
 
-    protected function validateDatabaseData()
+    private function validateDatabaseData(): void
     {
-        $course = Course::where('id', $this->courseId)->first();
+        $course = Course::findOrFail($this->courseId);
 
-        // Validate title
-        $titleValid = true;
-        $validator = Validator::make(['title' => $course->title], [
-            'title' => ['required', 'string', 'min:10', 'max:60'],
-        ]);
-        if ($validator->fails()) {
-            $titleValid = false;
+        $this->titleValid = $this->validateField('title', $course->title);
+        $this->subtitleValid = $this->validateField('subtitle', $course->subtitle);
+        $this->descriptionValid = $this->validateField('description', $course->description);
+        $this->videopromoValid = $this->validateField('video_promo', $course->video_promo);
+
+        $this->databaseDataValid = $this->titleValid && $this->subtitleValid && $this->descriptionValid && $this->videopromoValid;
+    }
+
+    private function validateField(string $field, ?string $value): bool
+    {
+        if (is_null($value)) {
+            return false;
         }
 
-        // Validate subtitle
-        $subtitleValid = true;
-        $validator = Validator::make(['subtitle' => $course->subtitle], [
-            'subtitle' => ['required', 'string', 'min:10', 'max:120'],
-        ]);
-        if ($validator->fails()) {
-            $subtitleValid = false;
-        }
-
-
-        // Validate description
-        $descriptionValid = true;
-        $validator = Validator::make(['description' => $course->description], [
-            'description' => ['required', 'string', 'min_words:100'],
-        ]);
-        if ($validator->fails()) {
-            $descriptionValid = false;
-        }
-
-        // Validate video promotional
-        $videopromoValid = true;
-        $validator = Validator::make(['video_promo' => $course->video_promo], [
-            'video_promo' => ['required', 'url', 'min:10'],
-        ]);
-        if ($validator->fails()) {
-            $videopromoValid = false;
-        }
-
-        $this->databaseDataValid = $titleValid && $subtitleValid && $descriptionValid && $videopromoValid;
-
-        $this->titleValid = $titleValid;
-        $this->subtitleValid = $subtitleValid;
-        $this->descriptionValid = $descriptionValid;
-        $this->videopromoValid = $videopromoValid;
+        $rules = [$field => $this->rules[$field]];
+        $validator = Validator::make([$field => $value], $rules);
+        return !$validator->fails();
     }
 
     public function render()
     {
-        $course = Course::with('photos', 'firstMedia')->where('id', $this->courseId)->first();
+        $course = Course::with('photos', 'firstMedia')->findOrFail($this->courseId);
         $course_categories = CourseCategory::whereStatus(1)->get(['id', 'title']);
 
         return view('livewire.frontend.instructors.course-landing-page', compact('course_categories', 'course'));
     }
 
-    public function updateCourse()
+    public function updateCourse(): void
     {
-
-        // Validate the data
         $validatedData = $this->validate();
-
-        // Remove the images field from validated data
         unset($validatedData['images']);
 
-        // Check if at least one image is uploaded or exists in the database
         $course = Course::with('photos', 'firstMedia')->findOrFail($this->courseId);
 
-        $isExist = true;
-        if ($course->firstMedia != null && $course->firstMedia->file_name != null) {
-            $isExist = true;
-            if (!file_exists(public_path('assets/courses/' . $course->firstMedia->file_name))) {
-                $isExist = false;
-            }
-        } else {
-            $isExist = false;
-        }
-
-
-        if ($isExist == false && empty($this->images)) {
-            $this->addError('images', 'At least one image is required.');
+        if (!$this->existingImageExists($course) && empty($this->images)) {
+            $this->addError('images', __('At least one image is required.'));
             return;
         }
 
-        // Update the course with the validated data
         $course->update($validatedData);
 
-        // Handle images if any new ones are uploaded
         if (!empty($this->images)) {
-            // Delete existing photos if new images are uploaded
-            $course->photos()->delete();
-
             $this->handleImageUpload($course);
         }
 
-
-
         $this->emit('updateCourseLanding', $this->courseId);
-        $this->emit('updateCourseDEtailsConfirmation', $this->courseId);
+        $this->emit('updateCourseDetailsConfirmation', $this->courseId);
 
         $this->formSubmitted = true;
         $this->alert('success', __('transf.Course Updated Successfully!'));
     }
 
-    protected function handleImageUpload($course)
+    private function existingImageExists(Course $course): bool
     {
+        if ($course->firstMedia && $course->firstMedia->file_name) {
+            return file_exists(public_path('assets/courses/' . $course->firstMedia->file_name));
+        }
+        return false;
+    }
+
+    private function handleImageUpload(Course $course): void
+    {
+        $course->photos()->delete();
         foreach ($this->images as $image) {
             $file_name = $this->saveImage($image, $course);
             $course->photos()->create([
@@ -227,7 +168,7 @@ class CourseLandingPage extends Component
         }
     }
 
-    protected function saveImage($image, $course)
+    private function saveImage($image, Course $course): string
     {
         $file_name = $course->slug . '_' . time() . '.' . $image->getClientOriginalExtension();
         $path = public_path('assets/courses/' . $file_name);

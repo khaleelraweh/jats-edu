@@ -10,8 +10,16 @@ class CustomValidationRules
     {
         $minWords = $parameters[0] ?? 0;
         $validator->setCustomMessages([
-            'min_words' => 'The :attribute must contain at least ' . $minWords . ' words.',
+            // 'min_words' => __('The :attribute must contain at least :min words.', ['min' => $minWords]),
+            'min_words' => __(__('transf.The description field must contain at least') . ' :min ' . __('transf.words!'), ['min' => $minWords]),
         ]);
-        return str_word_count($value) >= $minWords;
+
+        // Use a custom word counting function for Arabic text
+        if (is_string($value)) {
+            $wordCount = preg_match_all('/\b\p{L}+\b/u', $value);
+            return $wordCount >= $minWords;
+        }
+
+        return false;
     }
 }

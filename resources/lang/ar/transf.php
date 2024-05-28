@@ -363,6 +363,8 @@ return [
     'Section not found!'                            =>  'لم يتم العثور على القسم!',
     'Sections updated successfully!'                =>  'تم تحديث الأقسام بنجاح!',
     'At least one image is required!'               =>  'مطلوب صورة واحدة على الأقل!',
+    'The description field must contain at least'   =>  'يجب أن يحتوي حقل الوصف على الأقل',
+    'words!'                                        =>  'كلمات !',
 
 
 

@@ -374,6 +374,8 @@ return [
     'Section not found!'                            =>  'Section not found!',
     'Sections updated successfully!'                =>  'Sections updated successfully!',
     'At least one image is required!'               =>  'At least one image is required!',
+    'The description field must contain at least'   =>  'The description field must contain at least',
+    'words!'                                        =>  'words !',
 
     //step1 : course Title 
     'how_about_working_title'                       =>  'How About a Working Title?',

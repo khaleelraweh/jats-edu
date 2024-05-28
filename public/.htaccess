@@ -1,12 +1,3 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    # Removes index.php from ExpressionEngine URLs  
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.php?url=$1 [PT,L]
-
-</IfModule>
-
-
-
-# AddHandler application/x-httpd-ea-php82___lsphp .php .php8 .phtml
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L,QSA]

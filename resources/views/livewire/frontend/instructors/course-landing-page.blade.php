@@ -132,7 +132,7 @@
                                 </div>
 
                                 {{--  description field --}}
-                                <div class="row">
+                                {{-- <div class="row">
                                     <div class="col-sm-12 col-md-12 pt-4">
                                         <label for="description">
                                             {{ __('transf.Course description') }}
@@ -148,7 +148,55 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
+                                </div> --}}
+
+                                {{-- <div class="row">
+                                    <div class="col-sm-12 col-md-12 pt-4">
+                                        <label for="description">{{ __('transf.Course description') }}</label>
+                                        <textarea name="description" id="descriptionTextarea" rows="10" class="form-control" wire:model.defer="description"
+                                            placeholder="{{ __('transf.Insert your course description.') }}"></textarea>
+                                        <span class="text-muted d-inline-block mt-1">
+                                            <small>{{ __('transf.Course description tip.') }}</small>
+                                        </span>
+                                        @error('description')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div> --}}
+
+                                {{-- Display word count and remaining words --}}
+                                {{-- <div class="row mt-3">
+                                    <div class="col-sm-12">
+                                        <span id="wordCount">0</span> / 100 words
+                                    </div>
+                                </div> --}}
+
+
+                                {{-- Your Blade view --}}
+                                {{-- Include a textarea for the description field --}}
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 pt-4">
+                                        <label for="description">{{ __('transf.Course description') }}</label>
+                                        <textarea name="description" id="descriptionTextarea" rows="10" class="form-control" wire:model.defer="description"
+                                            placeholder="{{ __('transf.Insert your course description.') }}"></textarea>
+                                        <span class="text-muted d-inline-block mt-1">
+                                            <small>{{ __('transf.Course description tip.') }}</small>
+                                        </span>
+                                        @error('description')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
+
+                                {{-- Display word count and remaining words --}}
+                                <div class="row mt-3">
+                                    <div class="col-sm-12">
+                                        <span id="wordCount">{{ $wordCount }}</span> / {{ $remainingWords }} words
+                                    </div>
+                                </div>
+
+
+
                             </div>
 
 
@@ -174,8 +222,8 @@
                                 <p>
                                     {{ __('transf.Course Image tip.') }}
                                 </p>
-                                <input type="file" wire:model="images" id="images" class="form-control" multiple
-                                    style="height: 39px !important;">
+                                <input type="file" wire:model="images" id="images" class="form-control"
+                                    multiple style="height: 39px !important;">
                                 @error('images.*')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -387,3 +435,57 @@
 
     </div>
 </div>
+
+
+{{-- JavaScript to count words and update the word count --}}
+{{-- <script>
+    document.addEventListener('livewire:load', function() {
+        // Get the textarea element
+        var textarea = document.getElementById('descriptionTextarea');
+        // Get the word count element
+        var wordCountElement = document.getElementById('wordCount');
+
+        // Event listener for input changes in the textarea
+        textarea.addEventListener('input', function() {
+            // Get the current text in the textarea
+            var text = textarea.value;
+            // Split the text into words
+            var words = text.match(/\S+/g) || [];
+            // Get the current word count
+            var wordCount = words.length;
+            // Update the word count display
+            wordCountElement.textContent = wordCount;
+
+            // Calculate remaining words needed to reach 100
+            var remainingWords = 100 - wordCount;
+            if (remainingWords < 0) {
+                // If the user exceeds 100 words, display 0 remaining
+                wordCountElement.textContent = '100+';
+            } else {
+                wordCountElement.textContent = remainingWords;
+            }
+        });
+    });
+</script> --}}
+
+<script>
+    document.addEventListener('livewire:load', function() {
+        // Get the textarea element
+        var textarea = document.getElementById('descriptionTextarea');
+        // Get the word count element
+        var wordCountElement = document.getElementById('wordCount');
+
+        // Event listener for input changes in the textarea
+        textarea.addEventListener('input', function() {
+            // Get the current text in the textarea
+            var text = textarea.value;
+            // Split the text into words
+            var words = text.match(/\S+/g) || [];
+            // Get the current word count
+            var wordCount = words.length;
+
+            // Emit Livewire event to update word count
+            Livewire.emit('updateWordCount', wordCount);
+        });
+    });
+</script>

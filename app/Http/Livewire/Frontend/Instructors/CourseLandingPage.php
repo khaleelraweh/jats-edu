@@ -35,8 +35,14 @@ class CourseLandingPage extends Component
     public $descriptionValid = false;
     public $videopromoValid = false;
 
+
+    public $wordCount = 0;
+
+
+
     protected $listeners = [
-        'updateCourseLanding' => 'mount'
+        'updateCourseLanding' => 'mount',
+        'updateWordCount' => 'updateWordCount'
     ];
 
     protected $rules = [
@@ -59,6 +65,20 @@ class CourseLandingPage extends Component
         $this->courseId = $courseId;
         $this->loadCourseData();
         $this->validateDatabaseData();
+
+        $this->wordCount = str_word_count($this->description);
+    }
+
+
+    public function updateWordCount($wordCount)
+    {
+        $this->wordCount = $wordCount;
+    }
+
+    // Compute remaining words
+    public function getRemainingWordsProperty()
+    {
+        return max(100 - $this->wordCount, 0);
     }
 
     private function loadCourseData(): void
@@ -118,7 +138,16 @@ class CourseLandingPage extends Component
         $course = Course::with('photos', 'firstMedia')->findOrFail($this->courseId);
         $course_categories = CourseCategory::whereStatus(1)->get(['id', 'title']);
 
-        return view('livewire.frontend.instructors.course-landing-page', compact('course_categories', 'course'));
+        return view(
+            'livewire.frontend.instructors.course-landing-page',
+            [
+                'remainingWords' => $this->remainingWords,
+                'course_categories' => $course_categories,
+                'course'            => $course
+            ]
+
+            // compact('course_categories', 'course', $this->remainingWords)
+        );
     }
 
     public function updateCourse(): void

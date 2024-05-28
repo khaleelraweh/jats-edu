@@ -4,6 +4,7 @@
     </div>
 
 
+
     <div class="my-4">
         <div class="table-responsive">
             <table class="table">
@@ -20,7 +21,8 @@
                     @forelse ($orders as $order)
                         <tr wire:key="{{ $order->id }}">
                             <td>{{ $order->ref_id }}</td>
-                            <td>{{ $order->currency() . ' ' . $order->total }}</td>
+                            {{-- <td>{{ $order->currency() . ' ' . $order->total }}</td> --}}
+                            <td>{{ currency_converter($order->total) }}</td>
                             <td>{!! $order->statusWithLabel() !!}</td>
                             <td>{{ $order->created_at->format('d-m-Y') }}</td>
                             <td class="text-right">
@@ -62,63 +64,65 @@
                     <tbody>
 
 
-
-
-
                         @if ($order_show)
 
                             @foreach ($order_show->courses as $product)
                                 <tr>
                                     <td>{{ $product->title }}</td>
-                                    <td>{{ $order->currency() . ' ' . number_format($product->price, 2) }}</td>
+                                    {{-- <td>{{ $order->currency() . ' ' . number_format($product->price, 2) }}</td> --}}
+                                    <td>{{ currency_converter($product->price) }}</td>
                                     <td>{{ $product->pivot->quantity }}</td>
-                                    <td>{{ $order->currency() . ' ' . number_format($product->price * $product->pivot->quantity, 2) }}
+                                    {{-- <td>{{ $order->currency() . ' ' . number_format($product->price * $product->pivot->quantity, 2) }} --}}
+                                    <td>{{ currency_converter($product->price * $product->pivot->quantity) }}</td>
                                     </td>
                                 </tr>
                             @endforeach
 
-                            <tr>
-                                <td colspan="3" style="text-align: end">
+                            {{-- totals --}}
+
+                            <tr class="total-group">
+                                <td colspan="3" class="text-end">
                                     <strong>{{ __('transf.txt_course_subtotal') }}</strong>
                                 </td>
-                                <td>{{ $order->currency() . ' ' . number_format($order_show->subtotal, 2) }}</td>
+                                <td>{{ currency_converter($order_show->subtotal) }}</td>
                             </tr>
+
                             @if (!is_null($order->offer_discount))
-                                <tr>
-                                    <td colspan="3" style="text-align: end">
+                                <tr class="total-group">
+                                    <td colspan="3" class="text-end">
                                         <strong>{{ __('transf.txt_course_offer_discount') }}</strong>
                                     </td>
-                                    <td>
-                                        <del>
-                                            {{ $order->currency() . ' ' . number_format($order_show->offer_discount, 2) }}
-                                        </del>
-                                    </td>
+                                    <td>{{ currency_converter($order_show->offer_discount) }}</td>
                                 </tr>
                             @endif
+
                             @if (!is_null($order->discount_code))
-                                <tr>
-                                    <td colspan="3" style="text-align: end">
+                                <tr class="total-group">
+                                    <td colspan="3" class="text-end">
                                         <strong>{{ __('transf.txt_course_coupon_discount') }}
                                             ({{ $order->discount_code }})</strong>
                                     </td>
-                                    <td>
-                                        <del> {{ $order->currency() . ' ' . number_format($order_show->discount, 2) }}
-                                        </del>
-                                    </td>
+
+                                    <td>{{ currency_converter($order_show->discount) }}</td>
                                 </tr>
                             @endif
-                            <tr>
-                                <td colspan="3" style="text-align: end">
+
+                            <tr class="total-group">
+                                <td colspan="3" class="text-end">
                                     <strong>{{ __('transf.txt_course_tax') }}</strong>
                                 </td>
-                                <td>{{ $order->currency() . ' ' . number_format($order_show->tax, 2) }}</td>
+                                {{-- <td>{{ $order->currency() . ' ' . number_format($order_show->tax, 2) }}</td> --}}
+                                <td>{{ currency_converter($order_show->tax) }}</td>
                             </tr>
-                            <tr>
-                                <td colspan="3" style="text-align: end">
+
+                            <tr class="total-group total-amount">
+                                <td colspan="3" class="text-end">
                                     <strong>{{ __('transf.txt_course_amount') }}</strong>
                                 </td>
-                                <td>{{ $order->currency() . ' ' . number_format($order_show->total, 2) }}</td>
+                                {{-- <td>{{ $order->currency() . ' ' . number_format($order_show->total, 2) }}</td> --}}
+                                <td>{{ currency_converter($order_show->total) }}</td>
                             </tr>
+
                         @endif
 
                     </tbody>

@@ -1,4 +1,31 @@
 @extends('layouts.app')
+@section('style')
+    <style>
+        .table .total-group {
+            background-color: #f8f9fa;
+            border-top: 2px solid #dee2e6;
+        }
+
+        .table .total-group td {
+            padding: 0.75rem;
+            font-weight: bold;
+        }
+
+        .table .total-amount {
+            background-color: #e9ecef;
+            border-top: 3px solid #ced4da;
+        }
+
+        .table .total-amount td {
+            font-size: 1.1rem;
+            color: #343a40;
+        }
+
+        .table .text-end {
+            text-align: right;
+        }
+    </style>
+@endsection
 @section('content')
     <!-- PAGE TITLE -->
     <header class="py-6 py-md-8" style="background-image: none;">

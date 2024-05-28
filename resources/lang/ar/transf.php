@@ -354,6 +354,19 @@ return [
     'edit_manage_your_courses_here'                 =>  'تحرير وإدارة الدورات الخاصة بك هنا',
     'edit_manage_your_course'                       =>  'تحرير/إدارة الدورة التدريبية الخاصة بك',
     'complete_your_course'                          =>  'أكمل الدورة الخاصة بك',
+    'Section removed successfully!'                 =>  'تمت إزالة القسم بنجاح!',
+    'Section title validation failed!'              =>  'فشل التحقق من صحة عنوان القسم!',
+    'Section title updated successfully!'           =>  'تم تحديث عنوان القسم بنجاح!',
+    'New section created successfully!'             =>  'تم إنشاء قسم جديد بنجاح!',
+    'Lesson data validation failed!'                =>  'فشل التحقق من صحة بيانات الدرس!',
+    'Lessons for the section saved successfully!'   =>  'تم حفظ دروس القسم بنجاح!',
+    'Section not found!'                            =>  'لم يتم العثور على القسم!',
+    'Sections updated successfully!'                =>  'تم تحديث الأقسام بنجاح!',
+
+
+
+
+
 
 
     // instructor create Course

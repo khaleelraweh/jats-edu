@@ -365,6 +365,14 @@ return [
     'Price Updated Successfully!'                   =>  'Price Updated Successfully!',
     'PublishData Updated Successfully!'             =>  'PublishData Updated Successfully!',
 
+    'Section removed successfully!'                 =>  'Section removed successfully!',
+    'Section title validation failed!'              =>  'Section title validation failed!',
+    'Section title updated successfully!'           =>  'Section title updated successfully!',
+    'New section created successfully!'             =>  'New section created successfully!',
+    'Lesson data validation failed!'                =>  'Lesson data validation failed!',
+    'Lessons for the section saved successfully!'   =>  'Lessons for the section saved successfully!',
+    'Section not found!'                            =>  'Section not found!',
+    'Sections updated successfully!'                =>  'Sections updated successfully!',
     //step1 : course Title 
     'how_about_working_title'                       =>  'How About a Working Title?',
 

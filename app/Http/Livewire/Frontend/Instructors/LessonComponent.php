@@ -292,7 +292,7 @@ class LessonComponent extends Component
     {
         // Check if the section exists in the sections array
         if (!isset($this->sections[$index])) {
-            $this->alert('error', 'Section not found.');
+            $this->alert('error', 'Section not found!');
             return;
         }
 
@@ -325,7 +325,7 @@ class LessonComponent extends Component
 
         $this->emit('updateCourseDEtailsConfirmation', $this->courseId);
 
-        $this->alert('success', 'Section removed successfully.');
+        $this->alert('success', __('transf.Section removed successfully!'));
     }
 
 

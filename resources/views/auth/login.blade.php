@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="h2 text-uppercase mb-0">{{ __('تسجيل الدخول') }}</h1>
+                    <h1 class="h2 text-uppercase mb-0">{{ __('transf.lnk_login') }}</h1>
                 </div>
                 <div class="col-lg-6 text-lg-end">
                 </div>
@@ -16,7 +16,7 @@
     <section class="py-5 ">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <h2 class="h5 text-uppercase mb-3">{{ __('تسجيل الدخول') }}</h2>
+                <h2 class="h5 text-uppercase mb-3">{{ __('transf.lnk_login') }}</h2>
 
                 {{-- <form method="POST" action="{{ route('login') }}">
 

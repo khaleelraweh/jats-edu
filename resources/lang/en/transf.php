@@ -107,6 +107,8 @@ return [
     'lbl_username_or_email'                         =>  'Username or Email',
     'holder_your_name_or_email'                     =>  'Your name or email',
     'lbl_password'                                  =>  'Password',
+    'New user'                                      =>  'New User ?',
+    'Create a new account'                          =>  'Create a new account',
     'holder_stars'                                  =>  '*********',
     'lbl_remember_me'                               =>  'Remember me',
     'lnk_forgot_password'                           =>  'Forgot Password',

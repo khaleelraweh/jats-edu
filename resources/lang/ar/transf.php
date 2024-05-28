@@ -107,6 +107,8 @@ return [
     'lbl_username_or_email'                         =>  'اسم المستخدم أو البريد الالكتروني',
     'holder_your_name_or_email'                     =>  'اسمك أو بريدك الإلكتروني',
     'lbl_password'                                  =>  'كلمة المرور',
+    'New user'                                      =>  'مستخدم جديد ؟',
+    'Create a new account'                          =>  'انشاء حساب جديد',
     'holder_stars'                                  =>  '*********',
     'lbl_remember_me'                               =>  'تذكرنى',
     'lnk_forgot_password'                           =>  'هل نسيت كلمة السر',

@@ -104,11 +104,15 @@
                             </span>
                         @enderror --}}
 
-                        <div class="form-group">
-                            {{-- <label for="email">Email Address</label> --}}
+                        {{-- user name or email --}}
+                        <div class="form-group mb-5">
+                            <label for="modalSigninEmail">
+                                {{ __('transf.lbl_username_or_email') }}
+                            </label>
                             <input type="text" name="email"
-                                class="form-control form-control--sm js_email_fe rounded-pill @if ($errors->has('email') || $errors->has('username')) has-error @endif"
-                                placeholder="ادخل اسم المستخدم او البريد الالكتروي" value="{{ old('email') }}">
+                                class="form-control  @if ($errors->has('email') || $errors->has('username')) has-error @endif"
+                                id="modalSigninEmail" placeholder="{{ __('transf.holder_your_name_or_email') }}"
+                                value="{{ old('email') }}">
                             @if ($errors->has('email') || $errors->has('username'))
                                 <span class="help">{{ $errors->first('email') }}
                                     {{ $errors->first('username') }}</span>
@@ -118,9 +122,12 @@
                         <!-- <div class="invalid-feedback">لا يكون الحقل فارغ</div> -->
                     </div>
 
-                    <div class="form-group">
-                        <input type="password" name="password" required autocomplete="current-password"
-                            class="form-control form-control--sm js_email_fe rounded-pill" placeholder="ادخل كلمة المرور" />
+                    <div class="form-group mb-5">
+                        <label for="modalSigninPassword">
+                            {{ __('transf.lbl_password') }}
+                        </label>
+                        <input type="password" name="password" required autocomplete="current-password" class="form-control"
+                            id="modalSigninPassword" placeholder="{{ __('transf.holder_stars') }}" />
 
                         @error('password')
                             <span class="invalid-feedback text-danger" role="alert">
@@ -128,16 +135,28 @@
                             </span>
                         @enderror
 
-                        <!-- <div class="invalid-feedback">لا يكون الحقل فارغ</div> -->
                     </div>
 
-                    <button type="submit" class="btn mt-3 col-sm-12 rounded-pill js-login-btn">تسجل الدخول</button>
+                    <div class="d-flex align-items-center mb-5 font-size-sm">
+                        <div class="form-check">
+                            <input class="form-check-input text-gray-800" type="checkbox" id="autoSizingCheck">
+                            <label class="form-check-label text-gray-800" for="autoSizingCheck">
+                                {{ __('transf.lbl_remember_me') }}
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <!-- Submit -->
+                    <button class="btn btn-block btn-primary" type="submit">
+                        {{ __('transf.btn_login') }}
+                    </button>
 
                     <div class="d-flex justify-content-between">
                         <div class="mt-3">
                             @if (Route::has('password.request'))
                                 <a class="  " href="{{ route('password.request') }}">
-                                    {{ __('نسيت كلمة المرور ؟') }}
+                                    {{ __('transf.lnk_forgot_password') }}
                                 </a>
                             @endif
                         </div>
@@ -145,12 +164,12 @@
                         <div class="mt-3">
                             @if (Route::has('register'))
                                 <h6 class="small-body-subtitle">
-                                    مستخدم جديد ؟
-                                    <a href="#"
+                                    {{ __('transf.New user') }}
+                                    <a href="{{ route('register') }}"
                                         class="dropdn-link js-dropdn-link js-dropdn-link only-icon custom-color"
                                         data-panel="#dropdnSignUp">
                                         <!-- <i class="icon-user"></i> -->
-                                        <span>انشاء حساب جديد الان</span>
+                                        <span>{{ __('transf.Create a new account') }}</span>
                                     </a>
                                 </h6>
                             @endif

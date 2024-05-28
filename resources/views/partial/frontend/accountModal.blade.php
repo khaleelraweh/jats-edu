@@ -44,7 +44,7 @@
 
                             <div class="form-group mb-5">
                                 <label for="modalSigninPassword">
-                                    Password
+                                    {{ __('transf.lbl_password') }}
                                 </label>
                                 <input type="password" name="password" required autocomplete="current-password"
                                     class="form-control" id="modalSigninPassword"

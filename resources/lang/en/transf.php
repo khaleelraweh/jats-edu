@@ -373,6 +373,8 @@ return [
     'Lessons for the section saved successfully!'   =>  'Lessons for the section saved successfully!',
     'Section not found!'                            =>  'Section not found!',
     'Sections updated successfully!'                =>  'Sections updated successfully!',
+    'At least one image is required!'               =>  'At least one image is required!',
+
     //step1 : course Title 
     'how_about_working_title'                       =>  'How About a Working Title?',
 

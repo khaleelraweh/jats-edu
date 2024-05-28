@@ -362,6 +362,7 @@ return [
     'Lessons for the section saved successfully!'   =>  'تم حفظ دروس القسم بنجاح!',
     'Section not found!'                            =>  'لم يتم العثور على القسم!',
     'Sections updated successfully!'                =>  'تم تحديث الأقسام بنجاح!',
+    'At least one image is required!'               =>  'مطلوب صورة واحدة على الأقل!',
 
 
 

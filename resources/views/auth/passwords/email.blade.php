@@ -63,7 +63,15 @@
 
                             </div>
                         </div>
+                        <div class="mt-3"></div>
+                        <h6 class="small-body-subtitle">
+                            {{ __('transf.txt_remember_your_password') }}
+                            <a href="{{ route('login') }}">
+                                <span> {{ __('transf.lnk_login') }}</span>
+                            </a>
+                        </h6>
                     </form>
+
 
 
                 </div>

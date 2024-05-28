@@ -283,9 +283,7 @@
                     <div class="mt-3"></div>
                     <h6 class="small-body-subtitle">
                         {{ __('transf.Do you have an account ?') }}
-                        <a href="{{ route('login') }}"
-                            class="dropdn-link js-dropdn-link js-dropdn-link only-icon custom-color"
-                            data-panel="#dropdnAccount">
+                        <a href="{{ route('login') }}">
                             <span> {{ __('transf.lnk_login') }}</span>
                         </a>
                     </h6>

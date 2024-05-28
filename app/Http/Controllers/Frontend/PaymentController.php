@@ -30,9 +30,6 @@ class PaymentController extends Controller
     // online 
     public function checkout_now(Request $request)
     {
-
-
-
         if ($request->paymentMethod == 'paypal') {
             $order = (new OrderService)->createOrder($request->except(['_token', 'submit']));
             $paypal = new PaypalService('PayPal_Rest');
@@ -121,10 +118,6 @@ class PaymentController extends Controller
                         'bankReceipt'   =>  $file_name,
                     ]);
                 }
-
-                $order->transactions()->create(
-                    ['transaction' => OrderTransaction::NEW_ORDER]
-                );
 
                 $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
                 $order->transactions()->create([

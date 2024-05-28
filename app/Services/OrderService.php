@@ -18,6 +18,7 @@ class OrderService
 
     public function createOrder($request)
     {
+        // notes : payment method 3 is used for free paid 
         if ($request['paymentMethod'] == 'paypal') {
             $this->payment_method = 1;
         } elseif ($request['paymentMethod'] == 'creditDebit') {
@@ -50,7 +51,6 @@ class OrderService
                 'quantity' => $item->qty
             ]);
         }
-
 
         $order->transactions()->create(
             ['transaction' => OrderTransaction::NEW_ORDER]

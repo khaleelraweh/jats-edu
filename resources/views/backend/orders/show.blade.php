@@ -102,7 +102,8 @@
                         <tbody>
                             <tr>
                                 <th>{{ __('panel.order_subtotal') }}</th>
-                                <td>{{ $order->currency() . $order->subtotal }}</td>
+                                {{-- <td>{{ $order->currency() . $order->subtotal }}</td> --}}
+                                <td>{{ currency_converter($order->subtotal) }}</td>
                             </tr>
                             <tr>
                                 <th> {{ __('panel.order_discount_code') }} </th>
@@ -110,19 +111,25 @@
                             </tr>
                             <tr>
                                 <th>{{ __('panel.order_discount') }} </th>
-                                <td>{{ $order->currency() . $order->discount }}</td>
+                                {{-- <td>{{ $order->currency() . $order->discount }}</td> --}}
+                                <td>{{ currency_converter($order->discount) }}</td>
                             </tr>
                             <tr>
                                 <th>{{ __('panel.order_shipping') }}</th>
-                                <td>{{ $order->currency() . $order->shipping }}</td>
+                                {{-- <td>{{ $order->currency() . $order->shipping }}</td> --}}
+                                <td>{{ currency_converter($order->shipping) }}</td>
                             </tr>
                             <tr>
                                 <th>{{ __('panel.order_tax') }}</th>
-                                <td>{{ $order->currency() . $order->tax }}</td>
+                                {{-- <td>{{ $order->currency() . $order->tax }}</td> --}}
+                                <td>{{ currency_converter($order->tax) }}</td>
+
                             </tr>
                             <tr>
                                 <th>{{ __('panel.order_amount') }}</th>
-                                <td>{{ $order->currency() . $order->total }}</td>
+                                {{-- <td>{{ $order->currency() . $order->total }}</td> --}}
+                                <td>{{ currency_converter($order->total) }}</td>
+
                             </tr>
                         </tbody>
                     </table>

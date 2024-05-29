@@ -77,11 +77,11 @@
                                     </div>
                                 @endif
 
-                                @if (session()->has('message'))
+                                {{-- @if (session()->has('message'))
                                     <div class="alert alert-success mt-2">
                                         {{ session('message') }}
                                     </div>
-                                @endif
+                                @endif --}}
 
                             @endif
                         </div>

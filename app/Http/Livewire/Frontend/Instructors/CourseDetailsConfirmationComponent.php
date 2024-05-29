@@ -87,6 +87,12 @@ class CourseDetailsConfirmationComponent extends Component
         $course->save();
 
         session()->flash('message', 'Course status updated successfully.');
+        $this->refreshData(); // Refresh data after updating the status
+    }
+
+    public function refreshData()
+    {
+        $this->mount($this->courseId);
     }
 
     //no nead fo sending the $courseId in this fuction but it is ok if you do it 

@@ -78,7 +78,7 @@ class Course extends Model
 
         switch ($this->course_status) {
             case 0:
-                $result = '<label class="badge bg-success text-light p-2">' .  __('panel.course_new_course')  . '</label>';
+                $result = '<label class="badge bg-success text-white p-2">' .  __('panel.course_new_course')  . '</label>';
                 break;
             case 1:
                 $result = '<label class="badge bg-secondary text-light p-2">' . __('panel.course_completed') . '</label>';

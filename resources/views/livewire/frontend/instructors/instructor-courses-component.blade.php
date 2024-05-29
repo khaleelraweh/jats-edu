@@ -122,6 +122,11 @@
                                                         <h5 class="line-clamp-2 mb-0">
                                                             {{ $course->title }}
                                                         </h5>
+                                                        <p>
+                                                            <small>{{ __('panel.course_status') }} :
+                                                                {!! $course->statusWithLabel() !!}
+                                                            </small>
+                                                        </p>
                                                     </a>
                                                 </div>
                                             </div>

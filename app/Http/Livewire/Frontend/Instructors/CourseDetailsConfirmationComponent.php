@@ -86,6 +86,12 @@ class CourseDetailsConfirmationComponent extends Component
         $course->course_status = $this->course_status;
         $course->save();
 
+        if ($course->course_status == 4) {
+            $course->update(['status' => true]);
+        } else if ($course->course_status == 5) {
+            $course->update(['status' => false]);
+        }
+
         session()->flash('message', 'Course status updated successfully.');
         $this->refreshData(); // Refresh data after updating the status
     }

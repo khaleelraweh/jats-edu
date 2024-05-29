@@ -140,7 +140,7 @@ class Order extends Model
                 $result = '<label class="badge bg-success text-light p-2">' .  __('panel.order_new_order')  . '</label>';
                 break;
             case 1:
-                $result = '<label class="badge bg-warning text-dark p-2">' . __('panel.order_paid') . '</label>';
+                $result = '<label class="badge bg-secondary text-light p-2">' . __('panel.order_paid') . '</label>';
                 break;
             case 2:
                 $result = '<label class="badge bg-warning text-dark p-2">' .  __('panel.order_under_process') . '</label>';

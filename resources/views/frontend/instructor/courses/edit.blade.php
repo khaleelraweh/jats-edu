@@ -153,6 +153,14 @@
                                         <span class="step-title">{{ __('transf.Details Confirmation') }}</span>
                                     </a>
                                 </li>
+                                @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('supervisor'))
+                                    <li class="nav-item">
+                                        <a href="#confirm-detail4" class="nav-link" data-toggle="tab">
+                                            <span class="step-number">07</span>
+                                            <span class="step-title">Active Course</span>
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
 
                             <div class="tab-content twitter-bs-wizard-tab-content">
@@ -160,30 +168,24 @@
                                     @livewire('frontend.instructors.course-landing-page', ['courseId' => $course->id])
                                 </div>
                                 <div class="tab-pane" id="company-document">
-                                    <div>
-                                        @livewire('frontend.instructors.intended-learners-component', ['courseId' => $course->id])
-                                    </div>
+                                    @livewire('frontend.instructors.intended-learners-component', ['courseId' => $course->id])
                                 </div>
                                 <div class="tab-pane" id="bank-detail">
-                                    <div>
-                                        @livewire('frontend.instructors.lesson-component', ['courseId' => $course->id])
-                                    </div>
+                                    @livewire('frontend.instructors.lesson-component', ['courseId' => $course->id])
                                 </div>
                                 <div class="tab-pane" id="confirm-detail">
-                                    <div>
-                                        @livewire('frontend.instructors.course-pricing-component', ['courseId' => $course->id])
-                                    </div>
+                                    @livewire('frontend.instructors.course-pricing-component', ['courseId' => $course->id])
                                 </div>
                                 <div class="tab-pane" id="confirm-detail2">
-                                    <div>
-                                        <div>
-                                            @livewire('frontend.instructors.course-publish-data-component', ['courseId' => $course->id])
-                                        </div>
-                                    </div>
+                                    @livewire('frontend.instructors.course-publish-data-component', ['courseId' => $course->id])
                                 </div>
                                 <div class="tab-pane" id="confirm-detail3">
                                     @livewire('frontend.instructors.course-details-confirmation-component', ['courseId' => $course->id])
                                 </div>
+                                <div class="tab-pane" id="confirm-detail4">
+                                    @livewire('frontend.instructors.course-details-confirmation-component', ['courseId' => $course->id])
+                                </div>
+
                                 <ul class="pager wizard twitter-bs-wizard-pager-link d-flex justify-content-between">
                                     <li class="previous"><a href="javascript: void(0);">{{ __('transf.previous') }}</a>
                                     </li>

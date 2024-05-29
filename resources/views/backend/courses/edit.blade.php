@@ -425,7 +425,7 @@
                                                 <div class="input-group">
                                                     <input type="text" name="course_objective[{{ $index }}]"
                                                         id="course_objective"
-                                                        value="{{ old('course_objective', $item->title) }}"
+                                                        value="{{ old('course_objective[' . $index . ']', $item->title) }}"
                                                         class="course_objective form-control" maxlength="160">
 
                                                     <span class="input-group-text"
@@ -483,7 +483,7 @@
                                                 <div class="input-group">
                                                     <input type="text" name="course_requirement[{{ $index }}]"
                                                         id="course_requirement"
-                                                        value="{{ old('course_requirement', $item->title) }}"
+                                                        value="{{ old('course_requirement[' . $index . ']', $item->title) }}"
                                                         class="course_requirement form-control" maxlength="160">
                                                     <span class="input-group-text"
                                                         id="charCountCourseRequirement">160</span>

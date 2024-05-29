@@ -44,15 +44,51 @@ class CourseDetailsConfirmationComponent extends Component
     public $published_onValid = false;
     public $statusValid = false;
 
+    public $course_status_array = [];
+    public $course_status;
+
     protected $listeners = [
         'updateCourseDEtailsConfirmation' => 'mount'
     ];
+
+
 
     public function mount($courseId)
     {
         $this->courseId = $courseId;
         $this->course = Course::find($this->courseId);
         $this->validateDatabaseData($courseId);
+
+        $this->course_status_array = [
+            '0' => __('panel.course_new_course'),
+            '1' => __('panel.course_completed'),
+            '2' => __('panel.course_under_process'),
+            '3' => __('panel.course_review_finished'),
+            '4' => __('panel.course_published'),
+            '5' => __('panel.coure_rejected'),
+        ];
+
+        $key = array_search($this->course->course_status, array_keys($this->course_status_array));
+
+        foreach ($this->course_status_array as $k => $v) {
+            if ($k <= $key) {
+                unset($this->course_status_array[$k]);
+            }
+        }
+
+        $this->course_status = $this->course->course_status;
+    }
+
+
+    public function updateCourseStatus()
+    {
+        // $this->validate();
+
+        $course = Course::find($this->courseId);
+        $course->course_status = $this->course_status;
+        $course->save();
+
+        session()->flash('message', 'Course status updated successfully.');
     }
 
     //no nead fo sending the $courseId in this fuction but it is ok if you do it 
@@ -102,7 +138,13 @@ class CourseDetailsConfirmationComponent extends Component
 
     public function render()
     {
-        return view('livewire.frontend.instructors.course-details-confirmation-component', ['course' => $this->course]);
+        return view(
+            'livewire.frontend.instructors.course-details-confirmation-component',
+            [
+                'course' => $this->course,
+                'course_status_array' => $this->course_status_array,
+            ]
+        );
     }
 
     protected function validateField($value, $field, $rules)

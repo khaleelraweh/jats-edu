@@ -19,35 +19,76 @@
                             </button>
                         @endif
 
-                        @if ($course->course_status == 2)
-                            <span
-                                class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
-                                <i class="mdi mdi-book-open-page-variant text-white display-6 me-3"></i>
-                                {{ __('transf.Course send for admin review successfully!') }}
-                            </span>
-                        @endif
-                        @if ($course->course_status == 3)
-                            <span
-                                class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
-                                <i class="mdi mdi-check-circle-outline text-white display-6 me-3"></i>
-                                {{ __('transf.Course review finished by adminstration successfully!') }}
-                            </span>
-                        @endif
-                        @if ($course->course_status == 4)
-                            <span
-                                class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
-                                <i class="mdi mdi-check-circle-outline text-white display-6 me-3"></i>
-                                {{ __('transf.The course was successfully accepted and published by the administration') }}
-                            </span>
-                        @endif
-                        @if ($course->course_status == 5)
-                            <span
-                                class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
-                                <i class="mdi mdi-alert-circle text-white display-6 me-3"></i>
-                                {{ __('transf.The course was rejected because it did not meet our publishing standards. Please check the course contents and try again') }}
-                            </span>
-                        @endif
+                        <div>
 
+
+
+
+                            @if ($course->course_status == 2)
+                                <span
+                                    class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
+                                    <i class="mdi mdi-book-open-page-variant text-white display-6 me-3"></i>
+                                    {{ __('transf.Course send for admin review successfully!') }}
+                                </span>
+                            @endif
+                            @if ($course->course_status == 3)
+                                <span
+                                    class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
+                                    <i class="mdi mdi-check-circle-outline text-white display-6 me-3"></i>
+                                    {{ __('transf.Course review finished by adminstration successfully!') }}
+                                </span>
+                            @endif
+                            @if ($course->course_status == 4)
+                                <span
+                                    class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
+                                    <i class="mdi mdi-check-circle-outline text-white display-6 me-3"></i>
+                                    {{ __('transf.The course was successfully accepted and published by the administration') }}
+                                </span>
+                            @endif
+                            @if ($course->course_status == 5)
+                                <span
+                                    class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">
+                                    <i class="mdi mdi-alert-circle text-white display-6 me-3"></i>
+                                    {{ __('transf.The course was rejected because it did not meet our publishing standards. Please check the course contents and try again') }}
+                                </span>
+                            @endif
+
+                            @if ($course->course_status >= 2)
+
+                                @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('supervisor'))
+                                    <div class="mt-3">
+                                        <form wire:submit.prevent="updateCourseStatus">
+                                            <div class="form-row align-items-center">
+
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">{{ __('panel.course_status') }}
+                                                        </div>
+                                                    </div>
+                                                    <select wire:model="course_status" style="outline-style:none;"
+                                                        class="form-control">
+                                                        <option value="">
+                                                            {{ __('panel.course_choose_appropriate_event') }}</option>
+                                                        @foreach ($course_status_array as $key => $value)
+                                                            <option value="{{ $key }}">{{ $value }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary mt-2">Update Status</button>
+                                        </form>
+                                    </div>
+                                @endif
+
+                                @if (session()->has('message'))
+                                    <div class="alert alert-success mt-2">
+                                        {{ session('message') }}
+                                    </div>
+                                @endif
+
+                            @endif
+                        </div>
 
 
                     </div>

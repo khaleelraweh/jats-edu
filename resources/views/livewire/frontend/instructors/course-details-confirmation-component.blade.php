@@ -54,16 +54,16 @@
 
                                 @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('supervisor'))
                                     <div class="mt-3">
-                                        <form wire:submit.prevent="updateCourseStatus">
+                                        <form wire:submit.prevent="updateCourseStatusHandler">
                                             <div class="form-row align-items-center">
-
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">{{ __('panel.course_status') }}
                                                         </div>
                                                     </div>
-                                                    <select wire:model="course_status" style="outline-style:none;"
-                                                        class="form-control">
+                                                    <select wire:model="course_status"
+                                                        wire:change="updateCourseStatusHandler"
+                                                        style="outline-style:none;" class="form-control">
                                                         <option value="">
                                                             {{ __('panel.course_choose_appropriate_event') }}</option>
                                                         @foreach ($course_status_array as $key => $value)
@@ -73,7 +73,6 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <button type="submit" class="btn btn-primary mt-2">Update Status</button>
                                         </form>
                                     </div>
                                 @endif

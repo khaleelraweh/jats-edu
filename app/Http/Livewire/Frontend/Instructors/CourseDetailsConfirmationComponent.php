@@ -80,10 +80,8 @@ class CourseDetailsConfirmationComponent extends Component
     }
 
 
-    public function updateCourseStatus()
+    public function updateCourseStatusHandler()
     {
-        // $this->validate();
-
         $course = Course::find($this->courseId);
         $course->course_status = $this->course_status;
         $course->save();

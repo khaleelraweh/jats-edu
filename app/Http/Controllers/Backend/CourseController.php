@@ -410,9 +410,16 @@ class CourseController extends Controller
             $course->update(['status' => false]);
         }
 
+        if ($course) {
+            return back()->with([
+                'message' => __('panel.updated_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
         return back()->with([
-            'message' => 'updated successfully',
-            'alert-type' => 'success',
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
         ]);
     }
 }

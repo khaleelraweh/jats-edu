@@ -91,6 +91,46 @@
 
                         @if (auth()->user()->email_verified_at != null)
                             @if (auth()->user()->roles->first()->allowed_route != '')
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('admin.index') }}">
+                                            {{ __('panel.f_control_panel') }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('admin.account_settings') }}">
+                                            {{ __('panel.f_user_profile') }}
+                                        </a>
+                                    </li>
+
+                                    @if (auth()->user()->hasRole('instructor'))
+                                        <li>
+                                            <a href="{{ route('instructor.dashboard') }}">
+                                                {{ __('panel.f_instructor_dashboard') }}
+                                            </a>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a href="{{ route('customer.teach_on_jats') }}">
+                                                {{ __('panel.f_teach_on_jats') }}
+                                            </a>
+                                        </li>
+                                    @endif
+
+
+                                    <div class="hr"></div>
+
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                            {{ __('panel.f_logout') }}
+                                        </a>
+                                        <form action="{{ route('logout') }}" method="POST" id="logout-form"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
                             @else
                                 <ul>
                                     {{-- <li>
@@ -190,8 +230,8 @@
                                 <span class="required">*</span>
                             </label>
 
-                            <input type="text" name="last_name" id="last_name" class="form-control " value=""
-                                placeholder="{{ __('panel.last_name') }}">
+                            <input type="text" name="last_name" id="last_name" class="form-control "
+                                value="" placeholder="{{ __('panel.last_name') }}">
 
                             @error('last_name')
                                 <span class="invalid-feedback text-danger" role="alert">

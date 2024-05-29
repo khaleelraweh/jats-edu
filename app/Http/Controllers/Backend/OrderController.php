@@ -108,9 +108,16 @@ class OrderController extends Controller
         ]);
 
 
+        if ($order) {
+            return back()->with([
+                'message' => __('panel.updated_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
         return back()->with([
-            'message' => 'updated successfully',
-            'alert-type' => 'success',
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
         ]);
     }
 
@@ -122,9 +129,17 @@ class OrderController extends Controller
 
         $order->delete();
 
+
+        if ($order) {
+            return redirect()->route('admin.orders.index')->with([
+                'message' => __('panel.deleted_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
         return redirect()->route('admin.orders.index')->with([
-            'message' => 'Deleted successfully',
-            'alert-type' => 'success'
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
         ]);
     }
 }

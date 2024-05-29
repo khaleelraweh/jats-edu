@@ -408,7 +408,7 @@ return [
     'order_new_order'               =>  'طلب جديد',
     'order_paid'                    =>  'تم الدفع',
     'order_under_process'           =>  'تحت المعالجة',
-    'order_finished'                =>  'تم الانتهائ من الطلب',
+    'order_finished'                =>  'تم الإنتهاء من الطلب',
     'order_rejected'                =>  'مرفوض',
     'order_canceled'                =>  'الغيت',
     'order_refund_requested'        =>  'استرداد الطلب',

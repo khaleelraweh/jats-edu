@@ -588,6 +588,7 @@ return [
     'Course Data Confirmed successfully'                =>  'Course Data Confirmed successfully',
     'Course Data Confirmed successfully tips'           =>  'All fields in which data must be entered have been verified in accordance with the rules applied to these fields',
     'Send For Review'                                   =>  'Send For Review',
+    'Resend For New Review'                             =>  'Resend For New Review',
     'Course send for admin review successfully!'        =>  'Course send for admin review successfully!',
 
     'Course review finished by adminstration successfully!' =>  'Course review finished by adminstration successfully!',

@@ -48,6 +48,11 @@
                                     <i class="mdi mdi-alert-circle text-white display-6 me-3"></i>
                                     {{ __('transf.The course was rejected because it did not meet our publishing standards. Please check the course contents and try again') }}
                                 </span>
+
+                                <button class="btn btn-sm btn-primary px-2 py-2 mt-3"
+                                    wire:click.prevent="sendForReview()">
+                                    {{ __('transf.Resend For New Review') }}
+                                </button>
                             @endif
 
                             @if ($course->course_status >= 2)

@@ -603,6 +603,7 @@ return [
     'Course Data Confirmed successfully'                =>  'تم تأكيد بيانات الدورة بنجاح',
     'Course Data Confirmed successfully tips'           =>  'تم التحقق من كافة الحقول التي يجب إدخال البيانات فيها وفقاً للقواعد المطبقة على هذه الحقول',
     'Send For Review'                                   =>  'إرسال من اجل المراجعة',
+    'Resend For New Review'                                 =>  'إعادة إرسال من اجل المراجعة مرة اخري',
     'Course send for admin review successfully!'        =>  'تم إرسال الدورة لمراجعة المشرف بنجاح!',
 
     'Course review finished by adminstration successfully!' =>  'انتهت مراجعة الدورة من قبل الإدارة بنجاح!',

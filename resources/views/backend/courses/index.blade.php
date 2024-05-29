@@ -94,9 +94,25 @@
                                         <a href="{{ route('admin.courses.show', $course->id) }}" class="btn btn-success">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
+
+
+
+
+                                        @if ($course->users->first()->hasRole('admin') || $course->users->first()->hasRole('supervisor'))
+                                            <a href="{{ route('instructor.courses.edit', $course->id) }}"
+                                                class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        @else
+                                            <a href="{{ route('admin.courses.edit', $course->id) }}"
+                                                class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        @endif
+
+
+
+
                                         <a href="javascript:void(0);"
                                             onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-{{ $course->id }}').submit();}else{return false;}"
                                             class="btn btn-danger">
@@ -116,6 +132,7 @@
                             </tr>
                         @endforelse
                     </tbody>
+
                     <tfoot>
                         <tr>
                             <td colspan="9">

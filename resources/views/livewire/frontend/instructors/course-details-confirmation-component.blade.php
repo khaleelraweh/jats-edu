@@ -21,9 +21,6 @@
 
                         <div>
 
-
-
-
                             @if ($course->course_status == 2)
                                 <span
                                     class="d-flex justify-content-center align-items-center bg-info  px-1 py-2 text-white border rounded">

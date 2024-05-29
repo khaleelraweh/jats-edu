@@ -325,6 +325,48 @@
                             </ul>
                         </div>
 
+                        {{-- <div class="hdr-links-wrap col-auto ml-auto">
+                            <div class="hdr-group-link hide-mobile">
+                                <div class="hdr-inline-link">
+                                    <div class="dropdn_currency">
+                                        <div class="dropdn dropdn_caret">
+
+                                            @php
+                                                $currency_code = session('currency_code');
+                                                $currency_symbol = session('currency_symbol');
+                                                $currency_name = session('currency_name');
+                                            @endphp
+                                            <a href="#" class="dropdn-link js-dropdn-link">
+                                                {{ Str::title($currency_name) }}
+                                                <i class="icon-angle-down"></i>
+                                            </a>
+
+                                            <div class="dropdn-content">
+                                                <ul>
+                                                    @forelse (\App\Models\Currency::where('status',1)->get() as $currency)
+                                                        @if ($currency['currency_code'] != $currency_code)
+                                                            <li
+                                                                class="{{ $currency['currency_code'] == $currency_code ? 'active' : '' }}">
+                                                                <a href="javascript:;"
+                                                                    onclick="currency_change('{{ $currency['currency_code'] }}');">
+                                                                    <span style="font-size: 12px">
+                                                                        {{ Str::title($currency->currency_name) }}
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+                                                        @endif
+
+                                                    @empty
+                                                    @endforelse
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> --}}
+
                     </div>
                 </div>
             </div>

@@ -172,13 +172,29 @@ class CurrenciesController extends Controller
 
     // in frontend
 
-    public function currencyLoad(Request $request)
+    // public function currencyLoad(Request $request)
+    // {
+    //     // dd($request->all());
+
+    //     session()->put('currency_code', $request->currency_code);
+
+    //     $currency = Currency::where('currency_code', $request->currency_code)->first();
+
+    //     session()->put('currency_symbol', $currency->currency_symbol);
+    //     session()->put('currency_name', $currency->currency_name);
+    //     session()->put('currency_exchange_rate', $currency->exchange_rate);
+
+    //     $response['status'] = true;
+
+    //     return $response;
+    // }
+    public function currencyLoad(Request $request, $currency_code)
     {
         // dd($request->all());
 
-        session()->put('currency_code', $request->currency_code);
+        session()->put('currency_code', $currency_code);
 
-        $currency = Currency::where('currency_code', $request->currency_code)->first();
+        $currency = Currency::where('currency_code', $currency_code)->first();
 
         session()->put('currency_symbol', $currency->currency_symbol);
         session()->put('currency_name', $currency->currency_name);
@@ -186,6 +202,7 @@ class CurrenciesController extends Controller
 
         $response['status'] = true;
 
-        return $response;
+        // return $response;
+        return back();
     }
 }

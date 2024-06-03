@@ -279,24 +279,17 @@
                                 <a href="terms-of-service.html" class="nav-link px-4 fw-normal text-gray-800">
                                     {{ __('transf.lnk_privacy_policy') }}</a>
                             </li>
-                            <li class="nav-item py-2 py-md-0 px-0 border-top-0">
+                            <li class=" d-none d-xl-flex nav-item py-2 py-md-0 px-0 border-top-0">
                                 <a href="terms-of-service.html" class="nav-link px-4 fw-normal text-gray-800">
                                     {{ __('transf.lnk_web_use_policy') }}
                                 </a>
                             </li>
-                            <li class="nav-item py-2 py-md-0 px-0 border-top-0">
-                                <a href="terms-of-service.html" class="nav-link px-4 fw-normal text-gray-800">
-                                    {{ __('transf.lnk_cookie_policy') }}
-                                </a>
-                            </li>
+
                         </ul>
 
-
-
-                        <div class="dropdown">
-                            {{-- <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown"> --}}
+                        <div class="dropdown me-2">
                             <button type="button"
-                                class=" form-select form-select-sm font-size-sm-alone shadow min-width-140 text-left mb-4 mb-md-0"
+                                class=" form-select form-select-sm font-size-sm-alone shadow min-width-140  p-2 mb-4 mb-md-0"
                                 data-bs-toggle="dropdown">
                                 <img class=""
                                     src="{{ asset('frontend/assets/img/flags/' . app()->getLocale() . '.webp') }}"
@@ -316,6 +309,36 @@
                                                     class="me-1 " height="12">
                                                 <span class="align-middle">
                                                     {{ __('transf.lang_' . $val['lang']) }}
+                                                </span>
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+
+                            </ul>
+                        </div>
+
+                        <div class="dropdown">
+                            <button type="button"
+                                class=" form-select form-select-sm font-size-sm-alone shadow min-width-140 p-2 mb-4 mb-md-0"
+                                data-bs-toggle="dropdown">
+                                @php
+                                    $currency_code = session('currency_code');
+                                    $currency_symbol = session('currency_symbol');
+                                    $currency_name = session('currency_name');
+                                @endphp
+                                {{ Str::title($currency_name) }}
+                            </button>
+
+                            <ul class="dropdown-menu">
+                                @forelse (\App\Models\Currency::where('status',1)->get() as $currency)
+                                    @if ($currency['currency_code'] != $currency_code)
+                                        <li>
+                                            <a class="dropdown-item"
+                                                href="{{ route('change.currency', $currency['currency_code']) }}">
+
+                                                <span class="align-middle">
+                                                    {{ Str::title($currency->currency_name) }}
                                                 </span>
                                             </a>
                                         </li>

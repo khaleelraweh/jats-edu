@@ -90,11 +90,14 @@ Route::get('/shop-cart', [FrontendController::class, 'shop_cart'])->name('fronte
 
 Route::post('currency_load', [CurrenciesController::class, 'currencyLoad'])->name('currency.load');
 
+Route::get('change_currency/{currency_code?}', [CurrenciesController::class, 'currencyLoad'])->name('change.currency');
+
 Route::get('/change-language/{locale}',     [LocaleController::class, 'switch'])->name('change.language');
 
 
 // Route::get('/pages/{slug?}', [FrontendController::class, 'pages'])->name('frontend.pages');
 Route::get('/pages/{slug}', [FrontendController::class, 'pages'])->name('frontend.pages');
+
 
 
 

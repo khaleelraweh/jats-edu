@@ -3,6 +3,7 @@
     <a href="#"
         class="nav-link d-flex px-3 px-md-4 position-relative {{ !request()->routeIs('frontend.index') ? 'text-secondary' : 'text-white-all' }}  icon-xs"
         data-bs-toggle="modal" data-bs-target="#cartModal">
+
         <span class="badge badge-coral text-white rounded-circle fw-bold badge-float mt-n1 ms-n2 px-0 w-16"
             style="font-size: 8px;">{{ $cartCount }}</span>
         <!-- Icon -->

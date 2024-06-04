@@ -33,9 +33,12 @@
                         <div class="flex-1">
                             <h6 class="mb-1">Your order is placed</h6>
                             <div class="font-size-12 text-muted">
-                                <p class="mb-1">If several languages coalesce the grammar</p>
-                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p>
-                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p>
+                                <p class="mb-1">A new Order with amount
+                                    ({{ currency_converter($unreadNotification->data['amount']) }})
+                                    from {{ $unreadNotification->data['customer_name'] }}</p>
+                                {{-- <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p> --}}
+                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i>
+                                    {{ $unreadNotification->data['created_date'] }}</p>
                             </div>
                         </div>
                     </div>

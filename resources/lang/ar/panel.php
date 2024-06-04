@@ -526,6 +526,24 @@ return [
     'customer_account_phone'        =>  'رقم التلفون المرتبط بالحساب',
 
 
+    ##############################################################
+
+    // =============  Manage Notifications   ===============//
+    'manage_notifications'                      => 'إدارة التنبيهات',
+
+    // ---------------  Notifications   --------------//
+    'show_notifications'                => 'التنبيهات',
+    'add_new_notification'              => 'إضافة تنبيه جديد',
+    'edit_existing_notification'        => 'تعديل بيانات تنبيه موجود',
+
+
+    // ........... commons in notifications   ....... //
+    'a_new_order_with_amount'                           =>  'طلب جديد مع المبلغ',
+    'from_customer'                                     =>  'من قبل العميل',
+
+
+
+
     ################################ Manage Site Settings  ###########################
     'manage_site_settings'          => 'إدارة إعدادات الموقع',
     'site_settings'                 => 'إعدادات الموقع',

@@ -551,6 +551,25 @@ return [
     'customer_account_phone'                        =>  'Customer Account Phone',
 
 
+
+
+    ##############################################################
+
+    // =============  Manage Notifications   ===============//
+    'manage_notifications'                      => 'Manage Notifications',
+
+    // ---------------  Notifications   --------------//
+    'show_notifications'                => 'Notifications',
+    'add_new_notification'              => 'Add New Notification',
+    'edit_existing_notification'        => 'Edit Existing Notification ',
+
+
+    // ........... commons in notifications   ....... //
+    'a_new_order_with_amount'                           =>  'A new order with amount',
+    'from_customer'                                         =>  'From Customer',
+
+
+
     ##############################################################
 
     // =============  Manage Site Settings   ===============//

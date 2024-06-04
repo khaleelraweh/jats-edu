@@ -31,11 +31,13 @@
                             </span>
                         </div>
                         <div class="flex-1">
-                            <h6 class="mb-1">Your order is placed</h6>
+                            <h6 class="mb-1">{{ __('panel.from_customer') }}
+                                {{ $unreadNotification->data['customer_name'] }}</h6>
                             <div class="font-size-12 text-muted">
-                                <p class="mb-1">A new Order with amount
+                                <p class="mb-1">{{ __('panel.a_new_order_with_amount') }}
                                     ({{ currency_converter($unreadNotification->data['amount']) }})
-                                    from {{ $unreadNotification->data['customer_name'] }}</p>
+                                    {{ __('panel.from_customer') }} ({{ $unreadNotification->data['customer_name'] }})
+                                </p>
                                 {{-- <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p> --}}
                                 <p class="mb-0"><i class="mdi mdi-clock-outline"></i>
                                     {{ $unreadNotification->data['created_date'] }}</p>

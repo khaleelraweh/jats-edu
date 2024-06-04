@@ -13,7 +13,7 @@
         <div class="p-3">
             <div class="row align-items-center">
                 <div class="col">
-                    <h6 class="m-0"> Notifications </h6>
+                    <h6 class="m-0"> Notifications</h6>
                 </div>
                 <div class="col-auto">
                     <a href="#!" class="small"> View All</a>

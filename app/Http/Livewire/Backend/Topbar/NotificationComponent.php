@@ -6,11 +6,12 @@ use Livewire\Component;
 
 class NotificationComponent extends Component
 {
-    public $notificationCount = '';
+
+    public $unreadNotificationsCount = '';
 
     public function mount()
     {
-        $this->notificationCount = auth()->user()->unreadNotifications->count();
+        $this->unreadNotificationsCount = auth()->user()->unreadNotifications->count();
     }
 
     public function render()

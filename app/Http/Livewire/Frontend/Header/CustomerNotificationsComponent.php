@@ -4,8 +4,9 @@ namespace App\Http\Livewire\Frontend\Header;
 
 use Livewire\Component;
 
-class AccountNotificationsComponent extends Component
+class CustomerNotificationsComponent extends Component
 {
+
 
     public $unreadNotificationsCount = '';
     public $unreadNotifications;
@@ -35,6 +36,6 @@ class AccountNotificationsComponent extends Component
 
     public function render()
     {
-        return view('livewire.frontend.header.account-notifications-component');
+        return view('livewire.frontend.header.customer-notifications-component');
     }
 }

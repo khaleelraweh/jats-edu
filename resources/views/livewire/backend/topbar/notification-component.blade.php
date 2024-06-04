@@ -18,7 +18,6 @@
             </div>
         </div>
         <div data-simplebar style="max-height: 230px;">
-
             @forelse ($unreadNotifications as $unreadNotification)
                 <a wire:click="markAsRead('{{ $unreadNotification->id }}')" class="text-reset notification-item"
                     style="cursor: pointer">

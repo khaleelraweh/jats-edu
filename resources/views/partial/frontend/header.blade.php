@@ -252,7 +252,13 @@
             {{-- notifications counters  --}}
             @guest
             @else
-                @livewire('frontend.header.account-notifications-component')
+                {{-- this is with admin and suppervisor  notification --}}
+                @if (auth()->user()->roles->first()->allowed_route != '')
+                    @livewire('frontend.header.account-notifications-component')
+                @else
+                    {{-- this is with customer  notification --}}
+                    @livewire('frontend.header.customer-notifications-component')
+                @endif
 
             @endguest
 

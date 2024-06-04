@@ -22,6 +22,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
+        // to tell the project to do this command every day 
         $schedule->command('read-notifications:delete')->daily();
     }
 

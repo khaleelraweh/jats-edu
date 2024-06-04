@@ -47,7 +47,7 @@
                     </div>
                 </a>
             @empty
-                <div>No notification found</div>
+                <div class="dropdown-item text-center">No notification found</div>
             @endforelse
 
 

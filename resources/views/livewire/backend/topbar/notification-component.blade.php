@@ -23,7 +23,8 @@
         <div data-simplebar style="max-height: 230px;">
 
             @forelse ($unreadNotifications as $unreadNotification)
-                <a href="{{ $unreadNotification->data['order_url'] }}" class="text-reset notification-item">
+                <a wire:click="markAsRead('{{ $unreadNotification->id }}')" class="text-reset notification-item"
+                    style="cursor: pointer">
                     <div class="d-flex">
                         <div class="avatar-xs me-3">
                             <span class="avatar-title bg-primary rounded-circle font-size-16">

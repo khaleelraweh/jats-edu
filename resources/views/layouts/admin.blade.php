@@ -51,15 +51,15 @@
         href="{{ asset('backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css') }}" />
     <link
         href="{{ asset('backend/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                type="text/css') }}" />
+                                                                                                                                                                                                                                        type="text/css') }}" />
     <link
         href="{{ asset('backend/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                type="text/css') }}" />
+                                                                                                                                                                                                                                        type="text/css') }}" />
 
     <!-- Responsive datatable examples -->
     <link
         href="{{ asset('backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                type="text/css') }}" />
+                                                                                                                                                                                                                                        type="text/css') }}" />
 
     {{-- end  new  --}}
 
@@ -85,6 +85,8 @@
     <link rel="stylesheet" href="{{ asset('backend/css/custom.css') }}">
 
     <link rel="stylesheet" href="{{ asset('backend/css/custom' . $rtl . '.css') }}">
+
+    @livewireStyles
 
     @yield('style')
 
@@ -144,6 +146,7 @@
 
 
 
+    @livewireScripts
     <!-- JAVASCRIPT -->
     <script src="{{ asset('backend/libs/jquery/jquery.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -42,9 +42,10 @@
       24 => 'Paytabscom\\Laravel_paytabs\\PaypageServiceProvider',
       25 => 'App\\Providers\\AppServiceProvider',
       26 => 'App\\Providers\\AuthServiceProvider',
-      27 => 'App\\Providers\\EventServiceProvider',
-      28 => 'App\\Providers\\RouteServiceProvider',
-      29 => 'App\\Providers\\ViewServiceProvider',
+      27 => 'App\\Providers\\BroadcastServiceProvider',
+      28 => 'App\\Providers\\EventServiceProvider',
+      29 => 'App\\Providers\\RouteServiceProvider',
+      30 => 'App\\Providers\\ViewServiceProvider',
     ),
     'aliases' => 
     array (

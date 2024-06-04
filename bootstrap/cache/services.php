@@ -49,9 +49,10 @@
     45 => 'Paytabscom\\Laravel_paytabs\\PaypageServiceProvider',
     46 => 'App\\Providers\\AppServiceProvider',
     47 => 'App\\Providers\\AuthServiceProvider',
-    48 => 'App\\Providers\\EventServiceProvider',
-    49 => 'App\\Providers\\RouteServiceProvider',
-    50 => 'App\\Providers\\ViewServiceProvider',
+    48 => 'App\\Providers\\BroadcastServiceProvider',
+    49 => 'App\\Providers\\EventServiceProvider',
+    50 => 'App\\Providers\\RouteServiceProvider',
+    51 => 'App\\Providers\\ViewServiceProvider',
   ),
   'eager' => 
   array (
@@ -89,9 +90,10 @@
     31 => 'Paytabscom\\Laravel_paytabs\\PaypageServiceProvider',
     32 => 'App\\Providers\\AppServiceProvider',
     33 => 'App\\Providers\\AuthServiceProvider',
-    34 => 'App\\Providers\\EventServiceProvider',
-    35 => 'App\\Providers\\RouteServiceProvider',
-    36 => 'App\\Providers\\ViewServiceProvider',
+    34 => 'App\\Providers\\BroadcastServiceProvider',
+    35 => 'App\\Providers\\EventServiceProvider',
+    36 => 'App\\Providers\\RouteServiceProvider',
+    37 => 'App\\Providers\\ViewServiceProvider',
   ),
   'deferred' => 
   array (

@@ -53,6 +53,14 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
 
+
+    // for receiving the notifications depends on the channel next to the route
+    public function receivesBroadcastNotificationsOn(): string
+    {
+        return 'App.Models.User.' . $this->id;
+    }
+
+
     protected $hidden = [
         'password',
         'remember_token',

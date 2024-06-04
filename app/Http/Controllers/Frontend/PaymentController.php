@@ -10,6 +10,7 @@ use App\Models\OrderProduct;
 use App\Models\OrderTransaction;
 use App\Models\Product;
 use App\Models\User;
+use App\Notifications\Frontend\Customer\OrderCreatedNotification;
 use App\Services\OrderService;
 use App\Services\PaypalService;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -140,6 +141,18 @@ class PaymentController extends Controller
                     'saved_payment_method_id',
                     'shipping',
                 ]);
+
+
+                $admins = User::whereHas('roles', function ($query) {
+                    $query->whereIn('name', ['admin', 'supervisor']);
+                })->get();
+
+                foreach ($admins as $admin) {
+                    $admin->notify(new OrderCreatedNotification($order));
+                }
+
+
+
 
 
                 toast(__('panel.f_your_recent_payment_successful_with_refrence_code') . '4', 'success');

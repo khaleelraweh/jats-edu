@@ -16,9 +16,10 @@ class NotificationComponent extends Component
         $this->unreadNotifications = auth()->user()->unreadNotifications;
     }
 
+    // to mark notification to readed on click on it 
     public function markAsRead($id)
     {
-        $notification = auth()->user()->unreadNotifications()->where('id', $id)->first();
+        $notification = auth()->user()->unreadNotifications->where('id', $id)->first();
         $notification->markAsRead();
         return redirect()->to($notification->data['order_url']);
     }

@@ -51,7 +51,8 @@ class OrderCreatedNotification extends Notification implements ShouldQueue
             'order_id'      =>  $this->order->id,
             'amount'        =>  $this->order->total,
             'order_url'     =>  route('admin.orders.show', $this->order->id),
-            'created_at'    =>  $this->order->created_at->format('d-m-Y h:i a'),
+            'created_date'    =>  $this->order->created_at->format('M d, Y'),
+            // 'created_at'    =>  $this->order->created_at->format('d-m-Y h:i a'),
         ];
     }
     public function toBroadcast($notifiable)
@@ -63,6 +64,7 @@ class OrderCreatedNotification extends Notification implements ShouldQueue
                 'order_id'      =>  $this->order->id,
                 'amount'        =>  $this->order->total,
                 'order_url'     =>  route('admin.orders.show', $this->order->id),
+                'created_date'    =>  $this->order->created_at->format('M d, Y'),
                 'created_at'    =>  $this->order->created_at->format('d-m-Y h:i a'),
             ]
         ]);

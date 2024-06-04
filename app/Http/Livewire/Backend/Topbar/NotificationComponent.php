@@ -8,10 +8,12 @@ class NotificationComponent extends Component
 {
 
     public $unreadNotificationsCount = '';
+    public $unreadNotifications;
 
     public function mount()
     {
         $this->unreadNotificationsCount = auth()->user()->unreadNotifications->count();
+        $this->unreadNotifications = auth()->user()->unreadNotifications;
     }
 
     public function render()

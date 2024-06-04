@@ -4,9 +4,6 @@
         <i class="ri-notification-3-line"></i>
         {{-- <span class="noti-dot"></span> --}}
         <span class="noti-dot" style="width: 12px;height:12px;font-size:10px;">{{ $unreadNotificationsCount }}</span>
-
-
-
     </button>
     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
         aria-labelledby="page-header-notifications-dropdown">

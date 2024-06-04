@@ -50,6 +50,8 @@
     <link rel="stylesheet"
         href="{{ $rtl == 'rtl' ? asset('frontend/assets/css/custom-rtl.css') : asset('frontend/assets/css/custom.css') }}">
 
+    <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+
     @livewireStyles
 
     @yield('style')

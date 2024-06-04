@@ -258,7 +258,7 @@
                         </svg>
                     </a>
                 @else
-                    @livewire('frontend.header.account-notifications-count-component')
+                    @livewire('frontend.header.account-notifications-component')
 
                 @endguest
             </li>

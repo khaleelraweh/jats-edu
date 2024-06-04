@@ -15,6 +15,7 @@
   'frontend.customer.student-lesson-single-component' => 'App\\Http\\Livewire\\Frontend\\Customer\\StudentLessonSingleComponent',
   'frontend.event-list.event-list-component' => 'App\\Http\\Livewire\\Frontend\\EventList\\EventListComponent',
   'frontend.event-list.event-review-component' => 'App\\Http\\Livewire\\Frontend\\EventList\\EventReviewComponent',
+  'frontend.header.account-notifications-component' => 'App\\Http\\Livewire\\Frontend\\Header\\AccountNotificationsComponent',
   'frontend.header.account-notifications-count-component' => 'App\\Http\\Livewire\\Frontend\\Header\\AccountNotificationsCountComponent',
   'frontend.header.cart-counts-component' => 'App\\Http\\Livewire\\Frontend\\Header\\CartCountsComponent',
   'frontend.home.featured-courses-component' => 'App\\Http\\Livewire\\Frontend\\Home\\FeaturedCoursesComponent',

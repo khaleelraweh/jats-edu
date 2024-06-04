@@ -254,10 +254,10 @@
                     id="navbarDocumentation" id="page-header-notifications-dropdown" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <i class="ri-notification-3-line"></i>
-                    <span class="noti-dot" style="width: 12px;height:12px;font-size:10px;">2<span>
+                    <span class="badge badge-coral text-white rounded-circle fw-bold badge-float mt-n1 ms-n2 px-0 w-16"
+                        style="font-size: 8px;">2</span>
                 </a>
-                {{-- <div class="dropdown-menu border-xl shadow-none dropdown-menu-md"
-                    aria-labelledby="navbarDocumentation"> --}}
+
                 <div class="dropdown-menu border-xl shadow-none dropdown-menu-md dropdown-menu-end p-0"
                     aria-labelledby="page-header-notifications-dropdown">
                     <div class="p-3">

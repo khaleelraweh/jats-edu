@@ -1,4 +1,5 @@
 <?php return array (
+  'backend.topbar.notification-component' => 'App\\Http\\Livewire\\Backend\\Topbar\\NotificationComponent',
   'frontend.blogs.blog-list-component' => 'App\\Http\\Livewire\\Frontend\\Blogs\\BlogListComponent',
   'frontend.blogs.blog-review-component' => 'App\\Http\\Livewire\\Frontend\\Blogs\\BlogReviewComponent',
   'frontend.blogs.blog-tag-list-component' => 'App\\Http\\Livewire\\Frontend\\Blogs\\BlogTagListComponent',

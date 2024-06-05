@@ -24,13 +24,15 @@
 
 
             <ul class="nav nav-tabs custom-nav-tabs justify-content-evenly" id="notificationTabs" role="tablist">
-                <li class="nav-item border-top-0 py-0" role="presentation">
-                    <button class="nav-link active " id="instructor-tab" data-bs-toggle="tab"
+                <li class="nav-item border-top-0 py-0" style="flex: 1;display: flex;justify-content: center;"
+                    role="presentation">
+                    <button class="nav-link active w-100 pt-0 " id="instructor-tab" data-bs-toggle="tab"
                         data-bs-target="#instructor" type="button" role="tab" aria-controls="instructor"
                         aria-selected="true">Instructor</button>
                 </li>
-                <li class="nav-item border-top-0 py-0" role="presentation">
-                    <button class="nav-link " id="student-tab" data-bs-toggle="tab" data-bs-target="#student"
+                <li class="nav-item border-top-0 py-0" style="flex:1;display: flex;justify-content: center;"
+                    role="presentation">
+                    <button class="nav-link w-100 pt-0" id="student-tab" data-bs-toggle="tab" data-bs-target="#student"
                         type="button" role="tab" aria-controls="student" aria-selected="false">Student</button>
                 </li>
             </ul>

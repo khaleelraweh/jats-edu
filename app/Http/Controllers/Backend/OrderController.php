@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderTransaction;
 use App\Models\User;
+use App\Notifications\Backend\Orders\OrderNotification;
 
 class OrderController extends Controller
 {
@@ -107,6 +108,7 @@ class OrderController extends Controller
             'payment_result' => null,
         ]);
 
+        $customer->notify(new OrderNotification($order));
 
         if ($order) {
             return back()->with([

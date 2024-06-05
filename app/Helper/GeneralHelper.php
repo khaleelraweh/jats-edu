@@ -182,3 +182,71 @@ function scaleToPercentage($number, $maxInput)
 {
     return round((($number / $maxInput) * 100), 2);
 }
+
+
+
+// course status check 
+
+function course_status($status)
+{
+    switch ($status) {
+        case 0:
+            $result = __('panel.course_new_course');
+            break;
+        case 1:
+            $result = __('panel.course_completed');
+            break;
+        case 2:
+            $result = __('panel.course_under_process');
+            break;
+        case 3:
+            $result = __('panel.course_review_finished');
+            break;
+        case 4:
+            $result = __('panel.course_published');
+            break;
+        case 5:
+            $result = __('panel.course_rejected');
+            break;
+        default:
+            $result = __('panel.unknown_status');
+            break;
+    }
+    return $result;
+}
+
+// check order status 
+
+function order_status($status)
+{
+    switch ($status) {
+        case 0:
+            $result = __('panel.order_new_order');
+            break;
+        case 1:
+            $result = __('panel.order_paid');
+            break;
+        case 2:
+            $result = __('panel.order_under_process');
+            break;
+        case 3:
+            $result = __('panel.order_finished');
+            break;
+        case 4:
+            $result = __('panel.order_rejected');
+            break;
+        case 5:
+            $result = __('panel.order_canceled');
+            break;
+        case 6:
+            $result = __('panel.order_refund_requested');
+            break;
+        case 7:
+            $result = __('panel.order_returned_order');
+            break;
+        case 8:
+            $result = __('panel.order_refunded');
+            break;
+    }
+    return $result;
+}

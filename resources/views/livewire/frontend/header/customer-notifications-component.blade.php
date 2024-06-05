@@ -58,7 +58,7 @@
                                         <p class="mb-1">
                                             {{ __('panel.course') }} ( {{ $unreadNotification->data['course_title'] }})
                                             {{ __('panel.status_is') }}
-                                            {{ $unreadNotification->data['last_transaction'] }}
+                                            ({{ course_status($unreadNotification->data['last_transaction']) }})
                                         </p>
                                         <p class="mb-0"><i class="mdi mdi-clock-outline"></i>
                                             {{ $unreadNotification->data['created_date'] }}</p>
@@ -88,7 +88,7 @@
                                         <p class="mb-1">
                                             {{ __('panel.order') }} #{{ $unreadNotification->data['order_ref'] }}
                                             {{ __('panel.status_is') }}
-                                            {{ $unreadNotification->data['last_transaction'] }}
+                                            ({{ order_status($unreadNotification->data['last_transaction']) }})
                                         </p>
                                         <p class="mb-0"><i class="mdi mdi-clock-outline"></i>
                                             {{ $unreadNotification->data['created_date'] }}</p>

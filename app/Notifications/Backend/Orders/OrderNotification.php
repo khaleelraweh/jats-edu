@@ -51,7 +51,8 @@ class OrderNotification extends Notification implements ShouldQueue
         return [
             'order_id'          =>  $this->order->id,
             'order_ref'          =>  $this->order->ref_id,
-            'last_transaction'  =>  $this->order->status($this->order->transactions()->latest()->first()->transaction),
+            // 'last_transaction'  =>  $this->order->status($this->order->transactions()->latest()->first()->transaction),
+            'last_transaction'  =>  $this->order->transactions()->latest()->first()->transaction,
             'order_url'         =>  route('customer.orders'),
             'created_date'      =>  $this->order->transactions()->latest()->first()->created_at->format('M d, Y'),
         ];
@@ -63,7 +64,8 @@ class OrderNotification extends Notification implements ShouldQueue
             'data'  => [
                 'order_id'          =>  $this->order->id,
                 'order_ref'          =>  $this->order->ref_id,
-                'last_transaction'  =>  $this->order->status($this->order->transactions()->latest()->first()->transaction),
+                // 'last_transaction'  =>  $this->order->status($this->order->transactions()->latest()->first()->transaction),
+                'last_transaction'  =>  $this->order->transactions()->latest()->first()->transaction,
                 'order_url'         =>  route('customer.orders'),
                 'created_date'      =>  $this->order->transactions()->latest()->first()->created_at->format('M d, Y'),
             ]

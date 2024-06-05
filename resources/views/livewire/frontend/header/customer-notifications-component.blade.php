@@ -21,12 +21,12 @@
                     </div>
                 </div>
             </div>
-            <div data-simplebar style="max-height: 230px;">
+            <div data-simplebar class="border" style="max-height: 230px;">
                 @forelse ($unreadNotifications as $unreadNotification)
-                    <a wire:click="markAsRead('{{ $unreadNotification->id }}')" class="text-reset notification-item"
-                        style="cursor: pointer">
+                    <a wire:click="markAsRead('{{ $unreadNotification->id }}')"
+                        class="text-reset notification-item d-inline-block p-2" style="cursor: pointer">
                         <div class="d-flex">
-                            <div class="avatar-xs me-3">
+                            <div class="avatar-lg me-3">
                                 <span class="avatar-title bg-primary rounded-circle font-size-16">
                                     <i class="ri-shopping-cart-line"></i>
                                 </span>

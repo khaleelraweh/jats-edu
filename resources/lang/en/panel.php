@@ -570,6 +570,8 @@ return [
     'notifications'                                         =>  'Notification',
     'no_notification_found'                                 =>  'No notification found !',
     'view_more...'                                          =>  'View more...',
+    'order'                                                 =>  'Order',
+    'status_is'                                             =>  'status is',
 
 
 

@@ -35,7 +35,8 @@
 
                                 <div class="font-size-12 text-muted">
                                     <p class="mb-1">
-                                        Order {{ $unreadNotification->data['order_id'] }} status is
+                                        {{ __('panel.order') }} #{{ $unreadNotification->data['order_ref'] }}
+                                        {{ __('panel.status_is') }}
                                         {{ $unreadNotification->data['last_transaction'] }}
                                     </p>
                                     {{-- <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p> --}}

@@ -543,6 +543,8 @@ return [
     'notifications'                                             =>  'التنبيهات',
     'no_notification_found'                                     =>  'لا يوجد اى تنبيهات !',
     'view_more...'                                              =>  'عرض المزيد...',
+    'order'                                                     =>  'الطلب',
+    'status_is'                                                 =>  'حالته الحالية',
 
 
 

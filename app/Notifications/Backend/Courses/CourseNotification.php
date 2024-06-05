@@ -51,7 +51,7 @@ class CourseNotification extends Notification implements ShouldQueue
             'course_id'          =>  $this->course->id,
             'course_title'          =>  $this->course->title,
             'last_transaction'  =>  $this->course->course_status(),
-            'order_url'         =>  route('instructor.courses.edit', $this->course->id),
+            'order_url'         =>  route('instructor.dashboard'),
             'created_date'      =>  $this->course->created_at->format('M d, Y'),
         ];
     }
@@ -63,7 +63,7 @@ class CourseNotification extends Notification implements ShouldQueue
                 'course_id'          =>  $this->course->id,
                 'course_title'          =>  $this->course->title,
                 'last_transaction'  =>  $this->course->course_status(),
-                'order_url'         =>  route('instructor.courses.edit', $this->course->id),
+                'order_url'         =>  route('instructor.dashboard'),
                 'created_date'      =>  $this->course->created_at->format('M d, Y'),
             ]
         ]);

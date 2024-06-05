@@ -28,12 +28,13 @@
                     role="presentation">
                     <button class="nav-link active w-100 pt-0 " id="instructor-tab" data-bs-toggle="tab"
                         data-bs-target="#instructor" type="button" role="tab" aria-controls="instructor"
-                        aria-selected="true">Instructor</button>
+                        aria-selected="true">{{ __('panel.instructor') }}</button>
                 </li>
                 <li class="nav-item border-top-0 py-0" style="flex:1;display: flex;justify-content: center;"
                     role="presentation">
                     <button class="nav-link w-100 pt-0" id="student-tab" data-bs-toggle="tab" data-bs-target="#student"
-                        type="button" role="tab" aria-controls="student" aria-selected="false">Student</button>
+                        type="button" role="tab" aria-controls="student"
+                        aria-selected="false">{{ __('panel.student') }}</button>
                 </li>
             </ul>
 

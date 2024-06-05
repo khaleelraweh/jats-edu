@@ -573,6 +573,8 @@ return [
     'order'                                                 =>  'Order',
     'course'                                                =>  'Course',
     'status_is'                                             =>  'status is',
+    'student'                                               =>  'Student',
+    'instructor'                                            =>  'Instructor',
 
 
 

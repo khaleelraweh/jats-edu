@@ -546,6 +546,8 @@ return [
     'order'                                                     =>  'الطلب',
     'course'                                                    =>  'الدورة',
     'status_is'                                                 =>  'حالته الحالية',
+    'student'                                                   =>  'طالب',
+    'instructor'                                                =>  'مدرب',
 
 
 

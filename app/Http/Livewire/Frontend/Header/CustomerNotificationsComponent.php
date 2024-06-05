@@ -11,6 +11,8 @@ class CustomerNotificationsComponent extends Component
     public $unreadNotificationsCount = '';
     public $unreadNotifications;
 
+    public $activeTab = 'instructor'; // Default active tab
+
     // to refresh the notification count in realtime 
     public function getListeners(): array
     {

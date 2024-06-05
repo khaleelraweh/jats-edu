@@ -147,3 +147,18 @@
 }
 
 
+/* notification  */
+#notificationTabsContent{
+  width: 450px !important;
+}
+
+
+@media (max-width:767px){
+  #notificationTabsContent{
+    width: fit-content !important;
+  }
+  
+}
+
+
+

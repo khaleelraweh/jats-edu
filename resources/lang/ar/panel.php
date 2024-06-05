@@ -544,6 +544,7 @@ return [
     'no_notification_found'                                     =>  'لا يوجد اى تنبيهات !',
     'view_more...'                                              =>  'عرض المزيد...',
     'order'                                                     =>  'الطلب',
+    'course'                                                    =>  'الدورة',
     'status_is'                                                 =>  'حالته الحالية',
 
 

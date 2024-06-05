@@ -40,6 +40,7 @@
 
             <div class="tab-content border tab-content-uniform-width" id="notificationTabsContent"
                 style="max-height: 230px; overflow: auto">
+                {{-- for instructor course status  --}}
                 <div class="tab-pane fade show active" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
                     @forelse ($unreadCoursesNotifications as $unreadNotification)
                         <a wire:click="markAsRead('{{ $unreadNotification->id }}')"
@@ -54,7 +55,7 @@
                                 <div class="flex-1">
                                     <div class="font-size-12 text-muted">
                                         <p class="mb-1">
-                                            {{ __('panel.order') }} #{{ $unreadNotification->data['course_id'] }}
+                                            {{ __('panel.course') }} ( {{ $unreadNotification->data['course_title'] }})
                                             {{ __('panel.status_is') }}
                                             {{ $unreadNotification->data['last_transaction'] }}
                                         </p>
@@ -68,6 +69,8 @@
                         <div class="text-center py-2">{{ __('panel.no_notification_found') }}</div>
                     @endforelse
                 </div>
+
+                {{-- for student order  --}}
                 <div class="tab-pane fade" id="student" role="tabpanel" aria-labelledby="student-tab">
                     @forelse ($unreadOrdersNotifications as $unreadNotification)
                         <a wire:click="markAsRead('{{ $unreadNotification->id }}')"

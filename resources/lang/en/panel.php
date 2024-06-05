@@ -571,6 +571,7 @@ return [
     'no_notification_found'                                 =>  'No notification found !',
     'view_more...'                                          =>  'View more...',
     'order'                                                 =>  'Order',
+    'course'                                                =>  'Course',
     'status_is'                                             =>  'status is',
 
 

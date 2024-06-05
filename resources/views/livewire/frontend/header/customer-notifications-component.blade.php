@@ -65,7 +65,7 @@
                             </div>
                         </a>
                     @empty
-                        <div class="dropdown-item text-center pb-2">{{ __('panel.no_notification_found') }}</div>
+                        <div class="text-center py-2">{{ __('panel.no_notification_found') }}</div>
                     @endforelse
                 </div>
                 <div class="tab-pane fade" id="student" role="tabpanel" aria-labelledby="student-tab">
@@ -93,7 +93,8 @@
                             </div>
                         </a>
                     @empty
-                        <div class="dropdown-item text-center pb-2">{{ __('panel.no_notification_found') }}</div>
+                        <div class="text-center py-2">{{ __('panel.no_notification_found') }}
+                        </div>
                     @endforelse
                 </div>
             </div>

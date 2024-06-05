@@ -21,6 +21,7 @@
                     </div>
                 </div>
             </div>
+
             <div data-simplebar class="border" style="max-height: 230px;">
                 @forelse ($unreadNotifications as $unreadNotification)
                     <a wire:click="markAsRead('{{ $unreadNotification->id }}')"

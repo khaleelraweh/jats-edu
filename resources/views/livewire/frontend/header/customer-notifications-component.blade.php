@@ -24,7 +24,7 @@
             <div data-simplebar class="border" style="max-height: 230px;">
                 @forelse ($unreadNotifications as $unreadNotification)
                     <a wire:click="markAsRead('{{ $unreadNotification->id }}')"
-                        class="text-reset notification-item d-inline-block p-2" style="cursor: pointer">
+                        class="text-reset notification-item d-block p-2 border-top" style="cursor: pointer">
                         <div class="d-flex">
                             <div class="avatar-lg me-3">
                                 <span class="avatar-title bg-primary rounded-circle font-size-16">

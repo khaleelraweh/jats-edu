@@ -290,9 +290,6 @@
 
             @endguest
 
-
-
-
             <!-- Signup -->
             <div class="collapse" id="collapseSignup" data-bs-parent="#accountModal">
                 <div class="modal-header">

@@ -10,7 +10,7 @@
         </a>
 
         <div class="dropdown-menu border-xl shadow-none dropdown-menu-md dropdown-menu-end p-0"
-            aria-labelledby="page-header-notifications-dropdown">
+            aria-labelledby="page-header-notifications-dropdown" style="position: absolute">
             <div class="p-3">
                 <div class="row align-items-center">
                     <div class="col">
@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <div data-simplebar class="border" style="max-height: 230px;">
+            <div data-simplebar class="border" style="max-height: 230px;overflow: auto">
                 @forelse ($unreadNotifications as $unreadNotification)
                     <a wire:click="markAsRead('{{ $unreadNotification->id }}')"
                         class="text-reset notification-item d-block p-2 border-top" style="cursor: pointer">
@@ -51,6 +51,7 @@
                     <div class="dropdown-item text-center pb-2">{{ __('panel.no_notification_found') }}</div>
                 @endforelse
             </div>
+
             @if (count($unreadNotifications) > 3)
                 <div class="p-2 border-top">
                     <div class="d-grid">

@@ -538,8 +538,12 @@ return [
 
 
     // ........... commons in notifications   ....... //
-    'a_new_order_with_amount'                           =>  'طلب جديد مع المبلغ',
-    'from_customer'                                     =>  'من قبل العميل',
+    'a_new_order_with_amount'                                   =>  'طلب جديد مع المبلغ',
+    'from_customer'                                             =>  'من قبل العميل',
+    'notifications'                                             =>  'التنبيهات',
+    'no_notification_found'                                     =>  'لا يوجد اى تنبيهات !',
+    'view_more...'                                              =>  'عرض المزيد...',
+
 
 
 

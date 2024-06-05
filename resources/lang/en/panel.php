@@ -565,8 +565,11 @@ return [
 
 
     // ........... commons in notifications   ....... //
-    'a_new_order_with_amount'                           =>  'A new order with amount',
+    'a_new_order_with_amount'                               =>  'A new order with amount',
     'from_customer'                                         =>  'From Customer',
+    'notifications'                                         =>  'Notification',
+    'no_notification_found'                                 =>  'No notification found !',
+    'view_more...'                                          =>  'View more...',
 
 
 

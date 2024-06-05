@@ -10,6 +10,8 @@ class CustomerNotificationsComponent extends Component
 
     public $unreadNotificationsCount = '';
     public $unreadNotifications;
+    public $unreadCoursesNotifications;
+    public $unreadOrdersNotifications;
 
     public $activeTab = 'instructor'; // Default active tab
 
@@ -26,7 +28,19 @@ class CustomerNotificationsComponent extends Component
     {
         $this->unreadNotificationsCount = auth()->user()->unreadNotifications->count();
         $this->unreadNotifications = auth()->user()->unreadNotifications;
+
+        // Filter notifications for courses and orders
+        $this->unreadCoursesNotifications = $this->unreadNotifications->filter(function ($notification) {
+            return isset($notification->data['course_id']);
+        });
+
+
+
+        $this->unreadOrdersNotifications = $this->unreadNotifications->filter(function ($notification) {
+            return isset($notification->data['order_id']);
+        });
     }
+
 
     // to mark notification to readed on click on it 
     public function markAsRead($id)

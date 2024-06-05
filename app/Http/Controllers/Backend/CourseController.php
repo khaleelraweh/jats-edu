@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\Tag;
 use App\Models\User;
+use App\Notifications\Backend\Courses\CourseNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
@@ -401,7 +402,7 @@ class CourseController extends Controller
 
     public function updateStatus(Request $request, $course)
     {
-        $course = Course::where('id', $course)->first();
+        $course = Course::with('instructors')->where('id', $course)->first();
         $course->update(['course_status' => $request->course_status]);
 
         if ($request->course_status == 4) {
@@ -410,12 +411,19 @@ class CourseController extends Controller
             $course->update(['status' => false]);
         }
 
+
+        foreach ($course->instructors as $instructor) {
+            $instructor->notify(new CourseNotification($course));
+        }
+
+
         if ($course) {
             return back()->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
             ]);
         }
+
 
         return back()->with([
             'message' => __('panel.something_was_wrong'),

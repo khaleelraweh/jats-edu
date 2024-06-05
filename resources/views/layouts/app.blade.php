@@ -57,10 +57,24 @@
     @yield('style')
 </head>
 
+@php
+    $bbg = '';
+    if (request()->routeIs('frontend.index')) {
+        $bbg = '';
+    } elseif (request()->routeIs('customer.lesson_single')) {
+        $bbg = 'bg-dark';
+    } elseif (request()->routeIs('frontend.course_single') || request()->routeIs('frontend.event_single')) {
+        $bbg = 'bg-white';
+    } else {
+        $bbg = '';
+    }
+@endphp
 
-
-<body {{-- class="{{ request()->routeIs('frontend.index') ? '' : (request()->routeIs('customer.lesson_single') ? 'bg-dark' : 'bg-light') }}"> --}}
+{{-- <body
     class="{{ request()->routeIs('frontend.index') ? '' : (request()->routeIs('customer.lesson_single') ? 'bg-dark' : 'bg-light') }}">
+     --}}
+
+<body class="{{ $bbg }}">
 
     <div id="app">
 

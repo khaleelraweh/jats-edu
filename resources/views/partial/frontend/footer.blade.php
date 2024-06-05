@@ -1,5 +1,18 @@
 {{-- <footer class="pt-8 pt-md-11 {{ request()->routeIs('frontend.index') ? 'bg-white' : 'bg-gray-100' }} "> --}}
-<footer class="pt-8 pt-md-11 {{ request()->routeIs('frontend.course_single') ? 'bg-gray-100' : 'bg-white' }} ">
+
+
+@php
+    $bbg = '';
+    if (request()->routeIs('frontend.index')) {
+        $bbg = 'bg-white';
+    } elseif (request()->routeIs('frontend.course_single') || request()->routeIs('frontend.event_single')) {
+        $bbg = 'bg-gray-100';
+    } else {
+        $bbg = '';
+    }
+@endphp
+
+<footer class="pt-8 pt-md-11 {{ $bbg }} ">
 
     <div class="container">
         <div class="row" id="accordionFooter">

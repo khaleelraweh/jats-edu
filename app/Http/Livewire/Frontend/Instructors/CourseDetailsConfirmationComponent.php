@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Frontend\Instructors;
 
 use App\Models\Course;
+use App\Models\User;
+use App\Notifications\Frontend\Instructor\CourseCreatedNotification;
 use Illuminate\Support\Facades\Validator;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
@@ -257,6 +259,15 @@ class CourseDetailsConfirmationComponent extends Component
         $course->update([
             'course_status'   =>  Course::UNDER_PROCESS,
         ]);
+
+        $admins = User::whereHas('roles', function ($query) {
+            $query->whereIn('name', ['admin', 'supervisor']);
+        })->get();
+
+        foreach ($admins as $admin) {
+            $admin->notify(new CourseCreatedNotification($course));
+        }
+
 
         // $this->sendViewStatus = true;
 

@@ -550,6 +550,11 @@ return [
     'instructor'                                                =>  'مدرب',
 
 
+    'from_instructor'                                       =>  'من المدرب',
+    'a_new_course_with_title'                               =>  'دورة جديدة مع العنوان',
+    'need_to_be_review_for_publish'                         =>  'تحتاج إلى مراجعة للنشر.',
+
+
 
 
 

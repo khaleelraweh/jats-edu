@@ -576,6 +576,12 @@ return [
     'student'                                               =>  'Student',
     'instructor'                                            =>  'Instructor',
 
+    'from_instructor'                                       =>  'From Instructor',
+    'a_new_course_with_title'                               =>  'A new Course with title',
+    'need_to_be_review_for_publish'                         =>  'Need to be review for publish.',
+
+
+
 
 
     ##############################################################

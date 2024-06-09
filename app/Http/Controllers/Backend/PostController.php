@@ -53,9 +53,10 @@ class PostController extends Controller
             return redirect('admin/index');
         }
 
+
         $input['title']              =   $request->title;
         $input['description']        =   $request->description;
-        $input['course_category_id']            =   $request->course_category_id;
+        $input['course_category_id'] =   $request->course_category_id;
 
         $input['status']            =   $request->status;
         $input['created_by']        =   auth()->user()->full_name;

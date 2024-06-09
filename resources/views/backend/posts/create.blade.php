@@ -93,28 +93,29 @@
 
                                 {{-- البيانات الاساسية --}}
                                 <div class="{{ $loop->index == 0 ? 'col-md-7' : '' }}  col-sm-12 ">
+                                    @if ($loop->first)
+                                        <div class="row pt-3">
+                                            <div class="col-12 ">
+                                                <label for="category_id">{{ __('panel.category') }}</label>
+                                                <select name="course_category_id" class="form-control"
+                                                    id="course_category_id">
+                                                    <option value="">{{ __('panel.main_category') }} __</option>
+                                                    @forelse ($course_categories as $course_category)
+                                                        <option value="{{ $course_category->id }}"
+                                                            {{ old('course_category_id') == $course_category->id ? 'selected' : null }}>
+                                                            {{ $course_category->title }}
+                                                        </option>
 
+                                                    @empty
+                                                    @endforelse
+                                                </select>
+                                                @error('course_category_id')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
 
-                                    <div class="row  {{ $loop->index == 0 ? 'd-flex' : 'd-none' }}">
-                                        <div class="col-12 ">
-                                            <label for="category_id">{{ __('panel.category') }}</label>
-                                            <select name="course_category_id" class="form-control" id="course_category_id">
-                                                <option value="">{{ __('panel.main_category') }} __</option>
-                                                @forelse ($course_categories as $course_category)
-                                                    <option value="{{ $course_category->id }}"
-                                                        {{ old('course_category_id') == $course_category->id ? 'selected' : null }}>
-                                                        {{ $course_category->title }}
-                                                    </option>
-
-                                                @empty
-                                                @endforelse
-                                            </select>
-                                            @error('course_category_id')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
 
                                     {{-- title field --}}
                                     <div class="row ">

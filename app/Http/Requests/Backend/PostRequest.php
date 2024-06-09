@@ -42,7 +42,7 @@ class PostRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'title.*'               => 'required|max:255|unique_translation:posts,title,' . $this->route()->news,
+                        'title.*'               => 'required|max:255|unique_translation:posts,title,' . $this->route()->posts,
                         'description.*'           =>  'nullable',
                         'course_category_id'   =>  'required',
                         'status'                =>  'required',

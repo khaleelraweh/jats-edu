@@ -52,7 +52,7 @@ class EventController extends Controller
         return view('backend.events.create', compact('course_categories', 'tags', 'instructors'));
     }
 
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
 
 

@@ -26,7 +26,7 @@ class EventRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'title.*'                 =>  'nullable|max:255',
+                        'title.*'                 =>  'required|max:255',
                         'subtitle.*'                 =>  'nullable|max:255',
                         'description.*'                 =>  'nullable',
 
@@ -69,7 +69,7 @@ class EventRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'title.*'                  =>  'nullable|max:255',
+                        'title.*'                  =>  'required|max:255',
                         'subtitle.*'                 =>  'nullable|max:255',
                         'description.*'           =>  'nullable',
 
@@ -106,23 +106,5 @@ class EventRequest extends FormRequest
             default:
                 break;
         }
-    }
-
-    public function attributes(): array
-    {
-        $attr = [
-            'course_category_id'      => '( ' . __('panel.title') . ' )',
-            'status'    =>  '( ' . __('panel.status') . ' )',
-            'images'    =>  '( ' . __('panel.images') . ' )',
-            'price'    =>  '( ' . __('panel.price') . ' )',
-        ];
-
-        foreach (config('locales.languages') as $key => $val) {
-            $attr += ['title.' . $key       =>  "( " . __('panel.card_name')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
-            $attr += ['description.' . $key       =>  "( " . __('panel.description')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
-        }
-
-
-        return $attr;
     }
 }

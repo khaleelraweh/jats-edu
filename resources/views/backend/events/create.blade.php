@@ -180,7 +180,7 @@
                                         <textarea name="description" rows="10" class="form-control summernote">
                                         {!! old('description') !!}
                                     </textarea>
-                                        @error('course_category_id')
+                                        @error('description')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>

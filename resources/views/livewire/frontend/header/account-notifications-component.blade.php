@@ -14,10 +14,10 @@
             <div class="p-3">
                 <div class="row align-items-center border-bottom border-2 pb-2">
                     <div class="col">
-                        <h6 class="m-0"> Notifications</h6>
+                        <h6 class="m-0"> {{ __('panel.notifications') }}</h6>
                     </div>
                     <div class="col-auto">
-                        <a href="#!" class="small"> View All</a>
+                        <a href="#!" class="small">{{ __('panel.settings') }}</a>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
             <div class="p-2 border-top">
                 <div class="d-grid">
                     <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
-                        <i class="mdi mdi-arrow-right-circle me-1"></i> View More..
+                        <i class="mdi mdi-arrow-right-circle me-1"></i> {{ __('panel.view_more...') }}
                     </a>
                 </div>
             </div>

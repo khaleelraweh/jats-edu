@@ -23,16 +23,16 @@ class CourseCategorySeeder extends Seeder
                 'description' => ['ar' => 'اكثر من 100 دورة', 'en' => 'Over 100 Courses'],
                 'icon' => 'far fa-file-alt',
             ],
-            // [
-            //     'title' => ['ar' => 'تطوير البرمجيات', 'en' => 'Software Development'],
-            //     'description' => ['ar' => 'اكثر من 250 دورة', 'en' => 'Over 250 Courses'],
-            //     'icon' => 'fas fa-laptop-code',
-            // ],
-            // [
-            //     'title' => ['ar' => 'إدارة اعمال', 'en' => 'Business'],
-            //     'description' => ['ar' => 'اكثر من 500 دورة', 'en' => 'Over 500 Courses'],
-            //     'icon' => 'fas fa-briefcase',
-            // ],
+            [
+                'title' => ['ar' => 'تطوير البرمجيات', 'en' => 'Software Development'],
+                'description' => ['ar' => 'اكثر من 250 دورة', 'en' => 'Over 250 Courses'],
+                'icon' => 'fas fa-laptop-code',
+            ],
+            [
+                'title' => ['ar' => 'إدارة اعمال', 'en' => 'Business'],
+                'description' => ['ar' => 'اكثر من 500 دورة', 'en' => 'Over 500 Courses'],
+                'icon' => 'fas fa-briefcase',
+            ],
             // [
             //     'title' => ['ar' => 'تصميم', 'en' => 'Design'],
             //     'description' => ['ar' => 'اكثر من 960 دورة', 'en' => 'Over 960 Courses'],

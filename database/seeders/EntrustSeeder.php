@@ -113,6 +113,20 @@ class EntrustSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
+        // Create customer
+        $customer2 = User::create([
+            'first_name' => 'naser',
+            'last_name' => 'naser',
+            'username' => 'naser',
+            'email' => 'naser@gmail.com',
+            'email_verified_at' => now(),
+            'mobile' => '00967772036136',
+            'password' => bcrypt('123123123'),
+            'user_image' => 'avator.svg',
+            'status' => 1,
+            'remember_token' => Str::random(10),
+        ]);
+
         // create instructor
         $instructor = User::create([
             'first_name' => 'instructor',
@@ -134,6 +148,7 @@ class EntrustSeeder extends Seeder
         $admin->attachRole($instructorRole);
         $supervisor->attachRole($supervisorRole);
         $customer->attachRole($customerRole);
+        $customer2->attachRole($customerRole);
         $instructor->attachRole($instructorRole);
         $instructor->specializations()->sync($specializations->random(1, 3));
 

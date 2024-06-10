@@ -82,14 +82,14 @@ class CourseSeeder extends Seeder
             //     'title' => ['ar' => 'دورة في الصوت العلوم', 'en' => 'A course in Science'],
             //     'course_category_id' => 11, // Random category
             // ],
-            // [
-            //     'title' => ['ar' => 'دورة في الفيزياء', 'en' => 'A course in  Physics'],
-            //     'course_category_id' => 12, // Random category
-            // ],
-            // [
-            //     'title' => ['ar' => 'دورة في علم الاحياء', 'en' => 'A course in ahua'],
-            //     'course_category_id' => 13, // Random category
-            // ],
+            [
+                'title' => ['ar' => 'دورة في الفيزياء', 'en' => 'A course in  Physics'],
+                'course_category_id' => $categories->random(), // Random category
+            ],
+            [
+                'title' => ['ar' => 'دورة في علم الاحياء', 'en' => 'A course in ahua'],
+                'course_category_id' => $categories->random(), // Random category
+            ],
             [
                 'title' => ['ar' => 'HTML and CSS Template 4', 'en' => 'HTML and CSS Template 4'],
                 'course_category_id' => $categories->random(), // Random category

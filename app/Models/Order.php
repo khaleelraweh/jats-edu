@@ -54,6 +54,7 @@ class Order extends Model
     const REFUNDED_REQUEST = 6;
     const RETURNED = 7;
     const REFUNDED = 8;
+    const Free = 9;
 
 
 
@@ -162,6 +163,9 @@ class Order extends Model
                 break;
             case 8:
                 $result = '<label class="badge bg-dark text-light p-2">' .  __('panel.order_refunded') . '</label>';
+                break;
+            case 9:
+                $result = '<label class="badge bg-success text-dark p-2">' .  __('panel.order_free') . '</label>';
                 break;
         }
         return $result;

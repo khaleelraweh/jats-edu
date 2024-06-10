@@ -21,6 +21,7 @@ class OrderTransaction extends Model
     const REFUNDED_REQUEST = 6;
     const RETURNED = 7;
     const REFUNDED = 8;
+    const Free = 9;
 
 
     public function order(): BelongsTo

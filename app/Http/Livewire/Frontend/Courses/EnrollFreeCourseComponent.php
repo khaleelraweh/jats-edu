@@ -57,11 +57,11 @@ class EnrollFreeCourseComponent extends Component
 
 
         // update  order to payment completed == change it to free  
-        $order->update(['order_status' => Order::PAYMENT_COMPLETED]);
+        $order->update(['order_status' => Order::Free]);
 
         // update order transaction to completed == change it to free
         $order->transactions()->create([
-            'transaction' => OrderTransaction::PAYMENT_COMPLETED,
+            'transaction' => OrderTransaction::Free,
             'transaction_number' => $ref_id,
             'payment_result' => 'success',
         ]);

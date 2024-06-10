@@ -85,7 +85,8 @@ class CourseListComponent extends Component
         // Check if the user is authenticated
         if ($user) {
             // Retrieve orders made by the user with order_status = 1
-            $orders = $user->orders()->where('order_status', 3)->get();
+            // $orders = $user->orders()->where('order_status', 3)->get();
+            $orders = $user->orders()->whereIn('order_status', [3, 9])->get();
 
             // Extract course IDs from the orders
             foreach ($orders as $order) {

@@ -413,6 +413,7 @@ return [
     'order_refund_requested'        =>  'استرداد الطلب',
     'order_returned_order'          =>  'تم الاسترداد',
     'order_refunded'                =>  'تم إعادة المنتج',
+    'order_free'                    =>  'مجان',
 
     //...............  order payment info ...............//
     'order_subtotal'                =>  'الإجمالي',

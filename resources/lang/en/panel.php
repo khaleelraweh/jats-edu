@@ -428,6 +428,7 @@ return [
     'order_refund_requested'    =>      'Refund Requested',
     'order_returned_order'      =>      'Returned Order',
     'order_refunded'            =>      'Refunded',
+    'order_free'                =>      'Free',
 
     //...............  order payment info ...............//
     'order_subtotal'        =>  'Subtotal',

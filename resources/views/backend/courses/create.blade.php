@@ -61,17 +61,14 @@
             {{-- enctype used cause we will save images  --}}
             <form id="my_form_id" action="{{ route('admin.courses.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
                             type="button" role="tab" aria-controls="content" aria-selected="true">
                             {{ __('panel.content_tab') }}
                         </button>
                     </li>
-
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="course_info-tab" data-bs-toggle="tab" data-bs-target="#course_info"
@@ -116,7 +113,6 @@
                     </li>
 
                 </ul>
-
                 {{-- contents of links tabs  --}}
                 <div class="tab-content" id="myTabContent">
 
@@ -584,11 +580,7 @@
                     </div>
 
                 </div>
-
-
             </form>
-
-
         </div>
 
     </div>
@@ -598,7 +590,6 @@
 @section('script')
     {{-- Call select2 plugin --}}
     <script src="{{ asset('backend/vendor/select2/js/select2.full.min.js') }}"></script>
-
 
     {{-- Title counter  --}}
     <script>
@@ -645,6 +636,7 @@
 
     <script>
         $(function() {
+
             $("#course_images").fileinput({
                 theme: "fa5",
                 maxFileCount: 5,
@@ -665,8 +657,10 @@
                 close: 'OK',
                 colseOnSelect: true // Close Upon Selecting a date
             });
+
             var publishedOn = $('#published_on').pickadate(
                 'picker'); // set startdate in the picker to the start date in the #start_date elemet
+
             // when change date 
             $('#published_on').change(function() {
                 selected_ci_date = "";
@@ -678,7 +672,6 @@
                     min_codate.setDate(cidate.getDate() + 1);
                     enddate.set('min', min_codate);
                 }
-
             });
 
             $('#published_on_time').pickatime({
@@ -686,7 +679,6 @@
             });
 
             // start deadline 
-
             $('#deadline').pickadate({
                 format: 'yyyy-mm-dd',
                 min: new Date(),
@@ -696,8 +688,10 @@
                 close: 'OK',
                 colseOnSelect: true // Close Upon Selecting a date
             });
+
             var publishedOn = $('#deadline').pickadate(
                 'picker'); // set startdate in the picker to the start date in the #start_date elemet
+
             // when change date 
             $('#deadline').change(function() {
                 selected_ci_date = "";
@@ -711,7 +705,6 @@
                 }
 
             });
-
             // end deadline 
 
             // ======= start pickadate codeing ===========
@@ -747,16 +740,11 @@
                     ['view', ['fullscreen', 'codeview', 'help']]
                 ]
             });
-
-
         });
     </script>
 
-
-
     <script>
         $(document).ready(function() {
-
             // Function to initialize character counter for a specific input field
             function initializeCharCounter($input) {
                 var $counter = $input.parent().find('.input-group-text');
@@ -842,7 +830,6 @@
             });
         });
     </script>
-
 
     <script>
         $(document).ready(function() {

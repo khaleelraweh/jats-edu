@@ -26,79 +26,79 @@ class EventRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'title.*'                           =>  'required|max:255',
-                        'subtitle.*'                        =>  'nullable|max:255',
-                        'description.*'                     =>  'nullable',
+                        'title.*'                 =>  'nullable|max:255',
+                        'subtitle.*'                 =>  'nullable|max:255',
+                        'description.*'                 =>  'nullable',
 
-                        'skill_level'                       =>  'nullable|numeric',
-                        'language'                          =>  'nullable|numeric',
-                        'evaluation'                        =>  'nullable|numeric',
-                        'lecture_numbers'                   =>  'nullable|numeric',
-                        'Duration'                          =>  'nullable',
+                        'skill_level'                      =>  'nullable|numeric',
+                        'language'                      =>  'nullable|numeric',
+                        'evaluation'                      =>  'nullable|numeric',
+                        'lecture_numbers'                      =>  'nullable|numeric',
+                        'Duration'                      =>  'nullable',
 
-                        'instructors'                       => 'required|array|min:1',
-                        'instructors.*'                     => 'exists:users,id',
+                        'instructors' => 'required|array|min:1',
+                        'instructors.*' => 'exists:users,id',
 
 
 
-                        'price'                             => 'required|integer|min:0|digits_between: 1,5',
-                        'offer_price'                       => 'nullable|integer|lte:price|digits_between:1,5',
+                        'price' => 'required|integer|min:0|digits_between: 1,5',
+                        'offer_price' => 'nullable|integer|lte:price|digits_between:1,5',
 
                         // 'offer_price' => 'required_with:price|integer|lte:price|digits_between:1,5',
 
 
-                        'offer_ends'                        =>  'nullable|date_format:Y-m-d',
+                        'offer_ends'            =>  'nullable|date_format:Y-m-d',
 
-                        'course_category_id'                =>  'required',
-                        'tags.*'                            =>  'required',
-                        'featured'                          =>  'required',
-                        'images'                            =>  'required',
-                        'images.*'                          =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
-                        'views'                             =>  'nullable', // عدد مرات العرض
+                        'course_category_id'   =>  'required',
+                        'tags.*'                =>  'required',
+                        'featured'              =>  'required',
+                        'images'                =>  'required',
+                        'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+                        'views'                 =>  'nullable', // عدد مرات العرض
 
                         // used always 
-                        'status'                            =>  'required',
-                        'published_on'                      =>  'nullable',
-                        'published_on_time'                 =>  'nullable',
-                        'created_by'                        =>  'nullable',
-                        'updated_by'                        =>  'nullable',
-                        'deleted_by'                        =>  'nullable',
+                        'status'             =>  'required',
+                        'published_on'       =>  'nullable',
+                        'published_on_time'  =>  'nullable',
+                        'created_by'         =>  'nullable',
+                        'updated_by'         =>  'nullable',
+                        'deleted_by'         =>  'nullable',
                         // end of used always 
                     ];
                 }
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'title.*'                           =>  'required|max:255',
-                        'subtitle.*'                        =>  'nullable|max:255',
-                        'description.*'                     =>  'nullable',
+                        'title.*'                  =>  'nullable|max:255',
+                        'subtitle.*'                 =>  'nullable|max:255',
+                        'description.*'           =>  'nullable',
 
-                        'skill_level'                       =>  'nullable|numeric',
-                        'language'                          =>  'nullable|numeric',
-                        'evaluation'                        =>  'nullable|numeric',
-                        'lecture_numbers'                   =>  'nullable|numeric',
-                        'Duration'                          =>  'nullable',
+                        'skill_level'                      =>  'nullable|numeric',
+                        'language'                      =>  'nullable|numeric',
+                        'evaluation'                      =>  'nullable|numeric',
+                        'lecture_numbers'                      =>  'nullable|numeric',
+                        'Duration'                      =>  'nullable',
 
 
-                        'price'                             => 'required|integer|min:0|digits_between: 1,5',
-                        'offer_price'                       => 'nullable|integer|lte:price|digits_between:1,5',
+                        'price' => 'required|integer|min:0|digits_between: 1,5',
+                        'offer_price' => 'nullable|integer|lte:price|digits_between:1,5',
 
-                        'offer_ends'                        =>  'nullable|date_format:Y-m-d',
+                        'offer_ends'            =>  'nullable|date_format:Y-m-d',
 
-                        'course_category_id'                =>  'required',
-                        'tags.*'                            =>  'required',
-                        'featured'                          =>  'required',
-                        'images'                            =>  'nullable',
-                        'images.*'                          =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
-                        'views'                             =>  'nullable', // عدد مرات العرض
+                        'course_category_id'   =>  'required',
+                        'tags.*'                =>  'required',
+                        'featured'              =>  'required',
+                        'images'                =>  'nullable',
+                        'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+                        'views'                 =>  'nullable', // عدد مرات العرض
 
                         // used always 
-                        'status'                            =>  'required',
-                        'published_on'                      =>  'nullable',
-                        'published_on_time'                 =>  'nullable',
-                        'created_by'                        =>  'nullable',
-                        'updated_by'                        =>  'nullable',
-                        'deleted_by'                        =>  'nullable',
+                        'status'             =>  'required',
+                        'published_on'       =>  'nullable',
+                        'published_on_time'  =>  'nullable',
+                        'created_by'         =>  'nullable',
+                        'updated_by'         =>  'nullable',
+                        'deleted_by'         =>  'nullable',
                         // end of used always 
                     ];
                 }
@@ -111,15 +111,15 @@ class EventRequest extends FormRequest
     public function attributes(): array
     {
         $attr = [
-            'course_category_id'        => '( ' . __('panel.title') . ' )',
-            'status'                    =>  '( ' . __('panel.status') . ' )',
-            'images'                    =>  '( ' . __('panel.images') . ' )',
-            'price'                     =>  '( ' . __('panel.price') . ' )',
+            'course_category_id'      => '( ' . __('panel.title') . ' )',
+            'status'    =>  '( ' . __('panel.status') . ' )',
+            'images'    =>  '( ' . __('panel.images') . ' )',
+            'price'    =>  '( ' . __('panel.price') . ' )',
         ];
 
         foreach (config('locales.languages') as $key => $val) {
-            $attr += ['title.' . $key               =>  "( " . __('panel.card_name')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
-            $attr += ['description.' . $key         =>  "( " . __('panel.description')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+            $attr += ['title.' . $key       =>  "( " . __('panel.card_name')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+            $attr += ['description.' . $key       =>  "( " . __('panel.description')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
         }
 
 

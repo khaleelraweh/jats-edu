@@ -52,9 +52,8 @@ class EventController extends Controller
         return view('backend.events.create', compact('course_categories', 'tags', 'instructors'));
     }
 
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-
 
         if (!auth()->user()->ability('admin', 'create_events')) {
             return redirect('admin/index');
@@ -114,23 +113,21 @@ class EventController extends Controller
             $event->users()->sync([$loggedInUser->id]);
         }
 
-        // course objective start 
-        if ($request->course_objective != null) {
-
+        // course topics start 
+        if ($request->course_topic != null) {
             $topics_list = [];
-            for ($i = 0; $i < count($request->course_objective); $i++) {
-                $topics_list[$i]['title'] = $request->course_objective[$i];
+            for ($i = 0; $i < count($request->course_topic); $i++) {
+                $topics_list[$i]['title'] = $request->course_topic[$i];
             }
 
             // dd($topics_list);
-            $topics = $event->objectives()->createMany($topics_list);
+            $topics = $event->topics()->createMany($topics_list);
         }
         // course topics start 
 
 
         // course requirement start 
         if ($request->course_requirement != null) {
-
             $requirements_list = [];
             for ($i = 0; $i < count($request->course_requirement); $i++) {
                 $requirements_list[$i]['title'] = $request->course_requirement[$i];
@@ -139,7 +136,6 @@ class EventController extends Controller
             $requirements = $event->requirements()->createMany($requirements_list);
         }
         // course topics start 
-
 
 
 

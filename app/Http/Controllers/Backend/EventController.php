@@ -277,21 +277,20 @@ class EventController extends Controller
             $event->users()->sync([$loggedInUser->id]);
         }
 
-        // course topics start 
-        $event->topics()->delete();
-
-        if ($request->course_topic != null) {
+        // event topics start 
+        $event->objectives()->delete();
+        if ($request->course_objective != null) {
             $topics_list = [];
-            for ($i = 0; $i < count($request->course_topic); $i++) {
-                $topics_list[$i]['title'] = $request->course_topic[$i];
+            for ($i = 0; $i < count($request->course_objective); $i++) {
+                $topics_list[$i]['title'] = $request->course_objective[$i];
             }
             // dd($topics_list);
-            $topics = $event->topics()->createMany($topics_list);
+            $topics = $event->objectives()->createMany($topics_list);
         }
-        // course topics start 
+        // event topics start 
 
 
-        // course requirement start 
+        // event requirement start 
         $event->requirements()->delete();
         if ($request->course_requirement != null) {
             $requirements_list = [];
@@ -301,9 +300,7 @@ class EventController extends Controller
             // dd($requirements_list);
             $requirements = $event->requirements()->createMany($requirements_list);
         }
-
-        // course topics start 
-
+        // event topics start 
 
         if ($request->images && count($request->images) > 0) {
 

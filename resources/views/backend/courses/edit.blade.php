@@ -105,7 +105,6 @@
                         </button>
                     </li>
 
-
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
                             type="button" role="tab" aria-controls="published"
@@ -207,8 +206,6 @@
                             </div>
                         </div>
                     </div>
-
-
 
                     {{-- Course info --}}
                     <div class="tab-pane fade" id="course_info" role="tabpanel" aria-labelledby="course_info-tab">
@@ -395,8 +392,6 @@
                         </div>
                     </div>
 
-
-
                     {{-- course objectives contents   --}}
                     <div class="tab-pane fade" id="course_objectives" role="tabpanel"
                         aria-labelledby="course_objectives-tab">
@@ -456,8 +451,6 @@
                     {{-- course requirement content --}}
                     <div class="tab-pane fade" id="course_requirements" role="tabpanel"
                         aria-labelledby="course_requirements-tab">
-
-
                         <div class="table-responsive">
                             <table class="table" id="course_requirements_details">
                                 <thead>
@@ -611,10 +604,6 @@
                         </button>
                     </div>
 
-
-
-
-
                 </div>
 
             </form>
@@ -742,7 +731,6 @@
             });
 
             // deadline start 
-
             $('#deadline').pickadate({
                 format: 'yyyy-mm-dd',
                 min: new Date(),
@@ -759,12 +747,7 @@
                 selected_ci_date = now() // make selected start date in picker = start_date value  
 
             });
-
-
-
             //deadline end 
-
-
 
             $('#offer_ends').pickadate({
                 format: 'yyyy-mm-dd',
@@ -774,10 +757,8 @@
                 close: 'OK',
                 colseOnSelect: true // Close Upon Selecting a date
             });
-
             var startdate = $('#offer_ends').pickadate(
                 'picker'); // set startdate in the picker to the start date in the #publish_date elemet
-
 
             // when change date 
             $('#offer_ends').change(function() {
@@ -810,7 +791,6 @@
                     ['view', ['fullscreen', 'codeview', 'help']]
                 ]
             });
-
 
             //select2: code to search in data 
             function matchStart(params, data) {
@@ -876,9 +856,6 @@
             }
         });
     </script>
-
-
-
 
     <script>
         $(document).ready(function() {

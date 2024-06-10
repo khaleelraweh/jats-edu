@@ -283,7 +283,6 @@ class CourseController extends Controller
 
         // course topics start 
         $course->objectives()->delete();
-
         if ($request->course_objective != null) {
             $topics_list = [];
             for ($i = 0; $i < count($request->course_objective); $i++) {
@@ -307,10 +306,7 @@ class CourseController extends Controller
         }
 
         // course topics start 
-
-
         if ($request->images && count($request->images) > 0) {
-
             $i = $course->photos->count() + 1;
 
             foreach ($request->images as $image) {

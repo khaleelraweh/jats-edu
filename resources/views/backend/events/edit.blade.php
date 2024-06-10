@@ -63,15 +63,12 @@
 
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    @foreach (config('locales.languages') as $key => $val)
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link {{ $loop->index == 0 ? 'active' : '' }}" id="{{ $key }}-tab"
-                                data-bs-toggle="tab" data-bs-target="#{{ $key }}" type="button" role="tab"
-                                aria-controls="{{ $key }}" aria-selected="true">
-                                {{ __('panel.content_tab') }}({{ $key }})
-                            </button>
-                        </li>
-                    @endforeach
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
+                            type="button" role="tab" aria-controls="content" aria-selected="true">
+                            {{ __('panel.content_tab') }}
+                        </button>
+                    </li>
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="course_info-tab" data-bs-toggle="tab" data-bs-target="#course_info"
@@ -87,9 +84,9 @@
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="course_topics-tab" data-bs-toggle="tab" data-bs-target="#course_topics"
-                            type="button" role="tab" aria-controls="course_topics"
-                            aria-selected="true">{{ __('panel.course_topics_tab') }}
+                        <button class="nav-link" id="course_objectives-tab" data-bs-toggle="tab"
+                            data-bs-target="#course_objectives" type="button" role="tab"
+                            aria-controls="course_objectives" aria-selected="true">{{ __('panel.course_objectives_tab') }}
                         </button>
                     </li>
 
@@ -115,7 +112,6 @@
                         </button>
                     </li>
 
-
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
                             type="button" role="tab" aria-controls="published"
@@ -129,109 +125,94 @@
                 <div class="tab-content" id="myTabContent">
 
                     {{-- Content Tab --}}
-                    @foreach (config('locales.languages') as $key => $val)
-                        <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }}" id="{{ $key }}"
-                            role="tabpanel" aria-labelledby="{{ $key }}">
-                            <div class="row">
-                                {{-- البيانات الاساسية --}}
-                                <div class="{{ $loop->index == 0 ? 'col-md-7' : '' }} col-sm-12 ">
+                    <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content">
+                        <div class="row">
+                            {{-- البيانات الاساسية --}}
+                            <div class="col-md-7 col-sm-12 ">
 
-                                    {{-- category name  field --}}
-                                    @if ($loop->first)
-                                        <div class="row ">
-                                            <div class="col-12 pt-4">
-                                                <label for="category_id"> {{ __('panel.course_title') }}</label>
-                                                <select name="course_category_id" class="form-control">
-                                                    <option value=""> {{ __('panel.main_category') }} __ </option>
-                                                    @forelse ($course_categories as $course_category)
-                                                        <option value="{{ $course_category->id }}"
-                                                            {{ old('course_category_id', $event->course_category_id) == $course_category->id ? 'selected' : null }}>
-                                                            {{ $course_category->title }} </option>
-                                                    @empty
-                                                    @endforelse
-                                                </select>
-                                            </div>
-                                        </div>
-                                    @endif
-
-                                    {{-- course name field --}}
-                                    <div class="row ">
-                                        <div class="col-sm-12 pt-3">
-                                            <div class="form-group">
-                                                <label for="title[{{ $key }}]">
-                                                    {{ __('panel.title') }}
-                                                    {{ __('panel.in') }} {{ __('panel.' . $key) }}
-                                                </label>
-                                                <input type="text" name="title[{{ $key }}]"
-                                                    id="title[{{ $key }}]"
-                                                    value="{{ old('title.' . $key, $event->getTranslation('title', $key)) }}"
-                                                    class="form-control">
-                                                @error('title.' . $key)
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {{-- course subtitle field --}}
-                                    <div class="row ">
-                                        <div class="col-sm-12 pt-3">
-                                            <div class="form-group">
-                                                <label for="subtitle[{{ $key }}]">
-                                                    {{ __('panel.subtitle') }}
-                                                    {{ __('panel.in') }} {{ __('panel.' . $key) }}
-                                                </label>
-                                                <input type="text" name="subtitle[{{ $key }}]"
-                                                    id="subtitle[{{ $key }}]"
-                                                    value="{{ old('subtitle.' . $key, $event->getTranslation('subtitle', $key)) }}"
-                                                    class="form-control">
-                                                @error('subtitle.' . $key)
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {{--  description field --}}
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 pt-4">
-                                            <label for="description[{{ $key }}]">
-                                                {{ __('panel.description') }}
-                                                {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                {{-- course name field --}}
+                                <div class="row ">
+                                    <div class="col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="title">
+                                                {{ __('transf.course_title') }}
                                             </label>
-                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
-                                            {!! old('description.' . $key, $event->getTranslation('description', $key)) !!}
-                                        </textarea>
-                                            @error('description.' . $key)
+
+                                            <div class="input-group">
+                                                <input type="text" name="title" id="title"
+                                                    value="{{ old('title', $event->title) }}" class="form-control"
+                                                    maxlength="60">
+                                                <span class="input-group-text" id="charCount">60</span>
+                                            </div>
+
+                                            @error('title')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
 
-                                {{-- مرفق الصور  --}}
-                                <div class="{{ $loop->index == 0 ? 'col-md-5' : 'd-none' }} col-sm-12 ">
+                                {{-- course subtitle field --}}
+                                <div class="row ">
+                                    <div class="col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="subtitle">
+                                                {{ __('panel.subtitle') }}
 
-                                    <div class="row">
-                                        <div class="col-12 pt-4">
-                                            <label for="images">{{ __('panel.image') }}/
-                                                {{ __('panel.images') }}</label>
-                                            <br>
-                                            <div class="file-loading">
-                                                <input type="file" name="images[]" id="course_images"
-                                                    class="file-input-overview" multiple="multiple">
-                                                @error('images')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
+                                            </label>
+
+                                            <div class="input-group">
+                                                <input type="text" name="subtitle" id="subtitle"
+                                                    value="{{ old('subtitle', $event->subtitle) }}" class="form-control"
+                                                    maxlength="60">
+                                                <span class="input-group-text" id="charCountSubtitle">120</span>
                                             </div>
+
+                                            @error('subtitle')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
+                                </div>
 
+                                {{--  description field --}}
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 pt-4">
+                                        <label for="description">
+                                            {{ __('panel.description') }}
+
+                                        </label>
+                                        <textarea name="description" rows="10" class="form-control summernote">
+                                            {!! old('description', $event->description) !!}
+                                        </textarea>
+                                        @error('description')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
 
+                            {{-- مرفق الصور  --}}
+                            <div class="col-md-5 col-sm-12 ">
+
+                                <div class="row">
+                                    <div class="col-12 pt-4">
+                                        <label for="images">{{ __('panel.image') }}/
+                                            {{ __('panel.images') }}</label>
+                                        <br>
+                                        <div class="file-loading">
+                                            <input type="file" name="images[]" id="course_images"
+                                                class="file-input-overview" multiple="multiple">
+                                            @error('images')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
 
                     {{-- Course info --}}
                     <div class="tab-pane fade" id="course_info" role="tabpanel" aria-labelledby="course_info-tab">
@@ -278,57 +259,6 @@
                             </div>
                         </div>
 
-
-
-                        <div class="row d-none">
-                            <div class="col-sm-12 pt-3">
-                                <label for="evaluation">{{ __('panel.evaluation') }}</label>
-                                <select name="evaluation" class="form-control">
-                                    <option value="1"
-                                        {{ old('evaluation', $event->evaluation) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_normal') }}
-                                    </option>
-                                    <option value="2"
-                                        {{ old('evaluation', $event->evaluation) == '2' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_featured') }}
-                                    </option>
-                                    <option value="3"
-                                        {{ old('evaluation', $event->evaluation) == '3' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_best_seller') }}
-                                    </option>
-
-                                </select>
-                                @error('evaluation')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                            </div>
-                        </div>
-
-                        {{-- lecture numbers and course duration --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="lecture_numbers">{{ __('panel.lecture_numbers') }}</label>
-                                <input type="number" name="lecture_numbers" id="lecture_numbers"
-                                    value="{{ old('lecture_numbers', $event->lecture_numbers) }}" class="form-control">
-                                @error('lecture_numbers')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                            </div>
-
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="course_duration">{{ __('panel.course_duration') }}</label>
-                                <input type="text" name="course_duration" id="course_duration"
-                                    value="{{ old('course_duration', $event->course_duration) }}" class="form-control"
-                                    placeholder="8h 17m">
-                                @error('course_duration')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                            </div>
-                        </div>
-
                         {{-- video promo and description  --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-3">
@@ -353,7 +283,7 @@
 
                         </div>
 
-                        {{-- course type and evaluation --}}
+                        {{-- course type  --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="course_type">{{ __('panel.course_type') }}</label>
@@ -373,29 +303,18 @@
                                 @enderror
 
                             </div>
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="evaluation">{{ __('panel.evaluation') }}</label>
-                                <select name="evaluation" class="form-control">
-                                    <option value="1"
-                                        {{ old('evaluation', $event->evaluation) == '1' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_normal') }}
-                                    </option>
-                                    <option value="2"
-                                        {{ old('evaluation', $event->evaluation) == '2' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_featured') }}
-                                    </option>
-                                    <option value="3"
-                                        {{ old('evaluation', $event->evaluation) == '3' ? 'selected' : null }}>
-                                        {{ __('panel.evaluation_best_seller') }}
-                                    </option>
-
+                            <div class="col-sm-12 col-md-6 pt-4">
+                                <label for="category_id"> {{ __('panel.course_title') }}</label>
+                                <select name="course_category_id" class="form-control">
+                                    <option value=""> {{ __('panel.main_category') }} __ </option>
+                                    @forelse ($course_categories as $course_category)
+                                        <option value="{{ $course_category->id }}"
+                                            {{ old('course_category_id', $event->course_category_id) == $course_category->id ? 'selected' : null }}>
+                                            {{ $course_category->title }} </option>
+                                    @empty
+                                    @endforelse
                                 </select>
-                                @error('evaluation')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
                             </div>
-
                         </div>
 
                         {{-- course deadline and certificate --}}
@@ -480,50 +399,46 @@
                         </div>
                     </div>
 
-
-
-                    {{-- course topic content  --}}
-                    <div class="tab-pane fade" id="course_topics" role="tabpanel" aria-labelledby="course_topics-tab">
-
-
+                    {{-- course objectives contents   --}}
+                    <div class="tab-pane fade" id="course_objectives" role="tabpanel"
+                        aria-labelledby="course_objectives-tab">
                         <div class="table-responsive">
-                            <table class="table" id="course_topics_details">
+                            <table class="table" id="course_objectives_details">
                                 <thead>
                                     <tr class="pt-4">
                                         <th width="30px">{{ __('panel.act') }}</th>
                                         <th width="160px">{{ __('panel.type') }}</th>
-                                        <th>{{ __('panel.txt_course_topics') }}</th>
+                                        <th>{{ __('panel.course_objectives') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($event->topics as $item)
-                                        <?php
-                                        $loopIndex = $loop->index;
-                                        ?>
-                                        @foreach (config('locales.languages') as $key => $val)
-                                            <tr class="cloning_row" id="{{ $loopIndex }}">
-                                                <td style="width: 30px !important;">
-                                                    @if ($loopIndex == 0)
-                                                        {{ '#' }}
-                                                    @else
-                                                        <button type="button"
-                                                            class="btn btn-danger btn-sm delegated-btn"><i
-                                                                class="fa fa-minus"></i></button>
-                                                    @endif
-                                                </td>
-                                                <td>{{ __('panel.topic_in_' . $key) }} ({{ $loopIndex }})</td>
-                                                <td>
-                                                    <input type="text"
-                                                        name="course_topic[{{ $loopIndex }}][{{ $key }}]"
-                                                        id="course_topic"
-                                                        value="{{ old('course_topic' . $key, $item->getTranslation('title', $key)) }}"
-                                                        class="course_topic form-control">
-                                                    @error('course_topic[{{ $loopIndex }}]' . $key)
-                                                        <span class="help-block text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                    @foreach ($event->objectives as $index => $item)
+                                        <tr class="cloning_row" id="{{ $index }}">
+                                            <td style="width: 30px !important;">
+                                                @if ($index == 0)
+                                                    {{ '#' }}
+                                                @else
+                                                    <button type="button" class="btn btn-danger btn-sm delegated-btn"><i
+                                                            class="fa fa-minus"></i></button>
+                                                @endif
+                                            </td>
+                                            <td>{{ __('panel.course_objective') }} ({{ $index }})</td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <input type="text" name="course_objective[{{ $index }}]"
+                                                        id="course_objective"
+                                                        value="{{ old('course_objective[' . $index . ']', $item->title) }}"
+                                                        class="course_objective form-control" maxlength="160">
+
+                                                    <span class="input-group-text"
+                                                        id="charCountCourseObjective">160</span>
+                                                </div>
+
+                                                @error('course_objective[{{ $index }}]')
+                                                    <span class="help-block text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
 
@@ -543,8 +458,6 @@
                     {{-- course requirement content --}}
                     <div class="tab-pane fade" id="course_requirements" role="tabpanel"
                         aria-labelledby="course_requirements-tab">
-
-
                         <div class="table-responsive">
                             <table class="table" id="course_requirements_details">
                                 <thead>
@@ -555,34 +468,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($event->requirements as $item)
-                                        <?php
-                                        $loopIndex = $loop->index;
-                                        ?>
-                                        @foreach (config('locales.languages') as $key => $val)
-                                            <tr class="cloning_row" id="{{ $loopIndex }}">
-                                                <td style="width: 30px !important;">
-                                                    @if ($loopIndex == 0)
-                                                        {{ '#' }}
-                                                    @else
-                                                        <button type="button"
-                                                            class="btn btn-danger btn-sm delegated-btn"><i
-                                                                class="fa fa-minus"></i></button>
-                                                    @endif
-                                                </td>
-                                                <td>{{ __('panel.requirement_in_' . $key) }} ({{ $loopIndex }})</td>
-                                                <td>
-                                                    <input type="text"
-                                                        name="course_requirement[{{ $loopIndex }}][{{ $key }}]"
+                                    @foreach ($event->requirements as $index => $item)
+                                        <tr class="cloning_row" id="{{ $index }}">
+                                            <td style="width: 30px !important;">
+                                                @if ($index == 0)
+                                                    {{ '#' }}
+                                                @else
+                                                    <button type="button" class="btn btn-danger btn-sm delegated-btn"><i
+                                                            class="fa fa-minus"></i></button>
+                                                @endif
+                                            </td>
+                                            <td>{{ __('panel.course_requirement') }} ({{ $index }})</td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <input type="text" name="course_requirement[{{ $index }}]"
                                                         id="course_requirement"
-                                                        value="{{ old('course_requirement' . $key, $item->getTranslation('title', $key)) }}"
-                                                        class="course_requirement form-control">
-                                                    @error('course_requirement[{{ $loopIndex }}]' . $key)
-                                                        <span class="help-block text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                                        value="{{ old('course_requirement[' . $index . ']', $item->title) }}"
+                                                        class="course_requirement form-control" maxlength="160">
+                                                    <span class="input-group-text"
+                                                        id="charCountCourseRequirement">160</span>
+                                                </div>
+
+                                                @error('course_requirement[{{ $index }}]')
+                                                    <span class="help-block text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
 
@@ -778,10 +689,6 @@
                         </button>
                     </div>
 
-
-
-
-
                 </div>
 
             </form>
@@ -792,6 +699,48 @@
 @endsection
 
 @section('script')
+    {{-- Title counter  --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const titleInput = document.getElementById('title');
+            const charCount = document.getElementById('charCount');
+            const maxChars = 60;
+
+            // Function to update the character count
+            function updateCharCount() {
+                const remainingChars = maxChars - titleInput.value.length;
+                charCount.textContent = remainingChars;
+            }
+
+            // Initialize the character count on page load
+            updateCharCount();
+
+            // Update the character count on input
+            titleInput.addEventListener('input', updateCharCount);
+        });
+    </script>
+
+    {{-- subtitle counter  --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const subtitleInput = document.getElementById('subtitle');
+            const charCountSubtitle = document.getElementById('charCountSubtitle');
+            const maxChars = 120;
+
+            // Function to update the character count
+            function updateCharCountSucharCountSubtitle() {
+                const remainingChars = maxChars - subtitleInput.value.length;
+                charCountSubtitle.textContent = remainingChars;
+            }
+
+            // Initialize the character count on page load
+            updateCharCountSucharCountSubtitle();
+
+            // Update the character count on input
+            subtitleInput.addEventListener('input', updateCharCountSucharCountSubtitle);
+        });
+    </script>
+
     <script>
         $(function() {
             const link = document.getElementById('checkIn');
@@ -866,7 +815,6 @@
             });
 
             // deadline start 
-
             $('#deadline').pickadate({
                 format: 'yyyy-mm-dd',
                 min: new Date(),
@@ -883,7 +831,6 @@
                 selected_ci_date = now() // make selected start date in picker = start_date value  
 
             });
-
             //deadline end 
 
             // ===== start start_date and end_date field picker  =====//
@@ -932,13 +879,11 @@
             $('#start_time').pickatime({
                 clear: ''
             });
+
             $('#end_time').pickatime({
                 clear: ''
             });
             //  ====== end start_time and end_time field picker ======//
-
-
-
 
             $('#offer_ends').pickadate({
                 format: 'yyyy-mm-dd',
@@ -984,7 +929,6 @@
                     ['view', ['fullscreen', 'codeview', 'help']]
                 ]
             });
-
 
             //select2: code to search in data 
             function matchStart(params, data) {
@@ -1051,19 +995,34 @@
         });
     </script>
 
-
-
-
     <script>
-        // check if topic field is not empty before sending form 
         $(document).ready(function() {
+            // Function to initialize character counter for a specific input field
+            function initializeCharCounter($input) {
+                var $counter = $input.parent().find('.input-group-text');
+
+                // Update character count on input
+                $input.on('input', function() {
+                    var remainingChars = 160 - $(this).val().length;
+                    $counter.text(remainingChars);
+                });
+
+                // Trigger input event to update counter initially
+                $input.trigger('input');
+            }
+
+            // Initialize character counters for existing rows
+            $('#course_objectives_details').find('input.course_objective').each(function() {
+                initializeCharCounter($(this));
+            });
+
             // Submit event handler for the form
             $('#my_form_id').on('submit', function(event) {
                 // Flag to track whether there are empty fields
                 let isEmpty = false;
 
                 // Loop through each input field and check if it's empty
-                $('input.course_topic').each(function() {
+                $('input.course_objective').each(function() {
                     if ($(this).val() === '') {
                         isEmpty = true;
                         return false; // Exit the loop if any field is empty
@@ -1079,8 +1038,8 @@
 
             // Click event handler for adding new rows
             $(document).on('click', '.btn_add', function() {
-                let trCount = $('#course_topics_details').find('tr.cloning_row:last').length;
-                let numberIncr = trCount > 0 ? parseInt($('#course_topics_details').find(
+                let trCount = $('#course_objectives_details').find('tr.cloning_row:last').length;
+                let numberIncr = trCount > 0 ? parseInt($('#course_objectives_details').find(
                         'tr.cloning_row:last')
                     .attr('id')) + 1 : 0;
 
@@ -1088,7 +1047,7 @@
                 let isEmpty = false;
 
                 // Loop through each input field and check if it's empty
-                $('#course_topics_details').find('input.course_topic').each(function() {
+                $('#course_objectives_details').find('input.course_objective').each(function() {
                     if ($(this).val() === '') {
                         isEmpty = true;
                         return false; // Exit the loop if any field is empty
@@ -1097,37 +1056,58 @@
 
                 // If any field is empty, display an alert
                 if (isEmpty) {
-                    alert(
-                        '{{ __('panel.msg_please_fill_in_all_topic_fields_before_adding_new') }}.');
+                    alert('{{ __('panel.msg_please_fill_in_all_topic_fields_before_adding_new') }}.');
                     return false; // Prevent the form from submitting
                 }
 
-                <?php foreach (config('locales.languages') as $key => $val){ ?>
-                $('#course_topics_details').find('tbody').append($('' +
-                    '<tr class="cloning_row" id="' + numberIncr + '">' +
+                // Add new row
+                var newRow = $('<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
+                    '<td>{{ __('panel.course_objective') }} (' + numberIncr + ')</td>' +
                     '<td>' +
-                    '<span>{{ __('panel.topic_in_' . $key) }} (' + numberIncr + ')</span></td>' +
-                    '<td><input type="text" name="course_topic[' + numberIncr +
-                    '][<?php echo $key; ?>]" class="course_topic form-control"></td>' +
-                    '</tr>'));
-                <?php } ?>
+                    '<div class="input-group">' +
+                    '<input type="text" name="course_objective[' + numberIncr +
+                    ']" class="course_objective form-control" maxlength="160">' +
+                    '<span class="input-group-text">160</span>' +
+                    '</div>' +
+                    '</td>' +
+                    '</tr>');
+                $('#course_objectives_details tbody').append(newRow);
+
+                // Initialize character counter for the new row
+                initializeCharCounter(newRow.find('input.course_objective'));
             });
-        });
 
-
-
-        $(document).on('click', '.delegated-btn', function(e) {
-            e.preventDefault();
-            $(this).parent().parent().remove();
-
+            // Remove row when delete button is clicked
+            $(document).on('click', '.delegated-btn', function(e) {
+                e.preventDefault();
+                $(this).closest('tr').remove();
+            });
         });
     </script>
 
     <script>
-        //  check if topic field is not empty before sending form 
         $(document).ready(function() {
+            // Function to initialize character counter for a specific input field
+            function initializeCharCounter($input) {
+                var $counter = $input.parent().find('.input-group-text');
+
+                // Update character count on input
+                $input.on('input', function() {
+                    var remainingChars = 160 - $(this).val().length;
+                    $counter.text(remainingChars);
+                });
+
+                // Trigger input event to update counter initially
+                $input.trigger('input');
+            }
+
+            // Initialize character counters for existing rows
+            $('#course_requirements_details').find('input.course_requirement').each(function() {
+                initializeCharCounter($(this));
+            });
+
             // Submit event handler for the form
             $('#my_form_id').on('submit', function(event) {
                 // Flag to track whether there are empty fields
@@ -1174,27 +1154,30 @@
                     return false; // Prevent the form from submitting
                 }
 
-                <?php foreach (config('locales.languages') as $key => $val){ ?>
-                $('#course_requirements_details').find('tbody').append($('' +
-                    '<tr class="cloning_row" id="' + numberIncr + '">' +
+                // Add new row
+                var newRow = $('<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
+                    '<td>{{ __('panel.course_requirement') }} (' + numberIncr + ')</td>' +
                     '<td>' +
-                    '<span>{{ __('panel.requirement_in_' . $key) }} (' + numberIncr +
-                    ')</span></td>' +
-                    '<td><input type="text" name="course_requirement[' + numberIncr +
-                    '][<?php echo $key; ?>]" class="course_requirement form-control"></td>' +
-                    '</tr>'));
-                <?php } ?>
+                    '<div class="input-group">' +
+                    '<input type="text" name="course_requirement[' + numberIncr +
+                    ']" class="course_requirement form-control" maxlength="160">' +
+                    '<span class="input-group-text">160</span>' +
+                    '</div>' +
+                    '</td>' +
+                    '</tr>');
+                $('#course_requirements_details tbody').append(newRow);
+
+                // Initialize character counter for the new row
+                initializeCharCounter(newRow.find('input.course_requirement'));
             });
-        });
 
-
-
-        $(document).on('click', '.delegated-btn', function(e) {
-            e.preventDefault();
-            $(this).parent().parent().remove();
-
+            // Remove row when delete button is clicked
+            $(document).on('click', '.delegated-btn', function(e) {
+                e.preventDefault();
+                $(this).closest('tr').remove();
+            });
         });
     </script>
 @endsection

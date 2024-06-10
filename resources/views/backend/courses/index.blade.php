@@ -84,7 +84,29 @@
 
                                 </td>
                                 <td>{{ $course->title }}</td>
-                                <td>{{ $course->price }}</td>
+                                <td>
+
+                                    @if ($course->offer_price > 0)
+                                        <del class="font-size-sm"><small>{{ currency_converter($course->price) }}</small>
+                                        </del>
+                                        <ins class="h5 mb-0 d-block mb-lg-n1"
+                                            style="text-decoration: none">{{ currency_converter($course->price - $course->offer_price) }}
+                                        </ins>
+                                    @else
+                                        <ins class="h5 mb-0 d-block mb-lg-n1">
+                                            @if ($course->price == 0)
+                                                {{ __('transf.free') }}
+                                            @else
+                                                {{ currency_converter($course->price) }}
+                                            @endif
+
+                                        </ins>
+                                    @endif
+
+
+
+
+                                </td>
                                 <td class="d-none d-sm-table-cell">{{ $course->created_by }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $course->created_at }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $course->send_for_review }}</td>

@@ -12,7 +12,7 @@
         <div class="dropdown-menu border-xl shadow-none dropdown-menu-md dropdown-menu-end p-0"
             aria-labelledby="page-header-notifications-dropdown">
             <div class="p-3">
-                <div class="row align-items-center">
+                <div class="row align-items-center border-bottom border-2 pb-2">
                     <div class="col">
                         <h6 class="m-0"> Notifications</h6>
                     </div>
@@ -25,14 +25,14 @@
                 @forelse ($unreadNotifications as $unreadNotification)
                     <a wire:click="markAsRead('{{ $unreadNotification->id }}')" class="text-reset notification-item"
                         style="cursor: pointer">
-                        <div class="d-flex">
-                            <div class="avatar-xs me-3">
+                        <div class="d-flex align-items-center {{ !$loop->first ? 'border-top' : '' }}">
+                            <div class="avatar-lg me-3">
                                 <span class="avatar-title bg-primary rounded-circle font-size-16">
                                     <i class="ri-shopping-cart-line"></i>
                                 </span>
                             </div>
                             @if (isset($unreadNotification->data['order_id']))
-                                <div class="flex-1">
+                                <div class="flex-1 ">
                                     <h6 class="mb-1">{{ __('panel.from_customer') }}
                                         {{ $unreadNotification->data['customer_name'] }}</h6>
                                     <div class="font-size-12 text-muted">

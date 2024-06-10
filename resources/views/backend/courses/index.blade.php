@@ -87,13 +87,21 @@
                                 <td>
 
                                     @if ($course->offer_price > 0)
-                                        <del class="font-size-sm"><small>{{ currency_converter($course->price) }}</small>
-                                        </del>
-                                        <ins class="h5 mb-0 d-block mb-lg-n1"
-                                            style="text-decoration: none">{{ currency_converter($course->price - $course->offer_price) }}
-                                        </ins>
+                                        @if ($course->offer_price == $course->price)
+                                            <del class="font-size-sm"><small>{{ currency_converter($course->price) }}</small>
+                                            </del>
+                                            <ins class="h5 mb-0 d-block mb-lg-n1" style="text-decoration: none">
+                                                {{ __('transf.free') }}
+                                            </ins>
+                                        @else
+                                            <del class="font-size-sm"><small>{{ currency_converter($course->price) }}</small>
+                                            </del>
+                                            <ins class="h5 mb-0 d-block mb-lg-n1"
+                                                style="text-decoration: none">{{ currency_converter($course->price - $course->offer_price) }}
+                                            </ins>
+                                        @endif
                                     @else
-                                        <ins class="h5 mb-0 d-block mb-lg-n1">
+                                        <ins class="h5 mb-0 d-block mb-lg-n1" style="text-decoration: none">
                                             @if ($course->price == 0)
                                                 {{ __('transf.free') }}
                                             @else

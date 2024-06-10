@@ -1,7 +1,7 @@
 <?php return array (
   'app' => 
   array (
-    'name' => 'Jats Edu أكاديمية جاتس',
+    'name' => 'معهد خطوة شباب للتدريب واللغات',
     'env' => 'local',
     'debug' => true,
     'url' => 'https://era-t.com',
@@ -251,7 +251,7 @@
         'driver' => 'octane',
       ),
     ),
-    'prefix' => 'jats_edu_akadymy_gats_cache',
+    'prefix' => 'maahd_khto_shbab_lltdryb_oallghat_cache',
   ),
   'cart' => 
   array (
@@ -366,7 +366,7 @@
       'options' => 
       array (
         'cluster' => 'redis',
-        'prefix' => 'jats_edu_akadymy_gats_database_',
+        'prefix' => 'maahd_khto_shbab_lltdryb_oallghat_database_',
       ),
       'default' => 
       array (
@@ -779,7 +779,7 @@
     'from' => 
     array (
       'address' => 'khaleelvisa@gmail.com',
-      'name' => 'Jats Edu أكاديمية جاتس',
+      'name' => 'معهد خطوة شباب للتدريب واللغات',
     ),
     'markdown' => 
     array (
@@ -928,7 +928,7 @@
       0 => 2,
       1 => 100,
     ),
-    'cookie' => 'jats_edu_akadymy_gats_session',
+    'cookie' => 'maahd_khto_shbab_lltdryb_oallghat_session',
     'path' => '/',
     'domain' => NULL,
     'secure' => NULL,
@@ -1057,7 +1057,7 @@
       0 => 
       array (
         'id' => 'khaleelId',
-        'name' => 'Jats Edu أكاديمية جاتس',
+        'name' => 'معهد خطوة شباب للتدريب واللغات',
         'host' => NULL,
         'key' => 'khaleelkey',
         'secret' => 'khaleelsecret',

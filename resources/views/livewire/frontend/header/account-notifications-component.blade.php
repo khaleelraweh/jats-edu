@@ -11,7 +11,7 @@
 
         <div class="dropdown-menu border-xl shadow-none dropdown-menu-md dropdown-menu-end p-0"
             aria-labelledby="page-header-notifications-dropdown">
-            <div class="p-3">
+            <div class="p-4">
                 <div class="row align-items-center border-bottom border-2 pb-2">
                     <div class="col">
                         <h6 class="m-0"> {{ __('panel.notifications') }}</h6>
@@ -72,13 +72,16 @@
                 @endforelse
 
             </div>
-            <div class="p-2 border-top">
-                <div class="d-grid">
-                    <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
-                        <i class="mdi mdi-arrow-right-circle me-1"></i> {{ __('panel.view_more...') }}
-                    </a>
+            @if (count($unreadNotifications) > 3)
+                <div class="p-2 border-top">
+                    <div class="d-grid">
+                        <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
+                            <i class="mdi mdi-arrow-right-circle me-1"></i> {{ __('panel.view_more...') }}
+                        </a>
+                    </div>
                 </div>
-            </div>
+            @endif
+
         </div>
     </li>
 </div>

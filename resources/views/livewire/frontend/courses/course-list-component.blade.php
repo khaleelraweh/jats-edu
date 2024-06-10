@@ -439,14 +439,14 @@
                                     <span class="sk-fade-right badge-float bottom-0 right-0 mb-2 me-2">
                                         @if ($course->offer_price > 0)
                                             @if ($course->offer_price == $course->price)
-                                                <del class="font-size-sm">
+                                                <del class="font-size-sm bg-success text-dark p-1 rounded-pill">
                                                     {{ currency_converter($course->price) }}
                                                 </del>
                                                 <ins class="h4 mb-0 d-block mb-lg-n1">
                                                     {{ __('transf.free') }}
                                                 </ins>
                                             @else
-                                                <del class="font-size-sm">
+                                                <del class="font-size-sm bg-success text-dark p-1 rounded-pill">
                                                     {{ currency_converter($course->price) }}
                                                 </del>
                                                 <ins class="h4 mb-0 d-block mb-lg-n1">

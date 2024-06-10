@@ -516,12 +516,21 @@
                             <span class="ms-2 ">2 days left at this price!</span>
                         </div>
 
-                        @if ($course->price == 0)
+                        {{-- @if ($course->price == 0)
                             @livewire('frontend.courses.enroll-free-course-component', ['courseId' => $course->id])
                         @else
                             @livewire('frontend.courses.add-to-cart-component', ['courseId' => $course->id])
-                        @endif
+                        @endif --}}
 
+                        @if ($course->price > 0)
+                            @if ($course->price == $course->offer_price)
+                                @livewire('frontend.courses.enroll-free-course-component', ['courseId' => $course->id])
+                            @else
+                                @livewire('frontend.courses.add-to-cart-component', ['courseId' => $course->id])
+                            @endif
+                        @else
+                            @livewire('frontend.courses.enroll-free-course-component', ['courseId' => $course->id])
+                        @endif
 
 
 

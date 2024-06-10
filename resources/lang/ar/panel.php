@@ -116,7 +116,6 @@ return [
 
 
     // ........... commons in Coruse   ....... //
-    'course_title'                         => 'العنوان',
     'subtitle'                      =>  'العنوان  الفرعي',
     'sku'                           =>  'رمز التخزين التعريفي',
     'offer_price'                   =>  'سعر العرض',

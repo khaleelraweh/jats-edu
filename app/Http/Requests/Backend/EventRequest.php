@@ -26,7 +26,7 @@ class EventRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'title.*'                 =>  'required|max:255',
+                        'title'                 =>  'required|max:255',
                         'subtitle.*'                 =>  'nullable|max:255',
                         'description.*'                 =>  'nullable',
 
@@ -106,5 +106,18 @@ class EventRequest extends FormRequest
             default:
                 break;
         }
+    }
+
+    public function attributes(): array
+    {
+        $attr = [
+            'title'                 =>  '(' . __('panel.title') . ')',
+            'description'           =>  '(' . __('panel.description') . ')',
+            'course_category_id'    =>  '( ' . __('panel.course_title') . ' )',
+            'status'                =>  '( ' . __('panel.status') . ' )',
+            'images'                =>  '( ' . __('panel.images') . ' )',
+            'price'                 =>  '( ' . __('panel.price') . ' )',
+        ];
+        return $attr;
     }
 }

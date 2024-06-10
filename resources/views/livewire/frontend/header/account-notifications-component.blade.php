@@ -31,20 +31,40 @@
                                     <i class="ri-shopping-cart-line"></i>
                                 </span>
                             </div>
-                            <div class="flex-1">
-                                <h6 class="mb-1">{{ __('panel.from_customer') }}
-                                    {{ $unreadNotification->data['customer_name'] }}</h6>
-                                <div class="font-size-12 text-muted">
-                                    <p class="mb-1">{{ __('panel.a_new_order_with_amount') }}
-                                        ({{ currency_converter($unreadNotification->data['amount']) }})
-                                        {{ __('panel.from_customer') }}
-                                        ({{ $unreadNotification->data['customer_name'] }})
-                                    </p>
-                                    {{-- <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p> --}}
-                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i>
-                                        {{ $unreadNotification->data['created_date'] }}</p>
+                            @if (isset($unreadNotification->data['order_id']))
+                                <div class="flex-1">
+                                    <h6 class="mb-1">{{ __('panel.from_customer') }}
+                                        {{ $unreadNotification->data['customer_name'] }}</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-1">{{ __('panel.a_new_order_with_amount') }}
+                                            ({{ currency_converter($unreadNotification->data['amount']) }})
+                                            {{ __('panel.from_customer') }}
+                                            ({{ $unreadNotification->data['customer_name'] }})
+                                        </p>
+                                        {{-- <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p> --}}
+                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i>
+                                            {{ $unreadNotification->data['created_date'] }}</p>
+                                    </div>
                                 </div>
-                            </div>
+                            @else
+                                {{-- with instructors notifications  --}}
+                                @if (isset($unreadNotification->data['course_id']))
+                                    <div class="flex-1">
+                                        <h6 class="mb-1">{{ __('panel.from_instructor') }}
+                                            {{-- {{ $unreadNotification->data['customer_name'] }}</h6> --}}
+                                            <div class="font-size-12 text-muted">
+                                                <p class="mb-1">
+                                                    {{ __('panel.a_new_course_with_title') }}
+                                                    ( {{ $unreadNotification->data['course_title'] }})
+                                                    {{ __('panel.need_to_be_review_for_publish') }}
+                                                </p>
+                                                {{-- <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p> --}}
+                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i>
+                                                    {{ $unreadNotification->data['created_date'] }}</p>
+                                            </div>
+                                    </div>
+                                @endif
+                            @endif
                         </div>
                     </a>
                 @empty

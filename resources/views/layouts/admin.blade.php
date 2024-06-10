@@ -14,9 +14,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Premium Multipurpose Admin & Dashboard Template" />
+    <meta name="description" content="معهد خطوة شباب للتدريب واللغات" />
     <meta name="robots" content="all,follow">
-    <meta name="author" content="Themesdesign" />
+    <meta name="author" content="معهد خطوة شباب للتدريب واللغات" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -24,7 +24,7 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('backend/images/favicon.ico') }}">
 
-    <title> Dashboard | {{ config('app.name', 'Laravel') }} - Admin & Dashboard Template </title>
+    <title> Dashboard | {{ config('app.name', 'معهد خطوة شباب للتدريب واللغات') }} - Admin & Dashboard Template </title>
 
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 
@@ -51,15 +51,15 @@
         href="{{ asset('backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css') }}" />
     <link
         href="{{ asset('backend/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                        type="text/css') }}" />
+                                                                                                                                                                                                                                                type="text/css') }}" />
     <link
         href="{{ asset('backend/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                        type="text/css') }}" />
+                                                                                                                                                                                                                                                type="text/css') }}" />
 
     <!-- Responsive datatable examples -->
     <link
         href="{{ asset('backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                        type="text/css') }}" />
+                                                                                                                                                                                                                                                type="text/css') }}" />
 
     {{-- end  new  --}}
 

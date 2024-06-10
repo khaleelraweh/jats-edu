@@ -256,10 +256,19 @@
 
                                         <div class="col-auto px-2 text-right">
                                             @if ($featured_course->offer_price > 0)
-                                                <del
-                                                    class="font-size-sm">{{ currency_converter($featured_course->price) }}</del>
-                                                <ins class="h4 mb-0 d-block mb-lg-n1">{{ currency_converter($featured_course->price - $featured_course->offer_price) }}
-                                                </ins>
+                                                @if ($featured_course->offer_price == $featured_course->price)
+                                                    <del class="font-size-sm">
+                                                        {{ currency_converter($featured_course->price) }}
+                                                    </del>
+                                                    <ins class="h4 mb-0 d-block mb-lg-n1">
+                                                        {{ __('transf.free') }}
+                                                    </ins>
+                                                @else
+                                                    <del
+                                                        class="font-size-sm">{{ currency_converter($featured_course->price) }}</del>
+                                                    <ins class="h4 mb-0 d-block mb-lg-n1">{{ currency_converter($featured_course->price - $featured_course->offer_price) }}
+                                                    </ins>
+                                                @endif
                                             @else
                                                 <ins class="h4 mb-0 d-block mb-lg-n1">
                                                     @if ($featured_course->price == 0)

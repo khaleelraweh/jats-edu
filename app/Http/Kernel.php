@@ -38,6 +38,8 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\Language::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            // added for checking cart items when the user login 
+            \App\Http\Middleware\CheckCartAfterLogin::class,
         ],
 
         'api' => [

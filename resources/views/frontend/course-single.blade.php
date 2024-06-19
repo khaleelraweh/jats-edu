@@ -163,21 +163,35 @@
 
 
 
-                        <h3 class="mb-5">{{ __('transf.txt_what_you_will_learn') }}</h3>
+                        {{-- <h3 class="mb-5">{{ __('transf.txt_what_you_will_learn') }}</h3>
                         <div class="row row-cols-lg-2 mb-8 list-style-v1 list-unstyled ">
                             @foreach ($course->objectives as $objective)
                                 <li class="col-sm-6">{{ $objective->title }}</li>
+                            @endforeach
+                        </div> --}}
+                        <h3 class="mb-5">{{ __('transf.txt_what_you_will_learn') }}</h3>
+                        <div class="row  mb-8 list-style-v1 list-unstyled ">
+                            @foreach ($course->objectives as $objective)
+                                <li class="col-sm-12">{{ $objective->title }}</li>
                             @endforeach
                         </div>
 
                         <h3 class="mb-5">{{ __('transf.txt_requirements') }}</h3>
                         {{-- {{ dd($course->requirements) }} --}}
-                        <ul class="list-style-v2 list-unstyled">
+                        <ul class="list-style-v2 mb-8 list-unstyled">
                             @foreach ($course->requirements as $requirement)
                                 <li>{{ $requirement->title }}</li>
                             @endforeach
 
                         </ul>
+
+                        <h3 class="mb-5">{{ __('transf.who_is_this_course_for?') }}</h3>
+                        <div class="row  mb-8 list-style-v1 list-unstyled ">
+                            @foreach ($course->intendeds as $intended)
+                                <li class="col-sm-12">{{ $intended->title }}</li>
+                            @endforeach
+                        </div>
+
                     </div>
 
                     <div class="tab-pane fade" id="pills-curriculum" role="tabpanel" aria-labelledby="pills-curriculum-tab">

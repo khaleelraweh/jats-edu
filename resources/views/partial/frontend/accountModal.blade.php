@@ -397,7 +397,7 @@
                                     <option value="{{ $country->name }}"
                                         data-phone-code="{{ $country->phone_code }}"
                                         data-emoji="{{ $country->emoji }}">
-                                        {{ $country->emoji }} {{ $country->name }}
+                                        {{ $country->name }} {{ $country->emoji }}
                                     </option>
                                 @endforeach
                             </select>

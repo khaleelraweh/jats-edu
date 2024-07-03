@@ -387,15 +387,16 @@
                         </div> --}}
 
                         <div class="form-group mb-5">
-                            <label for="country_code">
+                            <label for="country_name">
                                 <i class="fa fa-globe custom-color"></i>
                                 {{ __('panel.f_select_country') }}
                                 <span class="required">*</span>
                             </label>
-                            <select id="country_code" class="form-control">
+                            <select id="country_name" name="country_name" class="form-control">
                                 @foreach (getCountries() as $country)
-                                    <option value="{{ $country->phone_code }}" data-emoji="{{ $country->emoji }}">
-                                        {{-- {{ $country->emoji }} {{ $country->name }} (+{{ $country->phone_code }}) --}}
+                                    <option value="{{ $country->name }}"
+                                        data-phone-code="{{ $country->phone_code }}"
+                                        data-emoji="{{ $country->emoji }}">
                                         {{ $country->emoji }} {{ $country->name }}
                                     </option>
                                 @endforeach
@@ -412,11 +413,12 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="selected_phone_code">+</span>
                                 </div>
-                                <input type="hidden" name="mobile_code">
+                                <input type="hidden" name="country_code" id="country_code">
                                 <input type="text" name="mobile" id="mobile" class="form-control"
                                     placeholder="{{ __('panel.f_phone_number') }}">
                             </div>
                         </div>
+
 
 
 
@@ -538,11 +540,10 @@
 
 
 <script>
-    document.getElementById('country_code').addEventListener('change', function() {
+    document.getElementById('country_name').addEventListener('change', function() {
         var selectedOption = this.options[this.selectedIndex];
-        var phoneCode = selectedOption.value;
+        var phoneCode = selectedOption.getAttribute('data-phone-code');
         document.getElementById('selected_phone_code').innerText = '+' + phoneCode;
-        // document.getElementById('mobile').value = phoneCode + ' ';
-        document.getElementById('mobile_code').value = phoneCode + ' ';
+        document.getElementById('country_code').value = phoneCode;
     });
 </script>

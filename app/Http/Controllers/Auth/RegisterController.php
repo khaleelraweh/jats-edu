@@ -53,9 +53,10 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'country' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'country_name' => ['required', 'string', 'max:255'],
+            'country_code' => ['required', 'string', 'max:255'],
             'mobile' => ['required', 'numeric', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -75,6 +76,8 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'username'  => $data['username'],
             'email'     => $data['email'],
+            'country_name'  => $data['country_name'],
+            'country_code' => $data['country_code'],
             'mobile'    => $data['mobile'],
             'password'  => Hash::make($data['password']),
             'user_image' => 'avator.svg',

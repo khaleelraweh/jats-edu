@@ -20,13 +20,14 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('country_name')->nullable();
+            $table->string('country_code')->nullable();
             $table->string('mobile')->unique();
             $table->string('password');
             $table->string('user_image')->nullable();
             $table->unsignedTinyInteger('status')->default(0); // حالة الحساب محمد او فعال 
             $table->rememberToken();
             $table->boolean('receive_emails')->default(true);
-            $table->string('country');
 
 
             // new info for instructor start  

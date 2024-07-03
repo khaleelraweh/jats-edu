@@ -395,7 +395,8 @@
                             <select id="country_code" class="form-control">
                                 @foreach (getCountries() as $country)
                                     <option value="{{ $country->phone_code }}" data-emoji="{{ $country->emoji }}">
-                                        {{ $country->emoji }} {{ $country->name }} (+{{ $country->phone_code }})
+                                        {{-- {{ $country->emoji }} {{ $country->name }} (+{{ $country->phone_code }}) --}}
+                                        {{ $country->emoji }} {{ $country->name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -411,6 +412,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="selected_phone_code">+</span>
                                 </div>
+                                <input type="hidden" name="mobile_code">
                                 <input type="text" name="mobile" id="mobile" class="form-control"
                                     placeholder="{{ __('panel.f_phone_number') }}">
                             </div>
@@ -541,5 +543,6 @@
         var phoneCode = selectedOption.value;
         document.getElementById('selected_phone_code').innerText = '+' + phoneCode;
         // document.getElementById('mobile').value = phoneCode + ' ';
+        document.getElementById('mobile_code').value = phoneCode + ' ';
     });
 </script>

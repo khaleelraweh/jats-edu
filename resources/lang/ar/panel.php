@@ -936,6 +936,7 @@ return [
 
     'f_center_pay'                                      =>  'سينر باي',
     'f_copyright'                                       =>  'حقوق الطبع محفوظة',
+    'f_select_country'                                  =>  'إختر الدولة',
 
     // =========================== Footer continue slides ===============================//
 

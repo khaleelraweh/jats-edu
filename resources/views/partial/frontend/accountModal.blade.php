@@ -308,18 +308,16 @@
                 </div>
 
                 <div class="modal-body">
-                    <!-- Form Signup -->
+                    <!-- Form Register -->
                     <form class="mb-5" method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group mb-5">
-
                             <label for="first_name">
                                 <i class="fa fa-user custom-color"></i>
                                 {{ __('panel.first_name') }}
                                 <span class="required">*</span>
                             </label>
-
                             <input type="text" name="first_name" id="first_name" class="form-control  "
                                 value="" placeholder="{{ __('panel.first_name') }}">
 
@@ -328,20 +326,16 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-
                         </div>
 
                         <div class="form-group mb-5">
-
                             <label for="last_name">
                                 <i class="fa fa-user custom-color"></i>
                                 {{ __('panel.last_name') }}
                                 <span class="required">*</span>
                             </label>
-
                             <input type="text" name="last_name" id="last_name" class="form-control "
                                 value="" placeholder="{{ __('panel.last_name') }}">
-
                             @error('last_name')
                                 <span class="invalid-feedback text-danger" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -351,16 +345,13 @@
                         </div>
 
                         <div class="form-group mb-5">
-
                             <label for="username">
                                 <i class="fa fa-user custom-color"></i>
                                 {{ __('panel.user_name') }}
                                 <span class="required">*</span>
                             </label>
-
                             <input type="text" name="username" id="username" class="form-control  "
                                 value="" placeholder="{{ __('panel.user_name') }}">
-
                             @error('username')
                                 <span class="invalid-feedback text-danger" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -370,16 +361,13 @@
                         </div>
 
                         <div class="form-group mb-5">
-
                             <label for="email">
                                 <i class="fa fa-envelope custom-color"></i>
                                 {{ __('panel.f_user_email') }} <span class="required">*</span>
                             </label>
-
                             <input type="email" name="email" id="email" class="form-control "
                                 value="" placeholder="your@email.com" autocomplete="email"
                                 autocapitalize="none">
-
                             @error('email')
                                 <span class="invalid-feedback text-danger" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -388,21 +376,49 @@
 
                         </div>
 
-                        <div class="form-group mb-5">
-
+                        {{-- <div class="form-group mb-5">
                             <label for="mobile">
                                 <i class="fa fa-mobile-phone custom-color"></i>
                                 {{ __('panel.f_phone_number') }}
                                 <span class="required">*</span>
                             </label>
-
                             <input type="text" name="mobile" id="mobile" class="form-control "
                                 value="" placeholder="{{ __('panel.f_phone_number') }}">
+                        </div> --}}
 
+                        <div class="form-group mb-5">
+                            <label for="country_code">
+                                <i class="fa fa-globe custom-color"></i>
+                                {{ __('panel.f_select_country') }}
+                                <span class="required">*</span>
+                            </label>
+                            <select id="country_code" class="form-control">
+                                @foreach (getCountries() as $country)
+                                    <option value="{{ $country->phone_code }}" data-emoji="{{ $country->emoji }}">
+                                        {{ $country->emoji }} {{ $country->name }} (+{{ $country->phone_code }})
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group mb-5">
+                            <label for="mobile">
+                                <i class="fa fa-mobile-phone custom-color"></i>
+                                {{ __('panel.f_phone_number') }}
+                                <span class="required">*</span>
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="selected_phone_code">+</span>
+                                </div>
+                                <input type="text" name="mobile" id="mobile" class="form-control"
+                                    placeholder="{{ __('panel.f_phone_number') }}">
+                            </div>
+                        </div>
 
+
+
+                        <div class="form-group mb-5">
                             <label for="password">
                                 <i class="fa fa-user custom-color"></i>
                                 {{ __('panel.f_user_password') }}
@@ -516,3 +532,14 @@
         </div>
     </div>
 </div>
+
+
+
+<script>
+    document.getElementById('country_code').addEventListener('change', function() {
+        var selectedOption = this.options[this.selectedIndex];
+        var phoneCode = selectedOption.value;
+        document.getElementById('selected_phone_code').innerText = '+' + phoneCode;
+        document.getElementById('mobile').value = phoneCode + ' ';
+    });
+</script>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Country;
 use App\Models\Currency;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Cache;
@@ -249,4 +250,12 @@ function order_status($status)
             break;
     }
     return $result;
+}
+
+
+if (!function_exists('getCountries')) {
+    function getCountries()
+    {
+        return Country::all();
+    }
 }

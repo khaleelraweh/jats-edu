@@ -962,6 +962,7 @@ return [
 
     'f_center_pay'                                  =>  'CenterPay',
     'f_copyright'                                   =>  'Copyright',
+    'f_select_country'                              =>  'Select Country',
 
 
     // =========================== Footer continue slides ===============================//

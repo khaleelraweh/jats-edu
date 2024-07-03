@@ -26,6 +26,8 @@ return new class extends Migration
             $table->unsignedTinyInteger('status')->default(0); // حالة الحساب محمد او فعال 
             $table->rememberToken();
             $table->boolean('receive_emails')->default(true);
+            $table->string('country');
+
 
             // new info for instructor start  
             $table->json('description')->nullable();

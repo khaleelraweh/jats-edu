@@ -540,6 +540,6 @@
         var selectedOption = this.options[this.selectedIndex];
         var phoneCode = selectedOption.value;
         document.getElementById('selected_phone_code').innerText = '+' + phoneCode;
-        document.getElementById('mobile').value = phoneCode + ' ';
+        // document.getElementById('mobile').value = phoneCode + ' ';
     });
 </script>

@@ -121,7 +121,8 @@
                     @else
                         <a class="dropdown-item" href="{{ route('customer.teach_on_jats') }}">
                             <i class="ri-user-line align-middle me-1"></i>
-                            {{ __('panel.f_teach_on_jats') }}
+                            {{ __('panel.f_youth_step
+') }}
                         </a>
                     @endif
 

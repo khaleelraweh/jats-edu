@@ -112,7 +112,8 @@
                                     @else
                                         <li>
                                             <a href="{{ route('customer.teach_on_jats') }}">
-                                                {{ __('panel.f_teach_on_jats') }}
+                                                {{ __('panel.f_youth_step
+') }}
                                             </a>
                                         </li>
                                     @endif

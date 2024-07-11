@@ -1034,7 +1034,8 @@ return [
     'f_default_address'                                 =>  'العنوان الإفتراضي',
     'f_my_orders'                                       =>  'طلباتي',
     'f_instructor_dashboard'                            =>  'لوحة تحكم المدرب',
-    'f_teach_on_jats'                                   =>  'قم بالتدريس في جاتس',
+    'f_youth_step
+'                                                       =>  'قم بالتدريس في خطوة شباب',
     'f_logout'                                          =>  'تسجيل الخروج',
 
     // Register 

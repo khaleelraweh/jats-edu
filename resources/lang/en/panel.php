@@ -1061,7 +1061,8 @@ return [
     'f_default_address'                                 =>  'Default Address',
     'f_my_orders'                                       =>  'My Orders',
     'f_instructor_dashboard'                            =>  'Instructor Dashboard',
-    'f_teach_on_jats'                                   =>  'Teach on Jats',
+    'f_youth_step'                                      =>  'Teach on Youth Step',
+
     'f_logout'                                          =>  'Logout',
 
 

@@ -390,7 +390,7 @@ return [
 
     // instructor create Course
 
-    'course_generators'                             =>  'مولد الدورات',
+    'course_generators'                             =>  'خطوات إنشاء الدورة ',
 
 
     //generators Message 

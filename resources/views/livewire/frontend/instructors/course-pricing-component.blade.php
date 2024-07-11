@@ -11,6 +11,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 pt-3">
                 <label for="price"> {{ __('panel.price') }} </label>
+                <small>( {{ __('panel.price_tip') }} )</small>
                 <input type="text" name="price" wire:model="price" id="price"
                     value="{{ old('price', $course->price) }}" class="form-control">
                 @error('price')

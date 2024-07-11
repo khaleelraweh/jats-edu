@@ -560,7 +560,7 @@ return [
 
     'Course type'                                       =>  'نوع الدورة',
     'Course presence'                                   =>  'حضوري',
-    'Course enrolled'                                   =>  'إنتساب',
+    'Course enrolled'                                   =>  'مسجلة',
 
     'Select Category'                                   =>  'اختر الفئة',
 

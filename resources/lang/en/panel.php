@@ -788,6 +788,7 @@ return [
     'featured'                      =>  'Featured',
     'qty'                           =>  'Quantity',
     'price'                         =>  'Price',
+    'price_tip'                     =>  'Please enter the course price in Saudi Riyals',
     'views'                         =>  'Views',
     'email'                         =>  'Email',
     'user_email'                    =>  'User Email',

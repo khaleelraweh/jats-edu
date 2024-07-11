@@ -98,7 +98,7 @@ return [
     'lnk_web_use_policy'                            =>  'سياسة استخدام الويب',
     'lnk_cookie_policy'                             =>  'سياسة ملفات الارتباط',
 
-    'txt_your_shopping_cart'                        =>  'الدورات المختبارة الخاصة بك',
+    'txt_your_shopping_cart'                        =>  'الدورات المختارة الخاصة بك',
     'txt_order_subtotal'                            =>  'طلب المجموع الفرعي',
     'btn_view_cart'                                 =>  'عرض العربة',
     'btn_checkout'                                  =>  'الدفع',

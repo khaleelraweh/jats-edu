@@ -98,7 +98,7 @@ return [
     'lnk_web_use_policy'                            =>  'Web Use Policy',
     'lnk_cookie_policy'                             =>  'Cookie Policy',
 
-    'txt_your_shopping_cart'                        =>  'Your Shopping Cart',
+    'txt_your_shopping_cart'                        =>  'Your Selected Courses',
     'txt_order_subtotal'                            =>  'Order Subtotal',
     'btn_view_cart'                                 =>  'View Cart',
     'btn_checkout'                                  =>  'Checkout',
@@ -308,7 +308,7 @@ return [
     'reset_filter'                                  =>  'Reset Filter',
 
     // Shop Cart 
-    'shop_cart'                                     =>  'Shop Cart',
+    'shop_cart'                                     =>  'Selected Training Courses',
     'courses_in_cart'                               =>  'Courses in Cart',
     'courses_in_wishlist'                           =>  'Courses in Wishlist',
     'remove'                                        =>  'Remove',

@@ -311,7 +311,7 @@ return [
     'reset_filter'                                  =>  'إعادة تعيين المرشحات',
 
     // Shop Cart 
-    'shop_cart'                                     =>  'عربة التسوق',
+    'shop_cart'                                     =>  'الدورات التدريبية المختارة',
     'courses_in_cart'                               =>  'الدورات في سلة التسوق',
     'courses_in_wishlist'                           =>  'الدورات في قائمة المفضلات',
     'remove'                                        =>  'حذف',

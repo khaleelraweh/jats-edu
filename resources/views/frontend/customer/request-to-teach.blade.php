@@ -145,7 +145,7 @@
             // for offer ends
             flatpickr('.flatpickr_date_of_birth', {
                 enableTime: true,
-                dateFormat: "Y-m-d H:i K",
+                dateFormat: "Y-m-d ",
                 minDate: "today"
 
             });

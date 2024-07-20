@@ -36,7 +36,7 @@
 
                         <div id="accordionCurriculum">
                             <!-- Accordion panel 1 -->
-                            <div class="border rounded mb-1 overflow-hidden">
+                            <div class="border rounded mb-1 overflow-hidden d-none">
                                 <!-- Accordion heading as radio button -->
                                 <div class="d-flex align-items-center" id="curriculumheadingOne">
                                     <h5 class="mb-0 w-100">
@@ -67,7 +67,7 @@
                             </div>
 
                             <!-- Accordion panel 2 -->
-                            <div class="border rounded shadow mb-6 overflow-hidden">
+                            <div class="border rounded shadow mb-6 overflow-hidden d-none">
                                 <!-- Accordion heading as radio button -->
                                 <div class="d-flex align-items-center" id="curriculumheadingTwo">
                                     <h5 class="mb-0 w-100">

@@ -100,6 +100,23 @@
                                     </select>
                                 </div>
 
+                                <div class="control-group form-group">
+                                    <label for="residence_address">
+                                        {{-- <i class="fa fa-globe custom-color"></i> --}}
+                                        عنوان/ مكان الإقامة
+                                        <span class="required">*</span>
+                                    </label>
+                                    <select id="residence_address" name="residence_address" class="form-control">
+                                        @foreach (getCountries() as $country)
+                                            <option value="{{ $country->name }}"
+                                                data-phone-code="{{ $country->phone_code }}"
+                                                data-emoji="{{ $country->emoji }}">
+                                                {{ $country->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
 
                                 <div class="control-group form-group ">
                                     <label class="form-label"> المؤهل الدراسي</label>

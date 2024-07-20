@@ -140,4 +140,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->morphedByMany(Course::class, 'userable');
     }
+
+    public function requestToTeaches()
+    {
+        return $this->hasMany(RequestToTeach::class);
+    }
 }

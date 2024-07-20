@@ -103,8 +103,39 @@
 
                                 <div class="control-group form-group ">
                                     <label class="form-label"> المؤهل الدراسي</label>
-                                    <input type="text" class="form-control required" placeholder="المؤهل الدراسي">
+
+                                    <select name="educational_qualification" class="form-control">
+                                        <option value="1"
+                                            {{ old('educational_qualification') == '1' ? 'selected' : null }}>
+                                            {{ __('transf.Diploma') }}
+                                        </option>
+                                        <option value="2"
+                                            {{ old('educational_qualification') == '2' ? 'selected' : null }}>
+                                            {{ __('transf.Higher Diploma') }}
+                                        </option>
+                                        <option value="3"
+                                            {{ old('educational_qualification') == '3' ? 'selected' : null }}>
+                                            {{ __('transf.Bachelor') }}
+                                        </option>
+                                        <option value="4"
+                                            {{ old('educational_qualification') == '3' ? 'selected' : null }}>
+                                            {{ __('transf.Master') }}
+                                        </option>
+                                        <option value="5"
+                                            {{ old('educational_qualification') == '3' ? 'selected' : null }}>
+                                            {{ __('transf.Ph_D') }}
+                                        </option>
+                                        <option value="6"
+                                            {{ old('educational_qualification') == '3' ? 'selected' : null }}>
+                                            {{ __('transf.Professor') }}
+                                        </option>
+                                    </select>
+                                    @error('educational_qualification')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
                                 </div>
+
                                 <div class="control-group form-group ">
                                     <label class="form-label">التخصص</label>
                                     <input type="text" class="form-control required" placeholder="التخصص">
@@ -113,7 +144,10 @@
                                 <div class="control-group form-group mb-0">
                                     <label class="form-label">سنوات خبرة التدريب</label>
                                     <input type="number" class="form-control required" placeholder="سنوات خبرة التدريب">
+
                                 </div>
+
+
                             </section>
                             <h3>المرفقات</h3>
                             <section>

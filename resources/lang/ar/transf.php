@@ -624,6 +624,14 @@ return [
     // order 
     'Kurima Bank'                                       =>  'بنك الكريمي',
 
+    // request to teach 
+    'Diploma'                                           =>  'دبلوم',
+    'Higher Diploma'                                    =>  'دبلوم عالى',
+    'Bachelor'                                          =>  'بكلوريوس',
+    'Master'                                            =>  'ماجستير',
+    'Ph_D'                                              =>  'دكتوراه',
+    'Professor'                                         =>  'بروفسور',
+
 
 
 

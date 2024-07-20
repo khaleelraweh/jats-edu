@@ -608,6 +608,16 @@ return [
     'Kurima Bank'                                       =>  'Kurima Bank',
 
 
+    // request to teach 
+    'Diploma'                                           =>  'Diploma',
+    'Higher Diploma'                                    =>  'Higher Diploma',
+    'Bachelor'                                          =>  'Bachelor',
+    'Master'                                            =>  'Master',
+    'Ph_D'                                              =>  'Ph.D',
+    'Professor'                                         =>  'Professor',
+
+
+
 
 
 ];

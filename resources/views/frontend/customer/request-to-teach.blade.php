@@ -41,14 +41,17 @@
                         <div id="wizard1">
                             <h3>البيانات الشخصية</h3>
                             <section>
+
                                 <div class="control-group form-group">
                                     <label class="form-label">الإسم باللغة العربية</label>
                                     <input type="text" class="form-control required" placeholder="الاسم بالعربي">
                                 </div>
+
                                 <div class="control-group form-group">
                                     <label class="form-label">الإسم باللغة الانجليزية</label>
                                     <input type="text" class="form-control required" placeholder="الاسم بالانجليزي">
                                 </div>
+
                                 <div class="control-group form-group">
                                     <label class="form-label">تاريخ الميلاد</label>
                                     <div class="form-group">
@@ -61,25 +64,55 @@
 
                                     </div>
                                 </div>
-                                <div class="control-group form-group mb-0">
-                                    <label class="form-label">محل الميلاد</label>
-                                    <input type="text" class="form-control required" placeholder="محل الميلاد">
+
+                                <div class="control-group form-group">
+                                    <label for="country_name">
+                                        {{-- <i class="fa fa-globe custom-color"></i> --}}
+                                        محل الميلاد
+                                        <span class="required">*</span>
+                                    </label>
+                                    <select id="country_name" name="place_of_birth" class="form-control">
+                                        @foreach (getCountries() as $country)
+                                            <option value="{{ $country->name }}"
+                                                data-phone-code="{{ $country->phone_code }}"
+                                                data-emoji="{{ $country->emoji }}">
+                                                {{ $country->name }} {{ $country->emoji }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                <div class="control-group form-group mb-0">
-                                    <label class="form-label"> الجنسية</label>
-                                    <input type="text" class="form-control required" placeholder="الجنسية">
+
+
+                                <div class="control-group form-group">
+                                    <label for="country_name">
+                                        {{-- <i class="fa fa-globe custom-color"></i> --}}
+                                        الجنسية
+                                        <span class="required">*</span>
+                                    </label>
+                                    <select id="country_name" name="nationality" class="form-control">
+                                        @foreach (getCountries() as $country)
+                                            <option value="{{ $country->nationality }}"
+                                                data-phone-code="{{ $country->phone_code }}"
+                                                data-emoji="{{ $country->emoji }}">
+                                                {{ $country->nationality }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                <div class="control-group form-group mb-0">
+
+
+                                <div class="control-group form-group ">
                                     <label class="form-label"> المؤهل الدراسي</label>
                                     <input type="text" class="form-control required" placeholder="المؤهل الدراسي">
                                 </div>
-                                <div class="control-group form-group mb-0">
+                                <div class="control-group form-group ">
                                     <label class="form-label">التخصص</label>
                                     <input type="text" class="form-control required" placeholder="التخصص">
                                 </div>
+
                                 <div class="control-group form-group mb-0">
                                     <label class="form-label">سنوات خبرة التدريب</label>
-                                    <input type="text" class="form-control required" placeholder="سنوات خبرة التدريب">
+                                    <input type="number" class="form-control required" placeholder="سنوات خبرة التدريب">
                                 </div>
                             </section>
                             <h3>المرفقات</h3>

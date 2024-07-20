@@ -130,6 +130,6 @@ class CustomerController extends Controller
         // return view('frontend.customer.instructor-greating');
         // return view('frontend.customer.instructor-request');
 
-        return view('frontend.customer.teach-on-jats-request');
+        return view('frontend.customer.request-to-teach');
     }
 }

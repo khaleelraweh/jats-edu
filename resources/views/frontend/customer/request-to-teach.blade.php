@@ -109,6 +109,10 @@
                             <h3>بيانات الاستمارة </h3>
                             <section>
                                 يتم تصميم الخصلاصة هنا
+                                <div class="form-group pt-3">
+                                    <button type="submit" name="submit" class="btn btn-primary">
+                                        {{ __('panel.save_data') }}</button>
+                                </div>
                             </section>
                         </div>
                     </form>

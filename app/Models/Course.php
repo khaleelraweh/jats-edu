@@ -171,6 +171,7 @@ class Course extends Model
             return __('transf.All Levels');
         }
     }
+
     public function course_type()
     {
         if ($this->course_type == 1)

@@ -132,4 +132,9 @@ class CustomerController extends Controller
 
         return view('frontend.customer.request-to-teach');
     }
+
+    public function request_to_teach(Request $request)
+    {
+        dd("we are in request");
+    }
 }

@@ -36,7 +36,7 @@
                     <p class="mg-b-20">ملاحظة : سيتم اعتماد البيانات عند الانتهاء من تعبئة البيانات وارسالها , لذلك نرجو
                         القيام بإدخال كافة البيانات المطلوبة بشكل صحيح ودقيق.</p>
 
-                    <form action="{{ route('admin.courses.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('customer.request_to_teach') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div id="wizard1">
                             <h3>البيانات الشخصية</h3>

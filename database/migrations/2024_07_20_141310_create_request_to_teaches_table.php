@@ -26,6 +26,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('years_of_training_experience')->default(0);
             $table->string('identity')->nullable(); // الهوية
             $table->string('biography')->nullable(); // السيرة الذاتية
+            $table->string('Certificates')->nullable(); //  الشهائد
             $table->string('motivation')->nullable(); // الحافز للتدريب في خطوة شباب 
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ProfileRequest;
 use App\Models\Course;
+use App\Models\RequestToTeach;
 use App\Models\Role;
 use App\Models\Specialization;
 use Illuminate\Http\Request;
@@ -138,6 +139,39 @@ class CustomerController extends Controller
 
     public function request_to_teach(Request $request)
     {
-        dd($request);
+
+        $data['full_name'] = $request->full_name;
+        $data['date_of_birth'] = $request->date_of_birth;
+        $data['place_of_birth'] = $request->place_of_birth;
+        $data['nationality'] = $request->nationality;
+        $data['residence_address'] = $request->residence_address;
+        $data['educational_qualification'] = $request->educational_qualification;
+        $data['specialization'] = $request->specialization;
+        $data['years_of_training_experience'] = $request->years_of_training_experience;
+        $data['motivation'] = $request->motivation;
+        $data['user_id'] = auth()->user()->id;
+
+
+        // Handle file uploads
+
+        if ($file = $request->file('identity')) {
+            $fileName = auth()->user()->id . '-identity-' . time() . '.' . $file->extension(); // Fixed file name generation
+            $filePath = public_path('assets/teach');
+            $file->move($filePath, $fileName); // Moved file to the desired directory
+            $data['identity'] = $fileName;
+        }
+
+        foreach (['biography', 'Certificates'] as $fileInput) {
+            if ($file = $request->file($fileInput)) {
+                $fileName = auth()->user()->id . '-' . $fileInput . '-' . time() . '.' . $file->extension();
+                $filePath = public_path('assets/teach');
+                $file->move($filePath, $fileName); // Move PDF files
+                $data[$fileInput] = $fileName;
+            }
+        }
+
+        RequestToTeach::create($data);
+
+        return redirect()->back();
     }
 }

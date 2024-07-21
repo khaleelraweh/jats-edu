@@ -212,7 +212,8 @@
                                         <div class="col-sm-12 col-md-4">
                                             <div class="control-group form-group mb-0">
                                                 <label class="form-label">سنوات خبرة التدريب</label>
-                                                <input type="number" class="form-control required">
+                                                <input type="number" name="years_of_training_experience"
+                                                    class="form-control required">
 
                                             </div>
                                         </div>
@@ -224,23 +225,25 @@
                                 <section>
                                     <div class="control-group form-group">
                                         <label class="form-label">ارفاق صورة من الهوية / جواز السفر (واضح)</label>
-                                        <input type="text" class="form-control required"
-                                            placeholder="الهوية او جواز السفر">
+
+                                        <input type="file" name="identity" class="form-control required">
                                     </div>
                                     <div class="control-group form-group">
                                         <label class="form-label">السيرة الذاتية</label>
-                                        <input type="text" class="form-control required" placeholder="السيرة الذاتية">
+                                        <input type="file" name="biography" class="form-control required">
                                     </div>
                                     <div class="control-group form-group mb-0">
-                                        <label class="form-label"> ارفاق الشهادات </label>
-                                        <input type="text" class="form-control required" placeholder="الشهادات">
+                                        <label class="form-label"> ارفاق الشهائد (<small>يجب تضمين جميع الشهائد المراد
+                                                رفعها
+                                                في ملف pdf</small>) </label>
+                                        <input type="file" name="Certificates" class="form-control required">
                                     </div>
                                 </section>
                                 <h3>الحافز</h3>
                                 <section>
                                     <div class="form-group">
                                         <label class="form-label">لماذا تريد الالتحاق بالتدريب لدينا</label>
-                                        <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                                        <textarea class="form-control" name="motivation" id="" cols="30" rows="10"></textarea>
                                     </div>
 
                                 </section>

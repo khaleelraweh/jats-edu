@@ -140,16 +140,36 @@ class CustomerController extends Controller
     public function request_to_teach(Request $request)
     {
 
-        $data['full_name'] = $request->full_name;
-        $data['date_of_birth'] = $request->date_of_birth;
-        $data['place_of_birth'] = $request->place_of_birth;
-        $data['nationality'] = $request->nationality;
-        $data['residence_address'] = $request->residence_address;
-        $data['educational_qualification'] = $request->educational_qualification;
-        $data['specialization'] = $request->specialization;
-        $data['years_of_training_experience'] = $request->years_of_training_experience;
-        $data['motivation'] = $request->motivation;
-        $data['user_id'] = auth()->user()->id;
+        // Validate the request
+        $validatedData = $request->validate([
+            'full_name'                     => 'required|array',
+            'full_name.ar'                  => 'required|string',
+            'full_name.en'                  => 'required|string',
+            'date_of_birth'                 => 'required|date',
+            'place_of_birth'                => 'required|string',
+            'nationality'                   => 'required|string',
+            'residence_address'             => 'required|string',
+            'phone'                         => 'required|string',
+            'educational_qualification'     => 'required|integer',
+            'specialization'                => 'required|integer',
+            'years_of_training_experience'  => 'required|integer',
+            'motivation'                    => 'required|string',
+            'identity'                      => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
+            'biography'                     => 'nullable|file|mimes:pdf|max:2048',
+            'Certificates'                  => 'nullable|file|mimes:pdf|max:2048',
+        ]);
+
+        $data['full_name']                      = $validatedData['full_name'];
+        $data['date_of_birth']                  = $validatedData['date_of_birth'];
+        $data['place_of_birth']                 = $validatedData['place_of_birth'];
+        $data['nationality']                    = $validatedData['nationality'];
+        $data['residence_address']              = $validatedData['residence_address'];
+        $data['phone']                          = $validatedData['phone'];
+        $data['educational_qualification']      = $validatedData['educational_qualification'];
+        $data['specialization']                 = $validatedData['specialization'];
+        $data['years_of_training_experience']   = $validatedData['years_of_training_experience'];
+        $data['motivation']                     = $validatedData['motivation'];
+        $data['user_id']                        = auth()->user()->id;
 
 
         // Handle file uploads
@@ -172,6 +192,6 @@ class CustomerController extends Controller
 
         RequestToTeach::create($data);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Your request has been submitted successfully.');
     }
 }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('place_of_birth')->nullable();
             $table->string('nationality')->nullable();
             $table->string('residence_address')->nullable();
+            $table->string('phone')->nullable();
             $table->string('educational_qualification')->nullable(); // المؤهل الدراسي
             $table->string('specialization')->nullable();  //  التخصص
             $table->unsignedTinyInteger('years_of_training_experience')->default(0);

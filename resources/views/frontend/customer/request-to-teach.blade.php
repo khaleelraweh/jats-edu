@@ -52,6 +52,9 @@
                                                     <span class="required text-danger">*</span>
                                                 </label>
                                                 <input type="text" name="full_name[ar]" class="form-control required">
+                                                @error('full_name.ar')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-6">
@@ -61,6 +64,9 @@
                                                     <span class="required text-danger">*</span>
                                                 </label>
                                                 <input type="text" name="full_name[en]" class="form-control required">
+                                                @error('full_name.en')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -76,21 +82,21 @@
                                                 <div class="form-group">
                                                     <input type="text" name="date_of_birth"
                                                         class="form-control required flatpickr_date_of_birth">
-                                                    @error('published_on')
+                                                    @error('date_of_birth')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
-
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-4">
                                             <div class="control-group form-group">
-                                                <label for="country_name">
+                                                <label for="place_of_birth">
                                                     {{-- <i class="fa fa-globe custom-color"></i> --}}
-                                                    محل الميلاد
+                                                    مكان الميلاد
                                                     <span class="required text-danger">*</span>
                                                 </label>
-                                                <select id="country_name" name="place_of_birth" class="form-control">
+                                                <select id="place_of_birth" name="place_of_birth" class="form-control">
+                                                    <option value="">---</option>
                                                     @foreach (getCountries() as $country)
                                                         <option value="{{ $country->name }}"
                                                             data-phone-code="{{ $country->phone_code }}"
@@ -99,15 +105,19 @@
                                                         </option>
                                                     @endforeach
                                                 </select>
+                                                @error('place_of_birth')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-4">
                                             <div class="control-group form-group">
-                                                <label for="country_name">
+                                                <label for="nationality">
                                                     الجنسية
                                                     <span class="required text-danger">*</span>
                                                 </label>
-                                                <select id="country_name" name="nationality" class="form-control">
+                                                <select id="nationality" name="nationality" class="form-control">
+                                                    <option value="">---</option>
                                                     @foreach (getCountries() as $country)
                                                         <option value="{{ $country->nationality }}"
                                                             data-phone-code="{{ $country->phone_code }}"
@@ -116,6 +126,9 @@
                                                         </option>
                                                     @endforeach
                                                 </select>
+                                                @error('nationality')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -130,6 +143,7 @@
                                                 </label>
                                                 <select id="residence_address" name="residence_address"
                                                     class="form-control">
+                                                    <option value="">---</option>
                                                     @foreach (getCountries() as $country)
                                                         <option value="{{ $country->name }}"
                                                             data-phone-code="{{ $country->phone_code }}"
@@ -138,17 +152,23 @@
                                                         </option>
                                                     @endforeach
                                                 </select>
+                                                @error('residence_address')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
 
                                         <div class="col-sm-12 col-md-6">
                                             <div class="control-group form-group">
-                                                <label for="residence_address">
+                                                <label for="phone">
                                                     {{-- <i class="fa fa-globe custom-color"></i> --}}
                                                     رقم الجوال
                                                     <span class="required text-danger">*</span>
                                                 </label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" name="phone" class="form-control">
+                                                @error('phone')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -161,6 +181,7 @@
                                                 <label class="form-label"> المؤهل الدراسي</label>
 
                                                 <select name="educational_qualification" class="form-control">
+                                                    <option value="">---</option>
                                                     <option value="1"
                                                         {{ old('educational_qualification') == '1' ? 'selected' : null }}>
                                                         {{ __('transf.Diploma') }}
@@ -196,13 +217,12 @@
                                             <div class="control-group form-group ">
                                                 <label class="form-label">التخصص</label>
                                                 <select name="specialization" class="form-control">
+                                                    <option value="">---</option>
                                                     @foreach ($specializations as $specialization)
                                                         <option value="{{ $specialization->id }}">
                                                             {{ $specialization->name }}
                                                         </option>
                                                     @endforeach
-
-
                                                 </select>
                                                 @error('specialization')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -214,7 +234,9 @@
                                                 <label class="form-label">سنوات خبرة التدريب</label>
                                                 <input type="number" name="years_of_training_experience"
                                                     class="form-control required">
-
+                                                @error('years_of_training_experience')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -225,18 +247,26 @@
                                 <section>
                                     <div class="control-group form-group">
                                         <label class="form-label">ارفاق صورة من الهوية / جواز السفر (واضح)</label>
-
                                         <input type="file" name="identity" class="form-control required">
+                                        @error('identity')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="control-group form-group">
                                         <label class="form-label">السيرة الذاتية</label>
                                         <input type="file" name="biography" class="form-control required">
+                                        @error('biography')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="control-group form-group mb-0">
                                         <label class="form-label"> ارفاق الشهائد (<small>يجب تضمين جميع الشهائد المراد
                                                 رفعها
                                                 في ملف pdf</small>) </label>
                                         <input type="file" name="Certificates" class="form-control required">
+                                        @error('Certificates')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </section>
                                 <h3>الحافز</h3>
@@ -244,6 +274,9 @@
                                     <div class="form-group">
                                         <label class="form-label">لماذا تريد الالتحاق بالتدريب لدينا</label>
                                         <textarea class="form-control" name="motivation" id="" cols="30" rows="10"></textarea>
+                                        @error('motivation')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                 </section>

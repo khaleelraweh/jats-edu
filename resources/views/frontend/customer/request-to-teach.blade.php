@@ -257,7 +257,8 @@
                                     </div>
                                     <div class="control-group form-group">
                                         <label class="form-label">السيرة الذاتية</label>
-                                        <input type="file" name="biography" class="form-control required">
+                                        <input type="file" name="biography" class="form-control required"
+                                            accept="application/pdf">
                                         @error('biography')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror

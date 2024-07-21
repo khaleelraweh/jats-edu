@@ -199,7 +199,7 @@
                                         <li>
                                             <a href="{{ route('customer.teach_on_jats') }}">
                                                 {{ __('panel.f_youth_step
-') }}
+                                                ') }}
                                             </a>
                                         </li>
                                     @endif
@@ -245,7 +245,7 @@
                                         <li>
                                             <a href="{{ route('customer.teach_on_jats') }}">
                                                 {{ __('panel.f_youth_step
-') }}
+                                                ') }}
                                             </a>
                                         </li>
                                     @endif
@@ -378,15 +378,6 @@
 
                         </div>
 
-                        {{-- <div class="form-group mb-5">
-                            <label for="mobile">
-                                <i class="fa fa-mobile-phone custom-color"></i>
-                                {{ __('panel.f_phone_number') }}
-                                <span class="required">*</span>
-                            </label>
-                            <input type="text" name="mobile" id="mobile" class="form-control "
-                                value="" placeholder="{{ __('panel.f_phone_number') }}">
-                        </div> --}}
 
                         <div class="form-group mb-5">
                             <label for="country_name">

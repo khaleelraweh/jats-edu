@@ -138,6 +138,6 @@ class CustomerController extends Controller
 
     public function request_to_teach(Request $request)
     {
-        dd("we are in request");
+        dd($request);
     }
 }

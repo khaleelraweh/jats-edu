@@ -25,198 +25,242 @@
 @endsection
 
 @section('content')
-    <!-- row -->
-    <div class="row">
-        <div class="col-lg-12 col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="main-content-label mg-b-5">
-                        إستمارة طلب تقديم كمدرب
-                    </div>
-                    <p class="mg-b-20">ملاحظة : سيتم اعتماد البيانات عند الانتهاء من تعبئة البيانات وارسالها , لذلك نرجو
-                        القيام بإدخال كافة البيانات المطلوبة بشكل صحيح ودقيق.</p>
-
-                    <form action="{{ route('customer.request_to_teach') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div id="wizard1">
-                            <h3>البيانات الشخصية</h3>
-                            <section>
-
-                                <div class="control-group form-group">
-                                    <label class="form-label">الإسم باللغة العربية</label>
-                                    <input type="text" class="form-control required" placeholder="الاسم بالعربي">
-                                </div>
-
-                                <div class="control-group form-group">
-                                    <label class="form-label">الإسم باللغة الانجليزية</label>
-                                    <input type="text" class="form-control required" placeholder="الاسم بالانجليزي">
-                                </div>
-
-                                <div class="control-group form-group">
-                                    <label class="form-label">تاريخ الميلاد</label>
-                                    <div class="form-group">
-                                        <input type="text" name="date_of_birth"
-                                            class="form-control required flatpickr_date_of_birth"
-                                            placeholder="تاريخ الميلاد">
-                                        @error('published_on')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-
-                                    </div>
-                                </div>
-
-                                <div class="control-group form-group">
-                                    <label for="country_name">
-                                        {{-- <i class="fa fa-globe custom-color"></i> --}}
-                                        محل الميلاد
-                                        <span class="required">*</span>
-                                    </label>
-                                    <select id="country_name" name="place_of_birth" class="form-control">
-                                        @foreach (getCountries() as $country)
-                                            <option value="{{ $country->name }}"
-                                                data-phone-code="{{ $country->phone_code }}"
-                                                data-emoji="{{ $country->emoji }}">
-                                                {{ $country->name }} {{ $country->emoji }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-
-                                <div class="control-group form-group">
-                                    <label for="country_name">
-                                        {{-- <i class="fa fa-globe custom-color"></i> --}}
-                                        الجنسية
-                                        <span class="required">*</span>
-                                    </label>
-                                    <select id="country_name" name="nationality" class="form-control">
-                                        @foreach (getCountries() as $country)
-                                            <option value="{{ $country->nationality }}"
-                                                data-phone-code="{{ $country->phone_code }}"
-                                                data-emoji="{{ $country->emoji }}">
-                                                {{ $country->nationality }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="control-group form-group">
-                                    <label for="residence_address">
-                                        {{-- <i class="fa fa-globe custom-color"></i> --}}
-                                        عنوان/ مكان الإقامة
-                                        <span class="required">*</span>
-                                    </label>
-                                    <select id="residence_address" name="residence_address" class="form-control">
-                                        @foreach (getCountries() as $country)
-                                            <option value="{{ $country->name }}"
-                                                data-phone-code="{{ $country->phone_code }}"
-                                                data-emoji="{{ $country->emoji }}">
-                                                {{ $country->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-
-                                <div class="control-group form-group ">
-                                    <label class="form-label"> المؤهل الدراسي</label>
-
-                                    <select name="educational_qualification" class="form-control">
-                                        <option value="1"
-                                            {{ old('educational_qualification') == '1' ? 'selected' : null }}>
-                                            {{ __('transf.Diploma') }}
-                                        </option>
-                                        <option value="2"
-                                            {{ old('educational_qualification') == '2' ? 'selected' : null }}>
-                                            {{ __('transf.Higher Diploma') }}
-                                        </option>
-                                        <option value="3"
-                                            {{ old('educational_qualification') == '3' ? 'selected' : null }}>
-                                            {{ __('transf.Bachelor') }}
-                                        </option>
-                                        <option value="4"
-                                            {{ old('educational_qualification') == '3' ? 'selected' : null }}>
-                                            {{ __('transf.Master') }}
-                                        </option>
-                                        <option value="5"
-                                            {{ old('educational_qualification') == '3' ? 'selected' : null }}>
-                                            {{ __('transf.Ph_D') }}
-                                        </option>
-                                        <option value="6"
-                                            {{ old('educational_qualification') == '3' ? 'selected' : null }}>
-                                            {{ __('transf.Professor') }}
-                                        </option>
-                                    </select>
-                                    @error('educational_qualification')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-
-                                </div>
-
-                                <div class="control-group form-group ">
-                                    <label class="form-label">التخصص</label>
-                                    <select name="specialization" class="form-control">
-                                        @foreach ($specializations as $specialization)
-                                            <option value="{{ $specialization->id }}">
-                                                {{ $specialization->name }}
-                                            </option>
-                                        @endforeach
-
-
-                                    </select>
-                                    @error('specialization')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="control-group form-group mb-0">
-                                    <label class="form-label">سنوات خبرة التدريب</label>
-                                    <input type="number" class="form-control required" placeholder="سنوات خبرة التدريب">
-
-                                </div>
-
-
-                            </section>
-                            <h3>المرفقات</h3>
-                            <section>
-                                <div class="control-group form-group">
-                                    <label class="form-label">ارفاق صورة من الهوية / جواز السفر (واضح)</label>
-                                    <input type="text" class="form-control required" placeholder="الهوية او جواز السفر">
-                                </div>
-                                <div class="control-group form-group">
-                                    <label class="form-label">السيرة الذاتية</label>
-                                    <input type="text" class="form-control required" placeholder="السيرة الذاتية">
-                                </div>
-                                <div class="control-group form-group mb-0">
-                                    <label class="form-label"> ارفاق الشهادات </label>
-                                    <input type="text" class="form-control required" placeholder="الشهادات">
-                                </div>
-                            </section>
-                            <h3>الحافز</h3>
-                            <section>
-                                <div class="form-group">
-                                    <label class="form-label">لماذا تريد الالتحاق بالتدريب لدينا</label>
-                                    <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
-                                </div>
-
-                            </section>
-
-                            <h3>بيانات الاستمارة </h3>
-                            <section>
-                                يتم تصميم الخصلاصة هنا
-                                <div class="form-group pt-3">
-                                    <button type="submit" name="submit" class="btn btn-primary">
-                                        {{ __('panel.save_data') }}</button>
-                                </div>
-                            </section>
+    <div class="container mt-2">
+        <!-- row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="main-content-label mg-b-5">
+                            إستمارة طلب تقديم كمدرب
                         </div>
-                    </form>
+                        <p class="mg-b-20">ملاحظة : سيتم اعتماد البيانات عند الانتهاء من تعبئة البيانات وارسالها , لذلك نرجو
+                            القيام بإدخال كافة البيانات المطلوبة بشكل صحيح ودقيق.</p>
+
+                        <form action="{{ route('customer.request_to_teach') }}" method="post"
+                            enctype="multipart/form-data">
+                            @csrf
+                            <div id="wizard1">
+                                <h3>البيانات الشخصية</h3>
+                                <section>
+
+                                    <div class="row pt-2">
+                                        <div class="col-sm-12 col-md-6 ">
+                                            <div class="control-group form-group">
+                                                <label class="form-label">
+                                                    الإسم باللغة العربية
+                                                    <span class="required text-danger">*</span>
+                                                </label>
+                                                <input type="text" name="full_name[ar]" class="form-control required">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="control-group form-group ">
+                                                <label class="form-label">
+                                                    الإسم باللغة الانجليزية
+                                                    <span class="required text-danger">*</span>
+                                                </label>
+                                                <input type="text" name="full_name[en]" class="form-control required">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-4">
+                                            <div class="control-group form-group">
+                                                <label class="form-label">
+                                                    تاريخ الميلاد
+                                                    <span class="required text-danger">*</span>
+
+                                                </label>
+                                                <div class="form-group">
+                                                    <input type="text" name="date_of_birth"
+                                                        class="form-control required flatpickr_date_of_birth">
+                                                    @error('published_on')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4">
+                                            <div class="control-group form-group">
+                                                <label for="country_name">
+                                                    {{-- <i class="fa fa-globe custom-color"></i> --}}
+                                                    محل الميلاد
+                                                    <span class="required text-danger">*</span>
+                                                </label>
+                                                <select id="country_name" name="place_of_birth" class="form-control">
+                                                    @foreach (getCountries() as $country)
+                                                        <option value="{{ $country->name }}"
+                                                            data-phone-code="{{ $country->phone_code }}"
+                                                            data-emoji="{{ $country->emoji }}">
+                                                            {{ $country->name }} {{ $country->emoji }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4">
+                                            <div class="control-group form-group">
+                                                <label for="country_name">
+                                                    الجنسية
+                                                    <span class="required text-danger">*</span>
+                                                </label>
+                                                <select id="country_name" name="nationality" class="form-control">
+                                                    @foreach (getCountries() as $country)
+                                                        <option value="{{ $country->nationality }}"
+                                                            data-phone-code="{{ $country->phone_code }}"
+                                                            data-emoji="{{ $country->emoji }}">
+                                                            {{ $country->nationality }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="control-group form-group">
+                                                <label for="residence_address">
+                                                    {{-- <i class="fa fa-globe custom-color"></i> --}}
+                                                    عنوان/ مكان الإقامة
+                                                    <span class="required text-danger">*</span>
+                                                </label>
+                                                <select id="residence_address" name="residence_address"
+                                                    class="form-control">
+                                                    @foreach (getCountries() as $country)
+                                                        <option value="{{ $country->name }}"
+                                                            data-phone-code="{{ $country->phone_code }}"
+                                                            data-emoji="{{ $country->emoji }}">
+                                                            {{ $country->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="control-group form-group">
+                                                <label for="residence_address">
+                                                    {{-- <i class="fa fa-globe custom-color"></i> --}}
+                                                    رقم الجوال
+                                                    <span class="required text-danger">*</span>
+                                                </label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-4">
+                                            <div class="control-group form-group ">
+                                                <label class="form-label"> المؤهل الدراسي</label>
+
+                                                <select name="educational_qualification" class="form-control">
+                                                    <option value="1"
+                                                        {{ old('educational_qualification') == '1' ? 'selected' : null }}>
+                                                        {{ __('transf.Diploma') }}
+                                                    </option>
+                                                    <option value="2"
+                                                        {{ old('educational_qualification') == '2' ? 'selected' : null }}>
+                                                        {{ __('transf.Higher Diploma') }}
+                                                    </option>
+                                                    <option value="3"
+                                                        {{ old('educational_qualification') == '3' ? 'selected' : null }}>
+                                                        {{ __('transf.Bachelor') }}
+                                                    </option>
+                                                    <option value="4"
+                                                        {{ old('educational_qualification') == '3' ? 'selected' : null }}>
+                                                        {{ __('transf.Master') }}
+                                                    </option>
+                                                    <option value="5"
+                                                        {{ old('educational_qualification') == '3' ? 'selected' : null }}>
+                                                        {{ __('transf.Ph_D') }}
+                                                    </option>
+                                                    <option value="6"
+                                                        {{ old('educational_qualification') == '3' ? 'selected' : null }}>
+                                                        {{ __('transf.Professor') }}
+                                                    </option>
+                                                </select>
+                                                @error('educational_qualification')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4">
+                                            <div class="control-group form-group ">
+                                                <label class="form-label">التخصص</label>
+                                                <select name="specialization" class="form-control">
+                                                    @foreach ($specializations as $specialization)
+                                                        <option value="{{ $specialization->id }}">
+                                                            {{ $specialization->name }}
+                                                        </option>
+                                                    @endforeach
+
+
+                                                </select>
+                                                @error('specialization')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4">
+                                            <div class="control-group form-group mb-0">
+                                                <label class="form-label">سنوات خبرة التدريب</label>
+                                                <input type="number" class="form-control required">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </section>
+                                <h3>المرفقات</h3>
+                                <section>
+                                    <div class="control-group form-group">
+                                        <label class="form-label">ارفاق صورة من الهوية / جواز السفر (واضح)</label>
+                                        <input type="text" class="form-control required"
+                                            placeholder="الهوية او جواز السفر">
+                                    </div>
+                                    <div class="control-group form-group">
+                                        <label class="form-label">السيرة الذاتية</label>
+                                        <input type="text" class="form-control required" placeholder="السيرة الذاتية">
+                                    </div>
+                                    <div class="control-group form-group mb-0">
+                                        <label class="form-label"> ارفاق الشهادات </label>
+                                        <input type="text" class="form-control required" placeholder="الشهادات">
+                                    </div>
+                                </section>
+                                <h3>الحافز</h3>
+                                <section>
+                                    <div class="form-group">
+                                        <label class="form-label">لماذا تريد الالتحاق بالتدريب لدينا</label>
+                                        <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                                    </div>
+
+                                </section>
+
+                                <h3>بيانات الاستمارة </h3>
+                                <section>
+                                    يتم تصميم الخصلاصة هنا
+                                    <div class="form-group pt-3">
+                                        <button type="submit" name="submit" class="btn btn-primary">
+                                            {{ __('panel.save_data') }}</button>
+                                    </div>
+                                </section>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-
+        <!-- /row -->
     </div>
-    <!-- /row -->
 @endsection
 
 @section('script')

@@ -283,17 +283,10 @@
                                         @enderror
                                     </div>
 
+                                    <button type="submit" style="display: none;" id="hiddenSubmitButton"></button>
+
                                 </section>
 
-                                <h3>بيانات الاستمارة </h3>
-                                <section>
-                                    <button type="submit" style="display: none;" id="hiddenSubmitButton"></button>
-                                    يتم تصميم الخصلاصة هنا
-                                    <div class="form-group pt-3">
-                                        <button type="submit" name="submit" class="btn btn-primary">
-                                            {{ __('panel.save_data') }}</button>
-                                    </div>
-                                </section>
                             </div>
                         </form>
                     </div>

@@ -154,9 +154,9 @@ class CustomerController extends Controller
             'specialization'                => 'required|integer',
             'years_of_training_experience'  => 'required|integer',
             'motivation'                    => 'required|string',
-            'identity'                      => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'biography'                     => 'nullable|file|mimes:pdf|max:2048',
-            'Certificates'                  => 'nullable|file|mimes:pdf|max:2048',
+            'identity'                      => 'required|file|mimes:jpg,jpeg,png|max:2048',
+            'biography'                     => 'required|file|mimes:pdf|max:2048',
+            'Certificates'                  => 'required|file|mimes:pdf|max:2048',
         ]);
 
         $data['full_name']                      = $validatedData['full_name'];

@@ -172,12 +172,12 @@ class CustomerController extends Controller
         $data['user_id']                        = auth()->user()->id;
 
 
-        // Handle file uploads
 
-        if ($file = $request->file('identity')) {
-            $fileName = auth()->user()->id . '-identity-' . time() . '.' . $file->extension(); // Fixed file name generation
+        // Handle file uploads
+        if ($identity = $request->file('identity')) {
+            $fileName = auth()->user()->id . '-identity-' . time() . '.' . $identity->extension();
             $filePath = public_path('assets/teach');
-            $file->move($filePath, $fileName); // Moved file to the desired directory
+            $identity->move($filePath, $fileName); // Move image file
             $data['identity'] = $fileName;
         }
 

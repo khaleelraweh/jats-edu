@@ -155,7 +155,18 @@
 
                                 <div class="control-group form-group ">
                                     <label class="form-label">التخصص</label>
-                                    <input type="text" class="form-control required" placeholder="التخصص">
+                                    <select name="specialization" class="form-control">
+                                        @foreach ($specializations as $specialization)
+                                            <option value="{{ $specialization->id }}">
+                                                {{ $specialization->name }}
+                                            </option>
+                                        @endforeach
+
+
+                                    </select>
+                                    @error('specialization')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="control-group form-group mb-0">

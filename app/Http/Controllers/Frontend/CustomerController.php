@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ProfileRequest;
 use App\Models\Course;
 use App\Models\Role;
+use App\Models\Specialization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -130,7 +131,9 @@ class CustomerController extends Controller
         // return view('frontend.customer.instructor-greating');
         // return view('frontend.customer.instructor-request');
 
-        return view('frontend.customer.request-to-teach');
+        $specializations = Specialization::get(['id', 'name']);
+
+        return view('frontend.customer.request-to-teach', compact('specializations'));
     }
 
     public function request_to_teach(Request $request)

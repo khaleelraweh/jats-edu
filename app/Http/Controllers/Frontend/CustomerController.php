@@ -8,6 +8,8 @@ use App\Models\Course;
 use App\Models\RequestToTeach;
 use App\Models\Role;
 use App\Models\Specialization;
+use App\Models\User;
+use App\Notifications\Frontend\Customer\RequestTeachNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -190,7 +192,15 @@ class CustomerController extends Controller
             }
         }
 
-        RequestToTeach::create($data);
+        $requestTeach =  RequestToTeach::create($data);
+
+        $admins = User::whereHas('roles', function ($query) {
+            $query->whereIn('name', ['admin', 'supervisor']);
+        })->get();
+
+        foreach ($admins as $admin) {
+            $admin->notify(new RequestTeachNotification($requestTeach));
+        }
 
         return redirect()->back()->with('success', 'Your request has been submitted successfully.');
     }

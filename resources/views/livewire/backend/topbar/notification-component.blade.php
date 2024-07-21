@@ -24,12 +24,17 @@
                 <a wire:click="markAsRead('{{ $unreadNotification->id }}')" class="text-reset notification-item"
                     style="cursor: pointer">
                     <div class="d-flex">
-                        <div class="avatar-xs me-3">
+                        {{-- <div class="avatar-xs me-3">
                             <span class="avatar-title bg-primary rounded-circle font-size-16">
                                 <i class="ri-shopping-cart-line"></i>
                             </span>
-                        </div>
+                        </div> --}}
                         @if (isset($unreadNotification->data['order_id']))
+                            <div class="avatar-xs me-3">
+                                <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                    <i class="ri-shopping-cart-line"></i>
+                                </span>
+                            </div>
                             <div class="flex-1">
                                 <h6 class="mb-1">{{ __('panel.from_customer') }}
                                     {{ $unreadNotification->data['customer_name'] }}</h6>
@@ -47,6 +52,11 @@
                         @else
                             {{-- with instructors notifications  --}}
                             @if (isset($unreadNotification->data['course_id']))
+                                <div class="avatar-xs me-3">
+                                    <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                        <i class="ri-shopping-cart-line"></i>
+                                    </span>
+                                </div>
                                 <div class="flex-1">
                                     <h6 class="mb-1">{{ __('panel.from_instructor') }}
                                         {{-- {{ $unreadNotification->data['customer_name'] }}</h6> --}}
@@ -61,6 +71,27 @@
                                                 {{ $unreadNotification->data['created_date'] }}</p>
                                         </div>
                                 </div>
+                            @else
+                                @if (isset($unreadNotification->data['request_teach_id']))
+                                    <div class="avatar-xs me-3">
+                                        <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                            <i class="fas fa-user-graduate"></i>
+                                        </span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h6 class="mb-1">
+                                            طلب من المتقدم :
+                                            {{ $unreadNotification->data['customer_name'] }}</h6>
+                                        <div class="font-size-12 text-muted">
+                                            <p class="mb-1">
+                                                want to have permission to be one of your owner Instructor
+                                            </p>
+                                            {{-- <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p> --}}
+                                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i>
+                                                {{ $unreadNotification->data['created_date'] }}</p>
+                                        </div>
+                                    </div>
+                                @endif
                             @endif
                         @endif
                     </div>

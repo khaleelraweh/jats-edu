@@ -40,8 +40,8 @@ class RequestTeachNotification extends Notification implements ShouldQueue
         return [
             'customer_id'   =>  $this->request_teach->user_id,
             'customer_name' =>  $this->request_teach->full_name,
-            'request_to_teaches_id'      =>  $this->request_teach->id,
-            'request_teach_url'     =>  route('admin.orders.show', $this->request_teach->id),
+            'request_teach_id'      =>  $this->request_teach->id,
+            'order_url'     =>  route('admin.orders.show', $this->request_teach->id),
             'created_date'    =>  $this->request_teach->created_at->format('M d, Y'),
         ];
     }
@@ -52,8 +52,8 @@ class RequestTeachNotification extends Notification implements ShouldQueue
             'data'  => [
                 'customer_id'   =>  $this->request_teach->user_id,
                 'customer_name' =>  $this->request_teach->full_name,
-                'request_to_teaches_id'      =>  $this->request_teach->id,
-                'request_teach_url'     =>  route('admin.orders.show', $this->request_teach->id),
+                'request_teach_id'      =>  $this->request_teach->id,
+                'order_url'     =>  route('admin.orders.show', $this->request_teach->id),
                 'created_date'    =>  $this->request_teach->created_at->format('M d, Y'),
             ]
         ]);

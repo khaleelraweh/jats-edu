@@ -37,7 +37,7 @@
                         <p class="mg-b-20">ملاحظة : سيتم اعتماد البيانات عند الانتهاء من تعبئة البيانات وارسالها , لذلك نرجو
                             القيام بإدخال كافة البيانات المطلوبة بشكل صحيح ودقيق.</p>
 
-                        <form action="{{ route('customer.request_to_teach') }}" method="post"
+                        <form id="requestForm" action="{{ route('customer.request_to_teach') }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
                             <div id="wizard1">
@@ -287,6 +287,7 @@
 
                                 <h3>بيانات الاستمارة </h3>
                                 <section>
+                                    <button type="submit" style="display: none;" id="hiddenSubmitButton"></button>
                                     يتم تصميم الخصلاصة هنا
                                     <div class="form-group pt-3">
                                         <button type="submit" name="submit" class="btn btn-primary">
@@ -332,6 +333,18 @@
                 minDate: "today"
 
             });
+
+            // Replace the "Finish" link with a button after the wizard is initialized
+            $('a[href="#finish"]').each(function() {
+
+
+                $(this).on('click', function() {
+                    $('#hiddenSubmitButton').click();
+
+                });
+
+            });
+
 
 
         });

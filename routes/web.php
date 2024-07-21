@@ -126,6 +126,8 @@ Route::group(['middleware' => ['roles', 'role:customer|supervisor', 'verified']]
     // Route::resource('teaches', RequestToTeachController::class);
     Route::post('request-to-teach', [FrontendCustomerController::class, 'request_to_teach'])->name('customer.request_to_teach');
 
+    Route::resource('teaches', RequestToTeachController::class);
+
 
 
     // ==============  Customer Bought Courses and Lessons ======  //

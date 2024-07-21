@@ -3,9 +3,92 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\RequestToTeach;
+use App\Models\Specialization;
+use App\Models\User;
+use App\Notifications\Frontend\Customer\RequestTeachNotification;
 use Illuminate\Http\Request;
 
 class RequestToTeachController extends Controller
 {
-    //
+
+    public function create()
+    {
+        $specializations = Specialization::get(['id', 'name']);
+        return view('frontend.customer.teach.create', compact('specializations'));
+    }
+
+
+    public function store(Request $request)
+    {
+
+        // Validate the request
+        $validatedData = $request->validate([
+            'full_name'                     => 'required|array',
+            'full_name.ar'                  => 'required|string',
+            'full_name.en'                  => 'required|string',
+            'date_of_birth'                 => 'required|date',
+            'place_of_birth'                => 'required|string',
+            'nationality'                   => 'required|string',
+            'residence_address'             => 'required|string',
+            'phone'                         => 'required|string',
+            'educational_qualification'     => 'required|integer',
+            'specialization'                => 'required|integer',
+            'years_of_training_experience'  => 'required|integer',
+            'motivation'                    => 'required|string',
+            'identity'                      => 'required|file|mimes:jpg,jpeg,png|max:2048',
+            'biography'                     => 'required|file|mimes:pdf|max:2048',
+            'Certificates'                  => 'required|file|mimes:pdf|max:2048',
+        ]);
+
+        $data['full_name']                      = $validatedData['full_name'];
+        $data['date_of_birth']                  = $validatedData['date_of_birth'];
+        $data['place_of_birth']                 = $validatedData['place_of_birth'];
+        $data['nationality']                    = $validatedData['nationality'];
+        $data['residence_address']              = $validatedData['residence_address'];
+        $data['phone']                          = $validatedData['phone'];
+        $data['educational_qualification']      = $validatedData['educational_qualification'];
+        $data['specialization']                 = $validatedData['specialization'];
+        $data['years_of_training_experience']   = $validatedData['years_of_training_experience'];
+        $data['motivation']                     = $validatedData['motivation'];
+        $data['user_id']                        = auth()->user()->id;
+
+
+
+        // Handle file uploads
+        if ($identity = $request->file('identity')) {
+            $fileName = auth()->user()->id . '-identity-' . time() . '.' . $identity->extension();
+            $filePath = public_path('assets/teach');
+            $identity->move($filePath, $fileName); // Move image file
+            $data['identity'] = $fileName;
+        }
+
+        foreach (['biography', 'Certificates'] as $fileInput) {
+            if ($file = $request->file($fileInput)) {
+                $fileName = auth()->user()->id . '-' . $fileInput . '-' . time() . '.' . $file->extension();
+                $filePath = public_path('assets/teach');
+                $file->move($filePath, $fileName); // Move PDF files
+                $data[$fileInput] = $fileName;
+            }
+        }
+
+        $requestTeach =  RequestToTeach::create($data);
+
+        $admins = User::whereHas('roles', function ($query) {
+            $query->whereIn('name', ['admin', 'supervisor']);
+        })->get();
+
+        foreach ($admins as $admin) {
+            $admin->notify(new RequestTeachNotification($requestTeach));
+        }
+
+        return redirect()->back()->with('success', 'Your request has been submitted successfully.');
+    }
+
+    public function show($requestTeach)
+    {
+        $requestTeach = RequestToTeach::where('id', $requestTeach)->first();
+
+        return view('frontend.customer.teach.show', compact('requestTeach'));
+    }
 }

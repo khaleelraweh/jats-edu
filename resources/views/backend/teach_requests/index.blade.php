@@ -39,24 +39,18 @@
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th class="d-none d-sm-table-cell"> {{ __('panel.ref_id') }}</th>
                             <th>{{ __('panel.customer_name') }}</th>
-                            <th> {{ __('panel.payment_method') }}</th>
-                            <th>{{ __('panel.qty') }}</th>
                             <th>{{ __('panel.status') }}</th>
                             <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($orders as $order)
+                        @forelse ($teach_requests as $teach_request)
                             <tr>
-                                <td class="d-none d-sm-table-cell">{{ $order->ref_id }}</td>
-                                <td>{{ $order->user->full_name }}</td>
-                                <td>{{ $order->payment_method?->name }}</td>
-                                <td>{{ $order->currency() . $order->total }}</td>
-                                <td>{!! $order->statusWithLabel() !!}</td>
-                                <td class="d-none d-sm-table-cell">{{ $order->created_at->format('Y-m-d h:i a') }}</td>
+                                <td>{{ $teach_request->full_name }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $teach_request->created_at->format('Y-m-d h:i a') }}
+                                </td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-primary">
@@ -77,15 +71,15 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center">No Orders found</td>
+                                <td colspan="4" class="text-center">No teach requesgt found yet !!</td>
                             </tr>
                         @endforelse
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="7">
+                            <td colspan="4">
                                 <div class="float-right">
-                                    {!! $orders->appends(request()->all())->links() !!}
+                                    {!! $teach_requests->appends(request()->all())->links() !!}
                                 </div>
                             </td>
                         </tr>

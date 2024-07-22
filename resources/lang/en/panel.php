@@ -399,6 +399,20 @@ return [
 
 
 
+    ##############################################################
+    // =============  Manage Teach Request  ===============//
+    'manage_teach_request'              => 'Manage Teach Request',
+
+    // ---------------  Teach request  --------------//
+    'show_teach_requests'               => 'Teach Requests',
+    'add_new_teach_request'             => 'Add New Teach Request',
+    'edit_existing_teach_request'       => 'Edit Existing Teach Request ',
+
+    // ........... commons in Teach Request  ....... //
+
+
+    //............. Order Status .............//
+
 
 
 

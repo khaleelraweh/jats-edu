@@ -90,6 +90,11 @@ class RequestToTeach extends Model
         return $result;
     }
 
+    public function status()
+    {
+        return $this->status ? __('panel.status_active') : __('panel.status_inactive');
+    }
+
     public function educational_qualification()
     {
         if ($this->educational_qualification == 1)

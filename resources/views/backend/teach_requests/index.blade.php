@@ -31,7 +31,7 @@
 
         <div class="card-body">
             {{-- filter form part  --}}
-            @include('backend.orders.filter.filter')
+            @include('backend.teach_requests.filter.filter')
 
             {{-- table part --}}
             <div class="table-responsive">
@@ -55,17 +55,18 @@
 
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-primary">
+                                        <a href="{{ route('admin.teach_requests.show', $teach_request->id) }}"
+                                            class="btn btn-primary">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         <a href="javascript:void(0);"
-                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-order-{{ $order->id }}').submit();}else{return false;}"
+                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-teach_request-{{ $teach_request->id }}').submit();}else{return false;}"
                                             class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.orders.destroy', $order->id) }}" method="post"
-                                        class="d-none" id="delete-order-{{ $order->id }}">
+                                    <form action="{{ route('admin.teach_requests.destroy', $teach_request->id) }}"
+                                        method="post" class="d-none" id="delete-teach_request-{{ $teach_request->id }}">
                                         @csrf
                                         @method('DELETE')
                                     </form>

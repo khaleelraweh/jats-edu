@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('request_to_teaches', function (Blueprint $table) {
+        Schema::create('teach_requests', function (Blueprint $table) {
             $table->id();
             $table->json('full_name');
             $table->json('slug');
@@ -34,7 +34,7 @@ return new class extends Migration
 
             // start will be use always
             $table->integer('status')->default(1);
-            $table->integer('request_status')->default(0); //0 = new request , 1 under proccess , 2 finish , 3 reject 
+            $table->unsignedTinyInteger('teach_request_status')->default(0);
             $table->dateTime('published_on')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
@@ -52,6 +52,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('request_to_teaches');
+        Schema::dropIfExists('teach_requests');
     }
 };

@@ -72,7 +72,7 @@
                                         </div>
                                 </div>
                             @else
-                                @if (isset($unreadNotification->data['request_teach_id']))
+                                @if (isset($unreadNotification->data['teach_request_id']))
                                     <div class="avatar-xs me-3">
                                         <span class="avatar-title bg-primary rounded-circle font-size-16">
                                             <i class="fas fa-user-graduate"></i>

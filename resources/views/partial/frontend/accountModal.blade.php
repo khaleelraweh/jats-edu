@@ -197,9 +197,8 @@
                                         </li>
                                     @else
                                         <li>
-                                            <a href="{{ route('customer.teach_on_jats') }}">
-                                                {{ __('panel.f_youth_step
-                                                                                                                                                                                                                                                ') }}
+                                            <a href="{{ route('teach_requests.create') }}">
+                                                {{ __('panel.f_youth_step') }}
                                             </a>
                                         </li>
                                     @endif
@@ -242,16 +241,9 @@
                                             </a>
                                         </li>
                                     @else
-                                        {{-- <li>
-                                            <a href="{{ route('customer.teach_on_jats') }}">
-                                                {{ __('panel.f_youth_steps
-                                                                                                ') }}
-                                            </a>
-                                        </li> --}}
                                         <li>
-                                            <a href="{{ route('teaches.create') }}">
-                                                {{ __('panel.f_youth_step
-                                                                                                                                                                                                                                                                                                ') }}
+                                            <a href="{{ route('teach_requests.create') }}">
+                                                {{ __('panel.f_youth_step') }}
                                             </a>
                                         </li>
                                     @endif

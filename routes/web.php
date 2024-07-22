@@ -52,6 +52,7 @@ use App\Http\Controllers\Frontend\Instructor\CourseController as InstructorCours
 use App\Http\Controllers\Frontend\InstructorController as FrontendInstructorController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\RequestToTeachController;
+use App\Http\Controllers\Frontend\TeachRequestController as FrontendTeachRequestController;
 use App\Models\News;
 use Illuminate\Support\Facades\auth;
 use Illuminate\Support\Facades\Route;
@@ -127,7 +128,8 @@ Route::group(['middleware' => ['roles', 'role:customer|supervisor', 'verified']]
     // Route::resource('teaches', RequestToTeachController::class);
     Route::post('request-to-teach', [FrontendCustomerController::class, 'request_to_teach'])->name('customer.request_to_teach');
 
-    Route::resource('teaches', RequestToTeachController::class);
+    Route::resource('teaches', RequestToTeachController::class); //should be deleted not needed any more 
+    Route::resource('teach_requests', FrontendTeachRequestController::class);
 
 
 

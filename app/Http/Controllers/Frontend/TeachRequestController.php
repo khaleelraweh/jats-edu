@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\RequestToTeach;
 use App\Models\Specialization;
+use App\Models\TeachRequest;
 use App\Models\User;
-use App\Notifications\Frontend\Customer\RequestTeachNotification;
+use App\Notifications\Frontend\Customer\TeachRequestNotification;
 use Illuminate\Http\Request;
 
-class RequestToTeachController extends Controller
+class TeachRequestController extends Controller
 {
-
     public function create()
     {
         $specializations = Specialization::get(['id', 'name']);
-        return view('frontend.customer.teach.create', compact('specializations'));
+        return view('frontend.customer.teach_requests.create', compact('specializations'));
     }
 
 
@@ -58,7 +57,7 @@ class RequestToTeachController extends Controller
         // Handle file uploads
         if ($identity = $request->file('identity')) {
             $fileName = auth()->user()->id . '-identity-' . time() . '.' . $identity->extension();
-            $filePath = public_path('assets/teach');
+            $filePath = public_path('assets/teach_requests');
             $identity->move($filePath, $fileName); // Move image file
             $data['identity'] = $fileName;
         }
@@ -66,29 +65,29 @@ class RequestToTeachController extends Controller
         foreach (['biography', 'Certificates'] as $fileInput) {
             if ($file = $request->file($fileInput)) {
                 $fileName = auth()->user()->id . '-' . $fileInput . '-' . time() . '.' . $file->extension();
-                $filePath = public_path('assets/teach');
+                $filePath = public_path('assets/teach_requests');
                 $file->move($filePath, $fileName); // Move PDF files
                 $data[$fileInput] = $fileName;
             }
         }
 
-        $requestTeach =  RequestToTeach::create($data);
+        $teach_request =  TeachRequest::create($data);
 
         $admins = User::whereHas('roles', function ($query) {
             $query->whereIn('name', ['admin', 'supervisor']);
         })->get();
 
         foreach ($admins as $admin) {
-            $admin->notify(new RequestTeachNotification($requestTeach));
+            $admin->notify(new TeachRequestNotification($teach_request));
         }
 
         return redirect()->back()->with('success', 'Your request has been submitted successfully.');
     }
 
-    public function show($requestTeach)
+    public function show($teachRequest)
     {
-        $requestTeach = RequestToTeach::where('id', $requestTeach)->first();
+        $teachRequest = TeachRequest::where('id', $teachRequest)->first();
 
-        return view('frontend.customer.teach.show', compact('requestTeach'));
+        return view('frontend.customer.teach_requests.show', compact('teachRequest'));
     }
 }

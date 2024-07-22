@@ -20,15 +20,16 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.orders.index') }}">
+                        <a href="{{ route('admin.teach_requests.index') }}">
                             {{ __('panel.show_orders') }}
                         </a>
                     </li>
                 </ul>
             </div>
 
+            {{ dd($teach_request) }}
             <div class="ml-auto mt-3 mt-sm-0">
-                <form action="{{ route('admin.orders.update', $order->id) }}" method="post">
+                <form action="{{ route('admin.teach_requests.update', $teach_request->id) }}" method="post">
                     @csrf
                     @method('PUT')
                     <div class="form-row align-items-center">

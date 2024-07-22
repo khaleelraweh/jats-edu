@@ -11,7 +11,7 @@ use Spatie\Sluggable\HasTranslatableSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
-class RequestToTeach extends Model
+class TeachRequest extends Model
 {
     use HasFactory, HasTranslations, HasTranslatableSlug, SearchableTrait;
 
@@ -69,19 +69,17 @@ class RequestToTeach extends Model
     const ACCEPTED = 2;         // when the admin is accepting
     const REJECTED = 3;         // when admin reject the request
 
-    protected $casts = [
-        'request_status' => 'integer',  // Cast request_status as integer
-    ];
+
 
     public function status()
     {
         return $this->status ? __('panel.status_active') : __('panel.status_inactive');
     }
 
-    public function request_status()
+    public function teach_request_status()
     {
 
-        switch ($this->request_status) {
+        switch ($this->teach_request) {
             case 0:
                 $result = __('panel.teach_request_new_request');
                 break;

@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\RequestToTeach;
+use App\Models\TeachRequest;
 use App\Models\User;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 use Faker\Factory as Faker;
 
-class RequestToTeachSeeder extends Seeder
+class TeachRequestSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -27,7 +27,7 @@ class RequestToTeachSeeder extends Seeder
             ->get();
 
         foreach ($users as $user) {
-            RequestToTeach::create([
+            TeachRequest::create([
                 'full_name' => ['en' => $faker->name, 'ar' => $faker->name,],
                 'date_of_birth' => $faker->dateTimeBetween('-30 years', '-18 years'),
                 'place_of_birth' => $faker->city,
@@ -43,7 +43,7 @@ class RequestToTeachSeeder extends Seeder
                 'motivation' => $faker->paragraph,
                 'user_id' => $user->id,
                 'status' => $faker->numberBetween(0, 1),
-                'request_status' => $faker->numberBetween(0, 1),
+                'teach_request_status' => $faker->numberBetween(0, 3),
                 'published_on' => $faker->dateTimeBetween('-1 years', 'now'),
                 'created_by' => $faker->name,
                 'updated_by' => $faker->name,

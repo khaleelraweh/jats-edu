@@ -34,28 +34,23 @@ class TeachRequestController extends Controller
             return redirect('admin/index');
         }
 
+        $teach_request_status_array = [
+            '0' =>  __('panel.teach_request_new_request'),
+            '1' =>  __('panel.teach_request_under_proccess'),
+            '2' =>  __('panel.teach_request_accepted'),
+            '3' =>  __('panel.teach_request_rejected'),
 
-        $order_status_array = [
-            '0' =>  __('panel.order_new_order'),
-            '1' =>  __('panel.order_paid'),
-            '2' =>  __('panel.order_under_process'),
-            '3' =>  __('panel.order_finished'),
-            '4' =>  __('panel.order_rejected'),
-            '5' =>  __('panel.order_canceled'),
-            '6' =>  __('panel.order_refund_requested'),
-            '7' =>  __('panel.order_returned_order'),
-            '8' =>  __('panel.order_refunded')
         ];
 
-        $key = array_search($order->order_status, array_keys($order_status_array));
+        $key = array_search($requestToTeach->request_status, array_keys($teach_request_status_array));
 
-        // This will delete order status element from order_status_array if its key is les or equail t order status in the table orders
-        foreach ($order_status_array as $k => $v) {
+        // This will delete order status element from order_status_array if its key is les or equail t request status in the table request_to_teach
+        foreach ($teach_request_status_array as $k => $v) {
             if ($k <= $key) {
-                unset($order_status_array[$k]);
+                unset($teach_request_status_array[$k]);
             }
         }
 
-        return view('backend.orders.show', compact('order', 'order_status_array'));
+        return view('backend.orders.show', compact('requestToTeach', 'teach_request_status_array'));
     }
 }

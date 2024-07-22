@@ -75,16 +75,16 @@ class RequestToTeach extends Model
 
         switch ($this->request_status) {
             case 0:
-                $result = __('panel.request_new_request');
+                $result = __('panel.teach_request_new_request');
                 break;
             case 1:
-                $result = __('panel.request_under_proccess');
+                $result = __('panel.teach_request_under_proccess');
                 break;
             case 2:
-                $result = __('panel.request_accepted');
+                $result = __('panel.teach_request_accepted');
                 break;
             case 3:
-                $result = __('panel.request_rejected');
+                $result = __('panel.teach_request_rejected');
                 break;
         }
         return $result;

@@ -413,10 +413,10 @@ return [
 
     //............. Order Status .............//
 
-    'request_new_request'                       =>  'NEW_REQUEST',
-    'request_under_proccess'                    =>  'UNDER_PROCESS',
-    'request_accepted'                          =>  'ACCEPTED',
-    'request_rejected'                          =>  'REJECTED',
+    'teach_request_new_request'                       =>  'NEW_REQUEST',
+    'teach_request_under_proccess'                    =>  'UNDER_PROCESS',
+    'teach_request_accepted'                          =>  'ACCEPTED',
+    'teach_request_rejected'                          =>  'REJECTED',
 
 
 

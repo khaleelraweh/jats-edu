@@ -69,6 +69,14 @@ class RequestToTeach extends Model
     const ACCEPTED = 2;         // when the admin is accepting
     const REJECTED = 3;         // when admin reject the request
 
+    protected $casts = [
+        'request_status' => 'integer',  // Cast request_status as integer
+    ];
+
+    public function status()
+    {
+        return $this->status ? __('panel.status_active') : __('panel.status_inactive');
+    }
 
     public function request_status()
     {
@@ -90,10 +98,7 @@ class RequestToTeach extends Model
         return $result;
     }
 
-    public function status()
-    {
-        return $this->status ? __('panel.status_active') : __('panel.status_inactive');
-    }
+
 
     public function educational_qualification()
     {

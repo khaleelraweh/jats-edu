@@ -33,8 +33,8 @@ return new class extends Migration
 
 
             // start will be use always
-            $table->unsignedTinyInteger('status')->default(1);
-            $table->unsignedTinyInteger('request_status')->default(0); //0 = new request , 1 under proccess , 2 finish , 3 reject 
+            $table->integer('status')->default(1);
+            $table->integer('request_status')->default(0); //0 = new request , 1 under proccess , 2 finish , 3 reject 
             $table->dateTime('published_on')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();

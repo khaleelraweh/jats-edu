@@ -40,6 +40,7 @@ use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\SupportMenuController;
 use App\Http\Controllers\Backend\TagController;
+use App\Http\Controllers\Backend\TeachRequestController;
 use App\Http\Controllers\Backend\TopicsMenuController;
 use App\Http\Controllers\Backend\TracksMenuController;
 use App\Http\Controllers\Backend\WebMenuController;
@@ -240,6 +241,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::post('events/remove-image', [EventController::class, 'remove_image'])->name('events.remove_image');
         Route::resource('events', EventController::class);
+
+        // ==============  Teach Requests      ==============  //
+        Route::resource('teach_requests', TeachRequestController::class);
 
         // ==============   Call Actions Tab   ==============  //
         Route::post('call_actions/remove-image', [CallActionsController::class, 'remove_image'])->name('call_actions.remove_image');

@@ -79,7 +79,7 @@ class TeachRequest extends Model
     public function teach_request_status()
     {
 
-        switch ($this->teach_request) {
+        switch ($this->teach_request_status) {
             case 0:
                 $result = __('panel.teach_request_new_request');
                 break;

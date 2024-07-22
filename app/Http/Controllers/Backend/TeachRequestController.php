@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\RequestToTeach;
+use App\Models\Role;
 use App\Models\TeachRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TeachRequestController extends Controller
@@ -45,6 +47,8 @@ class TeachRequestController extends Controller
 
         ];
 
+
+
         $key = array_search($teach_request->teach_request_status, array_keys($teach_request_status_array));
 
         foreach ($teach_request_status_array as $k => $v) {
@@ -54,5 +58,65 @@ class TeachRequestController extends Controller
         }
 
         return view('backend.teach_requests.show', compact('teach_request', 'teach_request_status_array'));
+    }
+
+    public function updateStatus(Request $request, $teach_request)
+    {
+        $teach_request = TeachRequest::where('id', $teach_request)->first();
+
+
+
+        $teach_request->update(['teach_request_status' => $request->teach_request_status]);
+
+
+        // $instructorRoleId = Role::whereName('instructor')->first()->id;
+        // $user = Auth()->user();
+
+        // Check if the user does not already have the instructor role
+        // if (!$user->hasRole('instructor')) {
+        //     $user->attachRole($instructorRoleId);
+        // }
+        // return view('frontend.instructor.dashboard');
+
+        // return view('frontend.customer.instructor-greating');
+        // return view('frontend.customer.instructor-request');
+
+
+
+        if ($teach_request) {
+            if ($request->teach_request_status == 2) {
+
+                $instructorRoleId = Role::whereName('instructor')->first()->id;
+                $user = $teach_request->user;
+
+                // Check if the user does not already have the instructor role
+                if (!$user->hasRole('instructor')) {
+                    $user->attachRole($instructorRoleId);
+                }
+            } else if ($request->teach_request_status == 3) {
+                //we should remove role from the user 
+            }
+        }
+
+
+
+
+        // foreach ($course->instructors as $instructor) {
+        //     $instructor->notify(new CourseNotification($course));
+        // }
+
+
+        if ($teach_request) {
+            return back()->with([
+                'message' => __('panel.updated_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
+
+        return back()->with([
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
+        ]);
     }
 }

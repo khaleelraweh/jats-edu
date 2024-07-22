@@ -40,6 +40,7 @@
                     <thead>
                         <tr>
                             <th>إسم مقدم الطلب</th>
+                            <th>حالة التقديم</th>
                             <th>{{ __('panel.status') }}</th>
                             <th> {{ __('panel.created_at') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
@@ -49,6 +50,7 @@
                         @forelse ($teach_requests as $teach_request)
                             <tr>
                                 <td>{{ $teach_request->full_name }}</td>
+                                <td>{{ $teach_request->teach_request_status() }}</td>
                                 <td>{{ $teach_request->status() }}</td>
                                 <td>{{ $teach_request->created_at->format('Y-m-d h:i a') }}
                                 </td>

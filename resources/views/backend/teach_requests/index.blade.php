@@ -39,7 +39,7 @@
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>{{ __('panel.customer_name') }}</th>
+                            <th>إسم مقدم الطلب</th>
                             <th>{{ __('panel.status') }}</th>
                             <th> {{ __('panel.created_at') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>

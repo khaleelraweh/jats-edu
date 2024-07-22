@@ -15,7 +15,7 @@ class TeachRequestController extends Controller
         }
 
         $teach_requests = RequestToTeach::query()
-            ->Active()
+
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })

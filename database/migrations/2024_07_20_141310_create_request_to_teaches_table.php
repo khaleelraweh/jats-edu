@@ -33,6 +33,7 @@ return new class extends Migration
 
 
             // start will be use always
+            $table->unsignedTinyInteger('status')->default(1);
             $table->unsignedTinyInteger('request_status')->default(0);
             $table->dateTime('published_on')->nullable();
             $table->string('created_by')->nullable();

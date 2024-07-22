@@ -109,9 +109,14 @@ class RequestToTeach extends Model
 
     public function scopeActiveUser($query)
     {
-        return $query->whereHas('users', function ($query) {
+        return $query->whereHas('user', function ($query) {
             $query->whereStatus(1);
         });
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->whereStatus(true);
     }
 
     public function user()

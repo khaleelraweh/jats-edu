@@ -41,7 +41,7 @@
                         <tr>
                             <th>{{ __('panel.customer_name') }}</th>
                             <th>{{ __('panel.status') }}</th>
-                            <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }}</th>
+                            <th> {{ __('panel.created_at') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
                     </thead>
@@ -49,8 +49,10 @@
                         @forelse ($teach_requests as $teach_request)
                             <tr>
                                 <td>{{ $teach_request->full_name }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $teach_request->created_at->format('Y-m-d h:i a') }}
+                                <td>{{ $teach_request->status() }}</td>
+                                <td>{{ $teach_request->created_at->format('Y-m-d h:i a') }}
                                 </td>
+
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-primary">

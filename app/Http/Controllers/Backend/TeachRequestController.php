@@ -51,6 +51,6 @@ class TeachRequestController extends Controller
             }
         }
 
-        return view('backend.orders.show', compact('requestToTeach', 'teach_request_status_array'));
+        return view('backend.teach-requests.show', compact('requestToTeach', 'teach_request_status_array'));
     }
 }

@@ -401,6 +401,10 @@ return [
 
 
     //............. Order Status .............//
+    'request_new_request'                       =>  'طلب جديد',
+    'request_under_proccess'                    =>  'تحت المعالجة',
+    'request_accepted'                          =>  'مقبول',
+    'request_rejected'                          =>  'مرفوض',
 
 
 

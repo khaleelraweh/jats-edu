@@ -66,7 +66,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CallActionSeeder::class);
         $this->call(PageSeeder::class);
-        $this->call(RequestToTeachSeeder::class);
         $this->call(TeachRequestSeeder::class);
     }
 }

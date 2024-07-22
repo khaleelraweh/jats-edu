@@ -7,7 +7,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_orders') }}
+                    {{ __('panel.manage_teach_request') }}
 
                 </h3>
                 <ul class="breadcrumb">
@@ -20,7 +20,7 @@
                         @endif
                     </li>
                     <li>
-                        {{ __('panel.show_orders') }}
+                        {{ __('panel.show_teach_requests') }}
                     </li>
                 </ul>
             </div>

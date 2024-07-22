@@ -51,7 +51,6 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\Instructor\CourseController as InstructorCourseController;
 use App\Http\Controllers\Frontend\InstructorController as FrontendInstructorController;
 use App\Http\Controllers\Frontend\PaymentController;
-use App\Http\Controllers\Frontend\RequestToTeachController;
 use App\Http\Controllers\Frontend\TeachRequestController as FrontendTeachRequestController;
 use App\Models\News;
 use Illuminate\Support\Facades\auth;
@@ -125,10 +124,6 @@ Route::group(['middleware' => ['roles', 'role:customer|supervisor', 'verified']]
 
     // ==============  Customer Teach on jats   ==============  //
     Route::get('/Teach-on-jats', [FrontendCustomerController::class, 'Teach_on_jats'])->name('customer.teach_on_jats');
-    // Route::resource('teaches', RequestToTeachController::class);
-    Route::post('request-to-teach', [FrontendCustomerController::class, 'request_to_teach'])->name('customer.request_to_teach');
-
-    Route::resource('teaches', RequestToTeachController::class); //should be deleted not needed any more 
     Route::resource('teach_requests', FrontendTeachRequestController::class);
 
 

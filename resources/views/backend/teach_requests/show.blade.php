@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
     {{-- first section --}}
     <div class="card shadow mb-4">
@@ -57,36 +58,175 @@
             </div>
         </div>
 
-        {{-- <div class="row">
-            <div class="col-xs-12 col-sm-8">
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <tbody>
-                            <tr>
-                                <th>{{ __('transf.course_title') }}</th>
-                                <td>{{ $teach_request->title }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ __('transf.Course subtitle') }}</th>
-                                <td>
-                                    {{ $teach_request->subtitle }}
-                                </td>
-                            </tr>
-                            <tr>
-                            </tr>
-                            <tr>
-                                <th> {{ __('panel.created_at') }} </th>
-                                <td>{{ $teach_request->created_at->format('Y-m-d h:i a') }}</td>
-                            </tr>
-                            <tr>
-                                <th> {{ __('panel.course_status') }}</th>
-                                <td>{!! $teach_request->statusWithLabel() !!}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+        <div class="outer bg-white p-5">
+
+            <div class="inner" style="border: 3px solid red ;">
+                <header>
+                    <div class="row">
+                        <div class="col-sm-10 offset-1 bg-white">
+                            <div class="row">
+                                <div class="col-sm-4 ">
+                                    <h1>معهد خطوة شباب</h1>
+                                    <h2>للتدريب واللغات</h2>
+                                </div>
+                                <div class="col-sm-4">
+                                    <img src="logo.jpg" alt="">
+                                </div>
+                                <div class="col-sm-4">
+                                    <h1>معهد خطوة شباب</h1>
+                                    <h2>للتدريب واللغات</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 ">
+                            <hr>
+                        </div>
+                    </div>
+
+                </header>
+
+                <div class="section  px-5 pb-3">
+                    <div class="row border">
+                        <div class="col-sm-10 offset-1 bg-white">
+                            <div class="row">
+                                <div class="col-4">
+                                    <span>تاريخ الطلب : 5/5/2024</span>
+                                </div>
+                                <div class="col-4">
+                                    <h1>استمارة طلب تقديم كمدرب /ة</h1>
+                                </div>
+                                <div class="col-4">
+                                    <img class="face-identity" src="" alt="Image Preview" />
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <span class="arabic-name">الاسم الكامل باللغة العربية : </span>
+                                    <span class="arabic-name-value">وليد</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <span class="english-name"> Full Name (باللغة الانجليزية):</span>
+                                    <span class="english-name-value">waled blua blau </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4">
+                                    <span class="date-of-birth">تاريخ الميلاد : </span>
+                                    <span class="date-of-birth-value"> 2000/2/2</span>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <span class="place-of-birth">محل الميلاد : </span>
+                                    <span class="place-of-birth-value">Ibb</span>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <span class="nationality">الجنسية</span>
+                                    <span class="nationality-value">يمني</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <span class="residence-address">عنوان الإقامة \ السكن : </span>
+                                    <span class="residence-address-value">دار القدسي</span>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <span class="phone"> رقم الجوال :</span>
+                                    <span class="phone-value"> 772036131 </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4">
+                                    <span class="educational_qualification"> المؤهل الدراسي : </span>
+                                    <span class="educational-qualification-value">بكلوريوس</span>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <span class="specialization">التخصص : </span>
+                                    <span class="specialization-value"> علوم حاسوب </span>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <span class="years_of_training_experience"> سنوات خبرة التدريب : </span>
+                                    <span class="years_of_training_experience-value"> 4 </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="motivation">لماذا تريد الإلتحاق بالتدريب لدينا : </div>
+                                    <div class="motivation-value">
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                        Officiis, et aliquam perferendis quasi vitae eius nobis fugit enim excepturi sint,
+                                        voluptate asperiores consequatur error deleniti fuga corrupti. Quidem, veniam
+                                        aperiam?
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4">
+                                    <span class="identity"> صورة من الهوية / جواز السفر : </span>
+                                    <span class="identity-value"> <a href="#">identity-link</a> </span>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <span class="biography"> إرفاق السيرة الذاتية : </span>
+                                    <span class="biography-value"><a href="#">biography-link</a></span>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <span class="Certificates"> إرفاق الشهادات : </span>
+                                    <span class="Certificates-value"><a href="#">Certificates-link</a></span>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p>
+                                        ملاحظة : سيتم اعتماد البيانات أعلاه عند الارسال ،
+                                        لذا نرجو القيام
+                                        ادخال كافة البيانات المطلوبة بشكل صحيح و دقيق
+                                        و مراجعة البيانات قبل ارسالها الينا.
+                                    </p>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
                 </div>
+
+                <footer class="d-flex justify-content-center">
+                    <div class="footer-line"></div>
+                    <div class="footer-content">
+                        <div class="footer-item">
+                            <i class="fa fa-home"></i>
+                            <span>محافظة عدن-المنصورة-شارع القصر-فوق انيس فون</span>
+                        </div>
+                        <div class="footer-item">
+                            <i class="fa fa-phone"></i>
+                            <span> 02-350347 \ 734208108</span>
+                        </div>
+                    </div>
+
+                </footer>
+
             </div>
-            <div class="col-xs-12 col-sm-4">
+
+        </div>
+
+
+
+        {{-- <div class="col-xs-12 col-sm-4">
                 @php
                     if ($teach_request->photos->first() != null && $teach_request->photos->first()->file_name != null) {
                         $teach_request_image = asset('assets/courses/' . $teach_request->photos->first()->file_name);
@@ -100,8 +240,8 @@
                 @endphp
                 <img src="{{ $teach_request_image }}" style="display: block;width:100%;height:200px;"
                     alt="{{ $teach_request->title }}">
-            </div>
-        </div> --}}
+            </div> --}}
+
 
     </div>
 @endsection

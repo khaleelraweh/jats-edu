@@ -1,5 +1,31 @@
 @extends('layouts.admin')
 
+@section('style')
+    <style>
+        .header-line {
+            display: block;
+        }
+
+        .gold-line,
+        .gray-line {
+            height: 4px;
+
+        }
+
+        .gold-line {
+            background-color: gold;
+            width: 99%;
+            margin: auto;
+            margin-bottom: 3px;
+        }
+
+        .gray-line {
+            margin-bottom: 20px;
+            background-color: whitesmoke;
+        }
+    </style>
+@endsection
+
 @section('content')
     {{-- first section --}}
     <div class="card shadow mb-4">
@@ -66,33 +92,34 @@
                     <div class="row">
                         <div class="col-sm-10 offset-1 bg-white">
                             <div class="row">
-                                <div class="col-sm-4 ">
-                                    <h1>معهد خطوة شباب</h1>
-                                    <h2>للتدريب واللغات</h2>
+                                <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
+                                    <h1 class="text-success m-0">معهد خطوة شباب</h1>
+                                    <h2 class="text-warning">للتدريب واللغات</h2>
                                 </div>
-                                <div class="col-sm-4">
-                                    <img src="logo.jpg" alt="">
+                                <div class="col-sm-4 d-flex  align-items-center justify-content-center">
+                                    <img style="width: 250px;padding-top: 10px;z-index: 4;"
+                                        src="{{ asset('backend/images/logo.jpg') }}" alt="">
                                 </div>
-                                <div class="col-sm-4">
-                                    <h1>معهد خطوة شباب</h1>
-                                    <h2>للتدريب واللغات</h2>
+                                <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
+                                    <h1 class="text-success m-0"> Youth Step Institute </h1>
+                                    <h2 class="text-warning"> For Training Languages </h2>
                                 </div>
                             </div>
                         </div>
 
                     </div>
 
-                    <div class="row">
-                        <div class="col-sm-12 pt-3 ">
-                            <hr>
-                        </div>
+                    <div class="header-line" style="position: relative; margin-top: -40px;margin-bottom: 45px; z-index: 2;">
+                        <div class="gold-line"></div>
+                        <div class="gray-line"></div>
                     </div>
+
 
                 </header>
 
                 <div class="section  px-5 pb-3">
                     <div class="row" style="border: 6px double green;">
-                        <div class="col-sm-10 offset-1 bg-white">
+                        <div class="col-sm-12 bg-white p-3">
                             <div class="row">
                                 <div class="col-4 ">
                                     <span>تاريخ الطلب : 5/5/2024</span>
@@ -173,7 +200,8 @@
                                     <div class="motivation">لماذا تريد الإلتحاق بالتدريب لدينا : </div>
                                     <div class="motivation-value">
                                         Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Officiis, et aliquam perferendis quasi vitae eius nobis fugit enim excepturi sint,
+                                        Officiis, et aliquam perferendis quasi vitae eius nobis fugit enim excepturi
+                                        sint,
                                         voluptate asperiores consequatur error deleniti fuga corrupti. Quidem, veniam
                                         aperiam?
                                     </div>

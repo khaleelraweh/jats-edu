@@ -121,13 +121,13 @@
                     <div class="row" style="border: 6px double green;">
                         <div class="col-sm-12 bg-white p-3">
                             <div class="row">
-                                <div class="col-4 ">
+                                <div class="col-sm-4 d-flex align-items-center">
                                     <span>تاريخ الطلب : 5/5/2024</span>
                                 </div>
-                                <div class="col-4">
-                                    <h1>استمارة طلب تقديم كمدرب /ة</h1>
+                                <div class="col-sm-4" style="border: 4px solid green;padding:10px;">
+                                    <h2 class="text-black">استمارة طلب تقديم كمدرب /ة</h2>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-sm-4 ">
                                     <img class="face-identity" src="" alt="Image Preview" />
                                 </div>
 

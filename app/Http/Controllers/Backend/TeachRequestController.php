@@ -8,9 +8,12 @@ use App\Models\Role;
 use App\Models\TeachRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\File;
 
 class TeachRequestController extends Controller
 {
+
     public function index()
     {
         if (!auth()->user()->ability('admin', 'manage_teach_requests , show_teach_requests')) {
@@ -118,5 +121,10 @@ class TeachRequestController extends Controller
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
+    }
+
+    public function view_file()
+    {
+        return response()->file(public_path('assets/teach_requests/4-biography-1721575378.pdf'), ['content-type' => 'application/pdf']);
     }
 }

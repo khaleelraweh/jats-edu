@@ -243,6 +243,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('teach_requests', TeachRequestController::class);
         Route::match(['put', 'patch'], 'admin/teach_requests/{teach_request}/status', [TeachRequestController::class, 'updateStatus'])
             ->name('teach_requests.update_teach_requests_status');
+        Route::get('/viewfile', [TeachRequestController::class, 'view_file'])->name('view_file');
 
         // ==============   Call Actions Tab   ==============  //
         Route::post('call_actions/remove-image', [CallActionsController::class, 'remove_image'])->name('call_actions.remove_image');

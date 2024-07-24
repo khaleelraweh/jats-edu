@@ -314,7 +314,17 @@
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="biography ww"> إرفاق السيرة الذاتية : </span>
-                                        <span class="biography-value"><a href="#">biography-link</a></span>
+
+                                        <span class="biography-value">
+                                            @if ($teach_request->identity && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
+                                                <a href="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
+                                                    target="_blank">
+                                                    {{ __('panel.biography_link') }}
+                                                </a>
+                                            @else
+                                                <p>No biography found</p>
+                                            @endif
+                                        </span>
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="Certificates ww"> إرفاق الشهادات : </span>
@@ -365,25 +375,7 @@
         </div>
 
 
-
-        {{-- <div class="col-xs-12 col-sm-4">
-                @php
-                    if ($teach_request->photos->first() != null && $teach_request->photos->first()->file_name != null) {
-                        $teach_request_image = asset('assets/courses/' . $teach_request->photos->first()->file_name);
-
-                        if (!file_exists(public_path('assets/courses/' . $teach_request->photos->first()->file_name))) {
-                            $teach_request_image = asset('image/not_found/item_image_not_found.webp');
-                        }
-                    } else {
-                        $teach_request_image = asset('image/not_found/item_image_not_found.webp');
-                    }
-                @endphp
-                <img src="{{ $teach_request_image }}" style="display: block;width:100%;height:200px;"
-                    alt="{{ $teach_request->title }}">
-            </div> --}}
-
-
-        <!-- Modal -->
+        <!-- Modal Identity image -->
         <div class="modal fade" id="identityModal" tabindex="-1" role="dialog" aria-labelledby="identityModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-custom" role="document">

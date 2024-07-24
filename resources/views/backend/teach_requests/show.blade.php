@@ -141,7 +141,9 @@
                         <div class="col-sm-12 bg-white p-3">
                             <div class="row">
                                 <div class="col-4" style="margin-top: 50px;">
-                                    <span><span class="ww">تاريخ الطلب :</span> 2024/7/25</span>
+                                    <span><span class="ww">تاريخ الطلب :</span>
+                                        {{ $teach_request->created_at->format('Y-m-d') }}
+                                    </span>
                                 </div>
                                 <div class="col-4"
                                     style="

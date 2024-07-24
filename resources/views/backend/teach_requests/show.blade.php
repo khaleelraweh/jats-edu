@@ -4,6 +4,7 @@
     <style>
         .outer {
             font-family: Times New Roman, sans-serif;
+            color: black;
         }
 
         .header-line {
@@ -159,6 +160,7 @@
                               font-size: 30px;
                               border: 1px solid green;
                               border-radius: 4px;
+                              color:black;
                             ">
                                         استمارة طلب تقديم كمدرب /ة
                                     </h1>

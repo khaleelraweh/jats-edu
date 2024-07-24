@@ -27,6 +27,10 @@ class TeachRequest extends Model
         ]
     ];
 
+    protected $casts = [
+        'date_of_birth' => 'datetime',
+    ];
+
     // for slug 
     public function getSlugOptions(): SlugOptions
     {

@@ -142,7 +142,7 @@
                             <div class="row">
                                 <div class="col-4" style="margin-top: 50px;">
                                     <span><span class="ww">تاريخ الطلب :</span>
-                                        {{ $teach_request->created_at->format('Y-m-d') }}
+                                        {{ $teach_request->created_at->format('Y/m/d') }}
                                     </span>
                                 </div>
                                 <div class="col-4"
@@ -193,7 +193,8 @@
                                         <span class="arabic-name ww">
                                             الإسم الكامل (باللغة العربية ) :
                                         </span>
-                                        <span class="arabic-name-value">وليد</span>
+                                        <span
+                                            class="arabic-name-value">{{ $teach_request->getTranslation('full_name', 'ar') }}</span>
                                     </div>
                                 </div>
 
@@ -203,7 +204,9 @@
                                             <span class="english-name ww">
                                                 Full Name (In English) :
                                             </span>
-                                            <span class="english-name-value">waled blua blau </span>
+                                            <span
+                                                class="english-name-value">{{ $teach_request->getTranslation('full_name', 'en') }}
+                                            </span>
                                         </bdo>
                                     </div>
                                 </div>
@@ -211,15 +214,17 @@
                                 <div class="row">
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="date-of-birth ww">تاريخ الميلاد : </span>
-                                        <span class="date-of-birth-value"> 2000/2/2</span>
+                                        <span class="date-of-birth-value">
+                                            {{ optional($teach_request->date_of_birth)->format('Y/m/d') }}
+                                        </span>
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="place-of-birth ww">محل الميلاد : </span>
-                                        <span class="place-of-birth-value">Ibb</span>
+                                        <span class="place-of-birth-value">{{ $teach_request->place_of_birth }}</span>
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="nationality ww">الجنسية : </span>
-                                        <span class="nationality-value">يمني</span>
+                                        <span class="nationality-value">{{ $teach_request->nationality }}</span>
                                     </div>
                                 </div>
 
@@ -227,12 +232,13 @@
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="residence-address ww">عنوان الإقامة \ السكن :
                                         </span>
-                                        <span class="residence-address-value">دار القدسي</span>
+                                        <span
+                                            class="residence-address-value">{{ $teach_request->residence_address }}</span>
                                     </div>
 
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="phone ww"> رقم الجوال :</span>
-                                        <span class="phone-value"> 772036131 </span>
+                                        <span class="phone-value"> {{ $teach_request->phone }} </span>
                                     </div>
                                     <div class="col-sm-12 col-md-4"></div>
                                 </div>
@@ -241,17 +247,19 @@
                                         <span class="educational_qualification ww">
                                             المؤهل الدراسي :
                                         </span>
-                                        <span class="educational-qualification-value">بكلوريوس</span>
+                                        <span
+                                            class="educational-qualification-value">{{ $teach_request->educational_qualification }}</span>
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="specialization ww ">التخصص : </span>
-                                        <span class="specialization-value"> علوم حاسوب </span>
+                                        <span class="specialization-value"> {{ $teach_request->specialization }} </span>
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="years_of_training_experience ww">
                                             سنوات خبرة التدريب :
                                         </span>
-                                        <span class="years_of_training_experience-value"> 4 </span>
+                                        <span class="years_of_training_experience-value">
+                                            {{ $teach_request->years_of_training_experience }} </span>
                                     </div>
                                 </div>
 
@@ -261,11 +269,7 @@
                                             لماذا تريد الإلتحاق بالتدريب لدينا :
                                         </div>
                                         <div class="motivation-value">
-                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                            Officiis, et aliquam perferendis quasi vitae eius nobis
-                                            fugit enim excepturi sint, voluptate asperiores
-                                            consequatur error deleniti fuga corrupti. Quidem, veniam
-                                            aperiam?
+                                            {!! $teach_request->motivation !!}
                                         </div>
                                     </div>
                                 </div>

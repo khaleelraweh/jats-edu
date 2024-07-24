@@ -317,11 +317,8 @@
 
                                         <span class="biography-value">
                                             @if ($teach_request->identity && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
-                                                {{-- <a href="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
-                                                    target="_blank">
-                                                    {{ __('panel.biography_link') }}
-                                                </a> --}}
-                                                <a href="{{ route('admin.view_file') }}" target="_blanck">
+                                                <a href="{{ route('admin.view_file', $teach_request->biography) }}"
+                                                    target="_blanck">
                                                     {{ __('panel.biography_link') }}
                                                 </a>
                                             @else

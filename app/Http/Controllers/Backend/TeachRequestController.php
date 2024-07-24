@@ -123,8 +123,8 @@ class TeachRequestController extends Controller
         ]);
     }
 
-    public function view_file()
+    public function view_file($file_name)
     {
-        return response()->file(public_path('assets/teach_requests/4-biography-1721575378.pdf'), ['content-type' => 'application/pdf']);
+        return response()->file(public_path('assets/teach_requests/' . $file_name), ['content-type' => 'application/pdf']);
     }
 }

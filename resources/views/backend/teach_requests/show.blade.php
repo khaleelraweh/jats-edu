@@ -2,14 +2,22 @@
 
 @section('style')
     <style>
+        .outer {
+            font-family: Times New Roman, sans-serif;
+        }
+
         .header-line {
             display: block;
+        }
+
+        .ww {
+            font-weight: bold;
+            font-size: 21px;
         }
 
         .gold-line,
         .gray-line {
             height: 4px;
-
         }
 
         .gold-line {
@@ -86,178 +94,237 @@
 
 
         <div class="outer bg-white p-4">
-
-            <div class="inner" style="border: 1px solid #777777 ;">
+            <div class="inner" style="border: 1px solid #777777">
                 <header>
                     <div class="row">
                         <div class="col-sm-10 offset-1 bg-white">
                             <div class="row">
                                 <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
-                                    <h1 class="text-success m-0">معهد خطوة شباب</h1>
-                                    <h2 class="text-warning">للتدريب واللغات</h2>
+                                    <h1 class="text-success m-0" style="
+        font-family: Times New Roman, sans-serif;">
+                                        معهد خطوة شباب</h1>
+                                    <h2 class="text-warning" style="
+        font-family: Times New Roman, sans-serif;">
+                                        للتدريب واللغات</h2>
                                 </div>
-                                <div class="col-sm-4 d-flex  align-items-center justify-content-center">
-                                    <img style="width: 250px;padding-top: 10px;z-index: 4;"
-                                        src="{{ asset('backend/images/logo.jpg') }}" alt="">
+                                <div class="col-sm-4 d-flex align-items-center justify-content-center">
+                                    <img style="width: 250px; padding-top: 10px; z-index: 4"
+                                        src="{{ asset('backend/images/logo.jpg') }}" alt="" />
                                 </div>
                                 <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
-                                    <h1 class="text-success m-0"> Youth Step Institute </h1>
-                                    <h2 class="text-warning"> For Training Languages </h2>
+                                    <h1 class="text-success m-0" style="
+        font-family: Times New Roman, sans-serif;">
+                                        Youth Step Institute</h1>
+                                    <h2 class="text-warning" style=" font-family: Times New Roman, sans-serif;">For Training
+                                        Languages
+                                    </h2>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
-                    <div class="header-line" style="position: relative; margin-top: -40px;margin-bottom: 45px; z-index: 2;">
+                    <div class="header-line"
+                        style="
+                      position: relative;
+                      margin-top: -40px;
+                      margin-bottom: 45px;
+                      z-index: 2;
+                    ">
                         <div class="gold-line"></div>
                         <div class="gray-line"></div>
                     </div>
-
-
                 </header>
 
-                <div class="section  px-5 pb-3">
-                    <div class="row" style="border: 6px double green;">
+                <div class="section px-5 pb-3">
+                    <div class="row" style="border: 6px double green; font-size: 19px">
                         <div class="col-sm-12 bg-white p-3">
                             <div class="row">
-                                <div class="col-sm-4 d-flex align-items-center">
-                                    <span>تاريخ الطلب : 5/5/2024</span>
+                                <div class="col-4" style="margin-top: 50px;">
+                                    <span><span class="ww">تاريخ الطلب :</span> 2024/7/25</span>
                                 </div>
-                                <div class="col-sm-4" style="border: 4px solid green;padding:10px;">
-                                    <h2 class="text-black">استمارة طلب تقديم كمدرب /ة</h2>
+                                <div class="col-4"
+                                    style="
+                            border: 4px solid green;
+                            padding: 5px;
+                            margin-top: 20px;
+                            display: inline-block;
+                            justify-content: center;
+                            text-align: center;
+                            height: 50%;
+                         
+                          ">
+                                    <h1
+                                        style="
+                              margin: 0;
+                              font-size: 30px;
+                              border: 1px solid green;
+                              border-radius: 4px;
+                            ">
+                                        استمارة طلب تقديم كمدرب /ة
+                                    </h1>
                                 </div>
-                                <div class="col-sm-4 ">
-                                    <img class="face-identity" src="" alt="Image Preview" />
+                                <div class="col-4">
+                                    <input type="file" id="file-input"
+                                        style="display: none;
+        
+                              
+                              " />
+                                    <div id="image-container" class="col-4"
+                                        style="
+          border: 1px solid gray;
+          margin-right: 100px;
+          width: 50%;
+          height: 181px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+      ">
+
+                                    </div>
                                 </div>
 
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-12 pt-3  ">
-
-                                    <span class="arabic-name"> الإسم الكامل (باللغة العربية ) : </span>
-                                    <span class="arabic-name-value">وليد</span>
-
-
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-12 pt-3 text-end">
-                                    <bdo dir="ltr">
-                                        <span class="english-name"> Full Name (In English) : </span>
-                                        <span class="english-name-value">waled blua blau </span>
-                                    </bdo>
-
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-12 pt-3 col-md-4">
-                                    <span class="date-of-birth">تاريخ الميلاد : </span>
-                                    <span class="date-of-birth-value"> 2000/2/2</span>
-                                </div>
-                                <div class="col-sm-12 pt-3 col-md-4">
-                                    <span class="place-of-birth">محل الميلاد : </span>
-                                    <span class="place-of-birth-value">Ibb</span>
-                                </div>
-                                <div class="col-sm-12 pt-3 col-md-4">
-                                    <span class="nationality">الجنسية</span>
-                                    <span class="nationality-value">يمني</span>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-12 pt-3 col-md-4">
-                                    <span class="residence-address">عنوان الإقامة \ السكن : </span>
-                                    <span class="residence-address-value">دار القدسي</span>
+                                <div class="row">
+                                    <div class="col-sm-12 pt-3">
+                                        <span class="arabic-name ww">
+                                            الإسم الكامل (باللغة العربية ) :
+                                        </span>
+                                        <span class="arabic-name-value">وليد</span>
+                                    </div>
                                 </div>
 
-                                <div class="col-sm-12 pt-3 col-md-4">
-                                    <span class="phone"> رقم الجوال :</span>
-                                    <span class="phone-value"> 772036131 </span>
+                                <div class="row">
+                                    <div class="col-sm-12 pt-3 text-end">
+                                        <bdo dir="ltr">
+                                            <span class="english-name ww">
+                                                Full Name (In English) :
+                                            </span>
+                                            <span class="english-name-value">waled blua blau </span>
+                                        </bdo>
+                                    </div>
                                 </div>
-                                <div class="col-sm-12 col-md-4"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 pt-3 col-md-4">
-                                    <span class="educational_qualification"> المؤهل الدراسي : </span>
-                                    <span class="educational-qualification-value">بكلوريوس</span>
-                                </div>
-                                <div class="col-sm-12 pt-3 col-md-4">
-                                    <span class="specialization">التخصص : </span>
-                                    <span class="specialization-value"> علوم حاسوب </span>
-                                </div>
-                                <div class="col-sm-12 pt-3 col-md-4">
-                                    <span class="years_of_training_experience"> سنوات خبرة التدريب : </span>
-                                    <span class="years_of_training_experience-value"> 4 </span>
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 pt-3">
-                                    <div class="motivation">لماذا تريد الإلتحاق بالتدريب لدينا : </div>
-                                    <div class="motivation-value">
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Officiis, et aliquam perferendis quasi vitae eius nobis fugit enim excepturi
-                                        sint,
-                                        voluptate asperiores consequatur error deleniti fuga corrupti. Quidem, veniam
-                                        aperiam?
+                                <div class="row">
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="date-of-birth ww">تاريخ الميلاد : </span>
+                                        <span class="date-of-birth-value"> 2000/2/2</span>
+                                    </div>
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="place-of-birth ww">محل الميلاد : </span>
+                                        <span class="place-of-birth-value">Ibb</span>
+                                    </div>
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="nationality ww">الجنسية : </span>
+                                        <span class="nationality-value">يمني</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="residence-address ww">عنوان الإقامة \ السكن :
+                                        </span>
+                                        <span class="residence-address-value">دار القدسي</span>
+                                    </div>
+
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="phone ww"> رقم الجوال :</span>
+                                        <span class="phone-value"> 772036131 </span>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="educational_qualification ww">
+                                            المؤهل الدراسي :
+                                        </span>
+                                        <span class="educational-qualification-value">بكلوريوس</span>
+                                    </div>
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="specialization ww ">التخصص : </span>
+                                        <span class="specialization-value"> علوم حاسوب </span>
+                                    </div>
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="years_of_training_experience ww">
+                                            سنوات خبرة التدريب :
+                                        </span>
+                                        <span class="years_of_training_experience-value"> 4 </span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 pt-3">
+                                        <div class="motivation ww">
+                                            لماذا تريد الإلتحاق بالتدريب لدينا :
+                                        </div>
+                                        <div class="motivation-value">
+                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                            Officiis, et aliquam perferendis quasi vitae eius nobis
+                                            fugit enim excepturi sint, voluptate asperiores
+                                            consequatur error deleniti fuga corrupti. Quidem, veniam
+                                            aperiam?
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="identity ww">
+                                            صورة من الهوية / جواز السفر :
+                                        </span>
+                                        <span class="identity-value">
+                                            <a href="#">identity-link</a>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="biography ww"> إرفاق السيرة الذاتية : </span>
+                                        <span class="biography-value"><a href="#">biography-link</a></span>
+                                    </div>
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="Certificates ww"> إرفاق الشهادات : </span>
+                                        <span class="Certificates-value"><a href="#">Certificates-link</a></span>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 60px; margin-bottom: -10px;">
+                                    <div class="col-sm-12 pt-3">
+                                        <p>
+                                            ملاحظة : سيتم اعتماد البيانات أعلاه عند الارسال ، لذا نرجو
+                                            القيام ادخال كافة البيانات المطلوبة بشكل صحيح و دقيق و
+                                            مراجعة البيانات قبل ارسالها الينا.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-sm-12 pt-3 col-md-4">
-                                    <span class="identity"> صورة من الهوية / جواز السفر : </span>
-                                    <span class="identity-value"> <a href="#">identity-link</a> </span>
-                                </div>
-                                <div class="col-sm-12 pt-3 col-md-4">
-                                    <span class="biography"> إرفاق السيرة الذاتية : </span>
-                                    <span class="biography-value"><a href="#">biography-link</a></span>
-                                </div>
-                                <div class="col-sm-12 pt-3 col-md-4">
-                                    <span class="Certificates"> إرفاق الشهادات : </span>
-                                    <span class="Certificates-value"><a href="#">Certificates-link</a></span>
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-sm-12 pt-3">
-                                    <p>
-                                        ملاحظة : سيتم اعتماد البيانات أعلاه عند الارسال ،
-                                        لذا نرجو القيام
-                                        ادخال كافة البيانات المطلوبة بشكل صحيح و دقيق
-                                        و مراجعة البيانات قبل ارسالها الينا.
-                                    </p>
-                                </div>
-                            </div>
-
-
                         </div>
-
                     </div>
+
+                    <footer class="d-flex justify-content-center" style="text-align: center;margin-top: 50px;">
+                        <div class="footer-line"
+                            style="
+            height: 3px;
+          background-color: green;
+          margin-bottom: 20px;
+          margin-left: 20px;
+          margin-right: 20px;
+          margin-top: auto;
+       width: 75.5%;
+          position: absolute
+        
+                    ">
+                        </div>
+                        <div class="footer-content" style="margin-top: 10px;">
+                            <div class="footer-item">
+                                <i class="fa fa-home"></i>
+                                <span>محافظة عدن-المنصورة-شارع القصر-فوق انيس فون</span>
+                            </div>
+                            <div class="footer-item">
+                                <i class="fa fa-phone"></i>
+                                <span> 02-350347 \ 734208108</span>
+                            </div>
+                        </div>
+                    </footer>
                 </div>
-
-                <footer class="d-flex justify-content-center">
-                    <div class="footer-line"></div>
-                    <div class="footer-content">
-                        <div class="footer-item">
-                            <i class="fa fa-home"></i>
-                            <span>محافظة عدن-المنصورة-شارع القصر-فوق انيس فون</span>
-                        </div>
-                        <div class="footer-item">
-                            <i class="fa fa-phone"></i>
-                            <span> 02-350347 \ 734208108</span>
-                        </div>
-                    </div>
-
-                </footer>
-
             </div>
-
         </div>
 
 

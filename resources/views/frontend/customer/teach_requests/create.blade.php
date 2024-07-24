@@ -19,14 +19,72 @@
     {{-- This is for this page  --}}
     <link href="{{ URL::asset('frontend/assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 
+
+
+    {{-- start for image upload --}}
+    <!--- Internal Select2 css-->
+    <link href="{{ URL::asset('frontend/assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <!---Internal Fileupload css-->
+    <link href="{{ URL::asset('frontend/assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet"
+        type="text/css" />
+    <!---Internal Fancy uploader css-->
+    <link href="{{ URL::asset('frontend/assets/plugins/fancyuploder/fancy_fileupload.css') }}" rel="stylesheet" />
+    <!--Internal Sumoselect css-->
+    <link rel="stylesheet" href="{{ URL::asset('frontend/assets/plugins/sumoselect/sumoselect-rtl.css') }}">
+    <!--Internal  TelephoneInput css-->
+    <link rel="stylesheet" href="{{ URL::asset('frontend/assets/plugins/telephoneinput/telephoneinput-rtl.css') }}">
+
+    {{-- end for image upload --}}
+
     {{-- flat picker --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+    <link rel="stylesheet" type="text]/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+
+    <style>
+        .dropify-wrapper {
+            position: relative !important;
+        }
+
+        .dropify-wrapper .dropify-message {
+            position: absolute !important;
+        }
+
+        .dropify-wrapper .dropify-loader {
+            position: absolute !important;
+        }
+
+        .dropify-wrapper {
+            position: relative !important;
+        }
+    </style>
 @endsection
 
 @section('content')
     <div class="container mt-2">
         <!-- row -->
+
+        <!-- row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-sm-12 col-md-12">
+                                {{-- <input type="file" class="dropify" data-height="200" /> --}}
+                                <div class="col-sm-12 col-md-4 mg-t-10 mg-sm-t-0">
+                                    {{-- <input type="file" class="dropify"
+                                        data-default-file="{{ URL::asset('image/not_found/avator2.png') }}"
+                                        data-height="200" /> --}}
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="card">
@@ -45,6 +103,28 @@
                             <div id="wizard1">
                                 <h3>البيانات الشخصية</h3>
                                 <section>
+
+                                    <!-- row -->
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row mb-4">
+                                                        <div class="col-sm-12 col-md-12">
+                                                            {{-- <input type="file" class="dropify" data-height="200" /> --}}
+                                                            <div class="col-sm-12 col-md-8 mg-t-10 mg-sm-t-0">
+                                                                {{-- <input type="file" class="dropify"
+                                                                    data-default-file="{{ URL::asset('image/not_found/avator2.png') }}"
+                                                                    data-height="200" /> --}}
+                                                                <input type="file" class="dropify" data-height="300" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
 
                                     <div class="row pt-2">
                                         <div class="col-sm-12 col-md-6 ">
@@ -300,6 +380,33 @@
 @endsection
 
 @section('script')
+    {{-- start for image upload --}}
+
+    <!--Internal  Datepicker js -->
+    <script src="{{ URL::asset('frontend/assets/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
+    <!-- Internal Select2 js-->
+    <script src="{{ URL::asset('frontend/assets/plugins/select2/js/select2.min.js') }}"></script>
+    <!--Internal Fileuploads js-->
+    <script src="{{ URL::asset('frontend/assets/plugins/fileuploads/js/fileupload.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/plugins/fileuploads/js/file-upload.js') }}"></script>
+    <!--Internal Fancy uploader js-->
+    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/jquery.iframe-transport.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/fancy-uploader.js') }}"></script>
+    <!--Internal  Form-elements js-->
+    <script src="{{ URL::asset('frontend/assets/js/advanced-form-elements.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/js/select2.js') }}"></script>
+    <!--Internal Sumoselect js-->
+    <script src="{{ URL::asset('frontend/assets/plugins/sumoselect/jquery.sumoselect.js') }}"></script>
+    <!-- Internal TelephoneInput js-->
+    <script src="{{ URL::asset('frontend/assets/plugins/telephoneinput/telephoneinput.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/plugins/telephoneinput/inttelephoneinput.js') }}"></script>
+
+
+    {{-- end for image upload --}}
+
     <!--Internal  Select2 js -->
     <script src="{{ URL::asset('frontend/assets/plugins/select2/js/select2.min.js') }}"></script>
     <!-- Internal Jquery.steps js -->
@@ -308,13 +415,40 @@
     <!--Internal  Form-wizard js -->
     <script src="{{ URL::asset('frontend/assets/js/form-wizard.js') }}"></script>
 
+
+
+
+
     <!-- Include the Flatpickr JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/{{ app()->getLocale() }}.js"></script>
 
 
+
     <script>
         $(function() {
+
+
+            // Initialize Dropify
+            function initializeDropify() {
+                // $('.dropify').dropify();
+                $('.dropify').dropify({
+                    messages: {
+                        'default': 'choose Image ',
+                        'replace': '',
+                        'remove': 'Remove',
+                        'error': 'Ooops, something wrong happended.'
+                    }
+                });
+
+            }
+
+            // Initialize Dropify on document ready
+            initializeDropify();
+
+
+
+
 
             // for offer ends
             flatpickr('.flatpickr', {

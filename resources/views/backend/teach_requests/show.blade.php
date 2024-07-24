@@ -33,6 +33,27 @@
             background-color: whitesmoke;
         }
     </style>
+
+    <!-- Custom CSS -->
+    <style>
+        .modal-custom {
+            max-width: 100%;
+        }
+
+        @media (min-width: 992px) {
+            .modal-custom {
+                max-width: 50%;
+            }
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -280,8 +301,16 @@
                                             صورة من الهوية / جواز السفر :
                                         </span>
                                         <span class="identity-value">
-                                            <a href="#">identity-link</a>
+                                            @if ($teach_request->identity)
+                                                <a href="#" data-toggle="modal" data-target="#identityModal">
+                                                    <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
+                                                        alt="Identity Image" style="width: 50px; height: 50px;">
+                                                </a>
+                                            @else
+                                                <p>No identity image available.</p>
+                                            @endif
                                         </span>
+
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="biography ww"> إرفاق السيرة الذاتية : </span>
@@ -354,5 +383,34 @@
             </div> --}}
 
 
+        <!-- Modal -->
+        <div class="modal fade" id="identityModal" tabindex="-1" role="dialog" aria-labelledby="identityModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-custom" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="identityModalLabel">Identity Image</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}" alt="Identity Image"
+                            class="img-fluid modal-image">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+@endsection
+
+@section('script')
+    <!-- Include Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 @endsection

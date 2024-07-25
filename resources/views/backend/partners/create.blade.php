@@ -187,11 +187,12 @@
                             <div class="col-sm-12 col-md-12 pt-3">
                                 <label for="status">{{ __('panel.status') }}</label>
                                 <select name="status" class="form-control">
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
-                                        {{ __('panel.status_inactive') }}
-                                    </option>
                                     <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}
+                                    </option>
+
+                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
+                                        {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
                                 @error('status')

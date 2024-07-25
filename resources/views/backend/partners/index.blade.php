@@ -8,7 +8,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_courses') }}
+                    {{ __('panel.manage_partners') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -20,18 +20,18 @@
                         @endif
                     </li>
                     <li>
-                        {{ __('panel.show_courses') }}
+                        {{ __('panel.show_partners') }}
                     </li>
                 </ul>
             </div>
 
             <div class="ml-auto">
-                @ability('admin', 'create_courses')
-                    <a href="{{ route('admin.courses.create') }}" class="btn btn-primary">
+                @ability('admin', 'create_partners')
+                    <a href="{{ route('admin.partners.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
-                        <span class="text">{{ __('panel.add_new_course') }}</< /span>
+                        <span class="text">{{ __('panel.add_new_partner') }}</< /span>
                     </a>
                 @endability
             </div>
@@ -40,7 +40,7 @@
 
         <div class="card-body">
             {{-- filter form part  --}}
-            @include('backend.courses.filter.filter')
+            @include('backend.partners.filter.filter')
 
             {{-- table part --}}
             <div class="table-responsive">
@@ -49,8 +49,7 @@
                     <thead>
                         <tr>
                             <th>{{ __('panel.image') }}</th>
-                            <th>{{ __('panel.title') }}</th>
-                            <th>{{ __('panel.price') }}</th>
+                            <th>{{ __('panel.name') }}</th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
                             <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
                             <th class="d-none d-sm-table-cell"> {{ __('panel.send_for_review') }} </th>
@@ -59,76 +58,64 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($courses as $course)
+                        @forelse ($partners as $partner)
                             <tr>
 
                                 <td>
-
-                                    @php
-                                        if ($course->firstMedia != null && $course->firstMedia->file_name != null) {
-                                            $course_img = asset('assets/courses/' . $course->firstMedia->file_name);
-
-                                            if (
-                                                !file_exists(
-                                                    public_path('assets/courses/' . $course->firstMedia->file_name),
-                                                )
-                                            ) {
-                                                $course_img = asset('image/not_found/item_image_not_found.webp');
-                                            }
-                                        } else {
-                                            $course_img = asset('image/not_found/item_image_not_found.webp');
-                                        }
-                                    @endphp
-                                    <img src="{{ $course_img }}" width="60" height="60"
-                                        alt="{{ $course->title }}">
-
+                                    @if ($partner->partner_image && file_exists(public_path('assets/partners/' . $partner->firstMedia->file_name)))
+                                        <img src="{{ asset('assets/partners/' . $partner->partner_image) }}" width="60"
+                                            height="60" alt="{{ $partner->title }}">
+                                    @else
+                                        <img src="{{ asset('image/not_found/item_image_not_found.webp') }}" width="60"
+                                            height="60" alt="{{ $partner->title }}">
+                                    @endif
                                 </td>
-                                <td>{{ $course->title }}</td>
+                                <td>{{ $partner->title }}</td>
                                 <td>
 
-                                    @if ($course->offer_price > 0)
-                                        @if ($course->offer_price == $course->price)
-                                            <del class="font-size-sm"><small>{{ currency_converter($course->price) }}</small>
+                                    @if ($partner->offer_price > 0)
+                                        @if ($partner->offer_price == $partner->price)
+                                            <del class="font-size-sm"><small>{{ currency_converter($partner->price) }}</small>
                                             </del>
                                             <ins class="h5 mb-0 d-block mb-lg-n1" style="text-decoration: none">
                                                 {{ __('transf.free') }}
                                             </ins>
                                         @else
-                                            <del class="font-size-sm"><small>{{ currency_converter($course->price) }}</small>
+                                            <del class="font-size-sm"><small>{{ currency_converter($partner->price) }}</small>
                                             </del>
                                             <ins class="h5 mb-0 d-block mb-lg-n1"
-                                                style="text-decoration: none">{{ currency_converter($course->price - $course->offer_price) }}
+                                                style="text-decoration: none">{{ currency_converter($partner->price - $partner->offer_price) }}
                                             </ins>
                                         @endif
                                     @else
                                         <ins class="h5 mb-0 d-block mb-lg-n1" style="text-decoration: none">
-                                            @if ($course->price == 0)
+                                            @if ($partner->price == 0)
                                                 {{ __('transf.free') }}
                                             @else
-                                                {{ currency_converter($course->price) }}
+                                                {{ currency_converter($partner->price) }}
                                             @endif
 
                                         </ins>
                                     @endif
 
                                 </td>
-                                <td class="d-none d-sm-table-cell">{{ $course->created_by }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $course->created_at }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $course->send_for_review }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $course->status() }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $partner->created_by }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $partner->created_at }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $partner->send_for_review }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $partner->status() }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.courses.show', $course->id) }}" class="btn btn-success">
+                                        <a href="{{ route('admin.partners.show', $partner->id) }}" class="btn btn-success">
                                             <i class="fa fa-eye"></i>
                                         </a>
 
-                                        @if ($course->users->first()->hasRole('admin') || $course->users->first()->hasRole('supervisor'))
-                                            <a href="{{ route('instructor.courses.edit', $course->id) }}"
+                                        @if ($partner->users->first()->hasRole('admin') || $partner->users->first()->hasRole('supervisor'))
+                                            <a href="{{ route('instructor.partners.edit', $partner->id) }}"
                                                 class="btn btn-primary">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                         @else
-                                            <a href="{{ route('admin.courses.edit', $course->id) }}"
+                                            <a href="{{ route('admin.partners.edit', $partner->id) }}"
                                                 class="btn btn-primary">
                                                 <i class="fa fa-edit"></i>
                                             </a>
@@ -136,13 +123,13 @@
 
 
                                         <a href="javascript:void(0);"
-                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-{{ $course->id }}').submit();}else{return false;}"
+                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-{{ $partner->id }}').submit();}else{return false;}"
                                             class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.courses.destroy', $course->id) }}" method="post"
-                                        class="d-none" id="delete-product-{{ $course->id }}">
+                                    <form action="{{ route('admin.partners.destroy', $partner->id) }}" method="post"
+                                        class="d-none" id="delete-product-{{ $partner->id }}">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -159,7 +146,7 @@
                         <tr>
                             <td colspan="9">
                                 <div class="float-right">
-                                    {!! $courses->appends(request()->all())->links() !!}
+                                    {!! $partners->appends(request()->all())->links() !!}
                                 </div>
                             </td>
                         </tr>

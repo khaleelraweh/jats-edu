@@ -83,51 +83,52 @@
                             <div class="col-sm-10 offset-1 bg-white">
                                 <div class="row">
                                     <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
-                                        <h1 class="m-0" style="color:green;" ">
-                                                                        معهد خطوة شباب</h1>
-                                                                    <h2 style="color: gold" style="
+                                        <h1 class="m-0" style="color:green;">
+                                            معهد خطوة شباب</h1>
+                                        <h2 style="color: gold" style="
         font-family: Times New Roman, sans-serif;">
-                                                                        للتدريب واللغات</h2>
-                                                                </div>
-                                                                <div class="col-sm-4 d-flex align-items-center justify-content-center">
-                                                                    <img style="width: 250px; padding-top: 10px; z-index: 4"
-                                                                        src="{{ asset('backend/images/logo.jpg') }}" alt="" />
-                                                                </div>
-                                                                <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
-                                                                    <h1  class="m-0" style="color: green">
-                                                                        Youth Step Institute</h1>
-                                                                    <h2 style="color:gold">For
-                                                                        Training
-                                                                        Languages
-                                                                    </h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                            للتدريب واللغات</h2>
+                                    </div>
+                                    <div class="col-sm-4 d-flex align-items-center justify-content-center">
+                                        <img style="width: 250px; padding-top: 10px; z-index: 4"
+                                            src="{{ asset('backend/images/logo.jpg') }}" alt="" />
+                                    </div>
+                                    <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
+                                        <h1 class="m-0" style="color: green">
+                                            Youth Step Institute</h1>
+                                        <h2 style="color:gold">For
+                                            Training
+                                            Languages
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                                                    <div class="header-line"
-                                                        style="
+                        <div class="header-line"
+                            style="
                       position: relative;
                       margin-top: -40px;
                       margin-bottom: 45px;
                       z-index: 2;
                     ">
-                                                        <div class="gold-line"></div>
-                                                        <div class="gray-line"></div>
-                                                    </div>
-                                                </header>
+                            <div class="gold-line"></div>
+                            <div class="gray-line"></div>
+                        </div>
+                    </header>
 
-                                                <div class="section px-5 pb-3">
-                                                    <div class="row" style="border: 6px double green; font-size: 19px">
-                                                        <div class="col-sm-12 bg-white p-3">
-                                                            <div class="row">
-                                                                <div class="col-4" style="margin-top: 50px;">
-                                                                    <span><span class="ww">تاريخ الطلب :</span>
-                                                                        {{ $teach_request->created_at->format('Y/m/d') }}
-                                                                    </span>
-                                                                </div>
-                                                                <div class="col-4"
-                                                                    style="
+                    <div class="section px-5 pb-3">
+                        <div class="row" style="border: 6px double green; font-size: 19px">
+                            <div class="col-sm-12 bg-white p-3">
+                                <div class="row">
+                                    <div class="col-4" style="margin-top: 50px;">
+                                        <span><span class="ww">تاريخ الطلب :</span>
+                                            {{ $teach_request->created_at->format('Y/m/d') ?? 'No creation date available' }}
+
+                                        </span>
+                                    </div>
+                                    <div class="col-4"
+                                        style="
                             border: 4px solid green;
                             padding: 5px;
                             margin-top: 20px;
@@ -137,183 +138,189 @@
                             height: 50%;
                          
                           ">
-                                                                    <h1
-                                                                        style="
+                                        <h1
+                                            style="
                               margin: 0;
                               font-size: 30px;
                               border: 1px solid green;
                               border-radius: 4px;
                               color:black;
                             ">
-                                                                        استمارة طلب تقديم كمدرب /ة
-                                                                    </h1>
-                                                                </div>
-                                                                <div class="col-4">
-                                                                    <input type="file" id="file-input"
-                                                                        style="display: none;
+                                            استمارة طلب تقديم كمدرب /ة
+                                        </h1>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="file" id="file-input"
+                                            style="display: none;
         
                               
                               " />
-                                                                    <div id="image-container" class="col-4">
+                                        <div id="image-container" class="col-4">
 
-                                                                               @if ($teach_request->user_image && file_exists(public_path('assets/teach_requests/' . $teach_request->user_image)))
-                                            <a href="#" data-toggle="modal" data-target="#identityModal">
-                                                <img src="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"
+
+                                            @if ($teach_request->user_image && file_exists(public_path('assets/teach_requests/' . $teach_request->user_image)))
+                                                <!-- Image -->
+                                                <a href="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"
+                                                    data-fancybox data-width="1400" data-height="900">
+                                                    <img src="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"
+                                                        class="img-fluid" alt="Identity Image">
+                                                </a>
+                                            @else
+                                                <img src="{{ asset('image/not_found/item_image_not_found.webp') }}"
                                                     alt="Identity Image" style="width: 100%; height: 181px;">
-                                            </a>
-                                        @else
-                                            <img src="{{ asset('image/not_found/item_image_not_found.webp') }}"
-                                                alt="Identity Image" style="width: 100%; height: 181px;">
                                             @endif
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-sm-12 pt-3">
-                                        <span class="arabic-name ww">
-                                            الإسم الكامل (باللغة العربية ) :
-                                        </span>
-                                        <span
-                                            class="arabic-name-value">{{ $teach_request->getTranslation('full_name', 'ar') }}</span>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12 pt-3 text-end">
-                                        <bdo dir="ltr">
-                                            <span class="english-name ww">
-                                                Full Name (In English) :
+                                    <div class="row">
+                                        <div class="col-sm-12 pt-3">
+                                            <span class="arabic-name ww">
+                                                الإسم الكامل (باللغة العربية ) :
                                             </span>
                                             <span
-                                                class="english-name-value">{{ $teach_request->getTranslation('full_name', 'en') }}
+                                                class="arabic-name-value">{{ $teach_request->getTranslation('full_name', 'ar') }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 pt-3 text-end">
+                                            <bdo dir="ltr">
+                                                <span class="english-name ww">
+                                                    Full Name (In English) :
+                                                </span>
+                                                <span
+                                                    class="english-name-value">{{ $teach_request->getTranslation('full_name', 'en') }}
+                                                </span>
+                                            </bdo>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 pt-3 col-md-4">
+                                            <span class="date-of-birth ww">تاريخ الميلاد : </span>
+                                            <span class="date-of-birth-value">
+                                                {{ optional($teach_request->date_of_birth)->format('Y/m/d') }}
                                             </span>
-                                        </bdo>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="date-of-birth ww">تاريخ الميلاد : </span>
-                                        <span class="date-of-birth-value">
-                                            {{ optional($teach_request->date_of_birth)->format('Y/m/d') }}
-                                        </span>
-                                    </div>
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="place-of-birth ww">محل الميلاد : </span>
-                                        <span class="place-of-birth-value">{{ $teach_request->place_of_birth }}</span>
-                                    </div>
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="nationality ww">الجنسية : </span>
-                                        <span class="nationality-value">{{ $teach_request->nationality }}</span>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="residence-address ww">عنوان الإقامة \ السكن :
-                                        </span>
-                                        <span class="residence-address-value">{{ $teach_request->residence_address }}</span>
-                                    </div>
-
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="phone ww"> رقم الجوال :</span>
-                                        <span class="phone-value"> {{ $teach_request->phone }} </span>
-                                    </div>
-                                    <div class="col-sm-12 col-md-4"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="educational_qualification ww">
-                                            المؤهل الدراسي :
-                                        </span>
-                                        <span
-                                            class="educational-qualification-value">{{ $teach_request->educational_qualification }}</span>
-                                    </div>
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="specialization ww ">التخصص : </span>
-                                        <span class="specialization-value"> {{ $teach_request->specialization }}
-                                        </span>
-                                    </div>
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="years_of_training_experience ww">
-                                            سنوات خبرة التدريب :
-                                        </span>
-                                        <span class="years_of_training_experience-value">
-                                            {{ $teach_request->years_of_training_experience }} </span>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12 pt-3">
-                                        <div class="motivation ww">
-                                            لماذا تريد الإلتحاق بالتدريب لدينا :
                                         </div>
-                                        <div class="motivation-value">
-                                            {!! $teach_request->motivation !!}
+                                        <div class="col-sm-12 pt-3 col-md-4">
+                                            <span class="place-of-birth ww">محل الميلاد : </span>
+                                            <span class="place-of-birth-value">{{ $teach_request->place_of_birth }}</span>
+                                        </div>
+                                        <div class="col-sm-12 pt-3 col-md-4">
+                                            <span class="nationality ww">الجنسية : </span>
+                                            <span class="nationality-value">{{ $teach_request->nationality }}</span>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="identity ww">
-                                            صورة من الهوية / جواز السفر :
-                                        </span>
-                                        <span class="identity-value">
-                                            @if ($teach_request->identity)
-                                                <a href="#" data-toggle="modal" data-target="#identityModal">
-                                                    <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
-                                                        alt="Identity Image" style="width: 50px; height: 50px;">
-                                                </a>
-                                            @else
-                                                <p>No identity image available.</p>
-                                            @endif
-                                        </span>
+                                    <div class="row">
+                                        <div class="col-sm-12 pt-3 col-md-4">
+                                            <span class="residence-address ww">عنوان الإقامة \ السكن :
+                                            </span>
+                                            <span
+                                                class="residence-address-value">{{ $teach_request->residence_address }}</span>
+                                        </div>
 
+                                        <div class="col-sm-12 pt-3 col-md-4">
+                                            <span class="phone ww"> رقم الجوال :</span>
+                                            <span class="phone-value"> {{ $teach_request->phone }} </span>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4"></div>
                                     </div>
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="biography ww"> إرفاق السيرة الذاتية : </span>
-
-                                        <span class="biography-value">
-                                            @if ($teach_request->identity && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
-                                                <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->biography, PATHINFO_FILENAME)) }}"
-                                                    target="_blanck">
-                                                    {{ pathinfo($teach_request->biography, PATHINFO_FILENAME) }}
-                                                </a>
-                                            @else
-                                                <p>No biography found</p>
-                                            @endif
-                                        </span>
+                                    <div class="row">
+                                        <div class="col-sm-12 pt-3 col-md-4">
+                                            <span class="educational_qualification ww">
+                                                المؤهل الدراسي :
+                                            </span>
+                                            <span
+                                                class="educational-qualification-value">{{ $teach_request->educational_qualification }}</span>
+                                        </div>
+                                        <div class="col-sm-12 pt-3 col-md-4">
+                                            <span class="specialization ww ">التخصص : </span>
+                                            <span class="specialization-value"> {{ $teach_request->specialization }}
+                                            </span>
+                                        </div>
+                                        <div class="col-sm-12 pt-3 col-md-4">
+                                            <span class="years_of_training_experience ww">
+                                                سنوات خبرة التدريب :
+                                            </span>
+                                            <span class="years_of_training_experience-value">
+                                                {{ $teach_request->years_of_training_experience }} </span>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="Certificates ww"> إرفاق الشهادات : </span>
-                                        <span class="Certificates-value">
-                                            @if ($teach_request->Certificates && file_exists(public_path('assets/teach_requests/' . $teach_request->Certificates)))
-                                                <a href="{{ route('admin.view_file', pathinfo($teach_request->Certificates, PATHINFO_FILENAME)) }}"
-                                                    target="_blanck">
-                                                    {{ pathinfo($teach_request->Certificates, PATHINFO_FILENAME) }}
-                                                </a>
-                                            @else
-                                                <p>No Certificates found</p>
-                                            @endif
-                                        </span>
-                                    </div>
-                                </div>
 
-                                <div class="row" style="margin-top: 60px; margin-bottom: -10px;">
-                                    <div class="col-sm-12 pt-3">
-                                        <p>
-                                            ملاحظة : سيتم مراجعة طلبك و الرد عليه خلال ثلاث ايام من تاريخ اليوم
-                                        </p>
+                                    <div class="row">
+                                        <div class="col-sm-12 pt-3">
+                                            <div class="motivation ww">
+                                                لماذا تريد الإلتحاق بالتدريب لدينا :
+                                            </div>
+                                            <div class="motivation-value">
+                                                {!! $teach_request->motivation !!}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 pt-3 col-md-4">
+                                            <span class="identity ww">
+                                                صورة من الهوية / جواز السفر :
+                                            </span>
+                                            <span class="identity-value">
+                                                @if ($teach_request->identity)
+                                                    <a href="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
+                                                        data-fancybox data-width="1400" data-height="900">
+                                                        <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
+                                                            class="img-fluid" alt="Identity Image"
+                                                            style="width: 50px; height: 50px;">
+                                                    </a>
+                                                @else
+                                                    <p>No identity image available.</p>
+                                                @endif
+                                            </span>
+
+                                        </div>
+                                        <div class="col-sm-12 pt-3 col-md-4">
+                                            <span class="biography ww"> إرفاق السيرة الذاتية : </span>
+
+                                            <span class="biography-value">
+                                                @if ($teach_request->identity && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
+                                                    <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->biography, PATHINFO_FILENAME)) }}"
+                                                        target="_blanck">
+                                                        {{ pathinfo($teach_request->biography, PATHINFO_FILENAME) }}
+                                                    </a>
+                                                @else
+                                                    <p>No biography found</p>
+                                                @endif
+                                            </span>
+                                        </div>
+                                        <div class="col-sm-12 pt-3 col-md-4">
+                                            <span class="Certificates ww"> إرفاق الشهادات : </span>
+                                            <span class="Certificates-value">
+                                                @if ($teach_request->Certificates && file_exists(public_path('assets/teach_requests/' . $teach_request->Certificates)))
+                                                    <a href="{{ route('admin.view_file', pathinfo($teach_request->Certificates, PATHINFO_FILENAME)) }}"
+                                                        target="_blanck">
+                                                        {{ pathinfo($teach_request->Certificates, PATHINFO_FILENAME) }}
+                                                    </a>
+                                                @else
+                                                    <p>No Certificates found</p>
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="margin-top: 60px; margin-bottom: -10px;">
+                                        <div class="col-sm-12 pt-3">
+                                            <p>
+                                                ملاحظة : سيتم مراجعة طلبك و الرد عليه خلال ثلاث ايام من تاريخ اليوم
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                </div>
 
-                <footer class="d-flex justify-content-center" style="text-align: center;margin-top: 50px;">
-                    <div class="footer-line"
-                        style="
+                        <footer class="d-flex justify-content-center" style="text-align: center;margin-top: 50px;">
+                            <div class="footer-line"
+                                style="
             height: 3px;
           background-color: green;
           margin-bottom: 20px;
@@ -324,46 +331,24 @@
           position: absolute
         
                     ">
+                            </div>
+                            <div class="footer-content" style="margin-top: 10px;">
+                                <div class="footer-item">
+                                    <i class="fa fa-home"></i>
+                                    <span>محافظة عدن-المنصورة-شارع القصر-فوق انيس فون</span>
+                                </div>
+                                <div class="footer-item">
+                                    <i class="fa fa-phone"></i>
+                                    <span> 02-350347 \ 734208108</span>
+                                </div>
+                            </div>
+                        </footer>
                     </div>
-                    <div class="footer-content" style="margin-top: 10px;">
-                        <div class="footer-item">
-                            <i class="fa fa-home"></i>
-                            <span>محافظة عدن-المنصورة-شارع القصر-فوق انيس فون</span>
-                        </div>
-                        <div class="footer-item">
-                            <i class="fa fa-phone"></i>
-                            <span> 02-350347 \ 734208108</span>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Modal Identity image -->
-    <div class="modal fade" id="identityModal" tabindex="-1" role="dialog" aria-labelledby="identityModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-custom" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="identityModalLabel">Identity Image</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}" alt="Identity Image"
-                        class="img-fluid modal-image">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
-        </div>
-    </div>
 
-    </div>
+
+        </div>
     </div>
 @endsection
 

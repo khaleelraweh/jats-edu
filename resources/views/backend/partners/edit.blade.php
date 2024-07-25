@@ -56,8 +56,7 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form id="my_form_id" action="{{ route('admin.partners.update', $partner->id) }}" method="post"
-                enctype="multipart/form-data">
+            <form action="{{ route('admin.partners.update', $partner->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -246,43 +245,12 @@
         });
     </script>
 
-    {{-- subname counter  --}}
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const subnameInput = document.getElementById('subname');
-            const charCountSubname = document.getElementById('charCountSubname');
-            const maxChars = 120;
 
-            // Function to update the character count
-            function updateCharCountSucharCountSubname() {
-                const remainingChars = maxChars - subnameInput.value.length;
-                charCountSubname.textContent = remainingChars;
-            }
 
-            // Initialize the character count on page load
-            updateCharCountSucharCountSubname();
-
-            // Update the character count on input
-            subnameInput.addEventListener('input', updateCharCountSucharCountSubname);
-        });
-    </script>
 
 
     <script>
         $(function() {
-            const link = document.getElementById('checkIn');
-            const result = link.hasAttribute('checked');
-            if (result) {
-                document.getElementById('quantity').readOnly = true;
-            }
-        });
-    </script>
-
-    <script>
-        $(function() {
-
-
-
 
             $("#partner_image").fileinput({
                 theme: "fa5",
@@ -438,211 +406,6 @@
                 matcher: matchStart
             });
 
-        });
-    </script>
-
-    {{-- is related to select permision disable and enable by child class --}}
-    <script language="javascript">
-        var $cbox = $('.child').change(function() {
-            if (this.checked) {
-                $cbox.not(this).attr('disabled', 'disabled');
-            } else {
-                $cbox.removeAttr('disabled');
-            }
-        });
-
-        var $cbox2 = $('.child2').change(function() {
-            if (this.checked) {
-                $cbox2.not(this).attr('disabled', 'disabled');
-            } else {
-                $cbox2.removeAttr('disabled');
-            }
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            // Function to initialize character counter for a specific input field
-            function initializeCharCounter($input) {
-                var $counter = $input.parent().find('.input-group-text');
-
-                // Update character count on input
-                $input.on('input', function() {
-                    var remainingChars = 160 - $(this).val().length;
-                    $counter.text(remainingChars);
-                });
-
-                // Trigger input event to update counter initially
-                $input.trigger('input');
-            }
-
-            // Initialize character counters for existing rows
-            $('#partner_objectives_details').find('input.partner_objective').each(function() {
-                initializeCharCounter($(this));
-            });
-
-            // Submit event handler for the form
-            $('#my_form_id').on('submit', function(event) {
-                // Flag to track whether there are empty fields
-                let isEmpty = false;
-
-                // Loop through each input field and check if it's empty
-                $('input.partner_objective').each(function() {
-                    if ($(this).val() === '') {
-                        isEmpty = true;
-                        return false; // Exit the loop if any field is empty
-                    }
-                });
-
-                // If any field is empty, prevent the form submission
-                if (isEmpty) {
-                    alert('{{ __('panel.msg_one_or_more_topic_field_empty') }}.');
-                    event.preventDefault(); // Prevent form submission
-                }
-            });
-
-            // Click event handler for adding new rows
-            $(document).on('click', '.btn_add', function() {
-                let trCount = $('#partner_objectives_details').find('tr.cloning_row:last').length;
-                let numberIncr = trCount > 0 ? parseInt($('#partner_objectives_details').find(
-                        'tr.cloning_row:last')
-                    .attr('id')) + 1 : 0;
-
-                // Create a flag to check if any field is empty
-                let isEmpty = false;
-
-                // Loop through each input field and check if it's empty
-                $('#partner_objectives_details').find('input.partner_objective').each(function() {
-                    if ($(this).val() === '') {
-                        isEmpty = true;
-                        return false; // Exit the loop if any field is empty
-                    }
-                });
-
-                // If any field is empty, display an alert
-                if (isEmpty) {
-                    alert('{{ __('panel.msg_please_fill_in_all_topic_fields_before_adding_new') }}.');
-                    return false; // Prevent the form from submitting
-                }
-
-                // Add new row
-                var newRow = $('<tr class="cloning_row" id="' + numberIncr + '">' +
-                    '<td>' +
-                    '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
-                    '<td>{{ __('panel.partner_objective') }} (' + numberIncr + ')</td>' +
-                    '<td>' +
-                    '<div class="input-group">' +
-                    '<input type="text" name="partner_objective[' + numberIncr +
-                    ']" class="partner_objective form-control" maxlength="160">' +
-                    '<span class="input-group-text">160</span>' +
-                    '</div>' +
-                    '</td>' +
-                    '</tr>');
-                $('#partner_objectives_details tbody').append(newRow);
-
-                // Initialize character counter for the new row
-                initializeCharCounter(newRow.find('input.partner_objective'));
-            });
-
-            // Remove row when delete button is clicked
-            $(document).on('click', '.delegated-btn', function(e) {
-                e.preventDefault();
-                $(this).closest('tr').remove();
-            });
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            // Function to initialize character counter for a specific input field
-            function initializeCharCounter($input) {
-                var $counter = $input.parent().find('.input-group-text');
-
-                // Update character count on input
-                $input.on('input', function() {
-                    var remainingChars = 160 - $(this).val().length;
-                    $counter.text(remainingChars);
-                });
-
-                // Trigger input event to update counter initially
-                $input.trigger('input');
-            }
-
-            // Initialize character counters for existing rows
-            $('#partner_requirements_details').find('input.partner_requirement').each(function() {
-                initializeCharCounter($(this));
-            });
-
-            // Submit event handler for the form
-            $('#my_form_id').on('submit', function(event) {
-                // Flag to track whether there are empty fields
-                let isEmpty = false;
-
-                // Loop through each input field and check if it's empty
-                $('input.partner_requirement').each(function() {
-                    if ($(this).val() === '') {
-                        isEmpty = true;
-                        return false; // Exit the loop if any field is empty
-                    }
-                });
-
-                // If any field is empty, prevent the form submission
-                if (isEmpty) {
-                    alert('{{ __('panel.msg_one_or_more_requirement_field_empty') }}.');
-                    event.preventDefault(); // Prevent form submission
-                }
-            });
-
-            // Click event handler for adding new rows
-            $(document).on('click', '.btn_add_requirement', function() {
-                let trCount = $('#partner_requirements_details').find('tr.cloning_row:last').length;
-                let numberIncr = trCount > 0 ? parseInt($('#partner_requirements_details').find(
-                        'tr.cloning_row:last')
-                    .attr('id')) + 1 : 0;
-
-                // Create a flag to check if any field is empty
-                let isEmpty = false;
-
-                // Loop through each input field and check if it's empty
-                $('#partner_requirements_details').find('input.partner_requirement').each(function() {
-                    if ($(this).val() === '') {
-                        isEmpty = true;
-                        return false; // Exit the loop if any field is empty
-                    }
-                });
-
-                // If any field is empty, display an alert
-                if (isEmpty) {
-                    alert(
-                        '{{ __('panel.msg_please_fill_in_all_requirement_fields_before_adding_new') }}.'
-                    );
-                    return false; // Prevent the form from submitting
-                }
-
-                // Add new row
-                var newRow = $('<tr class="cloning_row" id="' + numberIncr + '">' +
-                    '<td>' +
-                    '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
-                    '<td>{{ __('panel.partner_requirement') }} (' + numberIncr + ')</td>' +
-                    '<td>' +
-                    '<div class="input-group">' +
-                    '<input type="text" name="partner_requirement[' + numberIncr +
-                    ']" class="partner_requirement form-control" maxlength="160">' +
-                    '<span class="input-group-text">160</span>' +
-                    '</div>' +
-                    '</td>' +
-                    '</tr>');
-                $('#partner_requirements_details tbody').append(newRow);
-
-                // Initialize character counter for the new row
-                initializeCharCounter(newRow.find('input.partner_requirement'));
-            });
-
-            // Remove row when delete button is clicked
-            $(document).on('click', '.delegated-btn', function(e) {
-                e.preventDefault();
-                $(this).closest('tr').remove();
-            });
         });
     </script>
 @endsection

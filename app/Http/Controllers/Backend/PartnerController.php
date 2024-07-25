@@ -109,7 +109,7 @@ class PartnerController extends Controller
             return redirect('admin/index');
         }
 
-        $partner = Partner::where('id', $partner)->get();
+        dd($request);
 
         $input['name'] = $request->name;
         $input['description'] = $request->description;
@@ -121,17 +121,7 @@ class PartnerController extends Controller
         $input['status'] = $request->status;
         $input['updated_by'] = auth()->user()->full_name;
 
-        if ($image = $request->file('partner_image')) {
-            if ($partner->partner_image != null && File::exists('assets/partners/' . $partner->partner_image)) {
-                unlink('assets/partners/' . $partner->partner_image);
-            }
-            $file_name =   auth()->user()->id . '_partner_' . time() . '.' . $image->getClientOriginalExtension();
 
-            $path = public_path('assets/partners/' . $file_name);
-            Image::make($image->getRealPath())->save($path);
-
-            $input['partner_image'] = $file_name;
-        }
 
         $partner->update($input);
 

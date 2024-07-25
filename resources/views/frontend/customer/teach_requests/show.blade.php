@@ -84,50 +84,50 @@
                                 <div class="row">
                                     <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
                                         <h1 class="m-0" style="color:green;" ">
-                                                                    معهد خطوة شباب</h1>
-                                                                <h2 style="color: gold" style="
+                                                                        معهد خطوة شباب</h1>
+                                                                    <h2 style="color: gold" style="
         font-family: Times New Roman, sans-serif;">
-                                                                    للتدريب واللغات</h2>
-                                                            </div>
-                                                            <div class="col-sm-4 d-flex align-items-center justify-content-center">
-                                                                <img style="width: 250px; padding-top: 10px; z-index: 4"
-                                                                    src="{{ asset('backend/images/logo.jpg') }}" alt="" />
-                                                            </div>
-                                                            <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
-                                                                <h1  class="m-0" style="color: green">
-                                                                    Youth Step Institute</h1>
-                                                                <h2 style="color:gold">For
-                                                                    Training
-                                                                    Languages
-                                                                </h2>
+                                                                        للتدريب واللغات</h2>
+                                                                </div>
+                                                                <div class="col-sm-4 d-flex align-items-center justify-content-center">
+                                                                    <img style="width: 250px; padding-top: 10px; z-index: 4"
+                                                                        src="{{ asset('backend/images/logo.jpg') }}" alt="" />
+                                                                </div>
+                                                                <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
+                                                                    <h1  class="m-0" style="color: green">
+                                                                        Youth Step Institute</h1>
+                                                                    <h2 style="color:gold">For
+                                                                        Training
+                                                                        Languages
+                                                                    </h2>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="header-line"
-                                                    style="
+                                                    <div class="header-line"
+                                                        style="
                       position: relative;
                       margin-top: -40px;
                       margin-bottom: 45px;
                       z-index: 2;
                     ">
-                                                    <div class="gold-line"></div>
-                                                    <div class="gray-line"></div>
-                                                </div>
-                                            </header>
+                                                        <div class="gold-line"></div>
+                                                        <div class="gray-line"></div>
+                                                    </div>
+                                                </header>
 
-                                            <div class="section px-5 pb-3">
-                                                <div class="row" style="border: 6px double green; font-size: 19px">
-                                                    <div class="col-sm-12 bg-white p-3">
-                                                        <div class="row">
-                                                            <div class="col-4" style="margin-top: 50px;">
-                                                                <span><span class="ww">تاريخ الطلب :</span>
-                                                                    {{ $teach_request->created_at->format('Y/m/d') }}
-                                                                </span>
-                                                            </div>
-                                                            <div class="col-4"
-                                                                style="
+                                                <div class="section px-5 pb-3">
+                                                    <div class="row" style="border: 6px double green; font-size: 19px">
+                                                        <div class="col-sm-12 bg-white p-3">
+                                                            <div class="row">
+                                                                <div class="col-4" style="margin-top: 50px;">
+                                                                    <span><span class="ww">تاريخ الطلب :</span>
+                                                                        {{ $teach_request->created_at->format('Y/m/d') }}
+                                                                    </span>
+                                                                </div>
+                                                                <div class="col-4"
+                                                                    style="
                             border: 4px solid green;
                             padding: 5px;
                             margin-top: 20px;
@@ -137,26 +137,26 @@
                             height: 50%;
                          
                           ">
-                                                                <h1
-                                                                    style="
+                                                                    <h1
+                                                                        style="
                               margin: 0;
                               font-size: 30px;
                               border: 1px solid green;
                               border-radius: 4px;
                               color:black;
                             ">
-                                                                    استمارة طلب تقديم كمدرب /ة
-                                                                </h1>
-                                                            </div>
-                                                            <div class="col-4">
-                                                                <input type="file" id="file-input"
-                                                                    style="display: none;
+                                                                        استمارة طلب تقديم كمدرب /ة
+                                                                    </h1>
+                                                                </div>
+                                                                <div class="col-4">
+                                                                    <input type="file" id="file-input"
+                                                                        style="display: none;
         
                               
                               " />
-                                                                <div id="image-container" class="col-4">
+                                                                    <div id="image-container" class="col-4">
 
-                                                                          @if ($teach_request->user_image && file_exists(public_path('assets/teach_requests/' . $teach_request->user_image)))
+                                                                               @if ($teach_request->user_image && file_exists(public_path('assets/teach_requests/' . $teach_request->user_image)))
                                             <a href="#" data-toggle="modal" data-target="#identityModal">
                                                 <img src="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"
                                                     alt="Identity Image" style="width: 100%; height: 181px;">
@@ -303,9 +303,7 @@
                                 <div class="row" style="margin-top: 60px; margin-bottom: -10px;">
                                     <div class="col-sm-12 pt-3">
                                         <p>
-                                            ملاحظة : سيتم اعتماد البيانات أعلاه عند الارسال ، لذا نرجو
-                                            القيام ادخال كافة البيانات المطلوبة بشكل صحيح و دقيق و
-                                            مراجعة البيانات قبل ارسالها الينا.
+                                            ملاحظة : سيتم مراجعة طلبك و الرد عليه خلال ثلاث ايام من تاريخ اليوم
                                         </p>
                                     </div>
                                 </div>

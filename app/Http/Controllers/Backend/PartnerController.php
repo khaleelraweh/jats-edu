@@ -38,6 +38,7 @@ class PartnerController extends Controller
         return view('backend.partners.create');
     }
 
+
     public function store(partnerRequest $request)
     {
 
@@ -80,5 +81,18 @@ class PartnerController extends Controller
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
+    }
+
+    public function edit($partner)
+    {
+
+        if (!auth()->user()->ability('admin', 'update_partners')) {
+            return redirect('admin/index');
+        }
+
+        $partner = Partner::where('id', $partner)->first();
+
+
+        return view('backend.partners.edit', compact('partner'));
     }
 }

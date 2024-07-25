@@ -18,9 +18,9 @@ class PartnerSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        $patner1 = Partner::create([
-            'title' => ['ar'    => 'هائل سعيد انعم وشركاه', 'en'    =>  'Hayel Saeed Anam and Partners'],
-            'description' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
+        Partner::create([
+            'name' => ['ar'    => 'هائل سعيد انعم وشركاه', 'en'    =>  'Hayel Saeed Anam and Partners'],
+            'description' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
             'partner_image' => 'hayel.jpg',
             'status' => true,
             'published_on' => $faker->dateTime(),
@@ -28,9 +28,9 @@ class PartnerSeeder extends Seeder
             'updated_by' => $faker->realTextBetween(10, 20), // Assuming you want this as well
         ]);
 
-        $patner2 = Partner::create([
-            'title' => ['ar'    =>   'وزارة التربية والتعليم', 'en'    =>  'The Ministry of Education'],
-            'description' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
+        Partner::create([
+            'name' => ['ar'    =>   'وزارة التربية والتعليم', 'en'    =>  'The Ministry of Education'],
+            'description' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
             'partner_image' => 'education.jpg',
             'status' => true,
             'published_on' => $faker->dateTime(),
@@ -38,19 +38,11 @@ class PartnerSeeder extends Seeder
             'updated_by' => $faker->realTextBetween(10, 20), // Assuming you want this as well
         ]);
 
-        $patner3 = Partner::create([
-            'title' => ['ar'    =>   'وزارة التربية والتعليم', 'en'    =>  'The Ministry of Education'],
-            'description' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
-            'partner_image' => 'education.jpg',
-            'status' => true,
-            'published_on' => $faker->dateTime(),
-            'created_by' => $faker->realTextBetween(10, 20),
-            'updated_by' => $faker->realTextBetween(10, 20), // Assuming you want this as well
-        ]);
 
-        $patner3 = Partner::create([
-            'title' => ['ar'    =>   'وزارة التعليم الفني والتدريب المهني ', 'en'    =>  'Ministry of Technical Education and Vocational Training'],
-            'description' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
+
+        Partner::create([
+            'name' => ['ar'    =>   'وزارة التعليم الفني والتدريب المهني ', 'en'    =>  'Ministry of Technical Education and Vocational Training'],
+            'description' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
             'partner_image' => 'فechnical.jpg',
             'status' => true,
             'published_on' => $faker->dateTime(),

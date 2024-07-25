@@ -42,6 +42,9 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/libs/jarallax/dist/jarallax.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/libs/quill/dist/quill.core.css') }}" />
 
+    {{-- owl-carousel --}}
+    <link rel="stylesheet" href="{{ asset('frontend/assets/plugins/owl-carousel/owl.carousel.css') }}" />
+
 
 
     <link rel="stylesheet"
@@ -134,6 +137,14 @@
 
     <!-- Theme JS -->
     <script src="{{ asset('frontend/assets/js/theme.min.js') }}"></script>
+
+
+    {{-- owl-carousel --}}
+    <script src="{{ asset('frontend/assets/plugins/owl-carousel/owl-main.js') }}"></script>
+    <script src="{{ asset('frontend/assets/plugins/owl-carousel/owl.carousel.js') }}"></script>
+
+
+
 
 
 

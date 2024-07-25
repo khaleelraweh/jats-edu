@@ -45,7 +45,7 @@ class PartnerRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'name.*'                  =>  'required|max:255',
+                        'name'                  =>  'required|max:255',
                         'description.*'           =>  'nullable',
                         'partner_image'                =>  'nullable',
                         'partner_image.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',

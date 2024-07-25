@@ -58,7 +58,7 @@
             @endif
 
 
-            {{-- enctype used cause we will save images  --}}
+            {{-- enctype used cause we will save parent_image  --}}
             <form id="my_form_id" action="{{ route('admin.partners.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 {{-- links of tabs --}}
@@ -131,15 +131,15 @@
 
                                 <div class="row ">
                                     <div class="col-sm-12 col-md-12 pt-3">
-                                        <label for="images">
+                                        <label for="parent_image">
                                             {{ __('panel.image') }}
                                             /
-                                            {{ __('panel.images') }}
+                                            {{ __('panel.parent_image') }}
                                         </label>
                                         <div class="file-loading">
-                                            <input type="file" name="images[]" id="partner_images"
+                                            <input type="file" name="parent_image" id="partner_parent_image"
                                                 class="file-input-overview" multiple="multiple">
-                                            @error('images')
+                                            @error('parent_image')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -265,7 +265,7 @@
     <script>
         $(function() {
 
-            $("#partner_images").fileinput({
+            $("#partner_parent_image").fileinput({
                 theme: "fa5",
                 maxFileCount: 5,
                 allowedFileTypes: ['image'],

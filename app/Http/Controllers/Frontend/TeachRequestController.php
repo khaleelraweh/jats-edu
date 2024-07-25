@@ -8,6 +8,8 @@ use App\Models\TeachRequest;
 use App\Models\User;
 use App\Notifications\Frontend\Customer\TeachRequestNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class TeachRequestController extends Controller
 {
@@ -20,6 +22,7 @@ class TeachRequestController extends Controller
 
     public function store(Request $request)
     {
+
 
         // Validate the request
         $validatedData = $request->validate([
@@ -52,6 +55,22 @@ class TeachRequestController extends Controller
         $data['motivation']                     = $validatedData['motivation'];
         $data['user_id']                        = auth()->user()->id;
 
+
+        // if ($request->user_image) {
+
+        //     $file_name = auth()->user()->id  . 'identity-face' . time() . '.' . $request->user_image->getClientOriginalExtension();
+        //     $path = public_path('assets/courses/' . $file_name);
+        //     Image::make($request->user_image->getRealPath())->save($path);
+        // }
+
+
+        // Handle file uploads
+        if ($identity = $request->file('user_image')) {
+            $fileName = auth()->user()->id . '-face-' . time() . '.' . $identity->extension();
+            $filePath = public_path('assets/teach_requests');
+            $identity->move($filePath, $fileName); // Move image file
+            $data['user_image'] = $fileName;
+        }
 
 
         // Handle file uploads

@@ -93,7 +93,7 @@
                                     <div class="col-sm-12 pt-3">
                                         <div class="form-group">
                                             <label for="name">
-                                                {{ __('transf.partner_name') }}
+                                                {{ __('panel.partner_name') }}
                                             </label>
 
                                             <div class="input-group">

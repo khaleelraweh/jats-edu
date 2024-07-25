@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('style')
+    <style>
+        .flick-item {
+            width {}
+        }
+    </style>
+@endsection
+
 @section('content')
     {{-- HERO --}}
     <section class="mt-n12">
@@ -87,6 +95,30 @@
             </div>
 
             <div class="mx-n3 mx-md-n4"
+                data-flickity='{"pageDots": false,"cellAlign": "left", "wrapAround": true, "imagesLoaded": true , "autoPlay": true}'>
+                @foreach ($partners as $partner)
+                    <div class="col-12 col-md-2 px-1">
+                        @php
+                            if ($partner->partner_image != null) {
+                                $partner_img = asset('assets/partners/' . $partner->partner_image);
+
+                                if (!file_exists(public_path('assets/partners/' . $partner->partner_image))) {
+                                    $partner_img = asset('image/not_found/avator2.webp');
+                                }
+                            } else {
+                                $partner_img = asset('image/not_found/avator2.webp');
+                            }
+                        @endphp
+                        <div class="flick-item" style="width:190px !important;height: 190px !important;">
+                            <img src="{{ $partner_img }}" style="width:100%;height:100%;border-radius:50%;"
+                                class="img-fluid" alt="{{ $partner->name }}">
+                        </div>
+
+                    </div>
+                @endforeach
+            </div>
+
+            {{-- <div class="mx-n3 mx-md-n4"
                 data-flickity='{"pageDots": false,"cellAlign": "left", "wrapAround": true, "imagesLoaded": true}'>
                 @foreach ($partners as $partner)
                     <div class="col-6 col-md-4 col-lg-3 text-center py-5 text-md-left px-3 px-md-4" data-aos="fade-up"
@@ -132,7 +164,7 @@
                 @endforeach
 
 
-            </div>
+            </div> --}}
         </div>
     </section>
 

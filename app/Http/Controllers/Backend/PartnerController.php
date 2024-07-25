@@ -56,6 +56,7 @@ class PartnerController extends Controller
 
         $input['name']                         =   $request->name;
         $input['description']                   =   $request->description;
+        $input['partner_link']                   =   $request->partner_link;
 
         $input['status']                        =   $request->status;
         $input['created_by']                    =   auth()->user()->full_name;
@@ -114,6 +115,8 @@ class PartnerController extends Controller
 
         $input['name'] = $request->name;
         $input['description'] = $request->description;
+        $input['partner_link']                   =   $request->partner_link;
+
 
         $published_on                           =   $request->published_on . ' ' . $request->published_on_time;
         $published_on                           =   new DateTimeImmutable($published_on);

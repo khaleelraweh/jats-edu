@@ -126,6 +126,24 @@
                                         @enderror
                                     </div>
                                 </div>
+
+                                {{-- partner link field --}}
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 pt-3">
+                                        <label for="partner_link">
+                                            {{ __('panel.partner_link') }}
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="text" name="partner_link" id="partner_link"
+                                                value="{{ old('partner_link', $partner->partner_link) }}"
+                                                class="form-control">
+                                        </div>
+                                        @error('partner_link')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
                             </div>
 
                             {{-- مرفق الصور  --}}

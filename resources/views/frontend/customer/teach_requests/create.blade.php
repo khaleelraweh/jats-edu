@@ -87,258 +87,218 @@
                             <div id="wizard1">
                                 <h3>البيانات الشخصية</h3>
                                 <section>
-
-                                    <!-- row -->
                                     <div class="row">
-                                        <div class="col-lg-12 col-md-12">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <div class="row mb-4">
+                                        <div class="col-sm-12 col-md-8">
+                                            <div class="row ">
+                                                <div class="col-sm-12 col-md-6 ">
+                                                    <div class="control-group form-group">
+                                                        <label class="form-label">
+                                                            الإسم باللغة العربية
+                                                            <span class="required text-danger">*</span>
+                                                        </label>
+                                                        <input type="text" name="full_name[ar]"
+                                                            class="form-control required"
+                                                            value="{{ old('full_name.ar') }}">
+                                                        @error('full_name.ar')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <div class="control-group form-group ">
+                                                        <label class="form-label">
+                                                            الإسم باللغة الانجليزية
+                                                            <span class="required text-danger">*</span>
+                                                        </label>
+                                                        <input type="text" name="full_name[en]"
+                                                            class="form-control required"
+                                                            value="{{ old('full_name.en') }}">
+                                                        @error('full_name.en')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                                        <div class="col-sm-12 col-md-4 ">
-                                                            <div class="control-group form-group">
-                                                                <label class="form-label">
-                                                                    الإسم باللغة العربية
-                                                                    <span class="required text-danger">*</span>
-                                                                </label>
-                                                                <input type="text" name="full_name[ar]"
-                                                                    class="form-control required"
-                                                                    value="{{ old('full_name.ar') }}">
-                                                                @error('full_name.ar')
-                                                                    <span class="text-danger">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-12 col-md-4">
-                                                            <div class="control-group form-group ">
-                                                                <label class="form-label">
-                                                                    الإسم باللغة الانجليزية
-                                                                    <span class="required text-danger">*</span>
-                                                                </label>
-                                                                <input type="text" name="full_name[en]"
-                                                                    class="form-control required"
-                                                                    value="{{ old('full_name.en') }}">
-                                                                @error('full_name.en')
-                                                                    <span class="text-danger">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="control-group form-group">
+                                                        <label class="form-label">
+                                                            تاريخ الميلاد
+                                                            <span class="required text-danger">*</span>
 
-                                                        <div class="col-sm-12 col-md-4">
-                                                            <label class="form-label">
-                                                                ارفق صورة شخصية
-                                                                <span class="required text-danger">*</span>
-                                                            </label>
-                                                            <input type="file" class="dropify" data-height="200" />
+                                                        </label>
+                                                        <div class="form-group">
+                                                            <input type="text" name="date_of_birth"
+                                                                class="form-control required flatpickr_date_of_birth"
+                                                                value="{{ old('date_of_birth') }}">
+                                                            @error('date_of_birth')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
                                                         </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="control-group form-group">
+                                                        <label for="place_of_birth">
+                                                            {{-- <i class="fa fa-globe custom-color"></i> --}}
+                                                            مكان الميلاد
+                                                            <span class="required text-danger">*</span>
+                                                        </label>
+                                                        <select id="place_of_birth" name="place_of_birth"
+                                                            class="form-control">
+                                                            <option value="">---</option>
+                                                            @foreach (getCountries() as $country)
+                                                                <option value="{{ $country->name }}"
+                                                                    {{ old('place_of_birth') == $country->name ? 'selected' : '' }}>
+                                                                    {{ $country->name }} {{ $country->emoji }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('place_of_birth')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="control-group form-group">
+                                                        <label for="nationality">
+                                                            الجنسية
+                                                            <span class="required text-danger">*</span>
+                                                        </label>
+                                                        <select id="nationality" name="nationality" class="form-control">
+                                                            <option value="">---</option>
+                                                            @foreach (getCountries() as $country)
+                                                                <option value="{{ $country->nationality }}"
+                                                                    {{ old('nationality') == $country->nationality ? 'selected' : '' }}>
+                                                                    {{ $country->nationality }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('nationality')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-6">
+                                                    <div class="control-group form-group">
+                                                        <label for="residence_address">
+                                                            {{-- <i class="fa fa-globe custom-color"></i> --}}
+                                                            عنوان/ مكان الإقامة
+                                                            <span class="required text-danger">*</span>
+                                                        </label>
+                                                        <select id="residence_address" name="residence_address"
+                                                            class="form-control">
+                                                            <option value="">---</option>
+                                                            @foreach (getCountries() as $country)
+                                                                <option value="{{ $country->name }}"
+                                                                    {{ old('residence_address') == $country->name ? 'selected' : '' }}>
+                                                                    {{ $country->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('residence_address')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6">
+                                                    <div class="control-group form-group">
+                                                        <label for="phone">
+                                                            {{-- <i class="fa fa-globe custom-color"></i> --}}
+                                                            رقم الجوال
+                                                            <span class="required text-danger">*</span>
+                                                        </label>
+                                                        <input type="text" name="phone" class="form-control"
+                                                            value="{{ old('phone') }}">
+                                                        @error('phone')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="control-group form-group ">
+                                                        <label class="form-label"> المؤهل الدراسي</label>
+
+                                                        <select name="educational_qualification" class="form-control">
+                                                            <option value="">---</option>
+                                                            <option value="1"
+                                                                {{ old('educational_qualification') == '1' ? 'selected' : null }}>
+                                                                {{ __('transf.Diploma') }}
+                                                            </option>
+                                                            <option value="2"
+                                                                {{ old('educational_qualification') == '2' ? 'selected' : null }}>
+                                                                {{ __('transf.Higher Diploma') }}
+                                                            </option>
+                                                            <option value="3"
+                                                                {{ old('educational_qualification') == '3' ? 'selected' : null }}>
+                                                                {{ __('transf.Bachelor') }}
+                                                            </option>
+                                                            <option value="4"
+                                                                {{ old('educational_qualification') == '4' ? 'selected' : null }}>
+                                                                {{ __('transf.Master') }}
+                                                            </option>
+                                                            <option value="5"
+                                                                {{ old('educational_qualification') == '5' ? 'selected' : null }}>
+                                                                {{ __('transf.Ph_D') }}
+                                                            </option>
+                                                            <option value="6"
+                                                                {{ old('educational_qualification') == '6' ? 'selected' : null }}>
+                                                                {{ __('transf.Professor') }}
+                                                            </option>
+                                                        </select>
+                                                        @error('educational_qualification')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="control-group form-group ">
+                                                        <label class="form-label">التخصص</label>
+                                                        <select name="specialization" class="form-control">
+                                                            <option value="">---</option>
+                                                            @foreach ($specializations as $specialization)
+                                                                <option value="{{ $specialization->id }}"
+                                                                    {{ old('specialization') == $specialization->id ? 'selected' : '' }}>
+                                                                    {{ $specialization->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('specialization')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="control-group form-group mb-0">
+                                                        <label class="form-label">سنوات خبرة التدريب</label>
+                                                        <input type="number" name="years_of_training_experience"
+                                                            class="form-control required"
+                                                            value="{{ old('years_of_training_experience') }}">
+                                                        @error('years_of_training_experience')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-
-                                    <div class="row pt-2">
-                                        <div class="col-sm-12 col-md-6 ">
-                                            <div class="control-group form-group">
-                                                <label class="form-label">
-                                                    الإسم باللغة العربية
-                                                    <span class="required text-danger">*</span>
-                                                </label>
-                                                <input type="text" name="full_name[ar]" class="form-control required"
-                                                    value="{{ old('full_name.ar') }}">
-                                                @error('full_name.ar')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-6">
-                                            <div class="control-group form-group ">
-                                                <label class="form-label">
-                                                    الإسم باللغة الانجليزية
-                                                    <span class="required text-danger">*</span>
-                                                </label>
-                                                <input type="text" name="full_name[en]" class="form-control required"
-                                                    value="{{ old('full_name.en') }}">
-                                                @error('full_name.en')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+                                        {{-- this is for image  --}}
+                                        <div class="col-sm-12 col-md-4">
+                                            <label class="form-label">
+                                                ارفق صورة شخصية
+                                                <span class="required text-danger">*</span>
+                                            </label>
+                                            <input type="file" class="dropify" data-height="200" />
                                         </div>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-4">
-                                            <div class="control-group form-group">
-                                                <label class="form-label">
-                                                    تاريخ الميلاد
-                                                    <span class="required text-danger">*</span>
-
-                                                </label>
-                                                <div class="form-group">
-                                                    <input type="text" name="date_of_birth"
-                                                        class="form-control required flatpickr_date_of_birth"
-                                                        value="{{ old('date_of_birth') }}">
-                                                    @error('date_of_birth')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-4">
-                                            <div class="control-group form-group">
-                                                <label for="place_of_birth">
-                                                    {{-- <i class="fa fa-globe custom-color"></i> --}}
-                                                    مكان الميلاد
-                                                    <span class="required text-danger">*</span>
-                                                </label>
-                                                <select id="place_of_birth" name="place_of_birth" class="form-control">
-                                                    <option value="">---</option>
-                                                    @foreach (getCountries() as $country)
-                                                        <option value="{{ $country->name }}"
-                                                            {{ old('place_of_birth') == $country->name ? 'selected' : '' }}>
-                                                            {{ $country->name }} {{ $country->emoji }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('place_of_birth')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-4">
-                                            <div class="control-group form-group">
-                                                <label for="nationality">
-                                                    الجنسية
-                                                    <span class="required text-danger">*</span>
-                                                </label>
-                                                <select id="nationality" name="nationality" class="form-control">
-                                                    <option value="">---</option>
-                                                    @foreach (getCountries() as $country)
-                                                        <option value="{{ $country->nationality }}"
-                                                            {{ old('nationality') == $country->nationality ? 'selected' : '' }}>
-                                                            {{ $country->nationality }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('nationality')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-6">
-                                            <div class="control-group form-group">
-                                                <label for="residence_address">
-                                                    {{-- <i class="fa fa-globe custom-color"></i> --}}
-                                                    عنوان/ مكان الإقامة
-                                                    <span class="required text-danger">*</span>
-                                                </label>
-                                                <select id="residence_address" name="residence_address"
-                                                    class="form-control">
-                                                    <option value="">---</option>
-                                                    @foreach (getCountries() as $country)
-                                                        <option value="{{ $country->name }}"
-                                                            {{ old('residence_address') == $country->name ? 'selected' : '' }}>
-                                                            {{ $country->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('residence_address')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-12 col-md-6">
-                                            <div class="control-group form-group">
-                                                <label for="phone">
-                                                    {{-- <i class="fa fa-globe custom-color"></i> --}}
-                                                    رقم الجوال
-                                                    <span class="required text-danger">*</span>
-                                                </label>
-                                                <input type="text" name="phone" class="form-control"
-                                                    value="{{ old('phone') }}">
-                                                @error('phone')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-4">
-                                            <div class="control-group form-group ">
-                                                <label class="form-label"> المؤهل الدراسي</label>
-
-                                                <select name="educational_qualification" class="form-control">
-                                                    <option value="">---</option>
-                                                    <option value="1"
-                                                        {{ old('educational_qualification') == '1' ? 'selected' : null }}>
-                                                        {{ __('transf.Diploma') }}
-                                                    </option>
-                                                    <option value="2"
-                                                        {{ old('educational_qualification') == '2' ? 'selected' : null }}>
-                                                        {{ __('transf.Higher Diploma') }}
-                                                    </option>
-                                                    <option value="3"
-                                                        {{ old('educational_qualification') == '3' ? 'selected' : null }}>
-                                                        {{ __('transf.Bachelor') }}
-                                                    </option>
-                                                    <option value="4"
-                                                        {{ old('educational_qualification') == '4' ? 'selected' : null }}>
-                                                        {{ __('transf.Master') }}
-                                                    </option>
-                                                    <option value="5"
-                                                        {{ old('educational_qualification') == '5' ? 'selected' : null }}>
-                                                        {{ __('transf.Ph_D') }}
-                                                    </option>
-                                                    <option value="6"
-                                                        {{ old('educational_qualification') == '6' ? 'selected' : null }}>
-                                                        {{ __('transf.Professor') }}
-                                                    </option>
-                                                </select>
-                                                @error('educational_qualification')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-4">
-                                            <div class="control-group form-group ">
-                                                <label class="form-label">التخصص</label>
-                                                <select name="specialization" class="form-control">
-                                                    <option value="">---</option>
-                                                    @foreach ($specializations as $specialization)
-                                                        <option value="{{ $specialization->id }}"
-                                                            {{ old('specialization') == $specialization->id ? 'selected' : '' }}>
-                                                            {{ $specialization->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('specialization')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-4">
-                                            <div class="control-group form-group mb-0">
-                                                <label class="form-label">سنوات خبرة التدريب</label>
-                                                <input type="number" name="years_of_training_experience"
-                                                    class="form-control required"
-                                                    value="{{ old('years_of_training_experience') }}">
-                                                @error('years_of_training_experience')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-
-
                                 </section>
                                 <h3>المرفقات</h3>
                                 <section>

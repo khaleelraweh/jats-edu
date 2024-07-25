@@ -50,8 +50,6 @@ class TeachRequestController extends Controller
 
         ];
 
-
-
         $key = array_search($teach_request->teach_request_status, array_keys($teach_request_status_array));
 
         foreach ($teach_request_status_array as $k => $v) {
@@ -67,10 +65,7 @@ class TeachRequestController extends Controller
     {
         $teach_request = TeachRequest::where('id', $teach_request)->first();
 
-
-
         $teach_request->update(['teach_request_status' => $request->teach_request_status]);
-
 
         // $instructorRoleId = Role::whereName('instructor')->first()->id;
         // $user = Auth()->user();

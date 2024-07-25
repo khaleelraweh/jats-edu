@@ -126,6 +126,9 @@ Route::group(['middleware' => ['roles', 'role:customer|supervisor', 'verified']]
     Route::get('/Teach-on-jats', [FrontendCustomerController::class, 'Teach_on_jats'])->name('customer.teach_on_jats');
     Route::resource('teach_requests', FrontendTeachRequestController::class);
 
+    Route::get('teach_requests/{teachRequest}', [FrontendTeachRequestController::class, 'show'])->name('frontend.customer.teach_requests.show');
+
+
 
 
     // ==============  Customer Bought Courses and Lessons ======  //

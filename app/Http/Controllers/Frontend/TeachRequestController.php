@@ -100,11 +100,13 @@ class TeachRequestController extends Controller
             $admin->notify(new TeachRequestNotification($teach_request));
         }
 
-        return redirect()->back()->with('success', 'Your request has been submitted successfully.');
+        // return redirect()->back()->with('success', 'Your request has been submitted successfully.');
+        return redirect()->route('frontend.customer.teach_requests.show', $teach_request->id);
     }
 
     public function show($teachRequest)
     {
+
         $teachRequest = TeachRequest::where('id', $teachRequest)->first();
 
         return view('frontend.customer.teach_requests.show', compact('teachRequest'));

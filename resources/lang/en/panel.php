@@ -434,6 +434,7 @@ return [
 
     'partner_name'                  =>    'Partner Name',
     'partner_image'                 =>  'Partner Image',
+    'partner_link'                  =>  'Partner Link',
 
 
 

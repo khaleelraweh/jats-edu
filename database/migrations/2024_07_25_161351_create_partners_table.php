@@ -19,6 +19,7 @@ return new class extends Migration
             $table->json('slug');
             $table->json('description')->nullable();
             $table->string('partner_image')->nullable();
+            $table->string('partner_link')->nullable();
 
 
             // will be use always

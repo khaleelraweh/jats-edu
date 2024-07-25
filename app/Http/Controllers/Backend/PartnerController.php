@@ -56,14 +56,14 @@ class PartnerController extends Controller
 
         $published_on                           =   $request->published_on . ' ' . $request->published_on_time;
         $published_on                           =   new DateTimeImmutable($published_on);
-        $input['published_on']                  =   $published_on;
+        $c['published_on']                  =   $published_on;
 
         // Handle file partner_image
         if ($partner_image = $request->file('partner_image')) {
             $fileName =   auth()->user()->id . '_partner_' . time() . '.' . $partner_image->extension();
             $filePath = public_path('assets/partners');
             $partner_image->move($filePath, $fileName); // Move image file
-            $data['partner_image'] = $fileName;
+            $input['partner_image'] = $fileName;
         }
 
         $partner                                 =  Partner::create($input);

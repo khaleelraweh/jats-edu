@@ -1,5 +1,5 @@
 <div class="card-body">
-    <form action="{{ route('admin.courses.index') }}" method="get">
+    <form action="{{ route('admin.partners.index') }}" method="get">
         <div class="row">
             <div class="col-8 col-sm-4 col-md-2">
                 <div class="form-group">
@@ -30,7 +30,7 @@
                         </option>
                         <option value="name"
                             {{ old('sort_by', request()->input('sort_by')) == 'name' ? 'selected' : '' }}>
-                            {{ __('panel.title') }}
+                            {{ __('panel.name') }}
                         </option>
                         <option value="created_at"
                             {{ old('sort_by', request()->input('sort_by')) == 'created_at' ? 'selected' : '' }}>

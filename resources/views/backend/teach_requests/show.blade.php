@@ -90,7 +90,7 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.teach_requests.index') }}">
-                            {{ __('panel.show_courses') }}
+                            {{ __('panel.show_teach_requests') }}
                         </a>
                     </li>
                 </ul>

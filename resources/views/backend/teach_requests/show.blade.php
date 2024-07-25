@@ -32,6 +32,17 @@
             margin-bottom: 20px;
             background-color: whitesmoke;
         }
+
+        #image-container {
+            /* border: 1px solid gray; */
+            margin-right: 100px;
+            width: 50%;
+            height: 181px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
     </style>
 
     <!-- Custom CSS -->
@@ -194,18 +205,17 @@
         
                               
                               " />
-                                    <div id="image-container" class="col-4"
-                                        style="
-          border: 1px solid gray;
-          margin-right: 100px;
-          width: 50%;
-          height: 181px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-      ">
+                                    <div id="image-container" class="col-4">
 
+                                        @if ($teach_request->user_image && file_exists(public_path('assets/teach_requests/' . $teach_request->user_image)))
+                                            <a href="#" data-toggle="modal" data-target="#identityModal">
+                                                <img src="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"
+                                                    alt="Identity Image" style="width: 100%; height: 181px;">
+                                            </a>
+                                        @else
+                                            <img src="{{ asset('image/not_found/item_image_not_found.webp') }}"
+                                                alt="Identity Image" style="width: 100%; height: 181px;">
+                                        @endif
                                     </div>
                                 </div>
 

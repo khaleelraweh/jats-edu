@@ -240,14 +240,52 @@
                                                 {{ __('panel.f_instructor_dashboard') }}
                                             </a>
                                         </li>
+                                    @elseif (auth()->user()->hasTeachRequests())
+                                        @php
+                                            $teachRequestStatus = auth()->user()->latestTeachRequestStatus();
+                                        @endphp
+                                        @if (is_null($teachRequestStatus))
+                                            <li>
+                                                <a href="{{ route('teach_requests.create') }}">
+                                                    {{ __('panel.f_youth_step') }}
+                                                </a>
+                                            </li>
+                                        @else
+                                            @if ($teachRequestStatus == \App\Models\TeachRequest::NEW_REQUEST)
+                                                <li>
+                                                    <a href="{{ route('teach_requests.show', auth()->user()->id) }}">
+                                                        لقد قمت بطلب تدريس جديد
+                                                    </a>
+                                                </li>
+                                            @elseif ($teachRequestStatus == \App\Models\TeachRequest::UNDER_PROCESS)
+                                                <li>
+                                                    <a href="{{ route('teach_requests.show', auth()->user()->id) }}">
+                                                        طلبك للتدريس
+                                                        ({{ __('panel.teach_request_under_proccess') }})
+                                                    </a>
+                                                </li>
+                                            @elseif ($teachRequestStatus == \App\Models\TeachRequest::ACCEPTED)
+                                                <li>
+                                                    <a href="{{ route('instructor.dashboard') }}">
+                                                        {{ __('panel.f_instructor_dashboard') }}
+                                                    </a>
+                                                </li>
+                                            @elseif ($teachRequestStatus == \App\Models\TeachRequest::REJECTED)
+                                                <li>
+                                                    <a href="{{ route('teach_requests.create') }}">
+                                                        لقد تم رفض طلبك يمكنك عمل اخر !!
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        @endif
                                     @else
                                         <li>
-                                            {{-- this is the work --}}
                                             <a href="{{ route('teach_requests.create') }}">
                                                 {{ __('panel.f_youth_step') }}
                                             </a>
                                         </li>
                                     @endif
+
 
                                     <div class="hr"></div>
 

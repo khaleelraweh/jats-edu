@@ -150,4 +150,15 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->requestToTeaches()->exists();
     }
+
+    public function latestTeachRequestStatus()
+    {
+        $teachRequest = $this->requestToTeaches()->latest()->first();
+
+        if (!$teachRequest) {
+            return null;
+        }
+
+        return $teachRequest->teach_request_status;
+    }
 }

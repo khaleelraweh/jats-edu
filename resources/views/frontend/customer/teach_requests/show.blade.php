@@ -65,98 +65,69 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        .outer {}
     </style>
 @endsection
 
 @section('content')
     {{-- first section --}}
-    <div class="card shadow mb-4">
-
-        {{-- breadcrumb part  --}}
-        <div class="card-header py-3 d-flex flex-column flex-sm-row justify-content-between">
-
-            <div class="card-naving">
-                <h3 class="font-weight-bold text-primary">
-                    <i class="fa fa-edit"></i>
-                    {{ __('transf.Course Landing Page') }}
-                </h3>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
-                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-                            <i class="fa fa-solid fa-chevron-left chevron"></i>
-                        @else
-                            <i class="fa fa-solid fa-chevron-right chevron"></i>
-                        @endif
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.teach_requests.index') }}">
-                            {{ __('panel.show_teach_requests') }}
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <div class="container">
 
 
-            <div class="ml-auto mt-3 mt-sm-0">
-                طلب جديد
-            </div>
-        </div>
-
-
-        <div class="outer bg-white p-4">
-            <div class="inner" style="border: 1px solid #777777">
-                <header>
-                    <div class="row">
-                        <div class="col-sm-10 offset-1 bg-white">
-                            <div class="row">
-                                <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
-                                    <h1 class="text-success m-0" style="
+        <div class="card shadow mb-4">
+            <div class="outer bg-white p-4">
+                <div class="inner" style="border: 1px solid #777777">
+                    <header>
+                        <div class="row">
+                            <div class="col-sm-10 offset-1 bg-white">
+                                <div class="row">
+                                    <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
+                                        <h1 class="m-0" style="color:green;" ">
+                                                                    معهد خطوة شباب</h1>
+                                                                <h2 style="color: gold" style="
         font-family: Times New Roman, sans-serif;">
-                                        معهد خطوة شباب</h1>
-                                    <h2 class="text-warning" style="
-        font-family: Times New Roman, sans-serif;">
-                                        للتدريب واللغات</h2>
-                                </div>
-                                <div class="col-sm-4 d-flex align-items-center justify-content-center">
-                                    <img style="width: 250px; padding-top: 10px; z-index: 4"
-                                        src="{{ asset('backend/images/logo.jpg') }}" alt="" />
-                                </div>
-                                <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
-                                    <h1 class="text-success m-0" style="
-        font-family: Times New Roman, sans-serif;">
-                                        Youth Step Institute</h1>
-                                    <h2 class="text-warning" style=" font-family: Times New Roman, sans-serif;">For Training
-                                        Languages
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                                                    للتدريب واللغات</h2>
+                                                            </div>
+                                                            <div class="col-sm-4 d-flex align-items-center justify-content-center">
+                                                                <img style="width: 250px; padding-top: 10px; z-index: 4"
+                                                                    src="{{ asset('backend/images/logo.jpg') }}" alt="" />
+                                                            </div>
+                                                            <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
+                                                                <h1  class="m-0" style="color: green">
+                                                                    Youth Step Institute</h1>
+                                                                <h2 style="color:gold">For
+                                                                    Training
+                                                                    Languages
+                                                                </h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                    <div class="header-line"
-                        style="
+                                                <div class="header-line"
+                                                    style="
                       position: relative;
                       margin-top: -40px;
                       margin-bottom: 45px;
                       z-index: 2;
                     ">
-                        <div class="gold-line"></div>
-                        <div class="gray-line"></div>
-                    </div>
-                </header>
+                                                    <div class="gold-line"></div>
+                                                    <div class="gray-line"></div>
+                                                </div>
+                                            </header>
 
-                <div class="section px-5 pb-3">
-                    <div class="row" style="border: 6px double green; font-size: 19px">
-                        <div class="col-sm-12 bg-white p-3">
-                            <div class="row">
-                                <div class="col-4" style="margin-top: 50px;">
-                                    <span><span class="ww">تاريخ الطلب :</span>
-                                        {{ $teach_request->created_at->format('Y/m/d') }}
-                                    </span>
-                                </div>
-                                <div class="col-4"
-                                    style="
+                                            <div class="section px-5 pb-3">
+                                                <div class="row" style="border: 6px double green; font-size: 19px">
+                                                    <div class="col-sm-12 bg-white p-3">
+                                                        <div class="row">
+                                                            <div class="col-4" style="margin-top: 50px;">
+                                                                <span><span class="ww">تاريخ الطلب :</span>
+                                                                    {{ $teach_request->created_at->format('Y/m/d') }}
+                                                                </span>
+                                                            </div>
+                                                            <div class="col-4"
+                                                                style="
                             border: 4px solid green;
                             padding: 5px;
                             margin-top: 20px;
@@ -166,26 +137,26 @@
                             height: 50%;
                          
                           ">
-                                    <h1
-                                        style="
+                                                                <h1
+                                                                    style="
                               margin: 0;
                               font-size: 30px;
                               border: 1px solid green;
                               border-radius: 4px;
                               color:black;
                             ">
-                                        استمارة طلب تقديم كمدرب /ة
-                                    </h1>
-                                </div>
-                                <div class="col-4">
-                                    <input type="file" id="file-input"
-                                        style="display: none;
+                                                                    استمارة طلب تقديم كمدرب /ة
+                                                                </h1>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <input type="file" id="file-input"
+                                                                    style="display: none;
         
                               
                               " />
-                                    <div id="image-container" class="col-4">
+                                                                <div id="image-container" class="col-4">
 
-                                        @if ($teach_request->user_image && file_exists(public_path('assets/teach_requests/' . $teach_request->user_image)))
+                                                                          @if ($teach_request->user_image && file_exists(public_path('assets/teach_requests/' . $teach_request->user_image)))
                                             <a href="#" data-toggle="modal" data-target="#identityModal">
                                                 <img src="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"
                                                     alt="Identity Image" style="width: 100%; height: 181px;">
@@ -193,7 +164,7 @@
                                         @else
                                             <img src="{{ asset('image/not_found/item_image_not_found.webp') }}"
                                                 alt="Identity Image" style="width: 100%; height: 181px;">
-                                        @endif
+                                            @endif
                                     </div>
                                 </div>
 
@@ -241,8 +212,7 @@
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="residence-address ww">عنوان الإقامة \ السكن :
                                         </span>
-                                        <span
-                                            class="residence-address-value">{{ $teach_request->residence_address }}</span>
+                                        <span class="residence-address-value">{{ $teach_request->residence_address }}</span>
                                     </div>
 
                                     <div class="col-sm-12 pt-3 col-md-4">
@@ -261,7 +231,8 @@
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="specialization ww ">التخصص : </span>
-                                        <span class="specialization-value"> {{ $teach_request->specialization }} </span>
+                                        <span class="specialization-value"> {{ $teach_request->specialization }}
+                                        </span>
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="years_of_training_experience ww">
@@ -340,11 +311,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                </div>
 
-                    <footer class="d-flex justify-content-center" style="text-align: center;margin-top: 50px;">
-                        <div class="footer-line"
-                            style="
+                <footer class="d-flex justify-content-center" style="text-align: center;margin-top: 50px;">
+                    <div class="footer-line"
+                        style="
             height: 3px;
           background-color: green;
           margin-bottom: 20px;
@@ -355,45 +326,46 @@
           position: absolute
         
                     ">
+                    </div>
+                    <div class="footer-content" style="margin-top: 10px;">
+                        <div class="footer-item">
+                            <i class="fa fa-home"></i>
+                            <span>محافظة عدن-المنصورة-شارع القصر-فوق انيس فون</span>
                         </div>
-                        <div class="footer-content" style="margin-top: 10px;">
-                            <div class="footer-item">
-                                <i class="fa fa-home"></i>
-                                <span>محافظة عدن-المنصورة-شارع القصر-فوق انيس فون</span>
-                            </div>
-                            <div class="footer-item">
-                                <i class="fa fa-phone"></i>
-                                <span> 02-350347 \ 734208108</span>
-                            </div>
+                        <div class="footer-item">
+                            <i class="fa fa-phone"></i>
+                            <span> 02-350347 \ 734208108</span>
                         </div>
-                    </footer>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Identity image -->
+    <div class="modal fade" id="identityModal" tabindex="-1" role="dialog" aria-labelledby="identityModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-custom" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="identityModalLabel">Identity Image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}" alt="Identity Image"
+                        class="img-fluid modal-image">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
+    </div>
 
-
-        <!-- Modal Identity image -->
-        <div class="modal fade" id="identityModal" tabindex="-1" role="dialog" aria-labelledby="identityModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-custom" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="identityModalLabel">Identity Image</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}" alt="Identity Image"
-                            class="img-fluid modal-image">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    </div>
     </div>
 @endsection
 

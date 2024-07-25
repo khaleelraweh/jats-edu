@@ -82,19 +82,24 @@ class TeachRequestController extends Controller
 
 
         if ($teach_request) {
-            if ($request->teach_request_status == 2) {
+            $user = $teach_request->user;
+            $instructorRoleId = Role::whereName('instructor')->first()->id;
 
-                $instructorRoleId = Role::whereName('instructor')->first()->id;
-                $user = $teach_request->user;
+            if ($request->teach_request_status == 2) {
 
                 // Check if the user does not already have the instructor role
                 if (!$user->hasRole('instructor')) {
                     $user->attachRole($instructorRoleId);
                 }
-            } else if ($request->teach_request_status == 3) {
-                //we should remove role from the user 
+            } elseif ($request->teach_request_status == 3) {
+
+                // Remove the instructor role from the user
+                if ($user->hasRole('instructor')) {
+                    $user->detachRole($instructorRoleId);
+                }
             }
         }
+
 
 
 

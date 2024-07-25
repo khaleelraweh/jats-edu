@@ -62,7 +62,7 @@
                             <tr>
 
                                 <td>
-                                    @if ($partner->partner_image && file_exists(public_path('assets/partners/' . $partner->firstMedia->file_name)))
+                                    @if ($partner->partner_image && file_exists(public_path('assets/partners/' . $partner->partner_image)))
                                         <img src="{{ asset('assets/partners/' . $partner->partner_image) }}" width="60"
                                             height="60" alt="{{ $partner->title }}">
                                     @else
@@ -70,35 +70,7 @@
                                             height="60" alt="{{ $partner->title }}">
                                     @endif
                                 </td>
-                                <td>{{ $partner->title }}</td>
-                                <td>
-
-                                    @if ($partner->offer_price > 0)
-                                        @if ($partner->offer_price == $partner->price)
-                                            <del class="font-size-sm"><small>{{ currency_converter($partner->price) }}</small>
-                                            </del>
-                                            <ins class="h5 mb-0 d-block mb-lg-n1" style="text-decoration: none">
-                                                {{ __('transf.free') }}
-                                            </ins>
-                                        @else
-                                            <del class="font-size-sm"><small>{{ currency_converter($partner->price) }}</small>
-                                            </del>
-                                            <ins class="h5 mb-0 d-block mb-lg-n1"
-                                                style="text-decoration: none">{{ currency_converter($partner->price - $partner->offer_price) }}
-                                            </ins>
-                                        @endif
-                                    @else
-                                        <ins class="h5 mb-0 d-block mb-lg-n1" style="text-decoration: none">
-                                            @if ($partner->price == 0)
-                                                {{ __('transf.free') }}
-                                            @else
-                                                {{ currency_converter($partner->price) }}
-                                            @endif
-
-                                        </ins>
-                                    @endif
-
-                                </td>
+                                <td>{{ $partner->name }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $partner->created_by }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $partner->created_at }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $partner->send_for_review }}</td>
@@ -109,17 +81,11 @@
                                             <i class="fa fa-eye"></i>
                                         </a>
 
-                                        @if ($partner->users->first()->hasRole('admin') || $partner->users->first()->hasRole('supervisor'))
-                                            <a href="{{ route('instructor.partners.edit', $partner->id) }}"
-                                                class="btn btn-primary">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                        @else
-                                            <a href="{{ route('admin.partners.edit', $partner->id) }}"
-                                                class="btn btn-primary">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                        @endif
+
+                                        <a href="{{ route('admin.partners.edit', $partner->id) }}" class="btn btn-primary">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+
 
 
                                         <a href="javascript:void(0);"
@@ -137,14 +103,14 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="9" class="text-center">No Product cards found</td>
+                                <td colspan="7" class="text-center">No partner found</td>
                             </tr>
                         @endforelse
                     </tbody>
 
                     <tfoot>
                         <tr>
-                            <td colspan="9">
+                            <td colspan="7">
                                 <div class="float-right">
                                     {!! $partners->appends(request()->all())->links() !!}
                                 </div>

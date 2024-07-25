@@ -138,7 +138,7 @@
                                             {{ __('panel.images') }}</label>
                                         <br>
                                         <div class="file-loading">
-                                            <input type="file" name="partner_image" id="partner_images"
+                                            <input type="file" name="partner_image" id="partner_image"
                                                 class="file-input-overview" multiple="multiple">
                                             @error('images')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -281,39 +281,35 @@
     <script>
         $(function() {
 
-            $("#partner_images").fileinput({
+
+
+
+            $("#partner_image").fileinput({
                 theme: "fa5",
-                maxFileCount: 5,
+                maxFileCount: 1,
                 allowedFileTypes: ['image'],
                 showCancel: true,
                 showRemove: false,
                 showUpload: false,
                 overwriteInitial: false,
-                // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
-                // delete images from photos and assets/products 
-                // because there are maybe more than one image we will go for each image and show them in the edit page 
                 initialPreview: [
-                    @if ($partner->partner_image > 0)
+                    @if ($partner->partner_image != '')
                         "{{ asset('assets/partners/' . $partner->partner_image) }}",
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($partner->partner_image > 0)
+                    @if ($partner->partner_image != '')
                         {
                             caption: "{{ $partner->partner_image }}",
-                            size: '{{ $media->file_size }}',
+                            size: '1111',
                             width: "120px",
-                            // url : الراوت المستخدم لحذف الصورة
-                            url: "{{ route('admin.partners.remove_image', ['image_id' => $partner->id, 'partner_id' => $partner->id, '_token' => csrf_token()]) }}",
+                            url: "{{ route('admin.partners.remove_image', ['partner_id' => $partner->id, '_token' => csrf_token()]) }}",
                             key: {{ $partner->id }}
-                        },
+                        }
                     @endif
-
                 ]
-            }).on('filesorted', function(event, params) {
-                console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
             });
 
             $('#published_on').pickadate({

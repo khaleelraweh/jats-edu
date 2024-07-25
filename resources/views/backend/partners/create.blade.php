@@ -266,15 +266,16 @@
     <script>
         $(function() {
 
-            $("#partner_partner_image").fileinput({
+
+            $("#partner_image").fileinput({
                 theme: "fa5",
-                maxFileCount: 5,
+                maxFileCount: 1,
                 allowedFileTypes: ['image'],
                 showCancel: true,
                 showRemove: false,
                 showUpload: false,
                 overwriteInitial: false
-            });
+            })
 
 
             $('#published_on').pickadate({

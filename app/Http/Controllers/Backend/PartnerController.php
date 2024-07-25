@@ -8,6 +8,10 @@ use App\Models\Partner;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
+use illuminate\support\Str;
+
+
 
 
 class PartnerController extends Controller
@@ -58,7 +62,7 @@ class PartnerController extends Controller
 
         $published_on                           =   $request->published_on . ' ' . $request->published_on_time;
         $published_on                           =   new DateTimeImmutable($published_on);
-        $c['published_on']                  =   $published_on;
+        $input['published_on']                  =   $published_on;
 
         // Handle file partner_image
         if ($partner_image = $request->file('partner_image')) {
@@ -96,6 +100,43 @@ class PartnerController extends Controller
 
 
         return view('backend.partners.edit', compact('partner'));
+    }
+
+
+    public function update(partnerRequest $request, Partner $partner)
+    {
+        if (!auth()->user()->ability('admin', 'update_partners')) {
+            return redirect('admin/index');
+        }
+
+        $input['name'] = $request->name;
+        $input['description'] = $request->description;
+
+        $published_on                           =   $request->published_on . ' ' . $request->published_on_time;
+        $published_on                           =   new DateTimeImmutable($published_on);
+        $input['published_on']                  =   $published_on;
+
+        $input['status'] = $request->status;
+        $input['updated_by'] = auth()->user()->full_name;
+
+        if ($image = $request->file('partner_image')) {
+            if ($partner->partner_image != null && File::exists('assets/partners/' . $partner->partner_image)) {
+                unlink('assets/partners/' . $partner->partner_image);
+            }
+            $file_name =   auth()->user()->id . '_partner_' . time() . '.' . $image->getClientOriginalExtension();
+
+            $path = public_path('assets/partners/' . $file_name);
+            Image::make($image->getRealPath())->save($path);
+
+            $input['partner_image'] = $file_name;
+        }
+
+        $partner->update($input);
+
+        return redirect()->route('admin.partners.index')->with([
+            'message' => 'Updated successfully',
+            'alert-type' => 'success'
+        ]);
     }
 
 

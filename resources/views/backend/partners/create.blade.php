@@ -58,7 +58,7 @@
             @endif
 
 
-            {{-- enctype used cause we will save parent_image  --}}
+            {{-- enctype used cause we will save partner_image  --}}
             <form id="my_form_id" action="{{ route('admin.partners.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 {{-- links of tabs --}}
@@ -131,15 +131,15 @@
 
                                 <div class="row ">
                                     <div class="col-sm-12 col-md-12 pt-3">
-                                        <label for="parent_image">
+                                        <label for="partner_image">
                                             {{ __('panel.image') }}
                                             /
-                                            {{ __('panel.parent_image') }}
+                                            {{ __('panel.partner_image') }}
                                         </label>
                                         <div class="file-loading">
-                                            <input type="file" name="parent_image" id="partner_parent_image"
+                                            <input type="file" name="partner_image" id="partner_partner_image"
                                                 class="file-input-overview" multiple="multiple">
-                                            @error('parent_image')
+                                            @error('partner_image')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -265,7 +265,7 @@
     <script>
         $(function() {
 
-            $("#partner_parent_image").fileinput({
+            $("#partner_partner_image").fileinput({
                 theme: "fa5",
                 maxFileCount: 5,
                 allowedFileTypes: ['image'],
@@ -375,7 +375,7 @@
         $(document).ready(function() {
             // Function to initialize character counter for a specific input field
             function initializeCharCounter($input) {
-                var $counter = $input.parent().find('.input-group-text');
+                var $counter = $input.partner().find('.input-group-text');
 
                 // Update character count on input
                 $input.on('input', function() {
@@ -463,7 +463,7 @@
         $(document).ready(function() {
             // Function to initialize character counter for a specific input field
             function initializeCharCounter($input) {
-                var $counter = $input.parent().find('.input-group-text');
+                var $counter = $input.partner().find('.input-group-text');
 
                 // Update character count on input
                 $input.on('input', function() {
@@ -475,78 +475,11 @@
                 $input.trigger('input');
             }
 
-            // Submit event handler for the form
-            $('#my_form_id').on('submit', function(event) {
-                // Flag to track whether there are empty fields
-                let isEmpty = false;
 
-                // Loop through each input field and check if it's empty
-                $('input.partner_requirement').each(function() {
-                    if ($(this).val() === '') {
-                        isEmpty = true;
-                        return false; // Exit the loop if any field is empty
-                    }
-                });
 
-                // If any field is empty, prevent the form submission
-                if (isEmpty) {
-                    alert('{{ __('panel.msg_one_or_more_requirement_field_empty') }}.');
-                    event.preventDefault(); // Prevent form submission
-                }
-            });
 
-            // Add row functionality remains unchanged
-            $(document).on('click', '.btn_add_requirement', function() {
-                let trCount = $('#partner_requirements_details').find('tr.cloning_row:last').length;
-                let numberIncr = trCount > 0 ? parseInt($('#partner_requirements_details').find(
-                        'tr.cloning_row:last')
-                    .attr('id')) + 1 : 0;
-                let isValid = true;
 
-                // Check if any of the existing fields are empty
-                $('#partner_requirements_details').find('input.partner_requirement').each(function() {
-                    if ($(this).val() === '') {
-                        isValid = false;
-                        return false; // Exit the loop if any field is empty
-                    }
-                });
 
-                if (!isValid) {
-                    alert(
-                        '{{ __('panel.msg_please_fill_in_all_requirement_fields_before_adding_new') }}'
-                    );
-                    return false; // Prevent adding a new row if existing fields are empty
-                }
-
-                // Add new row
-                var newRow = $('<tr class="cloning_row" id="' + numberIncr + '">' +
-                    '<td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
-                    '<td><span>{{ __('panel.partner_requirement') }} (' + numberIncr +
-                    ')</span></td>' +
-                    '<td>' +
-                    '<div class="input-group">' +
-                    '<input type="text" name="partner_requirement[' + numberIncr +
-                    ']" class="partner_requirement form-control" maxlength="160">' +
-                    '<span class="input-group-text">160</span>' +
-                    '</div>' +
-                    '</td>' +
-                    '</tr>');
-                $('#partner_requirements_details tbody').append(newRow);
-
-                // Initialize character counter for the new row
-                initializeCharCounter(newRow.find('input.partner_requirement'));
-            });
-
-            // Initialize character counters for existing rows
-            $('#partner_requirements_details tbody').find('input.partner_requirement').each(function() {
-                initializeCharCounter($(this));
-            });
-
-            // Remove row when delete button is clicked
-            $(document).on('click', '.delegated-btn', function(e) {
-                e.preventDefault();
-                $(this).closest('tr').remove();
-            });
         });
     </script>
 @endsection

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\partnerRequest;
 use App\Models\Partner;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
 
 class PartnerController extends Controller
@@ -34,5 +36,49 @@ class PartnerController extends Controller
             return redirect('admin/index');
         }
         return view('backend.partners.create');
+    }
+
+    public function store(partnerRequest $request)
+    {
+
+        if (!auth()->user()->ability('admin', 'create_partners')) {
+            return redirect('admin/index');
+        }
+
+        // dd($request);
+
+        $input['name']                         =   $request->name;
+        $input['description']                   =   $request->description;
+
+        $input['status']                        =   $request->status;
+        $input['created_by']                    =   auth()->user()->full_name;
+
+        $published_on                           =   $request->published_on . ' ' . $request->published_on_time;
+        $published_on                           =   new DateTimeImmutable($published_on);
+        $input['published_on']                  =   $published_on;
+
+        // Handle file partner_image
+        if ($partner_image = $request->file('partner_image')) {
+            $fileName =   auth()->user()->id . '_partner_' . time() . '.' . $partner_image->extension();
+            $filePath = public_path('assets/partners');
+            $partner_image->move($filePath, $fileName); // Move image file
+            $data['partner_image'] = $fileName;
+        }
+
+        $partner                                 =  Partner::create($input);
+
+
+
+        if ($partner) {
+            return redirect()->route('admin.partners.index')->with([
+                'message' => __('panel.created_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
+        return redirect()->route('admin.partners.index')->with([
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
+        ]);
     }
 }

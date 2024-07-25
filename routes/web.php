@@ -253,7 +253,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   Call Actions Tab   ==============  //
 
+        Route::post('partners/remove-image', [PartnerController::class, 'remove_image'])->name('partners.remove_image');
         Route::resource('partners', PartnerController::class);
+
 
         // ==============   Call Actions Tab   ==============  //
         Route::post('call_actions/remove-image', [CallActionsController::class, 'remove_image'])->name('call_actions.remove_image');

@@ -7,6 +7,8 @@ use App\Http\Requests\Backend\partnerRequest;
 use App\Models\Partner;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+
 
 class PartnerController extends Controller
 {
@@ -94,5 +96,28 @@ class PartnerController extends Controller
 
 
         return view('backend.partners.edit', compact('partner'));
+    }
+
+
+
+    public function remove_image(Request $request)
+    {
+
+        if (!auth()->user()->ability('admin', 'delete_partners')) {
+            return redirect('admin/index');
+        }
+
+        $partner = Partner::findOrFail($request->partner_id);
+        if (File::exists('assets/partners/' . $partner->partner_image)) {
+            unlink('assets/partners/' . $partner->partner_image);
+            $partner->partner_image = null;
+            $partner->save();
+        }
+        if ($partner->partner_image != null) {
+            $partner->partner_image = null;
+            $partner->save();
+        }
+
+        return true;
     }
 }

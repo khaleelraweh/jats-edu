@@ -137,7 +137,7 @@
                                             {{ __('panel.partner_image') }}
                                         </label>
                                         <div class="file-loading">
-                                            <input type="file" name="partner_image" id="partner_partner_image"
+                                            <input type="file" name="partner_image" id="partner_image"
                                                 class="file-input-overview" multiple="multiple">
                                             @error('partner_image')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -241,26 +241,7 @@
         });
     </script>
 
-    {{-- subname counter  --}}
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const subnameInput = document.getElementById('subname');
-            const charCountSubname = document.getElementById('charCountSubname');
-            const maxChars = 120;
 
-            // Function to update the character count
-            function updateCharCountSucharCountSubname() {
-                const remainingChars = maxChars - subnameInput.value.length;
-                charCountSubname.textContent = remainingChars;
-            }
-
-            // Initialize the character count on page load
-            updateCharCountSucharCountSubname();
-
-            // Update the character count on input
-            subnameInput.addEventListener('input', updateCharCountSucharCountSubname);
-        });
-    </script>
 
 
     <script>
@@ -370,118 +351,6 @@
                     ['view', ['fullscreen', 'codeview', 'help']]
                 ]
             });
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            // Function to initialize character counter for a specific input field
-            function initializeCharCounter($input) {
-                var $counter = $input.partner().find('.input-group-text');
-
-                // Update character count on input
-                $input.on('input', function() {
-                    var remainingChars = 160 - $(this).val().length;
-                    $counter.text(remainingChars);
-                });
-
-                // Trigger input event to update counter initially
-                $input.trigger('input');
-            }
-
-            // Submit event handler for the form
-            $('#my_form_id').on('submit', function(event) {
-                // Flag to track whether there are empty fields
-                let isEmpty = false;
-
-                // Loop through each input field and check if it's empty
-                $('input.partner_objective').each(function() {
-                    if ($(this).val() === '') {
-                        isEmpty = true;
-                        return false; // Exit the loop if any field is empty
-                    }
-                });
-
-                // If any field is empty, prevent the form submission
-                if (isEmpty) {
-                    alert('{{ __('panel.msg_one_or_more_topic_field_empty') }}.');
-                    event.preventDefault(); // Prevent form submission
-                }
-            });
-
-            // Add row functionality remains unchanged
-            $(document).on('click', '.btn_add', function() {
-                let trCount = $('#partner_objectives_details').find('tr.cloning_row:last').length;
-                let numberIncr = trCount > 0 ? parseInt($('#partner_objectives_details').find(
-                        'tr.cloning_row:last')
-                    .attr('id')) + 1 : 0;
-                let isValid = true;
-
-                // Check if any of the existing fields are empty
-                $('#partner_objectives_details').find('input.partner_objective').each(function() {
-                    if ($(this).val() === '') {
-                        isValid = false;
-                        return false; // Exit the loop if any field is empty
-                    }
-                });
-
-                if (!isValid) {
-                    alert('{{ __('panel.msg_please_fill_in_all_topic_fields_before_adding_new') }}');
-                    return false; // Prevent adding a new row if existing fields are empty
-                }
-
-                // Add new row
-                var newRow = $('<tr class="cloning_row" id="' + numberIncr + '">' +
-                    '<td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
-                    '<td><span>{{ __('panel.partner_objective') }} (' + numberIncr + ')</span></td>' +
-                    '<td>' +
-                    '<div class="input-group">' +
-                    '<input type="text" name="partner_objective[' + numberIncr +
-                    ']" class="partner_objective form-control" maxlength="160">' +
-                    '<span class="input-group-text">160</span>' +
-                    '</div>' +
-                    '</td>' +
-                    '</tr>');
-                $('#partner_objectives_details tbody').append(newRow);
-
-                // Initialize character counter for the new row
-                initializeCharCounter(newRow.find('input.partner_objective'));
-            });
-
-            // Initialize character counters for existing rows
-            $('#partner_objectives_details tbody').find('input.partner_objective').each(function() {
-                initializeCharCounter($(this));
-            });
-
-            // Remove row when delete button is clicked
-            $(document).on('click', '.delegated-btn', function(e) {
-                e.preventDefault();
-                $(this).closest('tr').remove();
-            });
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            // Function to initialize character counter for a specific input field
-            function initializeCharCounter($input) {
-                var $counter = $input.partner().find('.input-group-text');
-
-                // Update character count on input
-                $input.on('input', function() {
-                    var remainingChars = 160 - $(this).val().length;
-                    $counter.text(remainingChars);
-                });
-
-                // Trigger input event to update counter initially
-                $input.trigger('input');
-            }
-
-
-
-
-
-
         });
     </script>
 @endsection

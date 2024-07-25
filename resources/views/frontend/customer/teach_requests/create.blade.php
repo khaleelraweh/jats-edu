@@ -63,27 +63,7 @@
     <div class="container mt-2">
         <!-- row -->
 
-        <!-- row -->
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row mb-4">
-                            <div class="col-sm-12 col-md-12">
-                                {{-- <input type="file" class="dropify" data-height="200" /> --}}
-                                <div class="col-sm-12 col-md-4 mg-t-10 mg-sm-t-0">
-                                    {{-- <input type="file" class="dropify"
-                                        data-default-file="{{ URL::asset('image/not_found/avator2.png') }}"
-                                        data-height="200" /> --}}
 
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="row">
             <div class="col-lg-12 col-md-12">

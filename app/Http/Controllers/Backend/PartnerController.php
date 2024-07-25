@@ -103,11 +103,13 @@ class PartnerController extends Controller
     }
 
 
-    public function update(partnerRequest $request, Partner $partner)
+    public function update(partnerRequest $request, $partner)
     {
         if (!auth()->user()->ability('admin', 'update_partners')) {
             return redirect('admin/index');
         }
+
+        $partner = Partner::where('id', $partner)->get();
 
         $input['name'] = $request->name;
         $input['description'] = $request->description;

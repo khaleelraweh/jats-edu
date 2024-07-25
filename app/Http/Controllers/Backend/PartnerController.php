@@ -145,6 +145,29 @@ class PartnerController extends Controller
     }
 
 
+    public function destroy(Partner $partner)
+    {
+        if (!auth()->user()->ability('admin', 'delete_partners')) {
+            return redirect('admin/index');
+        }
+
+        // first: delete image from users path 
+        if (File::exists('assets/partners/' . $partner->partner_image)) {
+            unlink('assets/partners/' . $partner->partner_image);
+        }
+
+        $partner->deleted_by = auth()->user()->full_name;
+        $partner->save();
+
+        //second : delete partner from users table
+        $partner->delete();
+
+        return redirect()->route('admin.partners.index')->with([
+            'message' => 'Deleted successfully',
+            'alert-type' => 'success'
+        ]);
+    }
+
 
     public function remove_image(Request $request)
     {

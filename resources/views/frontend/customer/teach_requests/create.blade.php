@@ -47,6 +47,10 @@
 
         .dropify-wrapper .dropify-message {
             position: absolute !important;
+            left: 88px !important;
+            top: 40px !important;
+            -webkit-transform: translateY(0) !important;
+            transform: translateY(0) !important;
         }
 
         .dropify-wrapper .dropify-loader {
@@ -90,10 +94,42 @@
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="row mb-4">
-                                                        <div class="col-sm-12 col-md-4">
-                                                            <div class="col-sm-12 col-md-8 mg-t-10 mg-sm-t-0">
-                                                                <input type="file" class="dropify" data-height="200" />
+
+                                                        <div class="col-sm-12 col-md-4 ">
+                                                            <div class="control-group form-group">
+                                                                <label class="form-label">
+                                                                    الإسم باللغة العربية
+                                                                    <span class="required text-danger">*</span>
+                                                                </label>
+                                                                <input type="text" name="full_name[ar]"
+                                                                    class="form-control required"
+                                                                    value="{{ old('full_name.ar') }}">
+                                                                @error('full_name.ar')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
                                                             </div>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-4">
+                                                            <div class="control-group form-group ">
+                                                                <label class="form-label">
+                                                                    الإسم باللغة الانجليزية
+                                                                    <span class="required text-danger">*</span>
+                                                                </label>
+                                                                <input type="text" name="full_name[en]"
+                                                                    class="form-control required"
+                                                                    value="{{ old('full_name.en') }}">
+                                                                @error('full_name.en')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-12 col-md-4">
+                                                            <label class="form-label">
+                                                                ارفق صورة شخصية
+                                                                <span class="required text-danger">*</span>
+                                                            </label>
+                                                            <input type="file" class="dropify" data-height="200" />
                                                         </div>
                                                     </div>
                                                 </div>

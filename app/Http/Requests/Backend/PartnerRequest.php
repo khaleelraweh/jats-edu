@@ -28,8 +28,8 @@ class PartnerRequest extends FormRequest
                     return [
                         'name'                          =>  'required|max:255',
                         'description.*'                 =>  'nullable',
-                        'parent_image'                  =>  'required',
-                        'parent_image.*'                =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+                        'partner_image'                  =>  'required',
+                        'partner_image.*'                =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
                         'views'                         =>  'nullable', // عدد مرات العرض
 
                         // used always 
@@ -47,8 +47,8 @@ class PartnerRequest extends FormRequest
                     return [
                         'name.*'                  =>  'required|max:255',
                         'description.*'           =>  'nullable',
-                        'parent_image'                =>  'nullable',
-                        'parent_image.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+                        'partner_image'                =>  'nullable',
+                        'partner_image.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
 
                         // used always 
                         'status'             =>  'required',
@@ -72,7 +72,7 @@ class PartnerRequest extends FormRequest
             'name'                 =>  '(' . __('panel.name') . ')',
             'description'           =>  '(' . __('panel.description') . ')',
             'status'    =>  '( ' . __('panel.status') . ' )',
-            'parent_image'    =>  '( ' . __('panel.parent_image') . ' )',
+            'partner_image'    =>  '( ' . __('panel.partner_image') . ' )',
         ];
 
         return $attr;

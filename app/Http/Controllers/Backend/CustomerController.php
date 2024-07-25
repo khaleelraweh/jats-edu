@@ -117,7 +117,6 @@ class CustomerController extends Controller
         $input['updated_by'] = auth()->user()->full_name;
 
         if ($image = $request->file('user_image')) {
-
             if ($customer->user_image != null && File::exists('assets/customers/' . $customer->user_image)) {
                 unlink('assets/customers/' . $customer->user_image);
             }

@@ -28,15 +28,12 @@ class Course extends Model
     public $translatable = ['title', 'subtitle', 'slug', 'description', 'address'];
 
 
-
-
     // searchable lab 
     protected $searchable = [
         'columns' => [
             'courses.title' => 10,
         ]
     ];
-
 
 
     const NEW_COURSE = 0;        // when he start the course

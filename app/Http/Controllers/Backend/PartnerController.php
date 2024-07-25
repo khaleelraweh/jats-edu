@@ -27,4 +27,12 @@ class PartnerController extends Controller
 
         return view('backend.partners.index', compact('partners'));
     }
+
+    public function create()
+    {
+        if (!auth()->user()->ability('admin', 'create_partners')) {
+            return redirect('admin/index');
+        }
+        return view('backend.partners.create');
+    }
 }

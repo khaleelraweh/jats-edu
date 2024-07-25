@@ -242,6 +242,7 @@
                                         </li>
                                     @else
                                         <li>
+                                            {{-- this is the work --}}
                                             <a href="{{ route('teach_requests.create') }}">
                                                 {{ __('panel.f_youth_step') }}
                                             </a>

@@ -145,14 +145,17 @@ class PartnerController extends Controller
     }
 
 
-    public function destroy(Partner $partner)
+    public function destroy($partner)
     {
         if (!auth()->user()->ability('admin', 'delete_partners')) {
             return redirect('admin/index');
         }
 
+        $partner = Partner::where('id', $partner)->first();
+
+
         // first: delete image from users path 
-        if (File::exists('assets/partners/' . $partner->partner_image)) {
+        if ($partner->partner_image && File::exists('assets/partners/' . $partner->partner_image)) {
             unlink('assets/partners/' . $partner->partner_image);
         }
 

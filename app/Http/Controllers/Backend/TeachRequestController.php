@@ -120,7 +120,6 @@ class TeachRequestController extends Controller
 
     public function view_file($file_id)
     {
-
         return response()->file(public_path('assets/teach_requests/' . $file_id . '.pdf'), ['content-type' => 'application/pdf']);
     }
 }

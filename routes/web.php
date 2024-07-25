@@ -128,6 +128,7 @@ Route::group(['middleware' => ['roles', 'role:customer|supervisor', 'verified']]
 
     Route::get('teach_requests/{teachRequest}', [FrontendTeachRequestController::class, 'show'])->name('frontend.customer.teach_requests.show');
 
+    Route::get('/viewfile/{file_id}', [FrontendTeachRequestController::class, 'view_file'])->name('frontend.customer.teach_requests.view_file');
 
 
 

@@ -305,7 +305,7 @@
 
                                         <span class="biography-value">
                                             @if ($teach_request->identity && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
-                                                <a href="{{ route('admin.view_file', pathinfo($teach_request->biography, PATHINFO_FILENAME)) }}"
+                                                <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->biography, PATHINFO_FILENAME)) }}"
                                                     target="_blanck">
                                                     {{ pathinfo($teach_request->biography, PATHINFO_FILENAME) }}
                                                 </a>

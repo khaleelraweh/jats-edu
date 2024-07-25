@@ -77,9 +77,9 @@
                                 <td class="d-none d-sm-table-cell">{{ $partner->status() }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.partners.show', $partner->id) }}" class="btn btn-success">
+                                        {{-- <a href="{{ route('admin.partners.show', $partner->id) }}" class="btn btn-success">
                                             <i class="fa fa-eye"></i>
-                                        </a>
+                                        </a> --}}
 
 
                                         <a href="{{ route('admin.partners.edit', $partner->id) }}" class="btn btn-primary">

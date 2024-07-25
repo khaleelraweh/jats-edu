@@ -421,6 +421,23 @@ return [
 
 
 
+    ##############################################################
+    // =============  Manage partner  ===============//
+    'manage_partners'              => 'Manage Partners',
+
+    // ---------------  Teach request  --------------//
+    'show_partners'               => 'Teach Partners',
+    'add_new_partner'             => 'Add New partner',
+    'edit_existing_partner'       => 'Edit Existing partner ',
+
+    // ........... commons in Partner  ....... //
+
+    'partner_name'                  =>    'Partner Name',
+    'partner_image'                 =>  'Partner Image',
+
+
+
+
 
     ##############################################################
     // =============  Manage Orders  ===============//

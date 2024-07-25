@@ -104,11 +104,11 @@ class TeachRequestController extends Controller
         return redirect()->route('frontend.customer.teach_requests.show', $teach_request->id);
     }
 
-    public function show($teachRequest)
+    public function show($teach_request)
     {
 
-        $teachRequest = TeachRequest::where('id', $teachRequest)->first();
+        $teach_request = TeachRequest::where('id', $teach_request)->first();
 
-        return view('frontend.customer.teach_requests.show', compact('teachRequest'));
+        return view('frontend.customer.teach_requests.show', compact('teach_request'));
     }
 }

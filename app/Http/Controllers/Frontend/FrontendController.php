@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CallAction;
 use App\Models\Course;
 use App\Models\Page;
+use App\Models\Partner;
 use App\Models\Post;
 use App\Models\Slider;
 use App\Models\User;
@@ -41,6 +42,10 @@ class FrontendController extends Controller
             ->take(10)
             ->get();
 
+
+        // get all partners
+        $partners = Partner::all();
+
         // $events = Post::with('photos')->where('section', 1)->orderBy('created_at', 'ASC')->get();
         $events = Course::with('photos')->where('section', 2)->orderBy('created_at', 'ASC')->get();
         $posts = Post::with('photos')->where('section', 1)->orderBy('created_at', 'ASC')->get();
@@ -49,7 +54,7 @@ class FrontendController extends Controller
 
 
 
-        return view('frontend.index', compact('main_sliders', 'instructors', 'events', 'posts', 'callActions'));
+        return view('frontend.index', compact('main_sliders', 'instructors', 'events', 'posts', 'callActions', 'partners'));
     }
 
     public function home()

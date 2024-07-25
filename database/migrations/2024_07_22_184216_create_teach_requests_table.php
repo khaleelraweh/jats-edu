@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('educational_qualification')->nullable(); // المؤهل الدراسي
             $table->string('specialization')->nullable();  //  التخصص
             $table->unsignedTinyInteger('years_of_training_experience')->default(0);
+            $table->string('user_image')->nullable(); // الصورة الشخصية
             $table->string('identity')->nullable(); // الهوية
             $table->string('biography')->nullable(); // السيرة الذاتية
             $table->string('Certificates')->nullable(); //  الشهائد

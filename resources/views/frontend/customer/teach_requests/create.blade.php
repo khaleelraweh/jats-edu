@@ -296,7 +296,7 @@
                                                 ارفق صورة شخصية
                                                 <span class="required text-danger">*</span>
                                             </label>
-                                            <input type="file" class="dropify" data-height="200" />
+                                            <input type="file" name="user_image" class="dropify" data-height="200" />
                                         </div>
                                     </div>
                                 </section>

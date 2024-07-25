@@ -25,6 +25,7 @@ use App\Http\Controllers\Backend\MainSliderController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PagesController;
+use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\PaymentCategoriesController;
 use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\PaymentMethodOfflineController;
@@ -248,6 +249,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::match(['put', 'patch'], 'admin/teach_requests/{teach_request}/status', [TeachRequestController::class, 'updateStatus'])
             ->name('teach_requests.update_teach_requests_status');
         Route::get('/viewfile/{file_id}', [TeachRequestController::class, 'view_file'])->name('view_file');
+
+
+        // ==============   Call Actions Tab   ==============  //
+
+        Route::resource('partners', PartnerController::class);
 
         // ==============   Call Actions Tab   ==============  //
         Route::post('call_actions/remove-image', [CallActionsController::class, 'remove_image'])->name('call_actions.remove_image');

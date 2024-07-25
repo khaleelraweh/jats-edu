@@ -110,8 +110,11 @@
                             }
                         @endphp
                         <div class="flick-item" style="width:190px !important;height: 190px !important;">
-                            <img src="{{ $partner_img }}" style="width:100%;height:100%;border-radius:50%;"
-                                class="img-fluid" alt="{{ $partner->name }}">
+                            <a href="{{ $partner->partner_link }}">
+                                <img src="{{ $partner_img }}" style="width:100%;height:100%;border-radius:50%;"
+                                    class="img-fluid" alt="{{ $partner->name }}">
+                            </a>
+
                         </div>
 
                     </div>

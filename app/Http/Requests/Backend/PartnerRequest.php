@@ -28,6 +28,7 @@ class PartnerRequest extends FormRequest
                     return [
                         'name'                          =>  'required|max:255',
                         'description.*'                 =>  'nullable',
+                        'partner_link'                  =>  'nullable',
                         'partner_image'                  =>  'required',
                         'partner_image.*'                =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
                         'views'                         =>  'nullable', // عدد مرات العرض
@@ -47,6 +48,7 @@ class PartnerRequest extends FormRequest
                     return [
                         'name'                  =>  'required|max:255',
                         'description.*'           =>  'nullable',
+                        'partner_link'           =>  'nullable',
                         'partner_image'                =>  'nullable',
                         'partner_image.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
 

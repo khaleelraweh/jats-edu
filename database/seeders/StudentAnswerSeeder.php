@@ -21,14 +21,14 @@ class StudentAnswerSeeder extends Seeder
         StudentAnswer::create([
             'student_evaluation_id' => 1,
             'question_id' => 1,
-            'option_id' => 1, // Correct answer
+            'selected_option_id' => 1, // Correct answer
             // 'answer_text' => null,
         ]);
 
         StudentAnswer::create([
             'student_evaluation_id' => 1,
             'question_id' => 2,
-            'option_id' => 3, // Incorrect answer
+            'selected_option_id' => 3, // Incorrect answer
             // 'answer_text' => null,
         ]);
 
@@ -36,14 +36,14 @@ class StudentAnswerSeeder extends Seeder
         StudentAnswer::create([
             'student_evaluation_id' => 2,
             'question_id' => 1,
-            'option_id' => 2, // Incorrect answer
+            'selected_option_id' => 2, // Incorrect answer
             // 'answer_text' => null,
         ]);
 
         StudentAnswer::create([
             'student_evaluation_id' => 2,
             'question_id' => 2,
-            'option_id' => 1, // Correct answer
+            'selected_option_id' => 1, // Correct answer
             // 'answer_text' => null,
         ]);
     }

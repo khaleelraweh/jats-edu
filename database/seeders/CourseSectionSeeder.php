@@ -40,17 +40,17 @@ class CourseSectionSeeder extends Seeder
                 'updated_by' => $faker->realTextBetween(10, 20),
             ]);
 
-            // CourseSection::create([
-            //     'title' => ['ar' => 'الادوار والصلاحيات', 'en' => 'Roules and Permissions'],
-            //     'lectures_count' => 11,
-            //     'duration' => "3hr 53m",
-            //     'course_id' => $course->id,
+            CourseSection::create([
+                'title' => ['ar' => 'الادوار والصلاحيات', 'en' => 'Roules and Permissions'],
+                'lectures_count' => 11,
+                'duration' => "3hr 53m",
+                'course_id' => $course->id,
 
-            //     'status' => true,
-            //     'published_on' => $faker->dateTime(),
-            //     'created_by' => $faker->realTextBetween(10, 20),
-            //     'updated_by' => $faker->realTextBetween(10, 20),
-            // ]);
+                'status' => true,
+                'published_on' => $faker->dateTime(),
+                'created_by' => $faker->realTextBetween(10, 20),
+                'updated_by' => $faker->realTextBetween(10, 20),
+            ]);
 
             // CourseSection::create([
             //     'title' => ['ar' => ' بناء لوحة التحكم', 'en' => 'Build the control panel'],

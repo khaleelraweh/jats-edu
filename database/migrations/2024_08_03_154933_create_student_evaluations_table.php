@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('evaluation_id')->constrained()->onDelete('cascade');
             $table->integer('score')->default(0);
+            $table->dateTime('completed_at')->nullable();
             $table->timestamps();
         });
     }

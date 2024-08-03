@@ -68,5 +68,11 @@ class DatabaseSeeder extends Seeder
         $this->call(PageSeeder::class);
         // $this->call(TeachRequestSeeder::class);
         $this->call(PartnerSeeder::class);
+
+        $this->call(EvaluationSeeder::class);
+        $this->call(QuestionSeeder::class);
+        $this->call(OptionSeeder::class);
+        $this->call(StudentEvaluationSeeder::class);
+        $this->call(StudentAnswerSeeder::class);
     }
 }

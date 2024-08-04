@@ -65,9 +65,25 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
+                            <div class="col-sm-12 col-md-12 pt-3">
+                                <label for="pv_type">{{ __('panel.pv_type') }}</label>
+                                <select name="pv_type" class="form-control" {{-- wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.pv_type" --}}>
+                                    <option value="1" {{ old('pv_type') == '1' ? 'selected' : null }}>
+                                        {{ __('panel.pv_type_text') }}
+                                    </option>
+                                    <option value="2" {{ old('pv_type') == '2' ? 'selected' : null }}>
+                                        {{ __('panel.pv_type_number') }}
+                                    </option>
+                                </select>
+                                {{-- @error('evaluations.' . $currentEvaluationIndex . '.questions.' . $questionIndex . '.options.' . $optionIndex . '.pv_type')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror --}}
+
+                            </div>
                         </div>
+                        <hr>
                         <div class="row">
-                            <div class="col-sm-12 col-md-4 pt-5">
+                            <div class="col-sm-12 col-md-4 pt-3">
                                 <div class="row align-items-end mb-4 mb-md-0">
                                     <div class="col-md mb-4 mb-md-0">
                                         <h4>{{ __('panel.questions') }}</h4>
@@ -121,7 +137,7 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <div class="col-sm-12 col-md-8 pt-5">
+                            <div class="col-sm-12 col-md-8 pt-3">
                                 @foreach ($evaluations[$currentEvaluationIndex]['questions'] as $questionIndex => $question)
                                     {{-- options  --}}
                                     @if ($questionIndex == $activeQuestionIndex)
@@ -163,52 +179,18 @@
                                                     <div class="row">
                                                         <div class="col-sm-12 col-md-6">
                                                             <div class="form-question">
-                                                                <label for="pv_name">{{ __('panel.pv_name') }}</label>
-                                                                <input type="text" class="form-control"
-                                                                    wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.pv_name">
-                                                                @error('evaluations.' . $currentEvaluationIndex .
-                                                                    '.questions.' . $questionIndex . '.options.' .
-                                                                    $optionIndex . '.pv_name')
-                                                                    <span class="text-danger">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-12 col-md-6">
-                                                            <div class="form-question">
                                                                 <label
-                                                                    for="pv_question">{{ __('panel.pv_question') }}</label>
+                                                                    for="option_text">{{ __('panel.option_text') }}</label>
                                                                 <input type="text" class="form-control"
-                                                                    wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.pv_question">
+                                                                    wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.option_text">
                                                                 @error('evaluations.' . $currentEvaluationIndex .
                                                                     '.questions.' . $questionIndex . '.options.' .
-                                                                    $optionIndex . '.pv_question')
+                                                                    $optionIndex . '.option_text')
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-sm-12 col-md-6 pt-3">
-                                                            <label for="pv_type">{{ __('panel.pv_type') }}</label>
-                                                            <select name="pv_type" class="form-control"
-                                                                wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.pv_type">
-                                                                <option value="1"
-                                                                    {{ old('pv_type') == '1' ? 'selected' : null }}>
-                                                                    {{ __('panel.pv_type_text') }}
-                                                                </option>
-                                                                <option value="2"
-                                                                    {{ old('pv_type') == '2' ? 'selected' : null }}>
-                                                                    {{ __('panel.pv_type_number') }}
-                                                                </option>
-                                                            </select>
-                                                            @error('evaluations.' . $currentEvaluationIndex .
-                                                                '.questions.' . $questionIndex . '.options.' . $optionIndex
-                                                                . '.pv_type')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
-
-                                                        </div>
-                                                        <div class="col-sm-12 col-md-6 pt-3">
+                                                        <div class="col-sm-12 col-md-6 ">
                                                             <label
                                                                 for="pv_required">{{ __('panel.pv_required') }}</label>
                                                             <select name="pv_required" class="form-control"
@@ -229,23 +211,9 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    {{--  pv_details field --}}
-                                                    <div class="row">
-                                                        <div class="col-sm-12 col-md-12 pt-3">
-                                                            <label for="pv_details">
-                                                                {{ __('panel.pv_details') }}
-                                                            </label>
-                                                            <textarea name="pv_details" rows="10" class="form-control summernote"
-                                                                wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.pv_details">
-                                                                {!! old('pv_details') !!}
-                                                            </textarea>
-                                                            @error('evaluations.' . $currentEvaluationIndex .
-                                                                '.questions.' . $questionIndex . '.options.' . $optionIndex
-                                                                . '.pv_details')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
+
+
+
 
                                                 </div>
                                             </div>

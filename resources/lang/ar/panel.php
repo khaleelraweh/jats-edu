@@ -1177,7 +1177,7 @@ return [
     'add_question'                                  =>  'اضافة سؤال',
 
     'options'                                       =>  'الاختيارات',
-    'option'                                        =>  'الاختبار',
+    'option'                                        =>  'الاختيار',
     'add_option'                                    =>  'إضافة خيار',
 
 

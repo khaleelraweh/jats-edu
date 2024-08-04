@@ -1,9 +1,9 @@
 <div>
     <style>
-        .activeGroup {
+        /* .activeQuestion {
             background-color: #0162e8 !important;
             color: #fff !important;
-        }
+        } */
     </style>
     <div class="row">
         <div class="col-sm-12 col-md-2 pt-3">
@@ -87,7 +87,7 @@
                                             <div class="input-question p-2 "
                                                 style="background: {{ $questionIndex == $activeQuestionIndex ? '#0162e8' : '#DDE2EF' }}  !important;">
                                                 <span
-                                                    class="input-question-text {{ $questionIndex == $activeQuestionIndex ? 'activequestion' : '' }}"
+                                                    class="input-question-text {{ $questionIndex == $activeQuestionIndex ? 'activeQuestion' : '' }}"
                                                     style="border:none;">
                                                     <span>
                                                         {{ __('panel.question') }}
@@ -98,14 +98,14 @@
                                                     wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.question_text"
                                                     aria-label="{{ __('transf.Enter a question Name') }}">
 
-                                                <a class="input-question-text {{ $questionIndex == $activeQuestionIndex ? 'activequestion' : '' }}"
+                                                <a class="input-question-text {{ $questionIndex == $activeQuestionIndex ? 'activeQuestion' : '' }}"
                                                     style="border:none; cursor: pointer;"
                                                     wire:click.prevent="removeQuestion({{ $currentEvaluationIndex }}, {{ $questionIndex }})">
                                                     <i
                                                         class="fas fa-trash-alt {{ $questionIndex == $activeQuestionIndex ? 'text-white' : 'text-danger' }} "></i>
                                                 </a>
 
-                                                <a class="input-question-text p-1 {{ $questionIndex == $activeQuestionIndex ? 'activequestion' : '' }}"
+                                                <a class="input-question-text p-1 {{ $questionIndex == $activeQuestionIndex ? 'activeQuestion' : '' }}"
                                                     style="border:none; cursor: pointer;"
                                                     wire:click="setActiveQuestion({{ $currentEvaluationIndex }}, {{ $questionIndex }})">
                                                     <i class="far fa-edit"></i>

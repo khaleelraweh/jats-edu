@@ -27,6 +27,7 @@
             color: white !important;
         }
 
+
         .input-question {
             background: #0162e8 !important;
             padding: 15px !important;
@@ -140,8 +141,8 @@
                                     <div class="col-md mb-4 mb-md-0">
                                         <h4>{{ __('panel.questions') }}</h4>
                                     </div>
-                                    <div class="col-md-auto aos-init aos-animate add-question" data-aos="fade-start">
-                                        <a href=""
+                                    <div class="col-md-auto aos-init aos-animate " data-aos="fade-start">
+                                        <a href="" class="add-question"
                                             wire:click.prevent="addQuestion({{ $currentEvaluationIndex }})">
                                             <i class="fas fa-plus-circle me-2 "></i>
                                             <span>

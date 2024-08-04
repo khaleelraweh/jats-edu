@@ -53,6 +53,8 @@
         <div class="col-sm-12 col-md-3 pt-3">
             <h3>التقييمات</h3>
 
+
+
             <ul style="list-style: none;margin:0;padding:0;">
                 @foreach ($evaluations as $index => $evaluation)
                     <li class="w-100 mb-1 d-flex justify-content-between"
@@ -111,14 +113,19 @@
                                 @enderror
                             </div>
                             <div class="col-sm-12 col-md-12 pt-3">
-                                <label for="pv_type">{{ __('panel.pv_type') }}</label>
-                                <select name="pv_type" class="form-control" {{-- wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.pv_type" --}}>
-                                    <option value="1" {{ old('pv_type') == '1' ? 'selected' : null }}>
-                                        {{ __('panel.pv_type_text') }}
-                                    </option>
-                                    <option value="2" {{ old('pv_type') == '2' ? 'selected' : null }}>
-                                        {{ __('panel.pv_type_number') }}
-                                    </option>
+                                <label for="course_section_id">{{ __('panel.course_section_id') }}</label>
+                                <select name="course_section_id" class="form-control"
+                                    wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.course_section_id">
+                                    @forelse ($course_sections as $course_section)
+                                        <option value="{{ $course_section->id }}"
+                                            {{ old($course_section->id) == '1' ? 'selected' : null }}>
+                                            {{ $course_section->title }}
+                                        </option>
+                                    @empty
+                                        No course section selected
+                                    @endforelse
+
+
                                 </select>
                                 {{-- @error('evaluations.' . $currentEvaluationIndex . '.questions.' . $questionIndex . '.options.' . $optionIndex . '.pv_type')
                                     <span class="text-danger">{{ $message }}</span>

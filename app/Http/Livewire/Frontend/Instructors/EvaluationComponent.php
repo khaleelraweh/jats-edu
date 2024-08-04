@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Frontend\Instructors;
 
+use App\Models\Course;
+use App\Models\CourseSection;
 use App\Models\Evaluation;
 use App\Models\Option;
 use App\Models\Question;
@@ -10,6 +12,8 @@ use Livewire\Component;
 class EvaluationComponent extends Component
 {
     public $courseId;
+
+
 
     public $evaluations = [];
     public $count = 1;
@@ -60,7 +64,10 @@ class EvaluationComponent extends Component
 
     public function render()
     {
-        return view('livewire.frontend.instructors.evaluation-component');
+        $course_sections = CourseSection::where('course_id', $this->courseId)->get();
+        return view('livewire.frontend.instructors.evaluation-component', [
+            'course_sections'   => $course_sections,
+        ]);
     }
 
     public function validateStepThree()

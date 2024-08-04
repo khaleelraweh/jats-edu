@@ -6,8 +6,9 @@
         } */
     </style>
     <div class="row">
-        <div class="col-sm-12 col-md-2 pt-3">
-            <h2>صفحات النموذج</h2>
+        <div class="col-sm-12 col-md-3 pt-3">
+            <h3>التقييمات</h3>
+
             <ul style="list-style: none;margin:0;padding:0;">
                 @foreach ($evaluations as $index => $evaluation)
                     <li class="w-100 mb-1 d-flex justify-content-between"
@@ -31,7 +32,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-sm-12 col-md-10 pt-3">
+        <div class="col-sm-12 col-md-9 pt-3">
             @if (isset($evaluations[$currentEvaluationIndex]))
                 <div class="card">
                     <div class="card-header mb-0 pb-0">

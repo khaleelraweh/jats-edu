@@ -8,7 +8,7 @@
                         style="background-color: {{ $currentEvaluationIndex == $index ? '#0162e8' : '#b9c2d8' }} ; border-width: 0;">
                         <a class="d-block" wire:click="setActiveEvaluation({{ $index }})" href="#"
                             style="padding: 9px 20px;line-height: 1.538;color:#fff;">
-                            {{ $evaluation['doc_evaluation_name'] }} </a>
+                            {{ $evaluation['title'] }} </a>
 
                         <a href="" wire:click.prevent="removeEvaluation({{ $currentEvaluationIndex }})"
                             class="d-block pt-2" style="padding: 9px 20px;line-height: 1.538;color:#fff;">
@@ -36,26 +36,25 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-4 pt-3">
                                 <label
-                                    for="{{ $evaluations[$currentEvaluationIndex]['doc_evaluation_name'] }}">{{ __('panel.evaluation_title') }}</label>
+                                    for="{{ $evaluations[$currentEvaluationIndex]['title'] }}">{{ __('panel.evaluation_title') }}</label>
 
-                                <input type="text" class="form-control"
-                                    id="evaluations.{{ $index }}.doc_evaluation_name"
-                                    wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.doc_evaluation_name">
+                                <input type="text" class="form-control" id="evaluations.{{ $index }}.title"
+                                    wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.title">
 
-                                @error('evaluations.' . $currentEvaluationIndex . '.doc_evaluation_name')
+                                @error('evaluations.' . $currentEvaluationIndex . '.title')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="col-sm-12 col-md-8 pt-3">
-                                <label for="{{ $evaluations[$currentEvaluationIndex]['doc_evaluation_description'] }}">
-                                    {{ __('panel.evaluation_description') }}
+                                <label for="{{ $evaluations[$currentEvaluationIndex]['description'] }}">
+                                    {{ __('panel.description') }}
                                 </label>
 
                                 <input type="text" class="form-control"
-                                    id="{{ $evaluations[$currentEvaluationIndex]['doc_evaluation_description'] }}"
-                                    wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.doc_evaluation_description">
+                                    id="{{ $evaluations[$currentEvaluationIndex]['description'] }}"
+                                    wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.description">
 
-                                @error('evaluations.' . $currentEvaluationIndex . '.doc_evaluation_description')
+                                @error('evaluations.' . $currentEvaluationIndex . '.description')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -80,9 +79,9 @@
                                     <div class="card">
                                         <div class="card-body p-0">
                                             <div class="input-question p-2 "
-                                                style="background: {{ $questionIndex == $activequestionIndex ? '#0162e8' : '#DDE2EF' }}  !important;">
+                                                style="background: {{ $questionIndex == $activeQuestionIndex ? '#0162e8' : '#DDE2EF' }}  !important;">
                                                 <span
-                                                    class="input-question-text {{ $questionIndex == $activequestionIndex ? 'activequestion' : '' }}"
+                                                    class="input-question-text {{ $questionIndex == $activeQuestionIndex ? 'activequestion' : '' }}"
                                                     style="border:none;">
                                                     <span>
                                                         {{ __('panel.question') }}
@@ -90,19 +89,19 @@
                                                     </span>
                                                 </span>
                                                 <input type="text" class="form-control"
-                                                    wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.pg_name"
+                                                    wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.question_text"
                                                     aria-label="{{ __('transf.Enter a question Name') }}">
 
-                                                <a class="input-question-text {{ $questionIndex == $activequestionIndex ? 'activequestion' : '' }}"
+                                                <a class="input-question-text {{ $questionIndex == $activeQuestionIndex ? 'activequestion' : '' }}"
                                                     style="border:none; cursor: pointer;"
                                                     wire:click.prevent="removeQuestion({{ $currentEvaluationIndex }}, {{ $questionIndex }})">
                                                     <i
-                                                        class="fas fa-trash-alt {{ $questionIndex == $activequestionIndex ? 'text-white' : 'text-danger' }} "></i>
+                                                        class="fas fa-trash-alt {{ $questionIndex == $activeQuestionIndex ? 'text-white' : 'text-danger' }} "></i>
                                                 </a>
 
-                                                <a class="input-question-text p-1 {{ $questionIndex == $activequestionIndex ? 'activequestion' : '' }}"
+                                                <a class="input-question-text p-1 {{ $questionIndex == $activeQuestionIndex ? 'activequestion' : '' }}"
                                                     style="border:none; cursor: pointer;"
-                                                    wire:click="setActivequestion({{ $currentEvaluationIndex }}, {{ $questionIndex }})">
+                                                    wire:click="setActiveQuestion({{ $currentEvaluationIndex }}, {{ $questionIndex }})">
                                                     <i class="far fa-edit"></i>
                                                 </a>
                                             </div>
@@ -118,7 +117,7 @@
                             <div class="col-sm-12 col-md-8 pt-5">
                                 @foreach ($evaluations[$currentEvaluationIndex]['questions'] as $questionIndex => $question)
                                     {{-- options  --}}
-                                    @if ($questionIndex == $activequestionIndex)
+                                    @if ($questionIndex == $activeQuestionIndex)
                                         <div class="row align-items-end mb-4 mb-md-0">
                                             <div class="col-md mb-4 mb-md-0">
                                                 <h4>{{ __('panel.options') }}</h4>
@@ -134,7 +133,7 @@
                                             </div>
                                         </div>
                                         {{-- @foreach ($question['options'] as $optionIndex => $option) --}}
-                                        @foreach ($evaluations[$currentEvaluationIndex]['questions'][$activequestionIndex]['options'] as $optionIndex => $option)
+                                        @foreach ($evaluations[$currentEvaluationIndex]['questions'][$activeQuestionIndex]['options'] as $optionIndex => $option)
                                             <div class="card">
                                                 <div class="card-header mb-0">
                                                     <div class="input-question mb-0" style="background: transparent;">

@@ -572,6 +572,9 @@ return [
     // publish Data
     'Publish Data'                                      =>  'Publish Data',
 
+    //Evaluation 
+    'evaluation'                                        =>  'Evaluation',
+
     // Instructor Profile 
     'instructor_profile_tab'                            =>  'Instructor Profile',
     'social_tab'                                        =>  'Social',

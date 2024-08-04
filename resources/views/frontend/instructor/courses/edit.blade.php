@@ -139,7 +139,7 @@
                                     {{-- this is for evaluation --}}
                                     <a href="#confirm-detail" class="nav-link" data-toggle="tab">
                                         <span class="step-number">04</span>
-                                        <span class="step-title">{{ __('transf.evauation') }}</span>
+                                        <span class="step-title">{{ __('transf.evaluation') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">

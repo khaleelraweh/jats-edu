@@ -582,6 +582,9 @@ return [
     // Pricing section 
     'Pricing'                                           =>  'التسعير',
 
+    //Evaluation
+    'evaluation'                                        =>  'التقييم',
+
     // publish Data
     'Publish Data'                                      =>  'بيانات النشر',
 

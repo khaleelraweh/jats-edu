@@ -24,6 +24,7 @@
   'frontend.instructors.course-landing-page' => 'App\\Http\\Livewire\\Frontend\\Instructors\\CourseLandingPage',
   'frontend.instructors.course-pricing-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\CoursePricingComponent',
   'frontend.instructors.course-publish-data-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\CoursePublishDataComponent',
+  'frontend.instructors.evaluation-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\EvaluationComponent',
   'frontend.instructors.instructor-courses-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\InstructorCoursesComponent',
   'frontend.instructors.instructor-list-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\InstructorListComponent',
   'frontend.instructors.intended-learners-component' => 'App\\Http\\Livewire\\Frontend\\Instructors\\IntendedLearnersComponent',

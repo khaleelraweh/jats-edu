@@ -136,20 +136,27 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    {{-- this is for evaluation --}}
                                     <a href="#confirm-detail" class="nav-link" data-toggle="tab">
                                         <span class="step-number">04</span>
+                                        <span class="step-title">{{ __('transf.evauation') }}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#confirm-detail" class="nav-link" data-toggle="tab">
+                                        <span class="step-number">05</span>
                                         <span class="step-title">{{ __('transf.Pricing') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#confirm-detail2" class="nav-link" data-toggle="tab">
-                                        <span class="step-number">05</span>
+                                        <span class="step-number">06</span>
                                         <span class="step-title">{{ __('transf.Publish Data') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#confirm-detail3" class="nav-link" data-toggle="tab">
-                                        <span class="step-number">06</span>
+                                        <span class="step-number">07</span>
                                         <span class="step-title">{{ __('transf.Details Confirmation') }}</span>
                                     </a>
                                 </li>
@@ -165,6 +172,10 @@
                                 </div>
                                 <div class="tab-pane" id="bank-detail">
                                     @livewire('frontend.instructors.lesson-component', ['courseId' => $course->id])
+                                </div>
+                                {{-- for evaluation --}}
+                                <div class="tab-pane" id="confirm-detail">
+                                    @livewire('frontend.instructors.evaluation-component', ['courseId' => $course->id])
                                 </div>
                                 <div class="tab-pane" id="confirm-detail">
                                     @livewire('frontend.instructors.course-pricing-component', ['courseId' => $course->id])

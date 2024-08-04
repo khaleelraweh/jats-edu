@@ -14,7 +14,7 @@ class EvaluationComponent extends Component
     public $evaluations = [];
     public $count = 1;
     public $currentEvaluationIndex = 0; // Track the currently active evaluation
-    public $activeQuestionIndex = 0; // Track the currently active group within a evaluation
+    public $activeQuestionIndex = 0; // Track the currently active question within a evaluation
 
 
 
@@ -52,7 +52,7 @@ class EvaluationComponent extends Component
 
         $this->count = count($this->evaluations);
 
-        // Set the current page index to the new page
+        // Set the current evaluation index to the new evaluation
         $this->currentEvaluationIndex = count($this->evaluations) - 1;
 
         $this->setActiveEvaluation($this->currentEvaluationIndex);
@@ -121,7 +121,7 @@ class EvaluationComponent extends Component
     }
 
 
-    // Method to add a new page
+    // Method to add a new evaluation
     public function addEvaluation()
     {
         $this->count++;
@@ -146,7 +146,7 @@ class EvaluationComponent extends Component
             'saved' => false, // Initialize saved as false
         ];
 
-        // Set the current page index to the new page
+        // Set the current evaluation index to the new evaluation
         $this->currentEvaluationIndex = count($this->evaluations) - 1;
 
         $this->setActiveEvaluation($this->currentEvaluationIndex);
@@ -166,7 +166,7 @@ class EvaluationComponent extends Component
             ],
         ];
 
-        // Set the new group as the active group
+        // Set the new question as the active question
         $this->activeQuestionIndex = count($this->evaluations[$evaluationIndex]['questions']) - 1;
     }
 
@@ -183,7 +183,7 @@ class EvaluationComponent extends Component
         // Ensure the index is within bounds
         if ($index >= 0 && $index < count($this->evaluations)) {
             $this->currentEvaluationIndex = $index;
-            $this->activeQuestionIndex = 0; // Reset the active group index
+            $this->activeQuestionIndex = 0; // Reset the active question index
 
         }
     }
@@ -200,7 +200,7 @@ class EvaluationComponent extends Component
         }
     }
 
-    // Method to remove a page
+    // Method to remove a evaluation
     public function removeEvaluation($evaluationIndex)
     {
         if (isset($this->evaluations[$evaluationIndex])) {
@@ -218,7 +218,7 @@ class EvaluationComponent extends Component
         }
     }
 
-    // Method to remove a group
+    // Method to remove a question
     public function removeQuestion($evaluationIndex, $questionIndex)
     {
         if (isset($this->evaluations[$evaluationIndex]['questions'][$questionIndex])) {
@@ -235,11 +235,11 @@ class EvaluationComponent extends Component
         }
     }
 
-    // Method to remove a variable
+    // Method to remove a question
     public function removeOption($evaluationIndex, $questionIndex, $optionIndex)
     {
-        if (isset($this->evaluations[$evaluationIndex]['questions'][$questionIndex]['variables'][$optionIndex])) {
-            array_splice($this->evaluations[$evaluationIndex]['questions'][$questionIndex]['variables'], $optionIndex, 1);
+        if (isset($this->evaluations[$evaluationIndex]['questions'][$questionIndex]['questions'][$optionIndex])) {
+            array_splice($this->evaluations[$evaluationIndex]['questions'][$questionIndex]['questions'], $optionIndex, 1);
         }
     }
 }

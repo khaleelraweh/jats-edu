@@ -17,7 +17,7 @@ class EvaluationComponent extends Component
     public $courseId;
 
     public $evaluations = [];
-    public $count = 1;
+    public  $count = 1;
     public $currentEvaluationIndex = 0; // Track the currently active evaluation
     public $activeQuestionIndex = 0; // Track the currently active question within a evaluation
 
@@ -34,8 +34,8 @@ class EvaluationComponent extends Component
 
             $this->evaluations = [
                 [
-                    'title' => '',
-                    'description' => '',
+                    'title' => 'التقييم' . $this->count,
+                    'description' => 'الوصف' . $this->count,
                     'course_section_id' => null,
                     'questions' => [
                         [

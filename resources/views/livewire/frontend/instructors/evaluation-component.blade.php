@@ -3,6 +3,51 @@
         .activeQuestion {
             color: #fff !important;
         }
+
+        .form-control {
+            border-radius: 1.5rem;
+        }
+
+        .add-question {
+
+            display: inline-block;
+            margin-bottom: .5rem;
+            border: 1px solid;
+            border-radius: 15px;
+            padding-left: 10px;
+            padding-right: 6px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            color: #0f9cf3;
+            border-color: rgba(0, 0, 0, .1);
+        }
+
+        .add-question:hover {
+            background-color: #0f9cf3;
+            color: white !important;
+        }
+
+        .input-question {
+            background: #0162e8 !important;
+            padding: 15px !important;
+            border-radius: 7px;
+        }
+
+        .input-question .input-question-text {
+            display: inline-block;
+            margin-bottom: 7px !important;
+        }
+
+        .input-question .input-question-field {
+            border-radius: 20px;
+        }
+
+        .remove-question {
+            order: none;
+            margin-top: 15px !important;
+            display: inline-block;
+            margin: 0 15px;
+        }
     </style>
     <div class="row">
         <div class="col-sm-12 col-md-3 pt-3">
@@ -11,13 +56,14 @@
             <ul style="list-style: none;margin:0;padding:0;">
                 @foreach ($evaluations as $index => $evaluation)
                     <li class="w-100 mb-1 d-flex justify-content-between"
-                        style="background-color: {{ $currentEvaluationIndex == $index ? '#0162e8' : '#b9c2d8' }} ; border-width: 0;">
+                        style="border-radius:4px;background-color: {{ $currentEvaluationIndex == $index ? '#0162e8' : '#b9c2d8' }} ; border-width: 0;">
                         <a class="d-block" wire:click="setActiveEvaluation({{ $index }})" href="#"
                             style="padding: 9px 20px;line-height: 1.538;color:#fff;">
-                            {{ $evaluation['title'] }} </a>
+                            {{ $evaluation['title'] }}
+                        </a>
 
                         <a href="" wire:click.prevent="removeEvaluation({{ $currentEvaluationIndex }})"
-                            class="d-block pt-2" style="padding: 9px 20px;line-height: 1.538;color:#fff;">
+                            class="d-block pt-2" style="padding: 10px 6px 6px 0;line-height: 1.538;color:#fff;">
                             <i
                                 class="fas fa-trash-alt {{ $currentEvaluationIndex == $index ? 'text-white' : 'text-danger' }}  me-3"></i>
                         </a>
@@ -26,8 +72,8 @@
             </ul>
             <div class="d-flex justify-content-between" style="">
                 <!-- Button to add a new section -->
-                <a wire:click.prevent="addEvaluation()" class="d-block pt-2" style="cursor: pointer;">
-                    <i class="fas fa-plus-square text-primary me-3"></i> {{ __('panel.add_evaluation') }}
+                <a wire:click.prevent="addEvaluation()" class="d-block pt-3" style="cursor: pointer;">
+                    <i class="fas fa-plus-square text-primary "></i> {{ __('panel.add_evaluation') }}
                 </a>
             </div>
         </div>
@@ -87,10 +133,10 @@
                                     <div class="col-md mb-4 mb-md-0">
                                         <h4>{{ __('panel.questions') }}</h4>
                                     </div>
-                                    <div class="col-md-auto aos-init aos-animate" data-aos="fade-start">
+                                    <div class="col-md-auto aos-init aos-animate add-question" data-aos="fade-start">
                                         <a href=""
                                             wire:click.prevent="addQuestion({{ $currentEvaluationIndex }})">
-                                            <i class="fas fa-plus-circle me-2"></i>
+                                            <i class="fas fa-plus-circle me-2 "></i>
                                             <span>
                                                 {{ __('panel.add_question') }}
                                             </span>
@@ -110,18 +156,18 @@
                                                         {{ $questionIndex + 1 }}
                                                     </span>
                                                 </span>
-                                                <input type="text" class="form-control"
+                                                <input type="text" class="form-control input-question-field "
                                                     wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.question_text"
                                                     aria-label="{{ __('transf.Enter a question Name') }}">
 
-                                                <a class="input-question-text {{ $questionIndex == $activeQuestionIndex ? 'activeQuestion' : '' }}"
+                                                <a class=" remove-question {{ $questionIndex == $activeQuestionIndex ? 'activeQuestion' : '' }}"
                                                     style="border:none; cursor: pointer;"
                                                     wire:click.prevent="removeQuestion({{ $currentEvaluationIndex }}, {{ $questionIndex }})">
                                                     <i
                                                         class="fas fa-trash-alt {{ $questionIndex == $activeQuestionIndex ? 'text-white' : 'text-danger' }} "></i>
                                                 </a>
 
-                                                <a class="input-question-text p-1 {{ $questionIndex == $activeQuestionIndex ? 'activeQuestion' : '' }}"
+                                                <a class=" p-1 {{ $questionIndex == $activeQuestionIndex ? 'activeQuestion' : '' }}"
                                                     style="border:none; cursor: pointer;"
                                                     wire:click="setActiveQuestion({{ $currentEvaluationIndex }}, {{ $questionIndex }})">
                                                     <i class="far fa-edit"></i>
@@ -138,10 +184,10 @@
                                     @if ($questionIndex == $activeQuestionIndex)
                                         <div class="row align-items-end mb-4 mb-md-0">
                                             <div class="col-md mb-4 mb-md-0">
-                                                <h4>{{ __('panel.options') }}</h4>
+                                                <h4 style="margin-bottom: 15px;">{{ __('panel.options') }}</h4>
                                             </div>
                                             <div class="col-md-auto aos-init aos-animate" data-aos="fade-start">
-                                                <a href=""
+                                                <a href="" style="display: inline-block;margin-bottom: 15px;"
                                                     wire:click.prevent="addOption({{ $currentEvaluationIndex }}, {{ $questionIndex }})">
                                                     <i class="fas fa-plus-circle me-2"></i>
                                                     <span>
@@ -154,10 +200,10 @@
                                         @foreach ($evaluations[$currentEvaluationIndex]['questions'][$activeQuestionIndex]['options'] as $optionIndex => $option)
                                             <div class="card">
                                                 <div class="card-header mb-0">
-                                                    <div class="input-question mb-0" style="background: transparent;">
-                                                        <div class="d-flex align-items-center">
+                                                    <div class="input-option mb-0" style="background: transparent;">
+                                                        <div class="d-flex align-items-center justify-content-between">
                                                             <h3 class="mb-0 "
-                                                                style="border:none;background:transparent">
+                                                                style="border:none;background:transparent ; font-size: 20px;">
                                                                 <span>{{ __('panel.option') }}</span>
                                                                 <span><small>{{ $optionIndex + 1 }}</small>
                                                                 </span>

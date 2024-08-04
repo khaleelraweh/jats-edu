@@ -127,9 +127,9 @@
 
 
                                 </select>
-                                {{-- @error('evaluations.' . $currentEvaluationIndex . '.questions.' . $questionIndex . '.options.' . $optionIndex . '.pv_type')
+                                @error('evaluations.' . $currentEvaluationIndex . '.course_section_id')
                                     <span class="text-danger">{{ $message }}</span>
-                                @enderror --}}
+                                @enderror
 
                             </div>
                         </div>

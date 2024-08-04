@@ -74,7 +74,7 @@
             .twitter-bs-wizard-nav {
                 display: flex;
                 flex-direction: column;
-                min-width: 20%;
+                /* min-width: 20%; */
             }
 
             .tab-content.twitter-bs-wizard-tab-content {

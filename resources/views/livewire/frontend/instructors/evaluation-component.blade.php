@@ -1,9 +1,8 @@
 <div>
     <style>
-        /* .activeQuestion {
-            background-color: #0162e8 !important;
+        .activeQuestion {
             color: #fff !important;
-        } */
+        }
     </style>
     <div class="row">
         <div class="col-sm-12 col-md-3 pt-3">

@@ -1174,6 +1174,7 @@ return [
     'evaluation_title'                              =>  'عنوان التقييم',
 
     'questions'                                     =>  'الاسئلة',
+    'question'                                      =>  'سؤال',
     'add_question'                                  =>  'اضافة سؤال',
 
     'options'                                       =>  'الاختيارات',

@@ -1204,6 +1204,7 @@ return [
     'evaluation_title'                              =>  'Evaluation Title',
 
     'questions'                                     =>  'Questions',
+    'question'                                      =>  'Question',
     'add_question'                                  =>  'Add Question',
 
     'options'                                       =>  'Options',

@@ -31,28 +31,25 @@ class EvaluationComponent extends Component
 
         // Initialize the evaluations array with a default evaluation if it's empty
         if (empty($this->evaluations)) {
+
             $this->evaluations = [
                 [
-                    'evaluationId'          => 1,
-                    'title'                 => __('panel.evaluation') . ' 1',
-                    'description'           => 'Description 1',
-                    'course_sectin_id'      =>  '',
+                    'title' => '',
+                    'description' => '',
+                    'course_section_id' => null,
                     'questions' => [
                         [
-                            'question_text' =>  '',
-                            'question_type' =>  '',
+                            'question_text' => '',
+                            'question_type' => 'single_choice',
                             'options' => [
                                 [
-                                    'option_text'               =>  '',
-                                    'is_correct'           =>  '',
+                                    'option_text' => '',
+                                    'is_correct' => false,
                                 ],
                             ],
-
                         ],
-
                     ],
-                    'saved' => false, // Initialize saved as false
-                ]
+                ],
             ];
         }
 
@@ -129,8 +126,46 @@ class EvaluationComponent extends Component
     // for saving step3 using btn 
     public function saveEvaluationBtn()
     {
-        $this->saveEvaluation();
+        $this->validateEvaluation();
+
+        foreach ($this->evaluations as $evaluation) {
+            $evaluationModel = Evaluation::updateOrCreate(
+                ['id' => $evaluation['id'] ?? null],
+                [
+                    'title' => $evaluation['title'],
+                    'description' => $evaluation['description'],
+                    'course_section_id' => $evaluation['course_section_id'],
+                ]
+            );
+
+            foreach ($evaluation['questions'] as $question) {
+                $questionModel = Question::updateOrCreate(
+                    ['id' => $question['id'] ?? null],
+                    [
+                        'question_text' => $question['question_text'],
+                        'question_type' => $question['question_type'],
+                        'evaluation_id' => $evaluationModel->id,
+                    ]
+                );
+
+                foreach ($question['options'] as $option) {
+                    Option::updateOrCreate(
+                        ['id' => $option['id'] ?? null],
+                        [
+                            'option_text' => $option['option_text'],
+                            'is_correct' => $option['is_correct'],
+                            'question_id' => $questionModel->id,
+                        ]
+                    );
+                }
+            }
+        }
+
+        $this->alert('success', 'تم حفظ البيانات بنجاح');
+
+        session()->flash('message', 'Evaluation saved successfully.');
     }
+
 
 
     // Method to add a new evaluation

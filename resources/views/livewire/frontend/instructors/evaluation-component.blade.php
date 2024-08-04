@@ -91,7 +91,7 @@
                                 {{ __('panel.evaluation') }}
                                 {{ $currentEvaluationIndex + 1 }}
                             </h2>
-                            <button wire:click="saveEvaluationBtn" class="btn btn-primary">Save </button>
+                            <button wire:click.prevent="saveEvaluationBtn" class="btn btn-primary">Save </button>
                         </div>
 
                     </div>

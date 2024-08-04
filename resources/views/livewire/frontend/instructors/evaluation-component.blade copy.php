@@ -83,7 +83,7 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
+                            <div class="col-sm-12 col-md-4 pt-3">
                                 <div class="row align-items-end mb-4 mb-md-0">
                                     <div class="col-md mb-4 mb-md-0">
                                         <h4>{{ __('panel.questions') }}</h4>
@@ -135,6 +135,10 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
+                                @endforeach
+                            </div>
+                            <div class="col-sm-12 col-md-8 pt-3">
+                                @foreach ($evaluations[$currentEvaluationIndex]['questions'] as $questionIndex => $question)
                                     {{-- options  --}}
                                     @if ($questionIndex == $activeQuestionIndex)
                                         <div class="row align-items-end mb-4 mb-md-0">
@@ -213,7 +217,6 @@
                                     @endif
                                 @endforeach
                             </div>
-
                         </div>
                     </div>
                 </div>

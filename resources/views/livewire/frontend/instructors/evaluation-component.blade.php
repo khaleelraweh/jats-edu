@@ -211,10 +211,6 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-
-
-
-
                                                 </div>
                                             </div>
                                         @endforeach

@@ -32,9 +32,10 @@ class EvaluationComponent extends Component
         if (empty($this->evaluations)) {
             $this->evaluations = [
                 [
-                    'evaluationId' => 1,
-                    'title' => __('panel.evaluation') . ' 1',
-                    'description' => 'Description 1',
+                    'evaluationId'          => 1,
+                    'title'                 => __('panel.evaluation') . ' 1',
+                    'description'           => 'Description 1',
+                    'course_sectin_id'      =>  '',
                     'questions' => [
                         [
                             'question_text' =>  '',
@@ -75,6 +76,7 @@ class EvaluationComponent extends Component
         $this->validate([
             'evaluations.*.title'                               => 'required|string',
             'evaluations.*.description'                         => 'required|string',
+            'evaluations.*.course_section_id'                         => 'required|integer',
 
             'evaluations.*.questions.*.question_text'           => 'required|string',
             'evaluations.*.questions.*.question_type'           => 'required|string',
@@ -95,7 +97,7 @@ class EvaluationComponent extends Component
             $evaluationData = [
                 'title'         => $evaluation['title'],
                 'description'  => $evaluation['description'],
-                'course_section_id'  => $this->courseId, // will be change to course section Id
+                'course_section_id'  => $evaluation['course_section_id'], // will be change to course section Id
             ];
 
             $evaluationModel = Evaluation::updateOrCreate($evaluationData);
@@ -137,6 +139,7 @@ class EvaluationComponent extends Component
             'evaluationId'      => 1,
             'title'             => __('panel.evaluation') . ' 1',
             'description'       => 'Description 1',
+            'course_section_id' =>  '',
 
             'questions' => [
                 [

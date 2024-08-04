@@ -1212,6 +1212,7 @@ return [
     'add_option'                                    =>  'Add Option',
     'option_text'                                   =>  'Option Text',
     'is_correct'                                    =>  'Is Correct',
+    'course_section'                                =>  'Course Section',
 
 
 ];

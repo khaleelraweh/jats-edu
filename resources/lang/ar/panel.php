@@ -1182,6 +1182,8 @@ return [
     'add_option'                                    =>  'إضافة خيار',
     'option_text'                                   =>  'نص الاختيار',
     'is_correct'                                    =>  'هل الإجابة صحيحة',
+    'course_section'                                =>  'اقسام الدورة',
+
 
 
 

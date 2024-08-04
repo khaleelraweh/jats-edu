@@ -114,7 +114,7 @@
                                 @enderror
                             </div>
                             <div class="col-sm-12 col-md-12 pt-3">
-                                <label for="course_section_id">{{ __('panel.course_section_id') }}</label>
+                                <label for="course_section_id">{{ __('panel.course_section') }}</label>
                                 <select name="course_section_id" class="form-control"
                                     wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.course_section_id">
                                     @forelse ($course_sections as $course_section)

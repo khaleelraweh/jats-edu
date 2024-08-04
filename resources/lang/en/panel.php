@@ -1206,5 +1206,9 @@ return [
     'questions'                                     =>  'Questions',
     'add_question'                                  =>  'Add Question',
 
+    'options'                                       =>  'Options',
+    'option'                                        =>  'Option',
+    'add_option'                                    =>  'Add Option',
+
 
 ];

@@ -1176,6 +1176,10 @@ return [
     'questions'                                     =>  'الاسئلة',
     'add_question'                                  =>  'اضافة سؤال',
 
+    'options'                                       =>  'الاختيارات',
+    'option'                                        =>  'الاختبار',
+    'add_option'                                    =>  'إضافة خيار',
+
 
 
 

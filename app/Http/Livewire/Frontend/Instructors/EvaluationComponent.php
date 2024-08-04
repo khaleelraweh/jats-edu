@@ -235,11 +235,12 @@ class EvaluationComponent extends Component
         }
     }
 
-    // Method to remove a question
+
+    // Method to remove a option
     public function removeOption($evaluationIndex, $questionIndex, $optionIndex)
     {
-        if (isset($this->evaluations[$evaluationIndex]['questions'][$questionIndex]['questions'][$optionIndex])) {
-            array_splice($this->evaluations[$evaluationIndex]['questions'][$questionIndex]['questions'], $optionIndex, 1);
+        if (isset($this->evaluations[$evaluationIndex]['questions'][$questionIndex]['options'][$optionIndex])) {
+            array_splice($this->evaluations[$evaluationIndex]['questions'][$questionIndex]['options'], $optionIndex, 1);
         }
     }
 }

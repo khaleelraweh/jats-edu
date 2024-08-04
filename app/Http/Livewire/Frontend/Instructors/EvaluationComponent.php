@@ -2,6 +2,9 @@
 
 namespace App\Http\Livewire\Frontend\Instructors;
 
+use App\Models\Evaluation;
+use App\Models\Option;
+use App\Models\Question;
 use Livewire\Component;
 
 class EvaluationComponent extends Component
@@ -10,8 +13,8 @@ class EvaluationComponent extends Component
 
     public $evaluations = [];
     public $count = 1;
-    public $currentevaluationIndex = 0; // Track the currently active evaluation
-    public $activeGroupIndex = 0; // Track the currently active group within a evaluation
+    public $currentEvaluationIndex = 0; // Track the currently active evaluation
+    public $activeQuestionIndex = 0; // Track the currently active group within a evaluation
 
 
 
@@ -19,7 +22,7 @@ class EvaluationComponent extends Component
     {
         $this->courseId = $courseId;
 
-        $this->currentevaluationIndex = 0;
+        $this->currentEvaluationIndex = 0;
 
         // Initialize the evaluations array with a default evaluation if it's empty
         if (empty($this->evaluations)) {
@@ -48,6 +51,11 @@ class EvaluationComponent extends Component
         }
 
         $this->count = count($this->evaluations);
+
+        // Set the current page index to the new page
+        $this->currentEvaluationIndex = count($this->evaluations) - 1;
+
+        $this->setActiveEvaluation($this->currentEvaluationIndex);
     }
 
     public function render()
@@ -58,14 +66,15 @@ class EvaluationComponent extends Component
     public function validateStepThree()
     {
         $this->validate([
-            'evaluations.*.doc_evaluation_name'                     => 'required|string',
-            'evaluations.*.doc_evaluation_description'              => 'required|string',
-            'evaluations.*.groups.*.pg_name'                  => 'required|string',
-            'evaluations.*.groups.*.variables.*.pv_name'      => 'required|string',
-            'evaluations.*.groups.*.variables.*.pv_question'  => 'required|string',
-            'evaluations.*.groups.*.variables.*.pv_type'      => 'required|numeric',
-            'evaluations.*.groups.*.variables.*.pv_required'  => 'required|boolean',
-            'evaluations.*.groups.*.variables.*.pv_details'   => 'required|string',
+            'evaluations.*.title'                               => 'required|string',
+            'evaluations.*.description'                         => 'required|string',
+
+            'evaluations.*.questions.*.question_text'           => 'required|string',
+            'evaluations.*.questions.*.question_type'           => 'required|string',
+
+            'evaluations.*.questions.*.options.*.option_text'   => 'required|string',
+            'evaluations.*.questions.*.options.*.is_correct'    => 'required|bool',
+
         ]);
     }
 
@@ -77,33 +86,29 @@ class EvaluationComponent extends Component
         // Save the data to the database
         foreach ($this->evaluations as $evaluation) {
             $evaluationData = [
-                'doc_evaluation_name'         => $evaluation['doc_evaluation_name'],
-                'doc_evaluation_description'  => $evaluation['doc_evaluation_description'],
-                'document_template_id'  => $this->documentTemplateId,
+                'title'         => $evaluation['title'],
+                'description'  => $evaluation['description'],
+                'course_section_id'  => $this->courseId, // will be change to course section Id
             ];
 
-            $evaluationModel = Documentevaluation::updateOrCreate($evaluationData);
+            $evaluationModel = Evaluation::updateOrCreate($evaluationData);
 
-            foreach ($evaluation['groups'] as $group) {
-                $groupData = [
-                    'pg_name'           => $group['pg_name'],
-                    'document_evaluation_id'  => $evaluationModel->id,
+            foreach ($evaluation['questions'] as $question) {
+                $questionData = [
+                    'question_text'           => $question['question_text'],
+                    'evaluation_id'           => $evaluationModel->id,
                 ];
 
-                $groupModel = evaluationGroup::updateOrCreate($groupData);
+                $questionModel = Question::updateOrCreate($questionData);
 
-                foreach ($group['variables'] as $variable) {
+                foreach ($question['options'] as $option) {
 
-                    $variableData = [
-                        'pv_name'       => $variable['pv_name'],
-                        'pv_question'   => $variable['pv_question'],
-                        'pv_type'       => $variable['pv_type'],
-                        'pv_required'   => $variable['pv_required'],
-                        'pv_details'    => $variable['pv_details'],
-                        'evaluation_group_id' => $groupModel->id,
+                    $optionData = [
+                        'option_text'       => $option['option_text'],
+                        'is_correct'        => $option['is_correct'],
+                        'question_id'       => $option->id,
                     ];
-
-                    evaluationVariable::updateOrCreate($variableData);
+                    Option::updateOrCreate($optionData);
                 }
             }
         }
@@ -113,5 +118,128 @@ class EvaluationComponent extends Component
     public function saveStepThreeDataUsingBtn()
     {
         $this->saveStepThree();
+    }
+
+
+    // Method to add a new page
+    public function addEvaluation()
+    {
+        $this->count++;
+
+        $this->evaluations[] = [
+            'evaluationId'      => 1,
+            'title'             => __('panel.evaluation') . ' 1',
+            'description'       => 'Description 1',
+
+            'questions' => [
+                [
+                    'question_text'     =>  '',
+                    'question_type'     =>  '',
+                    'options' => [
+                        [
+                            'option_text'          =>  '',
+                            'is_correct'           =>  '',
+                        ],
+                    ],
+                ],
+            ],
+            'saved' => false, // Initialize saved as false
+        ];
+
+        // Set the current page index to the new page
+        $this->currentEvaluationIndex = count($this->evaluations) - 1;
+
+        $this->setActiveEvaluation($this->currentEvaluationIndex);
+    }
+
+
+    public function addQuestion($evaluationIndex)
+    {
+        $this->evaluations[$evaluationIndex]['questions'][] = [
+            'question_text'     =>  '',
+            'question_type'     =>  '',
+            'options' => [
+                [
+                    'option_text'          =>  '',
+                    'is_correct'           =>  '',
+                ],
+            ],
+        ];
+
+        // Set the new group as the active group
+        $this->activeQuestionIndex = count($this->evaluations[$evaluationIndex]['questions']) - 1;
+    }
+
+    public function addOption($evaluationIndex, $questionIndex)
+    {
+        $this->evaluations[$evaluationIndex]['questions'][$questionIndex]['options'][] = [
+            'option_text'          =>  '',
+            'is_correct'           =>  '',
+        ];
+    }
+
+    public function setActiveEvaluation($index)
+    {
+        // Ensure the index is within bounds
+        if ($index >= 0 && $index < count($this->evaluations)) {
+            $this->currentEvaluationIndex = $index;
+            $this->activeQuestionIndex = 0; // Reset the active group index
+
+        }
+    }
+
+    public function setActiveQuestion($evaluationIndex, $questionIndex)
+    {
+        // Ensure the indexes are within bounds
+        if (
+            $evaluationIndex >= 0 && $evaluationIndex < count($this->evaluations) &&
+            $questionIndex >= 0 && $questionIndex < count($this->evaluations[$evaluationIndex]['questions'])
+        ) {
+            $this->currentEvaluationIndex = $evaluationIndex;
+            $this->activeQuestionIndex = $questionIndex;
+        }
+    }
+
+    // Method to remove a page
+    public function removeEvaluation($evaluationIndex)
+    {
+        if (isset($this->evaluations[$evaluationIndex])) {
+            array_splice($this->evaluations, $evaluationIndex, 1);
+            $this->count--;
+
+            // Adjust the currentEvaluationIndex if necessary
+            if ($this->currentEvaluationIndex >= count($this->evaluations)) {
+                $this->currentEvaluationIndex = count($this->evaluations) - 1;
+            }
+
+            if ($this->currentEvaluationIndex < 0) {
+                $this->currentEvaluationIndex = 0;
+            }
+        }
+    }
+
+    // Method to remove a group
+    public function removeQuestion($evaluationIndex, $questionIndex)
+    {
+        if (isset($this->evaluations[$evaluationIndex]['questions'][$questionIndex])) {
+            array_splice($this->evaluations[$evaluationIndex]['questions'], $questionIndex, 1);
+
+            // Adjust the activeQuestionIndex if necessary
+            if ($this->activeQuestionIndex >= count($this->evaluations[$evaluationIndex]['questions'])) {
+                $this->activeQuestionIndex = count($this->evaluations[$evaluationIndex]['questions']) - 1;
+            }
+
+            if ($this->activeQuestionIndex < 0) {
+                $this->activeQuestionIndex = 0;
+            }
+        }
+    }
+
+    // Method to remove a variable
+    public function removeOption($evaluationIndex, $questionIndex, $optionIndex)
+    {
+        if (isset($this->evaluations[$evaluationIndex]['questions'][$questionIndex]['variables'][$optionIndex])) {
+            array_splice($this->evaluations[$evaluationIndex]['questions'][$questionIndex]['variables'], $optionIndex, 1);
+        }
     }
 }

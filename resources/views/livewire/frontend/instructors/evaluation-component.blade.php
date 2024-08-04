@@ -1,4 +1,10 @@
 <div>
+    <style>
+        .activeGroup {
+            background-color: #0162e8 !important;
+            color: #fff !important;
+        }
+    </style>
     <div class="row">
         <div class="col-sm-12 col-md-2 pt-3">
             <h2>صفحات النموذج</h2>

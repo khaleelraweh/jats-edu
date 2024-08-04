@@ -83,13 +83,17 @@
         <div class="col-sm-12 col-md-9 pt-3">
             @if (isset($evaluations[$currentEvaluationIndex]))
                 <div class="card">
-                    <div class="card-header mb-0 pb-0">
+                    <div class="card-header mb-0 pb-0" style="padding: .625rem .625rem !important;">
 
-                        <h2>
-                            <i class="far fa-edit" style="color: #0162e8"></i>
-                            {{ __('panel.evaluation') }}
-                            {{ $currentEvaluationIndex + 1 }}
-                        </h2>
+                        <div class="holder d-flex justify-content-between">
+                            <h2>
+                                <i class="far fa-edit" style="color: #0162e8"></i>
+                                {{ __('panel.evaluation') }}
+                                {{ $currentEvaluationIndex + 1 }}
+                            </h2>
+                            <button wire:click="saveEvaluationBtn" class="btn btn-primary">Save </button>
+                        </div>
+
                     </div>
                     <div class="card-body mt-0 pt-0">
                         <div class="row">

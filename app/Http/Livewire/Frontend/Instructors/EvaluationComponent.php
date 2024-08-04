@@ -7,13 +7,14 @@ use App\Models\CourseSection;
 use App\Models\Evaluation;
 use App\Models\Option;
 use App\Models\Question;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class EvaluationComponent extends Component
 {
+    use LivewireAlert;
+
     public $courseId;
-
-
 
     public $evaluations = [];
     public $count = 1;
@@ -71,7 +72,7 @@ class EvaluationComponent extends Component
         ]);
     }
 
-    public function validateStepThree()
+    public function validateEvaluation()
     {
         $this->validate([
             'evaluations.*.title'                               => 'required|string',
@@ -87,10 +88,10 @@ class EvaluationComponent extends Component
         ]);
     }
 
-    public function saveStepThree()
+    public function saveEvaluation()
     {
         // // Perform validation
-        $this->validateStepThree();
+        $this->validateEvaluation();
 
         // Save the data to the database
         foreach ($this->evaluations as $evaluation) {
@@ -121,12 +122,14 @@ class EvaluationComponent extends Component
                 }
             }
         }
+
+        $this->alert('success', 'Evaluation have been saved');
     }
 
     // for saving step3 using btn 
-    public function saveStepThreeDataUsingBtn()
+    public function saveEvaluationBtn()
     {
-        $this->saveStepThree();
+        $this->saveEvaluation();
     }
 
 

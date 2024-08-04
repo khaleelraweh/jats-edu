@@ -218,7 +218,7 @@
                                                 </div>
                                                 <div class="card-body mt-0">
                                                     <div class="row">
-                                                        <div class="col-sm-12 col-md-6">
+                                                        <div class="col-sm-12 col-md-8">
                                                             <div class="form-question">
                                                                 <label
                                                                     for="option_text">{{ __('panel.option_text') }}</label>
@@ -231,23 +231,23 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-12 col-md-6 ">
+                                                        <div class="col-sm-12 col-md-4 ">
                                                             <label
-                                                                for="pv_required">{{ __('panel.pv_required') }}</label>
-                                                            <select name="pv_required" class="form-control"
-                                                                wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.pv_required">
+                                                                for="is_correct">{{ __('panel.is_correct') }}</label>
+                                                            <select name="is_correct" class="form-control"
+                                                                wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.is_correct">
                                                                 <option value="1"
-                                                                    {{ old('pv_required') == '1' ? 'selected' : null }}>
+                                                                    {{ old('is_correct') == '1' ? 'selected' : null }}>
                                                                     {{ __('panel.yes') }}
                                                                 </option>
                                                                 <option value="0"
-                                                                    {{ old('pv_required') == '0' ? 'selected' : null }}>
+                                                                    {{ old('is_correct') == '0' ? 'selected' : null }}>
                                                                     {{ __('panel.no') }}
                                                                 </option>
                                                             </select>
                                                             @error('evaluations.' . $currentEvaluationIndex .
                                                                 '.questions.' . $questionIndex . '.options.' . $optionIndex
-                                                                . '.pv_required')
+                                                                . '.is_correct')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>

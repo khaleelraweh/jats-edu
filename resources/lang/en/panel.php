@@ -1210,6 +1210,8 @@ return [
     'options'                                       =>  'Options',
     'option'                                        =>  'Option',
     'add_option'                                    =>  'Add Option',
+    'option_text'                                   =>  'Option Text',
+    'is_correct'                                    =>  'Is Correct',
 
 
 ];

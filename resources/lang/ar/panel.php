@@ -1169,6 +1169,13 @@ return [
     'username'                                     => 'إسم المستخدم',
 
 
+    // Evaluations 
+    'add_evaluation'                                =>  'اضافة تقييم',
+    'evaluation_title'                              =>  'عنوان التقييم',
+
+    'questions'                                     =>  'الاسئلة',
+    'add_question'                                  =>  'اضافة سؤال',
+
 
 
 

@@ -1199,4 +1199,12 @@ return [
     'username'                                     => 'username',
 
 
+    // Evaluations 
+    'add_evaluation'                                =>  'Add Evaluation',
+    'evaluation_title'                              =>  'Evaluation Title',
+
+    'questions'                                     =>  'Questions',
+    'add_question'                                  =>  'Add Question',
+
+
 ];

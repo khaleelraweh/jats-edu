@@ -1183,6 +1183,8 @@ return [
     'option_text'                                   =>  'نص الاختيار',
     'is_correct'                                    =>  'هل الإجابة صحيحة',
     'course_section'                                =>  'اقسام الدورة',
+    'single_choice'                                 =>  'اختبار مفرد',
+    'multiple_choice'                               =>  'اختيار متعدد',
 
 
 

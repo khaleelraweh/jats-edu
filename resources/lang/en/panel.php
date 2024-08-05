@@ -1213,6 +1213,8 @@ return [
     'option_text'                                   =>  'Option Text',
     'is_correct'                                    =>  'Is Correct',
     'course_section'                                =>  'Course Section',
+    'single_choice'                                 =>  'Single choice',
+    'multiple_choice'                               =>  'Multiple choice',
 
 
 ];

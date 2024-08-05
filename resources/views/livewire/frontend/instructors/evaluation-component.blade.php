@@ -183,15 +183,30 @@
                                                         {{-- <label for="question_type">{{ __('panel.question_type') }}</label> --}}
                                                         <select name="question_type" class="form-control"
                                                             wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.question_type">
-                                                            <option value="single_choice"
-                                                                {{ old('question_type') == 'single_choice' ? 'selected' : null }}>
+                                                            <option value="1"
+                                                                {{ old('question_type') == '1' ? 'selected' : null }}>
                                                                 {{ __('panel.single_choice') }}
                                                             </option>
-                                                            <option value="multiple_choice"
-                                                                {{ old('question_type') == 'multiple_choice' ? 'selected' : null }}>
+                                                            <option value="2"
+                                                                {{ old('question_type') == '2' ? 'selected' : null }}>
                                                                 {{ __('panel.multiple_choice') }}
                                                             </option>
                                                         </select>
+
+
+                                                        <select name="is_correct" class="form-control"
+                                                            wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.is_correct">
+                                                            <option value="1"
+                                                                {{ old('is_correct') == '1' ? 'selected' : null }}>
+                                                                {{ __('panel.yes') }}
+                                                            </option>
+                                                            <option value="0"
+                                                                {{ old('is_correct') == '0' ? 'selected' : null }}>
+                                                                {{ __('panel.no') }}
+                                                            </option>
+                                                        </select>
+
+
                                                         @error('evaluations.' . $currentEvaluationIndex . '.questions.'
                                                             . $questionIndex . '.question_type')
                                                             <span class="text-danger">{{ $message }}</span>

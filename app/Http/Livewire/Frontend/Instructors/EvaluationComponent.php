@@ -134,7 +134,7 @@ class EvaluationComponent extends Component
             'evaluations.*.course_section_id'                   => 'required',
 
             'evaluations.*.questions.*.question_text'           => 'required|string',
-            'evaluations.*.questions.*.question_type'           => 'required|string',
+            'evaluations.*.questions.*.question_type'           => 'required',
 
             'evaluations.*.questions.*.options.*.option_text'   => 'required|string',
             'evaluations.*.questions.*.options.*.is_correct'    => 'required|bool',

@@ -182,13 +182,13 @@
                                                     <div class="col-sm-12 col-md-2 px-0 pt-3 pt-md-0">
                                                         {{-- <label for="question_type">{{ __('panel.question_type') }}</label> --}}
                                                         <select name="question_type" class="form-control"
-                                                            {{-- wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.is_correct" --}}>
+                                                            wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.question_type">
                                                             <option value="1"
-                                                                {{ old('question_type') == '1' ? 'selected' : null }}>
+                                                                {{ old('question_type') == 'single_choice' ? 'selected' : null }}>
                                                                 اختيار مفرد
                                                             </option>
                                                             <option value="0"
-                                                                {{ old('question_type') == '0' ? 'selected' : null }}>
+                                                                {{ old('question_type') == 'multiple_choice' ? 'selected' : null }}>
                                                                 اختيار متعدد
                                                             </option>
                                                         </select>

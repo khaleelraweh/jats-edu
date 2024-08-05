@@ -174,11 +174,27 @@
                                                     </span>
                                                 </span>
                                                 <div class="row">
-
-                                                    <div class="col-sm-12 col-md-11">
+                                                    <div class="col-sm-12 col-md-9">
                                                         <input type="text" class="form-control input-question-field "
                                                             wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.question_text"
                                                             aria-label="{{ __('transf.Enter a question Name') }}">
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-2 px-0 pt-3 pt-md-0">
+                                                        {{-- <label for="is_correct">{{ __('panel.is_correct') }}</label> --}}
+                                                        <select name="is_correct" class="form-control"
+                                                            {{-- wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.is_correct" --}}>
+                                                            <option value="1"
+                                                                {{ old('is_correct') == '1' ? 'selected' : null }}>
+                                                                اختيار مفرد
+                                                            </option>
+                                                            <option value="0"
+                                                                {{ old('is_correct') == '0' ? 'selected' : null }}>
+                                                                اختيار متعدد
+                                                            </option>
+                                                        </select>
+                                                        {{-- @error('evaluations.' . $currentEvaluationIndex . '.questions.' . $questionIndex . '.options.' . $optionIndex . '.is_correct')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror --}}
                                                     </div>
                                                     <div
                                                         class="col-sm-12 col-md-1 d-flex justify-content-center align-items-center">

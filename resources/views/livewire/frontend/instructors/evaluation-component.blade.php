@@ -185,11 +185,11 @@
                                                             wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.question_type">
                                                             <option value="1"
                                                                 {{ old('question_type') == 'single_choice' ? 'selected' : null }}>
-                                                                اختيار مفرد
+                                                                {{ __('panel.single_choice') }}
                                                             </option>
                                                             <option value="0"
                                                                 {{ old('question_type') == 'multiple_choice' ? 'selected' : null }}>
-                                                                اختيار متعدد
+                                                                {{ __('panel.multiple_choice') }}
                                                             </option>
                                                         </select>
                                                         {{-- @error('evaluations.' . $currentEvaluationIndex . '.questions.' . $questionIndex . '.options.' . $optionIndex . '.is_correct')

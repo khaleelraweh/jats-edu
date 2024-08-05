@@ -81,4 +81,9 @@ class CourseSection extends Model
     {
         return $this->hasMany(Lesson::class);
     }
+
+    public function evaluations()
+    {
+        return $this->hasMany(Evaluation::class);
+    }
 }

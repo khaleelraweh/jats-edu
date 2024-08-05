@@ -27,16 +27,38 @@ class EvaluationComponent extends Component
     public function mount($courseId)
     {
         $this->courseId = $courseId;
-
         $this->currentEvaluationIndex = 0;
 
-        $this->course = Course::where('id', $this->courseId)->get();
+        // Fetch the course instance
+        $course = Course::where('id', $this->courseId)->first(); // Use first() to get the single model instance
 
+        if ($course) {
+            // Initialize the pages array from the documentPages relationship
+            $this->evaluations = $course->sections->flatMap(function ($section) {
+                return $section->evaluations->map(function ($evaluation) {
+                    return [
+                        'title' => $evaluation->title,
+                        'description' => $evaluation->description,
+                        'course_section_id' => $evaluation->course_section_id,
 
+                        'questions' => $evaluation->questions->map(function ($question) {
+                            return [
+                                'question_text' => $question->question_text,
+                                'question_type' =>  $question->question_type,
 
-        // Initialize the evaluations array with a default evaluation if it's empty
-        if (empty($this->evaluations)) {
-
+                                'options' => $question->options->map(function ($option) {
+                                    return [
+                                        'option_text' => $option->option_text,
+                                        'is_correct' => $option->is_correct,
+                                    ];
+                                })->toArray(),
+                            ];
+                        })->toArray(),
+                        'saved' => true,
+                    ];
+                })->toArray();
+            })->toArray();
+        } else {
             $this->evaluations = [
                 [
                     'title' => 'التقييم' . $this->count,
@@ -66,6 +88,9 @@ class EvaluationComponent extends Component
         $this->setActiveEvaluation($this->currentEvaluationIndex);
     }
 
+
+
+
     public function render()
     {
         $course_sections = CourseSection::where('course_id', $this->courseId)->get();
@@ -79,7 +104,7 @@ class EvaluationComponent extends Component
         $this->validate([
             'evaluations.*.title'                               => 'required|string',
             'evaluations.*.description'                         => 'required|string',
-            'evaluations.*.course_section_id'                         => 'required|integer',
+            'evaluations.*.course_section_id'                   => 'required',
 
             'evaluations.*.questions.*.question_text'           => 'required|string',
             'evaluations.*.questions.*.question_type'           => 'required|string',

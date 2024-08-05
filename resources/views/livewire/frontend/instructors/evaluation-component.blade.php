@@ -134,12 +134,12 @@
                                     @empty
                                         No course section selected
                                     @endforelse
-
-
                                 </select>
+
                                 @error('evaluations.' . $currentEvaluationIndex . '.course_section_id')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
+
 
                             </div>
                         </div>

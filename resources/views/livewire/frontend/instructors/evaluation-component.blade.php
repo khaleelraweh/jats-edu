@@ -180,15 +180,15 @@
                                                             aria-label="{{ __('transf.Enter a question Name') }}">
                                                     </div>
                                                     <div class="col-sm-12 col-md-2 px-0 pt-3 pt-md-0">
-                                                        {{-- <label for="is_correct">{{ __('panel.is_correct') }}</label> --}}
-                                                        <select name="is_correct" class="form-control"
+                                                        {{-- <label for="question_type">{{ __('panel.question_type') }}</label> --}}
+                                                        <select name="question_type" class="form-control"
                                                             {{-- wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.is_correct" --}}>
                                                             <option value="1"
-                                                                {{ old('is_correct') == '1' ? 'selected' : null }}>
+                                                                {{ old('question_type') == '1' ? 'selected' : null }}>
                                                                 اختيار مفرد
                                                             </option>
                                                             <option value="0"
-                                                                {{ old('is_correct') == '0' ? 'selected' : null }}>
+                                                                {{ old('question_type') == '0' ? 'selected' : null }}>
                                                                 اختيار متعدد
                                                             </option>
                                                         </select>

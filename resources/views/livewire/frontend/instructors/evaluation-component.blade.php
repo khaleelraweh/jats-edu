@@ -192,9 +192,10 @@
                                                                 {{ __('panel.multiple_choice') }}
                                                             </option>
                                                         </select>
-                                                        {{-- @error('evaluations.' . $currentEvaluationIndex . '.questions.' . $questionIndex . '.options.' . $optionIndex . '.is_correct')
+                                                        @error('evaluations.' . $currentEvaluationIndex . '.questions.'
+                                                            . $questionIndex . '.question_type')
                                                             <span class="text-danger">{{ $message }}</span>
-                                                        @enderror --}}
+                                                        @enderror
                                                     </div>
                                                     <div
                                                         class="col-sm-12 col-md-1 d-flex justify-content-center align-items-center">

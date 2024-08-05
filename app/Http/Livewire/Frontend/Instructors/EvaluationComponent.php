@@ -122,6 +122,32 @@ class EvaluationComponent extends Component
     {
         $this->validateEvaluation();
 
+
+        // Fetch the course and its sections
+        $course = Course::with('sections.evaluations.questions.options')
+            ->where('id', $this->courseId)
+            ->first();
+
+        if ($course) {
+            // Iterate through each section
+            foreach ($course->sections as $section) {
+                // Iterate through each evaluation
+                foreach ($section->evaluations as $evaluation) {
+                    // Iterate through each question
+                    foreach ($evaluation->questions as $question) {
+                        // Delete options related to the question
+                        $question->options()->delete();
+                    }
+                    // Delete questions related to the evaluation
+                    $evaluation->questions()->delete();
+                    // Delete the evaluation itself
+                    $evaluation->delete();
+                }
+            }
+        }
+
+
+        // Save or update the new evaluations, questions, and options
         foreach ($this->evaluations as $evaluation) {
             $evaluationModel = Evaluation::updateOrCreate(
                 ['id' => $evaluation['id'] ?? null],

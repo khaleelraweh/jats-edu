@@ -30,11 +30,11 @@ class EvaluationComponent extends Component
         $this->currentEvaluationIndex = 0;
 
         // Fetch the course instance
-        $course = Course::where('id', $this->courseId)->first(); // Use first() to get the single model instance
+        $course = Course::where('id', $this->courseId)->with('sections.evaluations.questions.options')->first();
 
         if ($course) {
-            // Initialize the pages array from the documentPages relationship
-            $this->evaluations = $course->sections->flatMap(function ($section) {
+            // Initialize the evaluations array from the sections' evaluations
+            $evaluations = $course->sections->flatMap(function ($section) {
                 return $section->evaluations->map(function ($evaluation) {
                     return [
                         'title' => $evaluation->title,
@@ -44,7 +44,7 @@ class EvaluationComponent extends Component
                         'questions' => $evaluation->questions->map(function ($question) {
                             return [
                                 'question_text' => $question->question_text,
-                                'question_type' =>  $question->question_type,
+                                'question_type' => $question->question_type,
 
                                 'options' => $question->options->map(function ($option) {
                                     return [
@@ -58,7 +58,33 @@ class EvaluationComponent extends Component
                     ];
                 })->toArray();
             })->toArray();
+
+            // If no evaluations are found, set default data
+            if (empty($evaluations)) {
+                $this->evaluations = [
+                    [
+                        'title' => 'التقييم' . $this->count,
+                        'description' => 'الوصف' . $this->count,
+                        'course_section_id' => $course->sections->first()->id ?? null,
+                        'questions' => [
+                            [
+                                'question_text' => '',
+                                'question_type' => 'single_choice',
+                                'options' => [
+                                    [
+                                        'option_text' => '',
+                                        'is_correct' => false,
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ];
+            } else {
+                $this->evaluations = $evaluations;
+            }
         } else {
+            // If no course is found, set default data
             $this->evaluations = [
                 [
                     'title' => 'التقييم' . $this->count,
@@ -87,6 +113,7 @@ class EvaluationComponent extends Component
 
         $this->setActiveEvaluation($this->currentEvaluationIndex);
     }
+
 
 
 

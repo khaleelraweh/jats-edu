@@ -45,9 +45,10 @@
 
         .remove-question {
             order: none;
-            margin-top: 15px !important;
+            /* margin-top: 15px !important; */
             display: inline-block;
-            margin: 0 15px;
+            /* margin: 0 15px; */
+            margin: 0 6px;
         }
     </style>
     <div class="row">
@@ -172,22 +173,32 @@
                                                         {{ $questionIndex + 1 }}
                                                     </span>
                                                 </span>
-                                                <input type="text" class="form-control input-question-field "
-                                                    wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.question_text"
-                                                    aria-label="{{ __('transf.Enter a question Name') }}">
+                                                <div class="row">
 
-                                                <a class=" remove-question {{ $questionIndex == $activeQuestionIndex ? 'activeQuestion' : '' }}"
-                                                    style="border:none; cursor: pointer;"
-                                                    wire:click.prevent="removeQuestion({{ $currentEvaluationIndex }}, {{ $questionIndex }})">
-                                                    <i
-                                                        class="fas fa-trash-alt {{ $questionIndex == $activeQuestionIndex ? 'text-white' : 'text-danger' }} "></i>
-                                                </a>
+                                                    <div class="col-sm-12 col-md-11">
+                                                        <input type="text" class="form-control input-question-field "
+                                                            wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.question_text"
+                                                            aria-label="{{ __('transf.Enter a question Name') }}">
+                                                    </div>
+                                                    <div
+                                                        class="col-sm-12 col-md-1 d-flex justify-content-center align-items-center">
+                                                        <a class=" remove-question {{ $questionIndex == $activeQuestionIndex ? 'activeQuestion' : '' }}"
+                                                            style="border:none; cursor: pointer;"
+                                                            wire:click.prevent="removeQuestion({{ $currentEvaluationIndex }}, {{ $questionIndex }})">
+                                                            <i
+                                                                class="fas fa-trash-alt {{ $questionIndex == $activeQuestionIndex ? 'text-white' : 'text-danger' }} "></i>
+                                                        </a>
 
-                                                <a class=" p-1 {{ $questionIndex == $activeQuestionIndex ? 'activeQuestion' : '' }}"
-                                                    style="border:none; cursor: pointer;"
-                                                    wire:click="setActiveQuestion({{ $currentEvaluationIndex }}, {{ $questionIndex }})">
-                                                    <i class="far fa-edit"></i>
-                                                </a>
+                                                        <a class=" p-1 {{ $questionIndex == $activeQuestionIndex ? 'activeQuestion' : '' }}"
+                                                            style="border:none; cursor: pointer;"
+                                                            wire:click="setActiveQuestion({{ $currentEvaluationIndex }}, {{ $questionIndex }})">
+                                                            <i class="far fa-edit"></i>
+                                                        </a>
+                                                    </div>
+
+
+
+                                                </div>
                                             </div>
 
                                         </div>

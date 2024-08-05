@@ -15,6 +15,7 @@ class EvaluationComponent extends Component
     use LivewireAlert;
 
     public $courseId;
+    public $course;
 
     public $evaluations = [];
     public  $count = 1;
@@ -28,6 +29,10 @@ class EvaluationComponent extends Component
         $this->courseId = $courseId;
 
         $this->currentEvaluationIndex = 0;
+
+        $this->course = Course::where('id', $this->courseId)->get();
+
+
 
         // Initialize the evaluations array with a default evaluation if it's empty
         if (empty($this->evaluations)) {
@@ -85,43 +90,7 @@ class EvaluationComponent extends Component
         ]);
     }
 
-    public function saveEvaluation()
-    {
-        // // Perform validation
-        $this->validateEvaluation();
 
-        // Save the data to the database
-        foreach ($this->evaluations as $evaluation) {
-            $evaluationData = [
-                'title'         => $evaluation['title'],
-                'description'  => $evaluation['description'],
-                'course_section_id'  => $evaluation['course_section_id'], // will be change to course section Id
-            ];
-
-            $evaluationModel = Evaluation::updateOrCreate($evaluationData);
-
-            foreach ($evaluation['questions'] as $question) {
-                $questionData = [
-                    'question_text'           => $question['question_text'],
-                    'evaluation_id'           => $evaluationModel->id,
-                ];
-
-                $questionModel = Question::updateOrCreate($questionData);
-
-                foreach ($question['options'] as $option) {
-
-                    $optionData = [
-                        'option_text'       => $option['option_text'],
-                        'is_correct'        => $option['is_correct'],
-                        'question_id'       => $option->id,
-                    ];
-                    Option::updateOrCreate($optionData);
-                }
-            }
-        }
-
-        $this->alert('success', 'Evaluation have been saved');
-    }
 
     // for saving step3 using btn 
     public function saveEvaluationBtn()

@@ -51,6 +51,15 @@
             margin: 0 6px;
         }
     </style>
+
+    <header class="d-flex justify-content-end">
+        <div class="completed-section-badge">
+            @if ($databaseDataValid || ($formSubmitted && !$errors->any()))
+                <i class="mdi mdi-check-circle-outline text-success display-4"></i>
+            @endif
+        </div>
+    </header>
+
     <div class="row">
         <div class="col-sm-12 col-md-3 pt-3">
             <h3>التقييمات</h3>

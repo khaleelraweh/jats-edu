@@ -7,6 +7,7 @@ use App\Models\CourseSection;
 use App\Models\Evaluation;
 use App\Models\Option;
 use App\Models\Question;
+use Illuminate\Support\Facades\Validator;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
@@ -21,6 +22,16 @@ class EvaluationComponent extends Component
     public  $count = 1;
     public $currentEvaluationIndex = 0; // Track the currently active evaluation
     public $activeQuestionIndex = 0; // Track the currently active question within a evaluation
+
+
+    // validation check 
+    public $formSubmitted = false;
+    public $databaseDataValid = false;
+
+    public $evaluationsValid = false;
+    public $questionsValid = false;
+    public $optionsValid = false;
+
 
 
 
@@ -112,6 +123,12 @@ class EvaluationComponent extends Component
         $this->currentEvaluationIndex = count($this->evaluations) - 1;
 
         $this->setActiveEvaluation($this->currentEvaluationIndex);
+
+        $this->validateDatabaseData();
+
+        if ($this->databaseDataValid == true) {
+            $this->formSubmitted = true;
+        }
     }
 
 
@@ -140,6 +157,132 @@ class EvaluationComponent extends Component
             'evaluations.*.questions.*.options.*.is_correct'    => 'required|bool',
 
         ]);
+    }
+
+
+
+    protected function validateDatabaseData()
+    {
+        // Validate Evaluation
+        $evaluationsValid = true;
+        $course = Course::findOrFail($this->courseId);
+
+        $evaluationCount = 0;
+        foreach ($course->sections as $section) {
+            $evaluationCount += $section->evaluations->count();
+        }
+
+        if ($evaluationCount > 0) {
+
+            foreach ($course->sections as $section) {
+                foreach ($section->evaluations as $evaluation) {
+                    $validator = Validator::make(
+                        [
+                            'title' => $evaluation->title,
+                            'description' => $evaluation->description,
+                        ],
+                        [
+                            'title' => ['required', 'string', 'min:3', 'max:80'],
+                            'description' => ['required', 'string', 'min:3', 'max:255'],
+                            'course_section_id' => ['required'],
+                        ]
+                    );
+                    if ($validator->fails()) {
+                        $evaluationsValid = false;
+                        break;
+                    }
+                }
+            }
+        } else {
+            $evaluationsValid = false;
+        }
+
+        // Validate question
+        $questionsValid = true;
+        $course = Course::findOrFail($this->courseId);
+
+        $questionCount = 0;
+        foreach ($course->sections as $section) {
+            foreach ($section->evaluations as $evaluation) {
+                $questionCount += $evaluation->questions->count();
+            }
+        }
+
+        if ($questionCount > 0) {
+            foreach ($course->sections as $section) {
+                foreach ($section->evaluations as $evaluation) {
+                    foreach ($evaluation->questions as $question) {
+                        $validator = Validator::make(
+                            [
+                                'question_text' => $question->question_text,
+                                'question_type' => $question->question_type,
+                            ],
+                            [
+                                'question_text' => ['required', 'string', 'min:3', 'max:80'],
+                                'question_type' => ['required'],
+                            ]
+                        );
+                        if ($validator->fails()) {
+                            $questionsValid = false;
+                            break;
+                        }
+                    }
+                }
+            }
+        } else {
+            $questionsValid = false;
+        }
+
+
+        // Validate options
+        $optionsValid = true;
+        $course = Course::findOrFail($this->courseId);
+
+
+        $optionCount = 0;
+        foreach ($course->sections as $section) {
+            foreach ($section->evaluations as $evaluation) {
+                foreach ($evaluation->questions as $question) {
+                    $optionCount += $question->options->count();
+                }
+            }
+        }
+
+        if ($optionCount > 0) {
+
+            foreach ($course->sections as $section) {
+                foreach ($section->evaluations as $evaluation) {
+                    foreach ($evaluation->questions as $question) {
+                        foreach ($question->options as $option) {
+                            $validator = Validator::make(
+                                [
+                                    'option_text' => $option->option_text,
+                                    'is_correct' => $option->is_correct,
+                                ],
+                                [
+                                    'option_text' => ['required', 'string', 'min:3', 'max:80'],
+                                    'is_correct' => ['required', 'boolean'],
+                                ]
+                            );
+                            if ($validator->fails()) {
+                                $optionsValid = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            $optionsValid = false;
+        }
+
+
+        // Set flags for sections validation
+        $this->databaseDataValid = $evaluationsValid && $questionsValid && $optionsValid;
+
+        $this->evaluationsValid = $evaluationsValid;
+        $this->questionsValid = $questionsValid;
+        $this->optionsValid = $optionsValid;
     }
 
 
@@ -208,9 +351,13 @@ class EvaluationComponent extends Component
             }
         }
 
-        $this->alert('success', 'تم حفظ البيانات بنجاح');
+        $this->emit('updateCourseDEtailsConfirmation', $this->courseId);
 
-        session()->flash('message', 'Evaluation saved successfully.');
+        $this->formSubmitted = true;
+
+        // Validate database data
+        $this->validateDatabaseData();
+        $this->alert('success', 'تم حفظ البيانات بنجاح');
     }
 
 

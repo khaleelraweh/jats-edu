@@ -746,6 +746,51 @@
         </div>
     </section>
 
+    <style>
+        .contact-whatsapp-wrapper {
+            position: fixed;
+            width: 270px;
+            bottom: 0;
+            left: 60px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            z-index: 100;
+            background-color: #449D44;
+        }
+
+        .contact-whatsapp-wrapper .close {
+            position: absolute;
+            left: 5px;
+            top: 2px;
+            outline: none;
+        }
+
+        button.close {
+            -webkit-appearance: none;
+            padding: 0;
+            cursor: pointer;
+            background: 0 0;
+            border: 0;
+        }
+
+        .close {
+            float: left;
+        }
+
+        .contact-whatsapp-wrapper .contact-whatsapp .fa {
+            margin-top: 7px;
+            margin-left: 5px;
+        }
+
+        span.ltr {
+            display: inline-block;
+        }
+
+        .ltr {
+            direction: ltr !important;
+        }
+    </style>
+
     <div class="contact-whatsapp-wrapper">
         <button aria-label="Close" class="close" data-dismiss="modal" type="button">
             <span aria-hidden="true">×</span>

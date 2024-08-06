@@ -124,9 +124,6 @@
     @livewire('frontend.home.featured-courses-component')
 
 
-
-
-
     {{-- CALL ACTION --}}
     <div class="mx-n4 bg-is-selected"
         data-flickity='{"pageDots": true, "prevNextButtons": false, "cellAlign": "center", "wrapAround": true, "imagesLoaded": true}'>
@@ -748,4 +745,21 @@
             </div>
         </div>
     </section>
+
+    <div class="contact-whatsapp-wrapper">
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+            <span aria-hidden="true">×</span>
+        </button>
+        <a class="btn btn-block btn-success contact-whatsapp" data-phone="201005289720"
+            href="https://api.whatsapp.com/send?phone=201005289720">
+            <i class="fa fa-2x fa-whatsapp pull-left"></i>
+            <span style="font-size: 12px;">
+                للمساعدة يمكنك التواصل معنا عن
+                طريق
+            </span>
+            <br>الواتس اب:
+            <span class="ltr">+2
+                0100-5289720</span>
+        </a>
+    </div>
 @endsection

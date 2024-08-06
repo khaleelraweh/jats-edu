@@ -163,17 +163,15 @@ class EvaluationComponent extends Component
 
     protected function validateDatabaseData()
     {
-        // Validate Evaluation
         $evaluationsValid = true;
-        $course = Course::findOrFail($this->courseId);
+        $course = Course::with('sections.evaluations')->findOrFail($this->courseId);
 
-        $evaluationCount = 0;
-        foreach ($course->sections as $section) {
-            $evaluationCount += $section->evaluations->count();
-        }
+        // Check if there are any evaluations
+        $evaluationCount = $course->sections->sum(function ($section) {
+            return $section->evaluations->count();
+        });
 
         if ($evaluationCount > 0) {
-
             foreach ($course->sections as $section) {
                 foreach ($section->evaluations as $evaluation) {
                     $validator = Validator::make(
@@ -233,11 +231,9 @@ class EvaluationComponent extends Component
             $questionsValid = false;
         }
 
-
         // Validate options
         $optionsValid = true;
         $course = Course::findOrFail($this->courseId);
-
 
         $optionCount = 0;
         foreach ($course->sections as $section) {
@@ -247,7 +243,6 @@ class EvaluationComponent extends Component
                 }
             }
         }
-
         if ($optionCount > 0) {
 
             foreach ($course->sections as $section) {

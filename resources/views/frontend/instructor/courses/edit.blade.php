@@ -130,32 +130,32 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#bank-detail" class="nav-link" data-toggle="tab">
+                                    <a href="#curriculum" class="nav-link" data-toggle="tab">
                                         <span class="step-number">03</span>
                                         <span class="step-title">{{ __('transf.curriculum') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     {{-- this is for evaluation --}}
-                                    <a href="#confirm-detail" class="nav-link" data-toggle="tab">
+                                    <a href="#evaluation" class="nav-link" data-toggle="tab">
                                         <span class="step-number">04</span>
                                         <span class="step-title">{{ __('transf.evaluation') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#confirm-detail" class="nav-link" data-toggle="tab">
+                                    <a href="#Pricing" class="nav-link" data-toggle="tab">
                                         <span class="step-number">05</span>
                                         <span class="step-title">{{ __('transf.Pricing') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#confirm-detail2" class="nav-link" data-toggle="tab">
+                                    <a href="#publishData" class="nav-link" data-toggle="tab">
                                         <span class="step-number">06</span>
                                         <span class="step-title">{{ __('transf.Publish Data') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#confirm-detail3" class="nav-link" data-toggle="tab">
+                                    <a href="#Confirmation" class="nav-link" data-toggle="tab">
                                         <span class="step-number">07</span>
                                         <span class="step-title">{{ __('transf.Details Confirmation') }}</span>
                                     </a>
@@ -170,20 +170,20 @@
                                 <div class="tab-pane" id="company-document">
                                     @livewire('frontend.instructors.intended-learners-component', ['courseId' => $course->id])
                                 </div>
-                                <div class="tab-pane" id="bank-detail">
+                                <div class="tab-pane" id="curriculum">
                                     @livewire('frontend.instructors.lesson-component', ['courseId' => $course->id])
                                 </div>
                                 {{-- for evaluation --}}
-                                <div class="tab-pane" id="confirm-detail">
+                                <div class="tab-pane" id="evaluation">
                                     @livewire('frontend.instructors.evaluation-component', ['courseId' => $course->id])
                                 </div>
-                                <div class="tab-pane" id="confirm-detail">
+                                <div class="tab-pane" id="Pricing">
                                     @livewire('frontend.instructors.course-pricing-component', ['courseId' => $course->id])
                                 </div>
-                                <div class="tab-pane" id="confirm-detail2">
+                                <div class="tab-pane" id="publishData">
                                     @livewire('frontend.instructors.course-publish-data-component', ['courseId' => $course->id])
                                 </div>
-                                <div class="tab-pane" id="confirm-detail3">
+                                <div class="tab-pane" id="Confirmation">
                                     @livewire('frontend.instructors.course-details-confirmation-component', ['courseId' => $course->id])
                                 </div>
 

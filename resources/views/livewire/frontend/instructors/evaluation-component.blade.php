@@ -194,17 +194,7 @@
                                                         </select>
 
 
-                                                        <select name="is_correct" class="form-control"
-                                                            wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.is_correct">
-                                                            <option value="1"
-                                                                {{ old('is_correct') == '1' ? 'selected' : null }}>
-                                                                {{ __('panel.yes') }}
-                                                            </option>
-                                                            <option value="0"
-                                                                {{ old('is_correct') == '0' ? 'selected' : null }}>
-                                                                {{ __('panel.no') }}
-                                                            </option>
-                                                        </select>
+
 
 
                                                         @error('evaluations.' . $currentEvaluationIndex . '.questions.'

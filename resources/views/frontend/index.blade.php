@@ -749,13 +749,13 @@
     <style>
         .contact-whatsapp-wrapper {
             position: fixed;
-            width: 270px;
+            width: 290px;
             bottom: 0;
             left: 60px;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             z-index: 100;
-            background-color: #449D44;
+
         }
 
         .contact-whatsapp-wrapper .close {
@@ -789,6 +789,14 @@
         .ltr {
             direction: ltr !important;
         }
+
+        .pull-left {
+            float: left !important;
+        }
+
+        .fa.pull-left {
+            margin-right: .3em;
+        }
     </style>
 
     <div class="contact-whatsapp-wrapper">
@@ -797,7 +805,7 @@
         </button>
         <a class="btn btn-block btn-success contact-whatsapp" data-phone="201005289720"
             href="https://api.whatsapp.com/send?phone=201005289720">
-            <i class="fa fa-2x fa-whatsapp pull-left"></i>
+            <i class="fab fa-whatsapp fa-2x  pull-left" style="line-height: 1.6"></i>
             <span style="font-size: 12px;">
                 للمساعدة يمكنك التواصل معنا عن
                 طريق

@@ -747,72 +747,48 @@
     </section>
 
     <style>
-        .contact-whatsapp-wrapper {
+        .my-wrapper {
             position: fixed;
-            width: 290px;
+            width: 320px;
             bottom: 0;
             left: 60px;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             z-index: 100;
-
-        }
-
-        .contact-whatsapp-wrapper .close {
-            position: absolute;
-            left: 5px;
-            top: 2px;
-            outline: none;
-        }
-
-        button.close {
-            -webkit-appearance: none;
-            padding: 0;
+            margin: 0;
+            color: white;
             cursor: pointer;
-            background: 0 0;
-            border: 0;
-        }
-
-        .close {
-            float: left;
-        }
-
-        .contact-whatsapp-wrapper .contact-whatsapp .fa {
-            margin-top: 7px;
-            margin-left: 5px;
-        }
-
-        span.ltr {
-            display: inline-block;
-        }
-
-        .ltr {
-            direction: ltr !important;
-        }
-
-        .pull-left {
-            float: left !important;
-        }
-
-        .fa.pull-left {
-            margin-right: .3em;
         }
     </style>
 
-    <div class="contact-whatsapp-wrapper">
-        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-            <span aria-hidden="true">×</span>
-        </button>
-        <a class="btn btn-block btn-success contact-whatsapp" data-phone="201005289720"
-            href="https://api.whatsapp.com/send?phone=201005289720">
-            <i class="fab fa-whatsapp fa-2x  pull-left" style="line-height: 1.6"></i>
-            <span style="font-size: 12px;">
-                للمساعدة يمكنك التواصل معنا عن
-                طريق
-            </span>
-            <br>الواتس اب:
-            <span class="ltr">+2
-                0100-5289720</span>
-        </a>
+
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+    <div class="alert alert-primary alert-dismissible fade show my-wrapper" role="alert">
+
+        <div class="alert-body d-flex justify-content-between align-items-center">
+
+            <div class="part1">
+                <span style="font-size: 12px;">
+                    للمساعدة يمكنك التواصل معنا عن
+                    طريق
+                </span>
+                <br>الواتس اب:
+                <span class="ltr">+2
+                    0100-5289720</span>
+            </div>
+            <div class="part2">
+                <i class="fab fa-whatsapp fa-2x bi flex-shrink-0 me-2" width="30" height="30" role="img"
+                    aria-label="Info:"></i>
+            </div>
+        </div>
+
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
     </div>
 @endsection

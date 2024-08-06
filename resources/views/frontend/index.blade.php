@@ -80,12 +80,6 @@
         </div>
     </section>
 
-    {{-- CATEGORIES --}}
-    @livewire('frontend.home.trending-categories-component')
-
-    {{--  FEATURED PRODUCT --}}
-    @livewire('frontend.home.featured-courses-component')
-
     {{-- Partners --}}
     <section class="py-5 py-md-11 bg-catskill">
         <div class="container">
@@ -120,56 +114,16 @@
                     </div>
                 @endforeach
             </div>
-
-            {{-- <div class="mx-n3 mx-md-n4"
-                data-flickity='{"pageDots": false,"cellAlign": "left", "wrapAround": true, "imagesLoaded": true}'>
-                @foreach ($partners as $partner)
-                    <div class="col-6 col-md-4 col-lg-3 text-center py-5 text-md-left px-3 px-md-4" data-aos="fade-up"
-                        data-aos-delay="{{ 50 * $loop->iteration }}">
-                        <div class="card border shadow p-2 lift">
-                            <!-- Image -->
-                            <div class="card-zoom position-relative" style="max-width: 250px;">
-                                <div class="card-float card-hover right-0 left-0 bottom-0 mb-4">
-                                    welcome
-                                </div>
-
-                                <a href="#"
-                                    class="card-img sk-thumbnail img-ratio-4 card-hover-overlay coral d-block">
-                                    @php
-                                        if ($partner->partner_image != null) {
-                                            $partner_img = asset('assets/partners/' . $partner->partner_image);
-
-                                            if (
-                                                !file_exists(public_path('assets/partners/' . $partner->partner_image))
-                                            ) {
-                                                $partner_img = asset('image/not_found/avator2.webp');
-                                            }
-                                        } else {
-                                            $partner_img = asset('image/not_found/avator2.webp');
-                                        }
-                                    @endphp
-                                    <img class="rounded shadow-light-lg img-fluid" src="{{ $partner_img }}"
-                                        alt="{{ $partner->name }}">
-                                </a>
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="card-footer px-3 pt-4 pb-1">
-                                <a href="#" class="d-block">
-                                    <h5 class="mb-0">{{ $partner->name }}</h5>
-                                </a>
-                                <span class="font-size-d-sm">
-                                    {{ $partner->description }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-
-            </div> --}}
         </div>
     </section>
+
+    {{-- CATEGORIES --}}
+    @livewire('frontend.home.trending-categories-component')
+
+    {{--  FEATURED PRODUCT --}}
+    @livewire('frontend.home.featured-courses-component')
+
+
 
 
 

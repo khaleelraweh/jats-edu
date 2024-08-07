@@ -32,6 +32,6 @@ class CompanyRequestController extends Controller
         CompanyRequest::create($validatedData);
 
         // Redirect to a success page or back to the form with a success message
-        return redirect()->route('company_requests.create')->with('success', 'Request submitted successfully!');
+        return redirect()->route('company_requests.create')->with('success', 'لقد تم إرسال طلبك بنجاح');
     }
 }

@@ -411,6 +411,20 @@ return [
     // ........... commons in Teach Request  ....... //
 
 
+    ##############################################################
+    // =============  Manage Company Request  ===============//
+    'manage_company_requests'              => 'Manage Company Requests',
+
+    // ---------------  Company request  --------------//
+    'show_company_requests'               => 'Company Requests',
+    'add_new_company_request'             => 'Add New Company Request',
+    'edit_existing_copany_request'       => 'Edit Existing Company Request',
+
+    // ........... commons in Company Request  ....... //
+    'cp_user_name'                      =>  'Applicant\'s Name',
+    'cp_company_name'                   =>  'Company Name',
+
+
     //............. Order Status .............//
 
     'teach_request_new_request'                       =>  'NEW_REQUEST',

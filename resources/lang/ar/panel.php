@@ -399,6 +399,19 @@ return [
 
     // ........... commons in Teach Request  ....... //
 
+    ##############################################################
+    // =============  Manage Company Request  ===============//
+    'manage_company_requests'              => 'إدراة طلبات الشركات',
+
+    // ---------------  Company request  --------------//
+    'show_company_requests'               => 'طلبات الشركات',
+    'add_new_company_request'             => 'إضافة طلب شركة جديد',
+    'edit_existing_copany_request'       => 'تعديل بيانات طلب شركة موجود',
+
+    // ........... commons in Company Request  ....... //
+    'cp_user_name'                      =>  'إسم مقدم الطلب',
+    'cp_company_name'                   =>  'إسم الشركة',
+
 
     //............. Order Status .............//
     'teach_request_new_request'                       =>  'طلب جديد',

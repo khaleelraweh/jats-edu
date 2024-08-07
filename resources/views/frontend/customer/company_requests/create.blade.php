@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- PAGE TITLE
-                                                                                                                ================================================== -->
+                                                                                                                    ================================================== -->
     <header class="py-8 py-md-11" style="background-image: none;">
         <div class="container text-center py-xl-2">
             <h1 class="display-4 fw-semi-bold mb-0">طلب الإشتراك للشركات</h1>
@@ -25,7 +25,7 @@
 
 
     <!-- CONTACT
-                                                                                                                ================================================== -->
+                                                                                                                    ================================================== -->
     <div class="container">
         <div class="row row-cols-md-2 mb-8 mb-lg-11">
             <div class="col-md">
@@ -288,7 +288,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="cp_company_size">حجم الشركة</label>
+                                <label for="cp_company_size">عدد المتدربين في الشركة</label>
                                 <input type="text" name="cp_company_size" class="form-control" id="cp_company_size"
                                     value="{{ old('cp_company_size') }}">
                                 @error('cp_company_size')

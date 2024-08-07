@@ -800,7 +800,7 @@ return [
     'add_new_content'               =>  'إضافة محتوي جديد',
     'yes'                           =>  'نعم',
     'no'                            =>  'لا',
-    'description'                   =>  'المحتوي',
+    'description'                   =>  'الشرح',
     'image'                         =>  'الصورة',
     'images'                        =>  'الصور',
     'featured'                      =>  'المفضلة',

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('cp_user_phone');
             $table->string('cp_company_name');
             $table->string('cp_job_title');
-            $table->string('cp_job_title');
             $table->string('cp_company_size');
             $table->string('cp_company_country');
             $table->string('cp_company_city');

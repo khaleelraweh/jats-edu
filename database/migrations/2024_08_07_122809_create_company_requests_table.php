@@ -25,7 +25,15 @@ return new class extends Migration
             $table->string('cp_company_country');
             $table->string('cp_company_city');
 
+            // will be use always
+            $table->boolean('status')->nullable()->default(false);
+            $table->dateTime('published_on')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
+            // end of will be use always
         });
     }
 

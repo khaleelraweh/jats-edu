@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CardController;
 use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\CommonQuestionController;
 use App\Http\Controllers\Backend\CompanyMenuController;
+use App\Http\Controllers\Backend\CompanyRequestController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CourseCategoriesController;
@@ -255,6 +256,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::post('partners/remove-image', [PartnerController::class, 'remove_image'])->name('partners.remove_image');
         Route::resource('partners', PartnerController::class);
+
+        Route::resource('companyRequest', CompanyRequestController::class);
 
 
         // ==============   Call Actions Tab   ==============  //

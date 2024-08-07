@@ -40,7 +40,7 @@
                     <thead>
                         <tr>
                             <th>إسم مقدم الطلب</th>
-                            <th>حالة الشركة</th>
+                            <th>اسم الشركة الشركة</th>
                             <th>{{ __('panel.status') }}</th>
                             <th> {{ __('panel.created_at') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
@@ -49,7 +49,8 @@
                     <tbody>
                         @forelse ($company_requests as $company_request)
                             <tr>
-                                <td>{{ $company_request->full_name }}</td>
+                                <td>{{ $company_request->cp_user_name }}</td>
+                                <td>{{ $company_request->cp_company_name }}</td>
                                 <td>{{ $company_request->status() }}</td>
                                 <td>{{ $company_request->created_at->format('Y-m-d h:i a') }}
                                 </td>

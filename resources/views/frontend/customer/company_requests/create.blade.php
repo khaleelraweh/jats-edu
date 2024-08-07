@@ -2,19 +2,19 @@
 
 @section('content')
     <!-- PAGE TITLE
-                                ================================================== -->
+                                                                                                                ================================================== -->
     <header class="py-8 py-md-11" style="background-image: none;">
         <div class="container text-center py-xl-2">
-            <h1 class="display-4 fw-semi-bold mb-0">Get in touch today!</h1>
+            <h1 class="display-4 fw-semi-bold mb-0">طلب الإشتراك للشركات</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-scroll justify-content-center">
                     <li class="breadcrumb-item">
-                        <a class="text-gray-800" href="#">
-                            Home
+                        <a class="text-gray-800" href="{{ route('frontend.index') }}">
+                            الرئيسية
                         </a>
                     </li>
                     <li class="breadcrumb-item text-gray-800 active" aria-current="page">
-                        Get in touch today!
+                        طلب الإشتراك للشركات
                     </li>
                 </ol>
             </nav>
@@ -25,7 +25,7 @@
 
 
     <!-- CONTACT
-                                ================================================== -->
+                                                                                                                ================================================== -->
     <div class="container">
         <div class="row row-cols-md-2 mb-8 mb-lg-11">
             <div class="col-md">
@@ -107,9 +107,9 @@
 
                             </div>
                             <div class="media-body flex-shrink-1">
-                                <h5 class="mb-4">Working Hours</h5>
-                                <p class="mb-0">Mon-Fri: 8 AM - 5 PM</p>
-                                <p class="mb-0">Sat-Sun: 8 AM - 2 PM</p>
+                                <h5 class="mb-4">ساعات العمل</h5>
+                                <p class="mb-0">الاحد-السبت: 8 ص - 5 م</p>
+                                <p class="mb-0">الخميس-الاثنين: 8 ص - 2 م</p>
                             </div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
 
                             </div>
                             <div class="media-body flex-shrink-1">
-                                <h5 class="mb-4">Write to Us</h5>
+                                <h5 class="mb-4">اكتب لنا على </h5>
                                 <a href="mailto:info@skola.com" class="text-gray-800">info@skola.com</a>
                                 <a href="mailto:courses@skola.com" class="text-gray-800">courses@skola.com</a>
                             </div>
@@ -161,7 +161,7 @@
 
                             </div>
                             <div class="media-body flex-shrink-1">
-                                <h5 class="mb-4">Follow Us</h5>
+                                <h5 class="mb-4">تابعنا على مواقع التواصل التالية</h5>
                                 <!-- Social -->
                                 <ul class="list-unstyled list-inline list-social mb-4 mb-md-0 mx-n4">
                                     <li class="list-inline-item list-social-item">
@@ -201,8 +201,8 @@
                 </div>
             </div>
 
-            <div class="col-md">
-                <h1 class="mb-6">Have A Question?</h1>
+            {{-- <div class="col-md">
+                <h1 class="mb-6">طلب الإشتراك للشركات</h1>
                 <form class="row">
                     <div class="form-group mb-6 col-xl-6">
                         <label for="exampleInputTitle1">Name</label>
@@ -223,7 +223,109 @@
                         <button type="submit" class="btn btn-primary btn-block mw-md-300p">SEND</button>
                     </div>
                 </form>
+            </div> --}}
+
+            {{-- start  --}}
+
+
+            <div class="col-md">
+                <div class="card">
+                    <div class="card-header">{{ __('طلب الإشتراك للشركات') }}</div>
+
+                    <div class="card-body">
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        <form method="POST" action="{{ route('company_requests.store') }}">
+                            @csrf
+
+                            <div class="form-group mb-3">
+                                <label for="cp_user_name">الإسم بالكامل</label>
+                                <input type="text" name="cp_user_name" class="form-control" id="cp_user_name"
+                                    value="{{ old('cp_user_name') }}">
+                                @error('cp_user_name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="cp_user_email">البريد الإلكتروني</label>
+                                <input type="email" name="cp_user_email" class="form-control" id="cp_user_email"
+                                    value="{{ old('cp_user_email') }}">
+                                @error('cp_user_email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="cp_user_phone">رقم التلفون</label>
+                                <input type="text" name="cp_user_phone" class="form-control" id="cp_user_phone"
+                                    value="{{ old('cp_user_phone') }}">
+                                @error('cp_user_phone')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="cp_company_name">إسم الشركة</label>
+                                <input type="text" name="cp_company_name" class="form-control" id="cp_company_name"
+                                    value="{{ old('cp_company_name') }}">
+                                @error('cp_company_name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="cp_job_title">المسمي الوظيفي</label>
+                                <input type="text" name="cp_job_title" class="form-control" id="cp_job_title"
+                                    value="{{ old('cp_job_title') }}">
+                                @error('cp_job_title')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="cp_company_size">حجم الشركة</label>
+                                <input type="text" name="cp_company_size" class="form-control" id="cp_company_size"
+                                    value="{{ old('cp_company_size') }}">
+                                @error('cp_company_size')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="cp_company_country">إسم الدولة</label>
+                                <input type="text" name="cp_company_country" class="form-control"
+                                    id="cp_company_country" value="{{ old('cp_company_country') }}">
+                                @error('cp_company_country')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="cp_company_city">المدينة</label>
+                                <input type="text" name="cp_company_city" class="form-control" id="cp_company_city"
+                                    value="{{ old('cp_company_city') }}">
+                                @error('cp_company_city')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <button type="submit" class="btn btn-primary btn-block">إرسال الطلب</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
+
+
+
+            {{-- end --}}
+
         </div>
 
         <div class="mb-8 mb-md-11 rounded overflow-hidden grayscal-hover">

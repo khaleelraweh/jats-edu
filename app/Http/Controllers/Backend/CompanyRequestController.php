@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class CompanyRequestController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('backend.company_requests.index');
+    }
 }

@@ -7,7 +7,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_teach_request') }}
+                    {{ __('panel.manage_company_requests') }}
 
                 </h3>
                 <ul class="breadcrumb">
@@ -20,7 +20,7 @@
                         @endif
                     </li>
                     <li>
-                        {{ __('panel.show_teach_requests') }}
+                        {{ __('panel.show_company_requests') }}
                     </li>
                 </ul>
             </div>
@@ -31,7 +31,7 @@
 
         <div class="card-body">
             {{-- filter form part  --}}
-            @include('backend.teach_requests.filter.filter')
+            @include('backend.company_requests.filter.filter')
 
             {{-- table part --}}
             <div class="table-responsive">
@@ -40,35 +40,35 @@
                     <thead>
                         <tr>
                             <th>إسم مقدم الطلب</th>
-                            <th>حالة التقديم</th>
+                            <th>حالة الشركة</th>
                             <th>{{ __('panel.status') }}</th>
                             <th> {{ __('panel.created_at') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($teach_requests as $teach_request)
+                        @forelse ($company_requests as $company_request)
                             <tr>
-                                <td>{{ $teach_request->full_name }}</td>
-                                <td>{{ $teach_request->teach_request_status() }}</td>
-                                <td>{{ $teach_request->status() }}</td>
-                                <td>{{ $teach_request->created_at->format('Y-m-d h:i a') }}
+                                <td>{{ $company_request->full_name }}</td>
+                                <td>{{ $company_request->status() }}</td>
+                                <td>{{ $company_request->created_at->format('Y-m-d h:i a') }}
                                 </td>
 
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.teach_requests.show', $teach_request->id) }}"
+                                        <a href="{{ route('admin.company_requests.show', $company_request->id) }}"
                                             class="btn btn-primary">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         <a href="javascript:void(0);"
-                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-teach_request-{{ $teach_request->id }}').submit();}else{return false;}"
+                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-company_request-{{ $company_request->id }}').submit();}else{return false;}"
                                             class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.teach_requests.destroy', $teach_request->id) }}"
-                                        method="post" class="d-none" id="delete-teach_request-{{ $teach_request->id }}">
+                                    <form action="{{ route('admin.company_requests.destroy', $company_request->id) }}"
+                                        method="post" class="d-none"
+                                        id="delete-company_request-{{ $company_request->id }}">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -76,15 +76,15 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4" class="text-center">No teach requesgt found yet !!</td>
+                                <td colspan="5" class="text-center">No teach requesgt found yet !!</td>
                             </tr>
                         @endforelse
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="4">
+                            <td colspan="5">
                                 <div class="float-right">
-                                    {!! $teach_requests->appends(request()->all())->links() !!}
+                                    {!! $company_requests->appends(request()->all())->links() !!}
                                 </div>
                             </td>
                         </tr>

@@ -121,21 +121,7 @@ class CustomerController extends Controller
 
     public function Teach_on_jats()
     {
-
-        // $instructorRoleId = Role::whereName('instructor')->first()->id;
-        // $user = Auth()->user();
-
-        // Check if the user does not already have the instructor role
-        // if (!$user->hasRole('instructor')) {
-        //     $user->attachRole($instructorRoleId);
-        // }
-        // return view('frontend.instructor.dashboard');
-
-        // return view('frontend.customer.instructor-greating');
-        // return view('frontend.customer.instructor-request');
-
         $specializations = Specialization::get(['id', 'name']);
-
         return view('frontend.customer.request-to-teach', compact('specializations'));
     }
 

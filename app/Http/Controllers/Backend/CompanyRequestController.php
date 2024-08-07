@@ -27,4 +27,9 @@ class CompanyRequestController extends Controller
 
         return view('backend.company_requests.index', compact('company_requests'));
     }
+
+    public function create()
+    {
+        return view('backend.company_requests.create');
+    }
 }

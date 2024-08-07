@@ -15,7 +15,14 @@ class CompanyRequest extends Model
     // searchable lab 
     protected $searchable = [
         'columns' => [
-            'company_requests.full_name' => 10,
+            'company_requests.cp_user_name' => 10,
+            'company_requests.cp_user_email' => 10,
+            'company_requests.cp_user_phone' => 10,
+            'company_requests.cp_company_name' => 10,
+            'company_requests.cp_job_title' => 10,
+            'company_requests.cp_company_size' => 10,
+            'company_requests.cp_company_country' => 10,
+            'company_requests.cp_company_city' => 10,
         ]
     ];
 

@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -8,7 +7,8 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_partners') }}
+                    {{ __('panel.manage_teach_request') }}
+
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -20,27 +20,18 @@
                         @endif
                     </li>
                     <li>
-                        {{ __('panel.show_partners') }}
+                        {{ __('panel.show_teach_requests') }}
                     </li>
                 </ul>
             </div>
 
-            <div class="ml-auto">
-                @ability('admin', 'create_partners')
-                    <a href="{{ route('admin.partners.create') }}" class="btn btn-primary">
-                        <span class="icon text-white-50">
-                            <i class="fa fa-plus-square"></i>
-                        </span>
-                        <span class="text">{{ __('panel.add_new_partner') }}</< /span>
-                    </a>
-                @endability
-            </div>
+
 
         </div>
 
         <div class="card-body">
             {{-- filter form part  --}}
-            @include('backend.partners.filter.filter')
+            @include('backend.teach_requests.filter.filter')
 
             {{-- table part --}}
             <div class="table-responsive">
@@ -48,54 +39,36 @@
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>{{ __('panel.image') }}</th>
-                            <th>{{ __('panel.name') }}</th>
-                            <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
-                            <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
-                            <th class="d-none d-sm-table-cell"> {{ __('panel.send_for_review') }} </th>
-                            <th class="d-none d-sm-table-cell">{{ __('panel.status') }}</th>
+                            <th>إسم مقدم الطلب</th>
+                            <th>حالة التقديم</th>
+                            <th>{{ __('panel.status') }}</th>
+                            <th> {{ __('panel.created_at') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($partners as $partner)
+                        @forelse ($teach_requests as $teach_request)
                             <tr>
-
-                                <td>
-                                    @if ($partner->partner_image && file_exists(public_path('assets/partners/' . $partner->partner_image)))
-                                        <img src="{{ asset('assets/partners/' . $partner->partner_image) }}" width="60"
-                                            height="60" alt="{{ $partner->title }}">
-                                    @else
-                                        <img src="{{ asset('image/not_found/item_image_not_found.webp') }}" width="60"
-                                            height="60" alt="{{ $partner->title }}">
-                                    @endif
+                                <td>{{ $teach_request->full_name }}</td>
+                                <td>{{ $teach_request->teach_request_status() }}</td>
+                                <td>{{ $teach_request->status() }}</td>
+                                <td>{{ $teach_request->created_at->format('Y-m-d h:i a') }}
                                 </td>
-                                <td>{{ $partner->name }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $partner->created_by }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $partner->created_at }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $partner->send_for_review }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $partner->status() }}</td>
+
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        {{-- <a href="{{ route('admin.partners.show', $partner->id) }}" class="btn btn-success">
+                                        <a href="{{ route('admin.teach_requests.show', $teach_request->id) }}"
+                                            class="btn btn-primary">
                                             <i class="fa fa-eye"></i>
-                                        </a> --}}
-
-
-                                        <a href="{{ route('admin.partners.edit', $partner->id) }}" class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
                                         </a>
-
-
-
                                         <a href="javascript:void(0);"
-                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-{{ $partner->id }}').submit();}else{return false;}"
+                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-teach_request-{{ $teach_request->id }}').submit();}else{return false;}"
                                             class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.partners.destroy', $partner->id) }}" method="post"
-                                        class="d-none" id="delete-product-{{ $partner->id }}">
+                                    <form action="{{ route('admin.teach_requests.destroy', $teach_request->id) }}"
+                                        method="post" class="d-none" id="delete-teach_request-{{ $teach_request->id }}">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -103,23 +76,22 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center">No partner found</td>
+                                <td colspan="4" class="text-center">No teach requesgt found yet !!</td>
                             </tr>
                         @endforelse
                     </tbody>
-
                     <tfoot>
                         <tr>
-                            <td colspan="7">
+                            <td colspan="4">
                                 <div class="float-right">
-                                    {!! $partners->appends(request()->all())->links() !!}
+                                    {!! $teach_requests->appends(request()->all())->links() !!}
                                 </div>
                             </td>
                         </tr>
                     </tfoot>
                 </table>
             </div>
-
         </div>
+
     </div>
 @endsection

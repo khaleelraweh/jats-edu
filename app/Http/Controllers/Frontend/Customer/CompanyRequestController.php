@@ -7,5 +7,9 @@ use Illuminate\Http\Request;
 
 class CompanyRequestController extends Controller
 {
-    //
+
+    public function create()
+    {
+        return view('frontend.customer.company_requests.create');
+    }
 }

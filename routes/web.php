@@ -48,6 +48,7 @@ use App\Http\Controllers\Backend\TracksMenuController;
 use App\Http\Controllers\Backend\WebMenuController;
 use App\Http\Controllers\Backend\WebMenuHelpController;
 use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\Customer\CompanyRequestController as CustomerCompanyRequestController;
 use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\Instructor\CourseController as InstructorCourseController;
@@ -102,6 +103,8 @@ Route::get('/change-language/{locale}',     [LocaleController::class, 'switch'])
 // Route::get('/pages/{slug?}', [FrontendController::class, 'pages'])->name('frontend.pages');
 Route::get('/pages/{slug}', [FrontendController::class, 'pages'])->name('frontend.pages');
 
+
+Route::resource('company_requests', CustomerCompanyRequestController::class);
 
 
 

@@ -779,8 +779,7 @@
                     طريق
                 </span>
                 <br>الواتس اب:
-                <span class="ltr">+2
-                    0100-5289720</span>
+                <span class="ltr">777282953</span>
             </div>
             <div class="part2">
                 <i class="fab fa-whatsapp fa-2x bi flex-shrink-0 me-2" width="30" height="30" role="img"

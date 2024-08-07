@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- PAGE TITLE
-            ================================================== -->
+                                ================================================== -->
     <header class="py-8 py-md-11" style="background-image: none;">
         <div class="container text-center py-xl-2">
             <h1 class="display-4 fw-semi-bold mb-0">Get in touch today!</h1>
@@ -25,11 +25,11 @@
 
 
     <!-- CONTACT
-            ================================================== -->
+                                ================================================== -->
     <div class="container">
         <div class="row row-cols-md-2 mb-8 mb-lg-11">
             <div class="col-md">
-                <h1 class="mb-6">Contact Details</h1>
+                <h1 class="mb-6">بيانات التواصل</h1>
 
                 <div class="row row-cols-12 row-cols-xl-2">
                     <div class="col-xl mb-6">
@@ -53,10 +53,9 @@
 
                             </div>
                             <div class="media-body flex-shrink-1">
-                                <h5 class="mb-4">Find Us</h5>
+                                <h5 class="mb-4">ابحث عنا</h5>
                                 <address class="">
-                                    2301 Ravenswood Rd Madison,
-                                    WI 53711
+                                    اليمن , عدن , شارع
                                 </address>
                             </div>
                         </div>
@@ -74,9 +73,9 @@
 
                             </div>
                             <div class="media-body flex-shrink-1">
-                                <h5 class="mb-4">Phone</h5>
-                                <a href="tel:3159052321" class="text-gray-800 d-block">+(315) 905-2321</a>
-                                <a href="tel:3159052322" class="text-gray-800 d-block">+(315) 905-2322</a>
+                                <h5 class="mb-4">ارقام التواصل</h5>
+                                <a href="tel:3159052321" class="text-gray-800 d-block">+(967) 734208108</a>
+                                <a href="tel:3159052322" class="text-gray-800 d-block">+(967) 777282953</a>
                             </div>
                         </div>
                     </div>

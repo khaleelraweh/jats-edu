@@ -749,7 +749,7 @@
     <style>
         .my-wrapper {
             position: fixed;
-            width: 320px;
+            width: 400px;
             bottom: 0;
             left: 60px;
             border-bottom-left-radius: 0;
@@ -775,11 +775,11 @@
 
             <div class="part1">
                 <span style="font-size: 12px;">
-                    للمساعدة يمكنك التواصل معنا عن
+                    للتسجيل او الإستفسار يمكنك التواصل معنا عن
                     طريق
                 </span>
                 <br>الواتس اب:
-                <span class="ltr">777282953</span>
+                <span class="ltr">00967777282953</span>
             </div>
             <div class="part2">
                 <i class="fab fa-whatsapp fa-2x bi flex-shrink-0 me-2" width="30" height="30" role="img"

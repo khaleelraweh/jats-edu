@@ -196,7 +196,7 @@
                               border-radius: 4px;
                               color:black;
                             ">
-                                        استمارة طلب تقديم كمدرب /ة
+                                        استمارة طلب تدريب لشركة / مؤسسة
                                     </h1>
                                 </div>
                                 <div class="col-4">
@@ -205,18 +205,7 @@
         
                               
                               " />
-                                    <div id="image-container" class="col-4">
 
-                                        @if ($company_request->user_image && file_exists(public_path('assets/company_requests/' . $company_request->user_image)))
-                                            <a href="#" data-toggle="modal" data-target="#identityModal">
-                                                <img src="{{ asset('assets/company_requests/' . $company_request->user_image) }}"
-                                                    alt="Identity Image" style="width: 100%; height: 181px;">
-                                            </a>
-                                        @else
-                                            <img src="{{ asset('image/not_found/item_image_not_found.webp') }}"
-                                                alt="Identity Image" style="width: 100%; height: 181px;">
-                                        @endif
-                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -231,54 +220,53 @@
 
 
                                 <div class="row">
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="date-of-birth ww">تاريخ الميلاد : </span>
+                                    <div class="col-sm-12 pt-3 col-md-6">
+                                        <span class="date-of-birth ww"> البريد الإلكتروني : </span>
                                         <span class="date-of-birth-value">
-                                            {{ optional($company_request->date_of_birth)->format('Y/m/d') }}
+                                            {{ $company_request->cp_user_email }}
                                         </span>
                                     </div>
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="place-of-birth ww">محل الميلاد : </span>
-                                        <span class="place-of-birth-value">{{ $company_request->place_of_birth }}</span>
+                                    <div class="col-sm-12 pt-3 col-md-6">
+                                        <span class="place-of-birth ww"> رقم الجوال : </span>
+                                        <span class="place-of-birth-value">{{ $company_request->cp_user_phone }}</span>
                                     </div>
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="nationality ww">الجنسية : </span>
-                                        <span class="nationality-value">{{ $company_request->nationality }}</span>
-                                    </div>
+
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="residence-address ww">عنوان الإقامة \ السكن :
+                                    <div class="col-sm-12 pt-3 col-md-6">
+                                        <span class="residence-address ww"> إسم الشركة :
                                         </span>
                                         <span
-                                            class="residence-address-value">{{ $company_request->residence_address }}</span>
+                                            class="residence-address-value">{{ $company_request->cp_company_name }}</span>
                                     </div>
 
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="phone ww"> رقم الجوال :</span>
-                                        <span class="phone-value"> {{ $company_request->phone }} </span>
+                                    <div class="col-sm-12 pt-3 col-md-6">
+                                        <span class="phone ww"> المسمي الوظيفي:</span>
+                                        <span class="phone-value"> {{ $company_request->cp_job_title }} </span>
                                     </div>
                                     <div class="col-sm-12 col-md-4"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="educational_qualification ww">
-                                            المؤهل الدراسي :
+                                            حجم الشركة :
                                         </span>
                                         <span
-                                            class="educational-qualification-value">{{ $company_request->educational_qualification }}</span>
+                                            class="educational-qualification-value">{{ $company_request->cp_company_size }}
+                                            شخص</span>
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="specialization ww ">التخصص : </span>
-                                        <span class="specialization-value"> {{ $company_request->specialization }} </span>
+                                        <span class="specialization ww ">الدولة : </span>
+                                        <span class="specialization-value"> {{ $company_request->cp_company_country }}
+                                        </span>
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="years_of_training_experience ww">
-                                            سنوات خبرة التدريب :
+                                            المدينة :
                                         </span>
                                         <span class="years_of_training_experience-value">
-                                            {{ $company_request->years_of_training_experience }} </span>
+                                            {{ $company_request->cp_company_city }} </span>
                                     </div>
                                 </div>
 

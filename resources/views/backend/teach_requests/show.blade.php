@@ -283,7 +283,8 @@
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="specialization ww ">التخصص : </span>
-                                        <span class="specialization-value"> {{ $teach_request->specialization }} </span>
+                                        <span class="specialization-value"> {{ $teach_request->specialization->name }}
+                                        </span>
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="years_of_training_experience ww">

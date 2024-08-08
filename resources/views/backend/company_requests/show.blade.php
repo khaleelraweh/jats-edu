@@ -270,74 +270,9 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-sm-12 pt-3">
-                                        <div class="motivation ww">
-                                            لماذا تريد الإلتحاق بالتدريب لدينا :
-                                        </div>
-                                        <div class="motivation-value">
-                                            {!! $company_request->motivation !!}
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="identity ww">
-                                            صورة من الهوية / جواز السفر :
-                                        </span>
-                                        <span class="identity-value">
-                                            @if ($company_request->identity)
-                                                <a href="#" data-toggle="modal" data-target="#identityModal">
-                                                    <img src="{{ asset('assets/company_requests/' . $company_request->identity) }}"
-                                                        alt="Identity Image" style="width: 50px; height: 50px;">
-                                                </a>
-                                            @else
-                                                <p>No identity image available.</p>
-                                            @endif
-                                        </span>
 
-                                    </div>
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="biography ww"> إرفاق السيرة الذاتية : </span>
 
-                                        <span class="biography-value">
-                                            @if ($company_request->identity && file_exists(public_path('assets/company_requests/' . $company_request->biography)))
-                                                <a href="{{ route('admin.view_file', pathinfo($company_request->biography, PATHINFO_FILENAME)) }}"
-                                                    target="_blanck">
-                                                    {{ pathinfo($company_request->biography, PATHINFO_FILENAME) }}
-                                                </a>
-                                            @else
-                                                <p>No biography found</p>
-                                            @endif
-                                        </span>
-                                    </div>
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="Certificates ww"> إرفاق الشهادات : </span>
-                                        <span class="Certificates-value">
-                                            @if (
-                                                $company_request->Certificates &&
-                                                    file_exists(public_path('assets/company_requests/' . $company_request->Certificates)))
-                                                <a href="{{ route('admin.view_file', pathinfo($company_request->Certificates, PATHINFO_FILENAME)) }}"
-                                                    target="_blanck">
-                                                    {{ pathinfo($company_request->Certificates, PATHINFO_FILENAME) }}
-                                                </a>
-                                            @else
-                                                <p>No Certificates found</p>
-                                            @endif
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="row" style="margin-top: 60px; margin-bottom: -10px;">
-                                    <div class="col-sm-12 pt-3">
-                                        <p>
-                                            ملاحظة : سيتم اعتماد البيانات أعلاه عند الارسال ، لذا نرجو
-                                            القيام ادخال كافة البيانات المطلوبة بشكل صحيح و دقيق و
-                                            مراجعة البيانات قبل ارسالها الينا.
-                                        </p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

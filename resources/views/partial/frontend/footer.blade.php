@@ -33,9 +33,10 @@
         }
     </style>
 
-    <a href="https://api.whatsapp.com" class="d-block">
-        <div class="alert alert-primary alert-dismissible fade show my-wrapper" role="alert">
 
+    <div class="alert alert-primary alert-dismissible fade show my-wrapper" role="alert">
+
+        <a href="https://api.whatsapp.com" class="d-block text-white">
             <div class="alert-body d-flex justify-content-between align-items-center">
 
                 <div class="part1">
@@ -51,11 +52,13 @@
                         aria-label="Info:"></i>
                 </div>
             </div>
+        </a>
 
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <button type="button" class="btn-close" style="color: white;" data-bs-dismiss="alert"
+            aria-label="Close"></button>
 
-        </div>
-    </a>
+    </div>
+
 
     <div class="container">
         <div class="row" id="accordionFooter">

@@ -33,27 +33,29 @@
         }
     </style>
 
-    <div class="alert alert-primary alert-dismissible fade show my-wrapper" role="alert">
+    <a href="https://api.whatsapp.com" class="d-block">
+        <div class="alert alert-primary alert-dismissible fade show my-wrapper" role="alert">
 
-        <div class="alert-body d-flex justify-content-between align-items-center">
+            <div class="alert-body d-flex justify-content-between align-items-center">
 
-            <div class="part1">
-                <span style="font-size: 12px;">
-                    للتسجيل او الإستفسار يمكنك التواصل معنا عن
-                    طريق
-                </span>
-                <br>الواتس اب:
-                <span class="ltr">00967777282953</span>
+                <div class="part1">
+                    <span style="font-size: 12px;">
+                        للتسجيل او الإستفسار يمكنك التواصل معنا عن
+                        طريق
+                    </span>
+                    <br>الواتس اب:
+                    <span class="ltr">00967777282953</span>
+                </div>
+                <div class="part2">
+                    <i class="fab fa-whatsapp fa-2x bi flex-shrink-0 me-2" width="30" height="30" role="img"
+                        aria-label="Info:"></i>
+                </div>
             </div>
-            <div class="part2">
-                <i class="fab fa-whatsapp fa-2x bi flex-shrink-0 me-2" width="30" height="30" role="img"
-                    aria-label="Info:"></i>
-            </div>
+
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
         </div>
-
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-
-    </div>
+    </a>
 
     <div class="container">
         <div class="row" id="accordionFooter">

@@ -33,8 +33,29 @@ class CompanyRequest extends Model
 
 
 
+    // public function status()
+    // {
+    //     return $this->status ? __('panel.status_active') : __('panel.status_inactive');
+    // }
+
+
     public function status()
     {
-        return $this->status ? __('panel.status_active') : __('panel.status_inactive');
+
+        switch ($this->status) {
+            case 0:
+                $result = __('panel.company_request_new_request');
+                break;
+            case 1:
+                $result = __('panel.company_request_under_proccess');
+                break;
+            case 2:
+                $result = __('panel.company_request_accepted');
+                break;
+            case 3:
+                $result = __('panel.company_request_rejected');
+                break;
+        }
+        return $result;
     }
 }

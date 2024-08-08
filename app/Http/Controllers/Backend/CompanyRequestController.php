@@ -38,10 +38,10 @@ class CompanyRequestController extends Controller
         $company_request = CompanyRequest::where('id', $company_request)->first();
 
         $company_request_status_array = [
-            '0' =>  __('panel.teach_request_new_request'),
-            '1' =>  __('panel.teach_request_under_proccess'),
-            '2' =>  __('panel.teach_request_accepted'),
-            '3' =>  __('panel.teach_request_rejected'),
+            '0' =>  __('panel.company_request_new_request'),
+            '1' =>  __('panel.company_request_under_proccess'),
+            '2' =>  __('panel.company_request_accepted'),
+            '3' =>  __('panel.company_request_rejected'),
 
         ];
 
@@ -53,6 +53,6 @@ class CompanyRequestController extends Controller
             }
         }
 
-        return view('backend.teach_requests.show', compact('teach_request', 'teach_request_status_array'));
+        return view('backend.company_requests.show', compact('company_request', 'company_request_status_array'));
     }
 }

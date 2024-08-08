@@ -260,7 +260,8 @@
                                                 </li>
                                             @elseif ($teachRequestStatus == \App\Models\TeachRequest::UNDER_PROCESS)
                                                 <li>
-                                                    <a href="{{ route('teach_requests.show', auth()->user()->id) }}">
+                                                    <a
+                                                        href="{{ route('teach_requests.show', auth()->user()->requestToTeaches()->latest()->first()->id) }}">
                                                         طلبك للتدريس
                                                         ({{ __('panel.teach_request_under_proccess') }})
                                                     </a>

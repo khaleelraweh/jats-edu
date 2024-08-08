@@ -38,4 +38,9 @@ class Country extends Model
     {
         return $this->hasMany(UserAddress::class);
     }
+
+    public function companyRequests(): HasMany
+    {
+        return $this->hasMany(CompanyRequest::class);
+    }
 }

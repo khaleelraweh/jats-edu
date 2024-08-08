@@ -254,7 +254,8 @@
 
                                     <div class="col-sm-12 pt-3 col-md-6">
                                         <span class="specialization ww ">الدولة : </span>
-                                        <span class="specialization-value"> {{ $company_request->cp_company_country }}
+                                        <span class="specialization-value"> {{ $company_request->country->name }} (
+                                            {{ $company_request->country->name_native }} )
                                         </span>
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-6">

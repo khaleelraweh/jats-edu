@@ -24,9 +24,10 @@ class CompanyRequestController extends Controller
             'cp_company_name' => 'required|string|max:255',
             'cp_job_title' => 'required|string|max:255',
             'cp_company_size' => 'required|string|max:255',
-            'cp_company_country' => 'required|string|max:255',
+            'country_id' => 'required',
             'cp_company_city' => 'required|string|max:255',
         ]);
+
 
         // Create a new CompanyRequest record
         CompanyRequest::create($validatedData);

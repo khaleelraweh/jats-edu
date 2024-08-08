@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- PAGE TITLE
-                                                                                                                    ================================================== -->
+                                                                                                                                                    ================================================== -->
     <header class="py-8 py-md-11" style="background-image: none;">
         <div class="container text-center py-xl-2">
             <h1 class="display-4 fw-semi-bold mb-0">طلب الإشتراك للشركات</h1>
@@ -25,7 +25,7 @@
 
 
     <!-- CONTACT
-                                                                                                                    ================================================== -->
+                                                                                                                                                    ================================================== -->
     <div class="container">
         <div class="row row-cols-md-2 mb-8 mb-lg-11">
             <div class="col-md">
@@ -297,10 +297,22 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="cp_company_country">إسم الدولة</label>
-                                <input type="text" name="cp_company_country" class="form-control"
-                                    id="cp_company_country" value="{{ old('cp_company_country') }}">
-                                @error('cp_company_country')
+                                <label for="country_id">إسم الدولة</label>
+
+
+                                <select id="country_id" name="country_id" class="form-control">
+                                    @foreach (getCountries() as $country)
+                                        <option value="{{ $country->id }}" data-phone-code="{{ $country->phone_code }}"
+                                            data-emoji="{{ $country->emoji }}">
+                                            {{ $country->name }} ({{ $country->name_native }})
+                                        </option>
+                                    @endforeach
+                                </select>
+
+
+
+
+                                @error('country_id')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

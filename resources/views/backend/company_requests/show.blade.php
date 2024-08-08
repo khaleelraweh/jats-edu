@@ -222,25 +222,13 @@
                                 <div class="row">
                                     <div class="col-sm-12 pt-3">
                                         <span class="arabic-name ww">
-                                            الإسم الكامل (باللغة العربية ) :
+                                            إسم مقدم الطلب :
                                         </span>
-                                        <span
-                                            class="arabic-name-value">{{ $company_request->getTranslation('full_name', 'ar') }}</span>
+                                        <span class="arabic-name-value">{{ $company_request->cp_user_name }}</span>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-sm-12 pt-3 text-end">
-                                        <bdo dir="ltr">
-                                            <span class="english-name ww">
-                                                Full Name (In English) :
-                                            </span>
-                                            <span
-                                                class="english-name-value">{{ $company_request->getTranslation('full_name', 'en') }}
-                                            </span>
-                                        </bdo>
-                                    </div>
-                                </div>
+
 
                                 <div class="row">
                                     <div class="col-sm-12 pt-3 col-md-4">

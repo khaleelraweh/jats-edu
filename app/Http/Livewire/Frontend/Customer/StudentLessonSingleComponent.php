@@ -43,4 +43,8 @@ class StudentLessonSingleComponent extends Component
         $this->selectedLessonUrl = $url; // Update the selected lesson URL
 
     }
+
+    // public function updateEvaluationUrl($ev_url){
+
+    // }
 }

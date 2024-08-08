@@ -171,7 +171,7 @@
                 <div class="section px-5 pb-3">
                     <div class="row" style="border: 6px double green; font-size: 19px">
                         <div class="col-sm-12 bg-white p-3">
-                            <div class="row">
+                            <div class="row pt-4">
                                 <div class="col-4 p-4">
                                     <span><span class="ww">تاريخ الطلب :</span>
                                         {{ $company_request->created_at->format('Y/m/d') }}

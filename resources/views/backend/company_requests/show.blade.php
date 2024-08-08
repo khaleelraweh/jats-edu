@@ -196,7 +196,7 @@
                               border-radius: 4px;
                               color:black;
                             ">
-                                        استمارة طلب تدريب لشركة / مؤسسة
+                                        استمارة طلب تدريب لشركة
                                     </h1>
                                 </div>
                                 <div class="col-4">
@@ -234,21 +234,26 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-12 pt-3 col-md-6">
-                                        <span class="residence-address ww"> إسم الشركة :
+                                    <div class="col-sm-12 pt-3 col-md-12">
+                                        <span class="residence-address ww">
+                                            إسم الشركة :
                                         </span>
-                                        <span
-                                            class="residence-address-value">{{ $company_request->cp_company_name }}</span>
+                                        <span class="residence-address-value">
+                                            {{ $company_request->cp_company_name }}
+                                        </span>
                                     </div>
-
-                                    <div class="col-sm-12 pt-3 col-md-6">
-                                        <span class="phone ww"> المسمي الوظيفي:</span>
-                                        <span class="phone-value"> {{ $company_request->cp_job_title }} </span>
-                                    </div>
-                                    <div class="col-sm-12 col-md-4"></div>
                                 </div>
+
                                 <div class="row">
-                                    <div class="col-sm-12 pt-3 col-md-4">
+                                    <div class="col-sm-12 col-md-6 pt-3">
+                                        <span class="residence-address ww">
+                                            المسمي الوظيفي :
+                                        </span>
+                                        <span class="residence-address-value">
+                                            {{ $company_request->cp_job_title }}
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-12  col-md-6 pt-3">
                                         <span class="educational_qualification ww">
                                             حجم الشركة :
                                         </span>
@@ -256,12 +261,15 @@
                                             class="educational-qualification-value">{{ $company_request->cp_company_size }}
                                             شخص</span>
                                     </div>
-                                    <div class="col-sm-12 pt-3 col-md-4">
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-sm-12 pt-3 col-md-6">
                                         <span class="specialization ww ">الدولة : </span>
                                         <span class="specialization-value"> {{ $company_request->cp_company_country }}
                                         </span>
                                     </div>
-                                    <div class="col-sm-12 pt-3 col-md-4">
+                                    <div class="col-sm-12 pt-3 col-md-6">
                                         <span class="years_of_training_experience ww">
                                             المدينة :
                                         </span>

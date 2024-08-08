@@ -260,6 +260,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('partners/remove-image', [PartnerController::class, 'remove_image'])->name('partners.remove_image');
         Route::resource('partners', PartnerController::class);
 
+        Route::match(['put', 'patch'], 'admin/company_requests/{company_request}/status', [CompanyRequestController::class, 'updateStatus'])
+            ->name('company_requests.update_company_requests_status');
         Route::resource('company_requests', CompanyRequestController::class);
 
 

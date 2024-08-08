@@ -45,7 +45,7 @@ class CompanyRequestController extends Controller
 
         ];
 
-        $key = array_search($company_request->teach_request_status, array_keys($company_request_status_array));
+        $key = array_search($company_request->status, array_keys($company_request_status_array));
 
         foreach ($company_request_status_array as $k => $v) {
             if ($k <= $key) {
@@ -54,5 +54,27 @@ class CompanyRequestController extends Controller
         }
 
         return view('backend.company_requests.show', compact('company_request', 'company_request_status_array'));
+    }
+
+
+    public function updateStatus(Request $request, $company_request)
+    {
+        $company_request = CompanyRequest::where('id', $company_request)->first();
+
+        $company_request->update(['status' => $request->status]);
+
+
+        if ($company_request) {
+            return back()->with([
+                'message' => __('panel.updated_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
+
+        return back()->with([
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
+        ]);
     }
 }

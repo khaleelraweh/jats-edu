@@ -89,8 +89,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.teach_requests.index') }}">
-                            {{ __('panel.show_teach_requests') }}
+                        <a href="{{ route('admin.company_requests.index') }}">
+                            {{ __('panel.show_company_requests') }}
                         </a>
                     </li>
                 </ul>
@@ -98,7 +98,7 @@
 
 
             <div class="ml-auto mt-3 mt-sm-0">
-                <form action="{{ route('admin.teach_requests.update_teach_requests_status', $teach_request->id) }}"
+                <form action="{{ route('admin.company_requests.update_company_requests_status', $company_request->id) }}"
                     method="post">
                     @csrf
                     @method('PUT')
@@ -108,12 +108,12 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">{{ __('panel.course_status') }}</div>
                             </div>
-                            <select name="teach_request_status" style="outline-style:none;" onchange="this.form.submit()"
+                            <select name="status" style="outline-style:none;" onchange="this.form.submit()"
                                 class="form-control">
 
 
                                 <option value=""> {{ __('panel.course_choose_appropriate_event') }} </option>
-                                @foreach ($teach_request_status_array as $key => $value)
+                                @foreach ($company_request_status_array as $key => $value)
                                     <option value="{{ $key }}"> {{ $value }}</option>
                                 @endforeach
 
@@ -174,7 +174,7 @@
                             <div class="row">
                                 <div class="col-4" style="margin-top: 50px;">
                                     <span><span class="ww">تاريخ الطلب :</span>
-                                        {{ $teach_request->created_at->format('Y/m/d') }}
+                                        {{ $company_request->created_at->format('Y/m/d') }}
                                     </span>
                                 </div>
                                 <div class="col-4"
@@ -207,9 +207,9 @@
                               " />
                                     <div id="image-container" class="col-4">
 
-                                        @if ($teach_request->user_image && file_exists(public_path('assets/teach_requests/' . $teach_request->user_image)))
+                                        @if ($company_request->user_image && file_exists(public_path('assets/company_requests/' . $company_request->user_image)))
                                             <a href="#" data-toggle="modal" data-target="#identityModal">
-                                                <img src="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"
+                                                <img src="{{ asset('assets/company_requests/' . $company_request->user_image) }}"
                                                     alt="Identity Image" style="width: 100%; height: 181px;">
                                             </a>
                                         @else
@@ -225,7 +225,7 @@
                                             الإسم الكامل (باللغة العربية ) :
                                         </span>
                                         <span
-                                            class="arabic-name-value">{{ $teach_request->getTranslation('full_name', 'ar') }}</span>
+                                            class="arabic-name-value">{{ $company_request->getTranslation('full_name', 'ar') }}</span>
                                     </div>
                                 </div>
 
@@ -236,7 +236,7 @@
                                                 Full Name (In English) :
                                             </span>
                                             <span
-                                                class="english-name-value">{{ $teach_request->getTranslation('full_name', 'en') }}
+                                                class="english-name-value">{{ $company_request->getTranslation('full_name', 'en') }}
                                             </span>
                                         </bdo>
                                     </div>
@@ -246,16 +246,16 @@
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="date-of-birth ww">تاريخ الميلاد : </span>
                                         <span class="date-of-birth-value">
-                                            {{ optional($teach_request->date_of_birth)->format('Y/m/d') }}
+                                            {{ optional($company_request->date_of_birth)->format('Y/m/d') }}
                                         </span>
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="place-of-birth ww">محل الميلاد : </span>
-                                        <span class="place-of-birth-value">{{ $teach_request->place_of_birth }}</span>
+                                        <span class="place-of-birth-value">{{ $company_request->place_of_birth }}</span>
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="nationality ww">الجنسية : </span>
-                                        <span class="nationality-value">{{ $teach_request->nationality }}</span>
+                                        <span class="nationality-value">{{ $company_request->nationality }}</span>
                                     </div>
                                 </div>
 
@@ -264,12 +264,12 @@
                                         <span class="residence-address ww">عنوان الإقامة \ السكن :
                                         </span>
                                         <span
-                                            class="residence-address-value">{{ $teach_request->residence_address }}</span>
+                                            class="residence-address-value">{{ $company_request->residence_address }}</span>
                                     </div>
 
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="phone ww"> رقم الجوال :</span>
-                                        <span class="phone-value"> {{ $teach_request->phone }} </span>
+                                        <span class="phone-value"> {{ $company_request->phone }} </span>
                                     </div>
                                     <div class="col-sm-12 col-md-4"></div>
                                 </div>
@@ -279,18 +279,18 @@
                                             المؤهل الدراسي :
                                         </span>
                                         <span
-                                            class="educational-qualification-value">{{ $teach_request->educational_qualification }}</span>
+                                            class="educational-qualification-value">{{ $company_request->educational_qualification }}</span>
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="specialization ww ">التخصص : </span>
-                                        <span class="specialization-value"> {{ $teach_request->specialization }} </span>
+                                        <span class="specialization-value"> {{ $company_request->specialization }} </span>
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="years_of_training_experience ww">
                                             سنوات خبرة التدريب :
                                         </span>
                                         <span class="years_of_training_experience-value">
-                                            {{ $teach_request->years_of_training_experience }} </span>
+                                            {{ $company_request->years_of_training_experience }} </span>
                                     </div>
                                 </div>
 
@@ -300,7 +300,7 @@
                                             لماذا تريد الإلتحاق بالتدريب لدينا :
                                         </div>
                                         <div class="motivation-value">
-                                            {!! $teach_request->motivation !!}
+                                            {!! $company_request->motivation !!}
                                         </div>
                                     </div>
                                 </div>
@@ -311,9 +311,9 @@
                                             صورة من الهوية / جواز السفر :
                                         </span>
                                         <span class="identity-value">
-                                            @if ($teach_request->identity)
+                                            @if ($company_request->identity)
                                                 <a href="#" data-toggle="modal" data-target="#identityModal">
-                                                    <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
+                                                    <img src="{{ asset('assets/company_requests/' . $company_request->identity) }}"
                                                         alt="Identity Image" style="width: 50px; height: 50px;">
                                                 </a>
                                             @else
@@ -326,10 +326,10 @@
                                         <span class="biography ww"> إرفاق السيرة الذاتية : </span>
 
                                         <span class="biography-value">
-                                            @if ($teach_request->identity && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
-                                                <a href="{{ route('admin.view_file', pathinfo($teach_request->biography, PATHINFO_FILENAME)) }}"
+                                            @if ($company_request->identity && file_exists(public_path('assets/company_requests/' . $company_request->biography)))
+                                                <a href="{{ route('admin.view_file', pathinfo($company_request->biography, PATHINFO_FILENAME)) }}"
                                                     target="_blanck">
-                                                    {{ pathinfo($teach_request->biography, PATHINFO_FILENAME) }}
+                                                    {{ pathinfo($company_request->biography, PATHINFO_FILENAME) }}
                                                 </a>
                                             @else
                                                 <p>No biography found</p>
@@ -339,10 +339,12 @@
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="Certificates ww"> إرفاق الشهادات : </span>
                                         <span class="Certificates-value">
-                                            @if ($teach_request->Certificates && file_exists(public_path('assets/teach_requests/' . $teach_request->Certificates)))
-                                                <a href="{{ route('admin.view_file', pathinfo($teach_request->Certificates, PATHINFO_FILENAME)) }}"
+                                            @if (
+                                                $company_request->Certificates &&
+                                                    file_exists(public_path('assets/company_requests/' . $company_request->Certificates)))
+                                                <a href="{{ route('admin.view_file', pathinfo($company_request->Certificates, PATHINFO_FILENAME)) }}"
                                                     target="_blanck">
-                                                    {{ pathinfo($teach_request->Certificates, PATHINFO_FILENAME) }}
+                                                    {{ pathinfo($company_request->Certificates, PATHINFO_FILENAME) }}
                                                 </a>
                                             @else
                                                 <p>No Certificates found</p>
@@ -406,8 +408,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}" alt="Identity Image"
-                            class="img-fluid modal-image">
+                        <img src="{{ asset('assets/company_requests/' . $company_request->identity) }}"
+                            alt="Identity Image" class="img-fluid modal-image">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

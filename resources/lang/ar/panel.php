@@ -412,6 +412,11 @@ return [
     'cp_user_name'                      =>  'إسم مقدم الطلب',
     'cp_company_name'                   =>  'إسم الشركة',
 
+    'company_request_new_request'                       =>  'طلب جديد',
+    'company_request_under_proccess'                    =>  'تحت المعالجة',
+    'company_request_accepted'                          =>  'مقبول',
+    'company_request_rejected'                          =>  'مرفوض',
+
 
     //............. Order Status .............//
     'teach_request_new_request'                       =>  'طلب جديد',

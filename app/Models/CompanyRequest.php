@@ -26,6 +26,13 @@ class CompanyRequest extends Model
         ]
     ];
 
+    const NEW_REQUEST = 0;        // when he start the request
+    const UNDER_PROCESS = 1;     // When the admin is reviewing the request 
+    const ACCEPTED = 2;         // when the admin is accepting
+    const REJECTED = 3;         // when admin reject the request
+
+
+
     public function status()
     {
         return $this->status ? __('panel.status_active') : __('panel.status_inactive');

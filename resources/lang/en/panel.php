@@ -425,6 +425,12 @@ return [
     'cp_company_name'                   =>  'Company Name',
 
 
+    'company_request_new_request'                       =>  'NEW_REQUEST',
+    'company_request_under_proccess'                    =>  'UNDER_PROCESS',
+    'company_request_accepted'                          =>  'ACCEPTED',
+    'company_request_rejected'                          =>  'REJECTED',
+
+
     //............. Order Status .............//
 
     'teach_request_new_request'                       =>  'NEW_REQUEST',

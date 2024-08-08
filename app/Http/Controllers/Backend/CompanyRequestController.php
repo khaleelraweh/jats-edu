@@ -28,8 +28,31 @@ class CompanyRequestController extends Controller
         return view('backend.company_requests.index', compact('company_requests'));
     }
 
-    public function create()
+
+    public function show($company_request)
     {
-        return view('backend.company_requests.create');
+        if (!auth()->user()->ability('admin', 'display_company_requests')) {
+            return redirect('admin/index');
+        }
+
+        $company_request = CompanyRequest::where('id', $company_request)->first();
+
+        $company_request_status_array = [
+            '0' =>  __('panel.teach_request_new_request'),
+            '1' =>  __('panel.teach_request_under_proccess'),
+            '2' =>  __('panel.teach_request_accepted'),
+            '3' =>  __('panel.teach_request_rejected'),
+
+        ];
+
+        $key = array_search($company_request->teach_request_status, array_keys($company_request_status_array));
+
+        foreach ($company_request_status_array as $k => $v) {
+            if ($k <= $key) {
+                unset($company_request_status_array[$k]);
+            }
+        }
+
+        return view('backend.teach_requests.show', compact('teach_request', 'teach_request_status_array'));
     }
 }

@@ -172,44 +172,26 @@
                     <div class="row" style="border: 6px double green; font-size: 19px">
                         <div class="col-sm-12 bg-white p-3">
                             <div class="row">
-                                <div class="col-4" style="margin-top: 50px;">
+                                <div class="col-4 p-4">
                                     <span><span class="ww">تاريخ الطلب :</span>
                                         {{ $company_request->created_at->format('Y/m/d') }}
                                     </span>
                                 </div>
-                                <div class="col-4"
-                                    style="
-                            border: 4px solid green;
-                            padding: 5px;
-                            margin-top: 20px;
-                            display: inline-block;
-                            justify-content: center;
-                            text-align: center;
-                            height: 50%;
-                         
-                          ">
-                                    <h1
-                                        style="
-                              margin: 0;
-                              font-size: 30px;
-                              border: 1px solid green;
-                              border-radius: 4px;
-                              color:black;
-                            ">
+                                <div class="col-4 p-2 text-center" style="border: 4px solid green;">
+                                    <h1 class="m-0 fs-2 p-2"
+                                        style="border: 1px solid green;border-radius: 4px;color:black;">
                                         استمارة طلب تدريب لشركة
                                     </h1>
                                 </div>
-                                <div class="col-4">
-                                    <input type="file" id="file-input"
-                                        style="display: none;
-        
-                              
-                              " />
-
+                                <div class="col-4 p-4">
+                                    <p class="text-center p-0 m-0">
+                                        <span class="me-2 ww">حالة الطلب : </span>
+                                        {{ $company_request->status() }}
+                                    </p>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-12 pt-3">
+                                    <div class="col-sm-12 pt-5">
                                         <span class="arabic-name ww">
                                             إسم مقدم الطلب :
                                         </span>
@@ -234,7 +216,13 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-12 pt-3 col-md-12">
+                                    <div class="col-sm-12 pt-3">
+                                        <hr>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12  col-md-12 pt-3">
                                         <span class="residence-address ww">
                                             إسم الشركة :
                                         </span>

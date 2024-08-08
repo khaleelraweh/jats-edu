@@ -140,4 +140,9 @@ class TeachRequest extends Model
     {
         return $this->morphMany(Photo::class, 'imageable');
     }
+
+    public function specialization()
+    {
+        return $this->belongsTo(Specialization::class);
+    }
 }

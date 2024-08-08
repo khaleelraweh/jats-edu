@@ -70,4 +70,9 @@ class Specialization extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function teachRequests()
+    {
+        return $this->hasMany(TeachRequest::class);
+    }
 }

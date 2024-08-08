@@ -35,7 +35,7 @@ class TeachRequestSeeder extends Seeder
                 'residence_address' => $faker->address,
                 'phone' => $faker->phoneNumber,
                 'educational_qualification' => $faker->word,
-                'specialization' => $faker->word,
+                'specialization_id' => 1,
                 'years_of_training_experience' => $faker->numberBetween(0, 10),
                 'identity' => $faker->word,
                 'biography' => 'biographies/' . $faker->uuid . '.pdf',

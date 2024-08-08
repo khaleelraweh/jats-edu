@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('residence_address')->nullable();
             $table->string('phone')->nullable();
             $table->string('educational_qualification')->nullable(); // المؤهل الدراسي
-            $table->string('specialization')->nullable();  //  التخصص
+            // $table->string('specialization')->nullable();  //  التخصص
             $table->unsignedTinyInteger('years_of_training_experience')->default(0);
             $table->string('user_image')->nullable(); // الصورة الشخصية
             $table->string('identity')->nullable(); // الهوية
@@ -31,6 +31,8 @@ return new class extends Migration
             $table->string('Certificates')->nullable(); //  الشهائد
             $table->string('motivation')->nullable(); // الحافز للتدريب في خطوة شباب 
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+
+            $table->foreignId('specialization_id')->constrained()->cascadeOnDelete();
 
 
             // start will be use always

@@ -263,7 +263,7 @@
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group ">
                                                         <label class="form-label">التخصص</label>
-                                                        <select name="specialization" class="form-control">
+                                                        <select name="specialization_id" class="form-control">
                                                             <option value="">---</option>
                                                             @foreach ($specializations as $specialization)
                                                                 <option value="{{ $specialization->id }}"
@@ -272,7 +272,7 @@
                                                                 </option>
                                                             @endforeach
                                                         </select>
-                                                        @error('specialization')
+                                                        @error('specialization_id')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>

@@ -35,7 +35,7 @@ class TeachRequestController extends Controller
             'residence_address'             => 'required|string',
             'phone'                         => 'required|string',
             'educational_qualification'     => 'required|integer',
-            'specialization'                => 'required|integer',
+            'specialization_id'                => 'required|integer',
             'years_of_training_experience'  => 'required|integer',
             'motivation'                    => 'required|string',
             'identity'                      => 'required|file|mimes:jpg,jpeg,png|max:2048',
@@ -50,18 +50,12 @@ class TeachRequestController extends Controller
         $data['residence_address']              = $validatedData['residence_address'];
         $data['phone']                          = $validatedData['phone'];
         $data['educational_qualification']      = $validatedData['educational_qualification'];
-        $data['specialization']                 = $validatedData['specialization'];
+        $data['specialization_id']                 = $validatedData['specialization_id'];
         $data['years_of_training_experience']   = $validatedData['years_of_training_experience'];
         $data['motivation']                     = $validatedData['motivation'];
         $data['user_id']                        = auth()->user()->id;
 
 
-        // if ($request->user_image) {
-
-        //     $file_name = auth()->user()->id  . 'identity-face' . time() . '.' . $request->user_image->getClientOriginalExtension();
-        //     $path = public_path('assets/courses/' . $file_name);
-        //     Image::make($request->user_image->getRealPath())->save($path);
-        // }
 
 
         // Handle file uploads

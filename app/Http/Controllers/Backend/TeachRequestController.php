@@ -127,4 +127,19 @@ class TeachRequestController extends Controller
     {
         return response()->file(public_path('assets/teach_requests/' . $file_id . '.pdf'), ['content-type' => 'application/pdf']);
     }
+
+    public function destroy($teach_request)
+    {
+        if (!auth()->user()->ability('admin', 'delete_countries')) {
+            return redirect('admin/index');
+        }
+
+        $teach_request = TeachRequest::where('id', $teach_request)->first();
+        $teach_request->delete();
+
+        return redirect()->route('admin.teach_requests.index')->with([
+            'message' => 'Deleted successfully',
+            'alert-type' => 'success'
+        ]);
+    }
 }

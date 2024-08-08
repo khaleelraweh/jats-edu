@@ -123,7 +123,7 @@
                                 <div class="row">
                                     <div class="col-4" style="margin-top: 50px;">
                                         <span><span class="ww">تاريخ الطلب :</span>
-                                            {{ $teach_request->created_at->format('Y/m/d') ?? 'No creation date available' }}
+                                            {{ $teach_request->created_at->format('Y/m/d') }}
 
                                         </span>
                                     </div>

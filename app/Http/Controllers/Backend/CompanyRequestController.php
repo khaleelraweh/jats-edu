@@ -77,4 +77,20 @@ class CompanyRequestController extends Controller
             'alert-type' => 'danger'
         ]);
     }
+
+
+    public function destroy($company_request)
+    {
+        if (!auth()->user()->ability('admin', 'delete_countries')) {
+            return redirect('admin/index');
+        }
+
+        $company_request = CompanyRequest::where('id', $company_request)->first();
+        $company_request->delete();
+
+        return redirect()->route('admin.company_requests.index')->with([
+            'message' => 'Deleted successfully',
+            'alert-type' => 'success'
+        ]);
+    }
 }

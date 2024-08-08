@@ -745,45 +745,4 @@
             </div>
         </div>
     </section>
-
-    <style>
-        .my-wrapper {
-            position: fixed;
-            width: 400px;
-            bottom: 0;
-            left: 60px;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-            z-index: 100;
-            margin: 0;
-            background-color: green;
-            color: white;
-            cursor: pointer;
-            border: 0;
-            outline: 0;
-
-        }
-    </style>
-
-    <div class="alert alert-primary alert-dismissible fade show my-wrapper" role="alert">
-
-        <div class="alert-body d-flex justify-content-between align-items-center">
-
-            <div class="part1">
-                <span style="font-size: 12px;">
-                    للتسجيل او الإستفسار يمكنك التواصل معنا عن
-                    طريق
-                </span>
-                <br>الواتس اب:
-                <span class="ltr">00967777282953</span>
-            </div>
-            <div class="part2">
-                <i class="fab fa-whatsapp fa-2x bi flex-shrink-0 me-2" width="30" height="30" role="img"
-                    aria-label="Info:"></i>
-            </div>
-        </div>
-
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-
-    </div>
 @endsection

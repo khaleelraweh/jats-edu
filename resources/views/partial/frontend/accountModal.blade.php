@@ -253,7 +253,8 @@
                                         @else
                                             @if ($teachRequestStatus == \App\Models\TeachRequest::NEW_REQUEST)
                                                 <li>
-                                                    <a href="{{ route('teach_requests.show', auth()->user()->id) }}">
+                                                    <a
+                                                        href="{{ route('teach_requests.show', auth()->user()->requestToTeaches()->latest()->first()->id) }}">
                                                         لقد قمت بطلب تدريس جديد
                                                     </a>
                                                 </li>

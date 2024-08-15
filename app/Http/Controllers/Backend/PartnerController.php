@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\partnerRequest;
+use App\Http\Requests\Backend\PartnerRequest;
 use App\Models\Partner;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
@@ -45,7 +45,7 @@ class PartnerController extends Controller
     }
 
 
-    public function store(partnerRequest $request)
+    public function store(PartnerRequest $request)
     {
 
         if (!auth()->user()->ability('admin', 'create_partners')) {
@@ -104,7 +104,7 @@ class PartnerController extends Controller
     }
 
 
-    public function update(partnerRequest $request, $partner)
+    public function update(PartnerRequest $request, $partner)
     {
         if (!auth()->user()->ability('admin', 'update_partners')) {
             return redirect('admin/index');

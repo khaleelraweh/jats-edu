@@ -1,5 +1,4 @@
 <div>
-    {{ dd($course) }}
     <!-- NAVBAR  -->
     <header class="bg-portgore py-3">
         <div class="px-5 px-lg-8 w-100">
@@ -29,11 +28,33 @@
     <div class="container container-wd">
         <div class="row pt-8 pb-10">
             <div class="col-lg-8">
+                {{-- video frame --}}
                 <iframe class="  rounded mb-8" style="width: 100%; height:500px;" src="{{ $videoUrl }}"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+                {{-- evaluation container --}}
+
+                <div class="evaluation-container">
+                    <h3 class="text-white">Evaluation Container </h3>
+
+                    @forelse ($evaluations as $evaluation)
+                        <div class="bg-dark p-3 rounded mb-3">
+                            <h5 class="text-white">{{ $evaluation->title }}</h5>
+                            <p class="text-white">{{ $evaluation->description }}</p>
+                            <p class="text-white">Rating: {{ $evaluation->rating }}</p>
+                        </div>
+                    @empty
+                        <p class="text-white">No evaluations for this lesson.</p>
+                    @endforelse
+
+                </div>
+
             </div>
+
+
 
             <div class="col-lg-4">
                 <div class="bg-portgore rounded p-6">
@@ -169,7 +190,8 @@
                                     @endforeach
 
 
-                                    {{-- @foreach ($section->evaluations as $evaluation)
+                                    {{-- show evaluation link --}}
+                                    @foreach ($section->evaluations as $evaluation)
                                         <div
                                             class="border-top px-5 border-color-20 py-4 min-height-70 d-md-flex align-items-center @if ($selectedLessonUrl == $lesson->url) bg-secondary text-white @endif">
                                             <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
@@ -217,28 +239,13 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    @endforeach --}}
+                                    @endforeach
 
 
 
                                 </div>
                             </div>
                         @endforeach
-
-
-                        <!-- Evaluations -->
-                        <div class="mt-5">
-                            <h4 class="text-white">Lesson Evaluations</h4>
-                            @forelse ($evaluations as $evaluation)
-                                <div class="bg-dark p-3 rounded mb-3">
-                                    <h5 class="text-white">{{ $evaluation->title }}</h5>
-                                    <p class="text-white">{{ $evaluation->description }}</p>
-                                    <p class="text-white">Rating: {{ $evaluation->rating }}</p>
-                                </div>
-                            @empty
-                                <p class="text-white">No evaluations for this lesson.</p>
-                            @endforelse
-                        </div>
 
                     </div>
                 </div>

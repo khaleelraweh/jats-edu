@@ -227,6 +227,22 @@
                         @endforeach
 
 
+                        <!-- Evaluations -->
+                        <div class="mt-5">
+                            <h4 class="text-white">Lesson Evaluations</h4>
+                            @forelse ($evaluations as $evaluation)
+                                <div class="bg-dark p-3 rounded mb-3">
+                                    <h5 class="text-white">{{ $evaluation->title }}</h5>
+                                    <p class="text-white">{{ $evaluation->description }}</p>
+                                    <p class="text-white">Rating: {{ $evaluation->rating }}</p>
+                                </div>
+                            @empty
+                                <p class="text-white">No evaluations for this lesson.</p>
+                            @endforelse
+                        </div>
+
+
+
                     </div>
                 </div>
             </div>

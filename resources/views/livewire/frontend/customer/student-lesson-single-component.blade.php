@@ -29,7 +29,6 @@
         <div class="row pt-8 pb-10">
             <div class="col-lg-8">
                 @if (!$showEvaluation)
-
                     {{-- video frame --}}
                     <iframe class="  rounded mb-8" style="width: 100%; height:500px;" src="{{ $videoUrl }}"
                         title="YouTube video player" frameborder="0"
@@ -37,26 +36,16 @@
                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 @else
                     {{-- evaluation container --}}
-
                     <div class="evaluation-container">
                         <h3 class="text-white">Evaluation Container </h3>
 
                         <h3 class="text-white">{{ $selectedEvaluation->title }}</h3>
+                        <p class="text-white">{{ $selectedEvaluation->description }}</p>
 
-                        {{-- selectedEvaluation: {{ $selectedEvaluation }} --}}
 
-                        @forelse ($evaluations as $evaluation)
-                            <div class="bg-dark p-3 rounded mb-3">
-                                <h5 class="text-white">{{ $evaluation->title }}</h5>
-                                <p class="text-white">{{ $evaluation->description }}</p>
-                                <p class="text-white">Rating: {{ $evaluation->rating }}</p>
-                            </div>
-                        @empty
-                            <p class="text-white">No evaluations for this lesson.</p>
-                        @endforelse
+
 
                     </div>
-
                 @endif
 
             </div>

@@ -41,6 +41,8 @@ class StudentLessonSingleComponent extends Component
             $this->showEvaluation = true;
             $this->selectedEvaluationId = $urlOrEvaluationId; // This would be the evaluation ID
             $this->selectedEvaluation = Evaluation::find($urlOrEvaluationId);
+
+            $this->selectedLessonUrl = $urlOrEvaluationId;
         } else {
             // Show the video frame and hide the evaluation
             $this->showEvaluation = false;

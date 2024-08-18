@@ -200,7 +200,7 @@
                                     {{-- show evaluation link --}}
                                     @foreach ($section->evaluations as $evaluation)
                                         <div
-                                            class="border-top px-5 border-color-20 py-4 min-height-70 d-md-flex align-items-center @if ($selectedLessonUrl == $lesson->url) bg-secondary text-white @endif">
+                                            class="border-top px-5 border-color-20 py-4 min-height-70 d-md-flex align-items-center @if ($selectedLessonUrl == $evaluation->id) bg-secondary text-white @endif">
                                             <div class="d-flex align-items-center me-auto mb-4 mb-md-0">
                                                 <div class="text-secondary d-flex">
                                                     <i class="fas fa-file-alt"></i>

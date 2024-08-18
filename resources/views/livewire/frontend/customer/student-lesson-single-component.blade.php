@@ -1,5 +1,5 @@
 <div>
-    {{-- {{ dd($course) }} --}}
+    {{ dd($course) }}
     <!-- NAVBAR  -->
     <header class="bg-portgore py-3">
         <div class="px-5 px-lg-8 w-100">

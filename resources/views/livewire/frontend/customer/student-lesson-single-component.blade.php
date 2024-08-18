@@ -208,6 +208,7 @@
                                             <div
                                                 class="d-flex align-items-center overflow-auto overflow-md-visible flex-shrink-all">
 
+                                                {{-- evaluation director --}}
                                                 <a href="#"
                                                     wire:click="showEvaluationContainer('{{ $evaluation->id }}')"
                                                     class="text-secondary d-flex">

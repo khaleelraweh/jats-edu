@@ -48,22 +48,6 @@ class StudentLessonSingleComponent extends Component
     }
 
 
-
-    // public function mount()
-    // {
-    //     $course = Course::with('sections.lessons')->where('slug->' . app()->getLocale(), $this->slug)->first();
-    //     $url = $course->sections->first()->lessons->first()->url;
-
-    //     if (empty($this->videoUrl)) {
-    //         $this->videoUrl = $url;
-    //         $this->selectedLessonUrl = $url; // Initialize the selected lesson URL
-
-    //     }
-
-    //     // Load evaluations here
-    //     // $this->loadEvaluations();
-    // }
-
     public function render()
     {
         $course = Course::with('sections.lessons')->where('slug->' . app()->getLocale(), $this->slug)->first();
@@ -76,37 +60,4 @@ class StudentLessonSingleComponent extends Component
 
         return view('livewire.frontend.customer.student-lesson-single-component', compact('course', 'totalDurations'));
     }
-
-    public function updateVideoUrl($url)
-    {
-        $this->videoUrl = $url;
-        $this->selectedLessonUrl = $url; // Update the selected lesson URL
-
-        // Update evaluations when the video changes
-        // $this->loadEvaluations();
-    }
-
-    // private function loadEvaluations()
-    // {
-    //     // Fetch the course based on the slug
-    //     $course = Course::with('sections.lessons')
-    //         ->where('slug->' . app()->getLocale(), $this->slug)
-    //         ->first();
-
-
-    //     // Get the selected lesson based on the URL
-    //     $selectedLesson = $course->sections->flatMap->lessons->where('url', $this->selectedLessonUrl)->first();
-
-
-
-    //     // Ensure that the selected lesson is found
-    //     if ($selectedLesson) {
-    //         // Fetch evaluations for the section that contains the selected lesson
-    //         $this->evaluations = Evaluation::where('course_section_id', $selectedLesson->course_section_id)->get();
-    //         // dd($this->evaluations);
-    //     } else {
-    //         // Handle case where the lesson is not found
-    //         $this->evaluations = collect(); // or an empty array if you prefer
-    //     }
-    // }
 }

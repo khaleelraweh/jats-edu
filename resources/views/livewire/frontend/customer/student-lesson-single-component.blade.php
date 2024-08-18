@@ -28,29 +28,32 @@
     <div class="container container-wd">
         <div class="row pt-8 pb-10">
             <div class="col-lg-8">
-                {{-- video frame --}}
-                <iframe class="  rounded mb-8" style="width: 100%; height:500px;" src="{{ $videoUrl }}"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                @if (!$showEvaluation)
 
+                    {{-- video frame --}}
+                    <iframe class="  rounded mb-8" style="width: 100%; height:500px;" src="{{ $videoUrl }}"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                @else
+                    {{-- evaluation container --}}
 
-                {{-- evaluation container --}}
+                    <div class="evaluation-container">
+                        <h3 class="text-white">Evaluation Container </h3>
 
-                <div class="evaluation-container">
-                    <h3 class="text-white">Evaluation Container </h3>
+                        @forelse ($evaluations as $evaluation)
+                            <div class="bg-dark p-3 rounded mb-3">
+                                <h5 class="text-white">{{ $evaluation->title }}</h5>
+                                <p class="text-white">{{ $evaluation->description }}</p>
+                                <p class="text-white">Rating: {{ $evaluation->rating }}</p>
+                            </div>
+                        @empty
+                            <p class="text-white">No evaluations for this lesson.</p>
+                        @endforelse
 
-                    @forelse ($evaluations as $evaluation)
-                        <div class="bg-dark p-3 rounded mb-3">
-                            <h5 class="text-white">{{ $evaluation->title }}</h5>
-                            <p class="text-white">{{ $evaluation->description }}</p>
-                            <p class="text-white">Rating: {{ $evaluation->rating }}</p>
-                        </div>
-                    @empty
-                        <p class="text-white">No evaluations for this lesson.</p>
-                    @endforelse
+                    </div>
 
-                </div>
+                @endif
 
             </div>
 
@@ -174,7 +177,8 @@
                                                     class="badge btn-orange-soft text-white-70 me-5 font-size-sm fw-normal py-2">
                                                     {{ $lesson->duration }}</div>
                                                 {{-- <a href="{{ $lesson->url }}" class="text-secondary d-flex"> --}}
-                                                <a href="#" wire:click="updateVideoUrl('{{ $lesson->url }}')"
+                                                <a href="#" {{-- wire:click="updateVideoUrl('{{ $lesson->url }}')" --}}
+                                                    wire:click="updateContent('{{ $lesson->url }}', false)"
                                                     class="text-secondary d-flex">
                                                     <!-- Icon -->
                                                     <svg width="14" height="16" viewBox="0 0 14 16"
@@ -210,7 +214,7 @@
 
                                                 {{-- evaluation director --}}
                                                 <a href="#"
-                                                    wire:click="showEvaluationContainer('{{ $evaluation->id }}')"
+                                                    wire:click="updateContent('{{ $evaluation->id }}', true)"
                                                     class="text-secondary d-flex">
                                                     <!-- Icon -->
                                                     <i class="fas fa-file"></i>

@@ -176,8 +176,7 @@
                                                 <div
                                                     class="badge btn-orange-soft text-white-70 me-5 font-size-sm fw-normal py-2">
                                                     {{ $lesson->duration }}</div>
-                                                {{-- <a href="{{ $lesson->url }}" class="text-secondary d-flex"> --}}
-                                                <a href="#" {{-- wire:click="updateVideoUrl('{{ $lesson->url }}')" --}}
+                                                <a href="#"
                                                     wire:click="updateContent('{{ $lesson->url }}', false)"
                                                     class="text-secondary d-flex">
                                                     <!-- Icon -->

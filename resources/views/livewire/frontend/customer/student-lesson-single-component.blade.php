@@ -25,7 +25,6 @@
         </div>
     </header>
 
-
     <!-- COURSE -->
     <div class="container container-wd">
         <div class="row pt-8 pb-10">
@@ -240,8 +239,6 @@
                                 <p class="text-white">No evaluations for this lesson.</p>
                             @endforelse
                         </div>
-
-
 
                     </div>
                 </div>

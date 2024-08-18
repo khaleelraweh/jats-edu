@@ -17,6 +17,7 @@ class StudentLessonSingleComponent extends Component
     // ============== new part ================
     public $showEvaluation = false;
     public $selectedEvaluation;
+    public $selectedEvaluationId;
     public $curriculumSections;
 
 
@@ -38,7 +39,8 @@ class StudentLessonSingleComponent extends Component
         if ($isEvaluation) {
             // Hide the video frame and show the evaluation
             $this->showEvaluation = true;
-            $this->selectedEvaluation = $urlOrEvaluationId; // This would be the evaluation ID
+            $this->selectedEvaluationId = $urlOrEvaluationId; // This would be the evaluation ID
+            $this->selectedEvaluation = Evaluation::find($urlOrEvaluationId);
         } else {
             // Show the video frame and hide the evaluation
             $this->showEvaluation = false;

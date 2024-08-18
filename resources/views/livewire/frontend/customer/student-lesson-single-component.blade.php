@@ -41,6 +41,10 @@
                     <div class="evaluation-container">
                         <h3 class="text-white">Evaluation Container </h3>
 
+                        <h3 class="text-white">{{ $selectedEvaluation->title }}</h3>
+
+                        {{-- selectedEvaluation: {{ $selectedEvaluation }} --}}
+
                         @forelse ($evaluations as $evaluation)
                             <div class="bg-dark p-3 rounded mb-3">
                                 <h5 class="text-white">{{ $evaluation->title }}</h5>

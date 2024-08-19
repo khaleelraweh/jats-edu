@@ -37,17 +37,12 @@
                 @else
                     {{-- evaluation container --}}
                     <div class="evaluation-container">
-
-
                         @livewire('frontend.customer.evaluation.student-evaluation-component', ['selectedEvaluation' => $selectedEvaluation])
-
 
                     </div>
                 @endif
 
             </div>
-
-
 
             <div class="col-lg-4">
                 <div class="bg-portgore rounded p-6">

@@ -19,7 +19,7 @@ return [
     'txt_explore_a_variety_of_fresh_topics'         =>  'استكشاف مجموعة متنوعة من المواضيع الجديدة',
 
     'txt_trending_categories'                       =>  'الفئات الشائعة',
-    'txt_trending_categories_desc'                  =>  'نائب الرئيس civibus فعال في منع النظام الغذائي.',
+    'txt_trending_categories_desc'                  =>  'استكشف الفئات الاكثر  رواجا في الموقع.',
     'btn_view_all_course_categories'               =>  'عرض جميع الدورات',
     'btn_load_more_course_categories'              =>  'عرض المزيد من  تصنيفات الدورات',
     'btn_load_less_course_categories'              =>  'عرض تصنيفات اقل',

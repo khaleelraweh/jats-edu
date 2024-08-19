@@ -19,7 +19,7 @@ return [
     'txt_explore_a_variety_of_fresh_topics'         =>  'Explore a variety of fresh topics',
 
     'txt_trending_categories'                       =>  'Trending Categories',
-    'txt_trending_categories_desc'                  =>  'Cum doctus civibus efficiantur in imperdiet deterruisset.',
+    'txt_trending_categories_desc'                  =>  'Explore the most popular categories on the site.',
 
     'btn_view_all_course_categories'                =>  'View All Courses',
     'btn_load_more_course_categories'               =>  'Load More Course Categories',

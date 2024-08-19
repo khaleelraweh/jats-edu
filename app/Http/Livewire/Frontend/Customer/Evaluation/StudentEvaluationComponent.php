@@ -3,11 +3,20 @@
 namespace App\Http\Livewire\Frontend\Customer\Evaluation;
 
 use App\Models\Evaluation;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class StudentEvaluationComponent extends Component
 {
+
+    use LivewireAlert;
+
+    //global variables
+    public $currentStep = 1;
+    public $totalSteps = 4;
+
     public $selectedEvaluation;
+    public $questionCount;
 
     protected $listeners = ['evaluationChanged' => 'reloadData'];
 
@@ -22,6 +31,12 @@ class StudentEvaluationComponent extends Component
         if ($selectedEvaluationId) {
             $selectedEvaluation = Evaluation::find($selectedEvaluationId);
             $this->mount($selectedEvaluation);
+        }
+
+        // Update the question count
+        if ($this->selectedEvaluation) {
+            $this->questionCount = $this->selectedEvaluation->questions()->count();
+            $this->totalSteps = $this->questionCount;
         }
     }
 

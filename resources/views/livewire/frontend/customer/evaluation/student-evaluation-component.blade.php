@@ -1,5 +1,6 @@
 <div>
     <h3 class="text-white">Evaluation Container </h3>
+    there are {{ $questionCount }} questions in this evaluation
 
     <h3 class="text-white">{{ $selectedEvaluation->title }}</h3>
     <p class="text-white">{{ $selectedEvaluation->description }}</p>

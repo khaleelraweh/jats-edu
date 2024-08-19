@@ -431,7 +431,7 @@ return [
     'manage_partners'              => 'إدارة الشركاء',
 
     // ---------------  Teach request  --------------//
-    'show_partners'               => 'شركائنا',
+    'show_partners'               => 'شركاؤنا',
     'add_new_partner'             => 'إضافة شريك جديد',
     'edit_existing_partner'       => 'تعديل بيانات الشريك',
 
@@ -440,6 +440,7 @@ return [
     'partner_name'                  =>    'إسم الشريك',
     'partner_image'                 =>  'صورة الشريك',
     'partner_link'                  =>  'رابط الشريك',
+    'our_partners'                  =>  'شركاؤنا',
 
 
     ################################ Manage Orders ##############################

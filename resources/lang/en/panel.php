@@ -455,6 +455,7 @@ return [
     'partner_name'                  =>    'Partner Name',
     'partner_image'                 =>  'Partner Image',
     'partner_link'                  =>  'Partner Link',
+    'our_partners'                  =>  'Our Partners',
 
 
 

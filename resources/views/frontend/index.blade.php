@@ -84,7 +84,7 @@
     <section class="py-5 py-md-11 bg-catskill">
         <div class="container">
             <div class="text-center mb-4 mb-md-7" data-aos="fade-up">
-                <h1 class="mb-1">شركاؤنا</h1>
+                <h1 class="mb-1">{{ __('panel.our_partners') }}</h1>
                 {{-- <p class="font-size-lg mb-0 text-capitalize">شركائنا</p> --}}
             </div>
 

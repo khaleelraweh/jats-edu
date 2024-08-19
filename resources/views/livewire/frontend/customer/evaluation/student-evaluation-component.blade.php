@@ -62,11 +62,9 @@
                                 <li role="tab" wire:click="directMoveToStep({{ $key + 1 }})"
                                     class="  {{ $currentStep == 1 ? 'first' : 'disabled' }}  {{ $currentStep == $key + 1 ? 'current' : '' }}"
                                     aria-disabled="  {{ $currentStep == 1 ? 'false' : 'true' }}">
-                                    <a id="wizard1-t-{{ $key + 1 }}" href="#wizard1-h-1"
+                                    <a id="wizard1-t-{{ $key + 1 }}" href="#wizard1-h-{{ $key + 1 }}"
                                         aria-controls="wizard1-p-{{ $key + 1 }}">
-                                        @if ($currentStep == 1)
-                                            <span class="current-info audible">current step:</span>
-                                        @endif
+
 
                                         <span class="number">{{ $key + 1 }}</span>
                                         <span class="title">
@@ -151,12 +149,6 @@
                                                                 wire:model.defer="questionData.{{ $questionIndex }}.options.{{ $optionIndex }}.option_value"
                                                                 value="{{ $option['option_id'] }}">
                                                             {{ $option['option_text'] }}
-
-                                                            {{-- @error('questionData.' . $pageIndex . '.groups.' . $groupIndex . '.variables.' . $variableIndex . '.pv_value')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                            @enderror --}}
-
-
                                                         </div>
                                                     @endforeach
                                                 </div>

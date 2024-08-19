@@ -82,7 +82,6 @@ class StudentEvaluationComponent extends Component
 
     public function nextStep()
     {
-
         $this->currentStep++;
     }
 

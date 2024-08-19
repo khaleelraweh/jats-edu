@@ -47,6 +47,7 @@ class StudentEvaluationComponent extends Component
                                 'option_text'           => $option->option_text,
                                 'is_correct'            => $option->is_correct,
                                 'option_question_id'    => $option->question_id,
+                                'option_value'          => '',
                             ];
                         })->toArray(),
                     ];

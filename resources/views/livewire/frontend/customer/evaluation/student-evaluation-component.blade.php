@@ -122,7 +122,7 @@
 
                                 <div class="row align-items-end mb-4 mb-md-0">
                                     <div class="col-md mb-4 mb-md-0">
-                                        <h4>{{ $question['question_text'] }}</h4>
+                                        {{-- <h4>{{ $question['question_text'] }}</h4> --}}
                                     </div>
                                     <div class="col-md-auto aos-init aos-animate" data-aos="fade-start">
                                     </div>
@@ -138,36 +138,31 @@
                                     <div class="row">
                                         <div class="col-sm-12 col-md-12">
 
-                                            {{-- @foreach ($documentPage['groups'] as $groupIndex => $pageGroup)
-                                                <fieldset>
-                                                    <legend>{{ $pageGroup['pg_name'] }}</legend>
+                                            <fieldset>
+                                                <legend>{{ $question['question_text'] }}</legend>
 
-                                                    @foreach ($pageGroup['variables'] as $variableIndex => $pageVariable)
-                                                        <div class="row">
-                                                            <div class="col-sm-12 {{ $loop->first ? '' : 'pt-3' }} ">
-                                                                <label for=" {{ 'text_' . $pageVariable['pv_id'] }}">
-                                                                    {{ $pageVariable['pv_name'] }}:
-                                                                    (<small>{{ $pageVariable['pv_question'] }}</small>)
-                                                                </label>
-                                                                <input
-                                                                    type="{{ $pageVariable['pv_type'] == 0 ? 'text' : 'number' }}"
-                                                                    id="{{ 'text_' . $pageVariable['pv_id'] }}"
-                                                                    name="{{ $pageVariable['pv_id'] }}"
-                                                                    wire:model.defer="docData.{{ $pageIndex }}.groups.{{ $groupIndex }}.variables.{{ $variableIndex }}.pv_value"
-                                                                    value="{{ $pageVariable['pv_value'] }}"
-                                                                    class="form-control"
-                                                                    {{ $pageVariable['pv_required'] == 0 ? '' : 'required' }}>
-                                                                <small>{{ $pageVariable['pv_details'] }}</small>
 
-                                                                @error('docData.' . $pageIndex . '.groups.' . $groupIndex . '.variables.' . $variableIndex . '.pv_value')
-                                                                    <span class="text-danger">{{ $message }}</span>
-                                                                @enderror
+                                                <div class="row">
+                                                    @foreach ($question['options'] as $optionIndex => $option)
+                                                        <div class="col">
 
-                                                            </div>
+                                                            <input
+                                                                type="{{ $question['question_type'] == 0 ? 'radio' : 'checkbox' }}"
+                                                                wire:model.defer="questionData.{{ $questionIndex }}.options.{{ $optionIndex }}.option_value"
+                                                                value="{{ $option['option_id'] }}">
+                                                            {{ $option['option_text'] }}
+
+                                                            {{-- @error('questionData.' . $pageIndex . '.groups.' . $groupIndex . '.variables.' . $variableIndex . '.pv_value')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @enderror --}}
+
+
                                                         </div>
                                                     @endforeach
-                                                </fieldset>
-                                            @endforeach --}}
+                                                </div>
+
+
+                                            </fieldset>
 
                                         </div>
                                     </div>

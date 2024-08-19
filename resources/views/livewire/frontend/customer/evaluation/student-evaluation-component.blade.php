@@ -2,12 +2,6 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/mywizard.css') }}">
 
     <style>
-        body {
-            font-family: 'DejaVu Sans', sans-serif;
-            direction: rtl;
-            text-align: right;
-        }
-
         fieldset {
             border: 1px solid #ddd;
             border-radius: 4px;

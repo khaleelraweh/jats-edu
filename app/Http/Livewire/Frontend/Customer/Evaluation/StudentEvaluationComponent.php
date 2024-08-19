@@ -3,6 +3,9 @@
 namespace App\Http\Livewire\Frontend\Customer\Evaluation;
 
 use App\Models\Evaluation;
+use App\Models\Question;
+use App\Models\StudentAnswer;
+use App\Models\StudentEvaluation;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
@@ -47,7 +50,7 @@ class StudentEvaluationComponent extends Component
                                 'option_text'           => $option->option_text,
                                 'is_correct'            => $option->is_correct,
                                 'option_question_id'    => $option->question_id,
-                                'option_value'          => '',
+                                'selected_option'          => '',
                             ];
                         })->toArray(),
                     ];
@@ -90,5 +93,43 @@ class StudentEvaluationComponent extends Component
         // // $this->validateStep();
         // $this->saveStepData();
         // return redirect()->route('admin.documents.show', $this->document_id);
+    }
+
+
+    public function saveStepData()
+    {
+
+        $evaluation = $this->selectedEvaluation;
+
+        // To create ( Student <==> evaluation ) Relation
+        $studentEvaluation = new StudentEvaluation();
+        $studentEvaluation->user_id = auth()->id();
+        $studentEvaluation->evaluation_id = $evaluation->id;
+        $studentEvaluation->save();
+
+        $score = 0;
+
+        foreach ($this->questionData['questions'] as $questionId => $question) {
+
+            $correctOption = $question->options()->where('is_correct', true)->first();
+
+
+            foreach ($question['options'] as $optionId => $option) {
+                $studentAnswer = new StudentAnswer();
+                $studentAnswer->student_evaluation_id = $studentEvaluation->id;
+                $studentAnswer->question_id = $question['question_id'];
+                $studentAnswer->selected_option_id = $option['selected_option'];
+                $studentAnswer->save();
+
+                if ($correctOption && $correctOption->id == $option['selected_option']) {
+                    $score++;
+                }
+            }
+        }
+
+        $studentEvaluation->score = $score;
+        $studentEvaluation->save();
+
+        $this->alert('success', __('panel.document_data_saved'));
     }
 }

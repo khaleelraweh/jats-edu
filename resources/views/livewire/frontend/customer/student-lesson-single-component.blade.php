@@ -37,12 +37,12 @@
                 @else
                     {{-- evaluation container --}}
                     <div class="evaluation-container">
-                        <h3 class="text-white">Evaluation Container </h3>
+                        {{-- <h3 class="text-white">Evaluation Container </h3>
 
                         <h3 class="text-white">{{ $selectedEvaluation->title }}</h3>
-                        <p class="text-white">{{ $selectedEvaluation->description }}</p>
+                        <p class="text-white">{{ $selectedEvaluation->description }}</p> --}}
 
-                        @foreach ($selectedEvaluation->questions as $question)
+                        {{-- @foreach ($selectedEvaluation->questions as $question)
                             {{ $question->question_text }}
                             <br>
                             @foreach ($question->options as $option)
@@ -50,7 +50,9 @@
                                 {{ $option->option_text }} <br>
                             @endforeach
                             <br><br>
-                        @endforeach
+                        @endforeach --}}
+
+                        @livewire('frontend.customer.evaluation.student-evaluation-component', ['selectedEvaluation' => $selectedEvaluation])
 
 
                     </div>

@@ -56,7 +56,7 @@
                 <!------------- part 1 : Steps ------------->
                 <div class="steps clearfix">
                     <ul role="tablist">
-                        <li role="tab" wire:click="directMoveToStep(1)"
+                        {{-- <li role="tab" wire:click="directMoveToStep(1)"
                             class="first {{ $currentStep == 1 ? 'current' : '' }}" aria-disabled="false"
                             aria-selected="true">
                             <a id="wizard1-t-0" href="#wizard1-h-0" aria-controls="wizard1-p-0">
@@ -67,7 +67,28 @@
                                     {{ __('panel.document_template_data') }}
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
+
+
+                        @isset($questionData)
+                            @foreach ($questionData['questions'] as $key => $questionD)
+                                <li role="tab" wire:click="directMoveToStep({{ $key + 1 }})"
+                                    class="  {{ $currentStep == 1 ? 'first' : 'disabled' }}  {{ $currentStep == $key + 1 ? 'current' : '' }}"
+                                    aria-disabled="  {{ $currentStep == 1 ? 'false' : 'true' }}">
+                                    <a id="wizard1-t-{{ $key + 1 }}" href="#wizard1-h-1"
+                                        aria-controls="wizard1-p-{{ $key + 1 }}">
+                                        @if ($currentStep == 1)
+                                            <span class="current-info audible">current step:</span>
+                                        @endif
+
+                                        <span class="number">{{ $key + 1 }}</span>
+                                        <span class="title">
+                                            {!! Str::words($questionD['question_text'], 3, ' ...') !!}
+                                        </span>
+                                    </a>
+                                </li>
+                            @endforeach
+                        @endisset
 
 
                     </ul>

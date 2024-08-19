@@ -56,19 +56,6 @@
                 <!------------- part 1 : Steps ------------->
                 <div class="steps clearfix">
                     <ul role="tablist">
-                        {{-- <li role="tab" wire:click="directMoveToStep(1)"
-                            class="first {{ $currentStep == 1 ? 'current' : '' }}" aria-disabled="false"
-                            aria-selected="true">
-                            <a id="wizard1-t-0" href="#wizard1-h-0" aria-controls="wizard1-p-0">
-                                <span class="current-info audible">current step:
-                                </span>
-                                <span class="number">1</span>
-                                <span class="title">
-                                    {{ __('panel.document_template_data') }}
-                                </span>
-                            </a>
-                        </li> --}}
-
 
                         @isset($questionData)
                             @foreach ($questionData['questions'] as $key => $questionD)
@@ -89,8 +76,6 @@
                                 </li>
                             @endforeach
                         @endisset
-
-
                     </ul>
                 </div>
                 <!------------- part 1 : Steps end ------------->
@@ -98,9 +83,8 @@
                 <!------------- part 2 : Content ------------->
                 <div class="mycontent">
 
-                    <!---- related to step 1 ----->
 
-                    <h3 id="wizard1-h-0" tabindex="-1" class="title {{ $currentStep == 1 ? 'current' : '' }} ">
+                    {{-- <h3 id="wizard1-h-0" tabindex="-1" class="title {{ $currentStep == 1 ? 'current' : '' }} ">
                         {{ __('panel.document_template_data') }}
                     </h3>
 
@@ -126,9 +110,73 @@
 
                             </div>
                         </form>
-                    </section>
+                    </section> --}}
 
 
+
+                    <!---- related to dynamic steps --->
+                    @isset($questionData)
+                        @foreach ($questionData['questions'] as $questionIndex => $question)
+                            <h3 id="wizard1-h-0" tabindex="-1"
+                                class="title {{ $currentStep == $questionIndex + 1 ? 'current' : '' }} ">
+
+                                <div class="row align-items-end mb-4 mb-md-0">
+                                    <div class="col-md mb-4 mb-md-0">
+                                        <h4>{{ $question['question_text'] }}</h4>
+                                    </div>
+                                    <div class="col-md-auto aos-init aos-animate" data-aos="fade-start">
+                                    </div>
+                                </div>
+                            </h3>
+                            <section id="wizard1-p-0" role="tabpanel" aria-labelledby="wizard1-h-0"
+                                class="body {{ $currentStep == $questionIndex + 1 ? 'current' : '' }}  step"
+                                aria-hidden="{{ $currentStep == $questionIndex + 1 ? 'false' : 'true' }}"
+                                style="display: {{ $currentStep == $questionIndex + 1 ? 'block' : 'none' }}">
+
+                                <form method="post">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12">
+
+                                            {{-- @foreach ($documentPage['groups'] as $groupIndex => $pageGroup)
+                                                <fieldset>
+                                                    <legend>{{ $pageGroup['pg_name'] }}</legend>
+
+                                                    @foreach ($pageGroup['variables'] as $variableIndex => $pageVariable)
+                                                        <div class="row">
+                                                            <div class="col-sm-12 {{ $loop->first ? '' : 'pt-3' }} ">
+                                                                <label for=" {{ 'text_' . $pageVariable['pv_id'] }}">
+                                                                    {{ $pageVariable['pv_name'] }}:
+                                                                    (<small>{{ $pageVariable['pv_question'] }}</small>)
+                                                                </label>
+                                                                <input
+                                                                    type="{{ $pageVariable['pv_type'] == 0 ? 'text' : 'number' }}"
+                                                                    id="{{ 'text_' . $pageVariable['pv_id'] }}"
+                                                                    name="{{ $pageVariable['pv_id'] }}"
+                                                                    wire:model.defer="docData.{{ $pageIndex }}.groups.{{ $groupIndex }}.variables.{{ $variableIndex }}.pv_value"
+                                                                    value="{{ $pageVariable['pv_value'] }}"
+                                                                    class="form-control"
+                                                                    {{ $pageVariable['pv_required'] == 0 ? '' : 'required' }}>
+                                                                <small>{{ $pageVariable['pv_details'] }}</small>
+
+                                                                @error('docData.' . $pageIndex . '.groups.' . $groupIndex . '.variables.' . $variableIndex . '.pv_value')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </fieldset>
+                                            @endforeach --}}
+
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </section>
+                        @endforeach
+                    @endisset
+                    <!---- end related to dynamic steps --->
 
 
 

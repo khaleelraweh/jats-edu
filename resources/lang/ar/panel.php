@@ -1206,6 +1206,8 @@ return [
     'multiple_choice'                               =>  'اختيار متعدد',
 
 
+    'next'                                          =>  'التالى',
+    'previous'                                      =>  'السابق',
 
 
 

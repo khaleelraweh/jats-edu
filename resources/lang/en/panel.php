@@ -1237,5 +1237,8 @@ return [
     'single_choice'                                 =>  'Single choice',
     'multiple_choice'                               =>  'Multiple choice',
 
+    'next'                                          =>  'Next',
+    'previous'                                      =>  'Previous',
+
 
 ];

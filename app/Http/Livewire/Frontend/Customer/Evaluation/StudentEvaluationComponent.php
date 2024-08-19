@@ -72,4 +72,23 @@ class StudentEvaluationComponent extends Component
     {
         return view('livewire.frontend.customer.evaluation.student-evaluation-component');
     }
+
+
+    public function previousStep()
+    {
+        $this->currentStep--;
+    }
+
+    public function nextStep()
+    {
+
+        $this->currentStep++;
+    }
+
+    public function finish()
+    {
+        // // $this->validateStep();
+        // $this->saveStepData();
+        // return redirect()->route('admin.documents.show', $this->document_id);
+    }
 }

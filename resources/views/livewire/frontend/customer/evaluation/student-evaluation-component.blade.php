@@ -23,13 +23,23 @@
 
     {{-- ============================== start ========================== --}}
 
+    <div class="card">
+        <div class="card-header" style="background: rgb(47,45,81,0.8);color:white;">
+            <div class="card-title">
+                {{ $selectedEvaluation->title }}
+            </div>
+            <div class="card-subtitle">
+                {{ $selectedEvaluation->description }}
+            </div>
+        </div>
+    </div>
 
     <div class="mywizard">
         <!------------- part 1 : Steps ------------->
         <div class="steps clearfix">
             <ul role="tablist">
-                <li role="tab" wire:click="directMoveToStep(1)" class="first {{ $currentStep == 1 ? 'current' : '' }}"
-                    aria-disabled="false" aria-selected="true">
+                <li role="tab" wire:click="directMoveToStep(1)"
+                    class="first {{ $currentStep == 1 ? 'current' : '' }}" aria-disabled="false" aria-selected="true">
                     <a id="wizard1-t-0" href="#wizard1-h-0" aria-controls="wizard1-p-0">
                         <span class="current-info audible">current step:
                         </span>

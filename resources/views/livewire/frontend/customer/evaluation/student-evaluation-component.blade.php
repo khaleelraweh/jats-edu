@@ -99,7 +99,7 @@
 
                                                         <input
                                                             type="{{ $question['question_type'] == 0 ? 'radio' : 'checkbox' }}"
-                                                            wire:model.defer="questionData.{{ $questionIndex }}.options.{{ $optionIndex }}.option_value"
+                                                            wire:model.defer="questionData.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.option_value"
                                                             value="{{ $option['option_id'] }}">
                                                         {{ $option['option_text'] }}
                                                     </div>

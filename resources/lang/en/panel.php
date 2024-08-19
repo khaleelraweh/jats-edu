@@ -1239,6 +1239,7 @@ return [
 
     'next'                                          =>  'Next',
     'previous'                                      =>  'Previous',
+    'finish'                                        =>  'Finish',
 
 
 ];

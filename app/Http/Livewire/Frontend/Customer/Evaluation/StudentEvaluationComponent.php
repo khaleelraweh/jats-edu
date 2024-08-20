@@ -90,9 +90,14 @@ class StudentEvaluationComponent extends Component
 
     public function finish()
     {
+        $this->saveStepData();
+
         // // $this->validateStep();
         // $this->saveStepData();
         // return redirect()->route('admin.documents.show', $this->document_id);
+
+
+        $this->alert('success', __('panel.document_data_saved'));
     }
 
 
@@ -108,6 +113,8 @@ class StudentEvaluationComponent extends Component
         $studentEvaluation->save();
 
         $score = 0;
+
+        dd($this->questionData);
 
         foreach ($this->questionData['questions'] as $questionId => $question) {
 

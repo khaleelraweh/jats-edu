@@ -132,10 +132,10 @@ class StudentEvaluationComponent extends Component
                     $studentAnswer->selected_option_id = $option['selected_option'];
                     $studentAnswer->save();
 
-                    // You can calculate the score here if necessary
-                    // if ($option['is_correct'] && $option['selected_option'] == $option['option_id']) {
-                    //     $score++;
-                    // }
+                    //You can calculate the score here if necessary
+                    if ($option['is_correct'] && $option['selected_option'] == $option['option_id']) {
+                        $score++;
+                    }
                 }
             }
         }

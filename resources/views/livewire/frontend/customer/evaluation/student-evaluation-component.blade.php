@@ -102,9 +102,12 @@
                                                             <input
                                                                 type="{{ $question['question_type'] == 0 ? 'radio' : 'checkbox' }}"
                                                                 name="{{ $question['question_type'] == 0 ? 'radio-name' : 'checkbox-' . $option['option_id'] }}"
+                                                                id="option-{{ $option['option_id'] }}"
                                                                 wire:model.defer="questionData.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.selected_option"
                                                                 value="{{ $option['option_id'] }}">
-                                                            {{ $option['option_text'] }}
+                                                            <label class="d-inline-block"
+                                                                for="option-{{ $option['option_id'] }}">{{ $option['option_text'] }}
+                                                            </label>
                                                         </div>
                                                     @endforeach
                                                 </div>

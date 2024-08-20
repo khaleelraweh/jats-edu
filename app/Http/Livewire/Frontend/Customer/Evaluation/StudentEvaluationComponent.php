@@ -152,16 +152,20 @@ class StudentEvaluationComponent extends Component
             $optionCorrect = 0;
             $selectedOptionCorrect = 0;
             foreach ($question['options'] as $optionId => $option) {
+
+                // التاكد من الخيارات التي من النوع نعم و تجميع كم عددها هذا يساعدنا في التاكد من ان الطالب قد اختار كل الخيارات الصحيحة التابعة للسؤال لاحقا
                 if ($option['is_correct']) {
                     $optionCorrect++;
                 }
+
                 if (!empty($option['selected_option'])) { // Check if an option is selected
                     $studentAnswer = new StudentAnswer();
                     $studentAnswer->student_evaluation_id = $studentEvaluation->id;
                     $studentAnswer->question_id = $question['question_id'];
                     $studentAnswer->selected_option_id = $option['selected_option'];
                     $studentAnswer->save();
-                    //You can calculate the score here if necessary
+
+                    // حساب الخيار الصحيح الذي اختارة المستخدم للسؤال 
                     if ($option['is_correct'] && $option['selected_option'] == $option['option_id']) {
                         $selectedOptionCorrect++;
                         // $score++;
@@ -169,6 +173,7 @@ class StudentEvaluationComponent extends Component
                 }
             }
 
+            // مقارنه كم عدد الخيارات الصحيحة للسؤال مع الخيارات التي اختارها المستخدم اذا كانت متساويه معناته ان للطالب درجة 
             if ($optionCorrect == $selectedOptionCorrect) {
                 $score++;
             }

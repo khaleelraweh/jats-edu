@@ -30,7 +30,22 @@ class StudentEvaluationComponent extends Component
 
     public function mount($selectedEvaluation)
     {
-        $this->selectedEvaluation = $selectedEvaluation;
+        $this->loadEvaluationData($selectedEvaluation);
+    }
+
+
+    public function reloadData($selectedEvaluationId)
+    {
+        if ($selectedEvaluationId) {
+            $this->selectedEvaluation = Evaluation::with('questions.options')->find($selectedEvaluationId);
+            $this->loadEvaluationData($this->selectedEvaluation);
+        }
+    }
+
+
+    private function loadEvaluationData($evaluation)
+    {
+        $this->selectedEvaluation = $evaluation;
 
         if ($this->selectedEvaluation) {
             // Populate the questionData array
@@ -42,7 +57,7 @@ class StudentEvaluationComponent extends Component
 
                 'questions' => $this->selectedEvaluation->questions->map(function ($question) {
                     return [
-                        'question_id'               =>  $question->id,
+                        'question_id'               => $question->id,
                         'question_text'             => $question->question_text,
                         'question_type'             => $question->question_type,
                         'question_evaluation_id'    => $question->evaluation_id,
@@ -53,7 +68,7 @@ class StudentEvaluationComponent extends Component
                                 'option_text'           => $option->option_text,
                                 'is_correct'            => $option->is_correct,
                                 'option_question_id'    => $option->question_id,
-                                'selected_option'          => '',
+                                'selected_option'       => '',
                             ];
                         })->toArray(),
                     ];
@@ -64,9 +79,12 @@ class StudentEvaluationComponent extends Component
             $this->questionCount = count($this->questionData['questions']);
             $this->totalSteps = $this->questionCount;
 
-            // check the evaluation if completed or not 
+            // Reset evaluation_completed to false initially
+            $this->evaluation_completed = false;
+
+            // Check the evaluation if completed or not
             $studentEvaluation = StudentEvaluation::where('user_id', auth()->id())
-                ->where('evaluation_id', $selectedEvaluation->id)
+                ->where('evaluation_id', $this->selectedEvaluation->id)
                 ->first();
 
             if ($studentEvaluation && $studentEvaluation->completed_at) {
@@ -76,13 +94,6 @@ class StudentEvaluationComponent extends Component
     }
 
 
-    public function reloadData($selectedEvaluationId)
-    {
-        if ($selectedEvaluationId) {
-            $this->selectedEvaluation = Evaluation::with('questions.options')->find($selectedEvaluationId);
-            $this->mount($this->selectedEvaluation);
-        }
-    }
 
     public function render()
     {
@@ -155,5 +166,9 @@ class StudentEvaluationComponent extends Component
         $studentEvaluation->score = $score;
         $studentEvaluation->completed_at = Carbon::now();
         $studentEvaluation->save();
+
+        if ($studentEvaluation && $studentEvaluation->completed_at) {
+            $this->evaluation_completed = true;
+        }
     }
 }

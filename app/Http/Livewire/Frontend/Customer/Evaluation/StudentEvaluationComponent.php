@@ -114,11 +114,11 @@ class StudentEvaluationComponent extends Component
 
         $score = 0;
 
-        dd($this->questionData);
+        // dd($this->questionData);
 
         foreach ($this->questionData['questions'] as $questionId => $question) {
 
-            $correctOption = $question->options()->where('is_correct', true)->first();
+            // $correctOption = $question->options()->where('is_correct', true)->first();
 
 
             foreach ($question['options'] as $optionId => $option) {
@@ -128,9 +128,9 @@ class StudentEvaluationComponent extends Component
                 $studentAnswer->selected_option_id = $option['selected_option'];
                 $studentAnswer->save();
 
-                if ($correctOption && $correctOption->id == $option['selected_option']) {
-                    $score++;
-                }
+                // if ($correctOption && $correctOption->id == $option['selected_option']) {
+                //     $score++;
+                // }
             }
         }
 

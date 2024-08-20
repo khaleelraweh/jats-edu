@@ -25,7 +25,6 @@
     </style>
 
     <h3 class="text-white"> {{ __('panel.evaluation') }} </h3>
-    {{ $evaluation_completed }}
 
     <div class="card">
         <div class="card-header" style="background: rgb(47,45,81,0.8);color:white;">
@@ -38,7 +37,7 @@
         </div>
         <div class="card-body">
             @if ($evaluation_completed)
-                You have did the evaluation and you scored :
+                You have did the evaluation and you scored : {{ $evaluation_scored }}
             @else
                 <div class="mywizard">
                     <!------------- part 1 : Steps ------------->

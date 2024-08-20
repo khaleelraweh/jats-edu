@@ -25,6 +25,7 @@ class StudentEvaluationComponent extends Component
     public $questionData = [];
 
     public $evaluation_completed = false;
+    public $evaluation_scored;
 
     protected $listeners = ['evaluationChanged' => 'reloadData'];
 
@@ -89,6 +90,7 @@ class StudentEvaluationComponent extends Component
 
             if ($studentEvaluation && $studentEvaluation->completed_at) {
                 $this->evaluation_completed = true;
+                $this->evaluation_scored = $studentEvaluation->score;
             }
         }
     }
@@ -169,6 +171,7 @@ class StudentEvaluationComponent extends Component
 
         if ($studentEvaluation && $studentEvaluation->completed_at) {
             $this->evaluation_completed = true;
+            $this->evaluation_scored = $studentEvaluation->score;
         }
     }
 }

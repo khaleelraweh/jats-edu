@@ -97,7 +97,7 @@ class StudentEvaluationComponent extends Component
         // return redirect()->route('admin.documents.show', $this->document_id);
 
 
-        $this->alert('success', __('panel.document_data_saved'));
+        $this->alert('success', __('panel.evaluation_saved_successfully'));
     }
 
 
@@ -143,7 +143,7 @@ class StudentEvaluationComponent extends Component
         $studentEvaluation->score = $score;
         $studentEvaluation->save();
 
-        $this->alert('success', __('panel.document_data_saved'));
+        // $this->alert('success', __('panel.document_data_saved'));
     }
 
 

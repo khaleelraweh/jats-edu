@@ -1240,6 +1240,7 @@ return [
     'next'                                          =>  'Next',
     'previous'                                      =>  'Previous',
     'finish'                                        =>  'Finish',
+    'evaluation_saved_successfully'                 =>  'Evaluation Saved Successfully',
 
 
 ];

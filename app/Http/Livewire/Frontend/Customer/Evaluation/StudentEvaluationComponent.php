@@ -103,34 +103,40 @@ class StudentEvaluationComponent extends Component
 
     public function saveStepData()
     {
-
         $evaluation = $this->selectedEvaluation;
 
-        // To create ( Student <==> evaluation ) Relation
-        $studentEvaluation = new StudentEvaluation();
-        $studentEvaluation->user_id = auth()->id();
-        $studentEvaluation->evaluation_id = $evaluation->id;
-        $studentEvaluation->save();
+        // Check if a StudentEvaluation record already exists for the user and evaluation
+        $studentEvaluation = StudentEvaluation::where('user_id', auth()->id())
+            ->where('evaluation_id', $evaluation->id)
+            ->first();
+
+        if ($studentEvaluation) {
+            // Delete existing answers to clear previous data
+            StudentAnswer::where('student_evaluation_id', $studentEvaluation->id)->delete();
+        } else {
+            // Create new StudentEvaluation if it doesn't exist
+            $studentEvaluation = new StudentEvaluation();
+            $studentEvaluation->user_id = auth()->id();
+            $studentEvaluation->evaluation_id = $evaluation->id;
+            $studentEvaluation->save();
+        }
 
         $score = 0;
 
-        // dd($this->questionData);
-
         foreach ($this->questionData['questions'] as $questionId => $question) {
-
-            // $correctOption = $question->options()->where('is_correct', true)->first();
-
-
             foreach ($question['options'] as $optionId => $option) {
-                $studentAnswer = new StudentAnswer();
-                $studentAnswer->student_evaluation_id = $studentEvaluation->id;
-                $studentAnswer->question_id = $question['question_id'];
-                $studentAnswer->selected_option_id = $option['selected_option'];
-                $studentAnswer->save();
+                if (!empty($option['selected_option'])) { // Check if an option is selected
+                    $studentAnswer = new StudentAnswer();
+                    $studentAnswer->student_evaluation_id = $studentEvaluation->id;
+                    $studentAnswer->question_id = $question['question_id'];
+                    $studentAnswer->selected_option_id = $option['selected_option'];
+                    $studentAnswer->save();
 
-                // if ($correctOption && $correctOption->id == $option['selected_option']) {
-                //     $score++;
-                // }
+                    // You can calculate the score here if necessary
+                    // if ($option['is_correct'] && $option['selected_option'] == $option['option_id']) {
+                    //     $score++;
+                    // }
+                }
             }
         }
 
@@ -139,4 +145,83 @@ class StudentEvaluationComponent extends Component
 
         $this->alert('success', __('panel.document_data_saved'));
     }
+
+
+
+    // public function saveStepData()
+    // {
+    //     $evaluation = $this->selectedEvaluation;
+
+    //     // To create ( Student <==> evaluation ) Relation
+    //     $studentEvaluation = new StudentEvaluation();
+    //     $studentEvaluation->user_id = auth()->id();
+    //     $studentEvaluation->evaluation_id = $evaluation->id;
+    //     $studentEvaluation->save();
+
+    //     $score = 0;
+
+    //     foreach ($this->questionData['questions'] as $questionId => $question) {
+    //         foreach ($question['options'] as $optionId => $option) {
+    //             if (!empty($option['selected_option'])) { // Check if an option is selected
+    //                 $studentAnswer = new StudentAnswer();
+    //                 $studentAnswer->student_evaluation_id = $studentEvaluation->id;
+    //                 $studentAnswer->question_id = $question['question_id'];
+    //                 $studentAnswer->selected_option_id = $option['selected_option'];
+    //                 $studentAnswer->save();
+
+    //                 // You can calculate the score here if necessary
+    //                 // For example:
+    //                 // if ($option['is_correct'] && $option['selected_option'] == $option['option_id']) {
+    //                 //     $score++;
+    //                 // }
+    //             }
+    //         }
+    //     }
+
+    //     $studentEvaluation->score = $score;
+    //     $studentEvaluation->save();
+
+    //     $this->alert('success', __('panel.document_data_saved'));
+    // }
+
+
+
+    // public function saveStepData()
+    // {
+
+    //     $evaluation = $this->selectedEvaluation;
+
+    //     // To create ( Student <==> evaluation ) Relation
+    //     $studentEvaluation = new StudentEvaluation();
+    //     $studentEvaluation->user_id = auth()->id();
+    //     $studentEvaluation->evaluation_id = $evaluation->id;
+    //     $studentEvaluation->save();
+
+    //     $score = 0;
+
+    //     // dd($this->questionData);
+
+    //     foreach ($this->questionData['questions'] as $questionId => $question) {
+
+    //         // $correctOption = $question->options()->where('is_correct', true)->first();
+
+
+    //         foreach ($question['options'] as $optionId => $option) {
+    //             $studentAnswer = new StudentAnswer();
+    //             $studentAnswer->student_evaluation_id = $studentEvaluation->id;
+    //             $studentAnswer->question_id = $question['question_id'];
+    //             $studentAnswer->selected_option_id = $option['selected_option'];
+    //             $studentAnswer->save();
+
+    //             // if ($correctOption && $correctOption->id == $option['selected_option']) {
+    //             //     $score++;
+    //             // }
+    //         }
+    //     }
+
+    //     $studentEvaluation->score = $score;
+    //     $studentEvaluation->save();
+
+    //     $this->alert('success', __('panel.document_data_saved'));
+    // }
 }

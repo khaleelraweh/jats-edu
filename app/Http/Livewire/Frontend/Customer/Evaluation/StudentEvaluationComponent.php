@@ -24,6 +24,8 @@ class StudentEvaluationComponent extends Component
 
     public $questionData = [];
 
+    public $evaluation_completed = false;
+
     protected $listeners = ['evaluationChanged' => 'reloadData'];
 
     public function mount($selectedEvaluation)
@@ -61,6 +63,15 @@ class StudentEvaluationComponent extends Component
             // Set the question count and total steps
             $this->questionCount = count($this->questionData['questions']);
             $this->totalSteps = $this->questionCount;
+
+            // check the evaluation if completed or not 
+            $studentEvaluation = StudentEvaluation::where('user_id', auth()->id())
+                ->where('evaluation_id', $selectedEvaluation->id)
+                ->first();
+
+            if ($studentEvaluation && $studentEvaluation->completed_at) {
+                $this->evaluation_completed = true;
+            }
         }
     }
 

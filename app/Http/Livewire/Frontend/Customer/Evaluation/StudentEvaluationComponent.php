@@ -149,19 +149,28 @@ class StudentEvaluationComponent extends Component
         $score = 0;
 
         foreach ($this->questionData['questions'] as $questionId => $question) {
+            $optionCorrect = 0;
+            $selectedOptionCorrect = 0;
             foreach ($question['options'] as $optionId => $option) {
+                if ($option['is_correct']) {
+                    $optionCorrect++;
+                }
                 if (!empty($option['selected_option'])) { // Check if an option is selected
                     $studentAnswer = new StudentAnswer();
                     $studentAnswer->student_evaluation_id = $studentEvaluation->id;
                     $studentAnswer->question_id = $question['question_id'];
                     $studentAnswer->selected_option_id = $option['selected_option'];
                     $studentAnswer->save();
-
                     //You can calculate the score here if necessary
                     if ($option['is_correct'] && $option['selected_option'] == $option['option_id']) {
-                        $score++;
+                        $selectedOptionCorrect++;
+                        // $score++;
                     }
                 }
+            }
+
+            if ($optionCorrect == $selectedOptionCorrect) {
+                $score++;
             }
         }
 

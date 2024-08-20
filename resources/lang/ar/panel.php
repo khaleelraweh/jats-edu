@@ -1210,6 +1210,7 @@ return [
     'previous'                                      =>  'السابق',
     'finish'                                        =>  'إنهاء',
     'evaluation_saved_successfully'                 =>  'تم حفظ التقييم بنجاح',
+    'evaluation'                                    =>  'التقييم',
 
 
 

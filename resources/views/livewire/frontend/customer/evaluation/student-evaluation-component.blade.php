@@ -24,7 +24,7 @@
         }
     </style>
 
-    <h3 class="text-white">Evaluation Container </h3>
+    <h3 class="text-white"> {{ __('panel.evaluation') }} </h3>
 
     <div class="card">
         <div class="card-header" style="background: rgb(47,45,81,0.8);color:white;">

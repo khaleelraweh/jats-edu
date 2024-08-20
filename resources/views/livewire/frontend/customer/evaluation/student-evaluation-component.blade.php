@@ -99,9 +99,9 @@
                                                 <div class="row">
                                                     @foreach ($question['options'] as $optionIndex => $option)
                                                         <div class="col">
-
                                                             <input
                                                                 type="{{ $question['question_type'] == 0 ? 'radio' : 'checkbox' }}"
+                                                                name="{{ $question['question_type'] == 0 ? 'radio-name' : 'checkbox-' . $option['option_id'] }}"
                                                                 wire:model.defer="questionData.questions.{{ $questionIndex }}.options.{{ $optionIndex }}.selected_option"
                                                                 value="{{ $option['option_id'] }}">
                                                             {{ $option['option_text'] }}

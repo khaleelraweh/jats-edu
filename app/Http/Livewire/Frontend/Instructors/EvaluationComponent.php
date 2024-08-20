@@ -80,11 +80,11 @@ class EvaluationComponent extends Component
                         'questions' => [
                             [
                                 'question_text' => '',
-                                'question_type' => 'single_choice',
+                                'question_type' => 0,
                                 'options' => [
                                     [
                                         'option_text' => '',
-                                        'is_correct' => false,
+                                        'is_correct' => 1,
                                     ],
                                 ],
                             ],
@@ -104,11 +104,11 @@ class EvaluationComponent extends Component
                     'questions' => [
                         [
                             'question_text' => '',
-                            'question_type' => 'single_choice',
+                            'question_type' => 0,
                             'options' => [
                                 [
                                     'option_text' => '',
-                                    'is_correct' => false,
+                                    'is_correct' => 1,
                                 ],
                             ],
                         ],
@@ -371,11 +371,11 @@ class EvaluationComponent extends Component
             'questions' => [
                 [
                     'question_text'     =>  '',
-                    'question_type'     =>  '',
+                    'question_type'     =>  0,
                     'options' => [
                         [
                             'option_text'          =>  '',
-                            'is_correct'           =>  '',
+                            'is_correct'           =>  1,
                         ],
                     ],
                 ],
@@ -394,11 +394,11 @@ class EvaluationComponent extends Component
     {
         $this->evaluations[$evaluationIndex]['questions'][] = [
             'question_text'     =>  '',
-            'question_type'     =>  '',
+            'question_type'     =>  0,
             'options' => [
                 [
                     'option_text'          =>  '',
-                    'is_correct'           =>  '',
+                    'is_correct'           =>  1,
                 ],
             ],
         ];
@@ -411,7 +411,7 @@ class EvaluationComponent extends Component
     {
         $this->evaluations[$evaluationIndex]['questions'][$questionIndex]['options'][] = [
             'option_text'          =>  '',
-            'is_correct'           =>  '',
+            'is_correct'           =>  1,
         ];
     }
 

@@ -18,13 +18,13 @@ class QuestionSeeder extends Seeder
         Question::create([
             'evaluation_id' => 1,
             'question_text' => 'What does PHP stand for?',
-            'question_type' => 'single_choice',
+            'question_type' => 0,
         ]);
 
         Question::create([
             'evaluation_id' => 1,
             'question_text' => 'Which of the following are PHP frameworks?',
-            'question_type' => 'multiple_choice',
+            'question_type' => 1,
         ]);
     }
 }

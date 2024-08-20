@@ -12,16 +12,16 @@ class Question extends Model
     protected $guarded = [];
 
 
-    public function getQuestionTypeAttribute($value)
-    {
-        return $value == 1 ? 'single_choice' : 'multiple_choice';
-    }
+    // public function getQuestionTypeAttribute($value)
+    // {
+    //     return $value == 1 ? 'single_choice' : 'multiple_choice';
+    // }
 
     public function question_type()
     {
-        if ($this->question_type == 1)
+        if ($this->question_type == 0)
             return __('panel.single_choice');
-        else if ($this->skill_level == 2)
+        else if ($this->question_type == 1)
             return __('panel.multiple_choice');
     }
 

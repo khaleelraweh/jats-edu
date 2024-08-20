@@ -192,12 +192,12 @@
                                                         {{-- <label for="question_type">{{ __('panel.question_type') }}</label> --}}
                                                         <select name="question_type" class="form-control"
                                                             wire:model.defer="evaluations.{{ $currentEvaluationIndex }}.questions.{{ $questionIndex }}.question_type">
-                                                            <option value="1"
-                                                                {{ old('question_type') == '1' ? 'selected' : null }}>
+                                                            <option value="0"
+                                                                {{ old('question_type') == '0' ? 'selected' : null }}>
                                                                 {{ __('panel.single_choice') }}
                                                             </option>
-                                                            <option value="2"
-                                                                {{ old('question_type') == '2' ? 'selected' : null }}>
+                                                            <option value="1"
+                                                                {{ old('question_type') == '1' ? 'selected' : null }}>
                                                                 {{ __('panel.multiple_choice') }}
                                                             </option>
                                                         </select>

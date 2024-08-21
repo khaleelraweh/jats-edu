@@ -790,6 +790,27 @@ return [
     'specialization'            =>  'التخصص',
 
 
+    ##############################################################
+
+    // =============  Manage Certificates  ===============//
+    'manage_certificates'                => 'إدارة الشهادات',
+
+    // --------------- Certificate Settings  --------------//
+    'show_certificates'                   => 'الشهادات',
+    'add_new_certificate'                  => 'إضافة شهادة جديدة',
+    'edit_existing_certificate'            => 'تعديل شهادة موجودة',
+
+
+    // ........... commons in Certificate   ....... //
+    'certificates'                      =>  'الشهادات',
+
+    // sertificate status
+    'under_review'                       =>  'قيد المراجعة',
+    'under_treatment'                    =>  'تحت المعالجة',
+    'released'                           =>  'تم الاصدار',
+    'rejected'                           =>  'تم الرفض',
+
+
 
 
     ##############################################################

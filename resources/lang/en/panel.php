@@ -826,6 +826,31 @@ return [
     'specializations_you_are_working_with'           =>  'Specializations you are working with',
     'specialization'            =>  'Specialization',
 
+
+
+    ##############################################################
+
+    // =============  Manage Certificates  ===============//
+    'manage_certificates'                => 'Manage Certificates',
+
+    // --------------- Certificate Settings  --------------//
+    'show_certificates'                   => 'Certificates',
+    'add_new_certificate'                  => 'Add New Certificate',
+    'edit_existing_certificate'            => 'Edit Existing Certificate',
+
+
+    // ........... commons in Certificate   ....... //
+    'certificates'           =>  'Certificates',
+
+    // sertificate status
+    'under_review'                       =>  'Under Review',
+    'under_treatment'                    =>  'Under Treatment',
+    'released'                           =>  'Released',
+    'rejected'                           =>  'Rejected',
+
+
+
+
     ##############################################################
 
     // ============ common translate ==============//
@@ -1242,6 +1267,8 @@ return [
     'finish'                                        =>  'Finish',
     'evaluation_saved_successfully'                 =>  'Evaluation Saved Successfully',
     'evaluation'                                    =>  'Evaluation',
+
+    // 
 
 
 ];

@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\CallActionsController;
 use App\Http\Controllers\Backend\CardCategoriesController;
 use App\Http\Controllers\Backend\CardCodeController;
 use App\Http\Controllers\Backend\CardController;
+use App\Http\Controllers\Backend\CertificateIssuesController;
 use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\CommonQuestionController;
 use App\Http\Controllers\Backend\CompanyMenuController;
@@ -247,6 +248,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::post('events/remove-image', [EventController::class, 'remove_image'])->name('events.remove_image');
         Route::resource('events', EventController::class);
+
+
+        // ==============   Certificate Issues Tab   ==============  //
+        Route::resource('certificate_issues', CertificateIssuesController::class);
 
         // ==============  Teach Requests      ==============  //
         Route::resource('teach_requests', TeachRequestController::class);

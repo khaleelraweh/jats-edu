@@ -76,5 +76,6 @@ class DatabaseSeeder extends Seeder
         $this->call(StudentAnswerSeeder::class);
 
         $this->call(CompanyRequestSeeder::class);
+        $this->call(CertificateIssueSeeder::class);
     }
 }

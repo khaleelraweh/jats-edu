@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('certifications', function (Blueprint $table) {
             $table->id();
-            $table->string('cert_file'); // اسم الشهادة تكون برقم الاصدار
+            $table->string('full_name')->nullable();
+            $table->string('cert_file')->nullable(); // اسم الشهادة تكون برقم الاصدار
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->dateTime('date_of_issue')->nullable();

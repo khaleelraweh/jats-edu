@@ -14,6 +14,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <label for="user_name">الإسم</label>
+                            <input type="hidden" name="course_id" value="{{ $course_id }}">
                             <input name="full_name" type="text" class="form-control"
                                 value="{{ Auth::user()->full_name }}">
                         </div>

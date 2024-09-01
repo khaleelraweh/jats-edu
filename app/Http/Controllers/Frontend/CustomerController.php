@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ProfileRequest;
+use App\Models\Certifications;
 use App\Models\Course;
 use App\Models\RequestToTeach;
 use App\Models\Role;
 use App\Models\Specialization;
 use App\Models\User;
 use App\Notifications\Frontend\Customer\RequestTeachNotification;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -119,14 +121,21 @@ class CustomerController extends Controller
         return view('frontend.customer.student-lesson-single', compact('slug'));
     }
 
-    public function certification($id)
+    public function certification($course_id)
     {
-        return view('frontend.customer.certification', compact('id'));
+        return view('frontend.customer.certification', compact('course_id'));
     }
 
     public function create_certification(Request $request)
     {
-        dd($request);
+
+        Certifications::create([
+            'full_name' => $request->full_name,
+            'user_id'   => Auth::user()->id,
+            'course_id' => $request->course_id,
+            'date_of_issue' =>  Carbon::now(),
+            'cert_code' =>  2024
+        ]);
     }
 
     public function lesson_certificate($id)

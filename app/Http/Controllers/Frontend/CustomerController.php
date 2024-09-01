@@ -147,10 +147,8 @@ class CustomerController extends Controller
 
 
         // ============= Add Student nme ==========//
-
         // تجهيز النص لإضافته إلى الصورة
         $arabic = new Arabic();
-
 
 
         $fontPath = public_path('fonts/DINNextLTArabic-Bold-2.ttf');
@@ -165,7 +163,6 @@ class CustomerController extends Controller
 
 
         //=======================  User name =======================//
-
         $userName = $arabic->utf8Glyphs($request->full_name);
 
         //  حساب أبعاد النص للإسم
@@ -188,10 +185,7 @@ class CustomerController extends Controller
             $font->valign('middle'); // محاذاة النص إلى المنتصف عموديًا
         });
 
-
-
         //=======================  Course Title =======================//
-
         $courseTitle = $arabic->utf8Glyphs($course_title);
 
         // حساب أبعاد النص لعنوان الكورس
@@ -211,9 +205,6 @@ class CustomerController extends Controller
             $font->align('center'); // محاذاة النص إلى المركز
             $font->valign('middle'); // محاذاة النص إلى المنتصف عموديًا
         });
-
-
-
 
 
         //=======================  date of issue =======================//
@@ -238,9 +229,6 @@ class CustomerController extends Controller
         });
 
 
-
-
-
         //=======================  Cert Code =======================//
         $certCode = $arabic->utf8Glyphs($certification->cert_code);
 
@@ -263,20 +251,14 @@ class CustomerController extends Controller
         });
 
 
-
-
-
-
-
-
-
-
         // حفظ الصورة مع النص
         $cover->save('assets/certifications/5.jpg');
 
         // إرجاع استجابة الصورة
         return $cover->response();
     }
+
+    public function show_certification($cert_id) {}
 
 
 

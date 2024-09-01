@@ -27,7 +27,6 @@ class StudentLessonSingleComponent extends Component
     public $hasCertificate = false;
 
 
-
     public function mount()
     {
         // get the course 

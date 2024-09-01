@@ -146,7 +146,7 @@ class CustomerController extends Controller
         $userName = $arabic->utf8Glyphs($request->full_name);
 
         $fontPath = public_path('fonts/DINNextLTArabic-Bold-2.ttf');
-        $fontSize = 150;
+        $fontSize = 120;
 
 
         $cover = Image::make('assets/certifications/certificate.jpg');
@@ -158,12 +158,15 @@ class CustomerController extends Controller
 
 
         // $width - ($width / 2)
+        //$height - 1240
 
         // Calculate X and Y positions to center the text
         $x = $width - ($width - $textBoxWidth) / 2;
+        $y =   ($height / 2) - 50; // Adjust for font height
+
 
         // $cover->text($userName, $width - 1700,  $height - 1240, function ($font) {
-        $cover->text($userName, $x,  $height - 1240, function ($font) use ($fontPath, $fontSize) {
+        $cover->text($userName, $x,  $y, function ($font) use ($fontPath, $fontSize) {
             $font->file($fontPath);
             $font->size($fontSize);
             $font->color('#ff0000');

@@ -165,7 +165,7 @@ class CustomerController extends Controller
 
         // حساب الموقع الرأسي (Y) لوضع النص في منتصف الصورة
         // نضيف ارتفاع النص لتوسيطه عموديًا
-        $y = ($height + $textHeight) / 2;
+        $y = ($height + $textHeight) / 2 - 160;
 
         // إضافة النص إلى الصورة
         $cover->text($userName, $x, $y, function ($font) use ($fontPath, $fontSize) {

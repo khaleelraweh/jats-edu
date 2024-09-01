@@ -141,9 +141,17 @@ class CustomerController extends Controller
         $certification->cert_code = Carbon::now()->format('Y') . $certification->id;
         $certification->update();
 
+
+        $course = Course::find($request->course_id);
+        $course_title = $course->title;
+
+
+        // ============= Add Student nme ==========//
+
         // تجهيز النص لإضافته إلى الصورة
         $arabic = new Arabic();
         $userName = $arabic->utf8Glyphs($request->full_name);
+        $courseTitle = $arabic->utf8Glyphs($course_title);
 
         $fontPath = public_path('fonts/DINNextLTArabic-Bold-2.ttf');
         $fontSize = 120;
@@ -155,20 +163,38 @@ class CustomerController extends Controller
         $width = $cover->getWidth();
         $height = $cover->getHeight();
 
-        // حساب أبعاد النص
+        //  حساب أبعاد النص للإسم
         $textBox = imagettfbbox($fontSize, 0, $fontPath, $userName);
         $textWidth = abs($textBox[2] - $textBox[0]);
         $textHeight = abs($textBox[1] - $textBox[7]);
 
+        // حساب أبعاد النص لعنوان الكورس
+        $textBoxTitle = imagettfbbox($fontSize, 0, $fontPath, $courseTitle);
+        $textWidthTitle = abs($textBoxTitle[2] - $textBoxTitle[0]);
+        $textHeightTitle = abs($textBoxTitle[1] - $textBoxTitle[7]);
+
         // حساب الموقع الأفقي (X) لوضع النص في منتصف الصورة
-        $x = ($width / 2);
+        $x_user_name = ($width / 2);
 
         // حساب الموقع الرأسي (Y) لوضع النص في منتصف الصورة
         // نضيف ارتفاع النص لتوسيطه عموديًا
-        $y = ($height + $textHeight) / 2 - 160;
+        $y_user_name = ($height + $textHeight) / 2 - 160;
 
-        // إضافة النص إلى الصورة
-        $cover->text($userName, $x, $y, function ($font) use ($fontPath, $fontSize) {
+        $x_course_title = ($width / 2);
+        $y_course_title = ($height + $textHeightTitle) / 2 + 130;
+
+        // إضافة النص الاسم إلى الصورة
+        $cover->text($userName, $x_user_name, $y_user_name, function ($font) use ($fontPath, $fontSize) {
+            $font->file($fontPath);
+            $font->size($fontSize);
+            $font->color('#ff0000');
+            $font->align('center'); // محاذاة النص إلى المركز
+            $font->valign('middle'); // محاذاة النص إلى المنتصف عموديًا
+        });
+
+
+        // إضافة عنوان الكورس إلى الصورة
+        $cover->text($courseTitle, $x_course_title, $y_course_title, function ($font) use ($fontPath, $fontSize) {
             $font->file($fontPath);
             $font->size($fontSize);
             $font->color('#ff0000');

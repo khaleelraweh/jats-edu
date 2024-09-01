@@ -118,6 +118,15 @@ class CustomerController extends Controller
     {
         return view('frontend.customer.student-lesson-single', compact('slug'));
     }
+    public function certification($id)
+    {
+        return view('frontend.customer.certification', compact('id'));
+    }
+
+    public function lesson_certificate($id)
+    {
+        return view('frontend.customer.certification');
+    }
 
     public function Teach_on_jats()
     {

@@ -219,7 +219,7 @@
                         </style>
 
                         @if ($isComplete)
-                            <a href="#"
+                            <a href="{{ route('customer.certification', $course->id) }}"
                                 class="d-flex align-items-center p-5 mb-4 text-white fw-medium  line-height-one certificate-links">
                                 <span class="me-4 text-white d-flex">
                                     <!-- Icon -->

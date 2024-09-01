@@ -49,6 +49,7 @@ use App\Http\Controllers\Backend\TracksMenuController;
 use App\Http\Controllers\Backend\WebMenuController;
 use App\Http\Controllers\Backend\WebMenuHelpController;
 use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\CertificationsController;
 use App\Http\Controllers\Frontend\Customer\CompanyRequestController as CustomerCompanyRequestController;
 use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -56,6 +57,7 @@ use App\Http\Controllers\Frontend\Instructor\CourseController as InstructorCours
 use App\Http\Controllers\Frontend\InstructorController as FrontendInstructorController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\TeachRequestController as FrontendTeachRequestController;
+use App\Models\Certifications;
 use App\Models\News;
 use Illuminate\Support\Facades\auth;
 use Illuminate\Support\Facades\Route;
@@ -109,6 +111,7 @@ Route::resource('company_requests', CustomerCompanyRequestController::class);
 
 
 
+
 // ######################################################### //
 // ###############   Customer Authed Route   ############### //
 // ######################################################### //
@@ -119,6 +122,8 @@ Route::group(['middleware' => ['roles', 'role:customer|supervisor', 'verified']]
     Route::get('/profile', [FrontendCustomerController::class, 'profile'])->name('customer.profile');
     Route::patch('/profile/update', [FrontendCustomerController::class, 'update_profile'])->name('customer.update_profile');
     Route::get('/profile/remove-image', [FrontendCustomerController::class, 'remove_profile_image'])->name('customer.remove_profile_image');
+
+
 
 
     // ==============  Customer Address Setting   ==============  //
@@ -141,6 +146,7 @@ Route::group(['middleware' => ['roles', 'role:customer|supervisor', 'verified']]
     // ==============  Customer Bought Courses and Lessons ======  //
     Route::get('/student-courses-list/{slug?}', [FrontendCustomerController::class, 'student_courses_list'])->name('customer.courses');
     Route::get('/lesson-single/{course?}', [FrontendCustomerController::class, 'lesson_single'])->name('customer.lesson_single');
+    Route::get('/certification/{id?}', [FrontendCustomerController::class, 'certification'])->name('customer.certification');
 
 
     // ##############  Customer Checkout  Routes   ############# //

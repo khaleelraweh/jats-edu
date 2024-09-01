@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('full_name')->nullable();
             $table->string('cert_file')->nullable(); // اسم الشهادة تكون برقم الاصدار
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreignId('course_id')->constrained()->onDelete('cascade'); // Add this line to define the course_id column
             $table->dateTime('date_of_issue')->nullable();
             $table->integer('cert_code')->nullable();
 

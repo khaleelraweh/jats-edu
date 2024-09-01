@@ -6,6 +6,8 @@ use App\Models\Course;
 use App\Models\CourseSection;
 use App\Models\Evaluation;
 use App\Models\StudentEvaluation;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class StudentLessonSingleComponent extends Component
@@ -22,6 +24,7 @@ class StudentLessonSingleComponent extends Component
     public $selectedEvaluationId;
     public $curriculumSections;
     public $isComplete = false;
+    public $hasCertificate = false;
 
 
 
@@ -74,6 +77,8 @@ class StudentLessonSingleComponent extends Component
 
         $this->isComplete = $this->checkAllCourseEvaluationsCompletion($studentId, $courseId);
 
+        $this->hasCertificate = $this->checkStudentCertificate(Auth::id(), $courseId);
+
         // if ($isComplete) {
         //     echo "The student has completed all evaluations in the course.";
         // } else {
@@ -104,5 +109,20 @@ class StudentLessonSingleComponent extends Component
         $allCompleted = $evaluations->pluck('id')->diff($completedEvaluations)->isEmpty();
 
         return $allCompleted;
+    }
+
+    public function checkStudentCertificate($studentId, $courseId)
+    {
+        // Find the student by ID (or use Auth::user() if checking the authenticated user)
+        $student = User::find($studentId);
+
+        if (!$student) {
+            return false; // Student not found
+        }
+
+        // Check if the student has a certificate for the given course
+        $hasCertificate = $student->certifications()->where('course_id', $courseId)->exists();
+
+        return $hasCertificate;
     }
 }

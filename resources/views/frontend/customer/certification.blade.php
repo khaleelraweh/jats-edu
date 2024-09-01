@@ -9,11 +9,13 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="">
+                <form action="{{ route('customer.create_certification') }}" method="post">
+                    @csrf
                     <div class="row">
                         <div class="col-sm-12">
                             <label for="user_name">الإسم</label>
-                            <input type="text" class="form-control" value="{{ Auth::user()->full_name }}">
+                            <input name="full_name" type="text" class="form-control"
+                                value="{{ Auth::user()->full_name }}">
                         </div>
                     </div>
 

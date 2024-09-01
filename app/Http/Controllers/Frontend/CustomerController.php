@@ -143,7 +143,7 @@ class CustomerController extends Controller
 
 
         $arabic = new Arabic();
-        $userName = $arabic->utf8Glyphs("محمد اليمني");
+        $userName = $arabic->utf8Glyphs("Mohamed ahmed");
         // $cover = Image::make('background.png');
         $cover = Image::make('assets/certifications/certificate.jpg');
         $width = $cover->getWidth();
@@ -151,7 +151,7 @@ class CustomerController extends Controller
 
         // $cover->text($userName, $width - 1700,  $height - 1240, function ($font) {
         $cover->text($userName, $width - ($width / 2 - $width / 4),  $height - 1240, function ($font) {
-            $font->file('fonts/DroidKufi-Regular.ttf');
+            $font->file('fonts/DINNextLTArabic-Bold-2.ttf');
             $font->size(150);
             $font->color('#ff0000');
             $font->align('right');

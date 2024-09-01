@@ -104,7 +104,6 @@ class CustomerController extends Controller
             $orders = $user->orders()->where('order_status', 3)->get();
 
 
-
             $courses = [];
 
             foreach ($orders as $order) {
@@ -258,7 +257,10 @@ class CustomerController extends Controller
         return $cover->response();
     }
 
-    public function show_certification($cert_id) {}
+    public function show_certification($certificate_id)
+    {
+        return view('frontend.customer.certificate_show', compact('certificate_id'));
+    }
 
 
 

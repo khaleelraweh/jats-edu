@@ -150,8 +150,8 @@ class CustomerController extends Controller
 
         // تجهيز النص لإضافته إلى الصورة
         $arabic = new Arabic();
-        $userName = $arabic->utf8Glyphs($request->full_name);
-        $courseTitle = $arabic->utf8Glyphs($course_title);
+
+
 
         $fontPath = public_path('fonts/DINNextLTArabic-Bold-2.ttf');
         $fontSize = 120;
@@ -163,25 +163,21 @@ class CustomerController extends Controller
         $width = $cover->getWidth();
         $height = $cover->getHeight();
 
+
+        //=======================  User name =======================//
+
+        $userName = $arabic->utf8Glyphs($request->full_name);
+
         //  حساب أبعاد النص للإسم
         $textBoxUserName = imagettfbbox($fontSize, 0, $fontPath, $userName);
         $textWidthUserName = abs($textBoxUserName[2] - $textBoxUserName[0]);
         $textHeightUserName = abs($textBoxUserName[1] - $textBoxUserName[7]);
 
-        // حساب أبعاد النص لعنوان الكورس
-        $textBoxCourseTitle = imagettfbbox($fontSize, 0, $fontPath, $courseTitle);
-        $textWidthCourseTitle = abs($textBoxCourseTitle[2] - $textBoxCourseTitle[0]);
-        $textHeightCourseTitle = abs($textBoxCourseTitle[1] - $textBoxCourseTitle[7]);
-
         // حساب الموقع الأفقي (X) لوضع النص في منتصف الصورة
         $x_user_name = ($width / 2);
-
-        // حساب الموقع الرأسي (Y) لوضع النص في منتصف الصورة
         // نضيف ارتفاع النص لتوسيطه عموديًا
         $y_user_name = ($height + $textHeightUserName) / 2 - 160;
 
-        $x_course_title = ($width / 2);
-        $y_course_title = ($height + $textHeightCourseTitle) / 2 + 130;
 
         // إضافة النص الاسم إلى الصورة
         $cover->text($userName, $x_user_name, $y_user_name, function ($font) use ($fontPath, $fontSize) {
@@ -193,6 +189,20 @@ class CustomerController extends Controller
         });
 
 
+
+        //=======================  Course Title =======================//
+
+        $courseTitle = $arabic->utf8Glyphs($course_title);
+
+        // حساب أبعاد النص لعنوان الكورس
+        $textBoxCourseTitle = imagettfbbox($fontSize, 0, $fontPath, $courseTitle);
+        $textWidthCourseTitle = abs($textBoxCourseTitle[2] - $textBoxCourseTitle[0]);
+        $textHeightCourseTitle = abs($textBoxCourseTitle[1] - $textBoxCourseTitle[7]);
+
+        $x_course_title = ($width / 2);
+        $y_course_title = ($height + $textHeightCourseTitle) / 2 + 130;
+
+
         // إضافة عنوان الكورس إلى الصورة
         $cover->text($courseTitle, $x_course_title, $y_course_title, function ($font) use ($fontPath, $fontSize) {
             $font->file($fontPath);
@@ -201,6 +211,24 @@ class CustomerController extends Controller
             $font->align('center'); // محاذاة النص إلى المركز
             $font->valign('middle'); // محاذاة النص إلى المنتصف عموديًا
         });
+
+
+
+        //=======================  Cert Code =======================//
+        $certCode = $arabic->utf8Glyphs($certification->cert_code);
+
+        // حساب ابعاد النص لكود الشهادة
+        $textBoxCertCode = imagettfbbox($fontSize, 0, $fontPath, $certCode);
+        $textWidthCertCode = abs($textBoxCertCode[2] - $textBoxCertCode[0]);
+        $textHeightCertCode = abs($textBoxCertCode[1] - $textBoxCertCode[7]);
+
+
+
+
+
+
+
+
 
         // حفظ الصورة مع النص
         $cover->save('assets/certifications/5.jpg');

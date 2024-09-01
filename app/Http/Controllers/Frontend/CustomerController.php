@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
+use ArPHP\I18N\Arabic;
 
 
 class CustomerController extends Controller
@@ -139,6 +140,24 @@ class CustomerController extends Controller
 
         $certification->cert_code = Carbon::now()->format('Y') . $certification->id;
         $certification->update();
+
+
+        $arabic = new Arabic();
+        $userName = $arabic->utf8Glyphs("محمد اليمني");
+        // $cover = Image::make('background.png');
+        $cover = Image::make('assets/certifications/certificate.jpg');
+        $width = $cover->getWidth();
+        $height = $cover->getHeight();
+
+        $cover->text($userName, $width - 1700,  $height - 1240, function ($font) {
+            $font->file('fonts/DroidKufi-Regular.ttf');
+            $font->size(150);
+            $font->color('#ff0000');
+            $font->align('right');
+            $font->valign('bottom');
+        });
+        $cover->save('assets/certifications/5.jpg');
+        return $cover->response();
     }
 
     public function lesson_certificate($id)

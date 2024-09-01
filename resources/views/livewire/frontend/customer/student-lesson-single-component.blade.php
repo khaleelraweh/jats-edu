@@ -218,23 +218,26 @@
                             }
                         </style>
 
-                        <a href="#"
-                            class="d-flex align-items-center p-5 mb-4 text-white fw-medium  line-height-one certificate-links">
-                            <span class="me-4 text-white d-flex">
-                                <!-- Icon -->
-                                <i class="fas fa-graduation-cap"></i>
-                            </span>
-                            الحصول على شهادة مشاركة
-                        </a>
+                        @if ($isComplete)
+                            <a href="#"
+                                class="d-flex align-items-center p-5 mb-4 text-white fw-medium  line-height-one certificate-links">
+                                <span class="me-4 text-white d-flex">
+                                    <!-- Icon -->
+                                    <i class="fas fa-graduation-cap"></i>
+                                </span>
+                                الحصول على شهادة مشاركة
+                            </a>
+                        @endif
 
-                        <a href="#" style="border: 2px solid #2F2D51;border-radius: 5px; "
+
+                        {{-- <a href="#" style="border: 2px solid #2F2D51;border-radius: 5px; "
                             class="d-flex align-items-center p-5  text-white fw-medium  line-height-one certificate-links">
                             <span class="me-4 text-white d-flex">
                                 <!-- Icon -->
                                 <i class="fas fa-user-graduate"></i>
                             </span>
                             الحصول على شهادة رسمية
-                        </a>
+                        </a> --}}
 
 
                     </div>

@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Frontend\Customer;
 
 use App\Models\Course;
+use App\Models\CourseSection;
 use App\Models\Evaluation;
+use App\Models\StudentEvaluation;
 use Livewire\Component;
 
 class StudentLessonSingleComponent extends Component
@@ -19,6 +21,7 @@ class StudentLessonSingleComponent extends Component
     public $selectedEvaluation;
     public $selectedEvaluationId;
     public $curriculumSections;
+    public $isComplete = false;
 
 
 
@@ -65,6 +68,41 @@ class StudentLessonSingleComponent extends Component
             $totalDurations[$section->id] = $totalDuration;
         }
 
+        // This is the evaluation test part 
+        $studentId = Auth()->id(); // replace with the actual student ID
+        $courseId = $course->id; // replace with the actual course ID
+
+        $this->isComplete = $this->checkAllCourseEvaluationsCompletion($studentId, $courseId);
+
+        // if ($isComplete) {
+        //     echo "The student has completed all evaluations in the course.";
+        // } else {
+        //     echo "The student has not completed all evaluations in the course.";
+        // }
+
+
         return view('livewire.frontend.customer.student-lesson-single-component', compact('course', 'totalDurations'));
+    }
+
+    public function checkAllCourseEvaluationsCompletion($studentId, $courseId)
+    {
+        // Get all course sections related to the course
+        $courseSectionIds = CourseSection::where('course_id', $courseId)->pluck('id');
+
+        // Get all evaluations related to these course sections
+        $evaluations = Evaluation::whereIn('course_section_id', $courseSectionIds)->get();
+
+        // Get all evaluations completed by the student in the specified course
+        $completedEvaluations = StudentEvaluation::where('user_id', $studentId)
+            ->whereNotNull('completed_at') // Only consider evaluations that have been completed
+            ->whereHas('evaluation', function ($query) use ($courseSectionIds) {
+                $query->whereIn('course_section_id', $courseSectionIds);
+            })
+            ->pluck('evaluation_id');
+
+        // Check if all evaluations are completed
+        $allCompleted = $evaluations->pluck('id')->diff($completedEvaluations)->isEmpty();
+
+        return $allCompleted;
     }
 }

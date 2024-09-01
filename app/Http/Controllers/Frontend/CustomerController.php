@@ -214,6 +214,33 @@ class CustomerController extends Controller
 
 
 
+
+
+        //=======================  date of issue =======================//
+        $dateOfIssue = $arabic->utf8Glyphs($certification->date_of_issue->format('Y-m-d'));
+
+        // حساب ابعاد النص لكود الشهادة
+        $textBoxDateOfIssue = imagettfbbox($fontSize, 0, $fontPath, $dateOfIssue);
+        $textWidthDateOfIssue = abs($textBoxDateOfIssue[2] - $textBoxDateOfIssue[0]);
+        $textHeightDateOfIssue = abs($textBoxDateOfIssue[1] - $textBoxDateOfIssue[7]);
+
+
+        $x_date_of_issue = 2650;
+        $y_date_of_issue = $height - 190;
+
+        // إضافة عنوان الكورس إلى الصورة
+        $cover->text($dateOfIssue, $x_date_of_issue, $y_date_of_issue, function ($font) use ($fontPath) {
+            $font->file($fontPath);
+            $font->size(100);
+            $font->color('#ff0000');
+            $font->align('center'); // محاذاة النص إلى المركز
+            $font->valign('middle'); // محاذاة النص إلى المنتصف عموديًا
+        });
+
+
+
+
+
         //=======================  Cert Code =======================//
         $certCode = $arabic->utf8Glyphs($certification->cert_code);
 
@@ -226,9 +253,8 @@ class CustomerController extends Controller
         $x_cet_code = 400;
         $y_cet_code = $height - 150;
 
-
         // إضافة عنوان الكورس إلى الصورة
-        $cover->text($certCode, $x_cet_code, $y_cet_code, function ($font) use ($fontPath, $fontSize) {
+        $cover->text($certCode, $x_cet_code, $y_cet_code, function ($font) use ($fontPath) {
             $font->file($fontPath);
             $font->size(100);
             $font->color('#ff0000');

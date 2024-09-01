@@ -129,13 +129,16 @@ class CustomerController extends Controller
     public function create_certification(Request $request)
     {
 
-        Certifications::create([
+        $certification = Certifications::create([
             'full_name' => $request->full_name,
             'user_id'   => Auth::user()->id,
             'course_id' => $request->course_id,
             'date_of_issue' =>  Carbon::now(),
             'cert_code' =>  2024
         ]);
+
+        $certification->cert_code = Carbon::now()->format('Y') . $certification->id;
+        $certification->update();
     }
 
     public function lesson_certificate($id)

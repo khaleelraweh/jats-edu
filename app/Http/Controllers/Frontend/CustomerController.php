@@ -129,53 +129,57 @@ class CustomerController extends Controller
 
     public function create_certification(Request $request)
     {
-
+        // Create the certification record
         $certification = Certifications::create([
             'full_name' => $request->full_name,
             'user_id'   => Auth::user()->id,
             'course_id' => $request->course_id,
-            'date_of_issue' =>  Carbon::now(),
-            'cert_code' =>  2024
+            'date_of_issue' => Carbon::now(),
+            'cert_code' => 2024,
         ]);
 
         $certification->cert_code = Carbon::now()->format('Y') . $certification->id;
         $certification->update();
 
-
+        // Prepare the text to be added to the image
         $arabic = new Arabic();
         $userName = $arabic->utf8Glyphs($request->full_name);
 
         $fontPath = public_path('fonts/DINNextLTArabic-Bold-2.ttf');
         $fontSize = 120;
 
-
+        // Load the image
         $cover = Image::make('assets/certifications/certificate.jpg');
 
+        // Get image dimensions
         $width = $cover->getWidth();
         $height = $cover->getHeight();
 
-        $textBoxWidth = strlen($userName) * ($fontSize / 2);
+        // Calculate the bounding box of the text
+        $textBox = imagettfbbox($fontSize, 0, $fontPath, $userName);
+        $textWidth = abs($textBox[2] - $textBox[0]);
+        $textHeight = abs($textBox[1] - $textBox[7]);
 
+        // Calculate the positions to center the text for Arabic
+        $x = ($width + $textWidth) / 2; // Centered based on right alignment
+        $y = ($height / 2) + ($fontSize / 2) - $textHeight; // Adjusted for font height
 
-        // $width - ($width / 2)
-        //$height - 1240
-
-        // Calculate X and Y positions to center the text
-        $x = $width - ($width - $textBoxWidth) / 2;
-        $y =   ($height / 2) - 50; // Adjust for font height
-
-
-        // $cover->text($userName, $width - 1700,  $height - 1240, function ($font) {
-        $cover->text($userName, $x,  $y, function ($font) use ($fontPath, $fontSize) {
+        // Add the text to the image
+        $cover->text($userName, $x, $y, function ($font) use ($fontPath, $fontSize) {
             $font->file($fontPath);
             $font->size($fontSize);
             $font->color('#ff0000');
-            $font->align('right');
-            $font->valign('bottom');
+            $font->align('right'); // Right-align the text
+            $font->valign('middle');
         });
+
+        // Save the image with the text
         $cover->save('assets/certifications/5.jpg');
+
+        // Return the image response
         return $cover->response();
     }
+
 
     public function lesson_certificate($id)
     {

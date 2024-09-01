@@ -129,7 +129,7 @@ class CustomerController extends Controller
 
     public function create_certification(Request $request)
     {
-        // Create the certification record
+        // إنشاء السجل الخاص بالشهادة
         $certification = Certifications::create([
             'full_name' => $request->full_name,
             'user_id'   => Auth::user()->id,
@@ -141,44 +141,50 @@ class CustomerController extends Controller
         $certification->cert_code = Carbon::now()->format('Y') . $certification->id;
         $certification->update();
 
-        // Prepare the text to be added to the image
+        // تجهيز النص لإضافته إلى الصورة
         $arabic = new Arabic();
         $userName = $arabic->utf8Glyphs($request->full_name);
 
         $fontPath = public_path('fonts/DINNextLTArabic-Bold-2.ttf');
         $fontSize = 120;
 
-        // Load the image
+        // تحميل الصورة
         $cover = Image::make('assets/certifications/certificate.jpg');
 
-        // Get image dimensions
+        // الحصول على أبعاد الصورة
         $width = $cover->getWidth();
         $height = $cover->getHeight();
 
-        // Calculate the bounding box of the text
+        // حساب أبعاد النص
         $textBox = imagettfbbox($fontSize, 0, $fontPath, $userName);
         $textWidth = abs($textBox[2] - $textBox[0]);
         $textHeight = abs($textBox[1] - $textBox[7]);
 
-        // Calculate the positions to center the text for Arabic
-        $x = ($width + $textWidth) / 2; // Centered based on right alignment
-        $y = ($height / 2) + ($fontSize / 2) - $textHeight; // Adjusted for font height
+        // حساب الموقع الأفقي (X) لوضع النص في منتصف الصورة
+        $x = ($width / 2);
 
-        // Add the text to the image
+        // حساب الموقع الرأسي (Y) لوضع النص في منتصف الصورة
+        // نضيف ارتفاع النص لتوسيطه عموديًا
+        $y = ($height + $textHeight) / 2;
+
+        // إضافة النص إلى الصورة
         $cover->text($userName, $x, $y, function ($font) use ($fontPath, $fontSize) {
             $font->file($fontPath);
             $font->size($fontSize);
             $font->color('#ff0000');
-            $font->align('right'); // Right-align the text
-            $font->valign('middle');
+            $font->align('center'); // محاذاة النص إلى المركز
+            $font->valign('middle'); // محاذاة النص إلى المنتصف عموديًا
         });
 
-        // Save the image with the text
+        // حفظ الصورة مع النص
         $cover->save('assets/certifications/5.jpg');
 
-        // Return the image response
+        // إرجاع استجابة الصورة
         return $cover->response();
     }
+
+
+
 
 
     public function lesson_certificate($id)

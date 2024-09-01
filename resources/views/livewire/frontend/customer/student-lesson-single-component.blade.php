@@ -229,7 +229,7 @@
                                     الحصول على شهادة مشاركة
                                 </a>
                             @else
-                                <a href="#"
+                                <a href="{{ route('customer.show_certification',Auth::user()->certifications()->where('course_id', $course->id)->first()->id) }}"
                                     class="d-flex align-items-center p-5 mb-4 text-white fw-medium  line-height-one certificate-links">
                                     <span class="me-4 text-white d-flex">
                                         <!-- Icon -->

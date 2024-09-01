@@ -149,7 +149,8 @@ class CustomerController extends Controller
         $width = $cover->getWidth();
         $height = $cover->getHeight();
 
-        $cover->text($userName, $width - 1700,  $height - 1240, function ($font) {
+        // $cover->text($userName, $width - 1700,  $height - 1240, function ($font) {
+        $cover->text($userName, $width - ($width / 2 - $width / 4),  $height - 1240, function ($font) {
             $font->file('fonts/DroidKufi-Regular.ttf');
             $font->size(150);
             $font->color('#ff0000');

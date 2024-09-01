@@ -164,24 +164,24 @@ class CustomerController extends Controller
         $height = $cover->getHeight();
 
         //  حساب أبعاد النص للإسم
-        $textBox = imagettfbbox($fontSize, 0, $fontPath, $userName);
-        $textWidth = abs($textBox[2] - $textBox[0]);
-        $textHeight = abs($textBox[1] - $textBox[7]);
+        $textBoxUserName = imagettfbbox($fontSize, 0, $fontPath, $userName);
+        $textWidthUserName = abs($textBoxUserName[2] - $textBoxUserName[0]);
+        $textHeightUserName = abs($textBoxUserName[1] - $textBoxUserName[7]);
 
         // حساب أبعاد النص لعنوان الكورس
-        $textBoxTitle = imagettfbbox($fontSize, 0, $fontPath, $courseTitle);
-        $textWidthTitle = abs($textBoxTitle[2] - $textBoxTitle[0]);
-        $textHeightTitle = abs($textBoxTitle[1] - $textBoxTitle[7]);
+        $textBoxCourseTitle = imagettfbbox($fontSize, 0, $fontPath, $courseTitle);
+        $textWidthCourseTitle = abs($textBoxCourseTitle[2] - $textBoxCourseTitle[0]);
+        $textHeightCourseTitle = abs($textBoxCourseTitle[1] - $textBoxCourseTitle[7]);
 
         // حساب الموقع الأفقي (X) لوضع النص في منتصف الصورة
         $x_user_name = ($width / 2);
 
         // حساب الموقع الرأسي (Y) لوضع النص في منتصف الصورة
         // نضيف ارتفاع النص لتوسيطه عموديًا
-        $y_user_name = ($height + $textHeight) / 2 - 160;
+        $y_user_name = ($height + $textHeightUserName) / 2 - 160;
 
         $x_course_title = ($width / 2);
-        $y_course_title = ($height + $textHeightTitle) / 2 + 130;
+        $y_course_title = ($height + $textHeightCourseTitle) / 2 + 130;
 
         // إضافة النص الاسم إلى الصورة
         $cover->text($userName, $x_user_name, $y_user_name, function ($font) use ($fontPath, $fontSize) {

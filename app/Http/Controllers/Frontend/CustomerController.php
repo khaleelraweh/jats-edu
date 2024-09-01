@@ -223,6 +223,21 @@ class CustomerController extends Controller
         $textHeightCertCode = abs($textBoxCertCode[1] - $textBoxCertCode[7]);
 
 
+        $x_cet_code = 400;
+        $y_cet_code = $height - 150;
+
+
+        // إضافة عنوان الكورس إلى الصورة
+        $cover->text($certCode, $x_cet_code, $y_cet_code, function ($font) use ($fontPath, $fontSize) {
+            $font->file($fontPath);
+            $font->size(100);
+            $font->color('#ff0000');
+            $font->align('center'); // محاذاة النص إلى المركز
+            $font->valign('middle'); // محاذاة النص إلى المنتصف عموديًا
+        });
+
+
+
 
 
 

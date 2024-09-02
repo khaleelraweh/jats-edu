@@ -45,7 +45,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <img src="{{ asset('assets/certifications/' . $certificate->cert_file) }}" alt=""
+                        <img src="{{ $cert_image_url }}" alt="Marked Certificate"
                             style="width: 70%;display:block;margin: auto;">
                     </div>
                 </div>

@@ -241,10 +241,10 @@ class CustomerController extends Controller
 
 
         //=======================  Cert Code =======================//
-        $certCode = $arabic->utf8Glyphs($certification->cert_code);
+        $certCode = $certification->cert_code;
 
         $fontPathCertCode = public_path('fonts/DINNextLTArabic-Regular-3.ttf');
-        $fontSizeCertCode = 100;
+        $fontSizeCertCode = 90;
 
         // حساب ابعاد نص لكود الشهادة
         $textBoxCertCode = imagettfbbox($fontSize, 0, $fontPath, $certCode);
@@ -253,7 +253,7 @@ class CustomerController extends Controller
 
 
         $x_cet_code = 400;
-        $y_cet_code = $height - 150;
+        $y_cet_code = $height - 140;
 
         // إضافة كود الكورس إلى الصورة
         $cover->text($certCode, $x_cet_code, $y_cet_code, function ($font) use ($fontPathCertCode, $fontSizeCertCode) {

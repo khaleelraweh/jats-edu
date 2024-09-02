@@ -138,6 +138,7 @@ class CustomerController extends Controller
         ]);
 
         $certification->cert_code = Carbon::now()->format('Y') . $certification->id;
+        $certification->cert_file = $certification->id . ".jpg";
         $certification->update();
 
 
@@ -251,6 +252,8 @@ class CustomerController extends Controller
 
 
         // حفظ الصورة مع النص
+        // $cover->save('assets/certifications/5.jpg');
+
         $cover->save('assets/certifications/5.jpg');
 
         // إرجاع استجابة الصورة

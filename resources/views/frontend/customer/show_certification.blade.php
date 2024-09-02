@@ -48,16 +48,15 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 text-center">
-                        {{-- <a class="btn btn-primary">استعراض الشهادة</a> --}}
-
 
                         <a href="#" data-toggle="modal" data-target="#identityModal" class="btn btn-primary">
                             استعراض الشهادة
 
                         </a>
 
+                        <a href="{{ asset('assets/certifications/' . $certificate->cert_file) }}" class="btn btn-primary"
+                            download="certificate_{{ $certificate->id }}">تنزيل الشهادة</a>
 
-                        <a class="btn btn-primary">تنزيل الشهادة</a>
                     </div>
                 </div>
             </div>

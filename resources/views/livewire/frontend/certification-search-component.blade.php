@@ -20,10 +20,10 @@
     @isset($certificate)
         <div class="card mt-3">
             <div class="card-body">
-                <table class="responsive-table">
+                <table class="table table-responsive">
                     <tr>
-                        <td>رقم الشهادة:</td>
-                        <td>{{ $certificate->id }}</td>
+                        <td>كود الشهادة:</td>
+                        <td>{{ $certificate->cert_code }}</td>
                     </tr>
                     <tr>
                         <td>اسم المتدرب:</td>
@@ -38,6 +38,17 @@
                         <td>{{ $certificate->date_of_issue }}</td>
                     </tr>
                 </table>
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <img src="{{ asset('assets/certifications/' . $certificate->cert_file) }}" alt=""
+                            style="width: 70%;display:block;margin: auto;">
+                    </div>
+                </div>
             </div>
         </div>
     @endisset

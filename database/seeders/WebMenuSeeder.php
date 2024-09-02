@@ -42,6 +42,6 @@ class WebMenuSeeder extends Seeder
 
         $instructors = WebMenu::create(['title'  => ['ar' => 'طلبات الشركات', 'en' => 'Company Requests'], 'icon'   => 'fa fa-home', 'link'  =>  'company_requests/create', 'created_by' => 'admin', 'status' => true, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
 
-        $certificate = WebMenu::create(['title'  => ['ar' => 'التحقق من الشهادة', 'en' => 'Certificate verification'], 'icon'   => 'fa fa-home', 'link'  =>  'company_requests/create', 'created_by' => 'admin', 'status' => true, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
+        $certificate = WebMenu::create(['title'  => ['ar' => 'التحقق من الشهادة', 'en' => 'Certificate verification'], 'icon'   => 'fa fa-home', 'link'  =>  'certs/index', 'created_by' => 'admin', 'status' => true, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
     }
 }

@@ -216,7 +216,7 @@ class CustomerController extends Controller
 
 
         //=======================  date of issue =======================//
-        $dateOfIssue = $certification->date_of_issue->format('Y/m/d');
+        $dateOfIssue = 'م ' . $certification->date_of_issue->format('Y/m/d');
 
         $fontPathdateOfIssue = public_path('fonts/DINNextLTArabic-Regular-3.ttf');
         $fontSizedateOfIssue = 70;
@@ -227,7 +227,7 @@ class CustomerController extends Controller
         $textHeightDateOfIssue = abs($textBoxDateOfIssue[1] - $textBoxDateOfIssue[7]);
 
 
-        $x_date_of_issue = 2770;
+        $x_date_of_issue = 2755;
         $y_date_of_issue = $height - 210;
 
         // إضافة تاريخ الشهادة إلى الصورة

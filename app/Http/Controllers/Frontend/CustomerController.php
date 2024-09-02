@@ -115,7 +115,6 @@ class CustomerController extends Controller
         return view('frontend.customer.student-course-list', compact('slug', 'courses'));
     }
 
-
     public function lesson_single($slug)
     {
         return view('frontend.customer.student-lesson-single', compact('slug'));
@@ -281,10 +280,6 @@ class CustomerController extends Controller
         $certificate = Certifications::find($certificate_id);
         return view('frontend.customer.show_certification', compact('certificate'));
     }
-
-
-
-
 
     public function lesson_certificate($id)
     {

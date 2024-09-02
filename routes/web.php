@@ -49,6 +49,7 @@ use App\Http\Controllers\Backend\TracksMenuController;
 use App\Http\Controllers\Backend\WebMenuController;
 use App\Http\Controllers\Backend\WebMenuHelpController;
 use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\CertificationController;
 use App\Http\Controllers\Frontend\Customer\CompanyRequestController as CustomerCompanyRequestController;
 use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -106,6 +107,9 @@ Route::get('/pages/{slug}', [FrontendController::class, 'pages'])->name('fronten
 
 
 Route::resource('company_requests', CustomerCompanyRequestController::class);
+
+
+Route::resource('certs', CertificationController::class);
 
 
 

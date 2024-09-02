@@ -216,11 +216,10 @@ class CustomerController extends Controller
 
 
         //=======================  date of issue =======================//
-        $dateOfIssue = $arabic->utf8Glyphs($certification->date_of_issue->format('Y/m/d'));
-
+        $dateOfIssue = $certification->date_of_issue->format('Y/m/d');
 
         $fontPathdateOfIssue = public_path('fonts/DINNextLTArabic-Regular-3.ttf');
-        $fontSizedateOfIssue = 80;
+        $fontSizedateOfIssue = 70;
 
         // حساب ابعاد النص لكود الشهادة
         $textBoxDateOfIssue = imagettfbbox($fontSize, 0, $fontPath, $dateOfIssue);
@@ -228,7 +227,7 @@ class CustomerController extends Controller
         $textHeightDateOfIssue = abs($textBoxDateOfIssue[1] - $textBoxDateOfIssue[7]);
 
 
-        $x_date_of_issue = 2790;
+        $x_date_of_issue = 2770;
         $y_date_of_issue = $height - 210;
 
         // إضافة تاريخ الشهادة إلى الصورة

@@ -257,7 +257,9 @@ class CustomerController extends Controller
         $cover->save('assets/certifications/' . $certification->cert_file);
 
         // إرجاع استجابة الصورة
-        return $cover->response();
+        // return $cover->response();
+
+        return redirect()->route('customer.show_certification', $certification->id);
     }
 
     public function show_certification($certificate_id)

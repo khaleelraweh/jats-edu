@@ -11,7 +11,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <img src="{{ asset('assets/certifications/1.jpg') }}" alt=""
+                        <img src="{{ asset('assets/certifications/' . $certificate->cert_file) }}" alt=""
                             style="width: 70%;display:block;margin: auto;">
                     </div>
                 </div>

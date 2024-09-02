@@ -259,7 +259,8 @@ class CustomerController extends Controller
 
     public function show_certification($certificate_id)
     {
-        return view('frontend.customer.show_certification', compact('certificate_id'));
+        $certificate = Certifications::find($certificate_id);
+        return view('frontend.customer.show_certification', compact('certificate'));
     }
 
 

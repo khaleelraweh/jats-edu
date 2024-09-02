@@ -4,10 +4,10 @@
             <form wire:submit.prevent="search">
                 <div class="row">
                     <div class="col-sm-12">
-                        <label for="certificate_id">رقم الشهادة</label>
-                        <input type="text" name="certificate_id" id="certificate_id" class="form-control"
-                            wire:model.defer="certificate_id">
-                        @error('certificate_id')
+                        <label for="certificate_code">رقم الشهادة</label>
+                        <input type="text" name="certificate_code" id="certificate_code" class="form-control"
+                            wire:model.defer="certificate_code">
+                        @error('certificate_code')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>

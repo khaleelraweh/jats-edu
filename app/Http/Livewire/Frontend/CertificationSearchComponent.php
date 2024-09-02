@@ -8,16 +8,16 @@ use Livewire\Component;
 class CertificationSearchComponent extends Component
 {
 
-    public $certificate_id;
+    public $certificate_code;
     public $certificate;
 
     public function search()
     {
         $this->validate([
-            'certificate_id' => 'required|exists:certifications,id',
+            'certificate_code' => 'required|exists:certifications,cert_code',
         ]);
 
-        $this->certificate = Certifications::find($this->certificate_id);
+        $this->certificate = Certifications::where('cert_code', $this->certificate_code)->first();
     }
 
     public function render()

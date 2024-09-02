@@ -12,52 +12,91 @@ class CertificationSearchComponent extends Component
     public $certificate;
     public $cert_image_url;
 
-    public function search()
-    {
-        $this->resetCertificate();
 
-        $this->validate([
-            'certificate_code' => 'required|exists:certifications,cert_code',
-        ]);
 
-        $this->certificate = Certifications::where('cert_code', $this->certificate_code)->first();
-
-        if ($this->certificate) {
-            $this->cert_image_url = $this->markCopyOnCertificate($this->certificate->cert_file);
-        } else {
-            $this->resetCertificate();
-        }
-    }
-
-    // public function markCopyOnCertificate($cert_file)
+    // public function search()
     // {
-    //     // Load the image from the public directory
-    //     $imagePath = public_path('assets/certifications/' . $cert_file);
+    //     $this->emit('startLoading'); // Emit start loading event
 
-    //     if (!file_exists($imagePath)) {
-    //         // Handle the case where the image doesn't exist
-    //         return null;  // or throw an exception
+    //     $this->resetCertificate();
+
+    //     $this->validate([
+    //         'certificate_code' => 'required|exists:certifications,cert_code',
+    //     ]);
+
+    //     $this->certificate = Certifications::where('cert_code', $this->certificate_code)->first();
+
+    //     if ($this->certificate) {
+    //         $this->cert_image_url = $this->markCopyOnCertificate($this->certificate->cert_file);
+    //     } else {
+    //         $this->resetCertificate();
     //     }
 
-    //     $img = Image::make($imagePath);
-
-    //     // Add text (e.g., "One Hundred") to the image
-    //     $img->text('Copy to match', $img->width() / 2, $img->height() / 2, function ($font) {
-    //         $font->file(public_path('fonts/DINNextLTArabic-Regular-3.ttf')); // Replace with your font file if needed
-    //         $font->size(100);
-    //         $font->color('#FF0000');
-    //         $font->align('center');
-    //         $font->valign('middle');
-    //         $font->angle(45); // Optional: add a tilt to the text
-    //     });
-
-    //     // Save the image to a temporary file or overwrite the original
-    //     $newCertFile = 'marked_' . $cert_file;
-    //     $img->save(public_path('assets/certifications/' . $newCertFile));
-
-    //     // Return the new image URL
-    //     return asset('assets/certifications/' . $newCertFile);
+    //     $this->emit('stopLoading'); // Emit stop loading event
     // }
+
+
+    // public function search()
+    // {
+    //     // Validate the input
+    //     $validatedData = $this->validate([
+    //         'certificate_code' => 'required|exists:certifications,cert_code',
+    //     ]);
+
+    //     // If validation passes, emit the startLoading event
+    //     if ($validatedData) {
+    //         $this->emit('startLoading'); // Start loading only if validation passes
+    //     }
+
+    //     // Proceed with the search
+    //     $this->certificate = Certifications::where('cert_code', $this->certificate_code)->first();
+
+    //     if ($this->certificate) {
+    //         $this->cert_image_url = $this->markCopyOnCertificate($this->certificate->cert_file);
+    //     } else {
+    //         $this->resetCertificate();
+    //     }
+
+    //     // Stop the loader regardless of success or failure
+    //     $this->emit('stopLoading');
+    // }
+
+
+    public function search()
+    {
+        try {
+            // Validate the input
+            $validatedData = $this->validate([
+                'certificate_code' => 'required|exists:certifications,cert_code',
+            ]);
+
+            // If validation passes, emit the startLoading event
+            if ($validatedData) {
+                $this->emit('startLoading'); // Start loading only if validation passes
+            }
+
+            // Proceed with the search
+            $this->certificate = Certifications::where('cert_code', $this->certificate_code)->first();
+
+            if ($this->certificate) {
+                $this->cert_image_url = $this->markCopyOnCertificate($this->certificate->cert_file);
+            } else {
+                $this->resetCertificate();
+            }
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // Stop the loader immediately if validation fails
+            $this->emit('stopLoading');
+            throw $e; // rethrow the exception to allow error messages to be displayed
+        }
+
+        // Stop the loader regardless of success or failure
+        $this->emit('stopLoading');
+    }
+
+
+
+
+
 
     public function markCopyOnCertificate($cert_file)
     {

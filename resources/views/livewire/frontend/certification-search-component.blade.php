@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container" x-data="{ loading: false }" x-init="@this.on('startLoading', () => loading = true);
+@this.on('stopLoading', () => loading = false);">
     <div class="card">
         <div class="card-body">
-            <form wire:submit.prevent="search">
+            <form wire:submit.prevent="search" @submit="loading = true">
                 <div class="row">
                     <div class="col-sm-12">
                         <label for="certificate_code">رقم الشهادة</label>
@@ -17,8 +18,15 @@
         </div>
     </div>
 
+    <!-- Loader -->
+    <div x-show="loading" style="display: none;">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
     @isset($certificate)
-        <div class="card mt-3">
+        <div class="card mt-3" x-show="!loading">
             <div class="card-body">
                 <table class="table table-responsive">
                     <tr>
@@ -41,7 +49,7 @@
             </div>
         </div>
 
-        <div class="card mt-3">
+        <div class="card mt-3" x-show="!loading">
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">

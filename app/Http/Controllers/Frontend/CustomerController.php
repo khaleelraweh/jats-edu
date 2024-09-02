@@ -166,6 +166,9 @@ class CustomerController extends Controller
         //=======================  User name =======================//
         $userName = $arabic->utf8Glyphs($request->full_name);
 
+        $fontPathUserName = public_path('fonts/DINNextLTArabic-Regular-3.ttf');
+        $fontSizeUserName = 100;
+
         //  حساب أبعاد النص للإسم
         $textBoxUserName = imagettfbbox($fontSize, 0, $fontPath, $userName);
         $textWidthUserName = abs($textBoxUserName[2] - $textBoxUserName[0]);
@@ -178,9 +181,9 @@ class CustomerController extends Controller
 
 
         // إضافة النص الاسم إلى الصورة
-        $cover->text($userName, $x_user_name, $y_user_name, function ($font) use ($fontPath, $fontSize) {
-            $font->file($fontPath);
-            $font->size($fontSize);
+        $cover->text($userName, $x_user_name, $y_user_name, function ($font) use ($fontPathUserName, $fontSizeUserName) {
+            $font->file($fontPathUserName);
+            $font->size($fontSizeUserName);
             // $font->color('#ff0000');
             $font->color('#191919');
             $font->align('center'); // محاذاة النص إلى المركز
@@ -189,6 +192,9 @@ class CustomerController extends Controller
 
         //=======================  Course Title =======================//
         $courseTitle = $arabic->utf8Glyphs($course_title);
+
+        $fontPathCourseTitle = public_path('fonts/DINNextLTArabic-Regular-3.ttf');
+        $fontSizeCourseTitle = 100;
 
         // حساب أبعاد النص لعنوان الكورس
         $textBoxCourseTitle = imagettfbbox($fontSize, 0, $fontPath, $courseTitle);
@@ -200,9 +206,9 @@ class CustomerController extends Controller
 
 
         // إضافة عنوان الكورس إلى الصورة
-        $cover->text($courseTitle, $x_course_title, $y_course_title, function ($font) use ($fontPath, $fontSize) {
-            $font->file($fontPath);
-            $font->size($fontSize);
+        $cover->text($courseTitle, $x_course_title, $y_course_title, function ($font) use ($fontPathCourseTitle, $fontSizeCourseTitle) {
+            $font->file($fontPathCourseTitle);
+            $font->size($fontSizeCourseTitle);
             $font->color('#191919');
             $font->align('center'); // محاذاة النص إلى المركز
             $font->valign('middle'); // محاذاة النص إلى المنتصف عموديًا
@@ -212,19 +218,23 @@ class CustomerController extends Controller
         //=======================  date of issue =======================//
         $dateOfIssue = $arabic->utf8Glyphs($certification->date_of_issue->format('Y-m-d'));
 
+
+        $fontPathdateOfIssue = public_path('fonts/DINNextLTArabic-Regular-3.ttf');
+        $fontSizedateOfIssue = 80;
+
         // حساب ابعاد النص لكود الشهادة
         $textBoxDateOfIssue = imagettfbbox($fontSize, 0, $fontPath, $dateOfIssue);
         $textWidthDateOfIssue = abs($textBoxDateOfIssue[2] - $textBoxDateOfIssue[0]);
         $textHeightDateOfIssue = abs($textBoxDateOfIssue[1] - $textBoxDateOfIssue[7]);
 
 
-        $x_date_of_issue = 2650;
-        $y_date_of_issue = $height - 190;
+        $x_date_of_issue = 2790;
+        $y_date_of_issue = $height - 210;
 
-        // إضافة عنوان الكورس إلى الصورة
-        $cover->text($dateOfIssue, $x_date_of_issue, $y_date_of_issue, function ($font) use ($fontPath) {
-            $font->file($fontPath);
-            $font->size(100);
+        // إضافة تاريخ الشهادة إلى الصورة
+        $cover->text($dateOfIssue, $x_date_of_issue, $y_date_of_issue, function ($font) use ($fontPathdateOfIssue, $fontSizedateOfIssue) {
+            $font->file($fontPathdateOfIssue);
+            $font->size($fontSizedateOfIssue);
             $font->color('#191919');
             $font->align('center'); // محاذاة النص إلى المركز
             $font->valign('middle'); // محاذاة النص إلى المنتصف عموديًا
@@ -234,7 +244,10 @@ class CustomerController extends Controller
         //=======================  Cert Code =======================//
         $certCode = $arabic->utf8Glyphs($certification->cert_code);
 
-        // حساب ابعاد النص لكود الشهادة
+        $fontPathCertCode = public_path('fonts/DINNextLTArabic-Regular-3.ttf');
+        $fontSizeCertCode = 100;
+
+        // حساب ابعاد نص لكود الشهادة
         $textBoxCertCode = imagettfbbox($fontSize, 0, $fontPath, $certCode);
         $textWidthCertCode = abs($textBoxCertCode[2] - $textBoxCertCode[0]);
         $textHeightCertCode = abs($textBoxCertCode[1] - $textBoxCertCode[7]);
@@ -243,10 +256,10 @@ class CustomerController extends Controller
         $x_cet_code = 400;
         $y_cet_code = $height - 150;
 
-        // إضافة عنوان الكورس إلى الصورة
-        $cover->text($certCode, $x_cet_code, $y_cet_code, function ($font) use ($fontPath) {
-            $font->file($fontPath);
-            $font->size(100);
+        // إضافة كود الكورس إلى الصورة
+        $cover->text($certCode, $x_cet_code, $y_cet_code, function ($font) use ($fontPathCertCode, $fontSizeCertCode) {
+            $font->file($fontPathCertCode);
+            $font->size($fontSizeCertCode);
             $font->color('#191919');
             $font->align('center'); // محاذاة النص إلى المركز
             $font->valign('middle'); // محاذاة النص إلى المنتصف عموديًا

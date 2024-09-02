@@ -13,11 +13,18 @@ class CertificationSearchComponent extends Component
 
     public function search()
     {
+        $this->resetCertificate();
+
         $this->validate([
             'certificate_code' => 'required|exists:certifications,cert_code',
         ]);
 
         $this->certificate = Certifications::where('cert_code', $this->certificate_code)->first();
+    }
+
+    public function resetCertificate()
+    {
+        $this->certificate = null;
     }
 
     public function render()

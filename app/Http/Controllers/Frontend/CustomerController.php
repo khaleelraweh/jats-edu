@@ -254,7 +254,7 @@ class CustomerController extends Controller
         // حفظ الصورة مع النص
         // $cover->save('assets/certifications/5.jpg');
 
-        $cover->save('assets/certifications/5.jpg');
+        $cover->save('assets/certifications/' . $certification->cert_file);
 
         // إرجاع استجابة الصورة
         return $cover->response();

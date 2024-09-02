@@ -11,7 +11,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <img src="{{ asset('assets/certifications/1.jpg') }}" alt="" style="width: 100%">
+                        <img src="{{ asset('assets/certifications/1.jpg') }}" alt=""
+                            style="width: 70%;display:block;margin: auto;">
                     </div>
                 </div>
                 <div class="row">

@@ -151,8 +151,9 @@ class CustomerController extends Controller
         $arabic = new Arabic();
 
 
-        $fontPath = public_path('fonts/DINNextLTArabic-Bold-2.ttf');
-        $fontSize = 120;
+        // $fontPath = public_path('fonts/DINNextLTArabic-Bold-2.ttf');
+        $fontPath = public_path('fonts/DINNextLTArabic-Regular-3.ttf');
+        $fontSize = 100;
 
         // تحميل الصورة
         $cover = Image::make('assets/certifications/certificate.jpg');
@@ -180,7 +181,8 @@ class CustomerController extends Controller
         $cover->text($userName, $x_user_name, $y_user_name, function ($font) use ($fontPath, $fontSize) {
             $font->file($fontPath);
             $font->size($fontSize);
-            $font->color('#ff0000');
+            // $font->color('#ff0000');
+            $font->color('#191919');
             $font->align('center'); // محاذاة النص إلى المركز
             $font->valign('middle'); // محاذاة النص إلى المنتصف عموديًا
         });
@@ -194,14 +196,14 @@ class CustomerController extends Controller
         $textHeightCourseTitle = abs($textBoxCourseTitle[1] - $textBoxCourseTitle[7]);
 
         $x_course_title = ($width / 2);
-        $y_course_title = ($height + $textHeightCourseTitle) / 2 + 130;
+        $y_course_title = ($height + $textHeightCourseTitle) / 2 + 145;
 
 
         // إضافة عنوان الكورس إلى الصورة
         $cover->text($courseTitle, $x_course_title, $y_course_title, function ($font) use ($fontPath, $fontSize) {
             $font->file($fontPath);
             $font->size($fontSize);
-            $font->color('#ff0000');
+            $font->color('#191919');
             $font->align('center'); // محاذاة النص إلى المركز
             $font->valign('middle'); // محاذاة النص إلى المنتصف عموديًا
         });
@@ -223,7 +225,7 @@ class CustomerController extends Controller
         $cover->text($dateOfIssue, $x_date_of_issue, $y_date_of_issue, function ($font) use ($fontPath) {
             $font->file($fontPath);
             $font->size(100);
-            $font->color('#ff0000');
+            $font->color('#191919');
             $font->align('center'); // محاذاة النص إلى المركز
             $font->valign('middle'); // محاذاة النص إلى المنتصف عموديًا
         });
@@ -245,7 +247,7 @@ class CustomerController extends Controller
         $cover->text($certCode, $x_cet_code, $y_cet_code, function ($font) use ($fontPath) {
             $font->file($fontPath);
             $font->size(100);
-            $font->color('#ff0000');
+            $font->color('#191919');
             $font->align('center'); // محاذاة النص إلى المركز
             $font->valign('middle'); // محاذاة النص إلى المنتصف عموديًا
         });

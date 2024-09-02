@@ -216,7 +216,7 @@ class CustomerController extends Controller
 
 
         //=======================  date of issue =======================//
-        $dateOfIssue = $arabic->utf8Glyphs($certification->date_of_issue->format('Y-m-d'));
+        $dateOfIssue = $arabic->utf8Glyphs($certification->date_of_issue->format('Y/m/d'));
 
 
         $fontPathdateOfIssue = public_path('fonts/DINNextLTArabic-Regular-3.ttf');

@@ -37,7 +37,7 @@
         </div>
         <div class="card-body">
             @if ($evaluation_completed)
-                You have did the evaluation and you answered :({{ $evaluation_scored }}) question's well
+                لقد حصلت على ({{ $evaluation_scored }}) درجة والتي لا تخولك الحصول على شهادة مشاركة
             @else
                 <div class="mywizard">
                     <!------------- part 1 : Steps ------------->

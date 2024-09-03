@@ -220,25 +220,30 @@
 
 
                         @if ($isComplete)
-                            @if (!$hasCertificate)
-                                <a href="{{ route('customer.certification', $course->id) }}"
-                                    class="d-flex align-items-center p-5 mb-4 text-white fw-medium  line-height-one certificate-links">
-                                    <span class="me-4 text-white d-flex">
-                                        <!-- Icon -->
-                                        <i class="fas fa-graduation-cap"></i>
-                                    </span>
-                                    الحصول على شهادة مشاركة
-                                </a>
+                            @if ($studentScore >= 50)
+                                @if (!$hasCertificate)
+                                    <a href="{{ route('customer.certification', $course->id) }}"
+                                        class="d-flex align-items-center p-5 mb-4 text-white fw-medium  line-height-one certificate-links">
+                                        <span class="me-4 text-white d-flex">
+                                            <!-- Icon -->
+                                            <i class="fas fa-graduation-cap"></i>
+                                        </span>
+                                        الحصول على شهادة مشاركة
+                                    </a>
+                                @else
+                                    <a href="{{ route('customer.show_certification',Auth::user()->certifications()->where('course_id', $course->id)->first()->id) }}"
+                                        class="d-flex align-items-center p-5 mb-4 text-white fw-medium  line-height-one certificate-links">
+                                        <span class="me-4 text-white d-flex">
+                                            <!-- Icon -->
+                                            <i class="fas fa-graduation-cap"></i>
+                                        </span>
+                                        تصفح شهادة المشاركة
+                                    </a>
+                                @endif
                             @else
-                                <a href="{{ route('customer.show_certification',Auth::user()->certifications()->where('course_id', $course->id)->first()->id) }}"
-                                    class="d-flex align-items-center p-5 mb-4 text-white fw-medium  line-height-one certificate-links">
-                                    <span class="me-4 text-white d-flex">
-                                        <!-- Icon -->
-                                        <i class="fas fa-graduation-cap"></i>
-                                    </span>
-                                    تصفح شهادة المشاركة
-                                </a>
+                                failed The evaluation: {{ $studentScore }} percentage
                             @endif
+
 
                         @endif
 

@@ -25,6 +25,7 @@ class StudentLessonSingleComponent extends Component
     public $curriculumSections;
     public $isComplete = false;
     public $hasCertificate = false;
+    public $studentScore = 0;
 
 
     public function mount()
@@ -56,10 +57,6 @@ class StudentLessonSingleComponent extends Component
         }
     }
 
-
-
-
-
     public function render()
     {
         $course = Course::with('sections.lessons')->where('slug->' . app()->getLocale(), $this->slug)->first();
@@ -80,6 +77,8 @@ class StudentLessonSingleComponent extends Component
 
         if ($this->isComplete) {
             $this->hasCertificate = $this->checkStudentCertificate(Auth::id(), $courseId);
+
+            $this->studentScore = $this->calculateStudentScore(Auth::id(), $course->id);
         } else {
             $student = User::find($studentId);
             $student->certifications()->where('course_id', $courseId)->delete();
@@ -124,5 +123,48 @@ class StudentLessonSingleComponent extends Component
         $hasCertificate = $student->certifications()->where('course_id', $courseId)->exists();
 
         return $hasCertificate;
+    }
+
+    public function calculateStudentScore($studentId, $courseId)
+    {
+        // Get all course sections related to the course
+        $courseSectionIds = CourseSection::where('course_id', $courseId)->pluck('id');
+
+        // Get all evaluations related to these course sections
+        $evaluations = Evaluation::whereIn('course_section_id', $courseSectionIds)->get();
+
+        // Initialize total score and total possible score
+        $totalScore = 0;
+        $totalPossibleScore = 100; // The score is distributed out of 100
+        $evaluationCount = $evaluations->count();
+
+        // Score per evaluation
+        $scorePerEvaluation = $totalPossibleScore / ($evaluationCount > 0 ? $evaluationCount : 1);
+
+
+        foreach ($evaluations as $evaluation) {
+            // Get the student's completed evaluation
+            $studentEvaluation = StudentEvaluation::where('user_id', $studentId)
+                ->where('evaluation_id', $evaluation->id)
+                ->first();
+
+            if ($studentEvaluation && $studentEvaluation->completed_at) {
+                // Calculate score for this evaluation
+                // $totalQuestions = $evaluation->questions()->count();
+
+                $totalQuestions = $studentEvaluation->count();
+
+                // $answeredQuestions = $studentEvaluation->answeredQuestions()->count();
+                $answeredQuestions = $studentEvaluation->score;
+
+
+
+                $evaluationScore = ($answeredQuestions / $totalQuestions) * $scorePerEvaluation;
+
+                $totalScore += $evaluationScore;
+            }
+        }
+
+        return round($totalScore, 2); // Return the total score rounded to 2 decimal places
     }
 }

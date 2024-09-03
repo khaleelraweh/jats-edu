@@ -27,6 +27,8 @@ class StudentLessonSingleComponent extends Component
     public $hasCertificate = false;
     public $studentScore = 0;
 
+    protected $listeners = ['evaluationCompleted' => 'updateAfterEvaluation'];
+
 
     public function mount()
     {
@@ -56,6 +58,24 @@ class StudentLessonSingleComponent extends Component
             $this->selectedLessonUrl = $urlOrEvaluationId;
         }
     }
+
+
+    // This method is triggered by the evaluationCompleted event
+    public function updateAfterEvaluation($evaluationId)
+    {
+        // Get the course and student ID
+        $course = Course::where('slug->' . app()->getLocale(), $this->slug)->first();
+        $studentId = Auth::id();
+
+        // Recalculate the completion and score
+        $this->isComplete = $this->checkAllCourseEvaluationsCompletion($studentId, $course->id);
+
+        if ($this->isComplete) {
+            $this->hasCertificate = $this->checkStudentCertificate($studentId, $course->id);
+            $this->studentScore = $this->calculateStudentScore($studentId, $course->id);
+        }
+    }
+
 
     public function render()
     {

@@ -117,10 +117,7 @@ class StudentEvaluationComponent extends Component
     {
         $this->saveStepData();
 
-        // // $this->validateStep();
-        // $this->saveStepData();
-        // return redirect()->route('admin.documents.show', $this->document_id);
-
+        $this->emit('evaluationCompleted', $this->selectedEvaluation->id);
 
         $this->alert('success', __('panel.evaluation_saved_successfully'));
     }

@@ -95,12 +95,16 @@ class EvaluationComponent extends Component
                 $this->evaluations = $evaluations;
             }
         } else {
+
+            $firstCourseSectionId = CourseSection::where('course_id', $this->courseId)->first()->id ?? null;
+
+
             // If no course is found, set default data
             $this->evaluations = [
                 [
                     'title' => 'التقييم' . $this->count,
                     'description' => 'الوصف' . $this->count,
-                    'course_section_id' => null,
+                    'course_section_id' =>  $firstCourseSectionId,
                     'questions' => [
                         [
                             'question_text' => '',
@@ -362,11 +366,14 @@ class EvaluationComponent extends Component
     {
         $this->count++;
 
+        $firstCourseSectionId = CourseSection::where('course_id', $this->courseId)->first()->id ?? null;
+
+
         $this->evaluations[] = [
             'evaluationId'      => 1,
             'title'             => __('panel.evaluation') . ' 1',
             'description'       => 'Description 1',
-            'course_section_id' =>  '',
+            'course_section_id' =>  $firstCourseSectionId,
 
             'questions' => [
                 [

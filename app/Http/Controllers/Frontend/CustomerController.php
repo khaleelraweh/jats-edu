@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ProfileRequest;
 use App\Models\Certifications;
 use App\Models\Course;
+use App\Models\CourseSection;
+use App\Models\Evaluation;
 use App\Models\RequestToTeach;
 use App\Models\Role;
 use App\Models\Specialization;
+use App\Models\StudentEvaluation;
 use App\Models\User;
 use App\Notifications\Frontend\Customer\RequestTeachNotification;
 use Carbon\Carbon;
@@ -289,7 +292,55 @@ class CustomerController extends Controller
     public function show_certification($certificate_id)
     {
         $certificate = Certifications::find($certificate_id);
-        return view('frontend.customer.show_certification', compact('certificate'));
+
+        $studentScore = $this->calculateStudentScore(Auth::user()->id, $certificate->course_id);
+        return view('frontend.customer.show_certification', compact('certificate', 'studentScore'));
+    }
+
+
+    public function calculateStudentScore($studentId, $courseId)
+    {
+        // Get all course sections related to the course
+        $courseSectionIds = CourseSection::where('course_id', $courseId)->pluck('id');
+
+        // Get all evaluations related to these course sections
+        $evaluations = Evaluation::whereIn('course_section_id', $courseSectionIds)->get();
+
+        // Initialize total score and total possible score
+        $totalScore = 0;
+        $totalPossibleScore = 100; // The score is distributed out of 100
+        $evaluationCount = $evaluations->count();
+
+        // Score per evaluation
+        $scorePerEvaluation = $totalPossibleScore / ($evaluationCount > 0 ? $evaluationCount : 1);
+
+
+        foreach ($evaluations as $evaluation) {
+            // Get the student's completed evaluation
+            $studentEvaluation = StudentEvaluation::where('user_id', $studentId)
+                ->where('evaluation_id', $evaluation->id)
+                ->first();
+
+            if ($studentEvaluation && $studentEvaluation->completed_at) {
+                // Calculate score for this evaluation
+                // $totalQuestions = $evaluation->questions()->count();
+
+                $totalQuestions = $studentEvaluation->count();
+
+                // dd($totalQuestions);
+
+                // $answeredQuestions = $studentEvaluation->answeredQuestions()->count();
+                $answeredQuestions = $studentEvaluation->score;
+
+
+
+                $evaluationScore = ($answeredQuestions / $totalQuestions) * $scorePerEvaluation;
+
+                $totalScore += $evaluationScore;
+            }
+        }
+
+        return round($totalScore, 2); // Return the total score rounded to 2 decimal places
     }
 
     public function lesson_certificate($id)

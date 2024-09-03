@@ -37,6 +37,7 @@
             <div class="card-header">
                 <div class="card-title">
                     بيانات الشهادة
+
                 </div>
             </div>
             <div class="card-body">

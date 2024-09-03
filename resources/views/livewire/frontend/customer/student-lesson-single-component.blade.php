@@ -218,6 +218,7 @@
                             }
                         </style>
 
+
                         @if ($isComplete)
                             @if (!$hasCertificate)
                                 <a href="{{ route('customer.certification', $course->id) }}"

@@ -76,13 +76,14 @@ class StudentLessonSingleComponent extends Component
 
         $this->isComplete = $this->checkAllCourseEvaluationsCompletion($studentId, $courseId);
 
-        $this->hasCertificate = $this->checkStudentCertificate(Auth::id(), $courseId);
+        // $this->hasCertificate = $this->checkStudentCertificate(Auth::id(), $courseId);
 
-        // if ($isComplete) {
-        //     echo "The student has completed all evaluations in the course.";
-        // } else {
-        //     echo "The student has not completed all evaluations in the course.";
-        // }
+        if ($this->isComplete) {
+            $this->hasCertificate = $this->checkStudentCertificate(Auth::id(), $courseId);
+        } else {
+            $student = User::find($studentId);
+            $student->certifications()->where('course_id', $courseId)->delete();
+        }
 
 
         return view('livewire.frontend.customer.student-lesson-single-component', compact('course', 'totalDurations'));

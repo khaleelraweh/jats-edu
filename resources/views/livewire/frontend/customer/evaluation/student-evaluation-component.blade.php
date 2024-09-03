@@ -37,7 +37,7 @@
         </div>
         <div class="card-body">
             @if ($evaluation_completed)
-                لقد اجبت على عدد ({{ $evaluation_scored }}) اسئلة بشكل صحيح
+                لقد اجبت على عدد ({{ $evaluation_scored }}) اسئلة بشكل صحيح من بين ({{ $questionCount }})
             @else
                 <div class="mywizard">
                     <!------------- part 1 : Steps ------------->

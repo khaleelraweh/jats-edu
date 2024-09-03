@@ -174,6 +174,8 @@ class StudentLessonSingleComponent extends Component
 
                 $totalQuestions = $studentEvaluation->count();
 
+                // dd($totalQuestions);
+
                 // $answeredQuestions = $studentEvaluation->answeredQuestions()->count();
                 $answeredQuestions = $studentEvaluation->score;
 

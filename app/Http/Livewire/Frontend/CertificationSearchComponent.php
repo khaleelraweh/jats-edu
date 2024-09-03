@@ -14,52 +14,7 @@ class CertificationSearchComponent extends Component
 
 
 
-    // public function search()
-    // {
-    //     $this->emit('startLoading'); // Emit start loading event
 
-    //     $this->resetCertificate();
-
-    //     $this->validate([
-    //         'certificate_code' => 'required|exists:certifications,cert_code',
-    //     ]);
-
-    //     $this->certificate = Certifications::where('cert_code', $this->certificate_code)->first();
-
-    //     if ($this->certificate) {
-    //         $this->cert_image_url = $this->markCopyOnCertificate($this->certificate->cert_file);
-    //     } else {
-    //         $this->resetCertificate();
-    //     }
-
-    //     $this->emit('stopLoading'); // Emit stop loading event
-    // }
-
-
-    // public function search()
-    // {
-    //     // Validate the input
-    //     $validatedData = $this->validate([
-    //         'certificate_code' => 'required|exists:certifications,cert_code',
-    //     ]);
-
-    //     // If validation passes, emit the startLoading event
-    //     if ($validatedData) {
-    //         $this->emit('startLoading'); // Start loading only if validation passes
-    //     }
-
-    //     // Proceed with the search
-    //     $this->certificate = Certifications::where('cert_code', $this->certificate_code)->first();
-
-    //     if ($this->certificate) {
-    //         $this->cert_image_url = $this->markCopyOnCertificate($this->certificate->cert_file);
-    //     } else {
-    //         $this->resetCertificate();
-    //     }
-
-    //     // Stop the loader regardless of success or failure
-    //     $this->emit('stopLoading');
-    // }
 
 
     public function search()
@@ -113,7 +68,7 @@ class CertificationSearchComponent extends Component
         // Add background text (e.g., "Copy to match") to the image
         $img->text('Copy to match', $img->width() / 2, $img->height() / 2, function ($font) {
             $font->file(public_path('fonts/DINNextLTArabic-Regular-3.ttf')); // Use your specific font file
-            $font->size(100);
+            $font->size(200);
             $font->color([128, 128, 128, 0.5]); // Gray color with 50% opacity
             $font->align('center');
             $font->valign('middle');

@@ -136,7 +136,18 @@ class CustomerController extends Controller
             'cert_code' => 2024,
         ]);
 
-        $certification->cert_code = Carbon::now()->format('Y') . $certification->id;
+
+        $certCode = 0;
+
+        if ($certification->id < 9) {
+            $certCode = '00' . $certification->id;
+        } elseif ($certification->id < 99) {
+            $certCode = '0' . $certification->id;
+        } else {
+            $certCode = '0' . $certification->id;
+        }
+
+        $certification->cert_code = Carbon::now()->format('Y') . $certCode;
         $certification->cert_file = $certification->id . ".jpg";
         $certification->update();
 

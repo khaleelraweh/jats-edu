@@ -39,6 +39,7 @@ class StudentEvaluationComponent extends Component
     {
         if ($selectedEvaluationId) {
             $this->selectedEvaluation = Evaluation::with('questions.options')->find($selectedEvaluationId);
+            $this->currentStep = 1;
             $this->loadEvaluationData($this->selectedEvaluation);
         }
     }
@@ -116,6 +117,7 @@ class StudentEvaluationComponent extends Component
     public function finish()
     {
         $this->saveStepData();
+
 
         $this->emit('evaluationCompleted', $this->selectedEvaluation->id);
 

@@ -1126,7 +1126,7 @@
     'storage' => 
     array (
       'enabled' => true,
-      'open' => false,
+      'open' => NULL,
       'driver' => 'file',
       'path' => 'C:\\xampp\\htdocs\\instatutes\\storage\\debugbar',
       'connection' => NULL,
@@ -1141,6 +1141,7 @@
     'capture_ajax' => true,
     'add_ajax_timing' => false,
     'ajax_handler_auto_show' => true,
+    'ajax_handler_enable_tab' => true,
     'error_handler' => false,
     'clockwork' => false,
     'collectors' => 
@@ -1189,6 +1190,7 @@
       'auth' => 
       array (
         'show_name' => true,
+        'show_guards' => true,
       ),
       'db' => 
       array (

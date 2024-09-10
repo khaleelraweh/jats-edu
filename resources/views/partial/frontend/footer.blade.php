@@ -31,6 +31,30 @@
             outline: 0;
 
         }
+
+        @media(max-width:565px) {
+            .my-wrapper {
+                position: fixed;
+                width: 400px;
+                bottom: 0;
+                left: 0px;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                z-index: 100;
+                margin: 0;
+                background-color: green;
+                color: white;
+                cursor: pointer;
+                border: 0;
+                outline: 0;
+            }
+
+            .navbar-dark .navbar-nav .nav-link {
+                color: #000;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
     </style>
 
 

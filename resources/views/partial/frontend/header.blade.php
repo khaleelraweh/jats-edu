@@ -1,3 +1,10 @@
+<style>
+    @media(max-width:565px) {
+        .navbar-brand-img {
+            max-width: 125px;
+        }
+    }
+</style>
 <header
     class="navbar navbar-expand-xl {{ !request()->routeIs('frontend.index') ? 'navbar-light bg-white border-bottom py-2 py-xl-4' : 'navbar-dark' }} ">
     <div class="container-fluid">

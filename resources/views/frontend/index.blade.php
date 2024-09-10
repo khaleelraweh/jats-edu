@@ -5,6 +5,17 @@
         .flick-item {
             width {}
         }
+
+
+        @media(max-width:768px) {
+            .navbar-dark .navbar-nav .nav-link {
+                color: black;
+                padding-right: 6px;
+                padding-left: 6px;
+                padding-top: 3px;
+                padding-bottom: 3px;
+            }
+        }
     </style>
 @endsection
 

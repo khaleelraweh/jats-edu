@@ -60,7 +60,8 @@
 
     <div class="alert alert-primary alert-dismissible fade show my-wrapper" role="alert">
 
-        <a href="https://api.whatsapp.com/send?phone=967777282953&text=هل يمكنك المساعدة" class="d-block text-white">
+        <a href="https://api.whatsapp.com/send?phone=967777282953&text=هل يمكنك المساعدة" class="d-block text-white"
+            target="_blank">
             <div class="alert-body d-flex justify-content-between align-items-center">
 
                 <div class="part1">

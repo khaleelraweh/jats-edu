@@ -24,7 +24,7 @@
     <section class="mt-n12">
         {{-- {{ dd($instructors) }} --}}
         <div class="flickity-page-dots-vertical flickity-page-dots-md flickity-page-dots-white position-static"
-            data-flickity='{"pageDots": true, "prevNextButtons": false, "cellAlign": "center", "wrapAround": true, "imagesLoaded": true}'>
+            data-flickity='{"pageDots": true, "prevNextButtons": false, "cellAlign": "center", "wrapAround": true,"autoPlay":true, "imagesLoaded": true}'>
 
             @forelse ($main_sliders->where('section' ,1) as $main_slider)
                 <div class="w-100">

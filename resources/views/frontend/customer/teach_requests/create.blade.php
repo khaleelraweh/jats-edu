@@ -151,7 +151,7 @@
                                                             @foreach (getCountries() as $country)
                                                                 <option value="{{ $country->name }}"
                                                                     {{ old('place_of_birth') == $country->name ? 'selected' : '' }}>
-                                                                    {{ $country->name }} {{ $country->emoji }}
+                                                                    {{ $country->name_native }} {{ $country->emoji }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -196,7 +196,7 @@
                                                             @foreach (getCountries() as $country)
                                                                 <option value="{{ $country->name }}"
                                                                     {{ old('residence_address') == $country->name ? 'selected' : '' }}>
-                                                                    {{ $country->name }}
+                                                                    {{ $country->name_native }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -431,7 +431,7 @@
             flatpickr('.flatpickr_date_of_birth', {
                 enableTime: true,
                 dateFormat: "Y-m-d ",
-                minDate: "today"
+                // minDate: "today"
 
             });
 

@@ -133,6 +133,8 @@
                                                 {{ __('panel.image') }}
                                                 /
                                                 {{ __('panel.images') }}
+                                                <span><small> ( {{ __('panel.best_size') }}: 1920 * 550 )</small></span>
+
                                             </label>
                                             <span>(<small>w:750 , h:1550 </small>)</span>
                                             <br>

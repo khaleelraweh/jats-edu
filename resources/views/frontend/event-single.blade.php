@@ -4,10 +4,10 @@
     <!-- EVENT SINGLE -->
 
     @php
-        if ($event->photos->first() != null && $event->photos->first()->file_name != null) {
-            $event_img = asset('assets/events/' . $event->photos->first()->file_name);
+        if ($event->photos->last() != null && $event->photos->last()->file_name != null) {
+            $event_img = asset('assets/courses/' . $event->photos->last()->file_name);
 
-            if (!file_exists(public_path('assets/events/' . $event->photos->first()->file_name))) {
+            if (!file_exists(public_path('assets/courses/' . $event->photos->last()->file_name))) {
                 $event_img = asset('image/not_found/item_image_not_found.webp');
             }
         } else {

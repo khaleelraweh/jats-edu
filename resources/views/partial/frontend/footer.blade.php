@@ -35,7 +35,8 @@
         @media(max-width:565px) {
             .my-wrapper {
                 position: fixed;
-                width: 400px;
+                width: 60px;
+                height: 60px;
                 bottom: 0;
                 left: 0px;
                 border-bottom-left-radius: 0;
@@ -47,6 +48,12 @@
                 cursor: pointer;
                 border: 0;
                 outline: 0;
+
+            }
+
+            .alert-dismissible .btn-close {
+                padding: 0.5rem 0.5rem;
+                font-size: 12px;
             }
 
             .navbar-dark .navbar-nav .nav-link {
@@ -58,7 +65,7 @@
     </style>
 
 
-    <div class="alert alert-primary alert-dismissible fade show my-wrapper" role="alert">
+    <div class="alert alert-primary alert-dismissible fade show my-wrapper d-none d-md-block" role="alert">
 
         <a href="https://api.whatsapp.com/send?phone=967777282953&text=هل يمكنك المساعدة" class="d-block text-white"
             target="_blank">
@@ -83,6 +90,30 @@
             aria-label="Close"></button>
 
     </div>
+
+
+    <div class="alert alert-primary alert-dismissible fade show my-wrapper d-block d-md-none" role="alert">
+
+        <a href="https://api.whatsapp.com/send?phone=967777282953&text=هل يمكنك المساعدة" class="d-block text-white"
+            target="_blank">
+            <div class="alert-body d-flex justify-content-between align-items-center">
+
+                {{-- <div class="part1">
+                    <span class="ltr">00967777282953</span>
+                </div> --}}
+                <div class="part2">
+                    <i class="fab fa-whatsapp fa-2x bi flex-shrink-0 me-2" width="30" height="30" role="img"
+                        aria-label="Info:"></i>
+                </div>
+            </div>
+        </a>
+
+        <button type="button" class="btn-close" style="color: white;" data-bs-dismiss="alert"
+            aria-label="Close"></button>
+
+    </div>
+
+
 
 
     <div class="container">

@@ -191,7 +191,9 @@
                                 <div class="row">
                                     <div class="col-12 pt-4">
                                         <label for="images">{{ __('panel.image') }}/
-                                            {{ __('panel.images') }}</label>
+                                            {{ __('panel.images') }}
+                                            <span><small> ( {{ __('panel.best_size') }}: 250 * 180 )</small></span>
+                                        </label>
                                         <br>
                                         <div class="file-loading">
                                             <input type="file" name="images[]" id="course_images"

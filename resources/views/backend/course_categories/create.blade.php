@@ -158,6 +158,8 @@
                                                 {{ __('panel.image') }}
                                                 /
                                                 {{ __('panel.images') }}
+                                                <span><small> ( {{ __('panel.best_size') }}: 287 * 189 )</small></span>
+
                                             </label>
                                             <div class="file-loading">
                                                 <input type="file" name="images[]" id="category_image"

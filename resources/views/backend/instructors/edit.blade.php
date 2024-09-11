@@ -98,8 +98,8 @@
                                         <div class="form-group">
                                             <label for="first_name"> {{ __('panel.first_name') }}</label>
                                             <input type="text" id="first_name" name="first_name"
-                                                value="{{ old('first_name', $instructor->first_name) }}" class="form-control"
-                                                placeholder="">
+                                                value="{{ old('first_name', $instructor->first_name) }}"
+                                                class="form-control" placeholder="">
                                             @error('first_name')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -192,7 +192,11 @@
 
                                 <div class="row pt-4">
                                     <div class="col-12">
-                                        <label for="user_image"> {{ __('panel.image') }} </label>
+                                        <label for="user_image"> {{ __('panel.image') }}
+
+                                            <span><small> ( {{ __('panel.best_size') }}: 250 * 240 )</small></span>
+
+                                        </label>
                                         <br>
                                         <span class="form-text text-muted">{{ __('panel.user_image_size') }} </span>
                                         <div class="file-loading">

@@ -192,7 +192,11 @@
 
                                 <div class="row pt-4">
                                     <div class="col-12">
-                                        <label for="user_image"> {{ __('panel.image') }} </label>
+                                        <label for="user_image"> {{ __('panel.image') }}
+
+                                            <span><small> ( {{ __('panel.best_size') }}: 250 * 240 )</small></span>
+
+                                        </label>
                                         <br>
                                         <span class="form-text text-muted">{{ __('panel.user_image_size') }} </span>
                                         <div class="file-loading">

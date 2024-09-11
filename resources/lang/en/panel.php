@@ -1270,5 +1270,7 @@ return [
 
     // 
 
+    'best_size'                                     =>  'Best Size',
+
 
 ];

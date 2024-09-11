@@ -126,8 +126,9 @@
                                                 {{ __('panel.image') }}
                                                 /
                                                 {{ __('panel.images') }}
+                                                <span><small> ( {{ __('panel.best_size') }}: 1920 * 960 )</small></span>
                                             </label>
-                                            <span>(<small>w:750 , h:1550 </small>)</span>
+
                                             <br>
                                             <div class="file-loading">
                                                 <input type="file" name="images[]" id="slider_images"

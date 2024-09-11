@@ -58,8 +58,6 @@
             <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
-
-
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     @foreach (config('locales.languages') as $key => $val)
@@ -174,6 +172,8 @@
                                         <div class="col-12">
                                             <label for="images">
                                                 {{ __('panel.image') }} / {{ __('panel.images') }}
+                                                <span><small> ( {{ __('panel.best_size') }}: 350 * 250 )</small></span>
+
                                             </label>
                                             <br>
                                             <div class="file-loading">

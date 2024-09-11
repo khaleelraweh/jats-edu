@@ -1234,6 +1234,10 @@ return [
     'evaluation'                                    =>  'التقييم',
 
 
+    'best_size'                                     =>  'افضل حجم',
+
+
+
 
 
 

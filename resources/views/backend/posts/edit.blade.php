@@ -167,8 +167,15 @@
                                         <div class="col-12 pt-4">
                                             <label for="images">{{ __('panel.image') }}/
                                                 {{ __('panel.images') }}
-                                                <span><small> ( {{ __('panel.best_size') }}: 350 * 250 )</small></span>
-
+                                                <span>
+                                                    <br>
+                                                    <small> {{ __('panel.best_size') }}</small>
+                                                    <br>
+                                                    <small>-{{ __('panel.Image_show_in_main_page') }}: 350 * 250</small>
+                                                    <br>
+                                                    <small>-{{ __('panel.Image_show_in_blog_single') }}: 1920 *
+                                                        600</small>
+                                                </span>
 
                                             </label>
                                             <br>

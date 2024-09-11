@@ -44,10 +44,10 @@
 
     <div class="mb-8 sk-thumbnail img-ratio-7">
         @php
-            if ($post->photos->first() != null && $post->photos->first()->file_name != null) {
-                $post_img = asset('assets/posts/' . $post->photos->first()->file_name);
+            if ($post->photos->last() != null && $post->photos->last()->file_name != null) {
+                $post_img = asset('assets/posts/' . $post->photos->last()->file_name);
 
-                if (!file_exists(public_path('assets/posts/' . $post->photos->first()->file_name))) {
+                if (!file_exists(public_path('assets/posts/' . $post->photos->last()->file_name))) {
                     $post_img = asset('image/not_found/item_image_not_found.webp');
                 }
             } else {

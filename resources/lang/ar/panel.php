@@ -1235,6 +1235,8 @@ return [
 
 
     'best_size'                                     =>  'افضل حجم',
+    'Image_show_in_main_page'                       =>  'الصورة المعروضة في الرئيسية',
+    'Image_show_in_event_single'                    =>  'الصورة المعروضة في صفحة الأحداث القادمة',
 
 
 

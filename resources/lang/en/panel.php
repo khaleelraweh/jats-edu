@@ -1271,6 +1271,8 @@ return [
     // 
 
     'best_size'                                     =>  'Best Size',
+    'Image_show_in_main_page'                       =>  'Image Show in Main Page',
+    'Image_show_in_event_single'                    =>  'Image Show in event single',
 
 
 ];

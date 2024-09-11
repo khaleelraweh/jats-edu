@@ -297,7 +297,8 @@
                                         </a>
                                     </li>
 
-                                    <li>
+                                    {{-- It stoped  --}}
+                                    <li class="d-none">
                                         <a href="{{ route('frontend.shop_cart') }}">
                                             {{ __('transf.lnk_my_wishlist') }}
                                         </a>

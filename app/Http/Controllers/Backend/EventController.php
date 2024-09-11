@@ -154,7 +154,7 @@ class EventController extends Controller
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/courses/' . $file_name);
 
-                Image::make($image->getRealPath())->save($path);
+                Image::make($image->getRealPath())->save($path, 100);
 
                 $event->photos()->create([
                     'file_name' => $file_name,
@@ -313,7 +313,7 @@ class EventController extends Controller
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/courses/' . $file_name);
 
-                Image::make($image->getRealPath())->save($path);
+                Image::make($image->getRealPath())->save($path, 100);
 
                 $event->photos()->create([
                     'file_name' => $file_name,

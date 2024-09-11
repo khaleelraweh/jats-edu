@@ -308,6 +308,11 @@
                                         @error('identity')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
+                                        (
+                                        <small>
+                                            يجب ان تكون الصورة ذات احد الامتدادات التالية ( .jpg - .jpeg - .png )
+                                        </small>
+                                        )
                                     </div>
                                     <div class="control-group form-group">
                                         <label class="form-label">السيرة الذاتية</label>
@@ -316,15 +321,22 @@
                                         @error('biography')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
+                                        (<small>لابد من ارفاق السيرة الذاتية بصيغة .PDF</small>)
                                     </div>
                                     <div class="control-group form-group mb-0">
-                                        <label class="form-label"> ارفاق الشهائد (<small>يجب تضمين جميع الشهائد المراد
-                                                رفعها
-                                                في ملف pdf</small>) </label>
+                                        <label class="form-label"> ارفاق الشهائد
+
+                                        </label>
                                         <input type="file" name="Certificates" class="form-control required">
                                         @error('Certificates')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
+                                        (
+                                        <small>
+                                            يجب تضمين جميع الشهائد المراد رفعها في ملف بصيفة .PDF
+
+                                        </small>
+                                        )
                                     </div>
                                 </section>
                                 <h3>الحافز</h3>

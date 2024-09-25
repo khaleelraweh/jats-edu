@@ -174,6 +174,15 @@
                             </a>
                         </li>
                     @endif
+
+                    @if ($siteSettings['site_youtube']->value)
+                        <li class="list-inline-item list-social-item">
+                            <a href="{{ $siteSettings['site_youtube']->value }}"
+                                class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
 

@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- PAGE TITLE
-                                                                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                                                        ================================================== -->
     <header class="py-8 py-md-11" style="background-image: none;">
         <div class="container text-center py-xl-2">
             <h1 class="display-4 fw-semi-bold mb-0">طلب الإشتراك للشركات</h1>
@@ -25,7 +25,7 @@
 
 
     <!-- CONTACT
-                                                                                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                                                        ================================================== -->
     <div class="container">
         <div class="row row-cols-md-2 mb-8 mb-lg-11">
             <div class="col-md">
@@ -175,36 +175,49 @@
                                 <h5 class="mb-4">تابعنا على مواقع التواصل التالية</h5>
                                 <!-- Social -->
                                 <ul class="list-unstyled list-inline list-social mb-4 mb-md-0 mx-n4">
-                                    <li class="list-inline-item list-social-item">
-                                        <a href="#"
-                                            class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item list-social-item">
-                                        <a href="#"
-                                            class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item list-social-item">
-                                        <a href="#"
-                                            class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item list-social-item">
-                                        <a href="#"
-                                            class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
-                                            <i class="fab fa-linkedin-in"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item list-social-item">
+
+                                    @if ($siteSettings['site_facebook']->value)
+                                        <li class="list-inline-item list-social-item">
+                                            <a href="{{ $siteSettings['site_facebook']->value }}"
+                                                class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if ($siteSettings['site_twitter']->value)
+                                        <li class="list-inline-item list-social-item">
+                                            <a href="{{ $siteSettings['site_twitter']->value }}"
+                                                class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if ($siteSettings['site_instagram']->value)
+                                        <li class="list-inline-item list-social-item">
+                                            <a href="{{ $siteSettings['site_instagram']->value }}"
+                                                class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if ($siteSettings['site_linkedin']->value)
+                                        <li class="list-inline-item list-social-item">
+                                            <a href="{{ $siteSettings['site_linkedin']->value }}"
+                                                class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                                <i class="fab fa-linkedin-in"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    {{-- <li class="list-inline-item list-social-item">
                                         <a href="#"
                                             class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
                                             <i class="fab fa-skype"></i>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>

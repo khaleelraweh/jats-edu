@@ -310,7 +310,8 @@
                                         @enderror
                                         (
                                         <small>
-                                            يجب ان تكون الصورة ذات احد الامتدادات التالية ( .jpg - .jpeg - .png )
+                                            يجب ان تكون الصورة ذات احد الامتدادات التالية ( .jpg - .jpeg - .png , .pdf,.docx
+                                            )
                                         </small>
                                         )
                                     </div>
@@ -321,7 +322,11 @@
                                         @error('biography')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                        (<small>لابد من ارفاق السيرة الذاتية بصيغة .PDF</small>)
+                                        (<small>
+                                            يجب ان تكون السيرة الذاتية ذات احد الامتدادات التالية ( .jpg - .jpeg - .png ,
+                                            .pdf,.docx
+                                            )
+                                        </small>)
                                     </div>
                                     <div class="control-group form-group mb-0">
                                         <label class="form-label"> ارفاق الشهائد
@@ -333,7 +338,8 @@
                                         @enderror
                                         (
                                         <small>
-                                            يجب تضمين جميع الشهائد المراد رفعها في ملف بصيفة .PDF
+                                            يجب تضمين جميع الشهائد المراد رفعها في ملف بصيفة .PDF او احد الامتدادادت التالية
+                                            (.jpg,.jpeg,.png)
 
                                         </small>
                                         )

@@ -38,9 +38,11 @@ class TeachRequestController extends Controller
             'specialization_id'                => 'required|integer',
             'years_of_training_experience'  => 'required|integer',
             'motivation'                    => 'required|string',
-            'identity'                      => 'required|file|mimes:jpg,jpeg,png|max:2048',
-            'biography'                     => 'required|file|mimes:pdf|max:2048',
-            'Certificates'                  => 'required|file|mimes:pdf|max:2048',
+            // 'identity'                      => 'required|file|mimes:jpg,jpeg,png|max:2048',
+            'identity'                      => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:2048',
+
+            'biography'                     => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:2048',
+            'Certificates'                  => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);
 
         $data['full_name']                      = $validatedData['full_name'];

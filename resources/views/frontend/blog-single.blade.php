@@ -42,7 +42,8 @@
         </div>
     </div>
 
-    <div class="mb-8 sk-thumbnail img-ratio-7">
+    {{-- <div class="mb-8 sk-thumbnail img-ratio-7"> --}}
+    <div class="mb-8 ">
         @php
             if ($post->photos->last() != null && $post->photos->last()->file_name != null) {
                 $post_img = asset('assets/posts/' . $post->photos->last()->file_name);
@@ -54,7 +55,8 @@
                 $post_img = asset('image/not_found/item_image_not_found.webp');
             }
         @endphp
-        <img src="{{ $post_img }}" alt="..." class="img-fluid">
+        {{-- <img src="{{ $post_img }}" alt="..." class="img-fluid"> --}}
+        <img src="{{ $post_img }}" alt="..." class="img-fluid d-block" style="margin: auto;">
     </div>
 
     <div class="container">

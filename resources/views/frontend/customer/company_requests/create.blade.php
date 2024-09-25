@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- PAGE TITLE
-                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                    ================================================== -->
     <header class="py-8 py-md-11" style="background-image: none;">
         <div class="container text-center py-xl-2">
             <h1 class="display-4 fw-semi-bold mb-0">طلب الإشتراك للشركات</h1>
@@ -25,7 +25,7 @@
 
 
     <!-- CONTACT
-                                                                                                                                                    ================================================== -->
+                                                                                                                                                                                                                    ================================================== -->
     <div class="container">
         <div class="row row-cols-md-2 mb-8 mb-lg-11">
             <div class="col-md">
@@ -55,7 +55,7 @@
                             <div class="media-body flex-shrink-1">
                                 <h5 class="mb-4">ابحث عنا</h5>
                                 <address class="">
-                                    اليمن , عدن , شارع
+                                    {{ $siteSettings['site_address']->value ?? '' }}
                                 </address>
                             </div>
                         </div>
@@ -74,8 +74,12 @@
                             </div>
                             <div class="media-body flex-shrink-1">
                                 <h5 class="mb-4">ارقام التواصل</h5>
-                                <a href="tel:3159052321" class="text-gray-800 d-block">+(967) 734208108</a>
-                                <a href="tel:3159052322" class="text-gray-800 d-block">+(967) 777282953</a>
+                                <a href="tel:3159052321" class="text-gray-800 d-block">
+                                    <bdo dir="ltr"> {{ $siteSettings['site_phone']->value ?? '' }} </bdo>
+                                </a>
+                                <a href="tel:3159052322" class="text-gray-800 d-block">
+                                    <bdo dir="ltr"> {{ $siteSettings['site_mobile']->value ?? '' }} </bdo>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -108,8 +112,7 @@
                             </div>
                             <div class="media-body flex-shrink-1">
                                 <h5 class="mb-4">ساعات العمل</h5>
-                                <p class="mb-0">الاحد-السبت: 8 ص - 5 م</p>
-                                <p class="mb-0">الخميس-الاثنين: 8 ص - 2 م</p>
+                                {{ $siteSettings['site_workTime']->value ?? '' }}
                             </div>
                         </div>
                     </div>
@@ -130,8 +133,16 @@
                             </div>
                             <div class="media-body flex-shrink-1">
                                 <h5 class="mb-4">اكتب لنا على </h5>
-                                <a href="mailto:info@skola.com" class="text-gray-800">info@skola.com</a>
-                                <a href="mailto:courses@skola.com" class="text-gray-800">courses@skola.com</a>
+                                <a href="mailto:{{ $siteSettings['site_email1']->value ?? '' }}" class="text-gray-800">
+                                    <bdo dir="ltr">
+                                        {{ $siteSettings['site_email1']->value ?? '' }}
+                                    </bdo>
+                                </a>
+                                <a href="mailto:{{ $siteSettings['site_email2']->value ?? '' }}" class="text-gray-800">
+                                    <bdo dir="ltr">
+                                        {{ $siteSettings['site_email2']->value ?? '' }}
+                                    </bdo>
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -232,7 +232,7 @@
                                                 المؤهل الدراسي :
                                             </span>
                                             <span
-                                                class="educational-qualification-value">{{ $teach_request->educational_qualification }}</span>
+                                                class="educational-qualification-value">{{ $teach_request->educational_qualification() }}</span>
                                         </div>
                                         <div class="col-sm-12 pt-3 col-md-4">
                                             <span class="specialization ww ">التخصص : </span>

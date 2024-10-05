@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- PAGE TITLE
-                                                                                                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                                                                ================================================== -->
     <header class="py-8 py-md-11" style="background-image: none;">
         <div class="container text-center py-xl-2">
             <h1 class="display-4 fw-semi-bold mb-0">طلب الإشتراك للشركات</h1>
@@ -25,7 +25,7 @@
 
 
     <!-- CONTACT
-                                                                                                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                                                                ================================================== -->
     <div class="container">
         <div class="row row-cols-md-2 mb-8 mb-lg-11">
             <div class="col-md">
@@ -208,6 +208,15 @@
                                             <a href="{{ $siteSettings['site_linkedin']->value }}"
                                                 class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
                                                 <i class="fab fa-linkedin-in"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if ($siteSettings['site_youtube']->value)
+                                        <li class="list-inline-item list-social-item">
+                                            <a href="{{ $siteSettings['site_youtube']->value }}"
+                                                class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                                <i class="fab fa-youtube"></i>
                                             </a>
                                         </li>
                                     @endif

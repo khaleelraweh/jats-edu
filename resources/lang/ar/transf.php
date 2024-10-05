@@ -103,7 +103,7 @@ return [
     'btn_view_cart'                                 =>  'عرض العربة',
     'btn_checkout'                                  =>  'الدفع',
 
-    'txt_login_to_account'                          =>  'قم بتسجيل الدخول إلى حسابك في سكولا!',
+    'txt_login_to_account'                          =>  'قم بتسجيل الدخول إلى حسابك في خطوة شباب!',
     'lbl_username_or_email'                         =>  'اسم المستخدم أو البريد الالكتروني',
     'holder_your_name_or_email'                     =>  'اسمك أو بريدك الإلكتروني',
     'lbl_password'                                  =>  'كلمة المرور',

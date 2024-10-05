@@ -103,7 +103,7 @@ return [
     'btn_view_cart'                                 =>  'View Cart',
     'btn_checkout'                                  =>  'Checkout',
 
-    'txt_login_to_account'                          =>  'Log In to Your Skola Account!',
+    'txt_login_to_account'                          =>  'Log In to Your YSI-YE Account!',
     'lbl_username_or_email'                         =>  'Username or Email',
     'holder_your_name_or_email'                     =>  'Your name or email',
     'lbl_password'                                  =>  'Password',

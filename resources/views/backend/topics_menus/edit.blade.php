@@ -23,7 +23,7 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.topics_menus.index') }}">
-                            {{ __('panel.show_topics_menu') }}
+                            {{ __('panel.show_topics_menus') }}
                         </a>
                     </li>
                 </ul>

@@ -13,6 +13,9 @@ return [
     ############################ Manage Web Menus #################################
     'manage_menus'              => 'Manage Web Menus',
     'manage_company_menus'      => 'Manage Company Menus',
+    'manage_topics_menus'       => 'Manage Topics Menus',
+    'manage_tracks_menus'       => 'Manage Tracks Menus',
+
 
     // --------------- Main Menu --------------//
     'show_web_menus'            => 'Main Menu',
@@ -24,6 +27,18 @@ return [
     'show_company_menus'        => 'Company Menus',
     'add_new_company_link'              => 'Add New Company Menu',
     'edit_existing_company_menu_link'        => 'Edit Existing Company Menu',
+
+    // --------------- Topics Menu --------------//
+    'show_topics_menus'        => 'Topics Menus',
+    'add_new_topics_link'              => 'Add New Topics Menu',
+    'edit_existing_topics_menu_link'        => 'Edit Existing Topics Menu',
+
+
+    // --------------- tracks Menu --------------//
+    'show_tracks_menus'        => 'Tracks Menus',
+    'add_new_tracks_link'              => 'Add New Track Menu',
+    'edit_existing_tracks_menu_link'        => 'Edit Existing Track Menu',
+
 
     // ------------- Helps Menu ------------- //
     'show_web_helps_menu'       => 'Helps Menu',

@@ -183,6 +183,15 @@
                             </a>
                         </li>
                     @endif
+
+                    @if (isset($siteSettings['site_email1']) && $siteSettings['site_email1']->value)
+                        <li class="list-inline-item list-social-item">
+                            <a href="mailto:{{ $siteSettings['site_email1']->value }}"
+                                class="text-secondary font-size-sm w-36 h-36 shadow-dark-hover d-flex align-items-center justify-content-center rounded-circle border-hover">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
 

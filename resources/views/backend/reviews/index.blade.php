@@ -73,7 +73,9 @@
                                 @endif
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                {{ $review->reviewable->title }}
+                                {{-- {{ $review->reviewable->title }} --}}
+                                {{ optional($review->reviewable)->title ?? 'No title available' }}
+
                             </td>
                             <td>{{ $review->status }}</td>
                             <td class="d-none d-sm-table-cell">{{ $review->created_at }}</td>

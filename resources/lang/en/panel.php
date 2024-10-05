@@ -15,6 +15,7 @@ return [
     'manage_company_menus'      => 'Manage Company Menus',
     'manage_topics_menus'       => 'Manage Topics Menus',
     'manage_tracks_menus'       => 'Manage Tracks Menus',
+    'manage_support_menus'       => 'Manage Support Menus',
 
 
     // --------------- Main Menu --------------//
@@ -38,6 +39,11 @@ return [
     'show_tracks_menus'        => 'Tracks Menus',
     'add_new_tracks_link'              => 'Add New Track Menu',
     'edit_existing_tracks_menu_link'        => 'Edit Existing Track Menu',
+
+    // --------------- support Menu --------------//
+    'show_support_menus'        => 'Support Menus',
+    'add_new_support_link'              => 'Add New Support Menu',
+    'edit_existing_support_menu_link'        => 'Edit Existing Support Menu',
 
 
     // ------------- Helps Menu ------------- //

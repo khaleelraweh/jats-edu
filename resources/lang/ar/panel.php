@@ -40,6 +40,14 @@ return [
     'show_tracks_menus'        => 'قائمة المسارات',
     'add_new_tracks_link'              => 'إضافة قائمة مسارات جديدة',
     'edit_existing_tracks_menu_link'        => 'تعديل قائمة مسارات موجودة',
+    'manage_support_menus'              => 'إدارة قوائم المساعدة',
+
+
+
+    // --------------- قائمة المساعدة --------------//
+    'show_support_menus'        => 'قائمة المساعدة',
+    'add_new_support_link'              => 'إضافة قائمة مساعدة جديدة',
+    'edit_existing_support_menu_link'        => 'تعديل قائمة مساعدة موجودة',
 
 
     // ----------------- قائمة المساعدة -------------- //

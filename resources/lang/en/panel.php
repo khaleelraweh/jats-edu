@@ -12,12 +12,18 @@ return [
 
     ############################ Manage Web Menus #################################
     'manage_menus'              => 'Manage Web Menus',
+    'manage_company_menus'      => 'Manage Company Menus',
 
     // --------------- Main Menu --------------//
     'show_web_menus'            => 'Main Menu',
     'add_new_link'              => 'Add New Link',
     'edit_existing_link'        => 'Edit Existing Link',
     'category_menu'             => 'Category Menu',
+
+    // --------------- Company Menu --------------//
+    'show_company_menus'        => 'Company Menus',
+    'add_new_company_link'              => 'Add New Company Menu',
+    'edit_existing_company_menu_link'        => 'Edit Existing Company Menu',
 
     // ------------- Helps Menu ------------- //
     'show_web_helps_menu'       => 'Helps Menu',

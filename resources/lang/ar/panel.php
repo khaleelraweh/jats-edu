@@ -322,9 +322,9 @@ return [
     'manage_users'                  => 'إدارة المستخدمين',
 
     // --------------- Customers  --------------//
-    'show_customers'                => 'العملاء',
-    'add_new_customer'              => 'إضافة حساب عميل جديد',
-    'edit_existing_customer'        => 'تعديل بيانات حساب العميل ',
+    'show_customers'                => 'الطلاب',
+    'add_new_customer'              => 'إضافة حساب طالب جديد',
+    'edit_existing_customer'        => 'تعديل بيانات حساب الطالب ',
 
     // --------------- Supervisors  --------------//
     'show_supervisors'              => 'المشرفين',
@@ -338,19 +338,19 @@ return [
     'edit_existing_instructor'      => 'تعديل بيانات حساب محاضر ',
 
     // ........... commons in instructors   ....... //
-    'customer_name'                 =>  'إسم العميل ',
+    'customer_name'                 =>  'إسم الطالب ',
     'advertisor_name'               =>  'إسم المشرف',
     'permissions'                   =>  'الصلاحيات',
     'grant_all_permissions'         =>  'منح كل الصلاحيات',
 
 
     ################################ Manage Customer addresses ##############################
-    'manage_customer_addresses'     => 'إدارة عناوين العملاء',
+    'manage_customer_addresses'     => 'إدارة عناوين الطلاب',
 
     // --------------- Customer Address  --------------//
-    'show_customer_addresses'        => 'عناوين العملاء',
-    'add_new_customer_address'       => 'إضافة عنوان عميل جديد',
-    'edit_existing_customer_address' => 'التعديل على بيانات  عنوان عميل  ',
+    'show_customer_addresses'        => 'عناوين الطلاب',
+    'add_new_customer_address'       => 'إضافة عنوان طالب جديد',
+    'edit_existing_customer_address' => 'التعديل على بيانات  عنوان طالب  ',
 
 
     // ........... commons in Customer address   ....... //
@@ -605,8 +605,8 @@ return [
     'owner_account_country'         =>  'دولة فتح الحساب',
     'owner_account_phone'           =>  'رقم التلفون المرتبط بالحساب',
 
-    'customer_account_name'         =>  'إسم حساب العميل',
-    'customer_account_number'       =>  'رقم حساب العميل',
+    'customer_account_name'         =>  'إسم حساب الطالب',
+    'customer_account_number'       =>  'رقم حساب الطالب',
     'customer_account_country'      =>  'دولة فتح الحساب',
     'customer_account_phone'        =>  'رقم التلفون المرتبط بالحساب',
 
@@ -624,7 +624,7 @@ return [
 
     // ........... commons in notifications   ....... //
     'a_new_order_with_amount'                                   =>  'طلب جديد مع المبلغ',
-    'from_customer'                                             =>  'من قبل العميل',
+    'from_customer'                                             =>  'من قبل الطالب',
     'notifications'                                             =>  'التنبيهات',
     'no_notification_found'                                     =>  'لا يوجد اى تنبيهات !',
     'view_more...'                                              =>  'عرض المزيد...',
@@ -869,7 +869,7 @@ return [
     'email'                         =>  'الايميل',
     'user_email'                    =>  'البريد الإلكتروني',
     'mobile'                        =>  'الموبايل',
-    'customer'                      =>  'العميل',
+    'customer'                      =>  'الطالب',
     'full_name'                     =>  'الاسم الكامل',
     'first_name'                    =>  'الإسم الاول',
     'last_name'                     =>  'اللقب',
@@ -903,7 +903,7 @@ return [
     'personal_tab'                  =>  'المعلومات الشخصية',
     'address_tab'                   =>  'عنوان الشحن',
     'owner_account_tab'             =>  'حساب مالك الموقع',
-    'customer_account_tab'          =>  'حساب العميل ',
+    'customer_account_tab'          =>  'حساب الطالب ',
     'name_symbol_tab'               =>  'إسم ورمز العملة',
     'code_rate_tab'                 =>  'الكود و قيمة التحويل',
 
@@ -1134,7 +1134,7 @@ return [
     'f_profile'                                         =>  'الملف الشخصي',
     'f_user_profile'                                    =>  'الملف الشخصي للمستخدم ',
     'f_control_panel'                                   =>  'لوحة التحكم',
-    'f_user_addresses'                                  =>  'عناوين العميل',
+    'f_user_addresses'                                  =>  'عناوين الطالب',
     'f_addresses'                                       =>  'العناوين',
     'f_address'                                         =>  'العنوان',
     'f_add_new_address'                                 =>  'إضافة عنوان جديد',
@@ -1221,7 +1221,7 @@ return [
     'f_account_name_in'                                 =>  'إسم الحساب في ',
 
 
-    'f_customer_bank_account_number'                   =>  'رقم الحساب البنكي للعميل',
+    'f_customer_bank_account_number'                   =>  'رقم الحساب البنكي للطالب',
     'f_copy_of_the_transfer_receipt'                   =>  'صورة من وصل التحويل ',
 
 

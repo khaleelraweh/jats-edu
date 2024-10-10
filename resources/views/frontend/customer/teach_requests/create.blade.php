@@ -301,7 +301,7 @@
                                     </div>
                                 </section>
                                 <h3>المرفقات</h3>
-                                <section>
+                                {{-- <section>
                                     <div class="control-group form-group">
                                         <label class="form-label">ارفاق صورة من الهوية / جواز السفر (واضح)</label>
                                         <input type="file" name="identity" class="form-control required">
@@ -344,7 +344,43 @@
                                         </small>
                                         )
                                     </div>
+                                </section> --}}
+
+                                <section>
+                                    <div class="control-group form-group">
+                                        <label class="form-label">ارفاق صورة من الهوية / جواز السفر (واضح)</label>
+                                        <input type="file" name="identity" class="form-control required"
+                                            accept=".jpg,.jpeg,.png,.pdf,.docx">
+                                        @error('identity')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        (<small>يجب ان تكون الصورة ذات احد الامتدادات التالية ( .jpg - .jpeg - .png ,
+                                            .pdf,.docx )</small>)
+                                    </div>
+
+                                    <div class="control-group form-group">
+                                        <label class="form-label">السيرة الذاتية</label>
+                                        <input type="file" name="biography" class="form-control required"
+                                            accept=".jpg,.jpeg,.png,.pdf,.docx">
+                                        @error('biography')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        (<small>يجب ان تكون السيرة الذاتية ذات احد الامتدادات التالية ( .jpg - .jpeg - .png
+                                            , .pdf,.docx )</small>)
+                                    </div>
+
+                                    <div class="control-group form-group mb-0">
+                                        <label class="form-label"> ارفاق الشهائد</label>
+                                        <input type="file" name="Certificates" class="form-control required"
+                                            accept=".jpg,.jpeg,.png,.pdf,.docx">
+                                        @error('Certificates')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        (<small>يجب تضمين جميع الشهائد المراد رفعها في ملف بصيفة .PDF او احد الامتدادادت
+                                            التالية (.jpg,.jpeg,.png,.docx)</small>)
+                                    </div>
                                 </section>
+
                                 <h3>الحافز</h3>
                                 <section>
                                     <div class="form-group">

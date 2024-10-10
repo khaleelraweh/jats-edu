@@ -397,7 +397,7 @@
                                                         </a>
                                                     @endif
                                                 @else
-                                                    <p>No certificates found.</p>
+                                                    <p>No certificates found. </p>
                                                 @endif
                                             </span>
                                         </div>

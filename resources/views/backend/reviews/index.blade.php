@@ -65,7 +65,8 @@
                                     @if ($review->reviewable && $review->reviewable->section == 1)
                                         {{ __('panel.review_type_course') }}
                                     @endif
-                                    @if ($review->reviewable->section == 2)
+                                    @if ($review->reviewable && $review->reviewable->section == 2)
+                                        {{-- @if ($review->reviewable->section == 2) --}}
                                         {{ __('panel.review_type_event') }}
                                     @endif
                                 @elseif ($review->reviewable_type === 'App\Models\Post')

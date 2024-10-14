@@ -114,12 +114,15 @@
                             {{ __('panel.f_phone_number') }}
                             <span class="required">*</span>
                         </label>
-                        {{-- 
-                        <input type="text" name="mobile" id="mobile" class="form-control " value=""
-                            placeholder="{{ __('panel.f_phone_number') }}"> --}}
 
-                        <input id="output" type="hidden" name="full_mobile_number">
-                        <input id="phone" type="text" name="mobile" class="form-control">
+
+
+                        <input id="output_mobile" type="hidden" name="full_mobile_number">
+                        <input id="mobile" type="text" name="mobile" class="form-control">
+
+
+
+
 
 
                     </div>

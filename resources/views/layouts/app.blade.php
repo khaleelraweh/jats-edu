@@ -148,30 +148,54 @@
 
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/intlTelInput.min.js"></script>
     <script>
-        const input = document.querySelector("#phone");
-        const hiddenInput = document.querySelector("#output");
+        // For the account modal
+        const inputModal = document.querySelector("#phone");
+        const hiddenInputModal = document.querySelector("#output");
 
-        const iti = window.intlTelInput(input, {
-            initialCountry: "us", // Set default country or auto-detection
-            nationalMode: false, // Set to false to use full international format
-            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/utils.js" // Format phone numbers
+        const itiModal = window.intlTelInput(inputModal, {
+            initialCountry: "us",
+            nationalMode: false,
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/utils.js"
         });
 
-        const handleChange = () => {
-            if (input.value && iti.isValidNumber()) {
-                // Get the full international number
-                const fullNumber = iti.getNumber();
-                // Set the hidden input's value to the full number
-                hiddenInput.value = fullNumber;
+        const handleChangeModal = () => {
+            if (inputModal.value && itiModal.isValidNumber()) {
+                const fullNumberModal = itiModal.getNumber();
+                hiddenInputModal.value = fullNumberModal;
             } else {
-                hiddenInput.value = ''; // Clear hidden input if phone number is invalid
+                hiddenInputModal.value = '';
             }
         };
 
-        // Listen to changes in the phone input field
-        input.addEventListener('change', handleChange);
-        input.addEventListener('keyup', handleChange);
+        inputModal.addEventListener('change', handleChangeModal);
+        inputModal.addEventListener('keyup', handleChangeModal);
+
+
+
+        const inputRegister = document.querySelector("#mobile");
+        const hiddenInputRegister = document.querySelector("#output_mobile");
+
+        const itiRegister = window.intlTelInput(inputRegister, {
+            initialCountry: "us",
+            nationalMode: false,
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/utils.js"
+        });
+
+        const handleChangeRegister = () => {
+            if (inputRegister.value && itiRegister.isValidNumber()) {
+                const fullNumberRegister = itiRegister.getNumber();
+                hiddenInputRegister.value = fullNumberRegister;
+            } else {
+                hiddenInputRegister.value = '';
+            }
+        };
+
+        inputRegister.addEventListener('change', handleChangeRegister);
+        inputRegister.addEventListener('keyup', handleChangeRegister);
     </script>
+
+
+
 
 
 

@@ -57,7 +57,9 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             // 'country_name' => ['required', 'string', 'max:255'],
             // 'country_code' => ['required', 'string', 'max:255'],
-            'mobile' => ['required', 'numeric', 'unique:users'],
+            // 'mobile' => ['required', 'numeric', 'unique:users'],
+            'full_mobile_number' => ['required', 'string', 'unique:users,mobile'], // Validate the full mobile number
+
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -79,7 +81,8 @@ class RegisterController extends Controller
             'email'     => $data['email'],
             // 'country_name'  => $data['country_name'],
             // 'country_code' => $data['country_code'],
-            'mobile'    => $data['mobile'],
+            // 'mobile'    => $data['mobile'],
+            'mobile'    => $data['full_mobile_number'],  // Use the full mobile number here
             'password'  => Hash::make($data['password']),
             'user_image' => 'avator.svg',
         ]);

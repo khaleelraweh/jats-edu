@@ -307,46 +307,96 @@
                                 </div>
 
                                 <div class="row">
+                                    <!-- Identity Image or File -->
                                     <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="identity ww">
-                                            صورة من الهوية / جواز السفر :
-                                        </span>
+                                        <span class="identity ww">صورة من الهوية / جواز السفر :</span>
                                         <span class="identity-value">
                                             @if ($teach_request->identity)
-                                                <a href="#" data-toggle="modal" data-target="#identityModal">
-                                                    <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
-                                                        alt="Identity Image" style="width: 50px; height: 50px;">
-                                                </a>
+                                                @php
+                                                    $identityExtension = strtolower(
+                                                        pathinfo($teach_request->identity, PATHINFO_EXTENSION),
+                                                    );
+                                                    $imageExtensions = ['jpg', 'jpeg', 'png'];
+                                                @endphp
+                                                @if (in_array($identityExtension, $imageExtensions))
+                                                    <!-- Display as an image -->
+                                                    <a href="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
+                                                        data-fancybox data-width="1400" data-height="900">
+                                                        <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
+                                                            class="img-fluid" alt="Identity Image"
+                                                            style="width: 50px; height: 50px;">
+                                                    </a>
+                                                @else
+                                                    <!-- Display as a link (for PDF or Word) -->
+                                                    <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->identity, PATHINFO_FILENAME)) }}"
+                                                        target="_blank">
+                                                        {{ pathinfo($teach_request->identity, PATHINFO_FILENAME) }}
+                                                    </a>
+                                                @endif
                                             @else
-                                                <p>No identity image available.</p>
+                                                <p>No identity file available.</p>
                                             @endif
                                         </span>
-
                                     </div>
-                                    <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="biography ww"> إرفاق السيرة الذاتية : </span>
 
+                                    <!-- Biography PDF/Word or Image -->
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="biography ww">إرفاق السيرة الذاتية :</span>
                                         <span class="biography-value">
-                                            @if ($teach_request->identity && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
-                                                <a href="{{ route('admin.view_file', pathinfo($teach_request->biography, PATHINFO_FILENAME)) }}"
-                                                    target="_blanck">
-                                                    {{ pathinfo($teach_request->biography, PATHINFO_FILENAME) }}
-                                                </a>
+                                            @if ($teach_request->biography && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
+                                                @php
+                                                    $biographyExtension = strtolower(
+                                                        pathinfo($teach_request->biography, PATHINFO_EXTENSION),
+                                                    );
+                                                @endphp
+                                                @if (in_array($biographyExtension, $imageExtensions))
+                                                    <!-- Display as an image -->
+                                                    <a href="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
+                                                        data-fancybox data-width="1400" data-height="900">
+                                                        <img src="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
+                                                            class="img-fluid" alt="Biography Image"
+                                                            style="width: 50px; height: 50px;">
+                                                    </a>
+                                                @else
+                                                    <!-- Display as a link (for PDF or Word) -->
+                                                    <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->biography, PATHINFO_FILENAME)) }}"
+                                                        target="_blank">
+                                                        {{ pathinfo($teach_request->biography, PATHINFO_FILENAME) }}
+                                                    </a>
+                                                @endif
                                             @else
-                                                <p>No biography found</p>
+                                                <p>No biography found.</p>
                                             @endif
                                         </span>
                                     </div>
+
+                                    <!-- Certificates PDF/Word or Image -->
                                     <div class="col-sm-12 pt-3 col-md-4">
-                                        <span class="Certificates ww"> إرفاق الشهادات : </span>
+                                        <span class="Certificates ww">إرفاق الشهادات :</span>
                                         <span class="Certificates-value">
                                             @if ($teach_request->Certificates && file_exists(public_path('assets/teach_requests/' . $teach_request->Certificates)))
-                                                <a href="{{ route('admin.view_file', pathinfo($teach_request->Certificates, PATHINFO_FILENAME)) }}"
-                                                    target="_blanck">
-                                                    {{ pathinfo($teach_request->Certificates, PATHINFO_FILENAME) }}
-                                                </a>
+                                                @php
+                                                    $certificatesExtension = strtolower(
+                                                        pathinfo($teach_request->Certificates, PATHINFO_EXTENSION),
+                                                    );
+                                                @endphp
+                                                @if (in_array($certificatesExtension, $imageExtensions))
+                                                    <!-- Display as an image -->
+                                                    <a href="{{ asset('assets/teach_requests/' . $teach_request->Certificates) }}"
+                                                        data-fancybox data-width="1400" data-height="900">
+                                                        <img src="{{ asset('assets/teach_requests/' . $teach_request->Certificates) }}"
+                                                            class="img-fluid" alt="Certificates Image"
+                                                            style="width: 50px; height: 50px;">
+                                                    </a>
+                                                @else
+                                                    <!-- Display as a link (for PDF or Word) -->
+                                                    <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->Certificates, PATHINFO_FILENAME)) }}"
+                                                        target="_blank">
+                                                        {{ pathinfo($teach_request->Certificates, PATHINFO_FILENAME) }}
+                                                    </a>
+                                                @endif
                                             @else
-                                                <p>No Certificates found</p>
+                                                <p>No certificates found. </p>
                                             @endif
                                         </span>
                                     </div>

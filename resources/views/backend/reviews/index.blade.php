@@ -61,7 +61,8 @@
                             </td>
                             <td class="d-none d-sm-table-cell">
                                 @if ($review->reviewable_type === 'App\Models\Course')
-                                    @if ($review->reviewable->section == 1)
+                                    {{-- @if ($review->reviewable->section == 1) --}}
+                                    @if ($review->reviewable && $review->reviewable->section == 1)
                                         {{ __('panel.review_type_course') }}
                                     @endif
                                     @if ($review->reviewable->section == 2)

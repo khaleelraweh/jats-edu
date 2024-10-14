@@ -436,7 +436,10 @@
                                 </div> --}}
                                 <div class="footer-item">
                                     <i class="fa fa-phone"></i>
-                                    <span> 02-350347 \ 734208108</span>
+                                    <span>
+                                        {{ $siteSettings['site_phone']->value ?? '' }} \
+                                        {{ $siteSettings['site_mobile']->value ?? '' }}
+                                    </span>
                                 </div>
                             </div>
                         </footer>

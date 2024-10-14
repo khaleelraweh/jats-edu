@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('style')
+    <style>
+        .iti {
+            width: 100%;
+        }
+    </style>
+@endsection
+
 @section('content')
     <section class="py-3 pref">
         <div class="container">
@@ -102,7 +110,7 @@
                     <div class="form-group mb-5">
 
                         <label for="mobile">
-                            <i class="fa fa-mobile-phone custom-color"></i>
+                            <i class="fa fa-phone custom-color"></i>
                             {{ __('panel.f_phone_number') }}
                             <span class="required">*</span>
                         </label>
@@ -111,7 +119,7 @@
                             placeholder="{{ __('panel.f_phone_number') }}"> --}}
 
                         <input id="output" type="hidden" name="full_mobile_number">
-                        <input id="phone" type="text" name="mobile">
+                        <input id="phone" type="text" name="mobile" class="form-control">
 
 
                     </div>

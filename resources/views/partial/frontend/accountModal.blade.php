@@ -1,3 +1,8 @@
+<style>
+    .iti {
+        width: 100%;
+    }
+</style>
 <div class="modal modal-sidebar left fade-left fade" id="accountModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -419,7 +424,7 @@
                         </div>
 
 
-                        <div class="form-group mb-5">
+                        {{-- <div class="form-group mb-5">
                             <label for="country_name">
                                 <i class="fa fa-globe custom-color"></i>
                                 {{ __('panel.f_select_country') }}
@@ -450,6 +455,24 @@
                                 <input type="text" name="mobile" id="mobile" class="form-control"
                                     placeholder="{{ __('panel.f_phone_number') }}">
                             </div>
+                        </div> --}}
+
+
+                        <div class="form-group mb-5">
+
+                            <label for="mobile">
+                                <i class="fa fa-phone custom-color"></i>
+                                {{ __('panel.f_phone_number') }}
+                                <span class="required">*</span>
+                            </label>
+                            {{-- 
+                            <input type="text" name="mobile" id="mobile" class="form-control " value=""
+                                placeholder="{{ __('panel.f_phone_number') }}"> --}}
+
+                            <input id="output" type="hidden" name="full_mobile_number">
+                            <input id="phone" type="text" name="mobile" class="form-control">
+
+
                         </div>
 
 

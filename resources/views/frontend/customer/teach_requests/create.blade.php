@@ -310,7 +310,7 @@
                                         @enderror
                                         (
                                         <small>
-                                            يجب ان تكون الصورة ذات احد الامتدادات التالية ( .jpg - .jpeg - .png , .pdf,.docx
+                                            يجب ان تكون الصورة ذات احد الامتدادات التالية ( .jpg - .jpeg - .png , .pdf
                                             )
                                         </small>
                                         )
@@ -324,7 +324,7 @@
                                         @enderror
                                         (<small>
                                             يجب ان تكون السيرة الذاتية ذات احد الامتدادات التالية ( .jpg - .jpeg - .png ,
-                                            .pdf,.docx
+                                            .pdf
                                             )
                                         </small>)
                                     </div>
@@ -350,34 +350,34 @@
                                     <div class="control-group form-group">
                                         <label class="form-label">ارفاق صورة من الهوية / جواز السفر (واضح)</label>
                                         <input type="file" name="identity" class="form-control required"
-                                            accept=".jpg,.jpeg,.png,.pdf,.docx">
+                                            accept=".jpg,.jpeg,.png,.pdf">
                                         @error('identity')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                         (<small>يجب ان تكون الصورة ذات احد الامتدادات التالية ( .jpg - .jpeg - .png ,
-                                            .pdf,.docx )</small>)
+                                            .pdf )</small>)
                                     </div>
 
                                     <div class="control-group form-group">
                                         <label class="form-label">السيرة الذاتية</label>
                                         <input type="file" name="biography" class="form-control required"
-                                            accept=".jpg,.jpeg,.png,.pdf,.docx">
+                                            accept=".jpg,.jpeg,.png,.pdf">
                                         @error('biography')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                         (<small>يجب ان تكون السيرة الذاتية ذات احد الامتدادات التالية ( .jpg - .jpeg - .png
-                                            , .pdf,.docx )</small>)
+                                            , .pdf )</small>)
                                     </div>
 
                                     <div class="control-group form-group mb-0">
                                         <label class="form-label"> ارفاق الشهائد</label>
                                         <input type="file" name="Certificates" class="form-control required"
-                                            accept=".jpg,.jpeg,.png,.pdf,.docx">
+                                            accept=".jpg,.jpeg,.png,.pdf">
                                         @error('Certificates')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                         (<small>يجب تضمين جميع الشهائد المراد رفعها في ملف بصيفة .PDF او احد الامتدادادت
-                                            التالية (.jpg,.jpeg,.png,.docx)</small>)
+                                            التالية (.jpg,.jpeg,.png)</small>)
                                     </div>
                                 </section>
 

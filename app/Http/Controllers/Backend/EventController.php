@@ -23,7 +23,7 @@ class EventController extends Controller
         }
 
         $events = Course::with('courseCategory', 'tags')
-            ->ActiveCourseCategory()
+            // ->ActiveCourseCategory()
             ->Event()
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);

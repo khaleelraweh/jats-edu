@@ -603,9 +603,13 @@
                                     class="card-img sk-thumbnail img-ratio-4 card-hover-overlay coral d-block">
                                     @php
                                         if ($instructor->user_image != null) {
-                                            $instructor_img = asset('assets/users/' . $instructor->user_image);
+                                            $instructor_img = asset('assets/instructors/' . $instructor->user_image);
 
-                                            if (!file_exists(public_path('assets/users/' . $instructor->user_image))) {
+                                            if (
+                                                !file_exists(
+                                                    public_path('assets/instructors/' . $instructor->user_image),
+                                                )
+                                            ) {
                                                 $instructor_img = asset('image/not_found/avator2.webp');
                                             }
                                         } else {

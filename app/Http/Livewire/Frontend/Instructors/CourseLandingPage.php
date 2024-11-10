@@ -138,6 +138,10 @@ class CourseLandingPage extends Component
         $course = Course::with('photos', 'firstMedia')->findOrFail($this->courseId);
         $course_categories = CourseCategory::whereStatus(1)->get(['id', 'title']);
 
+
+        $this->emit('initializeTinyMCE'); // Trigger JavaScript re-initialization
+
+
         return view(
             'livewire.frontend.instructors.course-landing-page',
             [

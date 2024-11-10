@@ -135,7 +135,7 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 pt-4">
                                         <label for="description">{{ __('transf.Course description') }}</label>
-                                        <textarea name="description" id="descriptionTextarea" rows="10" class="form-control" wire:model.defer="description"
+                                        <textarea name="description" id="tinymceExample" rows="10" class="form-control" wire:model.defer="description"
                                             placeholder="{{ __('transf.Insert your course description.') }}"></textarea>
 
                                         <div class=" d-flex justify-content-between">
@@ -403,24 +403,32 @@
 </div>
 
 
+
+
+
 <script>
     document.addEventListener('livewire:load', function() {
-        // Get the textarea element
-        var textarea = document.getElementById('descriptionTextarea');
-        // Get the word count element
-        var wordCountElement = document.getElementById('wordCount');
+        initTinyMCE();
 
-        // Event listener for input changes in the textarea
-        textarea.addEventListener('input', function() {
-            // Get the current text in the textarea
-            var text = textarea.value;
-            // Split the text into words
-            var words = text.match(/\S+/g) || [];
-            // Get the current word count
-            var wordCount = words.length;
-
-            // Emit Livewire event to update word count
-            Livewire.emit('updateWordCount', wordCount);
+        Livewire.on('initializeTinyMCE', () => {
+            initTinyMCE();
         });
     });
+
+    function initTinyMCE() {
+        if (tinymce.get('description')) {
+            tinymce.get('description').remove();
+        }
+        tinymce.init({
+            selector: '#tinymceExample',
+            setup: function(editor) {
+                // editor.on('change', function() {
+                //     @this.set('description', editor.getContent());
+                // });
+            },
+            menubar: false,
+            plugins: 'lists link image table code',
+            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image'
+        });
+    }
 </script>

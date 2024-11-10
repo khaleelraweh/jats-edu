@@ -340,7 +340,7 @@ return [
     'original_price'                                =>  'السعر الأصلي',
     'offer_discount'                                =>  'خصم ترويجي',
     'coupon_discout'                                =>  'خصم القسيمة',
-    'proccess'                                      =>  'معالجة',
+    'proccess'                                      =>  'قم بالدفع الان',
 
     // instructor dashboard
     'student'                                       =>  'طالب',

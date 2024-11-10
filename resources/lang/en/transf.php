@@ -340,7 +340,7 @@ return [
     'original_price'                                =>  'Original Price',
     'offer_discount'                                =>  'Offer Discount',
     'coupon_discout'                                =>  'Coupon Discount',
-    'proccess'                                      =>  'Proccess',
+    'proccess'                                      =>  'Make payment now',
 
 
     // instructor dashboard

@@ -142,7 +142,7 @@
                                                 {{ __('panel.payment_method_description') }}
                                                 {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                             </label>
-                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
+                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control" id="tinymceExample">
                                             {!! old('description.' . $key) !!}
                                         </textarea>
                                         </div>

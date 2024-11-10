@@ -224,7 +224,7 @@
                                         {{ __('panel.instructor_description') }}
                                         {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                     </label>
-                                    <textarea name="description[{{ $key }}]" style="height: 120px" class="form-control summernote">{!! old('description.' . $key) !!}</textarea>
+                                    <textarea name="description[{{ $key }}]" style="height: 120px" class="form-control" id="tinymceExample">{!! old('description.' . $key) !!}</textarea>
                                     @error('course_category_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -240,8 +240,8 @@
                                         {{ __('panel.instructor_motavation') }}
                                         {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                     </label>
-                                    <textarea name="motavation[{{ $key }}]" rows="10" style="height: 120px"
-                                        class="form-control summernote">{!! old('motavation.' . $key) !!}</textarea>
+                                    <textarea name="motavation[{{ $key }}]" rows="10" style="height: 120px" class="form-control"
+                                        id="tinymceExample">{!! old('motavation.' . $key) !!}</textarea>
                                     @error('course_category_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

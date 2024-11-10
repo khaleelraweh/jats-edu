@@ -143,7 +143,7 @@
                                         <div class="form-group">
                                             <label for="expire_date"> {{ __('panel.coupon_expire_date') }} </label>
                                             <input type="text" id="expire_date" name="expire_date"
-                                                value="{{ old('expire_date',now()->addDay(1)->format('Y-m-d')) }}"
+                                                value="{{ old('expire_date', now()->addDay(1)->format('Y-m-d')) }}"
                                                 class="form-control">
                                             @error('expire_date')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -211,7 +211,7 @@
                                                                 {{ __('panel.coupon_description') }}
                                                                 {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                                             </label>
-                                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
+                                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control" id="tinymceExample">
                                                                 {!! old('description.' . $key) !!}
                                                             </textarea>
                                                         </div>

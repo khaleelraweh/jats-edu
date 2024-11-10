@@ -131,9 +131,7 @@
                                                 {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                             </label>
                                             <textarea name="description[{{ $key }}]" id="description[{{ $key }}]" rows="10"
-                                                class="form-control summernote">
-                                            {!! old('description.' . $key) !!}
-                                        </textarea>
+                                                class="form-control" id="tinymceExample">{!! old('description.' . $key) !!}</textarea>
                                             @error('description.' . $key)
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror

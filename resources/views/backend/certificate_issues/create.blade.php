@@ -169,7 +169,7 @@
                                         <label for="description">
                                             {{ __('panel.description') }}
                                         </label>
-                                        <textarea name="description" rows="10" class="form-control summernote">
+                                        <textarea name="description" rows="10" class="form-control" id="tinymceExample">
                                             {!! old('description') !!}
                                         </textarea>
                                         @error('course_category_id')

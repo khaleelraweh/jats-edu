@@ -148,7 +148,7 @@
                                             {{ __('panel.in') }} ({{ __('panel.' . $key) }})
                                         </label>
 
-                                        <textarea id="elm1" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key) !!}</textarea>
+                                        <textarea id="tinymceExample" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key) !!}</textarea>
                                         @error('content.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror

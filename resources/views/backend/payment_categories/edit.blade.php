@@ -98,7 +98,7 @@
                                                 {{ __('panel.description') }}
                                                 {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                             </label>
-                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">
+                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control" id="tinymceExample">
                                             {!! old('description.' . $key, $paymentCategory->getTranslation('description', $key)) !!}
                                         </textarea>
                                         </div>

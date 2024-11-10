@@ -60,7 +60,7 @@
                         </div>
                     </div>
 
-                    <a href="#" class="text-teal fw-medium d-flex align-items-center mx-lg-4 order-1 order-md-0">
+                    {{-- <a href="#" class="text-teal fw-medium d-flex align-items-center mx-lg-4 order-1 order-md-0">
                         <!-- Icon -->
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -82,7 +82,7 @@
                         </svg>
 
                         <span class="ms-3">Report this author</span>
-                    </a>
+                    </a> --}}
                 </div>
                 <h1 class="text-center mb-1">{{ $instructor->first_name }} {{ $instructor->last_name }}</h1>
                 <div class="text-center mb-7">
@@ -98,7 +98,7 @@
                         specification did not set yet
                     @endif
                 </div>
-
+                {{-- 
                 <div class="row mb-7 justify-content-center align-items-center">
                     <div class="col-12 col-md-auto mb-3 mb-md-0">
                         <div class="d-flex align-items-center">
@@ -259,11 +259,11 @@
                             {{ count($instructor->courses) }} courses
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
-                <div class="text-center mb-7">
+                {{-- <div class="text-center mb-7">
                     <a href="#" class="btn btn-teal btn-wide text-white">SEND MESSAGE</a>
-                </div>
+                </div> --}}
             </div>
 
             <div class="col-12">

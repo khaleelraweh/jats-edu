@@ -559,7 +559,7 @@
         <div class="container">
             <div class="text-center mb-4 mb-md-7" data-aos="fade-up">
                 <h1 class="mb-1">{{ __('transf.txt_top_rating_instructuros') }}</h1>
-                <p class="font-size-lg mb-0 text-capitalize">{{ __('transf.txt_top_rating_instructuros_desc') }}</p>
+                {{-- <p class="font-size-lg mb-0 text-capitalize">{{ __('transf.txt_top_rating_instructuros_desc') }}</p> --}}
             </div>
 
             <div class="mx-n3 mx-md-n4"

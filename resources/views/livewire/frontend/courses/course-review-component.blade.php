@@ -50,9 +50,9 @@
                 <div class="avatar avatar-xxl me-3 me-md-6 flex-shrink-0">
                     @php
                         if ($review->user->user_image != null) {
-                            $review_user_image = asset('assets/customers/' . $review->user->user_image);
+                            $review_user_image = asset('assets/users/' . $review->user->user_image);
 
-                            if (!file_exists(public_path('assets/customers/' . $review->user->user_image))) {
+                            if (!file_exists(public_path('assets/users/' . $review->user->user_image))) {
                                 $review_user_image = asset('image/not_found/avator1.webp');
                             }
                         } else {

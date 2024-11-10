@@ -62,11 +62,9 @@
                                 <td class="d-none d-sm-table-cell">
                                     @php
                                         if ($customer->user_image != null) {
-                                            $customer_img = asset('assets/customers/' . $customer->user_image);
+                                            $customer_img = asset('assets/users/' . $customer->user_image);
 
-                                            if (
-                                                !file_exists(public_path('assets/customers/' . $customer->user_image))
-                                            ) {
+                                            if (!file_exists(public_path('assets/users/' . $customer->user_image))) {
                                                 $customer_img = asset('image/not_found/avator1.webp');
                                             }
                                         } else {

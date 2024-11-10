@@ -62,11 +62,9 @@
                             <td class="d-none d-sm-table-cell">
                                 @php
                                     if ($supervisor->user_image != null) {
-                                        $supervisor_img = asset('assets/supervisors/' . $supervisor->user_image);
+                                        $supervisor_img = asset('assets/users/' . $supervisor->user_image);
 
-                                        if (
-                                            !file_exists(public_path('assets/supervisors/' . $supervisor->user_image))
-                                        ) {
+                                        if (!file_exists(public_path('assets/users/' . $supervisor->user_image))) {
                                             $supervisor_img = asset('image/not_found/avator1.webp');
                                         }
                                     } else {

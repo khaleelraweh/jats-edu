@@ -63,7 +63,7 @@ class CustomerController extends Controller
 
         if ($image = $request->file('user_image')) {
             $file_name = Str::slug($request->username) . '_' . time() .  "." . $image->getClientOriginalExtension();
-            $path = public_path('assets/customers/' . $file_name);
+            $path = public_path('assets/users/' . $file_name);
             Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save($path, 100);
@@ -117,13 +117,13 @@ class CustomerController extends Controller
         $input['updated_by'] = auth()->user()->full_name;
 
         if ($image = $request->file('user_image')) {
-            if ($customer->user_image != null && File::exists('assets/customers/' . $customer->user_image)) {
-                unlink('assets/customers/' . $customer->user_image);
+            if ($customer->user_image != null && File::exists('assets/users/' . $customer->user_image)) {
+                unlink('assets/users/' . $customer->user_image);
             }
 
             $file_name = Str::slug($request->username) . '_' . time() .  "." . $image->getClientOriginalExtension();
 
-            $path = public_path('assets/customers/' . $file_name);
+            $path = public_path('assets/users/' . $file_name);
             Image::make($image->getRealPath())->resize(500, null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save($path);
@@ -146,8 +146,8 @@ class CustomerController extends Controller
         }
 
         // first: delete image from users path 
-        if (File::exists('assets/customers/' . $customer->user_image)) {
-            unlink('assets/customers/' . $customer->user_image);
+        if (File::exists('assets/users/' . $customer->user_image)) {
+            unlink('assets/users/' . $customer->user_image);
         }
 
         $customer->deleted_by = auth()->user()->full_name;
@@ -170,8 +170,8 @@ class CustomerController extends Controller
         }
 
         $customer = User::findOrFail($request->customer_id);
-        if (File::exists('assets/customers/' . $customer->user_image)) {
-            unlink('assets/customers/' . $customer->user_image);
+        if (File::exists('assets/users/' . $customer->user_image)) {
+            unlink('assets/users/' . $customer->user_image);
             $customer->user_image = null;
             $customer->save();
         }

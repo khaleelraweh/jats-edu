@@ -388,7 +388,7 @@
                 overwriteInitial: false,
                 initialPreview: [
                     @if ($instructor->user_image != '')
-                        "{{ asset('assets/instructors/' . $instructor->user_image) }}",
+                        "{{ asset('assets/users/' . $instructor->user_image) }}",
                     @endif
                 ],
                 initialPreviewAsData: true,

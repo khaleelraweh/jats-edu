@@ -130,7 +130,19 @@ class CourseController extends Controller
             // dd($requirements_list);
             $requirements = $course->requirements()->createMany($requirements_list);
         }
-        // course topics start 
+
+
+        // course intended start 
+        if ($request->course_intended != null) {
+
+            $intendeds_list = [];
+            for ($i = 0; $i < count($request->course_intended); $i++) {
+                $intendeds_list[$i]['title'] = $request->course_intended[$i];
+            }
+            // dd($intendeds_list);
+            $intendeds = $course->intendeds()->createMany($intendeds_list);
+        }
+
 
 
 
@@ -305,7 +317,18 @@ class CourseController extends Controller
             $requirements = $course->requirements()->createMany($requirements_list);
         }
 
-        // course topics start 
+
+        // course intended start 
+        $course->intendeds()->delete();
+        if ($request->course_intended != null) {
+            $intendeds_list = [];
+            for ($i = 0; $i < count($request->course_intended); $i++) {
+                $intendeds_list[$i]['title'] = $request->course_intended[$i];
+            }
+            // dd($intendeds_list);
+            $intendeds = $course->intendeds()->createMany($intendeds_list);
+        }
+
         if ($request->images && count($request->images) > 0) {
             $i = $course->photos->count() + 1;
 

@@ -97,6 +97,12 @@
                             aria-selected="true">{{ __('panel.course_requirements_tab') }}
                         </button>
                     </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="course_intendeds-tab" data-bs-toggle="tab"
+                            data-bs-target="#course_intendeds" type="button" role="tab"
+                            aria-controls="course_intendeds" aria-selected="true">{{ __('panel.course_intendeds_tab') }}
+                        </button>
+                    </li>
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="instructor-tab" data-bs-toggle="tab" data-bs-target="#instructor"
@@ -497,6 +503,60 @@
                                         <td colspan="3" class="text-end">
                                             <button type="button"
                                                 class="btn_add_requirement btn btn-primary">{{ __('panel.btn_add_another_requirement') }}</button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                    </div>
+
+                    {{-- course Objectives content --}}
+                    <div class="tab-pane fade" id="course_intendeds" role="tabpanel"
+                        aria-labelledby="course_intendeds-tab">
+                        <div class="table-responsive">
+                            <table class="table" id="course_intendeds_details">
+                                <thead>
+                                    <tr class="pt-4">
+                                        <th width="30px">{{ __('panel.act') }}</th>
+                                        <th width="160px">{{ __('panel.type') }}</th>
+                                        <th>{{ __('panel.txt_course_intendeds') }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($course->intendeds as $index => $item)
+                                        <tr class="cloning_row" id="{{ $index }}">
+                                            <td style="width: 30px !important;">
+                                                @if ($index == 0)
+                                                    {{ '#' }}
+                                                @else
+                                                    <button type="button" class="btn btn-danger btn-sm delegated-btn"><i
+                                                            class="fa fa-minus"></i></button>
+                                                @endif
+                                            </td>
+                                            <td>{{ __('panel.course_intended') }} ({{ $index }})</td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <input type="text" name="course_intended[{{ $index }}]"
+                                                        id="course_intended"
+                                                        value="{{ old('course_intended[' . $index . ']', $item->title) }}"
+                                                        class="course_intended form-control" maxlength="160">
+                                                    <span class="input-group-text" id="charCountCourseintended">160</span>
+                                                </div>
+
+                                                @error('course_intended[{{ $index }}]')
+                                                    <span class="help-block text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3" class="text-end">
+                                            <button type="button"
+                                                class="btn_add_intended btn btn-primary">{{ __('panel.btn_add_another_intended') }}</button>
                                         </td>
                                     </tr>
                                 </tfoot>
@@ -1035,6 +1095,100 @@
 
                 // Initialize character counter for the new row
                 initializeCharCounter(newRow.find('input.course_requirement'));
+            });
+
+            // Remove row when delete button is clicked
+            $(document).on('click', '.delegated-btn', function(e) {
+                e.preventDefault();
+                $(this).closest('tr').remove();
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Function to initialize character counter for a specific input field
+            function initializeCharCounter($input) {
+                var $counter = $input.parent().find('.input-group-text');
+
+                // Update character count on input
+                $input.on('input', function() {
+                    var remainingChars = 160 - $(this).val().length;
+                    $counter.text(remainingChars);
+                });
+
+                // Trigger input event to update counter initially
+                $input.trigger('input');
+            }
+
+            // Initialize character counters for existing rows
+            $('#course_intendeds_details').find('input.course_intended').each(function() {
+                initializeCharCounter($(this));
+            });
+
+            // Submit event handler for the form
+            $('#my_form_id').on('submit', function(event) {
+                // Flag to track whether there are empty fields
+                let isEmpty = false;
+
+                // Loop through each input field and check if it's empty
+                $('input.course_intended').each(function() {
+                    if ($(this).val() === '') {
+                        isEmpty = true;
+                        return false; // Exit the loop if any field is empty
+                    }
+                });
+
+                // If any field is empty, prevent the form submission
+                if (isEmpty) {
+                    alert('{{ __('panel.msg_one_or_more_intended_field_empty') }}.');
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+
+            // Click event handler for adding new rows
+            $(document).on('click', '.btn_add_intended', function() {
+                let trCount = $('#course_intendeds_details').find('tr.cloning_row:last').length;
+                let numberIncr = trCount > 0 ? parseInt($('#course_intendeds_details').find(
+                        'tr.cloning_row:last')
+                    .attr('id')) + 1 : 0;
+
+                // Create a flag to check if any field is empty
+                let isEmpty = false;
+
+                // Loop through each input field and check if it's empty
+                $('#course_intendeds_details').find('input.course_intended').each(function() {
+                    if ($(this).val() === '') {
+                        isEmpty = true;
+                        return false; // Exit the loop if any field is empty
+                    }
+                });
+
+                // If any field is empty, display an alert
+                if (isEmpty) {
+                    alert(
+                        '{{ __('panel.msg_please_fill_in_all_intended_fields_before_adding_new') }}.'
+                    );
+                    return false; // Prevent the form from submitting
+                }
+
+                // Add new row
+                var newRow = $('<tr class="cloning_row" id="' + numberIncr + '">' +
+                    '<td>' +
+                    '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
+                    '<td>{{ __('panel.course_intended') }} (' + numberIncr + ')</td>' +
+                    '<td>' +
+                    '<div class="input-group">' +
+                    '<input type="text" name="course_intended[' + numberIncr +
+                    ']" class="course_intended form-control" maxlength="160">' +
+                    '<span class="input-group-text">160</span>' +
+                    '</div>' +
+                    '</td>' +
+                    '</tr>');
+                $('#course_intendeds_details tbody').append(newRow);
+
+                // Initialize character counter for the new row
+                initializeCharCounter(newRow.find('input.course_intended'));
             });
 
             // Remove row when delete button is clicked

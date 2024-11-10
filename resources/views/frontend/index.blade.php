@@ -16,6 +16,8 @@
                 padding-bottom: 3px;
             }
         }
+
+        @media(max-width:768px) {}
     </style>
 @endsection
 
@@ -118,8 +120,9 @@
                         {{-- <div class="flick-item" style="width:190px !important;height: 190px !important;"> --}}
                         <div class="flick-item">
                             <a href="{{ $partner->partner_link }}">
-                                <img src="{{ $partner_img }}" style="width:100%;height:100%;border-radius:50%;"
-                                    class="img-fluid" alt="{{ $partner->name }}">
+                                <img class="partner-img" src="{{ $partner_img }}"
+                                    style="width:100%;height:100%;border-radius:50%;" class="img-fluid"
+                                    alt="{{ $partner->name }}">
                             </a>
 
                         </div>

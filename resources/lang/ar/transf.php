@@ -295,7 +295,7 @@ return [
 
 
     // Category 
-    'categories'                                    =>  'المجموعات',
+    'categories'                                    =>  'القسم',
     'instructors'                                   =>  'المدربون',
     'search'                                        =>  'بحث',
     'prices'                                        =>  'الاسعار',

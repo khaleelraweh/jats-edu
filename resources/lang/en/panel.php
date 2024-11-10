@@ -161,6 +161,10 @@ return [
     'language'                      =>  'Language',
     'language_ar'                   =>  'Arabic',
     'language_en'                   =>  'English',
+
+    'the_language_ar'                =>  'Arabic',
+    'the_language_en'                =>  'English',
+
     'evaluation'                    =>  'Evaluation',
     'evaluation_normal'             =>  'Normal',
     'evaluation_featured'           =>  'Featured',

@@ -148,11 +148,11 @@ class Course extends Model
     public function language()
     {
         if ($this->language == 1)
-            return __('panel.language_ar');
+            return __('panel.the_language_ar');
         else if ($this->language == 2)
             return __('panel.language_en');
         else {
-            return __('panel.language_ar');
+            return __('panel.the_language_ar');
         }
     }
 

@@ -162,6 +162,10 @@ return [
     'language'                   =>  'اللغة',
     'language_ar'                =>  'عربي',
     'language_en'                =>  'إنجليزي',
+
+    'the_language_ar'                =>  'اللغة العربية',
+    'the_language_en'                =>  'اللغة الإنجليزية',
+
     'evaluation'             =>  'التقييم',
     'evaluation_normal'      =>  'عادي',
     'evaluation_featured'         =>  'مفضل',

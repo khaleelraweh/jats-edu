@@ -622,6 +622,7 @@
                                 <h6 class="mb-0 ms-3 me-auto">{{ __('transf.language') }}</h6>
                                 <span>{{ $course->language() }}</span>
                             </li>
+
                             <li class="list-group-item d-flex align-items-center py-3">
                                 <div class="text-secondary d-flex icon-uxs">
                                     <!-- Icon -->

@@ -186,9 +186,9 @@ class FrontendController extends Controller
         // Trim the text to remove leading and trailing spaces
         $instructor->description = trim($instructor->description);
         // Get the first 200 characters
-        $exposedText = substr($instructor->description, 0, 200);
+        $exposedText = substr($instructor->biography, 0, 200);
         // Get the rest of the text
-        $hiddenText = substr($instructor->description, 200);
+        $hiddenText = substr($instructor->biography, 200);
 
 
         return view('frontend.instructors-single', compact('instructor', 'exposedText', 'hiddenText'));

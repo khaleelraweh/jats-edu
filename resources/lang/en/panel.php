@@ -222,6 +222,14 @@ return [
     'act'                                                       =>  'Act',
     'type'                                                      =>  'Type',
 
+
+    // Course intendeds
+    'course_intendeds_tab'                                  =>  'How is This Course For',
+    'txt_course_intendeds'                                  =>  'Targets of the course',
+    'course_intended'                                       =>  'Target',
+    'btn_add_another_intended'                              =>  'Add another Target',
+
+
     // --------------- Events  --------------//
     'requirement'                               =>  'Requirements',
     'category'                                  =>  'Category',

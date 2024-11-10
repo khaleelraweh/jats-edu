@@ -227,6 +227,13 @@ return [
     'act'                                             =>  'Act',
     'type'                                            =>  'التعريف',
 
+    // Course intendeds
+    'course_intendeds_tab'                                  =>  'لمن هذه الدورة',
+    'txt_course_intendeds'                                  =>  'المستهدفين من الدورة',
+    'course_intended'                                       =>  'المستهدف',
+    'btn_add_another_intended'                              =>  'إضافة مستهدف جديد',
+
+
 
     // --------------- Events  --------------//
     'category'                                      =>  'التصنيف',

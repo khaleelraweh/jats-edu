@@ -37,7 +37,7 @@ class FrontendController extends Controller
             $query->where('name', 'instructor');
         })
             ->active()
-            // ->HasCourses()
+            ->HasCourses()
             ->inRandomOrder()
             ->take(10)
             ->get();

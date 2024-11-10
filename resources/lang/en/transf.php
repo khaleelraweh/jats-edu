@@ -181,7 +181,7 @@ return [
     'txt_student_feedback'                              =>  'Student feedback',
     'txt_course_rating'                                 =>  'Course rating',
     'txt_add_reviews_rate'                              =>  'Add Reviews & Rate',
-    'txt_what_is_it_like_to_course'                     =>  'What is it like to Course?',
+    'txt_what_is_it_like_to_course'                     =>  'What is your rating?',
     'txt_review_title'                                  =>  'Review Title',
     'txt_review_content'                                =>  'Review Content',
     'txt_content'                                       =>  'Content',

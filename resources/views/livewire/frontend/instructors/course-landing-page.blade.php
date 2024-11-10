@@ -383,38 +383,6 @@
 
 
 
-
-{{-- <script>
-    document.addEventListener('livewire:load', function() {
-        initTinyMCE();
-
-        Livewire.on('initializeTinyMCE', () => {
-            initTinyMCE();
-        });
-    });
-
-    document.addEventListener('livewire:update', function() {
-        initTinyMCE();
-    });
-
-    function initTinyMCE() {
-        if (tinymce.get('tinymceExample')) {
-            tinymce.get('tinymceExample').remove();
-        }
-        tinymce.init({
-            selector: '#tinymceExample',
-            setup: function(editor) {
-                editor.on('change', function() {
-                    @this.set('description', editor.getContent());
-                });
-            },
-            menubar: false,
-            plugins: 'lists link image table code',
-            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image'
-        });
-    }
-</script> --}}
-
 <script>
     document.addEventListener('livewire:load', function() {
         initTinyMCE();
@@ -449,14 +417,13 @@
         tinymce.init({
             // selector: '#tinymceExample',
             selector: 'textarea',
-            language: typeof tinymceLanguage !== 'undefined' ? 'ar' :
-            'ar', // Default to 'en' if no language set
+            language: '{{ app()->getLocale() }}',
             min_height: 350,
             default_text_color: 'red',
             plugins: [
                 "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
                 "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                "save table contextmenu directionality emoticons template paste textcolor",
+                "save table  directionality emoticons template paste ",
             ],
             toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
             toolbar2: 'print preview media | forecolor backcolor emoticons | codesample help',

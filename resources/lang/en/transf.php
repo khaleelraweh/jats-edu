@@ -142,7 +142,7 @@ return [
     'courses'                                           =>  'courses',
 
     //course single 
-    'btn_buy_now'                                       =>   'Buy Now',
+    'btn_buy_now'                                       =>   'Enroll Now',
     'btn_add_to_cart'                                   =>   'Add To Cart',
     'btn_go_to_cart'                                    =>   'Go To Cart',
     'btn_go_to_course'                                  =>   'Go To Course',

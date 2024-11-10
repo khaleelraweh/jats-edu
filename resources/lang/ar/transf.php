@@ -143,7 +143,7 @@ return [
     'course'                                           =>  'دورة',
 
     //course single 
-    'btn_buy_now'                                       =>  'اشتري الآن',
+    'btn_buy_now'                                       =>  'سجل الآن',
     'btn_add_to_cart'                                   =>   'إضافة الى السلة',
     'btn_go_to_cart'                                    =>   'الذهاب الى السلة',
     'btn_go_to_course'                                  =>   'الذهاب الى الدورة',
@@ -340,7 +340,7 @@ return [
     'original_price'                                =>  'السعر الأصلي',
     'offer_discount'                                =>  'خصم ترويجي',
     'coupon_discout'                                =>  'خصم القسيمة',
-    'proccess'                                      =>  'قم بالدفع الان',
+    'proccess'                                      =>  'قم بالدفع الآن',
 
     // instructor dashboard
     'student'                                       =>  'طالب',

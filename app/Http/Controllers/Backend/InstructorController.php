@@ -60,8 +60,8 @@ class InstructorController extends Controller
         $input['mobile'] = $request->mobile;
         $input['password'] = bcrypt($request->password);
 
-        $input['description'] = $request->description;
-        $input['motavation'] = $request->motavation;
+        $input['biography'] = $request->biography;
+        // $input['motavation'] = $request->motavation;
         $input['facebook'] = $request->facebook;
         $input['twitter'] = $request->twitter;
         $input['instagram'] = $request->instagram;
@@ -139,8 +139,8 @@ class InstructorController extends Controller
             $input['password'] = bcrypt($request->password);
         }
 
-        $input['description'] = $request->description;
-        $input['motavation'] = $request->motavation;
+        $input['biography'] = $request->biography;
+        // $input['motavation'] = $request->motavation;
         $input['facebook'] = $request->facebook;
         $input['twitter'] = $request->twitter;
         $input['instagram'] = $request->instagram;

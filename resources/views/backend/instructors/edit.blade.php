@@ -216,16 +216,16 @@
                     {{-- motavation content --}}
                     <div class="tab-pane fade a" id="motavation" role="tabpanel" aria-labelledby="motavation-tab">
 
-                        {{-- instructor description field --}}
+                        {{-- instructor biography field --}}
                         <div class="row">
                             @foreach (config('locales.languages') as $key => $val)
                                 <div class="col-sm-12 col-md-6 pt-3">
-                                    <label for="description[{{ $key }}]">
+                                    <label for="biography[{{ $key }}]">
                                         {{ __('panel.instructor_description') }}
                                         {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                     </label>
-                                    <textarea name="description[{{ $key }}]" style="height: 120px" class="form-control" id="tinymceExample">{!! old('description.' . $key, $instructor->getTranslation('description', $key)) !!}</textarea>
-                                    @error('course_category_id')
+                                    <textarea name="biography[{{ $key }}]" style="height: 120px" class="form-control" id="tinymceExample">{!! old('biography.' . $key, $instructor->getTranslation('biography', $key)) !!}</textarea>
+                                    @error('biography')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -233,7 +233,7 @@
                         </div>
 
                         {{-- instructor motavation field --}}
-                        <div class="row">
+                        {{-- <div class="row">
                             @foreach (config('locales.languages') as $key => $val)
                                 <div class="col-sm-12 col-md-6 pt-3">
                                     <label for="motavation[{{ $key }}]">
@@ -247,7 +247,7 @@
                                     @enderror
                                 </div>
                             @endforeach
-                        </div>
+                        </div> --}}
 
                     </div>
 

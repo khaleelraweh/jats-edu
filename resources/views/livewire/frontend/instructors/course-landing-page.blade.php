@@ -27,7 +27,7 @@
         <div class="card-body">
 
             {{-- erorrs show is exists --}}
-            @if ($errors->any())
+            {{-- @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -35,7 +35,7 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
+            @endif --}}
 
 
             <form wire:submit.prevent="updateCourse" id="my_form_id" enctype="multipart/form-data">
@@ -137,29 +137,7 @@
                                         <label for="description">{{ __('transf.Course description') }}</label>
                                         <textarea name="description" id="tinymceExample" rows="10" class="form-control" wire:model.defer="description"
                                             placeholder="{{ __('transf.Insert your course description.') }}"></textarea>
-
-                                        <div class=" d-flex justify-content-between">
-                                            <div class="card-naving">
-                                                <small>
-                                                    {{ __('transf.Course description tip.') }}
-                                                </small>
-                                                <small>
-                                                    {{ __('transf.Remaining words to reach the minimum number of words for the description field') }}
-                                                    {{ $remainingWords }}
-                                                </small>
-
-                                            </div>
-                                            <div class="card-naving">
-                                                <small>
-                                                    <span id="wordCount">
-                                                        {{ $wordCount }}
-                                                    </span>
-                                                    {{ __('transf.words') }}
-                                                </small>
-                                            </div>
-                                        </div>
-
-                                        @error('description')
+                                        @error('tinymceExample')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -188,8 +166,8 @@
                                 <p>
                                     {{ __('transf.Course Image tip.') }}
                                 </p>
-                                <input type="file" wire:model="images" id="images" class="form-control"
-                                    multiple style="height: 39px !important;">
+                                <input type="file" wire:model="images" id="images" class="form-control" multiple
+                                    style="height: 39px !important;">
                                 @error('images.*')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -406,7 +384,7 @@
 
 
 
-<script>
+{{-- <script>
     document.addEventListener('livewire:load', function() {
         initTinyMCE();
 
@@ -415,17 +393,61 @@
         });
     });
 
+    document.addEventListener('livewire:update', function() {
+        initTinyMCE();
+    });
+
     function initTinyMCE() {
-        if (tinymce.get('description')) {
-            tinymce.get('description').remove();
+        if (tinymce.get('tinymceExample')) {
+            tinymce.get('tinymceExample').remove();
         }
         tinymce.init({
             selector: '#tinymceExample',
             setup: function(editor) {
-                // editor.on('change', function() {
-                //     @this.set('description', editor.getContent());
-                // });
+                editor.on('change', function() {
+                    @this.set('description', editor.getContent());
+                });
             },
+            menubar: false,
+            plugins: 'lists link image table code',
+            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image'
+        });
+    }
+</script> --}}
+
+<script>
+    document.addEventListener('livewire:load', function() {
+        initTinyMCE();
+
+        Livewire.on('initializeTinyMCE', () => {
+            initTinyMCE();
+        });
+
+        // Listen for the form submission to set TinyMCE content to Livewire
+        document.getElementById('my_form_id').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Set the content of TinyMCE editor to Livewire property 'description'
+            if (tinymce.get('tinymceExample')) {
+                @this.set('description', tinymce.get('tinymceExample').getContent());
+            }
+
+            // Now submit the form using Livewire
+            @this.call('updateCourse'); // This will trigger the Livewire method to update the course
+        });
+    });
+
+    document.addEventListener('livewire:update', function() {
+        initTinyMCE();
+    });
+
+    function initTinyMCE() {
+        if (tinymce.get('tinymceExample')) {
+            tinymce.get('tinymceExample').remove();
+        }
+
+        tinymce.init({
+            selector: '#tinymceExample',
             menubar: false,
             plugins: 'lists link image table code',
             toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image'

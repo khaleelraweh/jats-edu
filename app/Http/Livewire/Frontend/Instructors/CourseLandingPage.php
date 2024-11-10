@@ -48,7 +48,8 @@ class CourseLandingPage extends Component
     protected $rules = [
         'title' => 'required|string|min:10|max:60',
         'subtitle' => 'required|string|min:10|max:120',
-        'description' => 'required|string|min_words:100',
+        // 'description' => 'required|string|min_words:100',
+        'description' => 'nullable',
         'images.*' => 'required|image|max:2048',
         'video_promo' => 'required|url|max:255',
         'video_description' => 'nullable|url|max:255',

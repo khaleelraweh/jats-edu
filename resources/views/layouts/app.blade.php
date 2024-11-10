@@ -140,6 +140,24 @@
     <script src="{{ asset('frontend/assets/js/theme.min.js') }}"></script>
 
 
+
+    <!-- Plugin js for Tinymce -->
+    <script src="{{ asset('backend/vendor/tinymce/tinymce.min.js') }}"></script>
+    <!-- End plugin js for Tinymce -->
+
+    <script>
+        var tinymceLanguage = '{{ app()->getLocale() }}'; // Get the current locale from Laravel config
+        var flatPickrLanguage = '{{ app()->getLocale() }}';
+    </script>
+
+    <!-- Custom js for the Tinymce -->
+    <script src="{{ asset('backend/js/tinymce.js') }}"></script>
+    <!-- End custom js for Tinymce -->
+
+    <!--tinymce js for editor -->
+
+
+
     {{-- owl-carousel --}}
     <script src="{{ asset('frontend/assets/plugins/owl-carousel/owl-main.js') }}"></script>
     <script src="{{ asset('frontend/assets/plugins/owl-carousel/owl.carousel.js') }}"></script>

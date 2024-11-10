@@ -449,8 +449,8 @@
         tinymce.init({
             // selector: '#tinymceExample',
             selector: 'textarea',
-            language: typeof tinymceLanguage !== 'undefined' ? tinymceLanguage :
-            'en', // Default to 'en' if no language set
+            language: typeof tinymceLanguage !== 'undefined' ? 'ar' :
+            'ar', // Default to 'en' if no language set
             min_height: 350,
             default_text_color: 'red',
             plugins: [

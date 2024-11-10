@@ -154,7 +154,8 @@
     <script src="{{ asset('backend/js/tinymce.js') }}"></script>
     <!-- End custom js for Tinymce -->
 
-    <!--tinymce js for editor -->
+
+
 
 
 

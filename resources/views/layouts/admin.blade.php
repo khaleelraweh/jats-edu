@@ -51,15 +51,15 @@
         href="{{ asset('backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css') }}" />
     <link
         href="{{ asset('backend/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                                type="text/css') }}" />
+                                                                                                                                                                                                                                                        type="text/css') }}" />
     <link
         href="{{ asset('backend/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                                type="text/css') }}" />
+                                                                                                                                                                                                                                                        type="text/css') }}" />
 
     <!-- Responsive datatable examples -->
     <link
         href="{{ asset('backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                                type="text/css') }}" />
+                                                                                                                                                                                                                                                        type="text/css') }}" />
 
     {{-- end  new  --}}
 
@@ -168,6 +168,24 @@
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/themes/fa5/theme.min.js') }}"></script>
     <!-- Datatable init js -->
     <script src="{{ asset('backend/js/pages/dashboard.init.js') }}"></script>
+
+
+    <!-- Plugin js for Tinymce -->
+    <script src="{{ asset('backend/vendor/tinymce/tinymce.min.js') }}"></script>
+    <!-- End plugin js for Tinymce -->
+
+    <script>
+        var tinymceLanguage = '{{ app()->getLocale() }}'; // Get the current locale from Laravel config
+        var flatPickrLanguage = '{{ app()->getLocale() }}';
+    </script>
+
+    <!-- Custom js for the Tinymce -->
+    <script src="{{ asset('backend/js/tinymce.js') }}"></script>
+    <!-- End custom js for Tinymce -->
+
+    <!--tinymce js for editor -->
+
+
     {{-- summernote for description note field --}}
     <script src="{{ asset('backend/vendor/summernote/summernote-bs4.min.js') }}"></script>
     {{-- pickadate calling js --}}

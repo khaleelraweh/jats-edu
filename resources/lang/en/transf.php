@@ -18,7 +18,7 @@ return [
     'txt_online_courses_100,000'                    =>  'online courses 100,000',
     'txt_explore_a_variety_of_fresh_topics'         =>  'Explore a variety of fresh topics',
 
-    'txt_trending_categories'                       =>  'Trending Categories',
+    'txt_trending_categories'                       =>  'Sections of courses and training programs',
     'txt_trending_categories_desc'                  =>  'Explore the most popular categories on the site.',
 
     'btn_view_all_course_categories'                =>  'View All Courses',
@@ -29,9 +29,9 @@ return [
     'btn_load_more_courses'                         =>  'Load More Courses',
     'btn_load_less_courses'                         =>  'Load Less Courses',
 
-    'txt_featured_courses'                          =>  'FEATURED COURSES',
-    'txt_featured_courses_desc'                     =>  'Discover your perfect program in our courses.',
-    'txt_filter_by'                                 =>  'Filter By',
+    'txt_featured_courses'                          =>  'Programs and training courses',
+    'txt_featured_courses_desc'                     =>  'Register for your program, seize the opportunity, and do not hesitate.',
+    'txt_filter_by'                                 =>  'Search by',
     'chose_categories'                              =>  'Categories',
     'chose_levels'                                  =>  'All Levels',
     'chose_price'                                   =>  'price',
@@ -50,15 +50,15 @@ return [
     'txt_what_our_students_have_to_say'             =>  'WHAT OUR STUDENTS HAVE TO SAY',
     'txt_what_our_students_have_to_say_desc'        =>  'Discover your perfect program in our courses.',
 
-    'txt_upcomming_events'                          =>  'UPCOMING EVENTS',
+    'txt_upcomming_events'                          =>  'Upcoming training programs',
     'txt_upcomming_events_desc'                     =>  'Discover your perfect program in our courses.',
     'btn_view_all'                                  =>  'View All',
 
     'txt_latest_news'                               =>  'LATEST NEWS',
-    'txt_latest_news_desc'                          =>  'Discover your perfect program in our courses.',
+    'txt_latest_news_desc'                          =>  'Follow our latest news.',
 
-    'txt_top_rating_instructuros'                   =>  'TOP RATING INSTRUCTORS',
-    'txt_top_rating_instructuros_desc'              =>  'Discover your perfect program in our courses.',
+    'txt_top_rating_instructuros'                   =>  'Distinguished Instructors',
+    'txt_top_rating_instructuros_desc'              =>  'Explore the departments and register with us now.',
 
     'txt_regester_now_and_get_a_50_discount'        =>  'REGISTER NOW AND GET A 50% DISCOUNT',
     'txt_get_100_online_courses_for_free'           =>  'Get 100 Online Courses for Free',

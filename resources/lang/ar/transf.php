@@ -18,8 +18,8 @@ return [
     'txt_online_courses_100,000'                    =>  'الدورات عبر الإنترنت 100,000',
     'txt_explore_a_variety_of_fresh_topics'         =>  'استكشاف مجموعة متنوعة من المواضيع الجديدة',
 
-    'txt_trending_categories'                       =>  'الفئات الشائعة',
-    'txt_trending_categories_desc'                  =>  'استكشف الفئات الاكثر  رواجا في الموقع.',
+    'txt_trending_categories'                       =>  'أقسام الدورات و البرامج التدريبية',
+    'txt_trending_categories_desc'                  =>  'استكشف الأقسام و سجل معنا الآن.',
     'btn_view_all_course_categories'               =>  'عرض جميع الدورات',
     'btn_load_more_course_categories'              =>  'عرض المزيد من  تصنيفات الدورات',
     'btn_load_less_course_categories'              =>  'عرض تصنيفات اقل',
@@ -28,9 +28,9 @@ return [
     'btn_load_more_courses'                         =>  'عرض المزيد من الدورات',
     'btn_load_less_courses'                        =>  'عرض دورات اقل',
 
-    'txt_featured_courses'                          =>  'الدورات المميزة',
-    'txt_featured_courses_desc'                     =>  'اكتشف برنامجك المثالي في دوراتنا.',
-    'txt_filter_by'                                 =>  'الترشيح بواسطة',
+    'txt_featured_courses'                          =>  'البرامج و الدورات التدريبية',
+    'txt_featured_courses_desc'                     =>  'سجل في برنامجك و اغتنم الفرصه ولا تتردد.',
+    'txt_filter_by'                                 =>  'البحث بواسطة',
     'chose_categories'                              =>  'الاقسام',
     'chose_levels'                                   =>  'المستويات',
     'chose_price'                                   =>  'السعر',
@@ -47,16 +47,16 @@ return [
     'txt_what_our_students_have_to_say'             =>  'ما الذي يقوله طلابنا',
     'txt_what_our_students_have_to_say_desc'        =>  'اكتشف برنامجك المثالي في دوراتنا.',
 
-    'txt_upcomming_events'                          =>  'الأحداث القادمة',
+    'txt_upcomming_events'                          =>  'البرامج التدريبية القادمة',
     'txt_upcomming_events_desc'                     =>  'اكتشف برنامجك المثالي في دوراتنا.',
     'btn_view_all'                                  =>  'عرض الكل',
 
 
     'txt_latest_news'                               =>  'آخر الاخبار',
-    'txt_latest_news_desc'                          =>  'اكتشف برنامجك المثالي في دوراتنا.',
+    'txt_latest_news_desc'                          =>  'تابع جديد اخبارنا.',
 
 
-    'txt_top_rating_instructuros'                   =>  'المدربون ذوو التصنيف الأعلى',
+    'txt_top_rating_instructuros'                   =>  'المدربين المتميزين ',
     'txt_top_rating_instructuros_desc'              =>  'اكتشف برنامجك المثالي في دوراتنا.',
 
 

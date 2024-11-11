@@ -12,7 +12,7 @@ return [
     'total_students'                    =>  'مجموع الطلاب',
     'total_instructors'                 =>  'مجموع المدربين',
     'total_courses'                     =>  'مجموع الدورات',
-    'total_teach_requests'              =>  'مجموع طلبات التدريب',
+    'total_company_requests'            =>  'مجموع طلبات الشركات',
 
     ############################  إدارة القوائم ################################
     'manage_menus'                      => 'إدارة القوائم ',

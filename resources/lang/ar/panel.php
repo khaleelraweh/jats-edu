@@ -24,6 +24,13 @@ return [
 
     'orders_information'        =>  'معلومات الطلبات',
 
+    'new_courses'               =>  'الطلبات الجديدة',
+    'completed_orders'          =>  'الطلبات المكتملة',
+    'under_proccess_orders'     =>  'تحت المعالجة',
+    'finished_orders'           =>  'الطلبات المنتهية',
+    'rejected_orders'           =>  'الطلبات المرفوضة',
+    'canceled_orders'           =>  'الطلبات الملغاة',
+
     ############################  إدارة القوائم ################################
     'manage_menus'                      => 'إدارة القوائم ',
     'manage_company_menus'              => 'إدارة قوائم المؤسسة',

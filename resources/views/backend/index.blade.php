@@ -177,7 +177,7 @@
 
     {{-- Course Info  --}}
     <div class="row">
-        <div class="col-xl-3 col-md-4">
+        <div class="col-xl-2 col-md-4">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex">
@@ -189,7 +189,7 @@
                 </div><!-- end cardbody -->
             </div><!-- end card -->
         </div><!-- end col -->
-        <div class="col-xl-3 col-md-4">
+        <div class="col-xl-2 col-md-4">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex">
@@ -201,7 +201,7 @@
                 </div><!-- end cardbody -->
             </div><!-- end card -->
         </div><!-- end col -->
-        <div class="col-xl-3 col-md-4">
+        <div class="col-xl-2 col-md-4">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex">
@@ -213,7 +213,31 @@
                 </div><!-- end cardbody -->
             </div><!-- end card -->
         </div><!-- end col -->
-        <div class="col-xl-3 col-md-4">
+        <div class="col-xl-2 col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.courses_review_finished') }}</p>
+                            <h4 class="mb-2">{{ $total_courses_review_finished }}</h4>
+                        </div>
+                    </div>
+                </div><!-- end cardbody -->
+            </div><!-- end card -->
+        </div><!-- end col -->
+        <div class="col-xl-2 col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.courses_review_finished') }}</p>
+                            <h4 class="mb-2">{{ $total_courses_review_finished }}</h4>
+                        </div>
+                    </div>
+                </div><!-- end cardbody -->
+            </div><!-- end card -->
+        </div><!-- end col -->
+        <div class="col-xl-2 col-md-4">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex">

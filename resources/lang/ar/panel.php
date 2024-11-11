@@ -1117,6 +1117,7 @@ return [
     // user login guest 
     'f_close'                                           =>  'إغلاق',
     'f_center_pay'                                      =>  'سنتر باي',
+    'youth_step_institute'                              =>  'معهد خطوة شباب',
     'f_login'                                           =>  'تسجيل الدخول',
     'f_new_user'                                        =>  'مستخدم جديد',
     'f_add_new_account'                                 =>  'إنشاء حساب جديد',

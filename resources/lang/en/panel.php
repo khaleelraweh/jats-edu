@@ -1084,6 +1084,7 @@ return [
 
 
     'f_center_pay'                                  =>  'CenterPay',
+    'youth_step_institute'                          =>  'Youth Step Institute',
     'f_copyright'                                   =>  'Copyright',
     'f_select_country'                              =>  'Select Country',
 

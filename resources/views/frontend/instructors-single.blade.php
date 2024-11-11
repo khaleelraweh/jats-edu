@@ -326,7 +326,7 @@
 
                     <div class="mx-n4 mb-12"
                         data-flickity='{"pageDots": true, "prevNextButtons": false, "cellAlign": "left", "wrapAround": true, "imagesLoaded": true}'>
-                        @foreach ($instructor->courses as $course)
+                        @foreach ($instructor->courses->where('status', 1) as $course)
                             <div class="col-md-6 col-lg-4 col-xl-3 pb-4 pb-md-5"
                                 style="padding-right:15px;padding-left:15px;">
                                 <!-- Card -->

@@ -15,6 +15,13 @@ return [
     'total_company_requests'    =>  'Total Company Requests',
     'courses_information'       =>  'Courses Information',
 
+    'new_courses'               =>  'New Courses',
+    'courses_completed'         =>  'Completed courses',
+    'courses_under_proccess'    =>  'Under Proccess',
+    'courses_review_finished'   =>  'Review Finished',
+    'courses_published'         =>  'Published Courses',
+    'courses_rejected'          =>  'Rejected Courses',
+
 
     ############################ Manage Web Menus #################################
     'manage_menus'              => 'Manage Web Menus',

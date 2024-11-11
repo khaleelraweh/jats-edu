@@ -15,6 +15,13 @@ return [
     'total_company_requests'            =>  'مجموع طلبات الشركات',
     'courses_information'               =>  'معلومات الدورات',
 
+    'new_courses'               =>  'دورات جديدة',
+    'courses_completed'         =>  'الدورات المكتملة',
+    'courses_under_proccess'    =>  'قيد المعالجة',
+    'courses_review_finished'   =>  'انتهت المراجعة',
+    'courses_published'         =>  'الدورات المنشورة',
+    'courses_rejected'          =>  'الدورات المرفوضة',
+
     ############################  إدارة القوائم ################################
     'manage_menus'                      => 'إدارة القوائم ',
     'manage_company_menus'              => 'إدارة قوائم المؤسسة',

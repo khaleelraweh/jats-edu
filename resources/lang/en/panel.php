@@ -22,6 +22,8 @@ return [
     'courses_published'         =>  'Published Courses',
     'courses_rejected'          =>  'Rejected Courses',
 
+    'orders_information'        =>  'Orders Information',
+
 
     ############################ Manage Web Menus #################################
     'manage_menus'              => 'Manage Web Menus',

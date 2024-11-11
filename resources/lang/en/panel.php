@@ -23,6 +23,12 @@ return [
     'courses_rejected'          =>  'Rejected Courses',
 
     'orders_information'        =>  'Orders Information',
+    'new_courses'               =>  'New Orders',
+    'completed_orders'          =>  'Completed Orders',
+    'under_proccess_orders'     =>  'Under Proccess',
+    'finished_orders'           =>  'Finished Orders',
+    'rejected_orders'           =>  'Rejected Orders',
+    'canceled_orders'           =>  'Canceled Orders',
 
 
     ############################ Manage Web Menus #################################

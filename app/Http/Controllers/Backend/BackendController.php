@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\AdminInfoRequest;
 use App\Models\CompanyRequest;
 use App\Models\Course;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -58,12 +59,20 @@ class BackendController extends Controller
         $total_courses_published = Course::query()->where('course_status', '=', 4)->count();
         $total_courses_rejected = Course::query()->where('course_status', '=', 5)->count();
 
+        $total_orders = Order::count();
+        $total_new_orders = Order::query()->where('order_status', '=', 0)->count();
+        $total_completed_orders = Order::query()->where('order_status', '=', 1)->count();
+        $total_under_proccess_orders = Order::query()->where('order_status', '=', 2)->count();
+        $total_finished_orders = Order::query()->where('order_status', '=', 3)->count();
+        $total_rejected_orders = Order::query()->where('order_status', '=', 4)->count();
+        $total_canceled_orders = Order::query()->where('order_status', '=', 5)->count();
+
         //end for courses 
 
         $total_company_requests = CompanyRequest::count();
 
 
-        return view('backend.index', compact('total_students', 'total_instructors', 'total_company_requests', 'total_courses', 'total_new_courses', 'total_courses_completed', 'total_courses_under_proccess', 'total_courses_review_finished', 'total_courses_published', 'total_courses_rejected'));
+        return view('backend.index', compact('total_students', 'total_instructors', 'total_company_requests', 'total_courses', 'total_new_courses', 'total_courses_completed', 'total_courses_under_proccess', 'total_courses_review_finished', 'total_courses_published', 'total_courses_rejected', 'total_orders', 'total_new_orders', 'total_completed_orders', 'total_under_proccess_orders', 'total_finished_orders', 'total_rejected_orders', 'total_canceled_orders'));
     }
 
     public function create_update_theme(Request $request)

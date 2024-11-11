@@ -182,8 +182,8 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.new_courses') }}</p>
-                            <h4 class="mb-2">{{ $total_new_courses }}</h4>
+                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.new_orders') }}</p>
+                            <h4 class="mb-2">{{ $total_new_orders }}</h4>
                         </div>
                     </div>
                 </div><!-- end cardbody -->
@@ -194,8 +194,8 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.courses_completed') }}</p>
-                            <h4 class="mb-2">{{ $total_courses_completed }}</h4>
+                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.completed_orders') }}</p>
+                            <h4 class="mb-2">{{ $total_completed_orders }}</h4>
                         </div>
                     </div>
                 </div><!-- end cardbody -->
@@ -206,8 +206,8 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.courses_under_proccess') }}</p>
-                            <h4 class="mb-2">{{ $total_courses_under_proccess }}</h4>
+                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.under_proccess_orders') }}</p>
+                            <h4 class="mb-2">{{ $total_under_proccess_orders }}</h4>
                         </div>
                     </div>
                 </div><!-- end cardbody -->
@@ -218,8 +218,8 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.courses_review_finished') }}</p>
-                            <h4 class="mb-2">{{ $total_courses_review_finished }}</h4>
+                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.finished_orders') }}</p>
+                            <h4 class="mb-2">{{ $total_finished_orders }}</h4>
                         </div>
                     </div>
                 </div><!-- end cardbody -->
@@ -230,8 +230,8 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.courses_review_finished') }}</p>
-                            <h4 class="mb-2">{{ $total_courses_review_finished }}</h4>
+                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.rejected_orders') }}</p>
+                            <h4 class="mb-2">{{ $total_rejected_orders }}</h4>
                         </div>
                     </div>
                 </div><!-- end cardbody -->
@@ -242,8 +242,8 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.courses_review_finished') }}</p>
-                            <h4 class="mb-2">{{ $total_courses_review_finished }}</h4>
+                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.canceled_orders') }}</p>
+                            <h4 class="mb-2">{{ $total_canceled_orders }}</h4>
                         </div>
                     </div>
                 </div><!-- end cardbody -->

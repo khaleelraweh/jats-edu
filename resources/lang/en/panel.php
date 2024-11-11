@@ -23,7 +23,7 @@ return [
     'courses_rejected'          =>  'Rejected Courses',
 
     'orders_information'        =>  'Orders Information',
-    'new_courses'               =>  'New Orders',
+    'new_orders'               =>  'New Orders',
     'completed_orders'          =>  'Completed Orders',
     'under_proccess_orders'     =>  'Under Proccess',
     'finished_orders'           =>  'Finished Orders',

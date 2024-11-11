@@ -24,7 +24,7 @@ return [
 
     'orders_information'        =>  'معلومات الطلبات',
 
-    'new_courses'               =>  'الطلبات الجديدة',
+    'new_orders'                =>  'الطلبات الجديدة',
     'completed_orders'          =>  'الطلبات المكتملة',
     'under_proccess_orders'     =>  'تحت المعالجة',
     'finished_orders'           =>  'الطلبات المنتهية',

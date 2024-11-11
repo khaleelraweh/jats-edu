@@ -49,11 +49,21 @@ class BackendController extends Controller
             $query->where('name', 'instructor');
         })->count();
 
+        // for courses 
         $total_courses = Course::count();
+        $total_new_courses = Course::query()->where('course_status', '=', 0)->count();
+        $total_courses_completed = Course::query()->where('course_status', '=', 1)->count();
+        $total_courses_under_proccess = Course::query()->where('course_status', '=', 2)->count();
+        $total_courses_review_finished = Course::query()->where('course_status', '=', 3)->count();
+        $total_courses_published = Course::query()->where('course_status', '=', 4)->count();
+        $total_courses_rejected = Course::query()->where('course_status', '=', 5)->count();
+
+        //end for courses 
 
         $total_company_requests = CompanyRequest::count();
 
-        return view('backend.index', compact('total_students', 'total_instructors', 'total_courses', 'total_company_requests'));
+
+        return view('backend.index', compact('total_students', 'total_instructors', 'total_company_requests', 'total_courses', 'total_new_courses', 'total_courses_completed', 'total_courses_under_proccess', 'total_courses_review_finished', 'total_courses_published', 'total_courses_rejected'));
     }
 
     public function create_update_theme(Request $request)

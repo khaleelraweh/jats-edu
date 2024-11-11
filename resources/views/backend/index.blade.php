@@ -98,13 +98,13 @@
 
     {{-- Course Info  --}}
     <div class="row">
-        <div class="col-xl-3 col-md-6">
+        <div class="col-xl-2 col-md-6">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.total_students') }}</p>
-                            <h4 class="mb-2">{{ $total_students }}</h4>
+                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.new_courses') }}</p>
+                            <h4 class="mb-2">{{ $total_new_courses }}</h4>
                         </div>
                         <div class="avatar-sm">
                             <span class="avatar-title bg-light text-primary rounded-3">
@@ -115,7 +115,7 @@
                 </div><!-- end cardbody -->
             </div><!-- end card -->
         </div><!-- end col -->
-        <div class="col-xl-3 col-md-6">
+        <div class="col-xl-2 col-md-6">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex">
@@ -132,7 +132,7 @@
                 </div><!-- end cardbody -->
             </div><!-- end card -->
         </div><!-- end col -->
-        <div class="col-xl-3 col-md-6">
+        <div class="col-xl-2 col-md-6">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex">
@@ -149,7 +149,41 @@
                 </div><!-- end cardbody -->
             </div><!-- end card -->
         </div><!-- end col -->
-        <div class="col-xl-3 col-md-6">
+        <div class="col-xl-2 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.total_company_requests') }}</p>
+                            <h4 class="mb-2">{{ $total_company_requests }}</h4>
+                        </div>
+                        <div class="avatar-sm">
+                            <span class="avatar-title bg-light text-success rounded-3">
+                                <i class="mdi mdi-currency-btc font-size-24"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div><!-- end cardbody -->
+            </div><!-- end card -->
+        </div><!-- end col -->
+        <div class="col-xl-2 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="text-truncate font-size-14 mb-2">{{ __('panel.total_company_requests') }}</p>
+                            <h4 class="mb-2">{{ $total_company_requests }}</h4>
+                        </div>
+                        <div class="avatar-sm">
+                            <span class="avatar-title bg-light text-success rounded-3">
+                                <i class="mdi mdi-currency-btc font-size-24"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div><!-- end cardbody -->
+            </div><!-- end card -->
+        </div><!-- end col -->
+        <div class="col-xl-2 col-md-6">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex">

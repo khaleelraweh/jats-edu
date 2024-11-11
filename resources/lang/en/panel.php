@@ -9,6 +9,10 @@ return [
     'menu'                      => 'Menu',
     'crafted_with'              =>  'Crafted with',
     'by_era_team'               =>  'by ERA Team',
+    'total_students'            =>  'Total Students',
+    'total_instructors'         =>  'Total Instructors',
+    'total_courses'             =>  'Total Courses',
+
 
     ############################ Manage Web Menus #################################
     'manage_menus'              => 'Manage Web Menus',
@@ -1314,6 +1318,8 @@ return [
     'Image_show_in_main_page'                       =>  'Image Show in Main Page',
     'Image_show_in_event_single'                    =>  'Image Show in event single',
     'Image_show_in_blog_single'                     =>  'Image Show in blog single',
+
+
 
 
 ];

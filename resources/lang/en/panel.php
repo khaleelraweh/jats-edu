@@ -13,6 +13,7 @@ return [
     'total_instructors'         =>  'Total Instructors',
     'total_courses'             =>  'Total Courses',
     'total_company_requests'    =>  'Total Company Requests',
+    'courses_information'       =>  'Courses Information',
 
 
     ############################ Manage Web Menus #################################

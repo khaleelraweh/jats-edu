@@ -89,6 +89,12 @@ class CourseController extends Controller
         $input['status']                        =   $request->status;
         $input['created_by']                    =   auth()->user()->full_name;
 
+        if ($request->status) {
+            $input['course_status']             =   4;
+        } else {
+            $input['course_status']             =   2;
+        }
+
         $published_on                           =   $request->published_on . ' ' . $request->published_on_time;
         $published_on                           =   new DateTimeImmutable($published_on);
         $input['published_on']                  =   $published_on;
@@ -270,11 +276,17 @@ class CourseController extends Controller
         $input['offer_ends']            =   $request->offer_ends;
 
 
-        $input['course_category_id']   =   $request->course_category_id;
+        $input['course_category_id']    =   $request->course_category_id;
         $input['featured']              =   $request->featured;
 
-        $input['status']            =   $request->status;
-        $input['updated_by']        =   auth()->user()->full_name;
+        $input['status']                =   $request->status;
+        $input['updated_by']            =   auth()->user()->full_name;
+
+        if ($request->status) {
+            $input['course_status']             =   4;
+        } else {
+            $input['course_status']             =   2;
+        }
 
         $published_on = $request->published_on . ' ' . $request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);

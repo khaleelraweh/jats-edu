@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\AdminInfoRequest;
+use App\Models\CompanyRequest;
+use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -18,6 +20,7 @@ class BackendController extends Controller
 
     public function login()
     {
+
         return view('backend.admin-login');
     }
 
@@ -38,7 +41,19 @@ class BackendController extends Controller
 
     public function index()
     {
-        return view('backend.index');
+        $total_students = User::whereHas('roles', function ($query) {
+            $query->where('name', 'customer');
+        })->count();
+
+        $total_instructors = User::with('specializations')->whereHas('roles', function ($query) {
+            $query->where('name', 'instructor');
+        })->count();
+
+        $total_courses = Course::count();
+
+        $total_company_requests = CompanyRequest::count();
+
+        return view('backend.index', compact('total_students', 'total_instructors', 'total_courses', 'total_company_requests'));
     }
 
     public function create_update_theme(Request $request)

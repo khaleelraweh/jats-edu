@@ -520,7 +520,8 @@
                                                 </svg>
 
                                             </div>
-                                            <div class="font-size-sm">{{ $post->users->first()->full_name }}</div>
+                                            <div class="font-size-sm">{{ $post->users->first()->full_name ?? 'unKnown' }}
+                                            </div>
                                         </a>
                                     </li>
                                     <li class="nav-item px-3">

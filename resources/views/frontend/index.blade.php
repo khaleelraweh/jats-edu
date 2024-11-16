@@ -505,7 +505,10 @@
                             <div class="card-footer px-2 pb-0 pt-4">
                                 <ul class="nav mx-n3 mb-3">
                                     <li class="nav-item px-3">
-                                        <a href="{{ route('frontend.instructors_single', $post->users->first()->id) }}"
+                                        {{-- <a href="{{ route('frontend.instructors_single', $post->users->first()->id) }}" --}}
+
+
+                                        <a href="{{ optional($post->users->first())->id ? route('frontend.instructors_single', $post->users->first()->id) : '#' }}"
                                             class="d-flex align-items-center text-gray-800">
                                             <div class="me-3 d-flex">
                                                 <!-- Icon -->

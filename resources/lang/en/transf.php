@@ -157,7 +157,7 @@ return [
     'deadline'                                          =>  'DeadLine',
     'deadline_of_the_course'                            =>  'DeadLine of the course',
     'certificate'                                       =>  'Certificate',
-    'created_by'                                        =>  'Created by',
+    'created_by'                                        =>  'Instructor',
     'categories'                                        =>  'Categories',
     'review'                                            =>  'Review',
 

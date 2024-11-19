@@ -158,7 +158,7 @@ return [
     'deadline'                                          =>  ' موعد الإنتهاء',
     'deadline_of_the_course'                                          =>  ' موعد الإنتهاء من الدورة',
     'certificate'                                       =>  'الشهادة',
-    'created_by'                                        =>  'انشأ من قبل',
+    'created_by'                                        =>  'المدرب',
     'categories'                                        =>  'الفئات',
     'review'                                            =>  'التقييم',
 

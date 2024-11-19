@@ -183,7 +183,7 @@ return [
     'txt_course_rating'                                 =>  'تقييم الدورة',
     'txt_add_reviews_rate'                              =>  'إضافة التعليقات والتقييم',
     'txt_what_is_it_like_to_course'                     =>  'ما هو تقييمك؟ ',
-    'txt_review_title'                                  =>  'عنوان المراجعة',
+    'txt_review_title'                                  =>  'عنوان التعليق',
     'txt_review_content'                                =>  'اكتب تعليقك..',
     'txt_content'                                       =>  'تعليق',
     'txt_submit_review'                                 =>  'إرسال التعليق..',

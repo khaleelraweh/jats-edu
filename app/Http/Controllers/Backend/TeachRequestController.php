@@ -90,12 +90,16 @@ class TeachRequestController extends Controller
                 // Check if the user does not already have the instructor role
                 if (!$user->hasRole('instructor')) {
                     $user->attachRole($instructorRoleId);
+                    $user->status = 1;
+                    $user->save();
                 }
             } elseif ($request->teach_request_status == 3) {
 
                 // Remove the instructor role from the user
                 if ($user->hasRole('instructor')) {
                     $user->detachRole($instructorRoleId);
+                    $user->status = 0;
+                    $user->save();
                 }
             }
         }

@@ -28,8 +28,8 @@
                             {{ old('sort_by', request()->input('sort_by')) == 'id' ? 'selected' : '' }}>
                             {{ __('panel.id') }}
                         </option>
-                        <option value="name"
-                            {{ old('sort_by', request()->input('sort_by')) == 'name' ? 'selected' : '' }}>
+                        <option value="title"
+                            {{ old('sort_by', request()->input('sort_by')) == 'title' ? 'selected' : '' }}>
                             {{ __('panel.title') }}
                         </option>
                         <option value="created_at"

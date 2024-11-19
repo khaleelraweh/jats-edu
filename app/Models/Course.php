@@ -318,4 +318,13 @@ class Course extends Model
             return $section->lessons->count();
         });
     }
+
+    // To get how many student enrolled in the course and paid 
+    public function finishedStudentCount()
+    {
+        // Get the orders with finished status and count distinct users
+        return $this->orders()
+            ->finished() // Filter only the orders with finished status
+            ->count('user_id'); // Count the distinct users
+    }
 }

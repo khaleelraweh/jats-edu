@@ -204,4 +204,10 @@ class Order extends Model
     //     }
     //     return $result;
     // }
+
+    // To get the the order is finished 
+    public function scopeFinished($query)
+    {
+        return $query->where('order_status', self::FINISHED);
+    }
 }

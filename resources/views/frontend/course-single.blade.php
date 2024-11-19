@@ -361,7 +361,7 @@
                             </div>
 
                             <div class="row mx-xl-n5 mb-6">
-                                <div class="col-12 col-md-auto mb-3 mb-md-0 px-xl-5">
+                                {{-- <div class="col-12 col-md-auto mb-3 mb-md-0 px-xl-5">
                                     <div class="d-flex align-items-center">
                                         <div class="me-3 d-flex text-secondary icon-uxs">
                                             <!-- Icon -->
@@ -374,9 +374,9 @@
                                         </div>
                                         4.87 {{ __('transf.txt_instructor_rating') }}
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="col-12 col-md-auto mb-3 mb-md-0 px-xl-5">
+                                {{-- <div class="col-12 col-md-auto mb-3 mb-md-0 px-xl-5">
                                     <div class="d-flex align-items-center">
                                         <div class="me-3 d-flex text-secondary icon-uxs">
                                             <!-- Icon -->
@@ -390,7 +390,7 @@
                                         </div>
                                         1,533 {{ __('transf.txt_reviews') }}
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="col-12 col-md-auto mb-3 mb-md-0 px-xl-5">
                                     <div class="d-flex align-items-center">
@@ -403,7 +403,7 @@
                                             </svg>
 
                                         </div>
-                                        23,912 {{ __('transf.txt_students') }}
+                                        {{ $course->finishedStudentCount() }} {{ __('transf.txt_students') }}
                                     </div>
                                 </div>
 

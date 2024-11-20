@@ -52,7 +52,7 @@
                         @forelse ($orders as $order)
                             <tr>
                                 <td class="d-none d-sm-table-cell">{{ $order->ref_id }}</td>
-                                <td>{{ $order->user->full_name }}</td>
+                                <td>{{ $order->user->full_name ?? '' }}</td>
                                 <td>{{ $order->payment_method?->name }}</td>
                                 <td>{{ $order->currency() . $order->total }}</td>
                                 <td>{!! $order->statusWithLabel() !!}</td>

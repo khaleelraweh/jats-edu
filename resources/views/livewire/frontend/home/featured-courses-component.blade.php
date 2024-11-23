@@ -135,11 +135,11 @@
                             </div>
 
                             <!-- Footer -->
-                            @php
+                            {{-- @php
                                 $instructor = $featured_course->users->first();
-                            @endphp
+                            @endphp --}}
 
-                            @php
+                            {{-- @php
                                 if ($instructor->user_image != null) {
                                     $instructor_img = asset('assets/users/' . $instructor->user_image);
 
@@ -148,6 +148,21 @@
                                     }
                                 } else {
                                     $instructor_img = asset('image/not_found/avator1.webp');
+                                }
+                            @endphp --}}
+
+                            @php
+                                $instructor = $featured_course->users->first(); // Check if there's at least one user associated
+
+if ($instructor && $instructor->user_image) {
+    // Ensure $instructor is not null and user_image exists
+    $instructor_img = asset('assets/users/' . $instructor->user_image);
+
+    if (!file_exists(public_path('assets/users/' . $instructor->user_image))) {
+        $instructor_img = asset('image/not_found/avator1.webp');
+    }
+} else {
+    $instructor_img = asset('image/not_found/avator1.webp');
                                 }
                             @endphp
 

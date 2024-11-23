@@ -155,7 +155,7 @@
                                 <a href="#" class="d-block">
                                     <div
                                         class="avatar avatar-xl badge-float position-absolute top-0 right-0 mt-n6 me-5 rounded-circle shadow border border-white border-w-lg">
-                                        <img src="{{ $instructor_img }}" alt="..."
+                                        <img src="{{ $instructor_img ?? '' }}" alt="..."
                                             class="avatar-img rounded-circle">
                                     </div>
                                 </a>

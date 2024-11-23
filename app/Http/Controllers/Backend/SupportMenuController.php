@@ -56,6 +56,7 @@ class SupportMenuController extends Controller
         $published_on = $request->published_on . ' ' . $request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
+        $input['section']       = 5;
 
         $company_menu = WebMenu::create($input);
 
@@ -105,7 +106,8 @@ class SupportMenuController extends Controller
         $input['title']     = $request->title;
         $input['link']      = $request->link;
         $input['icon']      = $request->icon;
-        $input['section']    = $request->section;
+        // $input['section']    = $request->section;
+        $input['section']       = 5;
 
         $input['status']    =   $request->status;
         $input['updated_by'] =   auth()->user()->full_name;

@@ -166,7 +166,7 @@ if ($instructor && $instructor->user_image) {
                                 }
                             @endphp
 
-                            <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
+                            {{-- <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
                                 <a href="#" class="d-block">
                                     <div
                                         class="avatar avatar-xl badge-float position-absolute top-0 right-0 mt-n6 me-5 rounded-circle shadow border border-white border-w-lg">
@@ -298,6 +298,18 @@ if ($instructor && $instructor->user_image) {
                                         </div>
                                     </div>
                                 </div>
+                            </div> --}}
+
+                            <!-- HTML -->
+                            <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
+                                <a href="#" class="d-block">
+                                    <div
+                                        class="avatar avatar-xl badge-float position-absolute top-0 right-0 mt-n6 me-5 rounded-circle shadow border border-white border-w-lg">
+                                        <img src="{{ $instructor_img }}" alt="Instructor Image"
+                                            class="avatar-img rounded-circle">
+                                    </div>
+                                </a>
+                                <!-- Additional content -->
                             </div>
                         </div>
                     </div>

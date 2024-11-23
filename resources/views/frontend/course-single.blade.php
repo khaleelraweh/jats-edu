@@ -325,7 +325,7 @@
                             <div class="d-flex align-items-center mb-6">
                                 <div class="d-inline-block rounded-circle border me-6 p-2">
                                     <div class="avatar avatar-size-120">
-                                        {{-- @php
+                                        @php
                                             if ($instructor->user_image != null) {
                                                 $instructor_img = asset('assets/users/' . $instructor->user_image);
 
@@ -337,16 +337,9 @@
                                             } else {
                                                 $instructor_img = asset('image/not_found/avator1.webp');
                                             }
-                                        @endphp --}}
-                                        @php
-                                            $defaultImage = asset('image/not_found/avator1.webp');
-                                            $instructor_img = $instructor->user_image
-                                                ? (file_exists(public_path('assets/users/' . $instructor->user_image))
-                                                    ? asset('assets/users/' . $instructor->user_image)
-                                                    : $defaultImage)
-                                                : $defaultImage;
                                         @endphp
-                                        <img src="{{ $defaultImage }}" alt="..." class="avatar-img rounded-circle">
+                                        <img src="{{ $instructor_img }}" alt="..."
+                                            class="avatar-img rounded-circle">
                                     </div>
                                 </div>
                                 <div class="media-body">

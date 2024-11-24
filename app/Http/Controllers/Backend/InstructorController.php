@@ -189,16 +189,9 @@ class InstructorController extends Controller
             return redirect('admin/index');
         }
 
-        // first: delete image from users path 
-        if (File::exists('assets/users/' . $instructor->user_image)) {
-            unlink('assets/users/' . $instructor->user_image);
-        }
+        $instructorRole = Role::where('name', 'instructor')->first();
+        $instructor->roles()->detach($instructorRole->id);
 
-        $instructor->deleted_by = auth()->user()->full_name;
-        $instructor->save();
-
-        //second : delete customer from users table
-        $instructor->delete();
 
         if ($instructor) {
             return redirect()->route('admin.instructors.index')->with([

@@ -120,15 +120,19 @@
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         @else
-                                            <a href="javascript:void(0);" onclick="confirmDelete({{ $customer->id }})"
-                                                class="btn btn-danger">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                            <form action="{{ route('admin.instructors.destroy', $customer->id) }}"
-                                                method="post" class="d-none" id="delete-customer-{{ $customer->id }}">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
+                                            @if ($customer->hasRole('admin'))
+                                                admin
+                                            @else
+                                                <a href="javascript:void(0);" onclick="confirmDelete({{ $customer->id }})"
+                                                    class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                                <form action="{{ route('admin.instructors.destroy', $customer->id) }}"
+                                                    method="post" class="d-none" id="delete-customer-{{ $customer->id }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+                                            @endif
                                         @endif
 
                                     </div>

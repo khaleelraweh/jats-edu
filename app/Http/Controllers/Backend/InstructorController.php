@@ -82,6 +82,7 @@ class InstructorController extends Controller
 
         //Attach the new instructor to role instructor
         $instructor->attachRole(Role::whereName('instructor')->first()->id);
+        $instructor->attachRole(Role::whereName('customer')->first()->id);
 
         //add specifications
         if (isset($request->specializations) && count($request->specializations) > 0) {

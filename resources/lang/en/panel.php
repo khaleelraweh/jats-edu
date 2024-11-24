@@ -369,10 +369,13 @@ return [
     'edit_existing_supervisor'     => 'Edit Existing Supervisor ',
 
     // ........... commons in Users   ....... //
-    'customer_name'               => 'Customer Name',
+    'customer_name'                 => 'Customer Name',
     'advertisor_name'               =>  'Advertisor Name',
     'permissions'                   =>  'Permissions',
     'grant_all_permissions'         =>  'Grant All Permissions',
+    'customer_has_instructor_role'  =>  'Can not Delete Student',
+    'customer_must_be_removed_from_instructor_panel'    =>  'Student has Instructor Role,Student must be removed from instructor panel',
+    'ok'                            =>  'Ok',
 
 
 

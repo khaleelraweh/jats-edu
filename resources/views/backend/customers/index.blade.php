@@ -98,24 +98,7 @@
                                             <i class="fa fa-edit"></i>
                                         </a>
 
-                                        {{-- @if ($customer->hasRole('instructor') and $customer->courses->count() > 0)
-                                            <a href="javascript:void(0);"
-                                                onclick=" if( confirm('{{ __('panel.customer_has_instructor_role') }}') ){document.getElementById('customer-has-role-{{ $customer->id }}').submit();}else{return false;}"
-                                                class="btn btn-danger">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                        @else
-                                            <a href="javascript:void(0);"
-                                                onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-customer-{{ $customer->id }}').submit();}else{return false;}"
-                                                class="btn btn-danger">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                            <form action="{{ route('admin.customers.destroy', $customer->id) }}"
-                                                method="post" class="d-none" id="delete-customer-{{ $customer->id }}">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
-                                        @endif --}}
+
 
                                         @if ($customer->hasRole('instructor') && $customer->courses->count() > 0)
                                             <a href="javascript:void(0);" onclick="showInstructorAlert()"

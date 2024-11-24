@@ -374,6 +374,11 @@ return [
     'advertisor_name'               =>  'إسم المشرف',
     'permissions'                   =>  'الصلاحيات',
     'grant_all_permissions'         =>  'منح كل الصلاحيات',
+    'customer_has_instructor_role'  =>  'لا يمكن حذف الطالب',
+    'customer_must_be_removed_from_instructor_panel'    =>  'الطالب يمتلك صلاحية المعلم ، يجب إزالة الطالب من لوحة المعلم',
+
+    'ok'                            =>  'موافق',
+
 
 
     ################################ Manage Customer addresses ##############################

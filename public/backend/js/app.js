@@ -96,7 +96,8 @@
                     n("#" + a).prop("checked", !0), t(a)
                 ) 
             :
-            storages()
+            // storages()
+            ''
             
         ),
 

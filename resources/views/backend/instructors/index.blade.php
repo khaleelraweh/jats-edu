@@ -112,11 +112,25 @@
                                             class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-customer-{{ $customer->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+
+
+                                        @if ($customer->courses->count() > 0)
+                                            <a href="javascript:void(0);" onclick="showCoursesAlert()"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @else
+                                            <a href="javascript:void(0);" onclick="confirmDelete({{ $customer->id }})"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                            <form action="{{ route('admin.customers.destroy', $customer->id) }}"
+                                                method="post" class="d-none" id="delete-customer-{{ $customer->id }}">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                        @endif
+
                                     </div>
                                     <form action="{{ route('admin.instructors.destroy', $customer->id) }}" method="post"
                                         class="d-none" id="delete-customer-{{ $customer->id }}">
@@ -145,4 +159,36 @@
         </div>
 
     </div>
+@endsection
+
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+        function showCoursesAlert() {
+            Swal.fire({
+                icon: 'warning',
+                title: '{{ __('panel.instructor_can_not_be_deleted') }}',
+                text: '{{ __('panel.instructor_has_courses_you_must_delete_courses_before') }}',
+                confirmButtonText: '{{ __('panel.ok') }}',
+            });
+        }
+
+        function confirmDelete(customerId) {
+            Swal.fire({
+                title: '{{ __('panel.confirm_delete_message') }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: '{{ __('panel.yes_delete') }}',
+                cancelButtonText: '{{ __('panel.cancel') }}',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-customer-' + customerId).submit();
+                }
+            });
+        }
+    </script>
 @endsection

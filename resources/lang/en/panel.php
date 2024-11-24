@@ -379,6 +379,9 @@ return [
     'cancel'                        =>  'Cancel',
     'yes_delete'                    =>  'Delete',
 
+    'instructor_can_not_be_deleted'                         =>  'Instructor can not be deleted',
+    'instructor_has_courses_you_must_delete_courses_before' =>  'Instructor has courses, you must delete courses before',
+
 
 
     ##############################################################

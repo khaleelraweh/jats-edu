@@ -100,7 +100,7 @@
 
 
 
-                                        @if ($customer->hasRole('instructor') && $customer->courses->count() > 0)
+                                        @if ($customer->hasRole('instructor'))
                                             <a href="javascript:void(0);" onclick="showInstructorAlert()"
                                                 class="btn btn-danger">
                                                 <i class="fa fa-trash"></i>

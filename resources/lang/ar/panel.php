@@ -381,6 +381,10 @@ return [
     'cancel'                        =>  'الغاء الامر',
     'yes_delete'                    =>  'نعم قم بالحذف',
 
+    'instructor_can_not_be_deleted'                         =>  'لا يمكن حذف المدرب حاليا',
+    'instructor_has_courses_you_must_delete_courses_before' =>  'المدرب لدية دورات مبنية ، الرجاء حذف الدورات اولا',
+
+
 
 
 

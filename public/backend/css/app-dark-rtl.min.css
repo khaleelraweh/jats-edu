@@ -5,14 +5,8 @@ Version: 2.0.0
 Contact: themesdesign.in@gmail.com
 File: Main Css File
 */
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap");
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("../fonts/inter-light.woff2?v=3.13") format("woff2"), url("../fonts/inter-light.woff?v=3.13") format("woff");
-}
+
+
 @font-face {
   font-family: "Inter";
   font-style: normal;

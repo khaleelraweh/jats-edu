@@ -80,6 +80,7 @@ class SupervisorController extends Controller
         $supervisor = User::create($input);
         $supervisor->markEmailAsVerified();
         $supervisor->attachRole(Role::whereName('supervisor')->first()->id);
+        $supervisor->attachRole(Role::whereName('instructor')->first()->id);
 
         //add permissions
         // if(isset($request->permissions) && count($request->permissions) > 0){

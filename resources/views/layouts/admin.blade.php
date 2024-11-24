@@ -51,15 +51,15 @@
         href="{{ asset('backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css') }}" />
     <link
         href="{{ asset('backend/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                                        type="text/css') }}" />
+                                                                                                                                                                                                                                                                type="text/css') }}" />
     <link
         href="{{ asset('backend/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                                        type="text/css') }}" />
+                                                                                                                                                                                                                                                                type="text/css') }}" />
 
     <!-- Responsive datatable examples -->
     <link
         href="{{ asset('backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                                        type="text/css') }}" />
+                                                                                                                                                                                                                                                                type="text/css') }}" />
 
     {{-- end  new  --}}
 
@@ -156,7 +156,7 @@
     <script src="{{ asset('backend/libs/node-waves/waves.min.js') }}"></script>
 
     <!-- apexcharts -->
-    <script src="{{ asset('backend/libs/apexcharts/apexcharts.min.js') }}"></script>
+    {{-- <script src="{{ asset('backend/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
     <!-- jquery.vectormap map -->
     <script src="{{ asset('backend/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
     <script src="{{ asset('backend/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js') }}">

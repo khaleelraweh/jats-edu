@@ -98,7 +98,7 @@
                                             <i class="fa fa-edit"></i>
                                         </a>
 
-                                        @if ($customer->hasRole('instructor') and $customer->courses->count() > 0)
+                                        {{-- @if ($customer->hasRole('instructor') and $customer->courses->count() > 0)
                                             <a href="javascript:void(0);"
                                                 onclick=" if( confirm('{{ __('panel.customer_has_instructor_role') }}') ){document.getElementById('customer-has-role-{{ $customer->id }}').submit();}else{return false;}"
                                                 class="btn btn-danger">
@@ -115,8 +115,24 @@
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
-                                        @endif
+                                        @endif --}}
 
+                                        @if ($customer->hasRole('instructor') && $customer->courses->count() > 0)
+                                            <a href="javascript:void(0);" onclick="showInstructorAlert()"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @else
+                                            <a href="javascript:void(0);" onclick="confirmDelete({{ $customer->id }})"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                            <form action="{{ route('admin.customers.destroy', $customer->id) }}"
+                                                method="post" class="d-none" id="delete-customer-{{ $customer->id }}">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                        @endif
 
 
                                     </div>
@@ -162,4 +178,36 @@
         </div>
     </div>
 
+@endsection
+
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+        function showInstructorAlert() {
+            Swal.fire({
+                icon: 'warning',
+                title: '{{ __('panel.customer_has_instructor_role') }}',
+                text: '{{ __('panel.customer_must_be_removed_from_instructor_panel') }}',
+                confirmButtonText: '{{ __('panel.ok') }}',
+            });
+        }
+
+        function confirmDelete(customerId) {
+            Swal.fire({
+                title: '{{ __('panel.confirm_delete_message') }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: '{{ __('panel.yes_delete') }}',
+                cancelButtonText: '{{ __('panel.cancel') }}',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-customer-' + customerId).submit();
+                }
+            });
+        }
+    </script>
 @endsection

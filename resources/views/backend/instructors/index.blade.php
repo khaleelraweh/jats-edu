@@ -125,7 +125,10 @@
                                                     \App\Models\User::whereHas('roles', function ($query) {
                                                         $query->where('name', 'admin');
                                                     })->count() === 1)
-                                                admin
+                                                <a href="javascript:void(0);" onclick="showAdminAlert()"
+                                                    class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
                                             @else
                                                 <a href="javascript:void(0);" onclick="confirmDelete({{ $customer->id }})"
                                                     class="btn btn-danger">
@@ -179,6 +182,15 @@
                 icon: 'warning',
                 title: '{{ __('panel.instructor_can_not_be_deleted') }}',
                 text: '{{ __('panel.instructor_has_courses_you_must_delete_courses_before') }}',
+                confirmButtonText: '{{ __('panel.ok') }}',
+            });
+        }
+
+        function showAdminAlert() {
+            Swal.fire({
+                icon: 'warning',
+                title: '{{ __('panel.admin_can_not_be_deleted') }}',
+                text: '{{ __('panel.this_is_the_last_admin_in_the_system') }}',
                 confirmButtonText: '{{ __('panel.ok') }}',
             });
         }

@@ -384,6 +384,9 @@ return [
     'instructor_can_not_be_deleted'                         =>  'لا يمكن حذف المدرب حاليا',
     'instructor_has_courses_you_must_delete_courses_before' =>  'المدرب لدية دورات مبنية ، الرجاء حذف الدورات اولا',
 
+    'admin_can_not_be_deleted'      =>  'لا يمكن حذف هذا المدير',
+    'this_is_the_last_admin_in_the_system'  => 'هذا هو المدير الاخير في النظام',
+
 
 
 

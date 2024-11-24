@@ -1269,4 +1269,40 @@
     'theme' => 'auto',
     'debug_backtrace_limit' => 50,
   ),
+  'laravel-tel-input' => 
+  array (
+    'component-name' => 'tel-input',
+    'options' => 
+    array (
+      'allowDropdown' => true,
+      'autoHideDialCode' => true,
+      'autoPlaceholder' => 'aggressive',
+      'customContainer' => '',
+      'customPlaceholder' => NULL,
+      'dropdownContainer' => NULL,
+      'excludeCountries' => 
+      array (
+      ),
+      'formatOnDisplay' => true,
+      'geoIpLookup' => 'ipinfo',
+      'initialCountry' => 'auto',
+      'localizedCountries' => 
+      array (
+      ),
+      'nationalMode' => true,
+      'onlyCountries' => 
+      array (
+      ),
+      'placeholderNumberType' => 'MOBILE',
+      'preferredCountries' => 
+      array (
+        0 => 'CN',
+        1 => 'NG',
+        2 => 'US',
+        3 => 'GB',
+      ),
+      'separateDialCode' => false,
+      'utilsScript' => '/vendor/intl-tel-input/build/js/utils.js',
+    ),
+  ),
 );

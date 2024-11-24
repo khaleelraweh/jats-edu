@@ -186,4 +186,15 @@
       'PayPal' => 'Srmklive\\PayPal\\Facades\\PayPal',
     ),
   ),
+  'victorybiz/laravel-tel-input' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Victorybiz\\LaravelTelInput\\LaravelTelInputServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'LaravelTelInput' => 'Victorybiz\\LaravelTelInput\\LaravelTelInputFacade',
+    ),
+  ),
 );

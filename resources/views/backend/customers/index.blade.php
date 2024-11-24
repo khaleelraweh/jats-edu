@@ -97,17 +97,30 @@
                                             class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-customer-{{ $customer->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+
+                                        @if ($customer->hasRole('instructor') and $customer->courses->count() > 0)
+                                            <a href="javascript:void(0);"
+                                                onclick=" if( confirm('{{ __('panel.customer_has_instructor_role') }}') ){document.getElementById('customer-has-role-{{ $customer->id }}').submit();}else{return false;}"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @else
+                                            <a href="javascript:void(0);"
+                                                onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-customer-{{ $customer->id }}').submit();}else{return false;}"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                            <form action="{{ route('admin.customers.destroy', $customer->id) }}"
+                                                method="post" class="d-none" id="delete-customer-{{ $customer->id }}">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                        @endif
+
+
+
                                     </div>
-                                    <form action="{{ route('admin.customers.destroy', $customer->id) }}" method="post"
-                                        class="d-none" id="delete-customer-{{ $customer->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
+
                                 </td>
                             </tr>
                         @empty
@@ -130,4 +143,23 @@
         </div>
 
     </div>
+
+    <div class="modal fade" id="deleteWarningModal" tabindex="-1" aria-labelledby="deleteWarningLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteWarningLabel">{{ __('panel.cannot_delete') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="warningMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">{{ __('panel.close') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection

@@ -120,7 +120,11 @@
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         @else
-                                            @if ($customer->hasRole('admin'))
+                                            @if (
+                                                $customer->hasRole('admin') &&
+                                                    \App\Models\User::whereHas('roles', function ($query) {
+                                                        $query->where('name', 'admin');
+                                                    })->count() === 1)
                                                 admin
                                             @else
                                                 <a href="javascript:void(0);" onclick="confirmDelete({{ $customer->id }})"

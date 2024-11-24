@@ -124,7 +124,7 @@
                                                 class="btn btn-danger">
                                                 <i class="fa fa-trash"></i>
                                             </a>
-                                            <form action="{{ route('admin.customers.destroy', $customer->id) }}"
+                                            <form action="{{ route('admin.instructors.destroy', $customer->id) }}"
                                                 method="post" class="d-none" id="delete-customer-{{ $customer->id }}">
                                                 @csrf
                                                 @method('DELETE')

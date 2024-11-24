@@ -378,6 +378,9 @@ return [
     'customer_must_be_removed_from_instructor_panel'    =>  'الطالب يمتلك صلاحية المعلم ، يجب إزالة الطالب من لوحة المعلم',
 
     'ok'                            =>  'موافق',
+    'cancel'                        =>  'الغاء الامر',
+    'yes_delete'                    =>  'نعم قم بالحذف',
+
 
 
 

@@ -376,6 +376,8 @@ return [
     'customer_has_instructor_role'  =>  'Can not Delete Student',
     'customer_must_be_removed_from_instructor_panel'    =>  'Student has Instructor Role,Student must be removed from instructor panel',
     'ok'                            =>  'Ok',
+    'cancel'                        =>  'Cancel',
+    'yes_delete'                    =>  'Delete',
 
 
 

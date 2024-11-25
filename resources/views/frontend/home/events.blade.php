@@ -1,4 +1,4 @@
-<section class="py-5 py-md-11 bg-catskill">
+<section class="py-5 py-md-11 bg-white">
     <div class="container">
         <div class="text-center mb-8 pb-2">
             <h1 class="mb-1">{{ __('transf.txt_upcomming_events') }}</h1>

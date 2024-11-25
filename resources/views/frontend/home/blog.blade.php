@@ -1,4 +1,4 @@
-<section class="py-5 py-md-11 bg-white">
+<section class="py-5 py-md-11 bg-catskill">
     <div class="container">
         <div class="text-center mb-4 mb-md-7" data-aos="fade-up">
             <h1 class="mb-1">{{ __('transf.txt_latest_news') }}</h1>

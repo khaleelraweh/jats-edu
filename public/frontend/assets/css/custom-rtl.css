@@ -1,3 +1,9 @@
+/* general */
+.cart-collaterals .h2, .cart-collaterals h2, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+  color: #379244;
+}
+
+
 .modal-sidebar .modal-content{
   overflow: auto !important;
 }
@@ -150,6 +156,64 @@
     width: 100vw !important;
   }
   
+}
+
+
+/* footer section */
+
+.my-wrapper {
+  position: fixed;
+  width: 400px;
+  bottom: 0;
+  left: 60px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: 100;
+  margin: 0;
+  background-color:  rgba(55, 146, 68, 0.9);
+  color: white;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+
+}
+
+@media(max-width:565px) {
+  .my-wrapper {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 0;
+      left: 0px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      z-index: 100;
+      margin: 0;
+      background-color:  rgba(55, 146, 68, 0.8);
+      color: white;
+      cursor: pointer;
+      border: 0;
+      outline: 0;
+
+  }
+
+  .alert-dismissible .btn-close {
+      padding: 0.5rem 0.5rem;
+      font-size: 12px;
+  }
+
+  .navbar-dark .navbar-nav .nav-link {
+      color: #000;
+      padding-left: 5px;
+      padding-right: 5px;
+  }
+}
+
+/* event-single */
+.card-hover-overlay::before , 
+.list-style-v1 li::after , 
+.btn-primary, .cart-collaterals .checkout-button, form.woocommerce-checkout .place-order .button{
+  background-color: rgba(55, 146, 68, 0.8);
 }
 
 

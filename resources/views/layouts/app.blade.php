@@ -49,7 +49,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/css/intlTelInput.css">
 
     <link rel="stylesheet"
-        href="{{ $rtl == 'rtl' ? asset('frontend/assets/css/theme-rtl.min.css') : asset('frontend/assets/css/theme.min.css') }}">
+        href="{{ $rtl == 'rtl' ? asset('frontend/assets/css/theme-rtl.css') : asset('frontend/assets/css/theme.css') }}">
 
     <link rel="stylesheet"
         href="{{ $rtl == 'rtl' ? asset('frontend/assets/css/custom-rtl.css') : asset('frontend/assets/css/custom.css') }}">

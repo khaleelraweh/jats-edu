@@ -81,6 +81,11 @@
     background-clip: border-box, border-box;
 }
 
+/* featured section  */
+.card-hover-image::before{
+  background-color: rgba(55, 146, 68, 0.8);
+}
+
 /* blog-list */
 .recent-posts img{
   width: 63px !important;

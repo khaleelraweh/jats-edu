@@ -30,8 +30,23 @@
 
             @forelse ($main_sliders->where('section' ,1) as $main_slider)
                 <div class="w-100">
+                    @php
+                        if ($main_slider->firstMedia != null && $main_slider->firstMedia->file_name != null) {
+                            $main_slider_img = asset('assets/main_sliders/' . $main_slider->firstMedia->file_name);
+
+                            if (
+                                !file_exists(public_path('assets/main_sliders/' . $main_slider->firstMedia->file_name))
+                            ) {
+                                // $main_slider_img = asset('image/not_found/item_image_not_found.webp');
+                                $main_slider_img = asset('image/not_found/placeholder.jpg');
+                            }
+                        } else {
+                            // $main_slider_img = asset('image/not_found/item_image_not_found.webp');
+                            $main_slider_img = asset('image/not_found/placeholder.jpg');
+                        }
+                    @endphp
                     <div class="vh-100 bg-cover position-relative overlay overlay-custom"
-                        style="background-image: url({{ asset('assets/main_sliders/' . $main_slider->firstMedia?->file_name) }})">
+                        style="background-image: url({{ $main_slider_img }})">
                         <div class="container position-static pt-9 pt-md-12 pb-8 py-lg-0">
                             <div class="mx-lg-n5">
                                 <div class="vh-100 row gx-0 mx-auto">

@@ -83,12 +83,10 @@
                                                             ),
                                                         )
                                                     ) {
-                                                        $category_img = asset(
-                                                            'image/not_found/item_image_not_found.webp',
-                                                        );
+                                                        $category_img = asset('image/not_found/placeholder.jpg');
                                                     }
                                                 } else {
-                                                    $category_img = asset('image/not_found/item_image_not_found.webp');
+                                                    $category_img = asset('image/not_found/placeholder.jpg');
                                                 }
                                             @endphp
                                             <img src="{{ $category_img }}" width="60" height="60"

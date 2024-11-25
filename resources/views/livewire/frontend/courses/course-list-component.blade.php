@@ -423,10 +423,10 @@
                                                 public_path('assets/courses/' . $course->photos->first()->file_name),
                                             )
                                         ) {
-                                            $course_img = asset('image/not_found/item_image_not_found.webp');
+                                            $course_img = asset('image/not_found/placeholder.jpg');
                                         }
                                     } else {
-                                        $course_img = asset('image/not_found/item_image_not_found.webp');
+                                        $course_img = asset('image/not_found/placeholder.jpg');
                                     }
                                 @endphp
                                 <div class="card-zoom position-relative">

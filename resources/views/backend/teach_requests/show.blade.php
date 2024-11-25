@@ -213,8 +213,8 @@
                                                     alt="Identity Image" style="width: 100%; height: 181px;">
                                             </a>
                                         @else
-                                            <img src="{{ asset('image/not_found/item_image_not_found.webp') }}"
-                                                alt="Identity Image" style="width: 100%; height: 181px;">
+                                            <img src="{{ asset('image/not_found/placeholder.jpg') }}" alt="Identity Image"
+                                                style="width: 100%; height: 181px;">
                                         @endif
                                     </div>
                                 </div>

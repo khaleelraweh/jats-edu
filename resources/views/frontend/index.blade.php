@@ -37,11 +37,11 @@
                             if (
                                 !file_exists(public_path('assets/main_sliders/' . $main_slider->firstMedia->file_name))
                             ) {
-                                // $main_slider_img = asset('image/not_found/item_image_not_found.webp');
+                                // $main_slider_img = asset('image/not_found/placeholder.jpg');
                                 $main_slider_img = asset('image/not_found/placeholder.jpg');
                             }
                         } else {
-                            // $main_slider_img = asset('image/not_found/item_image_not_found.webp');
+                            // $main_slider_img = asset('image/not_found/placeholder.jpg');
                             $main_slider_img = asset('image/not_found/placeholder.jpg');
                         }
                     @endphp

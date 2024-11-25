@@ -73,10 +73,10 @@
                                                     public_path('assets/courses/' . $event->firstMedia->file_name),
                                                 )
                                             ) {
-                                                $event_img = asset('image/not_found/item_image_not_found.webp');
+                                                $event_img = asset('image/not_found/placeholder.jpg');
                                             }
                                         } else {
-                                            $event_img = asset('image/not_found/item_image_not_found.webp');
+                                            $event_img = asset('image/not_found/placeholder.jpg');
                                         }
                                     @endphp
 

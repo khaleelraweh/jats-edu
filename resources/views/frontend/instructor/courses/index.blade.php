@@ -73,10 +73,10 @@
                                                     public_path('assets/courses/' . $course->firstMedia->file_name),
                                                 )
                                             ) {
-                                                $course_img = asset('image/not_found/item_image_not_found.webp');
+                                                $course_img = asset('image/not_found/placeholder.jpg');
                                             }
                                         } else {
-                                            $course_img = asset('image/not_found/item_image_not_found.webp');
+                                            $course_img = asset('image/not_found/placeholder.jpg');
                                         }
                                     @endphp
                                     <img src="{{ $course_img }}" width="60" height="60"

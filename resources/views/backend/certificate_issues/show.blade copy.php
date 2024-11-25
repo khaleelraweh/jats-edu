@@ -88,10 +88,10 @@
                         $course_image = asset('assets/courses/' . $course->photos->first()->file_name);
 
                         if (!file_exists(public_path('assets/courses/' . $course->photos->first()->file_name))) {
-                            $course_image = asset('image/not_found/item_image_not_found.webp');
+                            $course_image = asset('image/not_found/placeholder.jpg');
                         }
                     } else {
-                        $course_image = asset('image/not_found/item_image_not_found.webp');
+                        $course_image = asset('image/not_found/placeholder.jpg');
                     }
                 @endphp
                 <img src="{{ $course_image }}" style="display: block;width:100%;height:200px;" alt="{{ $course->title }}">

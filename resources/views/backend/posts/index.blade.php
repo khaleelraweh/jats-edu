@@ -75,10 +75,10 @@
                                                     public_path('assets/posts/' . $post->photos->first()->file_name),
                                                 )
                                             ) {
-                                                $post_img = asset('image/not_found/item_image_not_found.webp');
+                                                $post_img = asset('image/not_found/placeholder.jpg');
                                             }
                                         } else {
-                                            $post_img = asset('image/not_found/item_image_not_found.webp');
+                                            $post_img = asset('image/not_found/placeholder.jpg');
                                         }
                                     @endphp
                                     <img src="{{ $post_img }}" width="60" height="60"

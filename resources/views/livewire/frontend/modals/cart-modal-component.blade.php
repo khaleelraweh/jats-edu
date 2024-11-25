@@ -18,10 +18,10 @@
                                         public_path('assets/courses/' . $item->model->photos->first()->file_name),
                                     )
                                 ) {
-                                    $item_model_img = asset('image/not_found/item_image_not_found.webp');
+                                    $item_model_img = asset('image/not_found/placeholder.jpg');
                                 }
                             } else {
-                                $item_model_img = asset('image/not_found/item_image_not_found.webp');
+                                $item_model_img = asset('image/not_found/placeholder.jpg');
                             }
                         @endphp
                         <img class="bg-gray-200 w-60p h-60p rounded-circle overflow-hidden" src="{{ $item_model_img }}"

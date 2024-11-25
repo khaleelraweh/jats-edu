@@ -8,10 +8,10 @@
             $event_img = asset('assets/courses/' . $event->photos->last()->file_name);
 
             if (!file_exists(public_path('assets/courses/' . $event->photos->last()->file_name))) {
-                $event_img = asset('image/not_found/item_image_not_found.webp');
+                $event_img = asset('image/not_found/placeholder.jpg');
             }
         } else {
-            $event_img = asset('image/not_found/item_image_not_found.webp');
+            $event_img = asset('image/not_found/placeholder.jpg');
         }
     @endphp
     <div class="sk-thumbnail img-ratio-7">

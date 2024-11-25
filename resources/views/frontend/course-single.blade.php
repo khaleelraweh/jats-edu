@@ -8,10 +8,10 @@
         if ($firstPhoto && $firstPhoto->file_name != null) {
             $course_img = asset('assets/courses/' . $firstPhoto->file_name);
             if (!file_exists(public_path('assets/courses/' . $firstPhoto->file_name))) {
-                $course_img = asset('image/not_found/item_image_not_found.webp');
+                $course_img = asset('image/not_found/placeholder.jpg');
             }
         } else {
-            $course_img = asset('image/not_found/item_image_not_found.webp');
+            $course_img = asset('image/not_found/placeholder.jpg');
         }
     @endphp
 
@@ -791,12 +791,10 @@
                                                         ),
                                                     )
                                                 ) {
-                                                    $latest_course_img = asset(
-                                                        'image/not_found/item_image_not_found.webp',
-                                                    );
+                                                    $latest_course_img = asset('image/not_found/placeholder.jpg');
                                                 }
                                             } else {
-                                                $latest_course_img = asset('image/not_found/item_image_not_found.webp');
+                                                $latest_course_img = asset('image/not_found/placeholder.jpg');
                                             }
                                         @endphp
 
@@ -862,10 +860,10 @@
                                         public_path('assets/courses/' . $related_course->photos->first()->file_name),
                                     )
                                 ) {
-                                    $related_course_img = asset('image/not_found/item_image_not_found.webp');
+                                    $related_course_img = asset('image/not_found/placeholder.jpg');
                                 }
                             } else {
-                                $related_course_img = asset('image/not_found/item_image_not_found.webp');
+                                $related_course_img = asset('image/not_found/placeholder.jpg');
                             }
                         @endphp
 

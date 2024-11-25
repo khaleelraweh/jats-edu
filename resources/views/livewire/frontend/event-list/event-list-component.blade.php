@@ -84,10 +84,10 @@
                                 $event_img = asset('assets/events/' . $event->photos->first()->file_name);
 
                                 if (!file_exists(public_path('assets/events/' . $event->photos->first()->file_name))) {
-                                    $event_img = asset('image/not_found/item_image_not_found.webp');
+                                    $event_img = asset('image/not_found/placeholder.jpg');
                                 }
                             } else {
-                                $event_img = asset('image/not_found/item_image_not_found.webp');
+                                $event_img = asset('image/not_found/placeholder.jpg');
                             }
                         @endphp
                         <div class="card-zoom position-relative">

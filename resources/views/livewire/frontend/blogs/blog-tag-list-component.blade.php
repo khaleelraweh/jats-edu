@@ -21,10 +21,10 @@
                                                 public_path('assets/posts/' . $post->photos->first()->file_name),
                                             )
                                         ) {
-                                            $post_img = asset('image/not_found/item_image_not_found.webp');
+                                            $post_img = asset('image/not_found/placeholder.jpg');
                                         }
                                     } else {
-                                        $post_img = asset('image/not_found/item_image_not_found.webp');
+                                        $post_img = asset('image/not_found/placeholder.jpg');
                                     }
                                 @endphp
                                 <img src="{{ $post_img }}" alt="{{ $post->title }}" class="rounded img-fluid">
@@ -161,12 +161,10 @@
                                                         ),
                                                     )
                                                 ) {
-                                                    $recent_post_img = asset(
-                                                        'image/not_found/item_image_not_found.webp',
-                                                    );
+                                                    $recent_post_img = asset('image/not_found/placeholder.jpg');
                                                 }
                                             } else {
-                                                $recent_post_img = asset('image/not_found/item_image_not_found.webp');
+                                                $recent_post_img = asset('image/not_found/placeholder.jpg');
                                             }
                                         @endphp
                                         <img src="{{ $recent_post_img }}" alt="..."

@@ -162,10 +162,10 @@
                             $order_image = asset('assets/orders/' . $order->bankReceipt);
 
                             if (!file_exists(public_path('assets/orders/' . $order->bankReceipt))) {
-                                $order_image = asset('image/not_found/item_image_not_found.webp');
+                                $order_image = asset('image/not_found/placeholder.jpg');
                             }
                         } else {
-                            $order_image = asset('image/not_found/item_image_not_found.webp');
+                            $order_image = asset('image/not_found/placeholder.jpg');
                         }
                     @endphp
 

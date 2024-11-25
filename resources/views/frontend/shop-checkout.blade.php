@@ -245,12 +245,12 @@
                                                                         )
                                                                     ) {
                                                                         $item_model_img = asset(
-                                                                            'image/not_found/item_image_not_found.webp',
+                                                                            'image/not_found/placeholder.jpg',
                                                                         );
                                                                     }
                                                                 } else {
                                                                     $item_model_img = asset(
-                                                                        'image/not_found/item_image_not_found.webp',
+                                                                        'image/not_found/placeholder.jpg',
                                                                     );
                                                                 }
                                                             @endphp

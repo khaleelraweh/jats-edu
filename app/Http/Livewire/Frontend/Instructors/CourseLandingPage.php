@@ -103,10 +103,10 @@ class CourseLandingPage extends Component
         if ($course->firstMedia && $course->firstMedia->file_name) {
             $this->currentImage = asset('assets/courses/' . $course->firstMedia->file_name);
             if (!file_exists(public_path('assets/courses/' . $course->firstMedia->file_name))) {
-                $this->currentImage = asset('image/not_found/item_image_not_found.webp');
+                $this->currentImage = asset('image/not_found/placeholder.jpg');
             }
         } else {
-            $this->currentImage = asset('image/not_found/item_image_not_found.webp');
+            $this->currentImage = asset('image/not_found/placeholder.jpg');
         }
     }
 

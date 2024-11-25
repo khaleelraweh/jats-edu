@@ -66,7 +66,7 @@
                                         <img src="{{ asset('assets/partners/' . $partner->partner_image) }}" width="60"
                                             height="60" alt="{{ $partner->title }}">
                                     @else
-                                        <img src="{{ asset('image/not_found/item_image_not_found.webp') }}" width="60"
+                                        <img src="{{ asset('image/not_found/placeholder.jpg') }}" width="60"
                                             height="60" alt="{{ $partner->title }}">
                                     @endif
                                 </td>

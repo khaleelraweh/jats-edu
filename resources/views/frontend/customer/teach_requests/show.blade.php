@@ -166,7 +166,7 @@
                                                         class="img-fluid" alt="Identity Image">
                                                 </a>
                                             @else
-                                                <img src="{{ asset('image/not_found/item_image_not_found.webp') }}"
+                                                <img src="{{ asset('image/not_found/placeholder.jpg') }}"
                                                     alt="Identity Image" style="width: 100%; height: 181px;">
                                             @endif
                                         </div>

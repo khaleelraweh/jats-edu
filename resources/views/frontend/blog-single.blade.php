@@ -49,10 +49,10 @@
                 $post_img = asset('assets/posts/' . $post->photos->last()->file_name);
 
                 if (!file_exists(public_path('assets/posts/' . $post->photos->last()->file_name))) {
-                    $post_img = asset('image/not_found/item_image_not_found.webp');
+                    $post_img = asset('image/not_found/placeholder.jpg');
                 }
             } else {
-                $post_img = asset('image/not_found/item_image_not_found.webp');
+                $post_img = asset('image/not_found/placeholder.jpg');
             }
         @endphp
         {{-- <img src="{{ $post_img }}" alt="..." class="img-fluid"> --}}
@@ -153,10 +153,10 @@
                                                 public_path('assets/posts/' . $latest_post->photos->first()->file_name),
                                             )
                                         ) {
-                                            $latest_post_img = asset('image/not_found/item_image_not_found.webp');
+                                            $latest_post_img = asset('image/not_found/placeholder.jpg');
                                         }
                                     } else {
-                                        $latest_post_img = asset('image/not_found/item_image_not_found.webp');
+                                        $latest_post_img = asset('image/not_found/placeholder.jpg');
                                     }
                                 @endphp
                                 <img class="rounded shadow-light-lg img-fluid" src="{{ $latest_post_img }}" alt="...">

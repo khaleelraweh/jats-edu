@@ -4,6 +4,23 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+
+ @font-face {
+  font-family: 'DroidKufi-Regular';
+  src: url('../../../fonts/DroidKufi-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DroidKufi-Bold';
+  src: url('../../../fonts/DroidKufi-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
  :root {
     --bs-blue: #196ecd;
     --bs-indigo: #6610f2;
@@ -127,7 +144,7 @@
       rgba(255, 255, 255, 0.15),
       rgba(255, 255, 255, 0)
     );
-    --bs-body-font-family: Jost, sans-serif;
+    --bs-body-font-family: 'DroidKufi-Regular', sans-serif;
     --bs-body-font-size: 1rem;
     --bs-body-font-weight: 400;
     --bs-body-line-height: 1.6;

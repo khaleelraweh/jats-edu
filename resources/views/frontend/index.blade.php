@@ -165,10 +165,10 @@
                     $callAction_img = asset('assets/call_actions/' . $callAction->photos->first()->file_name);
 
                     if (!file_exists(public_path('assets/call_actions/' . $callAction->photos->first()->file_name))) {
-                        $callAction_img = asset('image/not_found/item_image_not_found.webp');
+                        $callAction_img = asset('image/not_found/placeholder.jpg');
                     }
                 } else {
-                    $callAction_img = asset('image/not_found/item_image_not_found.webp');
+                    $callAction_img = asset('image/not_found/placeholder.jpg');
                 }
             @endphp
 
@@ -363,10 +363,10 @@
                                                 public_path('assets/courses/' . $event->photos->first()->file_name),
                                             )
                                         ) {
-                                            $event_img = asset('image/not_found/item_image_not_found.webp');
+                                            $event_img = asset('image/not_found/placeholder.jpg');
                                         }
                                     } else {
-                                        $event_img = asset('image/not_found/item_image_not_found.webp');
+                                        $event_img = asset('image/not_found/placeholder.jpg');
                                     }
                                 @endphp
                                 <!-- Image -->
@@ -499,10 +499,10 @@
                                                     public_path('assets/posts/' . $post->photos->first()->file_name),
                                                 )
                                             ) {
-                                                $post_img = asset('image/not_found/item_image_not_found.webp');
+                                                $post_img = asset('image/not_found/placeholder.jpg');
                                             }
                                         } else {
-                                            $post_img = asset('image/not_found/item_image_not_found.webp');
+                                            $post_img = asset('image/not_found/placeholder.jpg');
                                         }
                                     @endphp
                                     <img class="rounded shadow-light-lg img-fluid" src="{{ $post_img }}"

@@ -4,13 +4,14 @@
 @php
     $bbg = '';
     if (request()->routeIs('frontend.index')) {
-        $bbg = 'bg-white';
+        $bbg = 'bg-gray-100';
     } elseif (request()->routeIs('frontend.course_single') || request()->routeIs('frontend.event_single')) {
         $bbg = 'bg-gray-100';
     } else {
         $bbg = '';
     }
-    $bbg = 'bg-gray-100';
+    // $bbg = 'bg-gray-100';
+    // $bbg = 'bg-dark';
 @endphp
 
 <footer class="pt-8 pt-md-11 {{ $bbg }} ">

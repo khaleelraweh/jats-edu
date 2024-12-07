@@ -3,6 +3,10 @@
 @section('content')
     {{-- image set --}}
 
+    <?php
+    // Increment views
+    $course->increment('views');
+    ?>
     @php
         $firstPhoto = $course->photos->first();
         if ($firstPhoto && $firstPhoto->file_name != null) {

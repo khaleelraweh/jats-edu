@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    <?php
+    // Increment views
+    $page->increment('views');
+    ?>
     <!-- PAGE TITLE  -->
     <header class="py-6 py-md-6" style="background-image: none;">
         <div class="container text-center py-xl-2">

@@ -23,6 +23,8 @@ return new class extends Migration
             $table->foreignId('course_category_id')->constrained()->cascadeOnDelete();
             $table->unsignedBigInteger('section')->default(1); // 1 is post
 
+            $table->integer('views')->default(0);
+
 
 
             $table->string('video_promo')->nullable();

@@ -23,6 +23,8 @@ return new class extends Migration
             $table->foreign('parent_id')->references('id')->on('course_categories')->nullOnDelete();
             $table->boolean('featured')->default(false);
 
+            $table->integer('views')->default(0);
+
             // will be use always
             $table->boolean('status')->default(true);
             $table->dateTime('published_on')->nullable();

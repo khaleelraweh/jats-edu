@@ -2,6 +2,10 @@
 
 @section('content')
     <!-- INSTRUCTORS SINGLE -->
+    <?php
+    // Increment views
+    $instructor->increment('views');
+    ?>
     <div class="container pt-8 pt-md-11">
         <div class="row">
             <div class="col-xl-8 mx-xl-auto">

@@ -53,6 +53,7 @@
                             <th class="d-none d-sm-table-cell">{{ __('panel.email') }} {{ __('panel.and') }}
                                 {{ __('panel.mobile') }} </th>
                             <th>{{ __('panel.status') }}</th>
+                            <th>{{ __('panel.views') }}</th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
@@ -105,6 +106,7 @@
                                     {{ $customer->mobile }}
                                 </td>
                                 <td>{{ $customer->status() }}</td>
+                                <td>{{ $customer->views }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $customer->created_at->format('Y-m-d') }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">

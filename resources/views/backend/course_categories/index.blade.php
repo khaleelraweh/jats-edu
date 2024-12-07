@@ -56,6 +56,7 @@
                                     <th>{{ __('panel.course_title') }}</th>
                                     <th>{{ __('panel.courses_count') }} </th>
                                     <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
+                                    <th class="d-none d-sm-table-cell">{{ __('panel.views') }}</th>
                                     <th class="d-none d-sm-table-cell">{{ __('panel.status') }}</th>
                                     <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }}</th>
                                     <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
@@ -100,6 +101,7 @@
                                         </td>
                                         <td>{{ $category->courses_count }}</td>
                                         <td class="d-none d-sm-table-cell">{{ $category->created_by }}</td>
+                                        <td class="d-none d-sm-table-cell">{{ $category->views }}</td>
                                         <td class="d-none d-sm-table-cell"><span
                                                 class="btn btn-round  rounded-pill btn-success btn-xs">{{ $category->status() }}</span>
                                         </td>
@@ -126,7 +128,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="7" class="text-center">{{ __('panel.no_found_item') }}</td>
+                                        <td colspan="8" class="text-center">{{ __('panel.no_found_item') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -134,7 +136,7 @@
                         </table>
                         <tfoot>
                             <tr>
-                                <td colspan="7">
+                                <td colspan="8">
                                     <div class="float-right">
                                         {!! $categories->appends(request()->all())->links() !!}
                                     </div>

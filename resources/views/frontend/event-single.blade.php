@@ -2,6 +2,10 @@
 
 @section('content')
     <!-- EVENT SINGLE -->
+    <?php
+    // Increment views
+    $event->increment('views');
+    ?>
 
     @php
         if ($event->photos->last() != null && $event->photos->last()->file_name != null) {

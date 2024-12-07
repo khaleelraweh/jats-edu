@@ -48,29 +48,25 @@ class CourseListComponent extends Component
         $this->selectedRatings = [];
     }
 
+    public function incrementCategoryViews()
+    {
+        if (!empty($this->categoryInputs)) {
+            $courseCategoryIds = CourseCategory::whereIn('slug->' . app()->getLocale(), $this->categoryInputs)
+                ->pluck('id')
+                ->toArray();
+
+            CourseCategory::whereIn('id', $courseCategoryIds)->increment('views');
+        }
+    }
+
+    public function updatedCategoryInputs($value)
+    {
+        $this->incrementCategoryViews();
+    }
+
     public function render()
     {
-        // $instructors_menu = User::whereHasRoles('instructor')->hasCourses()
-        //     ->orderBy('first_name')
-        //     ->orderBy('last_name')
-        //     ->when($this->searchQuery, function ($query) {
-        //         $query->where(function ($subQuery) {
-        //             $subQuery->where('first_name', 'LIKE', '%' . $this->searchQuery . '%')
-        //                 ->orWhere('last_name', 'LIKE', '%' . $this->searchQuery . '%');
-        //         });
-        //     })
-        //     ->withCount('courses') // Load the count of associated courses for each instructor
-        //     ->get()
-        //     ->groupBy(function ($user) {
-        //         return $user->first_name . ' ' . $user->last_name;
-        //     })
-        //     ->map(function ($group) {
-        //         // Calculate the count of instructors in each group
-        //         $instructorsCount = $group->count();
-        //         // Calculate the sum of courses count for each instructor group
-        //         $coursesCount = $group->sum('courses_count');
-        //         return compact('instructorsCount', 'coursesCount');
-        // });
+
 
         $instructors_menu = User::whereHasRoles('instructor')->hasCourses()
             ->orderBy('first_name')
@@ -138,9 +134,15 @@ class CourseListComponent extends Component
                 $course_category = CourseCategory::where('slug->' . app()->getLocale(), $this->slug)
                     ->whereStatus(true)
                     ->first();
-                $courses = $courses->where('course_category_id', $course_category->id);
+                if ($course_category) {
+                    // Increment the views for the category
+                    $course_category->increment('views');
+                    $courses = $courses->where('course_category_id', $course_category->id);
+                }
+                // $courses = $courses->where('course_category_id', $course_category->id);
             } else {
                 $courseCategoryIds = CourseCategory::whereIn('slug->' . app()->getLocale(), $this->categoryInputs)->pluck('id')->toArray();
+                CourseCategory::where('id', $courseCategoryIds)->increment('views');
                 $courses = $courses->whereIn('course_category_id', $courseCategoryIds);
             }
         }

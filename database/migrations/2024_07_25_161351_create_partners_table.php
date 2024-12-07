@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('partner_image')->nullable();
             $table->string('partner_link')->nullable();
 
+            $table->integer('views')->default(0);
+
 
             // will be use always
             $table->boolean('status')->nullable()->default(false);

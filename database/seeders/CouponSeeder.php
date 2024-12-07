@@ -26,6 +26,7 @@ class CouponSeeder extends Seeder
             'expire_date'   =>  Carbon::now()->addMonth(),
             'greater_than'  =>  600,
             'status'        =>  1,
+            'views'         =>  0,
         ]);
 
         Coupon::create([
@@ -38,6 +39,7 @@ class CouponSeeder extends Seeder
             'expire_date'   =>  Carbon::now()->addWeek(),
             'greater_than'  =>  null,
             'status'        =>  1,
+            'views'         =>  0,
         ]);
     }
 }

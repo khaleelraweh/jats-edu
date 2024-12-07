@@ -25,6 +25,7 @@ return new class extends Migration
             $table->dateTime('expire_date')->nullable();
             $table->unsignedDecimal('greater_than')->nullable();
 
+
             // will be use always
             $table->boolean('status')->default(true);
             $table->dateTime('published_on')->nullable();

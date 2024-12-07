@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    <?php
+    // Increment views
+    $post->increment('views');
+    ?>
+
     <!-- BLOG-SINGLE -->
     <div class="container py-8 pt-lg-11">
         <div class="row">

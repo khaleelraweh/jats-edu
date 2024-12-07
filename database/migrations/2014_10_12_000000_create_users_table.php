@@ -29,6 +29,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->boolean('receive_emails')->default(true);
 
+            $table->integer('views')->default(0);
 
             // new info for instructor start  
             $table->json('description')->nullable();

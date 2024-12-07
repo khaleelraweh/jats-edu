@@ -51,6 +51,7 @@
                             <th>{{ __('panel.image') }}</th>
                             <th>{{ __('panel.title') }}</th>
                             <th>{{ __('panel.author') }}</th>
+                            <th>{{ __('panel.views') }}</th>
                             <th>{{ __('panel.status') }}</th>
                             <th class="d-none d-sm-table-cell"> {{ __('panel.description') }}</th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
@@ -90,6 +91,7 @@
                                     {{ Str::limit($post->title, 50) }}
                                 </td>
                                 <td>{{ $post->created_by }}</td>
+                                <td>{{ $post->views }}</td>
                                 <td>{{ $post->status() }}</td>
                                 <td class="d-none d-sm-table-cell">{!! Str::limit($post->description, 50, ' ...') !!}</td>
                                 <td class="d-none d-sm-table-cell">{{ $post->published_on->format('Y-m-d h:i a') ?? '-' }}
@@ -114,13 +116,13 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center">{{ __('panel.no_found_item') }}</td>
+                                <td colspan="7" class="text-center">{{ __('panel.no_found_item') }}</td>
                             </tr>
                         @endforelse
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="6">
+                            <td colspan="7">
                                 <div class="float-right">
                                     {!! $posts->appends(request()->all())->links() !!}
                                 </div>

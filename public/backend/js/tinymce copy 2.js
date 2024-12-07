@@ -1,13 +1,9 @@
-// npm package: tinymce
-// github link: https://github.com/tinymce/tinymce
-
 $(function() {
   'use strict';
 
   //Tinymce editor
   if ($("#tinymceExample").length) {
     tinymce.init({
-      // selector: '#tinymceExample',
       selector: 'textarea',
       language: typeof tinymceLanguage !== 'undefined' ? tinymceLanguage : 'en', // Default to 'en' if no language set
       min_height: 350,
@@ -17,13 +13,57 @@ $(function() {
         "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
         "save table contextmenu directionality emoticons template paste textcolor",
       ],
-      toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+      toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code',
       toolbar2: 'print preview media | forecolor backcolor emoticons | codesample help',
-      image_advtab: true,
-
       image_title: true,
       automatic_uploads: true,
       file_picker_types: 'image',
+
+      // image_advtab: true,
+      // templates: [
+      //   { title: 'Test template 1', content: 'Test 1' },
+      //   { title: 'Test template 2', content: 'Test 2' }
+      // ],
+      // content_css: [],
+      // images_upload_url: '/upload_image', // Your server-side upload endpoint
+      // automatic_uploads: true,
+      // file_picker_types: 'image',
+      // file_picker_callback: function(callback, value, meta) {
+      //   if (meta.filetype === 'image') {
+      //     const input = document.createElement('input');
+      //     input.setAttribute('type', 'file');
+      //     input.setAttribute('accept', 'image/*');
+      //     input.onchange = function() {
+      //       const file = this.files[0];
+      //       const reader = new FileReader();
+      //       reader.onload = function() {
+      //         callback(reader.result, { alt: file.name });
+      //       };
+      //       reader.readAsDataURL(file);
+      //     };
+      //     input.click();
+      //   }
+      // },
+      // images_upload_handler: function(blobInfo, success, failure) {
+      //   // Use AJAX or Fetch API to upload the image to your server
+      //   const formData = new FormData();
+      //   formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+      //   fetch('/upload_image', { // Replace with your upload endpoint
+      //     method: 'POST',
+      //     body: formData
+      //   })
+      //   .then(response => response.json())
+      //   .then(result => {
+      //     if (result && result.location) {
+      //       success(result.location); // URL of the uploaded image
+      //     } else {
+      //       failure('Image upload failed.');
+      //     }
+      //   })
+      //   .catch(() => failure('Image upload failed.'));
+      // }
+
 
       file_picker_callback: function (cb, value, meta) {
         var input = document.createElement('input');
@@ -62,19 +102,9 @@ $(function() {
     
         input.click();
       },
-      content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+      content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
 
-      templates: [{
-          title: 'Test template 1',
-          content: 'Test 1'
-        },
-        {
-          title: 'Test template 2',
-          content: 'Test 2'
-        }
-      ],
-      content_css: []
+
     });
   }
-
 });

@@ -1118,6 +1118,7 @@
   'debugbar' => 
   array (
     'enabled' => NULL,
+    'hide_empty_tabs' => false,
     'except' => 
     array (
       0 => 'telescope*',
@@ -1170,6 +1171,7 @@
       'models' => true,
       'livewire' => true,
       'jobs' => false,
+      'pennant' => false,
     ),
     'options' => 
     array (
@@ -1195,6 +1197,9 @@
       'db' => 
       array (
         'with_params' => true,
+        'exclude_paths' => 
+        array (
+        ),
         'backtrace' => true,
         'backtrace_exclude_paths' => 
         array (
@@ -1204,13 +1209,9 @@
         'explain' => 
         array (
           'enabled' => false,
-          'types' => 
-          array (
-            0 => 'SELECT',
-          ),
         ),
         'hints' => false,
-        'show_copy' => false,
+        'show_copy' => true,
         'slow_threshold' => false,
         'memory_usage' => false,
         'soft_limit' => 100,
@@ -1268,41 +1269,5 @@
     'route_domain' => NULL,
     'theme' => 'auto',
     'debug_backtrace_limit' => 50,
-  ),
-  'laravel-tel-input' => 
-  array (
-    'component-name' => 'tel-input',
-    'options' => 
-    array (
-      'allowDropdown' => true,
-      'autoHideDialCode' => true,
-      'autoPlaceholder' => 'aggressive',
-      'customContainer' => '',
-      'customPlaceholder' => NULL,
-      'dropdownContainer' => NULL,
-      'excludeCountries' => 
-      array (
-      ),
-      'formatOnDisplay' => true,
-      'geoIpLookup' => 'ipinfo',
-      'initialCountry' => 'auto',
-      'localizedCountries' => 
-      array (
-      ),
-      'nationalMode' => true,
-      'onlyCountries' => 
-      array (
-      ),
-      'placeholderNumberType' => 'MOBILE',
-      'preferredCountries' => 
-      array (
-        0 => 'CN',
-        1 => 'NG',
-        2 => 'US',
-        3 => 'GB',
-      ),
-      'separateDialCode' => false,
-      'utilsScript' => '/vendor/intl-tel-input/build/js/utils.js',
-    ),
   ),
 );

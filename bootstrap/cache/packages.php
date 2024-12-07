@@ -1,13 +1,13 @@
 <?php return array (
   'barryvdh/laravel-debugbar' => 
   array (
-    'providers' => 
-    array (
-      0 => 'Barryvdh\\Debugbar\\ServiceProvider',
-    ),
     'aliases' => 
     array (
       'Debugbar' => 'Barryvdh\\Debugbar\\Facades\\Debugbar',
+    ),
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\Debugbar\\ServiceProvider',
     ),
   ),
   'beyondcode/laravel-websockets' => 
@@ -184,17 +184,6 @@
     'aliases' => 
     array (
       'PayPal' => 'Srmklive\\PayPal\\Facades\\PayPal',
-    ),
-  ),
-  'victorybiz/laravel-tel-input' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Victorybiz\\LaravelTelInput\\LaravelTelInputServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'LaravelTelInput' => 'Victorybiz\\LaravelTelInput\\LaravelTelInputFacade',
     ),
   ),
 );

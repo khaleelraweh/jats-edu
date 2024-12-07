@@ -47,6 +47,7 @@
                         <th>{{ __('panel.title') }}</th>
                         <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
                         <th>{{ __('panel.status') }}</th>
+                        <th>{{ __('panel.views') }}</th>
                         <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
                         <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
 
@@ -70,6 +71,9 @@
                             <td class="d-none d-sm-table-cell">{{ $page->created_by }}</td>
                             <td>
                                 <span class="btn btn-round rounded-pill btn-success btn-xs">{{ $page->status() }}</span>
+                            </td>
+                            <td>
+                                {{ $page->views }}
                             </td>
                             <td class="d-none d-sm-table-cell">{{ $page->created_at }}</td>
                             <td>

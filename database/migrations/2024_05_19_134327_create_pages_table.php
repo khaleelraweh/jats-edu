@@ -19,6 +19,8 @@ return new class extends Migration
             $table->json('slug');
             $table->json('content');
 
+            $table->integer('views')->default(0);
+
             // will be use always
             $table->boolean('status')->nullable()->default(true);
             $table->dateTime('published_on')->nullable();

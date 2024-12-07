@@ -7,7 +7,9 @@ use App\Http\Requests\Backend\AdminInfoRequest;
 use App\Models\CompanyRequest;
 use App\Models\Course;
 use App\Models\Order;
+use App\Models\PageVisit;
 use App\Models\User;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
@@ -72,7 +74,14 @@ class BackendController extends Controller
         $total_company_requests = CompanyRequest::count();
 
 
-        return view('backend.index', compact('total_students', 'total_instructors', 'total_company_requests', 'total_courses', 'total_new_courses', 'total_courses_completed', 'total_courses_under_proccess', 'total_courses_review_finished', 'total_courses_published', 'total_courses_rejected', 'total_orders', 'total_new_orders', 'total_completed_orders', 'total_under_proccess_orders', 'total_finished_orders', 'total_rejected_orders', 'total_canceled_orders'));
+        $visitors = Visitor::all();
+        $pageVisits = PageVisit::select('page', PageVisit::raw('count(*) as visits'))
+            ->groupBy('page')
+            ->orderByDesc('visits')
+            ->get();
+
+
+        return view('backend.index', compact('total_students', 'total_instructors', 'total_company_requests', 'total_courses', 'total_new_courses', 'total_courses_completed', 'total_courses_under_proccess', 'total_courses_review_finished', 'total_courses_published', 'total_courses_rejected', 'total_orders', 'total_new_orders', 'total_completed_orders', 'total_under_proccess_orders', 'total_finished_orders', 'total_rejected_orders', 'total_canceled_orders', 'visitors', 'pageVisits'));
     }
 
     public function create_update_theme(Request $request)

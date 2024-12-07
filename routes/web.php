@@ -57,6 +57,7 @@ use App\Http\Controllers\Frontend\Instructor\CourseController as InstructorCours
 use App\Http\Controllers\Frontend\InstructorController as FrontendInstructorController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\TeachRequestController as FrontendTeachRequestController;
+use App\Http\Controllers\VisitorController;
 use App\Models\News;
 use Illuminate\Support\Facades\auth;
 use Illuminate\Support\Facades\Route;
@@ -142,6 +143,8 @@ Route::group(['middleware' => ['roles', 'role:customer|supervisor', 'verified']]
     Route::get('teach_requests/{teachRequest}', [FrontendTeachRequestController::class, 'show'])->name('frontend.customer.teach_requests.show');
 
     Route::get('/viewfile/{file_id}', [FrontendTeachRequestController::class, 'view_file'])->name('frontend.customer.teach_requests.view_file');
+
+    Route::get('/visitors', [VisitorController::class, 'index'])->name('admin.visitors');
 
 
 

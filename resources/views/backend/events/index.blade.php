@@ -52,6 +52,7 @@
                             <th>{{ __('panel.title') }}</th>
                             <th>{{ __('panel.price') }}</th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
+                            <th class="d-none d-sm-table-cell">{{ __('panel.views') }}</th>
                             <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
 
                             <th class="d-none d-sm-table-cell">{{ __('panel.status') }}</th>
@@ -89,6 +90,7 @@
                                 <td>{{ $event->title }}</td>
                                 <td>{{ $event->price }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $event->created_by }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $event->views }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $event->created_at }}</td>
 
                                 <td class="d-none d-sm-table-cell">{{ $event->status() }}</td>

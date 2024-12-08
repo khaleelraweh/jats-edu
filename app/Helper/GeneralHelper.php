@@ -1,6 +1,8 @@
 <?php
 
-use App\Models\Country;
+// use App\Models\Country;
+
+use Altwaireb\World\Models\Country;
 use App\Models\Currency;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Cache;
@@ -253,6 +255,12 @@ function order_status($status)
 }
 
 
+// if (!function_exists('getCountries')) {
+//     function getCountries()
+//     {
+//         return Country::all();
+//     }
+// }
 if (!function_exists('getCountries')) {
     function getCountries()
     {

@@ -196,7 +196,7 @@
                                                             @foreach (getCountries() as $country)
                                                                 <option value="{{ $country->name }}"
                                                                     {{ old('residence_address') == $country->name ? 'selected' : '' }}>
-                                                                    {{ $country->name_native }}
+                                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>

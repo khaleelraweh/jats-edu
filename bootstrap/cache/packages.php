@@ -1,4 +1,15 @@
 <?php return array (
+  'altwaireb/laravel-world' => 
+  array (
+    'aliases' => 
+    array (
+      'World' => 'Altwaireb\\World\\Facades\\World',
+    ),
+    'providers' => 
+    array (
+      0 => 'Altwaireb\\World\\WorldServiceProvider',
+    ),
+  ),
   'barryvdh/laravel-debugbar' => 
   array (
     'aliases' => 

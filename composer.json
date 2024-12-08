@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1.6|^8.2.12",
+        "altwaireb/laravel-world": "^1.0",
         "barryvdh/laravel-debugbar": "^3.9",
         "codezero/laravel-unique-translation": "^4.2",
         "cviebrock/eloquent-sluggable": "^10.0",

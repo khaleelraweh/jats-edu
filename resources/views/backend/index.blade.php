@@ -40,6 +40,25 @@
             @endforeach
         </tbody>
     </table>
+    <h2>countries</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>native</th>
+                <th>translation</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($countries as $country)
+                <tr>
+                    <td>{{ $country->name }}</td>
+                    <td>{{ $country->native }}</td>
+                    <td>{{ $country->translations['ar'] }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 
 
     <!-- start page title -->
@@ -50,7 +69,8 @@
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">{{ __('panel.youth_step_institute') }}</a>
+                        <li class="breadcrumb-item"><a
+                                href="javascript: void(0);">{{ __('panel.youth_step_institute') }}</a>
                         </li>
                         <li class="breadcrumb-item active">{{ __('panel.dashboard') }}</li>
                     </ol>

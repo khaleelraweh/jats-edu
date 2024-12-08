@@ -129,8 +129,8 @@
 
                                                     </label>
                                                     <div class="input-group flatpickr" id="flatpickr-datetime">
-                                                        <input type="text" name="published_on"
-                                                            value="{{ old('published_on') }}" class="form-control"
+                                                        <input type="text" name="date_of_birth"
+                                                            value="{{ old('date_of_birth') }}" class="form-control"
                                                             placeholder="Select date" data-input>
                                                         <span class="input-group-text input-group-addon" data-toggle>
                                                             <i data-feather="calendar"></i>
@@ -139,28 +139,6 @@
                                                 </div>
                                             </div>
 
-                                            {{-- <div class="row">
-                                                <div class="col-sm-12 col-md-12 pt-2">
-                                                    <div class="control-group form-group">
-                                                        <label class="form-label">
-                                                            {{ __('panel.date_of_birth') }}
-                                                            <span class="required text-danger">*</span>
-
-                                                        </label>
-
-
-
-                                                        <div class="form-group">
-                                                            <input type="text" name="date_of_birth"
-                                                                class="form-control required flatpickr"
-                                                                value="{{ old('date_of_birth') }}">
-                                                            @error('date_of_birth')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group">

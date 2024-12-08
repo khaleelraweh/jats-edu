@@ -107,7 +107,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-12 pt-3">
+                                                <div class="col-sm-12 col-md-12 pt-2">
                                                     <div class="control-group form-group ">
                                                         <label class="form-label">
                                                             {{ __('panel.full_name') }} {{ __('panel.in') }}
@@ -125,7 +125,7 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-4">
+                                                <div class="col-sm-12 col-md-12 pt-2">
                                                     <div class="control-group form-group">
                                                         <label class="form-label">
                                                             {{ __('panel.date_of_birth') }}
@@ -142,6 +142,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group">
                                                         <label for="place_of_birth">

@@ -36,9 +36,6 @@
 
     {{-- end for image upload --}}
 
-    {{-- flat picker --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" type="text]/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
 
     <style>
         .dropify-wrapper {
@@ -126,15 +123,36 @@
 
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-12 pt-2">
+                                                    <label class="form-label">
+                                                        {{ __('panel.date_of_birth') }}
+                                                        <span class="required text-danger">*</span>
+
+                                                    </label>
+                                                    <div class="input-group flatpickr" id="flatpickr-datetime">
+                                                        <input type="text" name="published_on"
+                                                            value="{{ old('published_on') }}" class="form-control"
+                                                            placeholder="Select date" data-input>
+                                                        <span class="input-group-text input-group-addon" data-toggle>
+                                                            <i data-feather="calendar"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {{-- <div class="row">
+                                                <div class="col-sm-12 col-md-12 pt-2">
                                                     <div class="control-group form-group">
                                                         <label class="form-label">
                                                             {{ __('panel.date_of_birth') }}
                                                             <span class="required text-danger">*</span>
 
                                                         </label>
+
+
+
                                                         <div class="form-group">
                                                             <input type="text" name="date_of_birth"
-                                                                class="form-control required flatpickr_date_of_birth"
+                                                                class="form-control required flatpickr"
                                                                 value="{{ old('date_of_birth') }}">
                                                             @error('date_of_birth')
                                                                 <span class="text-danger">{{ $message }}</span>
@@ -142,7 +160,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group">
@@ -451,10 +469,6 @@
 
 
 
-    <!-- Include the Flatpickr JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/{{ app()->getLocale() }}.js"></script>
-
 
 
     <script>
@@ -482,18 +496,7 @@
 
 
 
-            // for offer ends
-            flatpickr('.flatpickr', {
 
-            });
-
-            // for offer ends
-            flatpickr('.flatpickr_date_of_birth', {
-                enableTime: true,
-                dateFormat: "Y-m-d ",
-                // minDate: "today"
-
-            });
 
             // Replace the "Finish" link with a button after the wizard is initialized
             $('a[href="#finish"]').each(function() {
@@ -508,6 +511,30 @@
 
 
 
+        });
+    </script>
+
+    <script>
+        $(function() {
+            'use strict';
+
+            const locale = "{{ app()->getLocale() }}";
+
+            // datetime picker
+            if ($('#flatpickr-datetime').length) {
+                const defaultDate = "{{ old('published_on') }}" ?
+                    "{{ old('published_on') }}" :
+                    new Date(); // Set to now if no old date exists
+
+                flatpickr("#flatpickr-datetime", {
+                    enableTime: true,
+                    wrap: true,
+                    dateFormat: "Y/m/d h:i K",
+                    minDate: "today", // Prevent dates before today
+                    locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+                    defaultDate: defaultDate,
+                });
+            }
         });
     </script>
 @endsection

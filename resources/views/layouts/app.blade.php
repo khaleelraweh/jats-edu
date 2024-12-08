@@ -56,6 +56,11 @@
 
     <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css">
 
+    <!-- Plugin css for this page -->
+    {{-- <link rel="stylesheet" href="{{ asset('backend/vendors/flatpickr/flatpickr.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('backend/vendor/flatpickr/flatpickr-' . $rtl . '.min.css') }}">
+    <!-- End plugin css for this page -->
+
     @livewireStyles
 
     @yield('style')
@@ -149,6 +154,14 @@
         var tinymceLanguage = '{{ app()->getLocale() }}'; // Get the current locale from Laravel config
         var flatPickrLanguage = '{{ app()->getLocale() }}';
     </script>
+
+
+
+    <!-- Plugin js for this page -->
+    <script src="{{ asset('backend/vendor/flatpickr/flatpickr-' . $rtl . '.min.js') }}"></script>
+    <script src="{{ asset('backend/js/flatpickr.js') }}"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ar.js"></script>
+    <!-- End plugin js for this page -->
 
     <!-- Custom js for the Tinymce -->
     <script src="{{ asset('backend/js/tinymce.js') }}"></script>

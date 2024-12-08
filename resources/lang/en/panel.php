@@ -1354,6 +1354,9 @@ return [
     'date_of_birth'                                 =>  'date of birth',
     'place_of_birth'                                =>  'place of birth',
     'nationality'                                   =>  'Nationality',
+    'personal_data'                                 =>  'Personal data',
+    'academic_qualification'                        =>  'Academic qualification',
+    'years_of_experience'                           =>  'Years of experience',
 
 
 

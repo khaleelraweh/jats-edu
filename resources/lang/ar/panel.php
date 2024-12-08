@@ -1324,6 +1324,11 @@ return [
     'date_of_birth'                                 =>  'تاريخ الميلاد',
     'place_of_birth'                                =>  'مكان الميلاد',
     'nationality'                                   =>  'الجنسية',
+    'personal_data'                                 =>  'البيانات الشخصية',
+    'academic_qualification'                        =>  'المؤهل العلمي',
+    'years_of_experience'                           =>  'سنوات الخبرة',
+
+
 
 
 

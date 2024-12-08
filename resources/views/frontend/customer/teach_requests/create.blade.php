@@ -80,7 +80,7 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div id="wizard1">
-                                <h3>البيانات الشخصية</h3>
+                                <h3>{{ __('panel.personal_data') }}</h3>
                                 <section>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-8">
@@ -227,7 +227,8 @@
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group ">
-                                                        <label class="form-label"> المؤهل الدراسي</label>
+                                                        <label
+                                                            class="form-label">{{ __('panel.academic_qualification') }}</label>
 
                                                         <select name="educational_qualification" class="form-control">
                                                             <option value="">---</option>
@@ -264,7 +265,7 @@
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group ">
-                                                        <label class="form-label">التخصص</label>
+                                                        <label class="form-label">{{ __('panel.specialization') }}</label>
                                                         <select name="specialization_id" class="form-control">
                                                             <option value="">---</option>
                                                             @foreach ($specializations as $specialization)

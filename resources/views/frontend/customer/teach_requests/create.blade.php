@@ -162,19 +162,19 @@
                                             </div>
 
                                             <div class="row">
-
-                                                <div class="col-sm-12 col-md-4">
+                                                <div class="col-sm-12 col-md-6 pt-2">
                                                     <div class="control-group form-group">
                                                         <label for="nationality">
-                                                            الجنسية
+                                                            <i class="fa fa-globe custom-color"></i>
+                                                            {{ __('panel.nationality') }}
                                                             <span class="required text-danger">*</span>
                                                         </label>
                                                         <select id="nationality" name="nationality" class="form-control">
                                                             <option value="">---</option>
                                                             @foreach (getCountries() as $country)
-                                                                <option value="{{ $country->nationality }}"
-                                                                    {{ old('nationality') == $country->nationality ? 'selected' : '' }}>
-                                                                    {{ $country->nationality }}
+                                                                <option value="{{ $country->name }}"
+                                                                    {{ old('nationality') == $country->name ? 'selected' : '' }}>
+                                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -183,13 +183,11 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="row">
-                                                <div class="col-sm-12 col-md-6">
+                                                <div class="col-sm-12 col-md-6 pt-2">
                                                     <div class="control-group form-group">
                                                         <label for="residence_address">
-                                                            {{-- <i class="fa fa-globe custom-color"></i> --}}
+                                                            <i class="fa fa-globe custom-color"></i>
                                                             {{ __('panel.address_of_residence') }}
                                                             <span class="required text-danger">*</span>
                                                         </label>
@@ -208,12 +206,15 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="col-sm-12 col-md-6">
+                                            <div class="row">
+
+                                                <div class="col-sm-12 col-md-12">
                                                     <div class="control-group form-group">
                                                         <label for="phone">
-                                                            {{-- <i class="fa fa-globe custom-color"></i> --}}
-                                                            رقم الجوال
+                                                            <i class="fa fa-mobile custom-color"></i>
+                                                            {{ __('panel.f_phone_number') }}
                                                             <span class="required text-danger">*</span>
                                                         </label>
                                                         <input type="text" name="phone" class="form-control"

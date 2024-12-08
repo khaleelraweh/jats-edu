@@ -161,7 +161,6 @@
     <script src="{{ asset('backend/vendor/flatpickr/flatpickr-' . $rtl . '.min.js') }}"></script>
     <script src="{{ asset('backend/js/flatpickr.js') }}"></script>
     <script src="{{ asset('backend/js/flatpickr.ar.js') }}"></script>
-    {{-- <script src="https://npmcdn.com/flatpickr/dist/l10n/ar.js"></script> --}}
     <!-- End plugin js for this page -->
 
     <!-- Custom js for the Tinymce -->

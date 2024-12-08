@@ -31,8 +31,6 @@
     <link href="{{ URL::asset('frontend/assets/plugins/fancyuploder/fancy_fileupload.css') }}" rel="stylesheet" />
     <!--Internal Sumoselect css-->
     <link rel="stylesheet" href="{{ URL::asset('frontend/assets/plugins/sumoselect/sumoselect-rtl.css') }}">
-    <!--Internal  TelephoneInput css-->
-    <link rel="stylesheet" href="{{ URL::asset('frontend/assets/plugins/telephoneinput/telephoneinput-rtl.css') }}">
 
     {{-- end for image upload --}}
 
@@ -430,9 +428,6 @@
     <script src="{{ URL::asset('frontend/assets/js/select2.js') }}"></script>
     <!--Internal Sumoselect js-->
     <script src="{{ URL::asset('frontend/assets/plugins/sumoselect/jquery.sumoselect.js') }}"></script>
-    <!-- Internal TelephoneInput js-->
-    <script src="{{ URL::asset('frontend/assets/plugins/telephoneinput/telephoneinput.js') }}"></script>
-    <script src="{{ URL::asset('frontend/assets/plugins/telephoneinput/inttelephoneinput.js') }}"></script>
 
 
     {{-- end for image upload --}}

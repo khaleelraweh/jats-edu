@@ -90,7 +90,7 @@
                                     <div class="row">
                                         <div class="col-sm-12 col-md-8">
                                             <div class="row ">
-                                                <div class="col-sm-12 col-md-6 ">
+                                                <div class="col-sm-12 col-md-12 pt-3">
                                                     <div class="control-group form-group">
                                                         <label class="form-label">
                                                             {{ __('panel.full_name') }} {{ __('panel.in') }}
@@ -105,7 +105,9 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 col-md-6">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12 pt-3">
                                                     <div class="control-group form-group ">
                                                         <label class="form-label">
                                                             {{ __('panel.full_name') }} {{ __('panel.in') }}
@@ -126,7 +128,7 @@
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group">
                                                         <label class="form-label">
-                                                            تاريخ الميلاد
+                                                            {{ __('panel.date_of_birth') }}
                                                             <span class="required text-danger">*</span>
 
                                                         </label>

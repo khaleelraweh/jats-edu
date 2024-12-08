@@ -1321,6 +1321,8 @@ return [
 
     //teach request 
     'address_of_residence'                          =>  'العنوان/مكان الإقامة',
+    'date_of_birth'                                 =>  'تاريخ الميلاد',
+
 
 
 

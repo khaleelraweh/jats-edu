@@ -122,7 +122,7 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-12 pt-2">
+                                                <div class="col-sm-12 col-md-6 pt-2">
                                                     <label class="form-label">
                                                         {{ __('panel.date_of_birth') }}
                                                         <span class="required text-danger">*</span>
@@ -137,14 +137,11 @@
                                                         </span>
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-sm-12 col-md-4">
+                                                <div class="col-sm-12 col-md-6 pt-3">
                                                     <div class="control-group form-group">
                                                         <label for="place_of_birth">
-                                                            {{-- <i class="fa fa-globe custom-color"></i> --}}
-                                                            مكان الميلاد
+                                                            <i class="fa fa-globe custom-color"></i>
+                                                            {{ __('panel.place_of_birth') }}
                                                             <span class="required text-danger">*</span>
                                                         </label>
                                                         <select id="place_of_birth" name="place_of_birth"
@@ -153,7 +150,7 @@
                                                             @foreach (getCountries() as $country)
                                                                 <option value="{{ $country->name }}"
                                                                     {{ old('place_of_birth') == $country->name ? 'selected' : '' }}>
-                                                                    {{ $country->name_native }} {{ $country->emoji }}
+                                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -162,6 +159,10 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                            </div>
+
+                                            <div class="row">
+
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group">
                                                         <label for="nationality">

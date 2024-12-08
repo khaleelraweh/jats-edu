@@ -1319,7 +1319,8 @@ return [
     'Image_show_in_blog_single'                     =>  'الصورة المعروضة في صفحة تفاصيل المدونة',
 
 
-
+    //teach request 
+    'address_of_residence'                          =>  'العنوان/مكان الإقامة',
 
 
 

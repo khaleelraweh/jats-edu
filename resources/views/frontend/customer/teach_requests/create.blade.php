@@ -93,7 +93,8 @@
                                                 <div class="col-sm-12 col-md-6 ">
                                                     <div class="control-group form-group">
                                                         <label class="form-label">
-                                                            الإسم باللغة العربية
+                                                            {{ __('panel.full_name') }} {{ __('panel.in') }}
+                                                            {{ __('panel.ar') }}
                                                             <span class="required text-danger">*</span>
                                                         </label>
                                                         <input type="text" name="full_name[ar]"
@@ -107,7 +108,8 @@
                                                 <div class="col-sm-12 col-md-6">
                                                     <div class="control-group form-group ">
                                                         <label class="form-label">
-                                                            الإسم باللغة الانجليزية
+                                                            {{ __('panel.full_name') }} {{ __('panel.in') }}
+                                                            {{ __('panel.en') }}
                                                             <span class="required text-danger">*</span>
                                                         </label>
                                                         <input type="text" name="full_name[en]"
@@ -187,7 +189,7 @@
                                                     <div class="control-group form-group">
                                                         <label for="residence_address">
                                                             {{-- <i class="fa fa-globe custom-color"></i> --}}
-                                                            عنوان/ مكان الإقامة
+                                                            {{ __('panel.address_of_residence') }}
                                                             <span class="required text-danger">*</span>
                                                         </label>
                                                         <select id="residence_address" name="residence_address"

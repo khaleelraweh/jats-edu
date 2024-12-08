@@ -1349,6 +1349,9 @@ return [
     'Image_show_in_blog_single'                     =>  'Image Show in blog single',
 
 
+    //teach_request 
+    'address_of_residence'                          =>  'Address of residence',
+
 
 
 ];

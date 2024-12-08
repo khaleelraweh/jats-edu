@@ -86,11 +86,6 @@ class BackendController extends Controller
         // $sa = Country::getByIso2('SA');
         $countries = Country::all();
 
-        // $sa->iso2; // SA
-        // $sa->iso3; // SAU
-        // $sa->currency_symbol; // ﷼
-        // $sa->native; // المملكة العربية السعودية
-
 
         return view('backend.index', compact('total_students', 'total_instructors', 'total_company_requests', 'total_courses', 'total_new_courses', 'total_courses_completed', 'total_courses_under_proccess', 'total_courses_review_finished', 'total_courses_published', 'total_courses_rejected', 'total_orders', 'total_new_orders', 'total_completed_orders', 'total_under_proccess_orders', 'total_finished_orders', 'total_rejected_orders', 'total_canceled_orders', 'visitors', 'pageVisits', 'countries'));
     }

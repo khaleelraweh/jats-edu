@@ -2,18 +2,13 @@
 
 @section('style')
     {{-- This is for master page  --}}
-    <!--  Custom Scroll bar-->
-    <link href="{{ URL::asset('frontend/assets/plugins/mscrollbar/jquery.mCustomScrollbar.css') }}" rel="stylesheet" />
     <!--  Sidebar css -->
     <link href="{{ URL::asset('frontend/assets/plugins/sidebar/sidebar.css') }}" rel="stylesheet">
-    <!-- Sidemenu css -->
-    <link rel="stylesheet" href="{{ URL::asset('frontend/assets/css-rtl/sidemenu.css') }}">
-    @yield('css')
+
     <!--- Style css -->
     <link href="{{ URL::asset('frontend/assets/css-rtl/style.css') }}" rel="stylesheet">
     <!--- Dark-mode css -->
-    <link href="{{ URL::asset('frontend/assets/css-rtl/style-dark.css') }}" rel="stylesheet">
-    <!---Skinmodes css-->
+
     <link href="{{ URL::asset('frontend/assets/css-rtl/skin-modes.css') }}" rel="stylesheet">
 
     {{-- This is for this page  --}}

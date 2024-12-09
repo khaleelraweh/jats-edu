@@ -1362,6 +1362,9 @@ return [
     'attach_a_copy_of_your_national_ID_or_passport' =>  'Attach a copy of your national ID or passport',
     'The image must have one of the following extensions .jpg - .jpeg - .png, .pdf' =>  'The image must have one of the following extensions (.jpg - .jpeg - .png, .pdf)',
     'the_biography'                                 =>  'the biography',
+    'certificate_message'                           =>  'It is preferable to include all certificates to be uploaded in a .PDF file or one of the extensions (.jpg, .jpeg, .png).',
+    'motivation'                                    =>  'Motivation',
+    'why_do_you_want_to_join_our_training?'         =>  'Why do you want to join our training?',
 
 
 

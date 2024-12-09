@@ -336,15 +336,18 @@
                                         @error('Certificates')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                        (<small>يجب تضمين جميع الشهائد المراد رفعها في ملف بصيفة .PDF او احد الامتدادادت
-                                            التالية (.jpg,.jpeg,.png)</small>)
+                                        (<small>
+                                            {{ __('panel.certificate_message') }}
+                                        </small>)
                                     </div>
                                 </section>
 
-                                <h3>الحافز</h3>
+                                <h3>{{ __('panel.motivation') }}</h3>
                                 <section>
                                     <div class="form-group">
-                                        <label class="form-label">لماذا تريد الالتحاق بالتدريب لدينا</label>
+                                        <label class="form-label">
+                                            {{ __('panel.why_do_you_want_to_join_our_training?') }}
+                                        </label>
                                         <textarea class="form-control" name="motivation" id="" cols="30" rows="10">{{ old('motivation') }}</textarea>
                                         @error('motivation')
                                             <span class="text-danger">{{ $message }}</span>

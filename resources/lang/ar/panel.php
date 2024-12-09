@@ -1332,6 +1332,13 @@ return [
     'attach_a_copy_of_your_national_ID_or_passport' =>  'إرفاق صورة من الهوية الوطنية او جواز السفر',
     'The image must have one of the following extensions .jpg - .jpeg - .png, .pdf' =>  'يجب ان تكون الصورة ذات احد الامتدادات التالية ( .jpg - .jpeg - .png ,.pdf )',
     'the_biography'                                 =>  'السيرة الذاتية',
+    'certificate_message'                           =>  'يفضل تضمين جميع الشهائد المراد رفعها في ملف يصيغة.PDF او احد الامتدادادت (.jpg,.jpeg,.png)',
+    'motivation'                                    =>  'الحافز',
+    'why_do_you_want_to_join_our_training?'         =>  ' لماذا تريد الالتحاق بالتدريب لدينا',
+
+
+
+
 
 
 

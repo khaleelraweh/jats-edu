@@ -233,7 +233,8 @@
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group ">
-                                                        <label class="form-label"> المؤهل الدراسي</label>
+                                                        <label
+                                                            class="form-label">{{ __('panel.academic_qualification') }}</label>
 
                                                         <select name="educational_qualification" class="form-control">
                                                             <option value="">---</option>
@@ -270,12 +271,12 @@
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group ">
-                                                        <label class="form-label">التخصص</label>
+                                                        <label class="form-label">{{ __('panel.specialization') }}</label>
                                                         <select name="specialization_id" class="form-control">
                                                             <option value="">---</option>
                                                             @foreach ($specializations as $specialization)
                                                                 <option value="{{ $specialization->id }}"
-                                                                    {{ old('specialization') == $specialization->id ? 'selected' : '' }}>
+                                                                    {{ old('specialization_id') == $specialization->id ? 'selected' : '' }}>
                                                                     {{ $specialization->name }}
                                                                 </option>
                                                             @endforeach
@@ -287,8 +288,10 @@
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group mb-0">
-                                                        <label class="form-label">سنوات خبرة التدريب</label>
-                                                        <input type="number" name="years_of_training_experience"
+                                                        <label
+                                                            class="form-label">{{ __('panel.years_of_experience') }}</label>
+                                                        <input type="number" min="0"
+                                                            name="years_of_training_experience"
                                                             class="form-control required"
                                                             value="{{ old('years_of_training_experience') }}">
                                                         @error('years_of_training_experience')
@@ -301,98 +304,57 @@
                                         {{-- this is for image  --}}
                                         <div class="col-sm-12 col-md-4">
                                             <label class="form-label">
-                                                ارفق صورة شخصية
+                                                {{ __('panel.attach_a_personal_photo') }}
                                                 <span class="required text-danger">*</span>
                                             </label>
                                             <input type="file" name="user_image" class="dropify" data-height="200" />
                                         </div>
                                     </div>
                                 </section>
-                                <h3>المرفقات</h3>
-                                {{-- <section>
-                                    <div class="control-group form-group">
-                                        <label class="form-label">ارفاق صورة من الهوية / جواز السفر (واضح)</label>
-                                        <input type="file" name="identity" class="form-control required">
-                                        @error('identity')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                        (
-                                        <small>
-                                            يجب ان تكون الصورة ذات احد الامتدادات التالية ( .jpg - .jpeg - .png , .pdf
-                                            )
-                                        </small>
-                                        )
-                                    </div>
-                                    <div class="control-group form-group">
-                                        <label class="form-label">السيرة الذاتية</label>
-                                        <input type="file" name="biography" class="form-control required"
-                                            accept="application/pdf">
-                                        @error('biography')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                        (<small>
-                                            يجب ان تكون السيرة الذاتية ذات احد الامتدادات التالية ( .jpg - .jpeg - .png ,
-                                            .pdf
-                                            )
-                                        </small>)
-                                    </div>
-                                    <div class="control-group form-group mb-0">
-                                        <label class="form-label"> ارفاق الشهائد
+                                <h3>{{ __('panel.attachments') }}</h3>
 
-                                        </label>
-                                        <input type="file" name="Certificates" class="form-control required">
-                                        @error('Certificates')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                        (
-                                        <small>
-                                            يجب تضمين جميع الشهائد المراد رفعها في ملف بصيفة .PDF او احد الامتدادادت التالية
-                                            (.jpg,.jpeg,.png)
-
-                                        </small>
-                                        )
-                                    </div>
-                                </section> --}}
 
                                 <section>
                                     <div class="control-group form-group">
-                                        <label class="form-label">ارفاق صورة من الهوية / جواز السفر (واضح)</label>
+                                        <label
+                                            class="form-label">{{ __('panel.attach_a_copy_of_your_national_ID_or_passport') }}</label>
                                         <input type="file" name="identity" class="form-control required"
                                             accept=".jpg,.jpeg,.png,.pdf">
                                         @error('identity')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                        (<small>يجب ان تكون الصورة ذات احد الامتدادات التالية ( .jpg - .jpeg - .png ,
-                                            .pdf )</small>)
+                                        (<small>{{ __('panel.The image must have one of the following extensions .jpg - .jpeg - .png, .pdf') }}</small>)
                                     </div>
 
                                     <div class="control-group form-group">
-                                        <label class="form-label">السيرة الذاتية</label>
+                                        <label class="form-label">{{ __('panel.the_biography') }}</label>
                                         <input type="file" name="biography" class="form-control required"
                                             accept=".jpg,.jpeg,.png,.pdf">
                                         @error('biography')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                        (<small>يجب ان تكون السيرة الذاتية ذات احد الامتدادات التالية ( .jpg - .jpeg - .png
-                                            , .pdf )</small>)
+                                        (<small>{{ __('panel.The image must have one of the following extensions .jpg - .jpeg - .png, .pdf') }}</small>)
                                     </div>
 
                                     <div class="control-group form-group mb-0">
-                                        <label class="form-label"> ارفاق الشهائد</label>
+                                        <label class="form-label"> {{ __('panel.certificates') }} </label>
                                         <input type="file" name="Certificates" class="form-control required"
                                             accept=".jpg,.jpeg,.png,.pdf">
                                         @error('Certificates')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                        (<small>يجب تضمين جميع الشهائد المراد رفعها في ملف بصيفة .PDF او احد الامتدادادت
-                                            التالية (.jpg,.jpeg,.png)</small>)
+                                        (<small>
+                                            {{ __('panel.certificate_message') }}
+                                        </small>)
                                     </div>
                                 </section>
 
-                                <h3>الحافز</h3>
+                                <h3>{{ __('panel.motivation') }}</h3>
                                 <section>
                                     <div class="form-group">
-                                        <label class="form-label">لماذا تريد الالتحاق بالتدريب لدينا</label>
+                                        <label class="form-label">
+                                            {{ __('panel.why_do_you_want_to_join_our_training?') }}
+                                        </label>
                                         <textarea class="form-control" name="motivation" id="" cols="30" rows="10">{{ old('motivation') }}</textarea>
                                         @error('motivation')
                                             <span class="text-danger">{{ $message }}</span>

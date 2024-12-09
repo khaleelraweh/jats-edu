@@ -61,9 +61,6 @@
 @section('content')
     <div class="container mt-2">
         <!-- row -->
-
-
-
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="card">

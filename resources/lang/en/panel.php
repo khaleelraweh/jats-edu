@@ -1369,6 +1369,7 @@ return [
     'why_do_you_want_to_join_our_training?'         =>  'Why do you want to join our training?',
     'remove'                                        =>  'Remove',
     'Ooops,_something_wrong_happended.'             =>  'Ooops, something wrong happended.',
+    'note:_your_request_will_be_reviewed_and_responded_to_within_three_days_from_today’s_date'   =>  'Note: Your request will be reviewed and responded to within three days from today’s date',
 
 
 

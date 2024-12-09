@@ -1339,6 +1339,8 @@ return [
     'why_do_you_want_to_join_our_training?'         =>  ' لماذا تريد الالتحاق بالتدريب لدينا',
     'remove'                                        =>  'حذف',
     'Ooops,_something_wrong_happended.'             =>  'عفوًا، حدث خطأ ما.',
+    'note:_your_request_will_be_reviewed_and_responded_to_within_three_days_from_today’s_date'   =>  'ملاحظة : سيتم مراجعة طلبك و الرد عليه خلال ثلاث ايام من تاريخ اليوم',
+
 
 
 

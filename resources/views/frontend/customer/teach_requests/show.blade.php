@@ -175,7 +175,8 @@
                                     <div class="row">
                                         <div class="col-sm-12 pt-3">
                                             <span class="arabic-name ww">
-                                                الإسم الكامل (باللغة العربية ) :
+                                                {{ __('panel.full_name') }} {{ __('panel.in') }}
+                                                {{ __('panel.ar') }} :
                                             </span>
                                             <span
                                                 class="arabic-name-value">{{ $teach_request->getTranslation('full_name', 'ar') }}</span>
@@ -186,7 +187,8 @@
                                         <div class="col-sm-12 pt-3 text-end">
                                             <bdo dir="ltr">
                                                 <span class="english-name ww">
-                                                    Full Name (In English) :
+                                                    {{ __('panel.full_name') }} {{ __('panel.in') }}
+                                                    {{ __('panel.en') }} :
                                                 </span>
                                                 <span
                                                     class="english-name-value">{{ $teach_request->getTranslation('full_name', 'en') }}
@@ -197,31 +199,31 @@
 
                                     <div class="row">
                                         <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="date-of-birth ww">تاريخ الميلاد : </span>
+                                            <span class="date-of-birth ww"> {{ __('panel.date_of_birth') }} : </span>
                                             <span class="date-of-birth-value">
                                                 {{ optional($teach_request->date_of_birth)->format('Y/m/d') }}
                                             </span>
                                         </div>
                                         <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="place-of-birth ww">محل الميلاد : </span>
+                                            <span class="place-of-birth ww"> {{ __('panel.place_of_birth') }} : </span>
                                             <span class="place-of-birth-value">{{ $teach_request->place_of_birth }}</span>
                                         </div>
                                         <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="nationality ww">الجنسية : </span>
+                                            <span class="nationality ww">{{ __('panel.nationality') }} : </span>
                                             <span class="nationality-value">{{ $teach_request->nationality }}</span>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="residence-address ww">عنوان الإقامة \ السكن :
+                                            <span class="residence-address ww"> {{ __('panel.address_of_residence') }} :
                                             </span>
                                             <span
                                                 class="residence-address-value">{{ $teach_request->residence_address }}</span>
                                         </div>
 
                                         <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="phone ww"> رقم الجوال :</span>
+                                            <span class="phone ww"> {{ __('panel.f_phone_number') }} :</span>
                                             <span class="phone-value"> {{ $teach_request->phone }} </span>
                                         </div>
                                         <div class="col-sm-12 col-md-4"></div>
@@ -229,19 +231,19 @@
                                     <div class="row">
                                         <div class="col-sm-12 pt-3 col-md-4">
                                             <span class="educational_qualification ww">
-                                                المؤهل الدراسي :
+                                                {{ __('panel.academic_qualification') }} :
                                             </span>
                                             <span
                                                 class="educational-qualification-value">{{ $teach_request->educational_qualification() }}</span>
                                         </div>
                                         <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="specialization ww ">التخصص : </span>
+                                            <span class="specialization ww ">{{ __('panel.specialization') }} : </span>
                                             <span class="specialization-value"> {{ $teach_request->specialization->name }}
                                             </span>
                                         </div>
                                         <div class="col-sm-12 pt-3 col-md-4">
                                             <span class="years_of_training_experience ww">
-                                                سنوات خبرة التدريب :
+                                                {{ __('panel.years_of_experience') }} :
                                             </span>
                                             <span class="years_of_training_experience-value">
                                                 {{ $teach_request->years_of_training_experience }} </span>
@@ -251,7 +253,7 @@
                                     <div class="row">
                                         <div class="col-sm-12 pt-3">
                                             <div class="motivation ww">
-                                                لماذا تريد الإلتحاق بالتدريب لدينا :
+                                                {{ __('panel.motivation') }}:
                                             </div>
                                             <div class="motivation-value">
                                                 {!! $teach_request->motivation !!}
@@ -310,7 +312,7 @@
                                     <div class="row">
                                         <!-- Identity Image or File -->
                                         <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="identity ww">صورة من الهوية / جواز السفر :</span>
+                                            <span class="identity ww"> {{ __('panel.attach_a_personal_photo') }} :</span>
                                             <span class="identity-value">
                                                 @if ($teach_request->identity)
                                                     @php
@@ -342,7 +344,7 @@
 
                                         <!-- Biography PDF/Word or Image -->
                                         <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="biography ww">إرفاق السيرة الذاتية :</span>
+                                            <span class="biography ww"> {{ __('panel.the_biography') }} :</span>
                                             <span class="biography-value">
                                                 @if ($teach_request->biography && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
                                                     @php
@@ -373,7 +375,7 @@
 
                                         <!-- Certificates PDF/Word or Image -->
                                         <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="Certificates ww">إرفاق الشهادات :</span>
+                                            <span class="Certificates ww"> {{ __('panel.certificates') }} :</span>
                                             <span class="Certificates-value">
                                                 @if ($teach_request->Certificates && file_exists(public_path('assets/teach_requests/' . $teach_request->Certificates)))
                                                     @php
@@ -407,7 +409,7 @@
                                     <div class="row" style="margin-top: 60px; margin-bottom: -10px;">
                                         <div class="col-sm-12 pt-3">
                                             <p>
-                                                ملاحظة : سيتم مراجعة طلبك و الرد عليه خلال ثلاث ايام من تاريخ اليوم
+                                                {{ __('panel.note:_your_request_will_be_reviewed_and_responded_to_within_three_days_from_today’s_date') }}
                                             </p>
                                         </div>
                                     </div>

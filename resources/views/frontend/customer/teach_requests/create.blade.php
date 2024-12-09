@@ -451,12 +451,6 @@
 
 
 
-
-
-
-
-
-
             // Replace the "Finish" link with a button after the wizard is initialized
             $('a[href="#finish"]').each(function() {
 

@@ -1,18 +1,44 @@
 @extends('layouts.app')
-<?php $rtl = config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl' ? '-rtl' : ''; ?>
 
 @section('style')
     {{-- This is for master page  --}}
+    <!--  Custom Scroll bar-->
+    <link href="{{ URL::asset('frontend/assets/plugins/mscrollbar/jquery.mCustomScrollbar.css') }}" rel="stylesheet" />
     <!--  Sidebar css -->
     <link href="{{ URL::asset('frontend/assets/plugins/sidebar/sidebar.css') }}" rel="stylesheet">
-
+    <!-- Sidemenu css -->
+    <link rel="stylesheet" href="{{ URL::asset('frontend/assets/css-rtl/sidemenu.css') }}">
+    @yield('css')
     <!--- Style css -->
     <link href="{{ URL::asset('frontend/assets/css-rtl/style.css') }}" rel="stylesheet">
     <!--- Dark-mode css -->
+    <link href="{{ URL::asset('frontend/assets/css-rtl/style-dark.css') }}" rel="stylesheet">
+    <!---Skinmodes css-->
+    <link href="{{ URL::asset('frontend/assets/css-rtl/skin-modes.css') }}" rel="stylesheet">
 
-    <link href="{{ URL::asset('frontend/assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
+    {{-- This is for this page  --}}
+    <link href="{{ URL::asset('frontend/assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 
 
+
+    {{-- start for image upload --}}
+    <!--- Internal Select2 css-->
+    <link href="{{ URL::asset('frontend/assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <!---Internal Fileupload css-->
+    <link href="{{ URL::asset('frontend/assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet"
+        type="text/css" />
+    <!---Internal Fancy uploader css-->
+    <link href="{{ URL::asset('frontend/assets/plugins/fancyuploder/fancy_fileupload.css') }}" rel="stylesheet" />
+    <!--Internal Sumoselect css-->
+    <link rel="stylesheet" href="{{ URL::asset('frontend/assets/plugins/sumoselect/sumoselect-rtl.css') }}">
+    <!--Internal  TelephoneInput css-->
+    <link rel="stylesheet" href="{{ URL::asset('frontend/assets/plugins/telephoneinput/telephoneinput-rtl.css') }}">
+
+    {{-- end for image upload --}}
+
+    {{-- flat picker --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text]/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
 
     <style>
         .dropify-wrapper {
@@ -37,13 +63,15 @@
     </style>
 @endsection
 
-
 @section('content')
     <div class="container mt-2">
         <!-- row -->
+
+
+
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <div class="card" style="text-align: {{ app()->getLocale() == 'ar' ? 'right' : 'left' }};">
+                <div class="card">
                     <div class="card-body">
                         <div class="main-content-label mg-b-5">
                             {{ __('panel.application_form_to_apply_as_a_trainer') }}
@@ -51,7 +79,6 @@
                         <p class="mg-b-20">
                             {{ __('panel.application_form') }}
                         </p>
-
                         <form id="requestForm" action="{{ route('teach_requests.store') }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
@@ -96,26 +123,28 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-6 pt-2">
-                                                    <label class="form-label">
-                                                        {{ __('panel.date_of_birth') }}
-                                                        <span class="required text-danger">*</span>
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="control-group form-group">
+                                                        <label class="form-label">
+                                                            تاريخ الميلاد
+                                                            <span class="required text-danger">*</span>
 
-                                                    </label>
-                                                    <div class="input-group flatpickr" id="flatpickr-datetime">
-                                                        <input type="text" name="date_of_birth"
-                                                            value="{{ old('date_of_birth') }}" class="form-control"
-                                                            placeholder="Select date" data-input>
-                                                        <span class="input-group-text input-group-addon" data-toggle>
-                                                            <i data-feather="calendar"></i>
-                                                        </span>
+                                                        </label>
+                                                        <div class="form-group">
+                                                            <input type="text" name="date_of_birth"
+                                                                class="form-control required flatpickr_date_of_birth"
+                                                                value="{{ old('date_of_birth') }}">
+                                                            @error('date_of_birth')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 col-md-6 pt-3">
+                                                <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group">
                                                         <label for="place_of_birth">
-                                                            <i class="fa fa-globe custom-color"></i>
-                                                            {{ __('panel.place_of_birth') }}
+                                                            {{-- <i class="fa fa-globe custom-color"></i> --}}
+                                                            مكان الميلاد
                                                             <span class="required text-danger">*</span>
                                                         </label>
                                                         <select id="place_of_birth" name="place_of_birth"
@@ -124,7 +153,7 @@
                                                             @foreach (getCountries() as $country)
                                                                 <option value="{{ $country->name }}"
                                                                     {{ old('place_of_birth') == $country->name ? 'selected' : '' }}>
-                                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
+                                                                    {{ $country->name_native }} {{ $country->emoji }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -133,22 +162,18 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-sm-12 col-md-6 pt-2">
+                                                <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group">
                                                         <label for="nationality">
-                                                            <i class="fa fa-globe custom-color"></i>
-                                                            {{ __('panel.nationality') }}
+                                                            الجنسية
                                                             <span class="required text-danger">*</span>
                                                         </label>
                                                         <select id="nationality" name="nationality" class="form-control">
                                                             <option value="">---</option>
                                                             @foreach (getCountries() as $country)
-                                                                <option value="{{ $country->name }}"
-                                                                    {{ old('nationality') == $country->name ? 'selected' : '' }}>
-                                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
+                                                                <option value="{{ $country->nationality }}"
+                                                                    {{ old('nationality') == $country->nationality ? 'selected' : '' }}>
+                                                                    {{ $country->nationality }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -157,12 +182,14 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="col-sm-12 col-md-6 pt-2">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-6">
                                                     <div class="control-group form-group">
                                                         <label for="residence_address">
-                                                            <i class="fa fa-globe custom-color"></i>
-                                                            {{ __('panel.address_of_residence') }}
+                                                            {{-- <i class="fa fa-globe custom-color"></i> --}}
+                                                            عنوان/ مكان الإقامة
                                                             <span class="required text-danger">*</span>
                                                         </label>
                                                         <select id="residence_address" name="residence_address"
@@ -171,7 +198,7 @@
                                                             @foreach (getCountries() as $country)
                                                                 <option value="{{ $country->name }}"
                                                                     {{ old('residence_address') == $country->name ? 'selected' : '' }}>
-                                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
+                                                                    {{ $country->name_native }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -180,15 +207,12 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="row">
-
-                                                <div class="col-sm-12 col-md-12">
+                                                <div class="col-sm-12 col-md-6">
                                                     <div class="control-group form-group">
                                                         <label for="phone">
-                                                            <i class="fa fa-mobile custom-color"></i>
-                                                            {{ __('panel.f_phone_number') }}
+                                                            {{-- <i class="fa fa-globe custom-color"></i> --}}
+                                                            رقم الجوال
                                                             <span class="required text-danger">*</span>
                                                         </label>
                                                         <input type="text" name="phone" class="form-control"
@@ -203,8 +227,7 @@
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group ">
-                                                        <label
-                                                            class="form-label">{{ __('panel.academic_qualification') }}</label>
+                                                        <label class="form-label"> المؤهل الدراسي</label>
 
                                                         <select name="educational_qualification" class="form-control">
                                                             <option value="">---</option>
@@ -241,12 +264,12 @@
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group ">
-                                                        <label class="form-label">{{ __('panel.specialization') }}</label>
+                                                        <label class="form-label">التخصص</label>
                                                         <select name="specialization_id" class="form-control">
                                                             <option value="">---</option>
                                                             @foreach ($specializations as $specialization)
                                                                 <option value="{{ $specialization->id }}"
-                                                                    {{ old('specialization_id') == $specialization->id ? 'selected' : '' }}>
+                                                                    {{ old('specialization') == $specialization->id ? 'selected' : '' }}>
                                                                     {{ $specialization->name }}
                                                                 </option>
                                                             @endforeach
@@ -258,10 +281,8 @@
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="control-group form-group mb-0">
-                                                        <label
-                                                            class="form-label">{{ __('panel.years_of_experience') }}</label>
-                                                        <input type="number" min="0"
-                                                            name="years_of_training_experience"
+                                                        <label class="form-label">سنوات خبرة التدريب</label>
+                                                        <input type="number" name="years_of_training_experience"
                                                             class="form-control required"
                                                             value="{{ old('years_of_training_experience') }}">
                                                         @error('years_of_training_experience')
@@ -274,57 +295,98 @@
                                         {{-- this is for image  --}}
                                         <div class="col-sm-12 col-md-4">
                                             <label class="form-label">
-                                                {{ __('panel.attach_a_personal_photo') }}
+                                                ارفق صورة شخصية
                                                 <span class="required text-danger">*</span>
                                             </label>
                                             <input type="file" name="user_image" class="dropify" data-height="200" />
                                         </div>
                                     </div>
                                 </section>
-                                <h3>{{ __('panel.attachments') }}</h3>
+                                <h3>المرفقات</h3>
+                                {{-- <section>
+                                    <div class="control-group form-group">
+                                        <label class="form-label">ارفاق صورة من الهوية / جواز السفر (واضح)</label>
+                                        <input type="file" name="identity" class="form-control required">
+                                        @error('identity')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        (
+                                        <small>
+                                            يجب ان تكون الصورة ذات احد الامتدادات التالية ( .jpg - .jpeg - .png , .pdf
+                                            )
+                                        </small>
+                                        )
+                                    </div>
+                                    <div class="control-group form-group">
+                                        <label class="form-label">السيرة الذاتية</label>
+                                        <input type="file" name="biography" class="form-control required"
+                                            accept="application/pdf">
+                                        @error('biography')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        (<small>
+                                            يجب ان تكون السيرة الذاتية ذات احد الامتدادات التالية ( .jpg - .jpeg - .png ,
+                                            .pdf
+                                            )
+                                        </small>)
+                                    </div>
+                                    <div class="control-group form-group mb-0">
+                                        <label class="form-label"> ارفاق الشهائد
 
+                                        </label>
+                                        <input type="file" name="Certificates" class="form-control required">
+                                        @error('Certificates')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        (
+                                        <small>
+                                            يجب تضمين جميع الشهائد المراد رفعها في ملف بصيفة .PDF او احد الامتدادادت التالية
+                                            (.jpg,.jpeg,.png)
+
+                                        </small>
+                                        )
+                                    </div>
+                                </section> --}}
 
                                 <section>
                                     <div class="control-group form-group">
-                                        <label
-                                            class="form-label">{{ __('panel.attach_a_copy_of_your_national_ID_or_passport') }}</label>
+                                        <label class="form-label">ارفاق صورة من الهوية / جواز السفر (واضح)</label>
                                         <input type="file" name="identity" class="form-control required"
                                             accept=".jpg,.jpeg,.png,.pdf">
                                         @error('identity')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                        (<small>{{ __('panel.The image must have one of the following extensions .jpg - .jpeg - .png, .pdf') }}</small>)
+                                        (<small>يجب ان تكون الصورة ذات احد الامتدادات التالية ( .jpg - .jpeg - .png ,
+                                            .pdf )</small>)
                                     </div>
 
                                     <div class="control-group form-group">
-                                        <label class="form-label">{{ __('panel.the_biography') }}</label>
+                                        <label class="form-label">السيرة الذاتية</label>
                                         <input type="file" name="biography" class="form-control required"
                                             accept=".jpg,.jpeg,.png,.pdf">
                                         @error('biography')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                        (<small>{{ __('panel.The image must have one of the following extensions .jpg - .jpeg - .png, .pdf') }}</small>)
+                                        (<small>يجب ان تكون السيرة الذاتية ذات احد الامتدادات التالية ( .jpg - .jpeg - .png
+                                            , .pdf )</small>)
                                     </div>
 
                                     <div class="control-group form-group mb-0">
-                                        <label class="form-label"> {{ __('panel.certificates') }} </label>
+                                        <label class="form-label"> ارفاق الشهائد</label>
                                         <input type="file" name="Certificates" class="form-control required"
                                             accept=".jpg,.jpeg,.png,.pdf">
                                         @error('Certificates')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                        (<small>
-                                            {{ __('panel.certificate_message') }}
-                                        </small>)
+                                        (<small>يجب تضمين جميع الشهائد المراد رفعها في ملف بصيفة .PDF او احد الامتدادادت
+                                            التالية (.jpg,.jpeg,.png)</small>)
                                     </div>
                                 </section>
 
-                                <h3>{{ __('panel.motivation') }}</h3>
+                                <h3>الحافز</h3>
                                 <section>
                                     <div class="form-group">
-                                        <label class="form-label">
-                                            {{ __('panel.why_do_you_want_to_join_our_training?') }}
-                                        </label>
+                                        <label class="form-label">لماذا تريد الالتحاق بالتدريب لدينا</label>
                                         <textarea class="form-control" name="motivation" id="" cols="30" rows="10">{{ old('motivation') }}</textarea>
                                         @error('motivation')
                                             <span class="text-danger">{{ $message }}</span>
@@ -346,60 +408,102 @@
 @endsection
 
 @section('script')
+    {{-- start for image upload --}}
+
+    <!--Internal  Datepicker js -->
+    <script src="{{ URL::asset('frontend/assets/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
+    <!-- Internal Select2 js-->
+    <script src="{{ URL::asset('frontend/assets/plugins/select2/js/select2.min.js') }}"></script>
+    <!--Internal Fileuploads js-->
     <script src="{{ URL::asset('frontend/assets/plugins/fileuploads/js/fileupload.js') }}"></script>
     <script src="{{ URL::asset('frontend/assets/plugins/fileuploads/js/file-upload.js') }}"></script>
+    <!--Internal Fancy uploader js-->
+    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/jquery.iframe-transport.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/fancy-uploader.js') }}"></script>
+    <!--Internal  Form-elements js-->
+    <script src="{{ URL::asset('frontend/assets/js/advanced-form-elements.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/js/select2.js') }}"></script>
+    <!--Internal Sumoselect js-->
+    <script src="{{ URL::asset('frontend/assets/plugins/sumoselect/jquery.sumoselect.js') }}"></script>
+    <!-- Internal TelephoneInput js-->
+    <script src="{{ URL::asset('frontend/assets/plugins/telephoneinput/telephoneinput.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/plugins/telephoneinput/inttelephoneinput.js') }}"></script>
 
-    <script src="{{ URL::asset('frontend/assets/plugins/jquery-steps/jquery.steps' . $rtl . '.min.js') }}"></script>
+
+    {{-- end for image upload --}}
+
+    <!--Internal  Select2 js -->
+    <script src="{{ URL::asset('frontend/assets/plugins/select2/js/select2.min.js') }}"></script>
+    <!-- Internal Jquery.steps js -->
+    <script src="{{ URL::asset('frontend/assets/plugins/jquery-steps/jquery.steps.min.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/plugins/parsleyjs/parsley.min.js') }}"></script>
+    <!--Internal  Form-wizard js -->
     <script src="{{ URL::asset('frontend/assets/js/form-wizard.js') }}"></script>
+
+
+
+
+
+    <!-- Include the Flatpickr JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/{{ app()->getLocale() }}.js"></script>
+
 
 
     <script>
         $(function() {
 
+
+            // Initialize Dropify
             function initializeDropify() {
+                // $('.dropify').dropify();
                 $('.dropify').dropify({
                     messages: {
-                        'default': @json(__('panel.image')),
+                        'default': 'Image ',
                         'replace': '',
-                        'remove': @json(__('panel.remove')),
-                        'error': @json(__('panel.Ooops,_something_wrong_happended.')),
+                        'remove': 'Remove',
+                        'error': 'Ooops, something wrong happended.'
                     }
                 });
 
             }
+
+            // Initialize Dropify on document ready
             initializeDropify();
 
+
+
+
+
+            // for offer ends
+            flatpickr('.flatpickr', {
+
+            });
+
+            // for offer ends
+            flatpickr('.flatpickr_date_of_birth', {
+                enableTime: true,
+                dateFormat: "Y-m-d ",
+                // minDate: "today"
+
+            });
+
+            // Replace the "Finish" link with a button after the wizard is initialized
             $('a[href="#finish"]').each(function() {
+
+
                 $(this).on('click', function() {
                     $('#hiddenSubmitButton').click();
 
                 });
 
             });
-        });
-    </script>
 
-    <script>
-        $(function() {
-            'use strict';
 
-            const locale = "{{ app()->getLocale() }}";
 
-            // datetime picker
-            if ($('#flatpickr-datetime').length) {
-                const defaultDate = "{{ old('published_on') }}" ?
-                    "{{ old('published_on') }}" :
-                    new Date(); // Set to now if no old date exists
-
-                flatpickr("#flatpickr-datetime", {
-                    enableTime: true,
-                    wrap: true,
-                    dateFormat: "Y/m/d h:i K",
-                    minDate: "today", // Prevent dates before today
-                    locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
-                    defaultDate: defaultDate,
-                });
-            }
         });
     </script>
 @endsection

@@ -56,7 +56,7 @@
                                     <div class="row">
                                         <div class="col-sm-12 col-md-8">
                                             <div class="row ">
-                                                <div class="col-sm-12 col-md-12 pt-3">
+                                                <div class="col-sm-12 col-md-12 pt-4">
                                                     <div class="control-group form-group">
                                                         <label class="form-label">
                                                             {{ __('panel.full_name') }} {{ __('panel.in') }}
@@ -73,7 +73,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-12 pt-2">
+                                                <div class="col-sm-12 col-md-12 pt-4">
                                                     <div class="control-group form-group ">
                                                         <label class="form-label">
                                                             {{ __('panel.full_name') }} {{ __('panel.in') }}
@@ -92,7 +92,7 @@
 
 
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-6 pt-2">
+                                                <div class="col-sm-12 col-md-6 pt-4">
                                                     <div class="control-group form-group">
                                                         <label class="form-label">
                                                             <i class="fas fa-calendar-alt custom-color"></i>
@@ -109,7 +109,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 col-md-6 pt-3">
+                                                <div class="col-sm-12 col-md-6 pt-4">
                                                     <div class="control-group form-group">
                                                         <label for="place_of_birth">
                                                             <i class="fa fa-globe custom-color"></i>
@@ -134,7 +134,7 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-6 pt-2">
+                                                <div class="col-sm-12 col-md-6 pt-4">
                                                     <div class="control-group form-group">
                                                         <label for="nationality">
                                                             <i class="fa fa-globe custom-color"></i>
@@ -156,7 +156,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-12 col-md-6 pt-2">
+                                                <div class="col-sm-12 col-md-6 pt-4">
                                                     <div class="control-group form-group">
                                                         <label for="residence_address">
                                                             <i class="fa fa-globe custom-color"></i>
@@ -182,7 +182,7 @@
 
                                             <div class="row">
 
-                                                <div class="col-sm-12 col-md-12">
+                                                <div class="col-sm-12 col-md-12 pt-4">
                                                     <div class="control-group form-group">
                                                         <label for="phone">
                                                             <i class="fa fa-mobile custom-color"></i>
@@ -199,7 +199,7 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-4">
+                                                <div class="col-sm-12 col-md-4 pt-4">
                                                     <div class="control-group form-group ">
                                                         <label
                                                             class="form-label">{{ __('panel.academic_qualification') }}</label>
@@ -237,7 +237,7 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 col-md-4">
+                                                <div class="col-sm-12 col-md-4 pt-4">
                                                     <div class="control-group form-group ">
                                                         <label class="form-label">{{ __('panel.specialization') }}</label>
                                                         <select name="specialization_id" class="form-control">
@@ -254,7 +254,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 col-md-4">
+                                                <div class="col-sm-12 col-md-4 pt-4">
                                                     <div class="control-group form-group mb-0">
                                                         <label
                                                             class="form-label">{{ __('panel.years_of_experience') }}</label>
@@ -270,7 +270,7 @@
                                             </div>
                                         </div>
                                         {{-- this is for image  --}}
-                                        <div class="col-sm-12 col-md-4">
+                                        <div class="col-sm-12 col-md-4 pt-4">
                                             <label class="form-label">
                                                 {{ __('panel.attach_a_personal_photo') }}
                                                 <span class="required text-danger">*</span>
@@ -283,37 +283,45 @@
 
 
                                 <section>
-                                    <div class="control-group form-group">
-                                        <label
-                                            class="form-label">{{ __('panel.attach_a_copy_of_your_national_ID_or_passport') }}</label>
-                                        <input type="file" name="identity" class="form-control required"
-                                            accept=".jpg,.jpeg,.png,.pdf">
-                                        @error('identity')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                        (<small>{{ __('panel.The image must have one of the following extensions .jpg - .jpeg - .png, .pdf') }}</small>)
+                                    <div class="row">
+
+                                        <div class="col-sm-12 col-md-12 pt-4">
+                                            <label
+                                                class="form-label">{{ __('panel.attach_a_copy_of_your_national_ID_or_passport') }}</label>
+                                            <input type="file" name="identity" class="form-control required"
+                                                accept=".jpg,.jpeg,.png,.pdf">
+                                            @error('identity')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                            (<small>{{ __('panel.The image must have one of the following extensions .jpg - .jpeg - .png, .pdf') }}</small>)
+
+                                        </div>
                                     </div>
 
-                                    <div class="control-group form-group">
-                                        <label class="form-label">{{ __('panel.the_biography') }}</label>
-                                        <input type="file" name="biography" class="form-control required"
-                                            accept=".jpg,.jpeg,.png,.pdf">
-                                        @error('biography')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                        (<small>{{ __('panel.The image must have one of the following extensions .jpg - .jpeg - .png, .pdf') }}</small>)
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 pt-4">
+                                            <label class="form-label">{{ __('panel.the_biography') }}</label>
+                                            <input type="file" name="biography" class="form-control required"
+                                                accept=".jpg,.jpeg,.png,.pdf">
+                                            @error('biography')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                            (<small>{{ __('panel.The image must have one of the following extensions .jpg - .jpeg - .png, .pdf') }}</small>)
+                                        </div>
                                     </div>
 
-                                    <div class="control-group form-group mb-0">
-                                        <label class="form-label"> {{ __('panel.certificates') }} </label>
-                                        <input type="file" name="Certificates" class="form-control required"
-                                            accept=".jpg,.jpeg,.png,.pdf">
-                                        @error('Certificates')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                        (<small>
-                                            {{ __('panel.certificate_message') }}
-                                        </small>)
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 pt-4 mb-0">
+                                            <label class="form-label"> {{ __('panel.certificates') }} </label>
+                                            <input type="file" name="Certificates" class="form-control required"
+                                                accept=".jpg,.jpeg,.png,.pdf">
+                                            @error('Certificates')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                            (<small>
+                                                {{ __('panel.certificate_message') }}
+                                            </small>)
+                                        </div>
                                     </div>
                                 </section>
 

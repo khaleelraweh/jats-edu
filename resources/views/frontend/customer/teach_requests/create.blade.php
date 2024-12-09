@@ -75,8 +75,6 @@
                             {{ __('panel.application_form') }}
                         </p>
 
-                        {{-- <form id="requestForm" action="{{ route('customer.request_to_teach') }}" method="post"
-                            enctype="multipart/form-data"> --}}
                         <form id="requestForm" action="{{ route('teach_requests.store') }}" method="post"
                             enctype="multipart/form-data">
                             @csrf

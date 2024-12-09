@@ -140,7 +140,7 @@
                                     </div>
                                     <div class="col-4 d-flex justify-content-end align-items-center">
                                         <input type="file" id="file-input" style="display: none;" />
-                                        <div id="image-container " style="width: 250px">
+                                        <div id="image-container " style="width: 14em">
                                             @if ($teach_request->user_image && file_exists(public_path('assets/teach_requests/' . $teach_request->user_image)))
                                                 <!-- Image -->
                                                 <a href="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"
@@ -297,8 +297,9 @@
 
                                     <div class="row">
                                         <!-- Identity Image or File -->
-                                        <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="identity ww"> {{ __('panel.attach_a_personal_photo') }} :</span>
+                                        <div class="col-sm-12 pt-3 col-md-4 text-center">
+                                            <span class="identity ww d-block"> {{ __('panel.attach_a_personal_photo') }} :
+                                            </span>
                                             <span class="identity-value">
                                                 @if ($teach_request->identity)
                                                     @php
@@ -313,7 +314,7 @@
                                                             data-fancybox data-width="1400" data-height="900">
                                                             <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
                                                                 class="img-fluid" alt="Identity Image"
-                                                                style="width: 50px; height: 50px;">
+                                                                style="width: 8em;height: 4em;">
                                                         </a>
                                                     @else
                                                         <!-- Display as a link (for PDF or Word) -->
@@ -329,8 +330,8 @@
                                         </div>
 
                                         <!-- Biography PDF/Word or Image -->
-                                        <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="biography ww"> {{ __('panel.the_biography') }} :</span>
+                                        <div class="col-sm-12 pt-3 col-md-4 text-center">
+                                            <span class="biography ww d-block"> {{ __('panel.the_biography') }} :</span>
                                             <span class="biography-value">
                                                 @if ($teach_request->biography && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
                                                     @php
@@ -344,7 +345,7 @@
                                                             data-fancybox data-width="1400" data-height="900">
                                                             <img src="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
                                                                 class="img-fluid" alt="Biography Image"
-                                                                style="width: 50px; height: 50px;">
+                                                                style="width: 8em;height: 4em;">
                                                         </a>
                                                     @else
                                                         <!-- Display as a link (for PDF or Word) -->
@@ -360,8 +361,8 @@
                                         </div>
 
                                         <!-- Certificates PDF/Word or Image -->
-                                        <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="Certificates ww"> {{ __('panel.certificates') }} :</span>
+                                        <div class="col-sm-12 pt-3 col-md-4 text-center">
+                                            <span class="Certificates ww d-block"> {{ __('panel.certificates') }} :</span>
                                             <span class="Certificates-value">
                                                 @if ($teach_request->Certificates && file_exists(public_path('assets/teach_requests/' . $teach_request->Certificates)))
                                                     @php
@@ -375,7 +376,7 @@
                                                             data-fancybox data-width="1400" data-height="900">
                                                             <img src="{{ asset('assets/teach_requests/' . $teach_request->Certificates) }}"
                                                                 class="img-fluid" alt="Certificates Image"
-                                                                style="width: 50px; height: 50px;">
+                                                                style="width: 8em;height: 4em;">
                                                         </a>
                                                     @else
                                                         <!-- Display as a link (for PDF or Word) -->

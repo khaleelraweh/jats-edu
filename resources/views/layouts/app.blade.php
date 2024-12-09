@@ -1,8 +1,8 @@
-<?php $rtl = config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl' ? 'rtl' : ''; ?>
+<?php $rtl = config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl' ? '-rtl' : ''; ?>
 <?php $dark = Cookie::get('theme') !== null ? (Cookie::get('theme') == 'dark' ? 'dark' : '') : 'dark'; ?>
 
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ $rtl == 'rtl' ? 'rtl' : 'ltr' }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ $rtl == '-rtl' ? 'rtl' : 'ltr' }}">
 
 <head>
     <meta charset="utf-8">
@@ -49,16 +49,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/css/intlTelInput.css">
 
     <link rel="stylesheet"
-        href="{{ $rtl == 'rtl' ? asset('frontend/assets/css/theme-rtl.css') : asset('frontend/assets/css/theme.css') }}">
+        href="{{ $rtl == '-rtl' ? asset('frontend/assets/css/theme-rtl.css') : asset('frontend/assets/css/theme.css') }}">
 
     <link rel="stylesheet"
-        href="{{ $rtl == 'rtl' ? asset('frontend/assets/css/custom-rtl.css') : asset('frontend/assets/css/custom.css') }}">
+        href="{{ $rtl == '-rtl' ? asset('frontend/assets/css/custom-rtl.css') : asset('frontend/assets/css/custom.css') }}">
 
     <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css">
 
     <!-- Plugin css for this page -->
     {{-- <link rel="stylesheet" href="{{ asset('backend/vendors/flatpickr/flatpickr.min.css') }}"> --}}
-    <link rel="stylesheet" href="{{ asset('backend/vendor/flatpickr/flatpickr-' . $rtl . '.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/vendor/flatpickr/flatpickr' . $rtl . '.min.css') }}">
     <!-- End plugin css for this page -->
 
     @livewireStyles
@@ -158,7 +158,7 @@
 
 
     <!-- Plugin js for this page -->
-    <script src="{{ asset('backend/vendor/flatpickr/flatpickr-' . $rtl . '.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/flatpickr/flatpickr' . $rtl . '.min.js') }}"></script>
     <script src="{{ asset('backend/js/flatpickr.js') }}"></script>
     <script src="{{ asset('backend/js/flatpickr.ar.js') }}"></script>
     <!-- End plugin js for this page -->

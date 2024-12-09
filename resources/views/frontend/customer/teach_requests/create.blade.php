@@ -27,7 +27,6 @@
     <!--Internal Sumoselect css-->
     <link rel="stylesheet" href="{{ URL::asset('frontend/assets/plugins/sumoselect/sumoselect-rtl.css') }}">
 
-    {{-- end for image upload --}}
 
 
     <style>
@@ -53,12 +52,13 @@
     </style>
 @endsection
 
+
 @section('content')
     <div class="container mt-2">
         <!-- row -->
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <div class="card">
+                <div class="card" style="text-align: {{ app()->getLocale() == 'ar' ? 'right' : 'left' }};">
                     <div class="card-body">
                         <div class="main-content-label mg-b-5">
                             {{ __('panel.application_form_to_apply_as_a_trainer') }}

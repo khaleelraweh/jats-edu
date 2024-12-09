@@ -73,6 +73,9 @@ class TeachRequest extends Model
     const ACCEPTED = 2;         // when the admin is accepting
     const REJECTED = 3;         // when admin reject the request
 
+    // const REJECTED = 'rejected'; // or any appropriate status
+
+
 
 
     public function status()

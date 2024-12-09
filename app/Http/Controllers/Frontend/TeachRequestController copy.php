@@ -16,15 +16,13 @@ class TeachRequestController extends Controller
     public function create()
     {
         // Check if the user has already made a request
-        $existingRequest = TeachRequest::where('user_id', auth()->user()->id)->latest()->first();
-
-        // If a request exists and its status is not REJECTED, prevent access
-        if ($existingRequest && $existingRequest->teach_request_status !== TeachRequest::REJECTED) {
+        $existingRequest = TeachRequest::where('user_id', auth()->user()->id)->first();
+        if ($existingRequest) {
+            // Redirect to the show page with a message if the user has already made a request
             return redirect()->route('frontend.customer.teach_requests.show', $existingRequest->id)
-                ->with('error', 'You have already submitted a request that has not been rejected.');
+                ->with('error', 'You have already submitted a request.');
         }
 
-        // Proceed if no existing request or if the request was rejected
         $specializations = Specialization::get(['id', 'name']);
         return view('frontend.customer.teach_requests.create', compact('specializations'));
     }
@@ -32,12 +30,11 @@ class TeachRequestController extends Controller
     public function store(Request $request)
     {
         // Check if the user has already made a request
-        $existingRequest = TeachRequest::where('user_id', auth()->user()->id)->latest()->first();
-
-        // If a request exists and its status is not REJECTED, prevent new request
-        if ($existingRequest && $existingRequest->teach_request_status !== TeachRequest::REJECTED) {
+        $existingRequest = TeachRequest::where('user_id', auth()->user()->id)->first();
+        if ($existingRequest) {
+            // If a request already exists, return with an error message
             return redirect()->route('frontend.customer.teach_requests.show', $existingRequest->id)
-                ->with('error', 'You have already submitted a request that has not been rejected.');
+                ->with('error', 'You have already submitted a request.');
         }
 
         // Validate the request

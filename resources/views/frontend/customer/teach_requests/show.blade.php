@@ -175,8 +175,10 @@
                                     <div class="row">
                                         <div class="col-sm-12 pt-3">
                                             <span class="arabic-name ww">
-                                                {{ __('panel.full_name') }} {{ __('panel.in') }}
-                                                {{ __('panel.ar') }} :
+                                                {{-- {{ __('panel.full_name') }} {{ __('panel.in') }}
+                                                {{ __('panel.ar') }} : --}}
+                                                الإسم باللغة العربية :
+
                                             </span>
                                             <span
                                                 class="arabic-name-value">{{ $teach_request->getTranslation('full_name', 'ar') }}</span>
@@ -187,8 +189,9 @@
                                         <div class="col-sm-12 pt-3 text-end">
                                             <bdo dir="ltr">
                                                 <span class="english-name ww">
-                                                    {{ __('panel.full_name') }} {{ __('panel.in') }}
-                                                    {{ __('panel.en') }} :
+                                                    {{-- {{ __('panel.full_name') }} {{ __('panel.in') }}
+                                                    {{ __('panel.en') }} : --}}
+                                                    Full Name in English :
                                                 </span>
                                                 <span
                                                     class="english-name-value">{{ $teach_request->getTranslation('full_name', 'en') }}

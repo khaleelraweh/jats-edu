@@ -71,6 +71,14 @@ class TeachRequestController extends Controller
         $data['motivation']                 = $validatedData['motivation'];
         $data['user_id']                    = auth()->user()->id;
 
+        // Handle file uploads
+        if ($identity = $request->file('user_image')) {
+            $fileName = auth()->user()->id . '-face-' . time() . '.' . $identity->extension();
+            $filePath = public_path('assets/teach_requests');
+            $identity->move($filePath, $fileName); // Move image file
+            $data['user_image'] = $fileName;
+        }
+
         // Handle file uploads for identity, biography, and certificates
         $this->handleFileUploads($request, $data);
 

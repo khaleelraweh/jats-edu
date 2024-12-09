@@ -1370,7 +1370,8 @@ return [
     'remove'                                        =>  'Remove',
     'Ooops,_something_wrong_happended.'             =>  'Ooops, something wrong happended.',
     'note:_your_request_will_be_reviewed_and_responded_to_within_three_days_from_today’s_date'   =>  'Note: Your request will be reviewed and responded to within three days from today’s date',
-
+    'request_date'                                  =>  'Request date',
+    'application_form_to_apply_as_a_trainer'        =>  'Application form to apply as a trainer',
 
 
 

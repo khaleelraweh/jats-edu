@@ -122,7 +122,7 @@
                             <div class="col-sm-12 bg-white p-3">
                                 <div class="row">
                                     <div class="col-4" style="margin-top: 50px;">
-                                        <span><span class="ww">تاريخ الطلب :</span>
+                                        <span><span class="ww"> {{ __('panel.request_date') }} :</span>
                                             {{ $teach_request->created_at->format('Y/m/d') }}
 
                                         </span>
@@ -146,7 +146,7 @@
                               border-radius: 4px;
                               color:black;
                             ">
-                                            استمارة طلب تقديم كمدرب /ة
+                                            {{ __('panel.application_form_to_apply_as_a_trainer') }}
                                         </h1>
                                     </div>
                                     <div class="col-4">

@@ -1340,6 +1340,8 @@ return [
     'remove'                                        =>  'حذف',
     'Ooops,_something_wrong_happended.'             =>  'عفوًا، حدث خطأ ما.',
     'note:_your_request_will_be_reviewed_and_responded_to_within_three_days_from_today’s_date'   =>  'ملاحظة : سيتم مراجعة طلبك و الرد عليه خلال ثلاث ايام من تاريخ اليوم',
+    'request_date'                                  =>  'تأريخ الطلب',
+    'application_form_to_apply_as_a_trainer'        =>  'استمارة طلب تقديم كمدرب /ة',
 
 
 

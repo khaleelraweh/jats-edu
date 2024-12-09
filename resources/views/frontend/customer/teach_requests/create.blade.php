@@ -9,23 +9,7 @@
     <link href="{{ URL::asset('frontend/assets/css-rtl/style.css') }}" rel="stylesheet">
     <!--- Dark-mode css -->
 
-    <link href="{{ URL::asset('frontend/assets/css-rtl/skin-modes.css') }}" rel="stylesheet">
-
-    {{-- This is for this page  --}}
-    <link href="{{ URL::asset('frontend/assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-
-
-
-    {{-- start for image upload --}}
-    <!--- Internal Select2 css-->
-    <link href="{{ URL::asset('frontend/assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-    <!---Internal Fileupload css-->
-    <link href="{{ URL::asset('frontend/assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet"
-        type="text/css" />
-    <!---Internal Fancy uploader css-->
-    <link href="{{ URL::asset('frontend/assets/plugins/fancyuploder/fancy_fileupload.css') }}" rel="stylesheet" />
-    <!--Internal Sumoselect css-->
-    <link rel="stylesheet" href="{{ URL::asset('frontend/assets/plugins/sumoselect/sumoselect-rtl.css') }}">
+    <link href="{{ URL::asset('frontend/assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
 
 
 
@@ -375,8 +359,8 @@
                     messages: {
                         'default': @json(__('panel.image')),
                         'replace': '',
-                        'remove': 'Remove',
-                        'error': 'Ooops, something wrong happended.'
+                        'remove': @json(__('panel.remove')),
+                        'error': @json(__('panel.Ooops,_something_wrong_happended.')),
                     }
                 });
 

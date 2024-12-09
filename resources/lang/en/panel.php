@@ -1367,6 +1367,8 @@ return [
     'certificate_message'                           =>  'It is preferable to include all certificates to be uploaded in a .PDF file or one of the extensions (.jpg, .jpeg, .png).',
     'motivation'                                    =>  'Motivation',
     'why_do_you_want_to_join_our_training?'         =>  'Why do you want to join our training?',
+    'remove'                                        =>  'Remove',
+    'Ooops,_something_wrong_happended.'             =>  'Ooops, something wrong happended.',
 
 
 

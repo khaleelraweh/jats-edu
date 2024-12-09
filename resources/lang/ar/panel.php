@@ -1337,6 +1337,9 @@ return [
     'certificate_message'                           =>  'يفضل تضمين جميع الشهائد المراد رفعها في ملف يصيغة.PDF او احد الامتدادادت (.jpg,.jpeg,.png)',
     'motivation'                                    =>  'الحافز',
     'why_do_you_want_to_join_our_training?'         =>  ' لماذا تريد الالتحاق بالتدريب لدينا',
+    'remove'                                        =>  'حذف',
+    'Ooops,_something_wrong_happended.'             =>  'عفوًا، حدث خطأ ما.',
+
 
 
 

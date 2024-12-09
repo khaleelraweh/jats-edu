@@ -409,16 +409,29 @@
     <script src="{{ URL::asset('frontend/assets/js/form-wizard.js') }}"></script>
 
 
-
-
-
-
-
-
     <script>
         $(function() {
 
 
+            const locale = "{{ app()->getLocale() }}";
+
+            if ($('.flatpickr_date_of_birth').length) {
+                const defaultDate = "{{ old('date_of_birth') }}" ?
+                    "{{ old('date_of_birth') }}" :
+                    new Date(); // Set to now if no old date exists
+
+
+                // for offer ends
+                flatpickr('.flatpickr_date_of_birth', {
+                    enableTime: false,
+                    dateFormat: "Y-m-d",
+                    minDate: "today", // Prevent dates before today
+                    locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+                    defaultDate: defaultDate,
+
+                });
+
+            }
             // Initialize Dropify
             function initializeDropify() {
                 // $('.dropify').dropify();
@@ -440,18 +453,9 @@
 
 
 
-            // for offer ends
-            flatpickr('.flatpickr', {
 
-            });
 
-            // for offer ends
-            flatpickr('.flatpickr_date_of_birth', {
-                enableTime: true,
-                dateFormat: "Y-m-d ",
-                // minDate: "today"
 
-            });
 
             // Replace the "Finish" link with a button after the wizard is initialized
             $('a[href="#finish"]').each(function() {

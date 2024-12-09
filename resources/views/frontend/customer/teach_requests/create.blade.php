@@ -94,9 +94,9 @@
                                                 <div class="col-sm-12 col-md-6 pt-2">
                                                     <div class="control-group form-group">
                                                         <label class="form-label">
-                                                            تاريخ الميلاد
+                                                            <i class="fas fa-calendar-alt custom-color"></i>
+                                                            {{ __('panel.date_of_birth') }}
                                                             <span class="required text-danger">*</span>
-
                                                         </label>
                                                         <div class="form-group">
                                                             <input type="text" name="date_of_birth"

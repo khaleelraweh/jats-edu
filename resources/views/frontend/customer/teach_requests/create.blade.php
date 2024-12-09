@@ -4,7 +4,8 @@
 
 @section('style')
     <link href="{{ URL::asset('frontend/assets/plugins/sidebar/sidebar.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('frontend/assets/css-rtl/style.css') }}" rel="stylesheet">
+    {{-- <link href="{{ URL::asset('frontend/assets/css-rtl/style.css') }}" rel="stylesheet"> --}}
+    <link href="{{ URL::asset('frontend/assets/css/style' . $rtl . '.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('frontend/assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
 
 

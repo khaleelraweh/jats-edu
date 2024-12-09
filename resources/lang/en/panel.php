@@ -1359,7 +1359,7 @@ return [
     'personal_data'                                 =>  'Personal data',
     'academic_qualification'                        =>  'Academic qualification',
     'years_of_experience'                           =>  'Years of experience',
-    'attach_a_personal_photo'                       =>  'Attach a personal photo',
+    'attach_a_personal_photo'                       =>  'Personal photo',
     'attachments'                                   =>  'Attachments',
     'attach_a_copy_of_your_national_ID_or_passport' =>  'Attach a copy of your national ID or passport',
     'The image must have one of the following extensions .jpg - .jpeg - .png, .pdf' =>  'The image must have one of the following extensions (.jpg - .jpeg - .png, .pdf)',

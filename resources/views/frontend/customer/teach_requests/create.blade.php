@@ -376,10 +376,10 @@
                 // $('.dropify').dropify();
                 $('.dropify').dropify({
                     messages: {
-                        'default': 'Image ',
+                        'default': @json(__('panel.image')),
                         'replace': '',
-                        'remove': 'Remove',
-                        'error': 'Ooops, something wrong happended.'
+                        'remove': @json(__('panel.remove')),
+                        'error': @json(__('panel.Ooops,_something_wrong_happended.')),
                     }
                 });
 

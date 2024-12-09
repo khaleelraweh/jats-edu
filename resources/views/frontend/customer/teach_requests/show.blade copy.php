@@ -33,6 +33,17 @@
             margin-bottom: 20px;
             background-color: whitesmoke;
         }
+
+        #image-container {
+            /* border: 1px solid gray; */
+            margin-right: 100px;
+            width: 50%;
+            height: 181px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
     </style>
 
     <!-- Custom CSS -->
@@ -56,22 +67,6 @@
         }
 
         .outer {}
-
-        .outer-title {
-            border: 4px solid green;
-            padding: 5px;
-
-        }
-
-        .inner-title {
-            margin: 0;
-            padding: 5px;
-            text-align: center;
-            font-size: 30px;
-            border: 1px solid green;
-            border-radius: 4px;
-            color: black;
-        }
     </style>
 @endsection
 
@@ -126,21 +121,43 @@
                         <div class="row" style="border: 6px double green; font-size: 19px">
                             <div class="col-sm-12 bg-white p-3">
                                 <div class="row">
-                                    <div class="col-4 d-flex justify-content-start align-items-center">
+                                    <div class="col-4" style="margin-top: 50px;">
                                         <span><span class="ww"> {{ __('panel.request_date') }} :</span>
                                             {{ $teach_request->created_at->format('Y/m/d') }}
+
                                         </span>
                                     </div>
-                                    <div class="col-4 d-flex justify-content-center align-items-center ">
-                                        <div class="outer-title">
-                                            <h1 class="m-0 inner-title">
-                                                {{ __('panel.application_form_to_apply_as_a_trainer') }}
-                                            </h1>
-                                        </div>
+                                    <div class="col-4"
+                                        style="
+                            border: 4px solid green;
+                            padding: 5px;
+                            margin-top: 20px;
+                            display: inline-block;
+                            justify-content: center;
+                            text-align: center;
+                            height: 50%;
+                         
+                          ">
+                                        <h1
+                                            style="
+                              margin: 0;
+                              font-size: 30px;
+                              border: 1px solid green;
+                              border-radius: 4px;
+                              color:black;
+                            ">
+                                            {{ __('panel.application_form_to_apply_as_a_trainer') }}
+                                        </h1>
                                     </div>
-                                    <div class="col-4 d-flex justify-content-end align-items-center">
-                                        <input type="file" id="file-input" style="display: none;" />
-                                        <div id="image-container " style="width: 250px">
+                                    <div class="col-4">
+                                        <input type="file" id="file-input"
+                                            style="display: none;
+        
+                              
+                              " />
+                                        <div id="image-container" class="col-4">
+
+
                                             @if ($teach_request->user_image && file_exists(public_path('assets/teach_requests/' . $teach_request->user_image)))
                                                 <!-- Image -->
                                                 <a href="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"

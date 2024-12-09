@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<?php $rtl = config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl' ? '-rtl' : ''; ?>
 
 @section('style')
     {{-- This is for master page  --}}
@@ -347,7 +348,7 @@
     <script src="{{ URL::asset('frontend/assets/plugins/fileuploads/js/fileupload.js') }}"></script>
     <script src="{{ URL::asset('frontend/assets/plugins/fileuploads/js/file-upload.js') }}"></script>
 
-    <script src="{{ URL::asset('frontend/assets/plugins/jquery-steps/jquery.steps.min.js') }}"></script>
+    <script src="{{ URL::asset('frontend/assets/plugins/jquery-steps/jquery.steps' . $rtl . '.min.js') }}"></script>
     <script src="{{ URL::asset('frontend/assets/js/form-wizard.js') }}"></script>
 
 

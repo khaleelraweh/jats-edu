@@ -375,8 +375,6 @@
     <script>
         $(function() {
 
-
-            // Initialize Dropify
             function initializeDropify() {
                 $('.dropify').dropify({
                     messages: {
@@ -388,24 +386,15 @@
                 });
 
             }
-
-            // Initialize Dropify on document ready
             initializeDropify();
 
-
-            // Replace the "Finish" link with a button after the wizard is initialized
             $('a[href="#finish"]').each(function() {
-
-
                 $(this).on('click', function() {
                     $('#hiddenSubmitButton').click();
 
                 });
 
             });
-
-
-
         });
     </script>
 

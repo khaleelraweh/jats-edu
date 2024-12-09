@@ -246,7 +246,7 @@
                                                             <option value="">---</option>
                                                             @foreach ($specializations as $specialization)
                                                                 <option value="{{ $specialization->id }}"
-                                                                    {{ old('specialization') == $specialization->id ? 'selected' : '' }}>
+                                                                    {{ old('specialization_id') == $specialization->id ? 'selected' : '' }}>
                                                                     {{ $specialization->name }}
                                                                 </option>
                                                             @endforeach
@@ -260,7 +260,8 @@
                                                     <div class="control-group form-group mb-0">
                                                         <label
                                                             class="form-label">{{ __('panel.years_of_experience') }}</label>
-                                                        <input type="number" name="years_of_training_experience"
+                                                        <input type="number" min="0"
+                                                            name="years_of_training_experience"
                                                             class="form-control required"
                                                             value="{{ old('years_of_training_experience') }}">
                                                         @error('years_of_training_experience')

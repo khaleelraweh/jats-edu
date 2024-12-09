@@ -1350,6 +1350,8 @@ return [
 
 
     //teach_request 
+    'application_form_to_apply_as_a_trainer'        =>  'Application form to apply as a trainer',
+    'application_form'                              =>  'Note: The data will be approved upon completion of filling out and sending the data, so please , Enter all required data correctly and accurately.',
     'address_of_residence'                          =>  'Address of residence',
     'date_of_birth'                                 =>  'date of birth',
     'place_of_birth'                                =>  'place of birth',

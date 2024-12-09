@@ -69,10 +69,11 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="main-content-label mg-b-5">
-                            إستمارة طلب تقديم كمدرب
+                            {{ __('panel.application_form_to_apply_as_a_trainer') }}
                         </div>
-                        <p class="mg-b-20">ملاحظة : سيتم اعتماد البيانات عند الانتهاء من تعبئة البيانات وارسالها , لذلك نرجو
-                            القيام بإدخال كافة البيانات المطلوبة بشكل صحيح ودقيق.</p>
+                        <p class="mg-b-20">
+                            {{ __('panel.application_form') }}
+                        </p>
 
                         {{-- <form id="requestForm" action="{{ route('customer.request_to_teach') }}" method="post"
                             enctype="multipart/form-data"> --}}

@@ -54,6 +54,11 @@
 
     @livewireStyles
 
+    <style>
+        .flatpickr-months .flatpickr-month {
+            height: 44px !important;
+        }
+    </style>
     @yield('style')
 </head>
 

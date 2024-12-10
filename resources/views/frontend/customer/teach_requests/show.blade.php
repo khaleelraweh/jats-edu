@@ -268,54 +268,6 @@
                                         </div>
                                     </div>
 
-                                    {{-- <div class="row">
-                                        <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="identity ww">
-                                                صورة من الهوية / جواز السفر :
-                                            </span>
-                                            <span class="identity-value">
-                                                @if ($teach_request->identity)
-                                                    <a href="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
-                                                        data-fancybox data-width="1400" data-height="900">
-                                                        <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
-                                                            class="img-fluid" alt="Identity Image"
-                                                            style="width: 50px; height: 50px;">
-                                                    </a>
-                                                @else
-                                                    <p>No identity image available.</p>
-                                                @endif
-                                            </span>
-
-                                        </div>
-                                        <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="biography ww"> إرفاق السيرة الذاتية : </span>
-
-                                            <span class="biography-value">
-                                                @if ($teach_request->identity && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
-                                                    <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->biography, PATHINFO_FILENAME)) }}"
-                                                        target="_blanck">
-                                                        {{ pathinfo($teach_request->biography, PATHINFO_FILENAME) }}
-                                                    </a>
-                                                @else
-                                                    <p>No biography found</p>
-                                                @endif
-                                            </span>
-                                        </div>
-                                        <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="Certificates ww"> إرفاق الشهادات : </span>
-                                            <span class="Certificates-value">
-                                                @if ($teach_request->Certificates && file_exists(public_path('assets/teach_requests/' . $teach_request->Certificates)))
-                                                    <a href="{{ route('admin.view_file', pathinfo($teach_request->Certificates, PATHINFO_FILENAME)) }}"
-                                                        target="_blanck">
-                                                        {{ pathinfo($teach_request->Certificates, PATHINFO_FILENAME) }}
-                                                    </a>
-                                                @else
-                                                    <p>No Certificates found</p>
-                                                @endif
-                                            </span>
-                                        </div>
-                                    </div> --}}
-
                                     <div class="row">
                                         <!-- Identity Image or File -->
                                         <div class="col-sm-12 pt-3 col-md-4 text-center">

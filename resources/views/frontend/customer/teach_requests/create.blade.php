@@ -110,14 +110,6 @@
                                                     </div>
                                                 </div>
 
-                                                {{-- <select id="country_id" name="country_id" class="form-control">
-                                                    @foreach (getCountries() as $country)
-                                                        <option value="{{ $country->id }}" data-phone-code="{{ $country->phone_code }}"
-                                                            data-emoji="{{ $country->emoji }}">
-                                                            {{ $country->name }} ({{ $country->name_native }})
-                                                        </option>
-                                                    @endforeach
-                                                </select> --}}
 
                                                 <div class="col-sm-12 col-md-6 pt-4">
                                                     <div class="control-group form-group">

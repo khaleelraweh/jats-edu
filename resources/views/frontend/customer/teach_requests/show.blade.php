@@ -146,13 +146,13 @@
                                                 <!-- Image -->
                                                 <a href="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"
                                                     data-fancybox data-width="1400" data-height="900">
-                                                    <img style="width:9em;height:9em "
+                                                    <img style="width:12em;height:9em;"
                                                         src="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"
-                                                        class="img-fluid" alt="Identity Image">
+                                                        class="img-fluid" alt="User Image ">
                                                 </a>
                                             @else
-                                                <img src="{{ asset('image/not_found/placeholder.jpg') }}"
-                                                    alt="Identity Image" style="width: 100%; height: 181px;">
+                                                <img src="{{ asset('image/not_found/placeholder.jpg') }}" alt="User Image "
+                                                    style="width: 100%; height: 181px;">
                                             @endif
                                         </div>
                                     </div>

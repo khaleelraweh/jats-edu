@@ -168,6 +168,8 @@
     <!-- End custom js for Tinymce -->
 
 
+    <!--tinymce js for editor -->
+    <script src="{{ asset('backend/libs/tinymce/tinymce.min.js') }}"></script>
 
 
 

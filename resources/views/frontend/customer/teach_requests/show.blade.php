@@ -196,8 +196,9 @@
                                             <span class="place-of-birth ww"> {{ __('panel.place_of_birth') }} : </span>
                                             {{-- <span class="place-of-birth-value">{{ $teach_request->place_of_birth }}</span> --}}
                                             <?php $placeOfBirth = Altwaireb\World\Models\Country::where('id', $teach_request->place_of_birth)->first(); ?>
-                                            <span
-                                                class="place-of-birth-value">{{ app()->getLocale() == 'ar' ? $placeOfBirth->translations['ar'] : $placeOfBirth->name }}</span>
+                                            <span class="place-of-birth-value">
+                                                {{ app()->getLocale() == 'ar' ? $placeOfBirth->translations['ar'] : $placeOfBirth->name }}
+                                            </span>
                                         </div>
                                         <div class="col-sm-12 pt-3 col-md-4">
                                             <span class="nationality ww">{{ __('panel.nationality') }} : </span>

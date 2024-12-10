@@ -166,7 +166,7 @@
                                             <span class="arabic-name ww">
                                                 {{-- {{ __('panel.full_name') }} {{ __('panel.in') }}
                                                 {{ __('panel.ar') }} : --}}
-                                                الإسم باللغة العربية :
+                                                الإسم الكامل (باللغة العربية ) :
 
                                             </span>
                                             <span
@@ -180,7 +180,7 @@
                                                 <span class="english-name ww">
                                                     {{-- {{ __('panel.full_name') }} {{ __('panel.in') }}
                                                     {{ __('panel.en') }} : --}}
-                                                    Full Name in English :
+                                                    Full Name ( In English ) :
                                                 </span>
                                                 <span
                                                     class="english-name-value">{{ $teach_request->getTranslation('full_name', 'en') }}

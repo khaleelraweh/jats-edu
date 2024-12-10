@@ -54,10 +54,18 @@
 
 @push('scripts')
     <script>
+        var tinymceLanguage = '{{ app()->getLocale() }}'; // Get the current locale from Laravel config
+        var flatPickrLanguage = '{{ app()->getLocale() }}';
+    </script>
+
+    <script>
         document.addEventListener('livewire:load', function() {
             flatpickr('.flatpickr_publihsed_on', {
                 enableTime: true,
-                dateFormat: 'Y-m-d H:i', // Date and time format
+                dateFormat: "Y/m/d h:i K",
+                minDate: "today",
+                locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+
                 onChange: function(selectedDates, dateStr, instance) {
                     @this.set('published_on',
                         dateStr); // Update Livewire component's published_on property

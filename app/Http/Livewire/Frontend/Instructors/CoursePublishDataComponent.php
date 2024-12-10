@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Frontend\Instructors;
 
 use App\Models\Course;
+use Carbon\Carbon;
 use DateTimeImmutable;
 use Illuminate\Support\Facades\Validator;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -49,9 +50,15 @@ class CoursePublishDataComponent extends Component
         $this->validate();
 
         $course = Course::findOrFail($this->courseId);
+
+        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $this->published_on);
+        $publishedOn = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
+
+
         $course->update([
             'status' => $this->status,
-            'published_on' => $this->published_on,
+            // 'published_on' => $this->published_on,
+            'published_on' => $publishedOn,
         ]);
 
         $this->formSubmitted = true;

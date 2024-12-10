@@ -259,15 +259,14 @@
                 dateFormat: "Y/m/d h:i K",
                 minDate: "today",
                 locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
-
-
             });
 
             // for offer ends
             flatpickr('.flatpickr_publihsed_on', {
                 enableTime: true,
-                dateFormat: "Y-m-d H:i K",
-                minDate: "today"
+                dateFormat: "Y/m/d h:i K",
+                minDate: "today",
+                locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
 
             });
 

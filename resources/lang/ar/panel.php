@@ -1329,6 +1329,8 @@ return [
     'personal_data'                                 =>  'البيانات الشخصية',
     'academic_qualification'                        =>  'المؤهل العلمي',
     'years_of_experience'                           =>  'سنوات الخبرة',
+    'year'                                          =>  'سنه',
+    'years'                                         =>  'سنين',
     'attach_a_personal_photo'                       =>  'الصورة شخصية',
     'personal_identity_photo'                       =>  'صورة الهوية الشخصية',
     'attachments'                                   =>  'المرفقات',

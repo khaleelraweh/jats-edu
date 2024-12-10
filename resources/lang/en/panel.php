@@ -1359,6 +1359,8 @@ return [
     'personal_data'                                 =>  'Personal data',
     'academic_qualification'                        =>  'Academic qualification',
     'years_of_experience'                           =>  'Years of experience',
+    'year'                                          =>  'Year',
+    'years'                                         =>  'Years',
     'attach_a_personal_photo'                       =>  'Personal photo',
     'personal_identity_photo'                       =>  'Personal Identity photo',
     'attachments'                                   =>  'Attachments',

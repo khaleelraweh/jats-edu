@@ -251,7 +251,9 @@
                                                 {{ __('panel.years_of_experience') }} :
                                             </span>
                                             <span class="years_of_training_experience-value">
-                                                {{ $teach_request->years_of_training_experience }} </span>
+                                                {{ $teach_request->years_of_training_experience }} {{ __('panel.year') }}
+                                                / {{ __('panel.years') }}
+                                            </span>
                                         </div>
                                     </div>
 

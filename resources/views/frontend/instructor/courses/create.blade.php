@@ -10,6 +10,8 @@
             position: relative;
             width: 65%;
             min-height: 85vh;
+            overflow-y: auto;
+            overflow-x: hidden;
             height: auto;
             margin-top: 2%;
             margin-left: auto;

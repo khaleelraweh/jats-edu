@@ -36,6 +36,7 @@
         #image-container {
             /* border: 1px solid gray; */
             margin-right: 100px;
+            margin-left: 100px;
             width: 50%;
             height: 181px;
             display: flex;

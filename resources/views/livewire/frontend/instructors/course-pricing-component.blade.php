@@ -47,7 +47,6 @@
             </div>
         </div>
 
-        {{ $offer_ends }}
 
 
 

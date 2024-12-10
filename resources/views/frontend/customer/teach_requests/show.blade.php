@@ -138,14 +138,16 @@
                                             </h1>
                                         </div>
                                     </div>
-                                    <div class="col-4 d-flex justify-content-end align-items-center">
+                                    <div class="col-4 d-flex justify-content-center align-items-center">
                                         <input type="file" id="file-input" style="display: none;" />
-                                        <div id="image-container " style="width: 14em">
+                                        {{-- <div id="image-container " style="width: 18em;height:27em"> --}}
+                                        <div id="image-container ">
                                             @if ($teach_request->user_image && file_exists(public_path('assets/teach_requests/' . $teach_request->user_image)))
                                                 <!-- Image -->
                                                 <a href="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"
                                                     data-fancybox data-width="1400" data-height="900">
-                                                    <img src="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"
+                                                    <img style="width:9em;height:9em "
+                                                        src="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"
                                                         class="img-fluid" alt="Identity Image">
                                                 </a>
                                             @else

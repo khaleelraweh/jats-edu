@@ -266,12 +266,18 @@
                                                 </div>
                                                 <div class="col-sm-12 col-md-4 pt-4">
                                                     <div class="control-group form-group mb-0">
-                                                        <label
-                                                            class="form-label">{{ __('panel.years_of_experience') }}</label>
+                                                        <label class="form-label">
+                                                            {{ __('panel.years_of_experience') }}
+                                                            <small style="font-size: 9px;">
+                                                                {{ __('panel.year') }} /
+                                                                {{ __('panel.years') }}
+                                                            </small>
+                                                        </label>
                                                         <input type="number" min="0"
                                                             name="years_of_training_experience"
                                                             class="form-control required"
                                                             value="{{ old('years_of_training_experience') }}">
+
                                                         @error('years_of_training_experience')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror

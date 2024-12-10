@@ -227,7 +227,7 @@
 
     <!-- Include the Flatpickr JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/{{ app()->getLocale() }}.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ar.js"></script>
 
 
 
@@ -241,14 +241,25 @@
         });
     </script>
 
+    <script>
+        var tinymceLanguage = '{{ app()->getLocale() }}'; // Get the current locale from Laravel config
+        var flatPickrLanguage = '{{ app()->getLocale() }}';
+    </script>
 
 
 
     <script>
         $(function() {
 
+
+            const locale = "{{ app()->getLocale() }}";
             // for offer ends
             flatpickr('.flatpickr', {
+                enableTime: true,
+                dateFormat: "Y/m/d h:i K",
+                minDate: "today",
+                locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+
 
             });
 

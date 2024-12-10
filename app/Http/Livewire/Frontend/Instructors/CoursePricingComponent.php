@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Frontend\Instructors;
 
 use App\Models\Course;
+use Carbon\Carbon as CarbonCarbon;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -50,10 +51,15 @@ class CoursePricingComponent extends Component
         $this->validate();
 
         $course = Course::findOrFail($this->courseId);
+
+
+        $offer_ends = str_replace(['ص', 'م'], ['AM', 'PM'], $this->offer_ends);
+        $offerEnds = CarbonCarbon::createFromFormat('Y/m/d h:i A', $offer_ends)->format('Y-m-d H:i:s');
+
         $course->update([
             'price' => $this->price,
             'offer_price' => $this->offer_price,
-            'offer_ends' => $this->offer_ends,
+            'offer_ends' => $offerEnds,
         ]);
 
         $this->formSubmitted = true;

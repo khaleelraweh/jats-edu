@@ -37,7 +37,7 @@ return new class extends Migration
 
             $table->double('price')->nullable()->default(0.0);
             $table->double('offer_price')->nullable()->default(0.0); // سعر العرض
-            $table->date('offer_ends')->nullable(); // تاريخ انتهاء العرض 
+            $table->dateTime('offer_ends')->nullable(); // تاريخ انتهاء العرض 
             $table->boolean('featured')->default(false);
             $table->foreignId('course_category_id')->constrained()->cascadeOnDelete();
             // $table->foreignId('instructor_id')->constrained()->cascadeOnDelete();

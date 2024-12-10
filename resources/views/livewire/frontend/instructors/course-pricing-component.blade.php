@@ -47,6 +47,8 @@
             </div>
         </div>
 
+        {{ $offer_ends }}
+
 
 
 
@@ -62,10 +64,18 @@
 
 @push('scripts')
     <script>
+        var tinymceLanguage = '{{ app()->getLocale() }}'; // Get the current locale from Laravel config
+        var flatPickrLanguage = '{{ app()->getLocale() }}';
+    </script>
+
+    <script>
         document.addEventListener('livewire:load', function() {
             flatpickr('.flatpickr', {
-                dateFormat: 'Y-m-d', // adjust the date format as needed
-                // other Flatpickr options...
+                enableTime: true,
+                dateFormat: "Y/m/d h:i K",
+                minDate: "today",
+                locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+
             }).on('change', function(selectedDates, dateStr, instance) {
                 @this.set('date', dateStr); // Update Livewire component's date property
             });

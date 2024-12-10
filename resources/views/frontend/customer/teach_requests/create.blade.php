@@ -154,8 +154,8 @@
                                                         <select id="nationality" name="nationality" class="form-control">
                                                             <option value="">---</option>
                                                             @foreach (getCountries() as $country)
-                                                                <option value="{{ $country->name }}"
-                                                                    {{ old('nationality') == $country->name ? 'selected' : '' }}>
+                                                                <option value="{{ $country->id }}"
+                                                                    {{ old('nationality') == $country->id ? 'selected' : '' }}>
                                                                     {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
                                                                 </option>
                                                             @endforeach
@@ -177,8 +177,8 @@
                                                             class="form-control">
                                                             <option value="">---</option>
                                                             @foreach (getCountries() as $country)
-                                                                <option value="{{ $country->name }}"
-                                                                    {{ old('residence_address') == $country->name ? 'selected' : '' }}>
+                                                                <option value="{{ $country->id }}"
+                                                                    {{ old('residence_address') == $country->id ? 'selected' : '' }}>
                                                                     {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
                                                                 </option>
                                                             @endforeach

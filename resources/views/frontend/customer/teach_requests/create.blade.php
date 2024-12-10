@@ -109,6 +109,16 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                {{-- <select id="country_id" name="country_id" class="form-control">
+                                                    @foreach (getCountries() as $country)
+                                                        <option value="{{ $country->id }}" data-phone-code="{{ $country->phone_code }}"
+                                                            data-emoji="{{ $country->emoji }}">
+                                                            {{ $country->name }} ({{ $country->name_native }})
+                                                        </option>
+                                                    @endforeach
+                                                </select> --}}
+
                                                 <div class="col-sm-12 col-md-6 pt-4">
                                                     <div class="control-group form-group">
                                                         <label for="place_of_birth">
@@ -120,8 +130,8 @@
                                                             class="form-control">
                                                             <option value="">---</option>
                                                             @foreach (getCountries() as $country)
-                                                                <option value="{{ $country->name }}"
-                                                                    {{ old('place_of_birth') == $country->name ? 'selected' : '' }}>
+                                                                <option value="{{ $country->id }}"
+                                                                    {{ old('place_of_birth') == $country->id ? 'selected' : '' }}>
                                                                     {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
                                                                 </option>
                                                             @endforeach
@@ -272,7 +282,7 @@
                                         {{-- this is for image  --}}
                                         <div class="col-sm-12 col-md-4 pt-4">
                                             <label class="form-label">
-                                                {{ __('panel.attach_a_personal_photo') }}
+                                                {{ __('panel.personal_identity_photo') }}
                                                 <span class="required text-danger">*</span>
                                             </label>
                                             <input type="file" name="user_image" class="dropify" data-height="200" />

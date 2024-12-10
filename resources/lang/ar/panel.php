@@ -1330,6 +1330,7 @@ return [
     'academic_qualification'                        =>  'المؤهل العلمي',
     'years_of_experience'                           =>  'سنوات الخبرة',
     'attach_a_personal_photo'                       =>  'الصورة شخصية',
+    'personal_identity_photo'                       =>  'صورة الهوية الشخصية',
     'attachments'                                   =>  'المرفقات',
     'attach_a_copy_of_your_national_ID_or_passport' =>  'إرفاق صورة من الهوية الوطنية او جواز السفر',
     'The image must have one of the following extensions .jpg - .jpeg - .png, .pdf' =>  'يجب ان تكون الصورة ذات احد الامتدادات التالية ( .jpg - .jpeg - .png ,.pdf )',

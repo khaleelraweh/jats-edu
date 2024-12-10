@@ -3,10 +3,7 @@
     <!-- twitter-bootstrap-wizard css -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/libs/twitter-bootstrap-wizard/prettify.css') }}">
 
-    <!-- Bootstrap Css -->
-    {{-- <link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" /> --}}
-    <!-- Icons Css -->
-    <link href="{{ asset('frontend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+
 
 
     {{-- new links  --}}

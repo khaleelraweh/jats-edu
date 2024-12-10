@@ -60,6 +60,7 @@
         .outer-title {
             border: 4px solid green;
             padding: 5px;
+            height: fit-content;
 
         }
 
@@ -90,8 +91,7 @@
                                     <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
                                         <h1 class="m-0" style="color:green;">
                                             معهد خطوة شباب</h1>
-                                        <h2 style="color: gold" style="
-        font-family: Times New Roman, sans-serif;">
+                                        <h2 style="color: gold" style="font-family: Times New Roman, sans-serif;">
                                             للتدريب واللغات</h2>
                                     </div>
                                     <div class="col-sm-4 d-flex align-items-center justify-content-center">
@@ -126,19 +126,23 @@
                         <div class="row" style="border: 6px double green; font-size: 19px">
                             <div class="col-sm-12 bg-white p-3">
                                 <div class="row">
-                                    <div class="col-4 d-flex justify-content-start align-items-center">
-                                        <span><span class="ww"> {{ __('panel.request_date') }} :</span>
+                                    <div class="col-sm-12 col-md-4 pt-2 d-flex justify-content-start align-items-top">
+                                        <span style="margin-top: 14px;line-height: 45px;">
+                                            <span class="ww">
+                                                {{ __('panel.request_date') }}
+                                                :
+                                            </span>
                                             {{ $teach_request->created_at->format('Y/m/d') }}
                                         </span>
                                     </div>
-                                    <div class="col-4 d-flex justify-content-center align-items-center ">
+                                    <div class="col-sm-12 col-md-4 pt-2 d-flex justify-content-center align-items-top ">
                                         <div class="outer-title">
                                             <h1 class="m-0 inner-title">
                                                 {{ __('panel.application_form_to_apply_as_a_trainer') }}
                                             </h1>
                                         </div>
                                     </div>
-                                    <div class="col-4 d-flex justify-content-center align-items-center">
+                                    <div class="col-sm-12 col-md-4 pt-2  d-flex justify-content-center align-items-top">
                                         <input type="file" id="file-input" style="display: none;" />
                                         {{-- <div id="image-container " style="width: 18em;height:27em"> --}}
                                         <div id="image-container ">

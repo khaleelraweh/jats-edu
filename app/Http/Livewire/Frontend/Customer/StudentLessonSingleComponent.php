@@ -30,16 +30,44 @@ class StudentLessonSingleComponent extends Component
     protected $listeners = ['evaluationCompleted' => 'updateAfterEvaluation'];
 
 
+    // public function mount()
+    // {
+    //     // get the course 
+    //     $course = Course::query()->where('slug->' . app()->getLocale(), $this->slug)->first();
+
+    //     // Assuming each course has many sections and each section has many lessons and evaluations
+    //     $this->curriculumSections = $course->sections()->with(['lessons', 'evaluations'])->get();
+    //     $urlId = $this->curriculumSections->first()->lessons->first()->url;
+    //     $this->updateContent($urlId);
+    // }
+
     public function mount()
     {
-        // get the course 
+        // Get the course
         $course = Course::query()->where('slug->' . app()->getLocale(), $this->slug)->first();
+
+        if (!$course) {
+            abort(404, 'Course not found');
+        }
 
         // Assuming each course has many sections and each section has many lessons and evaluations
         $this->curriculumSections = $course->sections()->with(['lessons', 'evaluations'])->get();
-        $urlId = $this->curriculumSections->first()->lessons->first()->url;
-        $this->updateContent($urlId);
+
+        // Check if sections and lessons exist before accessing them
+        if ($this->curriculumSections->isNotEmpty()) {
+            $firstSection = $this->curriculumSections->first();
+            if ($firstSection->lessons->isNotEmpty()) {
+                $urlId = $firstSection->lessons->first()->url;
+
+                if ($urlId) {
+                    $this->updateContent($urlId);
+                } else {
+                    $this->updateContent(null); // Handle case where URL is missing
+                }
+            }
+        }
     }
+
 
 
     public function updateContent($urlOrEvaluationId, $isEvaluation = false)

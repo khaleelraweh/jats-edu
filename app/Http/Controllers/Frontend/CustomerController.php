@@ -123,8 +123,24 @@ class CustomerController extends Controller
         return view('frontend.customer.student-lesson-single', compact('slug'));
     }
 
+    // public function certification($course_id)
+    // {
+    //     return view('frontend.customer.certification', compact('course_id'));
+    // }
+
     public function certification($course_id)
     {
+        // Check if the user already has a certification for this course
+        $existingCertification = Certifications::where('user_id', Auth::id())
+            ->where('course_id', $course_id)
+            ->first();
+
+        if ($existingCertification) {
+            // Redirect the user to view their existing certification
+            return redirect()->route('customer.show_certification', $existingCertification->id);
+        }
+
+        // If no certification exists, load the certification creation view
         return view('frontend.customer.certification', compact('course_id'));
     }
 

@@ -39,8 +39,8 @@
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>إسم مقدم الطلب</th>
-                            <th>حالة التقديم</th>
+                            <th>{{ __('panel.applicants_name') }}</th>
+                            <th>{{ __('panel.submission_status') }}</th>
                             <th>{{ __('panel.status') }}</th>
                             <th> {{ __('panel.created_at') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>

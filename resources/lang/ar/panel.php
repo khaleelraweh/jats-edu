@@ -479,6 +479,9 @@ return [
     'You_have_successfully_sent_a_new_teaching_request' => 'لقد قمت بارسال طلب تدريس جديد بنجاح',
     'your_application_for_teaching'                     =>  'طلبك للتدريس',
     'your_request_has_been_rejected_You_can_do_something_else!!'    =>  'لقد تم رفض طلبك ، يمكنك عمل أخر !!!',
+    'applicants_name'                   =>  'إسم مقدم الطلب',
+    'submission_status'                 =>  'حالت التقديم',
+
 
 
 

@@ -484,6 +484,8 @@ return [
     'You_have_successfully_sent_a_new_teaching_request' => 'You have successfully sent a new teaching request',
     'your_application_for_teaching'                     =>  'Your application for teaching',
     'your_request_has_been_rejected_You_can_do_something_else!!'    =>  'Your request has been rejected, You can do something else!!',
+    'applicants_name'                   =>  'Applicant\'s name',
+    'submission_status'                 =>  'Submission status',
 
 
     ##############################################################

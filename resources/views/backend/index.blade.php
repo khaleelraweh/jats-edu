@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h2>Unique Visitors</h2>
+    {{-- <h2>Unique Visitors</h2>
     <table border="1">
         <thead>
             <tr>
@@ -39,7 +39,7 @@
                 </tr>
             @endforeach
         </tbody>
-    </table>
+    </table> --}}
 
 
 

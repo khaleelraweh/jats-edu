@@ -54,6 +54,9 @@ class EvaluationComponent extends Component
         // Fetch the course instance
         $course = Course::where('id', $this->courseId)->with('sections.evaluations.questions.options')->first();
 
+        $this->count = 0; // Initialize the count to ensure it starts correctly
+
+
         if ($course) {
             // Initialize the evaluations array from the sections' evaluations
             $evaluations = $course->sections->flatMap(function ($section) {
@@ -83,10 +86,11 @@ class EvaluationComponent extends Component
 
             // If no evaluations are found, set default data
             if (empty($evaluations)) {
+                $this->count++;
                 $this->evaluations = [
                     [
-                        'title' => 'التقييم' . $this->count,
-                        'description' => 'الوصف' . $this->count,
+                        'title' => __('panel.evaluation') . ' ' . $this->count,
+                        'description' => __('panel.description') . ' ' . $this->count,
                         'course_section_id' => $course->sections->first()->id ?? null,
                         'questions' => [
                             [
@@ -104,6 +108,8 @@ class EvaluationComponent extends Component
                 ];
             } else {
                 $this->evaluations = $evaluations;
+                $this->count = count($evaluations); // Update count based on existing evaluations
+
             }
         } else {
 
@@ -111,10 +117,11 @@ class EvaluationComponent extends Component
 
 
             // If no course is found, set default data
+            $this->count++;
             $this->evaluations = [
                 [
-                    'title' => 'التقييم' . $this->count,
-                    'description' => 'الوصف' . $this->count,
+                    'title' => __('panel.evaluation') . ' ' . $this->count,
+                    'description' => __('panel.description') . ' ' . $this->count,
                     'course_section_id' =>  $firstCourseSectionId,
                     'questions' => [
                         [
@@ -375,15 +382,15 @@ class EvaluationComponent extends Component
     // Method to add a new evaluation
     public function addEvaluation()
     {
-        $this->count++;
+        $this->count++; // Increment the evaluation count
 
         $firstCourseSectionId = CourseSection::where('course_id', $this->courseId)->first()->id ?? null;
 
 
         $this->evaluations[] = [
             'evaluationId'      => 1,
-            'title'             => __('panel.evaluation') . ' 1',
-            'description'       => 'Description 1',
+            'title'             => __('panel.evaluation') . ' ' . $this->count,
+            'description'       => __('panel.description') . ' ' . $this->count,
             'course_section_id' =>  $firstCourseSectionId,
 
             'questions' => [

@@ -11,7 +11,6 @@
     <form wire:submit.prevent="save">
         {{-- published_on --}}
 
-        {{ $published_on }}
         <div class="row">
             <div class="col-md-12 com-sm-12 pt-4">
                 <label for="published_on" class="control-label">

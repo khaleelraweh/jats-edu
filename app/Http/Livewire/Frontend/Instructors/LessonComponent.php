@@ -236,7 +236,7 @@ class LessonComponent extends Component
         $this->updateSectionTitle($index);
 
         // Save lessons for the section
-        // $this->saveLessonsInSection($index);
+        $this->saveLessonsInSection($index);
 
         // Emit an event to notify other components
         $this->emit('sectionUpdated', $this->courseId);

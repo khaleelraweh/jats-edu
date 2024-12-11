@@ -2,10 +2,10 @@
 @this.on('stopLoading', () => loading = false);">
     <div class="card">
         <div class="card-body">
-            <form wire:submit.prevent="search" @submit="loading = true">
+            <form wire:submit.prevent="search">
                 <div class="row">
                     <div class="col-sm-12">
-                        <label for="certificate_code">{{ __('panel.certificate_number') }} : </label>
+                        <label for="certificate_code">{{ __('panel.certificate_number') }}:</label>
                         <input type="text" name="certificate_code" id="certificate_code" class="form-control"
                             wire:model.defer="certificate_code">
                         @error('certificate_code')
@@ -19,14 +19,15 @@
     </div>
 
     <!-- Loader -->
-    <div x-show="loading" style="display: none;">
+    {{-- <div x-show="loading" style="display: none;">
         <div class="spinner-border" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div> --}}
 
-    @isset($certificate)
-        <div class="card mt-3" x-show="!loading">
+    <!-- Certificate Details -->
+    @if ($certificate)
+        <div class="card mt-3" wire:key="{{ now() }}" x-show="!loading">
             <div class="card-body">
                 <table class="table table-responsive">
                     <tr>
@@ -49,15 +50,15 @@
             </div>
         </div>
 
-        <div class="card mt-3" x-show="!loading">
+        <div class="card mt-3" wire:key="{{ now() }}" x-show="!loading">
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
                         <img src="{{ $cert_image_url }}" alt="Marked Certificate"
-                            style="width: 70%;display:block;margin: auto;">
+                            style="width: 70%; display: block; margin: auto;">
                     </div>
                 </div>
             </div>
         </div>
-    @endisset
+    @endif
 </div>

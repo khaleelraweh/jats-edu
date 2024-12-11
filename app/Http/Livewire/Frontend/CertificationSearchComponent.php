@@ -4,18 +4,13 @@ namespace App\Http\Livewire\Frontend;
 
 use App\Models\Certifications;
 use Livewire\Component;
-use Intervention\Image\Facades\Image; // <-- Add this line
+use Intervention\Image\Facades\Image;
 
 class CertificationSearchComponent extends Component
 {
     public $certificate_code;
     public $certificate;
     public $cert_image_url;
-
-
-
-
-
 
     public function search()
     {
@@ -25,12 +20,12 @@ class CertificationSearchComponent extends Component
                 'certificate_code' => 'required|exists:certifications,cert_code',
             ]);
 
-            // If validation passes, emit the startLoading event
+            // Emit the startLoading event if validation passes
             if ($validatedData) {
-                $this->emit('startLoading'); // Start loading only if validation passes
+                $this->emit('startLoading');
             }
 
-            // Proceed with the search
+            // Perform the search
             $this->certificate = Certifications::where('cert_code', $this->certificate_code)->first();
 
             if ($this->certificate) {
@@ -39,19 +34,14 @@ class CertificationSearchComponent extends Component
                 $this->resetCertificate();
             }
         } catch (\Illuminate\Validation\ValidationException $e) {
-            // Stop the loader immediately if validation fails
+            // Stop the loader if validation fails
             $this->emit('stopLoading');
-            throw $e; // rethrow the exception to allow error messages to be displayed
+            throw $e;
         }
 
-        // Stop the loader regardless of success or failure
+        // Stop the loader after completion
         $this->emit('stopLoading');
     }
-
-
-
-
-
 
     public function markCopyOnCertificate($cert_file)
     {
@@ -59,31 +49,28 @@ class CertificationSearchComponent extends Component
         $imagePath = public_path('assets/certifications/' . $cert_file);
 
         if (!file_exists($imagePath)) {
-            // Handle the case where the image doesn't exist
-            return null;  // or throw an exception
+            return null; // Handle non-existent file
         }
 
         $img = Image::make($imagePath);
 
-        // Add background text (e.g., "Copy to match") to the image
+        // Add watermark text to the image
         $img->text('Copy to match', $img->width() / 2, $img->height() / 2, function ($font) {
-            $font->file(public_path('fonts/DINNextLTArabic-Regular-3.ttf')); // Use your specific font file
+            $font->file(public_path('fonts/DINNextLTArabic-Regular-3.ttf'));
             $font->size(200);
-            $font->color([128, 128, 128, 0.5]); // Gray color with 50% opacity
+            $font->color([128, 128, 128, 0.5]); // Gray with 50% opacity
             $font->align('center');
             $font->valign('middle');
-            $font->angle(45); // Tilt the text for watermark effect
+            $font->angle(45); // Tilt the text
         });
 
-        // Save the image to a temporary file or overwrite the original
+        // Save the modified image
         $newCertFile = 'marked_' . $cert_file;
         $img->save(public_path('assets/certifications/' . $newCertFile));
 
-        // Return the new image URL
+        // Return the URL of the new image
         return asset('assets/certifications/' . $newCertFile);
     }
-
-
 
     public function resetCertificate()
     {

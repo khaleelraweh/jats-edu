@@ -33,7 +33,7 @@ class CourseDetailsConfirmationComponent extends Component
     // Field validation 
     public $titleValid = false;
     public $subtitleValid = false;
-    public $descriptionValid = false;
+    // public $descriptionValid = false;
     public $videopromoValid = false;
     public $courseImageValid = false;
     public $objectivesValid = false;
@@ -186,12 +186,13 @@ class CourseDetailsConfirmationComponent extends Component
 
         $this->titleValid = $this->validateField($course->title, 'title', ['required', 'string', 'min:10', 'max:60']);
         $this->subtitleValid = $this->validateField($course->subtitle, 'subtitle', ['required', 'string', 'min:10', 'max:120']);
-        $this->descriptionValid = $this->validateField($course->description, 'description', ['required', 'string', 'min_words:100']);
+        // $this->descriptionValid = $this->validateField($course->description, 'description', ['required', 'string', 'min_words:100']);
         $this->videopromoValid = $this->validateField($course->video_promo, 'video_promo', ['required', 'url', 'min:10']);
 
         $this->courseImageValid = $course->firstMedia && file_exists(public_path('assets/courses/' . $course->firstMedia->file_name));
 
-        $this->courseLandingTabValid = $this->titleValid && $this->subtitleValid && $this->descriptionValid && $this->videopromoValid && $this->courseImageValid;
+        // $this->courseLandingTabValid = $this->titleValid && $this->subtitleValid && $this->descriptionValid && $this->videopromoValid && $this->courseImageValid;
+        $this->courseLandingTabValid = $this->titleValid && $this->subtitleValid  && $this->videopromoValid && $this->courseImageValid;
     }
 
     protected function validateObjective()

@@ -14,11 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::create('page_visits', function (Blueprint $table) {
-            // $table->id();
-            // $table->string('page');
-            // $table->string('ip_address');
-            // $table->timestamp('visited_at');
-            // $table->timestamps();
 
             $table->id();
             $table->string('page')->collation('utf8mb4_unicode_ci'); // Ensure Unicode support

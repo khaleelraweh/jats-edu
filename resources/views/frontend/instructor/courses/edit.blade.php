@@ -104,6 +104,67 @@
                     <div class="card-body">
                         <h4 class="card-title mb-4">{{ __('transf.course_generators') }}</h4>
 
+                        @if (app()->getLocale() === 'ar')
+                            <style>
+                                .twitter-bs-wizard-nav li a {
+                                    padding-right: 0;
+                                }
+
+                                .card-title {
+                                    position: relative;
+                                }
+
+                                .card-title::before {
+                                    content: '';
+                                    position: absolute;
+                                    background: rgb(111, 208, 136);
+                                    bottom: -0.7em;
+                                    right: 0;
+                                    width: 8.25em;
+                                    height: 3px;
+                                }
+
+                                .card-title::after {
+                                    content: '';
+                                    position: absolute;
+                                    background: rgb(111, 208, 136);
+                                    bottom: -0.375em;
+                                    right: 0;
+                                    width: 7.5em;
+                                    height: 2px;
+                                }
+                            </style>
+                        @else
+                            <style>
+                                .twitter-bs-wizard-nav li a {
+                                    padding-left: 0;
+                                }
+
+                                .card-title {
+                                    position: relative;
+                                }
+
+                                .card-title::before {
+                                    content: '';
+                                    position: absolute;
+                                    background: rgb(111, 208, 136);
+                                    bottom: -0.7em;
+                                    left: 0;
+                                    width: 10em;
+                                    height: 3px;
+                                }
+
+                                .card-title::after {
+                                    content: '';
+                                    position: absolute;
+                                    background: rgb(111, 208, 136);
+                                    bottom: -0.375em;
+                                    left: 0;
+                                    width: 9.50em;
+                                    height: 2px;
+                                }
+                            </style>
+                        @endif
                         <div id="basic-pills-wizard" class="twitter-bs-wizard">
                             <ul class="twitter-bs-wizard-nav">
                                 {{-- <h6><strong>{{ __('transf.plan_your_course') }}</strong></h6> --}}

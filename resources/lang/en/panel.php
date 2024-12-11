@@ -495,12 +495,25 @@ return [
     // ........... commons in Company Request  ....... //
     'cp_user_name'                      =>  'Applicant\'s Name',
     'cp_company_name'                   =>  'Company Name',
-
+    'company_name'                      =>  'Company Name',
 
     'company_request_new_request'                       =>  'NEW_REQUEST',
     'company_request_under_proccess'                    =>  'UNDER_PROCESS',
     'company_request_accepted'                          =>  'ACCEPTED',
     'company_request_rejected'                          =>  'REJECTED',
+
+    'subscription_request_for_companies'    =>  'Subscription request for companies',
+    'contact_information'                   =>  'Contact information',
+    'find_us'                               =>  'Find us',
+    'contact_numbers'                       =>  'Contact numbers',
+    'working_hours'                         =>  'Working hours',
+    'write_to_us_on'                        =>  'Write to us on',
+    'follow_us_on_the_following_social_media_sites' =>  'Follow us on the following social media sites',
+    'Job_title'                             =>  'Job title',
+    'number_of_trainees_in_the_company'     =>  'Number of trainees in the company',
+    'send_request'                          =>  'Send Request',
+    'your_request_has_been_sent_successfully'   =>  'Your request has been sent successfully',
+
 
 
     //............. Order Status .............//
@@ -1101,7 +1114,9 @@ return [
     // ========================  frontend Footer  =========================// 
     'f_phone'                                       => 'Phone',
     'f_phone_number'                                =>  'Phone Number',
+    'phone_number'                                  =>  'Phone Number',
     'f_email'                                       => 'Email Address',
+    'email'                                         => 'Email Address',
     'f_fax'                                         => 'Fax',
     'f_po_box'                                      => 'PoBox',
     'f_work_time'                                   => 'Work Time',

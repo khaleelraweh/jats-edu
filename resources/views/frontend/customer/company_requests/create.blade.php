@@ -1,20 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- PAGE TITLE
-                                                                                                                                                                                                                                                                            ================================================== -->
+    <!-- PAGE TITLE -->
     <header class="py-8 py-md-11" style="background-image: none;">
         <div class="container text-center py-xl-2">
-            <h1 class="display-4 fw-semi-bold mb-0">طلب الإشتراك للشركات</h1>
+            <h1 class="display-4 fw-semi-bold mb-0">{{ __('panel.subscription_request_for_companies') }} </h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-scroll justify-content-center">
                     <li class="breadcrumb-item">
                         <a class="text-gray-800" href="{{ route('frontend.index') }}">
-                            الرئيسية
+                            {{ __('panel.main') }}
                         </a>
                     </li>
                     <li class="breadcrumb-item text-gray-800 active" aria-current="page">
-                        طلب الإشتراك للشركات
+                        {{ __('panel.subscription_request_for_companies') }}
                     </li>
                 </ol>
             </nav>
@@ -24,12 +23,11 @@
     </header>
 
 
-    <!-- CONTACT
-                                                                                                                                                                                                                                                                            ================================================== -->
+    <!-- CONTACT -->
     <div class="container">
         <div class="row row-cols-md-2 mb-8 mb-lg-11">
             <div class="col-md">
-                <h1 class="mb-6">بيانات التواصل</h1>
+                <h1 class="mb-6">{{ __('panel.contact_information') }}</h1>
 
                 <div class="row row-cols-12 row-cols-xl-2">
                     <div class="col-xl mb-6">
@@ -53,7 +51,7 @@
 
                             </div>
                             <div class="media-body flex-shrink-1">
-                                <h5 class="mb-4">ابحث عنا</h5>
+                                <h5 class="mb-4">{{ __('panel.find_us') }}</h5>
                                 <address class="">
                                     {{ $siteSettings['site_address']->value ?? '' }}
                                 </address>
@@ -73,7 +71,7 @@
 
                             </div>
                             <div class="media-body flex-shrink-1">
-                                <h5 class="mb-4">ارقام التواصل</h5>
+                                <h5 class="mb-4">{{ __('panel.contact_numbers') }}</h5>
                                 <a href="tel:3159052321" class="text-gray-800 d-block">
                                     <bdo dir="ltr"> {{ $siteSettings['site_phone']->value ?? '' }} </bdo>
                                 </a>
@@ -111,7 +109,7 @@
 
                             </div>
                             <div class="media-body flex-shrink-1">
-                                <h5 class="mb-4">ساعات العمل</h5>
+                                <h5 class="mb-4"> {{ __('panel.working_hours') }}</h5>
                                 {{ $siteSettings['site_workTime']->value ?? '' }}
                             </div>
                         </div>
@@ -132,7 +130,7 @@
 
                             </div>
                             <div class="media-body flex-shrink-1">
-                                <h5 class="mb-4">اكتب لنا على </h5>
+                                <h5 class="mb-4"> {{ __('panel.write_to_us_on') }} </h5>
                                 <a href="mailto:{{ $siteSettings['site_email1']->value ?? '' }}" class="text-gray-800">
                                     <bdo dir="ltr">
                                         {{ $siteSettings['site_email1']->value ?? '' }}
@@ -172,7 +170,7 @@
 
                             </div>
                             <div class="media-body flex-shrink-1">
-                                <h5 class="mb-4">تابعنا على مواقع التواصل التالية</h5>
+                                <h5 class="mb-4"> {{ __('panel.follow_us_on_the_following_social_media_sites') }}</h5>
                                 <!-- Social -->
                                 <ul class="list-unstyled list-inline list-social mb-4 mb-md-0 mx-n4">
 
@@ -272,7 +270,7 @@
 
             <div class="col-md">
                 <div class="card">
-                    <div class="card-header">{{ __('طلب الإشتراك للشركات') }}</div>
+                    <div class="card-header">{{ __('panel.subscription_request_for_companies') }}</div>
 
                     <div class="card-body">
                         @if (session('success'))
@@ -285,7 +283,7 @@
                             @csrf
 
                             <div class="form-group mb-3">
-                                <label for="cp_user_name">الإسم بالكامل</label>
+                                <label for="cp_user_name">{{ __('panel.full_name') }}</label>
                                 <input type="text" name="cp_user_name" class="form-control" id="cp_user_name"
                                     value="{{ old('cp_user_name') }}">
                                 @error('cp_user_name')
@@ -294,7 +292,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="cp_user_email">البريد الإلكتروني</label>
+                                <label for="cp_user_email">{{ __('panel.email') }}</label>
                                 <input type="email" name="cp_user_email" class="form-control" id="cp_user_email"
                                     value="{{ old('cp_user_email') }}">
                                 @error('cp_user_email')
@@ -303,7 +301,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="cp_user_phone">رقم التلفون</label>
+                                <label for="cp_user_phone">{{ __('panel.phone_number') }}</label>
                                 <input type="text" name="cp_user_phone" class="form-control" id="cp_user_phone"
                                     value="{{ old('cp_user_phone') }}">
                                 @error('cp_user_phone')
@@ -312,7 +310,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="cp_company_name">إسم الشركة</label>
+                                <label for="cp_company_name">{{ __('panel.company_name') }}</label>
                                 <input type="text" name="cp_company_name" class="form-control" id="cp_company_name"
                                     value="{{ old('cp_company_name') }}">
                                 @error('cp_company_name')
@@ -321,7 +319,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="cp_job_title">المسمي الوظيفي</label>
+                                <label for="cp_job_title">{{ __('panel.Job_title') }}</label>
                                 <input type="text" name="cp_job_title" class="form-control" id="cp_job_title"
                                     value="{{ old('cp_job_title') }}">
                                 @error('cp_job_title')
@@ -330,7 +328,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="cp_company_size">عدد المتدربين في الشركة</label>
+                                <label for="cp_company_size"> {{ __('panel.number_of_trainees_in_the_company') }}</label>
                                 <input type="text" name="cp_company_size" class="form-control" id="cp_company_size"
                                     value="{{ old('cp_company_size') }}">
                                 @error('cp_company_size')
@@ -339,7 +337,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="country_id">إسم الدولة</label>
+                                <label for="country_id">{{ __('panel.country_name') }}</label>
 
 
                                 <select id="country_id" name="country_id" class="form-control">
@@ -360,7 +358,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="cp_company_city">المدينة</label>
+                                <label for="cp_company_city">{{ __('panel.city_name') }}</label>
                                 <input type="text" name="cp_company_city" class="form-control" id="cp_company_city"
                                     value="{{ old('cp_company_city') }}">
                                 @error('cp_company_city')
@@ -369,7 +367,8 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-primary btn-block">إرسال الطلب</button>
+                                <button type="submit"
+                                    class="btn btn-primary btn-block">{{ __('panel.send_request') }}</button>
                             </div>
                         </form>
                     </div>

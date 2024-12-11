@@ -489,11 +489,34 @@ return [
     // ........... commons in Company Request  ....... //
     'cp_user_name'                      =>  'إسم مقدم الطلب',
     'cp_company_name'                   =>  'إسم الشركة',
+    'company_name'                      =>  'إسم الشركة',
 
     'company_request_new_request'                       =>  'طلب جديد',
     'company_request_under_proccess'                    =>  'تحت المعالجة',
     'company_request_accepted'                          =>  'مقبول',
     'company_request_rejected'                          =>  'مرفوض',
+
+    'subscription_request_for_companies'    =>  'طلب الاشتراك للشركات',
+    'contact_information'                   =>  'بيانات التواصل',
+    'find_us'                               =>  'ابحث عنا',
+    'contact_numbers'                       =>  'ارقام التواصل',
+    'working_hours'                         =>  'ساعات العمل',
+    'write_to_us_on'                        =>  'أكتب لنا على',
+    'follow_us_on_the_following_social_media_sites' =>  'تابعنا على مواقع التواصل التالية',
+    'Job_title'                             =>  'المسمي الوظيفي',
+    'number_of_trainees_in_the_company'     =>  'عدد المتدربين في الشركة',
+    'send_request'                          =>  'ارسل الطلب',
+    'your_request_has_been_sent_successfully'   =>  'لقد تم ارسال طلبك بنجاح',
+
+
+
+
+
+
+
+
+
+
 
 
     //............. Order Status .............//
@@ -1073,7 +1096,9 @@ return [
     // ========================  fronten Footer  =========================// 
     'f_phone'                                   => 'تلفون',
     'f_phone_number'                            => 'رقم الجوال',
+    'phone_number'                              => 'رقم الجوال',
     'f_email'                                   => 'البريد الإلكتروني',
+    'email'                                     => 'البريد الإلكتروني',
     'f_fax'                                     => 'فاكس',
     'f_po_box'                                  => 'الصندوق البريدي',
     'f_work_time'                               => 'ايام الدوام',

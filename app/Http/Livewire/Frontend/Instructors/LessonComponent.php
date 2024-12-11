@@ -107,6 +107,9 @@ class LessonComponent extends Component
             $section->update(['title' => $this->sections[$index]['title']]);
             $this->editSectionTitleIndex = null; // Reset edit state
         }
+
+        // Emit an event to notify other components
+        $this->emit('sectionUpdated', $this->courseId);
     }
 
 
@@ -235,10 +238,11 @@ class LessonComponent extends Component
         // Save lessons for the section
         // $this->saveLessonsInSection($index);
 
+        // Emit an event to notify other components
+        $this->emit('sectionUpdated', $this->courseId);
         // we are here
         $this->emit('updateCourseDEtailsConfirmation', $this->courseId);
     }
-
 
 
     // Method to save lessons for a specific section
@@ -323,6 +327,9 @@ class LessonComponent extends Component
         // Validate database data
         $this->validateDatabaseData();
 
+        // Emit an event to notify evaluation components 
+        $this->emit('sectionUpdated', $this->courseId);
+
         $this->emit('updateCourseDEtailsConfirmation', $this->courseId);
 
         $this->alert('success', __('transf.Section removed successfully!'));
@@ -341,7 +348,7 @@ class LessonComponent extends Component
 
         return view('livewire.frontend.instructors.lesson-component', compact('course_categories', 'course', 'instructors'));
     }
-
+    //store sections 
     public function storeSections()
     {
         // Validate sections
@@ -409,9 +416,6 @@ class LessonComponent extends Component
         // Show success alert
         $this->alert('success', __('transf.Sections updated successfully!'));
     }
-
-
-
 
     public function addLesson($sectionIndex)
     {

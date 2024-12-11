@@ -33,6 +33,17 @@ class EvaluationComponent extends Component
     public $optionsValid = false;
 
 
+    protected $listeners = [
+        'sectionUpdated' => 'mount'
+    ];
+
+
+    public function refreshCourseSections($sectionId)
+    {
+        // Optionally, you can use $sectionId for specific updates
+        $this->render(); // Refresh the data
+    }
+
 
 
     public function mount($courseId)

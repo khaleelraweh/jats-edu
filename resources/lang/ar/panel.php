@@ -209,6 +209,12 @@ return [
     'instructor'                  =>  'المحاضر',
 
     'send_for_review'               =>  'ارسلت للتحقق',
+    'back_to_courses'               =>  'العودة الى الدورات',
+    'obtain_a_certificate_of_participation' =>  'الحصول على شهادة مشاركة',
+    'browse_the_certificate_of_participation'  =>  'تصفح شهادة المشاركة',
+
+
+
 
 
     // Course status 

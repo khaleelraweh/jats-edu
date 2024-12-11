@@ -18,8 +18,9 @@
 
                 <!-- Back to Course -->
                 <a href="{{ route('customer.courses') }}"
-                    class="btn btn-sm btn-orange ms-md-6 px-6 mb-3 mb-md-0 flex-shrink-0">Back
-                    to Course</a>
+                    class="btn btn-sm btn-orange ms-md-6 px-6 mb-3 mb-md-0 flex-shrink-0">
+                    {{ __('panel.back_to_courses') }}
+                </a>
             </div>
         </div>
     </header>
@@ -228,7 +229,7 @@
                                             <!-- Icon -->
                                             <i class="fas fa-graduation-cap"></i>
                                         </span>
-                                        الحصول على شهادة مشاركة
+                                        {{ __('panel.obtain_a_certificate_of_participation') }}
                                     </a>
                                 @else
                                     <a href="{{ route('customer.show_certification',Auth::user()->certifications()->where('course_id', $course->id)->first()->id) }}"
@@ -237,7 +238,7 @@
                                             <!-- Icon -->
                                             <i class="fas fa-graduation-cap"></i>
                                         </span>
-                                        تصفح شهادة المشاركة
+                                        {{ __('panel.browse_the_certificate_of_participation') }}
                                     </a>
                                 @endif
                             @else

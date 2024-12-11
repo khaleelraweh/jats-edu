@@ -206,6 +206,9 @@ return [
     'instructors'                   =>  'instructors',
     'instructor'                    =>  'instructor',
     'send_for_review'               =>  'Send for Review',
+    'back_to_courses'               =>  'Back to Courses',
+    'obtain_a_certificate_of_participation' =>  'Obtain a certificate of participation',
+    'browse_the_certificate_of_participation'  =>  'Browse the certificate of participation',
 
     // Course status 
     'course_new_course'                         =>  'New',

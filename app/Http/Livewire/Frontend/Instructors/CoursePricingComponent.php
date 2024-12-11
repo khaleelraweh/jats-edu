@@ -39,7 +39,17 @@ class CoursePricingComponent extends Component
         $course = Course::findOrFail($this->courseId);
         $this->price = $course->price;
         $this->offer_price = $course->offer_price;
-        $this->offer_ends = $course->offer_ends;
+        // $this->offer_ends = $course->offer_ends;
+
+        if ($course->published_on) {
+            $this->offer_ends = Carbon::parse($course->offer_ends)
+                ->locale(app()->getLocale()) // Use the current app locale
+                ->translatedFormat('Y/m/d g:i A'); // Localized format
+        } else {
+            $this->offer_ends = Carbon::now()
+                ->locale(app()->getLocale())
+                ->translatedFormat('Y/m/d g:i A');
+        }
 
         $this->validateDatabaseData();
     }
@@ -51,7 +61,6 @@ class CoursePricingComponent extends Component
         $this->validate();
 
         $course = Course::findOrFail($this->courseId);
-
 
         $offer_ends = str_replace(['ص', 'م'], ['AM', 'PM'], $this->offer_ends);
         $offerEnds = CarbonCarbon::createFromFormat('Y/m/d h:i A', $offer_ends)->format('Y-m-d H:i:s');

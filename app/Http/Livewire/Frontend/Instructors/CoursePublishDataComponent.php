@@ -39,8 +39,6 @@ class CoursePublishDataComponent extends Component
         $course = Course::findOrFail($this->courseId);
         $this->status = $course->status;
         // $this->published_on = $course->published_on;
-        // $this->published_on = $course->published_on;
-        // $this->published_on = Carbon::createFromFormat('Y/m/d h:i A', $course->published_on)->format('Y-m-d H:i:s');
 
         // Format the date to Arabic-compatible format if it exists
         if ($course->published_on) {

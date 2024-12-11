@@ -934,7 +934,7 @@ return [
     'certificate_review'                =>  'استعراض الشهادة',
     'Download_the_certificate'          =>  'تنزيل الشهادة',
     'confirm_certificate_data'          =>  'تاكيد بيانات الشهادة',
-    'confirm_certificate_data_message'          =>  'يجب ادخال بيانات الاسم بشكل صحيح متوافق مع جواز السفر او الهوية الشخصية.',
+    'confirm_certificate_data_message'          =>  'ينبغي ادخال بيانات الاسم بشكل صحيح و متوافق مع جواز السفر او الهوية الشخصية.',
 
 
 

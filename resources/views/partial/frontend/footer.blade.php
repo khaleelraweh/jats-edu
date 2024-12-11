@@ -21,16 +21,15 @@
 
     <div class="alert alert-primary alert-dismissible fade show my-wrapper d-none d-md-block" role="alert">
 
-        <a href="https://api.whatsapp.com/send?phone=967777282953&text=هل يمكنك المساعدة" class="d-block text-white"
+        <a href="https://api.whatsapp.com/send?phone=00967777282953&text=هل يمكنك المساعدة" class="d-block text-white"
             target="_blank">
             <div class="alert-body d-flex justify-content-between align-items-center">
 
                 <div class="part1">
                     <span style="font-size: 12px;">
-                        للتسجيل او الإستفسار يمكنك التواصل معنا عن
-                        طريق
+                        {{ __('panel.for_registration_or_inquiries_you_can_contact_us_via') }}
                     </span>
-                    <br>الواتس اب:
+                    <br> {{ __('panel.whatsApp') }} :
                     <span class="ltr">00967777282953</span>
                 </div>
                 <div class="part2">

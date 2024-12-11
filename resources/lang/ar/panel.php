@@ -913,6 +913,11 @@ return [
 
     'certificate_number'                =>  'رقم الشهادة',
 
+    'for_registration_or_inquiries_you_can_contact_us_via'    =>  'للتسجيل والاستفسار ، يمكنك التواصل معنا عن طريق ',
+    'whatsApp'                          =>  'الواتس اب',
+
+
+
 
 
 

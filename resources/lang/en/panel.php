@@ -935,6 +935,8 @@ return [
 
 
     'certificate_number'                =>  'Certificate number',
+    'for_registration_or_inquiries_you_can_contact_us_via'    =>  'For registration or inquiries, you can contact us via',
+    'whatsApp'                          =>  'WhatsApp',
 
 
 

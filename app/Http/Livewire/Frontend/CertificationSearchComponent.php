@@ -11,15 +11,17 @@ class CertificationSearchComponent extends Component
     public $certificate_code;
     public $certificate;
     public $cert_image_url;
+    public $isLoading = false; // Add loading state
 
     public function search()
     {
+        $this->isLoading = true; // Set loading state to true
+
         try {
             // Validate the input
             $validatedData = $this->validate([
                 'certificate_code' => 'required|exists:certifications,cert_code',
             ]);
-
 
             // Perform the search
             $this->certificate = Certifications::where('cert_code', $this->certificate_code)->first();
@@ -27,16 +29,18 @@ class CertificationSearchComponent extends Component
             if ($this->certificate) {
                 $this->cert_image_url = $this->markCopyOnCertificate($this->certificate->cert_file);
             } else {
-                $this->resetCertificate();
+                $this->resetCertificate(); // Reset state if no certificate is found
             }
         } catch (\Illuminate\Validation\ValidationException $e) {
+            $this->resetCertificate(); // Reset state if validation fails
             throw $e;
+        } finally {
+            $this->isLoading = false; // Set loading state to false after the process is complete
         }
     }
 
     public function markCopyOnCertificate($cert_file)
     {
-        // Load the image from the public directory
         $imagePath = public_path('assets/certifications/' . $cert_file);
 
         if (!file_exists($imagePath)) {

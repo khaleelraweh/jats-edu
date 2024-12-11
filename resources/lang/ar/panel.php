@@ -935,6 +935,17 @@ return [
     'Download_the_certificate'          =>  'تنزيل الشهادة',
     'confirm_certificate_data'          =>  'تاكيد بيانات الشهادة',
     'confirm_certificate_data_message'          =>  'ينبغي ادخال بيانات الاسم بشكل صحيح و متوافق مع جواز السفر او الهوية الشخصية.',
+    'certificate_code'                  =>  'كود الشهادة',
+    'trainee_name'                      =>  'إسم المتدرب',
+    'course_name'                       =>  'إسم الدورة التدريبية',
+    'release_date'                      =>  'تاريخ الإصدار',
+    'unavailable'                       =>  'غير متوفر',
+    'certificate_not_found'             =>  'لم يتم العثور على شهادة',
+
+
+
+
+
 
 
 
@@ -1033,6 +1044,7 @@ return [
     // ------------ مكان البحث ---------------//
     'keyword'               => 'ادخل كلمة البحث',
     'search'                => 'بحث',
+    'loading'               =>  'تحميل',
     'show_all'              => 'عرض الكل',
     'asc'                   => 'تصاعدي',
     'desc'                  => 'تنازلي',

@@ -4,7 +4,7 @@
             <form wire:submit.prevent="search">
                 <div class="row">
                     <div class="col-sm-12">
-                        <label for="certificate_code">رقم الشهادة</label>
+                        <label for="certificate_code"> {{ __('panel.certificate_number') }}</label>
                         <input type="text" name="certificate_code" id="certificate_code" class="form-control"
                             wire:model.defer="certificate_code">
                         @error('certificate_code')
@@ -12,7 +12,7 @@
                         @enderror
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Search</button>
+                <button type="submit" class="btn btn-primary mt-3">{{ __('panel.search') }}</button>
             </form>
         </div>
     </div>
@@ -21,7 +21,7 @@
     @if ($isLoading)
         <div class="text-center mt-3">
             <div class="spinner-border text-primary" role="status">
-                <span class="sr-only">Loading...</span>
+                <span class="sr-only">{{ __('panel.loading') }}...</span>
             </div>
         </div>
     @endif
@@ -32,20 +32,20 @@
             <div class="card-body">
                 <table class="table table-responsive">
                     <tr>
-                        <td>كود الشهادة:</td>
-                        <td>{{ $certificate->cert_code ?? 'غير متوفر' }}</td>
+                        <td>{{ __('panel.certificate_code') }}:</td>
+                        <td>{{ $certificate->cert_code ?? __('panel.unavailable') }}</td>
                     </tr>
                     <tr>
-                        <td>اسم المتدرب:</td>
-                        <td>{{ $certificate->full_name ?? 'غير متوفر' }}</td>
+                        <td>{{ __('panel.trainee_name') }}:</td>
+                        <td>{{ $certificate->full_name ?? __('panel.unavailable') }}</td>
                     </tr>
                     <tr>
-                        <td>اسم الدورة التدريبية:</td>
-                        <td>{{ $certificate->course->title ?? 'غير متوفر' }}</td>
+                        <td>{{ __('panel.course_name') }}:</td>
+                        <td>{{ $certificate->course->title ?? __('panel.unavailable') }}</td>
                     </tr>
                     <tr>
-                        <td>تاريخ الاصدار :</td>
-                        <td>{{ $certificate->date_of_issue ?? 'غير متوفر' }}</td>
+                        <td> {{ __('panel.release_date') }} :</td>
+                        <td>{{ $certificate->date_of_issue ?? __('panel.unavailable') }}</td>
                     </tr>
                 </table>
             </div>
@@ -65,7 +65,7 @@
         <!-- Handle case when no certificate is found -->
         @if (!$isLoading)
             <div class="alert alert-warning mt-3">
-                <strong>لم يتم العثور على الشهادة!</strong>
+                <strong> {{ __('panel.certificate_not_found') }}!</strong>
             </div>
         @endif
     @endisset

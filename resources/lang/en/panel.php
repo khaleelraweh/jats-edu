@@ -950,6 +950,12 @@ return [
     'Download_the_certificate'          =>  'Download the certificate',
     'confirm_certificate_data'          =>  'Confirm certificate data',
     'confirm_certificate_data_message'          =>  'The name data must be entered correctly and is consistent with the passport or personal ID.',
+    'certificate_code'                  =>  'Certificate code',
+    'trainee_name'                      =>  'Trainee name',
+    'course_name'                       =>  'Course name',
+    'release_date'                      =>  'Release date',
+    'unavailable'                       =>  'Unavailable',
+    'certificate_not_found'             =>  'Certificate not found',
 
 
 
@@ -1031,6 +1037,7 @@ return [
     // ---------- navigation part ---------------/
     'keyword'               => 'Enter search keyword',
     'search'                => 'Search',
+    'loading'               =>  'Loading',
     'show_all'              => 'Show All',
     'asc'                   => 'Ascending',
     'desc'                  => 'Descending',

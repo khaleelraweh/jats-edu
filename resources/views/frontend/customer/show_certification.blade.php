@@ -36,7 +36,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-title">
-                    بيانات الشهادة
+                    {{ __('panel.certificate_data') }}
 
                 </div>
             </div>
@@ -51,12 +51,12 @@
                     <div class="col-sm-12 text-center">
 
                         <a href="#" data-toggle="modal" data-target="#identityModal" class="btn btn-primary">
-                            استعراض الشهادة
+                            {{ __('panel.certificate_review') }}
 
                         </a>
 
                         <a href="{{ asset('assets/certifications/' . $certificate->cert_file) }}" class="btn btn-primary"
-                            download="certificate_{{ $certificate->id }}">تنزيل الشهادة</a>
+                            download="certificate_{{ $certificate->id }}"> {{ __('panel.Download_the_certificate') }}</a>
 
                     </div>
                 </div>

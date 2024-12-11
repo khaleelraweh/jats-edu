@@ -930,6 +930,12 @@ return [
 
     'for_registration_or_inquiries_you_can_contact_us_via'    =>  'للتسجيل والاستفسار ، يمكنك التواصل معنا عن طريق ',
     'whatsApp'                          =>  'الواتس اب',
+    'certificate_data'                  =>  'بيانات الشهادة',
+    'certificate_review'                =>  'استعراض الشهادة',
+    'Download_the_certificate'          =>  'تنزيل الشهادة',
+
+
+
 
 
 

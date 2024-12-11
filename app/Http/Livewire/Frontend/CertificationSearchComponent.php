@@ -20,10 +20,6 @@ class CertificationSearchComponent extends Component
                 'certificate_code' => 'required|exists:certifications,cert_code',
             ]);
 
-            // Emit the startLoading event if validation passes
-            if ($validatedData) {
-                $this->emit('startLoading');
-            }
 
             // Perform the search
             $this->certificate = Certifications::where('cert_code', $this->certificate_code)->first();
@@ -34,13 +30,8 @@ class CertificationSearchComponent extends Component
                 $this->resetCertificate();
             }
         } catch (\Illuminate\Validation\ValidationException $e) {
-            // Stop the loader if validation fails
-            $this->emit('stopLoading');
             throw $e;
         }
-
-        // Stop the loader after completion
-        $this->emit('stopLoading');
     }
 
     public function markCopyOnCertificate($cert_file)

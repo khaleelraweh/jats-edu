@@ -28,21 +28,24 @@
         </div>
 
 
+        @if (auth()->user()->hasRole('admin'))
+            <div class="row">
+                <div class="col-md-12 col-sm-12 pt-3" wire.ignore>
+                    <label for="status" class="control-label col-md-2 col-sm-12 ">
+                        <span>{{ __('panel.status') }}</span>
+                    </label>
 
-        <div class="row">
-            <div class="col-md-12 col-sm-12 pt-3" wire.ignore>
-                <label for="status" class="control-label col-md-2 col-sm-12 ">
-                    <span>{{ __('panel.status') }}</span>
-                </label>
-                <select disabled name="status" class="form-control" wire:model.defer="status">
-                    <option value="1">{{ __('panel.status_active') }}</option>
-                    <option value="0">{{ __('panel.status_inactive') }}</option>
-                </select>
-                @error('status')
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
+                    <select name="status" class="form-control" wire:model.defer="status">
+                        <option value="1">{{ __('panel.status_active') }}</option>
+                        <option value="0">{{ __('panel.status_inactive') }}</option>
+                    </select>
+                    @error('status')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
             </div>
-        </div>
+        @endif
+
 
         <div class="row">
             <div class="col-sm-12 pt-3">

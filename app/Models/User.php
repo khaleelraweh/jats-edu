@@ -119,6 +119,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Specialization::class);
     }
 
+    //check if the user has role directly 
+    public function hasRole($role)
+    {
+        return $this->roles()->where('name', $role)->exists();
+    }
+
+
     // to return the the user who has role lake lectures or admin or customer 
     public function scopeWhereHasRoles($query, $role)
     {

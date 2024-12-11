@@ -260,14 +260,14 @@
                                                 <li>
                                                     <a
                                                         href="{{ route('teach_requests.show', auth()->user()->requestToTeaches()->latest()->first()->id) }}">
-                                                        لقد قمت بطلب تدريس جديد
+                                                        {{ __('panel.You_have_successfully_sent_a_new_teaching_request') }}
                                                     </a>
                                                 </li>
                                             @elseif ($teachRequestStatus == \App\Models\TeachRequest::UNDER_PROCESS)
                                                 <li>
                                                     <a
                                                         href="{{ route('teach_requests.show', auth()->user()->requestToTeaches()->latest()->first()->id) }}">
-                                                        طلبك للتدريس
+                                                        {{ __('panel.your_application_for_teaching') }}
                                                         ({{ __('panel.teach_request_under_proccess') }})
                                                     </a>
                                                 </li>
@@ -280,7 +280,7 @@
                                             @elseif ($teachRequestStatus == \App\Models\TeachRequest::REJECTED)
                                                 <li>
                                                     <a href="{{ route('teach_requests.create') }}">
-                                                        لقد تم رفض طلبك يمكنك عمل اخر !!
+                                                        {{ __('panel.your_request_has_been_rejected_You_can_do_something_else!!') }}
                                                     </a>
                                                 </li>
                                             @endif

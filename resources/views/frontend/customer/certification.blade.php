@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-title">
-                    تاكيد بيانات الشهادة
+                    {{ __('panel.confirm_certificate_data') }}
                 </div>
             </div>
             <div class="card-body">
@@ -13,7 +13,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-sm-12">
-                            <label for="user_name">الإسم</label>
+                            <label for="user_name">{{ __('panel.full_name') }}</label>
                             <input type="hidden" name="course_id" value="{{ $course_id }}">
                             <input name="full_name" type="text" class="form-control"
                                 value="{{ Auth::user()->full_name }}">
@@ -23,9 +23,7 @@
 
                     <div class="row">
                         <div class="col-sm-12 pt-3">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa totam cupiditate nesciunt eaque
-                            esse ut, dolorum optio est eligendi aspernatur aliquam eius odio minus quod illo ex accusantium
-                            dignissimos voluptate.
+                            {{ __('panel.confirm_certificate_data_message') }}
                         </div>
                     </div>
 

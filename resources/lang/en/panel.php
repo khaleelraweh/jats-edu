@@ -948,6 +948,8 @@ return [
     'certificate_data'                  =>  'Certificate data',
     'certificate_review'                =>  'Certificate review',
     'Download_the_certificate'          =>  'Download the certificate',
+    'confirm_certificate_data'          =>  'Confirm certificate data',
+    'confirm_certificate_data_message'          =>  'The name data must be entered correctly and is consistent with the passport or personal ID.',
 
 
 

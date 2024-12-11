@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- PAGE TITLE
-                                                                                                                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                                                                            ================================================== -->
     <header class="py-8 py-md-11" style="background-image: none;">
         <div class="container text-center py-xl-2">
             <h1 class="display-4 fw-semi-bold mb-0">طلب الإشتراك للشركات</h1>
@@ -25,7 +25,7 @@
 
 
     <!-- CONTACT
-                                                                                                                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                                                                                                            ================================================== -->
     <div class="container">
         <div class="row row-cols-md-2 mb-8 mb-lg-11">
             <div class="col-md">
@@ -346,7 +346,7 @@
                                     @foreach (getCountries() as $country)
                                         <option value="{{ $country->id }}" data-phone-code="{{ $country->phone_code }}"
                                             data-emoji="{{ $country->emoji }}">
-                                            {{ $country->name }} ({{ $country->name_native }})
+                                            {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
                                         </option>
                                     @endforeach
                                 </select>

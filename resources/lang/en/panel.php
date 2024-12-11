@@ -934,6 +934,9 @@ return [
     'rejected'                           =>  'Rejected',
 
 
+    'certificate_number'                =>  'Certificate number',
+
+
 
 
     ##############################################################

@@ -911,6 +911,9 @@ return [
     'released'                           =>  'تم الاصدار',
     'rejected'                           =>  'تم الرفض',
 
+    'certificate_number'                =>  'رقم الشهادة',
+
+
 
 
 

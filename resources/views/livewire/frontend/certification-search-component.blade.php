@@ -5,7 +5,7 @@
             <form wire:submit.prevent="search" @submit="loading = true">
                 <div class="row">
                     <div class="col-sm-12">
-                        <label for="certificate_code">رقم الشهادة</label>
+                        <label for="certificate_code">{{ __('panel.certificate_number') }} : </label>
                         <input type="text" name="certificate_code" id="certificate_code" class="form-control"
                             wire:model.defer="certificate_code">
                         @error('certificate_code')

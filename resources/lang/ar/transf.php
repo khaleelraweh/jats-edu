@@ -577,6 +577,7 @@ return [
 
 
     'Update Data'                                       =>  'حفظ التغييرات',
+    'Save changes'                                      =>  'حفظ التغييرات',
 
 
     // Pricing section 

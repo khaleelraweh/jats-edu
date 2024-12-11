@@ -223,7 +223,7 @@
 
         <br />
         <div class="">
-            <input class="btn btn-primary" type="submit" value="{{ __('transf.save') }}">
+            <input class="btn btn-primary" type="submit" value="{{ __('transf.Save changes') }}">
         </div>
     </form>
 </div>

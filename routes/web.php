@@ -153,9 +153,9 @@ Route::group(['middleware' => ['roles', 'role:customer|supervisor', 'verified']]
     Route::get('/lesson-single/{course?}', [FrontendCustomerController::class, 'lesson_single'])->name('customer.lesson_single');
 
 
-    Route::get('/certification/{id?}', [FrontendCustomerController::class, 'certification'])->name('customer.certification');
-    Route::post('/Certification/Create', [FrontendCustomerController::class, 'create_certification'])->name('customer.create_certification');
-    Route::get('/show-certification/{cert_id?}', [FrontendCustomerController::class, 'show_certification'])->name('customer.show_certification');
+    Route::get('/certification/{id?}', [CertificationController::class, 'certification'])->name('customer.certification');
+    Route::post('/Certification/Create', [CertificationController::class, 'create_certification'])->name('customer.create_certification');
+    Route::get('/show-certification/{cert_id?}', [CertificationController::class, 'show_certification'])->name('customer.show_certification');
 
 
 

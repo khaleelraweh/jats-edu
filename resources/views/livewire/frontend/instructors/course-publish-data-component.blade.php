@@ -11,6 +11,7 @@
     <form wire:submit.prevent="save">
         {{-- published_on --}}
 
+        {{ $published_on }}
         <div class="row">
             <div class="col-md-12 com-sm-12 pt-4">
                 <label for="published_on" class="control-label">
@@ -19,7 +20,7 @@
                 </label>
                 <div class="form-group">
                     <input type="text" name="published_on" class="form-control flatpickr_publihsed_on"
-                        wire:model="published_on">
+                        wire:model="published_on" readonly>
                     @error('published_on')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -63,6 +64,7 @@
             flatpickr('.flatpickr_publihsed_on', {
                 enableTime: true,
                 dateFormat: "Y/m/d h:i K",
+                defaultDate: '{{ $published_on ?? now()->format('Y/m/d h:i A') }}',
                 minDate: "today",
                 locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
 

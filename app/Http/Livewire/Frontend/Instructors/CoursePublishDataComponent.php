@@ -38,7 +38,20 @@ class CoursePublishDataComponent extends Component
         $this->courseId = $courseId;
         $course = Course::findOrFail($this->courseId);
         $this->status = $course->status;
-        $this->published_on = $course->published_on;
+        // $this->published_on = $course->published_on;
+        // $this->published_on = $course->published_on;
+        // $this->published_on = Carbon::createFromFormat('Y/m/d h:i A', $course->published_on)->format('Y-m-d H:i:s');
+
+        // Format the date to Arabic-compatible format if it exists
+        if ($course->published_on) {
+            $this->published_on = Carbon::parse($course->published_on)
+                ->locale(app()->getLocale()) // Use the current app locale
+                ->translatedFormat('Y/m/d g:i A'); // Localized format
+        } else {
+            $this->published_on = Carbon::now()
+                ->locale(app()->getLocale())
+                ->translatedFormat('Y/m/d g:i A');
+        }
 
         $this->validateDatabaseData();
     }
@@ -49,6 +62,7 @@ class CoursePublishDataComponent extends Component
         // dd($this->published_on);
         $this->validate();
 
+        // dd($this->published_on);
         $course = Course::findOrFail($this->courseId);
 
         $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $this->published_on);

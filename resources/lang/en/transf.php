@@ -575,6 +575,7 @@ return [
 
     //Evaluation 
     'evaluation'                                        =>  'Evaluation',
+    'evaluations'                                        =>  'Evaluations',
 
     // Instructor Profile 
     'instructor_profile_tab'                            =>  'Instructor Profile',

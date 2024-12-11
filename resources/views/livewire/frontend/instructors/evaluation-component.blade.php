@@ -62,7 +62,7 @@
 
     <div class="row">
         <div class="col-sm-12 col-md-3 pt-3">
-            <h3>التقييمات</h3>
+            <h3>{{ __('transf.evaluations') }}</h3>
 
 
 

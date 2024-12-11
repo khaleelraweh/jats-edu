@@ -585,6 +585,8 @@ return [
 
     //Evaluation
     'evaluation'                                        =>  'التقييم',
+    'evaluations'                                        =>  'التقييمات',
+
 
     // publish Data
     'Publish Data'                                      =>  'بيانات النشر',

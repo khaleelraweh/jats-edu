@@ -64,8 +64,8 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>{{ __('panel.course_title') }}</th>
-                                                <th>{{ __('panel.course_views') }}</th>
+                                                <th>{{ __('panel.view_courses_views') }}</th>
+                                                <th>{{ __('panel.views') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>

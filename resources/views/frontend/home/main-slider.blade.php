@@ -1,3 +1,4 @@
+<?php $main_views->increment('views'); ?>
 <section class="mt-n12">
     {{-- {{ dd($instructors) }} --}}
     <div class="flickity-page-dots-vertical flickity-page-dots-md flickity-page-dots-white position-static"

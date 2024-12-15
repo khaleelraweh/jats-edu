@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    <?php $news_tag_list_views->increment('views'); ?>
+
     <!-- PAGE TITLE -->
     <header class="py-8 py-md-11" style="background-image: none;">
         <div class="container text-center py-xl-2">

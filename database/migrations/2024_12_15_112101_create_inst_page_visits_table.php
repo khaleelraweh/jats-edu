@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('inst_page_visits', function (Blueprint $table) {
             $table->id();
-            $table->string('page')->collation('utf8mb4_unicode_ci'); // Ensure Unicode support
+            $table->json('page');
+            $table->json('slug');
             $table->integer('views')->default(0);
             $table->timestamp('visited_at');
             $table->timestamps();

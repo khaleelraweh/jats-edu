@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- PAGE TITLE
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ================================================== -->
+    <?php $course_list_views->increment('views'); ?>
+
+
     {{-- <header class="bg-white py-8 py-lg-12 position-relative mb-8" style="background-image: none;"> --}}
     {{-- <header class="bg-white py-3 py-lg-3 position-relative mb-3" style="background-image: none;"> --}}
     <header class="bg-white py-5 py-lg-5 position-relative mb-5" style="background-image: none;">

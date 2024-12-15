@@ -15,17 +15,27 @@ class InstPageVisitSeeder extends Seeder
     public function run(): void
     {
         InstPageVisit::create([
-            'page' => 'courses_list',
+            'page' => ['ar' => 'Main', 'en' => 'الرئيسية'],
             'views' => 0,
             'visited_at' => Carbon::now(),
         ]);
         InstPageVisit::create([
-            'page' => 'blog_list',
+            'page' => ['ar' => 'Courses List page', 'en' => 'صفحة قائمة الدورات'],
             'views' => 0,
             'visited_at' => Carbon::now(),
         ]);
         InstPageVisit::create([
-            'page' => 'event_list',
+            'page' => ['ar' => 'ُEvents List page', 'en' => 'صفحة قائمة الاحداث'],
+            'views' => 0,
+            'visited_at' => Carbon::now(),
+        ]);
+        InstPageVisit::create([
+            'page' => ['ar' => 'News List page', 'en' => 'صفحة قائمة الاخبار'],
+            'views' => 0,
+            'visited_at' => Carbon::now(),
+        ]);
+        InstPageVisit::create([
+            'page' => ['ar' => 'Instructors List page', 'en' => 'صفحة قائمة المدربين'],
             'views' => 0,
             'visited_at' => Carbon::now(),
         ]);

@@ -24,19 +24,9 @@
                     </li>
                 </ul>
             </div>
-            {{-- <div class="ml-auto">
-                @ability('admin', 'create_pages')
-                    <a href="{{ route('admin.inst_page_visits.create') }}" class="btn btn-primary">
-                        <span class="icon text-white-50">
-                            <i class="fa fa-plus-square"></i>
-                        </span>
-                        <span class="text">{{ __('panel.add_new_content') }}</span>
-                    </a>
-                @endability
-            </div> --}}
+
         </div>
 
-        {{-- @include('backend.inst_page_visits.filter.filter') --}}
 
         <div class="card-body">
 
@@ -58,7 +48,8 @@
                             </td>
 
                             <td>
-                                {{ $inst_page_visit->visits }}
+                                {{ $inst_page_visit->views }}
+                                {{-- {{ $inst_page_visit->visits }} --}}
                             </td>
 
                         </tr>

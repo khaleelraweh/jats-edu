@@ -56,11 +56,11 @@ class FrontendController extends Controller
 
 
         // Log page visit index 
-        InstPageVisit::create([
-            'page' => 'index',
-            'views' => 0,
-            'visited_at' => now(),
-        ]);
+        // InstPageVisit::create([
+        //     'page' => 'index',
+        //     'views' => 0,
+        //     'visited_at' => now(),
+        // ]);
 
         return view('frontend.index', compact('main_sliders', 'instructors', 'events', 'posts', 'callActions', 'partners'));
     }
@@ -72,14 +72,10 @@ class FrontendController extends Controller
 
     public function courses_list($slug = null)
     {
-        // Log page visit
-        InstPageVisit::create([
-            'page' => 'courses_list',
-            'views' => 0,
-            'visited_at' => now(),
-        ]);
+
+        $course_list_views = InstPageVisit::where('page', 'courses_list')->first();
         // return view('frontend.course-list', compact('courses', 'course_categories_menu'));
-        return view('frontend.course-list', compact('slug'));
+        return view('frontend.course-list', compact('slug', 'course_list_views'));
     }
 
     public function course_single($slug)
@@ -139,13 +135,8 @@ class FrontendController extends Controller
 
     public function event_list($slug = null)
     {
-        // Log page visit index 
-        InstPageVisit::create([
-            'page' => 'event_list',
-            'views' => 0,
-            'visited_at' => now(),
-        ]);
-        return view('frontend.event-list', compact('slug'));
+        $event_list_views = InstPageVisit::where('page', 'courses_list')->first();
+        return view('frontend.event-list', compact('slug', 'event_list_views'));
     }
 
     public function event_single($slug)
@@ -171,11 +162,11 @@ class FrontendController extends Controller
     public function blog_list($slug = null)
     {
         // Log page visit index 
-        InstPageVisit::create([
-            'page' => 'blog_list',
-            'views' => 0,
-            'visited_at' => now(),
-        ]);
+        // InstPageVisit::create([
+        //     'page' => 'blog_list',
+        //     'views' => 0,
+        //     'visited_at' => now(),
+        // ]);
         return view('frontend.blog-list', compact('slug'));
     }
 
@@ -202,11 +193,11 @@ class FrontendController extends Controller
     public function instructors_list($slug = null)
     {
         // Log page visit index 
-        InstPageVisit::create([
-            'page' => 'instructors_list',
-            'views' => 0,
-            'visited_at' => now(),
-        ]);
+        // InstPageVisit::create([
+        //     'page' => 'instructors_list',
+        //     'views' => 0,
+        //     'visited_at' => now(),
+        // ]);
         return view('frontend.instructors-list');
     }
 

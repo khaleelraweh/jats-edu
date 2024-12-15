@@ -649,6 +649,22 @@ return [
     'blog_tags'         => 'Blog Tags',
 
 
+
+    ##############################################################
+
+    // =============  Manage News   ===============//
+    'manage_news'                      => 'Manage News',
+
+    // --------------- News   --------------//
+    'show_news'                        => 'News',
+    'add_new_news'                      => 'Add New News',
+    'edit_existing_news'                => 'Edit Existing News ',
+
+
+    // ........... commons in News   ....... //
+    'news_tags'         => 'News Tags',
+
+
     ##############################################################
 
     // =============  Manage Card Codes    ===============//

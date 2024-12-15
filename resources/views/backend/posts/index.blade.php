@@ -8,7 +8,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_blogs') }}
+                    {{ __('panel.manage_news') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -20,7 +20,7 @@
                         @endif
                     </li>
                     <li>
-                        {{ __('panel.show_posts') }}
+                        {{ __('panel.show_news') }}
                     </li>
                 </ul>
             </div>
@@ -31,7 +31,7 @@
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
-                        {{ __('panel.add_new_post') }}
+                        {{ __('panel.add_new_news') }}
                     </a>
                 @endability
             </div>

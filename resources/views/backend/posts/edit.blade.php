@@ -20,7 +20,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_post') }}
+                    {{ __('panel.edit_existing_news') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -33,7 +33,7 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.posts.index') }}">
-                            {{ __('panel.show_posts') }}
+                            {{ __('panel.show_news') }}
                         </a>
                     </li>
                 </ul>

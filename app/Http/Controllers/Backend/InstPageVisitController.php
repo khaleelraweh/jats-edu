@@ -15,7 +15,8 @@ class InstPageVisitController extends Controller
             return redirect('admin/index');
         }
 
-        $inst_page_visits = InstPageVisit::query()
+        // $inst_page_visits = InstPageVisit::query()
+        $inst_page_visits = InstPageVisit::with('courses', 'posts', 'users')
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })

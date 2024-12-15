@@ -48,6 +48,10 @@
 
                             <td>
                                 {{ $inst_page_visit->views }}
+                                @foreach ($inst_page_visit->courses as $course)
+                                    {{ $course->title }}
+                                    {{ $course->views }}
+                                @endforeach
                             </td>
 
                         </tr>

@@ -24,9 +24,7 @@
                     </li>
                 </ul>
             </div>
-
         </div>
-
 
         <div class="card-body">
 
@@ -36,37 +34,78 @@
                     <tr>
                         <th>{{ __('panel.page_name') }}</th>
                         <th>{{ __('panel.views') }}</th>
+                        <th>{{ __('panel.actions') }}</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     @forelse ($inst_page_visits as $inst_page_visit)
-                        <tr>
+                        {{-- Main Row --}}
+                        <tr class="main-row" data-toggle="sub-row-{{ $inst_page_visit->id }}">
                             <td>
                                 {{ $inst_page_visit->page }}
                             </td>
-
                             <td>
                                 {{ $inst_page_visit->views }}
-                                @foreach ($inst_page_visit->courses as $course)
-                                    {{ $course->title }}
-                                    {{ $course->views }}
-                                @endforeach
                             </td>
+                            <td>
+                                <button class="btn btn-primary btn-sm toggle-sub-row"
+                                    data-target="sub-row-{{ $inst_page_visit->id }}">
+                                    {{ __('panel.view_courses') }}
+                                </button>
+                            </td>
+                        </tr>
 
+                        {{-- Hidden Sub-Row --}}
+                        <tr id="sub-row-{{ $inst_page_visit->id }}" class="sub-row" style="display: none;">
+                            <td colspan="3">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ __('panel.course_title') }}</th>
+                                            <th>{{ __('panel.course_views') }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach ($inst_page_visit->courses as $course)
+                                            <tr>
+                                                <td>{{ $course->title }}</td>
+                                                <td>{{ $course->views }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="2" class="text-center">{{ __('panel.no_found_item') }}</td>
+                            <td colspan="3" class="text-center">{{ __('panel.no_found_item') }}</td>
                         </tr>
                     @endforelse
-
-
-
-
                 </tbody>
             </table>
         </div>
 
     </div>
+
+    {{-- JavaScript --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listener to toggle buttons
+            document.querySelectorAll('.toggle-sub-row').forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.dataset.target;
+                    const targetRow = document.getElementById(targetId);
+
+                    // Toggle the display of the sub-row
+                    if (targetRow.style.display === 'none') {
+                        targetRow.style.display = '';
+                    } else {
+                        targetRow.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

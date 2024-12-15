@@ -70,6 +70,9 @@ class InstructorController extends Controller
         $input['status'] = $request->status;
         $input['created_by'] = auth()->user()->full_name;
 
+        $input['inst_page_visit_id']            = 5; // for courses-list
+
+
         if ($image = $request->file('user_image')) {
             $file_name = Str::slug($request->username) . '_' . time() .  "." . $image->getClientOriginalExtension();
             $path = public_path('assets/users/' . $file_name);

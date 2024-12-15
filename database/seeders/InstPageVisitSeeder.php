@@ -15,13 +15,17 @@ class InstPageVisitSeeder extends Seeder
     public function run(): void
     {
         InstPageVisit::create([
-            'page' => 'course_list',
+            'page' => 'courses_list',
             'views' => 0,
             'visited_at' => Carbon::now(),
         ]);
-
         InstPageVisit::create([
-            'page' => 'course_single',
+            'page' => 'blog_list',
+            'views' => 0,
+            'visited_at' => Carbon::now(),
+        ]);
+        InstPageVisit::create([
+            'page' => 'event_list',
             'views' => 0,
             'visited_at' => Carbon::now(),
         ]);

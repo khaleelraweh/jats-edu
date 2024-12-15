@@ -79,6 +79,6 @@ class DatabaseSeeder extends Seeder
 
         // $this->call(CompanyRequestSeeder::class);
         $this->call(CertificateIssueSeeder::class);
-        // $this->call(InstPageVisitSeeder::class);
+        $this->call(InstPageVisitSeeder::class);
     }
 }

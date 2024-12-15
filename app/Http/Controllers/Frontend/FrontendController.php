@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\CallAction;
 use App\Models\Course;
+use App\Models\InstPageVisit;
 use App\Models\Page;
 use App\Models\Partner;
 use App\Models\Post;
@@ -43,6 +44,7 @@ class FrontendController extends Controller
             ->get();
 
 
+
         // get all partners
         $partners = Partner::all();
 
@@ -53,6 +55,12 @@ class FrontendController extends Controller
         $callActions = CallAction::with('photos')->get();
 
 
+        // Log page visit index 
+        InstPageVisit::create([
+            'page' => 'index',
+            'views' => 0,
+            'visited_at' => now(),
+        ]);
 
         return view('frontend.index', compact('main_sliders', 'instructors', 'events', 'posts', 'callActions', 'partners'));
     }
@@ -64,6 +72,12 @@ class FrontendController extends Controller
 
     public function courses_list($slug = null)
     {
+        // Log page visit
+        InstPageVisit::create([
+            'page' => 'courses_list',
+            'views' => 0,
+            'visited_at' => now(),
+        ]);
         // return view('frontend.course-list', compact('courses', 'course_categories_menu'));
         return view('frontend.course-list', compact('slug'));
     }
@@ -125,7 +139,12 @@ class FrontendController extends Controller
 
     public function event_list($slug = null)
     {
-
+        // Log page visit index 
+        InstPageVisit::create([
+            'page' => 'event_list',
+            'views' => 0,
+            'visited_at' => now(),
+        ]);
         return view('frontend.event-list', compact('slug'));
     }
 
@@ -151,6 +170,12 @@ class FrontendController extends Controller
 
     public function blog_list($slug = null)
     {
+        // Log page visit index 
+        InstPageVisit::create([
+            'page' => 'blog_list',
+            'views' => 0,
+            'visited_at' => now(),
+        ]);
         return view('frontend.blog-list', compact('slug'));
     }
 
@@ -176,6 +201,12 @@ class FrontendController extends Controller
 
     public function instructors_list($slug = null)
     {
+        // Log page visit index 
+        InstPageVisit::create([
+            'page' => 'instructors_list',
+            'views' => 0,
+            'visited_at' => now(),
+        ]);
         return view('frontend.instructors-list');
     }
 

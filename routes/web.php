@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\CurrenciesController;
 use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\EventController;
+use App\Http\Controllers\Backend\InstPageVisitController;
 use App\Http\Controllers\Backend\InstructorController;
 use App\Http\Controllers\Backend\instructorsController;
 use App\Http\Controllers\Backend\LocaleController;
@@ -329,6 +330,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('cities/get_cities', [CityController::class, 'get_cities'])->name('cities.get_cities');
         Route::resource('cities', CityController::class);
 
+        Route::resource('inst_page_visits', InstPageVisitController::class);
 
         // ==============   Orders Tab   ==============  //
         Route::resource('orders', OrderController::class);

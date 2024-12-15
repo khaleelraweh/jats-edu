@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Frontend\Blogs;
 
 use App\Models\CourseCategory;
+use App\Models\InstPageVisit;
 use App\Models\Post;
 use App\Models\Tag;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -73,6 +74,7 @@ class BlogTagListComponent extends Component
         $total_Posts = Post::query()->Blog()->count();
 
         $recent_posts = Post::with('photos')->Blog()->orderBy('created_at', 'DESC')->take(3)->get();
+
 
         return view(
             'livewire.frontend.blogs.blog-tag-list-component',

@@ -38,12 +38,7 @@ class InstPageVisitSeeder extends Seeder
             'views' => 0,
             'visited_at' => Carbon::now(),
         ]);
-        InstPageVisit::create([
-            'page' => ['ar' => 'صفحة قائمة تاجات الاخبار', 'en' => 'News tag List page'],
-            'route' =>  'news-tag-list',
-            'views' => 0,
-            'visited_at' => Carbon::now(),
-        ]);
+
         InstPageVisit::create([
             'page' => ['ar' => 'صفحة قائمة المدربين', 'en' => 'Instructors List page'],
             'route' =>  'instructors-list',

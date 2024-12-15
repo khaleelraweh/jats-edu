@@ -161,8 +161,7 @@ class FrontendController extends Controller
 
     public function blog_tag_list($slug = null)
     {
-        $news_tag_list_views = InstPageVisit::where('route', 'news-tag-list')->first();
-        return view('frontend.blog-tag-list', compact('slug', 'news_tag_list_views'));
+        return view('frontend.blog-tag-list', compact('slug'));
     }
 
 

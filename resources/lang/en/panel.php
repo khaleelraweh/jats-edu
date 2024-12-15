@@ -446,7 +446,8 @@ return [
     // ........... commons in Page Views   ....... //
     'page_name'                     =>  'Page Name',
     'view_courses_views'            =>  'View Courses',
-    'view_posts_views'            =>  'View News',
+    'view_posts_views'              =>  'View News',
+    'view_users_views'              =>  'View Instructors',
 
 
 

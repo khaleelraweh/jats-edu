@@ -450,6 +450,7 @@ return [
     'page_name'                     =>  'إسم الصفحة',
     'view_courses_views'            =>  'إستعراض الدورات',
     'view_posts_views'            =>  'إستعراض الأخبار',
+    'view_users_views'            =>  'إستعراض المدربين',
 
 
 

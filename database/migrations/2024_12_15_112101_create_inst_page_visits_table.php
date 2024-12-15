@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->json('page');
             $table->json('slug');
+            $table->string('route');
             $table->integer('views')->default(0);
             $table->timestamp('visited_at');
             $table->timestamps();

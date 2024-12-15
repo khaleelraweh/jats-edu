@@ -34,11 +34,18 @@ class FrontendController extends Controller
 
 
         // Get instructors
+        // $instructors = User::whereHas('roles', function ($query) {
+        //     $query->where('name', 'instructor');
+        // })
+        //     ->active()
+        //     ->HasCourses()
+        //     ->inRandomOrder()
+        //     ->take(10)
+        //     ->get();
         $instructors = User::whereHas('roles', function ($query) {
             $query->where('name', 'instructor');
         })
             ->active()
-            ->HasCourses()
             ->inRandomOrder()
             ->take(10)
             ->get();

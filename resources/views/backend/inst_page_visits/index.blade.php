@@ -49,35 +49,41 @@
                                 {{ $inst_page_visit->views }}
                             </td>
                             <td>
-                                <button class="btn btn-primary btn-sm toggle-sub-row"
-                                    data-target="sub-row-{{ $inst_page_visit->id }}">
-                                    {{ __('panel.view_courses') }}
-                                </button>
+                                @if ($inst_page_visit->courses->isNotEmpty())
+                                    <button class="btn btn-primary btn-sm toggle-sub-row"
+                                        data-target="sub-row-{{ $inst_page_visit->id }}">
+                                        {{ __('panel.view_courses') }}
+                                    </button>
+                                @endif
                             </td>
                         </tr>
-
-                        {{-- Hidden Sub-Row --}}
-                        <tr id="sub-row-{{ $inst_page_visit->id }}" class="sub-row" style="display: none;">
-                            <td colspan="3">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>{{ __('panel.course_title') }}</th>
-                                            <th>{{ __('panel.course_views') }}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        @foreach ($inst_page_visit->courses as $course)
+                        @if ($inst_page_visit->courses->isNotEmpty())
+                            {{-- Hidden Sub-Row --}}
+                            <tr id="sub-row-{{ $inst_page_visit->id }}" class="sub-row" style="display: none;">
+                                <td colspan="3">
+                                    <table class="table table-bordered">
+                                        <thead>
                                             <tr>
-                                                <td>{{ $course->title }}</td>
-                                                <td>{{ $course->views }}</td>
+                                                <th>{{ __('panel.course_title') }}</th>
+                                                <th>{{ __('panel.course_views') }}</th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
+                                        </thead>
+                                        <tbody>
+
+
+                                            @foreach ($inst_page_visit->courses as $course)
+                                                <tr>
+                                                    <td>{{ $course->title }}</td>
+                                                    <td>{{ $course->views }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                            </tr>
+                        @endif
+
                     @empty
                         <tr>
                             <td colspan="3" class="text-center">{{ __('panel.no_found_item') }}</td>

@@ -5,13 +5,14 @@ namespace App\Models;
 use App\Helper\MySlugHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Nicolaslopezj\Searchable\SearchableTrait;
 use Spatie\Sluggable\HasTranslatableSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
 class InstPageVisit extends Model
 {
-    use HasFactory, HasTranslations, HasTranslatableSlug;
+    use HasFactory, HasTranslations, HasTranslatableSlug, SearchableTrait;
 
 
     protected $guarded = [];
@@ -19,6 +20,12 @@ class InstPageVisit extends Model
 
     public $translatable = ['page', 'slug'];
 
+    // searchable lab 
+    protected $searchable = [
+        'columns' => [
+            'inst_page_visits.page' => 10,
+        ]
+    ];
 
     // for slug 
     public function getSlugOptions(): SlugOptions

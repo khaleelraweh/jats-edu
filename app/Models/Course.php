@@ -221,6 +221,11 @@ class Course extends Model
         return $this->belongsTo(CourseCategory::class, 'course_category_id', 'id');
     }
 
+    public function instPageVisit()
+    {
+        return $this->belongsTo(InstPageVisit::class, 'inst_page_visit_id', 'id');
+    }
+
 
     public function firstMedia(): MorphOne
     {

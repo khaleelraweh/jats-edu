@@ -173,4 +173,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return $teachRequest->teach_request_status;
     }
+
+    public function instPageVisit()
+    {
+        return $this->belongsTo(InstPageVisit::class, 'inst_page_visit_id', 'id');
+    }
 }

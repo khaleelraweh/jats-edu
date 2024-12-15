@@ -137,4 +137,9 @@ class Post extends Model
     {
         return $this->morphToMany(User::class, 'userable');
     }
+
+    public function instPageVisit()
+    {
+        return $this->belongsTo(InstPageVisit::class, 'inst_page_visit_id', 'id');
+    }
 }

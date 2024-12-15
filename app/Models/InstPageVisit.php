@@ -63,4 +63,19 @@ class InstPageVisit extends Model
     {
         return 'slug';
     }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

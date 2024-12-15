@@ -9,15 +9,11 @@ use Illuminate\Http\Request;
 class InstPageVisitController extends Controller
 {
 
-
-
-
     public function index()
     {
         if (!auth()->user()->ability('admin', 'manage_inst_page_visits , show_inst_page_visits')) {
             return redirect('admin/index');
         }
-
 
         $inst_page_visits = InstPageVisit::query()
             ->when(\request()->keyword != null, function ($query) {
@@ -28,7 +24,6 @@ class InstPageVisitController extends Controller
             })
             ->orderBy(\request()->sort_by ?? 'created_at', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
-
 
 
         return view('backend.inst_page_visits.index', compact('inst_page_visits'));

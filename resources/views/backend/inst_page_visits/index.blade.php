@@ -63,6 +63,13 @@
                                         {{ __('panel.view_posts_views') }}
                                     </button>
                                 @endif
+                                @if ($inst_page_visit->users->isNotEmpty())
+                                    <button class="btn btn-primary btn-sm toggle-sub-row"
+                                        data-target="sub-row-{{ $inst_page_visit->id }}">
+                                        <i class="fa fa-eye me-1"></i>
+                                        {{ __('panel.view_users_views') }}
+                                    </button>
+                                @endif
                             </td>
                         </tr>
                         @if ($inst_page_visit->courses->isNotEmpty())
@@ -91,6 +98,7 @@
 
                             </tr>
                         @endif
+
                         @if ($inst_page_visit->posts->isNotEmpty())
                             {{-- Hidden Sub-Row --}}
                             <tr id="sub-row-{{ $inst_page_visit->id }}" class="sub-row" style="display: none;">
@@ -109,6 +117,33 @@
                                                 <tr>
                                                     <td>{{ $post->title }}</td>
                                                     <td>{{ $post->views }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                            </tr>
+                        @endif
+
+                        @if ($inst_page_visit->users->isNotEmpty())
+                            {{-- Hidden Sub-Row --}}
+                            <tr id="sub-row-{{ $inst_page_visit->id }}" class="sub-row" style="display: none;">
+                                <td colspan="3">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ __('panel.view_users_views') }}</th>
+                                                <th>{{ __('panel.views') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+
+                                            @foreach ($inst_page_visit->users as $user)
+                                                <tr>
+                                                    <td>{{ $user->full_name }}</td>
+                                                    <td>{{ $user->views }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

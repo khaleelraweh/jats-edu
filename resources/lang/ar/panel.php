@@ -448,6 +448,8 @@ return [
 
     // ........... commons in Page Views   ....... //
     'page_name'              =>  'إسم الصفحة',
+    'view_courses_views'            =>  'إستعراض الدورات',
+
 
 
     #################################### Manage Residential Site ( Countries , States , Cities   ) ##########################

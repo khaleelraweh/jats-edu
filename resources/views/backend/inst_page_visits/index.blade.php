@@ -52,7 +52,7 @@
                                 @if ($inst_page_visit->courses->isNotEmpty())
                                     <button class="btn btn-primary btn-sm toggle-sub-row"
                                         data-target="sub-row-{{ $inst_page_visit->id }}">
-                                        {{ __('panel.view_courses') }}
+                                        {{ __('panel.view_courses_views') }}
                                     </button>
                                 @endif
                             </td>

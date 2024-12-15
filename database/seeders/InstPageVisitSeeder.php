@@ -15,37 +15,37 @@ class InstPageVisitSeeder extends Seeder
     public function run(): void
     {
         InstPageVisit::create([
-            'page' => ['ar' => 'Main', 'en' => 'الرئيسية'],
+            'page' => ['ar' => 'الرئيسية', 'en' => 'Main'],
             'route' =>  'index',
             'views' => 0,
             'visited_at' => Carbon::now(),
         ]);
         InstPageVisit::create([
-            'page' => ['ar' => 'Courses List page', 'en' => 'صفحة قائمة الدورات'],
+            'page' => ['ar' => 'صفحة قائمة الدورات', 'en' => 'Courses List page'],
             'route' =>  'courses-list',
             'views' => 0,
             'visited_at' => Carbon::now(),
         ]);
         InstPageVisit::create([
-            'page' => ['ar' => 'ُEvents List page', 'en' => 'صفحة قائمة الاحداث'],
+            'page' => ['ar' => 'صفحة قائمة الاحداث القائمة', 'en' => 'Events List page'],
             'route' =>  'event-list',
             'views' => 0,
             'visited_at' => Carbon::now(),
         ]);
         InstPageVisit::create([
-            'page' => ['ar' => 'News List page', 'en' => 'صفحة قائمة الاخبار'],
+            'page' => ['ar' => 'صفحة قائمة الأخبار', 'en' => 'News List page'],
             'route' =>  'news-list',
             'views' => 0,
             'visited_at' => Carbon::now(),
         ]);
         InstPageVisit::create([
-            'page' => ['ar' => 'News tag List page', 'en' => 'صفحة قائمة الاخبار'],
+            'page' => ['ar' => 'صفحة قائمة تاجات الاخبار', 'en' => 'News tag List page'],
             'route' =>  'news-tag-list',
             'views' => 0,
             'visited_at' => Carbon::now(),
         ]);
         InstPageVisit::create([
-            'page' => ['ar' => 'Instructors List page', 'en' => 'صفحة قائمة المدربين'],
+            'page' => ['ar' => 'صفحة قائمة المدربين', 'en' => 'Instructors List page'],
             'route' =>  'instructors-list',
             'views' => 0,
             'visited_at' => Carbon::now(),

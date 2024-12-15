@@ -77,7 +77,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StudentEvaluationSeeder::class);
         $this->call(StudentAnswerSeeder::class);
 
-        // $this->call(CompanyRequestSeeder::class);
+        $this->call(CompanyRequestSeeder::class);
         $this->call(CertificateIssueSeeder::class);
         $this->call(InstPageVisitSeeder::class);
     }

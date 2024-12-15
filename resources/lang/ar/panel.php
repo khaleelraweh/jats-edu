@@ -435,6 +435,21 @@ return [
     'update_review'                     =>  'تعديل التعليق',
 
 
+    ##############################################################
+
+    // =============  Manage Page Views ===============//
+    'manage_page_views'              => 'إدارة زيارات الموقع',
+
+    // --------------- Page Views   --------------//
+    'show_page_views'               => 'زيارات الصفحات',
+    'add_new_page_view'             => 'إضافة زيارة جديدة',
+    'edit_existing_page_view'       => 'تعديل زيارة موجودة',
+
+
+    // ........... commons in Page Views   ....... //
+    'page_name'              =>  'إسم الصفحة',
+
+
     #################################### Manage Residential Site ( Countries , States , Cities   ) ##########################
     'manage_residentail_site'       => 'إدارة الموقع السكني',
 

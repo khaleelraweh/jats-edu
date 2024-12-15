@@ -8,7 +8,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_pages') }}
+                    {{ __('panel.manage_page_views') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -24,7 +24,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="ml-auto">
+            {{-- <div class="ml-auto">
                 @ability('admin', 'create_pages')
                     <a href="{{ route('admin.inst_page_visits.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
@@ -33,7 +33,7 @@
                         <span class="text">{{ __('panel.add_new_content') }}</span>
                     </a>
                 @endability
-            </div>
+            </div> --}}
         </div>
 
         {{-- @include('backend.inst_page_visits.filter.filter') --}}
@@ -76,7 +76,6 @@
         </div>
 
     </div>
-
     @endsection @section('script')
     <style>
         .copyButton {

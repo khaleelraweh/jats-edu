@@ -432,6 +432,21 @@ return [
 
 
 
+    ##############################################################
+
+    // =============  Manage Page Views ===============//
+    'manage_page_views'              => 'Manage Page Views',
+
+    // --------------- Page Views   --------------//
+    'show_page_views'               => 'Page Views',
+    'add_new_page_view'             => 'Add New Page View',
+    'edit_existing_page_view'       => 'Edit Existing Page View',
+
+
+    // ........... commons in Page Views   ....... //
+    'page_name'              =>  'Page Name',
+
+
 
 
     ##############################################################

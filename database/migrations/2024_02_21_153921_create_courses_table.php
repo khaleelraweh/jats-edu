@@ -40,9 +40,9 @@ return new class extends Migration
             $table->dateTime('offer_ends')->nullable(); // تاريخ انتهاء العرض 
             $table->boolean('featured')->default(false);
             $table->foreignId('course_category_id')->constrained()->cascadeOnDelete();
-            // $table->foreignId('instructor_id')->constrained()->cascadeOnDelete();
             $table->integer('progress')->default(10);
 
+            $table->foreignId('inst_page_visit_id')->nullable()->constrained()->cascadeOnDelete()->default(1);
             $table->integer('views')->default(0);
 
             // for events only 

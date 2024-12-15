@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreignId('course_category_id')->constrained()->cascadeOnDelete();
             $table->unsignedBigInteger('section')->default(1); // 1 is post
 
+            $table->foreignId('inst_page_visit_id')->nullable()->constrained()->cascadeOnDelete()->default(4);
             $table->integer('views')->default(0);
 
 

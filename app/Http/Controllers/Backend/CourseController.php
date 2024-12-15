@@ -86,6 +86,8 @@ class CourseController extends Controller
         $input['course_category_id']            =   $request->course_category_id;
         $input['featured']                      =   $request->featured;
 
+        $input['inst_page_visit_id']            = 2; // for courses-list
+
         $input['status']                        =   $request->status;
         $input['created_by']                    =   auth()->user()->full_name;
 

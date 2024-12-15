@@ -94,6 +94,9 @@ class EventController extends Controller
         $input['end_time']                      =  $request->end_time;
         $input['address']                       =  $request->address;
 
+        $input['inst_page_visit_id']            = 3; // for event-list
+
+
         $input['status']                        =   $request->status;
         $input['created_by']                    =   auth()->user()->full_name;
 

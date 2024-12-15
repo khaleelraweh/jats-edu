@@ -58,10 +58,17 @@ class PostController extends Controller
         $input['course_category_id'] =   $request->course_category_id;
         $input['status']            =   $request->status;
         $input['created_by']        =   auth()->user()->full_name;
+
         $published_on = $request->published_on . ' ' . $request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
+
+        $input['inst_page_visit_id']            = 4; // for courses-list
+
+
         $posts = Post::create($input);
+
+
         $posts->tags()->attach($request->tags);
         $posts->users()->attach(Auth::user()->id);
         if ($request->images && count($request->images) > 0) {

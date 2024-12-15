@@ -29,6 +29,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->boolean('receive_emails')->default(true);
 
+            $table->foreignId('inst_page_visit_id')->nullable()->constrained()->cascadeOnDelete()->default(5);
             $table->integer('views')->default(0);
 
             // new info for instructor start  

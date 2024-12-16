@@ -59,14 +59,7 @@
                     @forelse ($sponsers as $sponser)
                         <tr>
                             <td>
-                                {{ $sponser->title }}
-                                <br>
-                                @if ($sponser->parent != null)
-                                    <small
-                                        style="background: #17a2b8;color:white;padding:1px 3px;border-radius: 5px; font-size:11px">
-                                        {{-- تابع للقائمة: --}}
-                                        <span>{{ $sponser->parent?->title }}</span> </small>
-                                @endif
+                                {{ $sponser->name }}
                             </td>
                             <td class="d-none d-sm-table-cell">{{ $sponser->created_by }}</td>
                             <td>

@@ -54,7 +54,7 @@ class SponserController extends Controller
         $input['email']                 = $request->email;
         $input['pox']                   = $request->pox;
         $input['website']               = $request->website;
-        $input['views']                 = $request->views;
+        $input['views']                 = 0;
         $input['coordinator_name']      = $request->coordinator_name;
         $input['coordinator_phone']     = $request->coordinator_phone;
         $input['coordinator_email']     = $request->coordinator_email;

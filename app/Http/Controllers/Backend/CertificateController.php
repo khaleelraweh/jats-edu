@@ -49,7 +49,6 @@ class CertificateController extends Controller
         }
 
 
-
         $input['title'] = $request->title;
         $input['content'] = $request->content;
 

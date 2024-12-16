@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('sponsers', function (Blueprint $table) {
             $table->id();
             $table->json('name');
+            $table->json('slug');
             $table->json('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('pox')->nullable();
             $table->string('website')->nullable();
-            $table->integer('views')->default(0);
+            $table->integer('views')->nullable()->default(0);
 
 
             $table->json('coordinator_name');

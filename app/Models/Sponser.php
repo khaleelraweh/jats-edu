@@ -17,13 +17,14 @@ class Sponser extends Model
     protected $guarded = [];
 
     // for translatable field 
-    public $translatable = ['name', 'slug', 'address'];
+    public $translatable = ['name', 'slug', 'address', 'coordinator_name'];
 
     // searchable lab 
     protected $searchable = [
         'columns' => [
             'sponsers.name' => 10,
             'sponsers.address' => 10,
+            'sponsers.coordinator_name' => 10,
         ]
     ];
 

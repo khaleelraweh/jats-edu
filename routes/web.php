@@ -40,6 +40,7 @@ use App\Http\Controllers\Backend\ReviewsController;
 use App\Http\Controllers\Backend\ShippingCompanyController;
 use App\Http\Controllers\Backend\SiteSettingsController;
 use App\Http\Controllers\Backend\SpecializationController;
+use App\Http\Controllers\Backend\SponserController;
 use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\SupportMenuController;
@@ -268,8 +269,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('events', EventController::class);
 
 
-        // ==============   Certificate Issues Tab   ==============  //
-        Route::resource('certificate_issues', CertificateIssuesController::class);
+        // ==============   sponsers Tab   ==============  //
+        Route::resource('sponsers', SponserController::class);
 
         // ==============  Teach Requests      ==============  //
         Route::resource('teach_requests', TeachRequestController::class);

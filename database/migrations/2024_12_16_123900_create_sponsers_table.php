@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('pox')->nullable();
             $table->string('website')->nullable();
+            $table->integer('views')->default(0);
+
 
             $table->json('coordinator_name');
             $table->json('coordinator_phone');

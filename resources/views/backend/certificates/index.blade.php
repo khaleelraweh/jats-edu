@@ -44,10 +44,9 @@
                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                     <tr>
-                        <th>{{ __('panel.title') }}</th>
-                        <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
+                        <th>{{ __('panel.full_name') }}</th>
+                        <th class="d-none d-sm-table-cell">{{ __('panel.course_name') }}</th>
                         <th>{{ __('panel.status') }}</th>
-                        <th>{{ __('panel.views') }}</th>
                         <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
                         <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
 
@@ -59,23 +58,15 @@
                     @forelse ($certificates as $certificate)
                         <tr>
                             <td>
-                                {{ $certificate->title }}
-                                <br>
-                                @if ($certificate->parent != null)
-                                    <small
-                                        style="background: #17a2b8;color:white;padding:1px 3px;border-radius: 5px; font-size:11px">
-                                        {{-- تابع للقائمة: --}}
-                                        <span>{{ $certificate->parent?->title }}</span> </small>
-                                @endif
+                                {{ $certificate->full_name }}
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $certificate->created_by }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $certificate->course->title }}</td>
                             <td>
-                                <span
-                                    class="btn btn-round rounded-pill btn-success btn-xs">{{ $certificate->status() }}</span>
+                                <span class="btn btn-round rounded-pill btn-success btn-xs">
+                                    {{ $certificate->status() }}
+                                </span>
                             </td>
-                            <td>
-                                {{ $certificate->views }}
-                            </td>
+
                             <td class="d-none d-sm-table-cell">{{ $certificate->created_at }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
@@ -105,7 +96,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="text-center">{{ __('panel.no_found_item') }}</td>
+                            <td colspan="5" class="text-center">{{ __('panel.no_found_item') }}</td>
                         </tr>
                     @endforelse
 

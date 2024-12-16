@@ -973,6 +973,8 @@ return [
 
     // ........... commons in Certificate   ....... //
     'certificates'                      =>  'الشهادات',
+    'student_account'                   =>  'حساب الطالب',
+
 
     // sertificate status
     'under_review'                       =>  'قيد المراجعة',

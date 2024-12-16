@@ -83,11 +83,13 @@
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
 
-                        <div class="row pt-4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="students"> {{ __('panel.student_account') }} </label>
 
-                            <div class="col-md-12 col-sm-12 ">
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
 
-                                <label for="students"> {{ __('panel.students') }} </label>
                                 <select name="students" class="form-control select2 child">
                                     @forelse ($students as $student)
                                         <option value="{{ $student->id }}"
@@ -100,6 +102,8 @@
                             </div>
 
                         </div>
+
+                        <hr>
 
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row ">
@@ -128,38 +132,37 @@
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
 
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <div class="form-group">
-                                    <label for="published_on"> {{ __('panel.published_date') }}</label>
-                                    <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
-                                    @error('published_on')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="published_on"> {{ __('panel.published_date') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="published_on" name="published_on"
+                                    value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
+                                @error('published_on')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <div class="form-group">
-                                    <label for="published_on_time"> {{ __('panel.published_time') }}</label>
-                                    <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', now()->format('h:m A')) }}"
-                                        class="form-control">
-                                    @error('published_on_time')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="published_on_time"> {{ __('panel.published_time') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="published_on_time" name="published_on_time"
+                                    value="{{ old('published_on_time', now()->format('h:m A')) }}" class="form-control">
+                                @error('published_on_time')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                         </div>
 
                         <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                <label for="status" class="control-label col-md-2 col-sm-12 ">
-                                    <span>{{ __('panel.status') }}</span>
-                                </label>
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="status"> {{ __('panel.status') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
                                 <select name="status" class="form-control">
                                     <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}

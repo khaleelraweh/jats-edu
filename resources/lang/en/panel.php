@@ -987,7 +987,8 @@ return [
 
 
     // ........... commons in Certificate   ....... //
-    'certificates'           =>  'Certificates',
+    'certificates'                      =>  'Certificates',
+    'student_account'                   =>  'Student Account',
 
     // sertificate status
     'under_review'                       =>  'Under Review',

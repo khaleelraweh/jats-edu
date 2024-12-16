@@ -70,7 +70,7 @@ class SponserController extends Controller
 
         if ($image  =  $request->file('logo')) {
 
-            $file_name                  = Str::slug($request->name) . '_' . time() .  "." . $image->getClientOriginalExtension();
+            $file_name                  = Str::slug($request->name['en']) . '_' . time() .  "." . $image->getClientOriginalExtension();
             $path                       = public_path('assets/sponsers/' . $file_name);
 
             Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
@@ -146,7 +146,7 @@ class SponserController extends Controller
                 unlink('assets/sponsers/' . $sponser->logo);
             }
 
-            $file_name = Str::slug($request->name) . '_' . time() .  "." . $image->getClientOriginalExtension();
+            $file_name = Str::slug($request->name['en']) . '_' . time() .  "." . $image->getClientOriginalExtension();
 
             $path = public_path('assets/sponsers/' . $file_name);
             Image::make($image->getRealPath())->resize(500, null, function ($constraint) {

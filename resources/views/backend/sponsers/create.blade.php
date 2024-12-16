@@ -137,25 +137,44 @@
                             </div>
                         @endforeach
 
+                        <hr>
 
-
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
-                                    <div class="form-group">
-                                        <label for="content[{{ $key }}]">
-                                            {{ __('panel.f_content') }}
-                                            {{ __('panel.in') }} ({{ __('panel.' . $key) }})
-                                        </label>
-
-                                        <textarea id="tinymceExample" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key) !!}</textarea>
-                                        @error('content.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-2 pt-3">
+                                    <label for="address[{{ $key }}]">
+                                        {{ __('panel.sponser_address') }}
+                                        {{ __('panel.in') }} ({{ __('panel.' . $key) }})
+                                    </label>
                                 </div>
-                            @endforeach
+                                <div class="col-sm-12 col-md-10 pt-3">
+                                    <input type="text" name="address[{{ $key }}]"
+                                        id="address[{{ $key }}]" value="{{ old('address.' . $key) }}"
+                                        class="form-control">
+                                    @error('address.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="phone"> {{ __('panel.phone_number') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="phone" name="phone" value="{{ old('phone') }}"
+                                    class="form-control">
+                                @error('phone')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
+
+
 
                     </div>
 

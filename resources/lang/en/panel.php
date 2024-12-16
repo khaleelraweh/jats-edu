@@ -1187,6 +1187,7 @@ return [
 
     // ========================  frontend Footer  =========================// 
     'f_phone'                                       => 'Phone',
+    'phone'                                         => 'Phone',
     'f_phone_number'                                =>  'Phone Number',
     'phone_number'                                  =>  'Phone Number',
     'f_email'                                       => 'Email Address',

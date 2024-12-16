@@ -1191,6 +1191,7 @@ return [
     'f_phone_number'                                =>  'Phone Number',
     'phone_number'                                  =>  'Phone Number',
     'f_email'                                       => 'Email Address',
+    'email_address'                                 => 'Email Address',
     'email'                                         => 'Email Address',
     'f_fax'                                         => 'Fax',
     'f_po_box'                                      => 'PoBox',

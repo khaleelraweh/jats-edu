@@ -92,7 +92,8 @@
                                     @forelse ($students as $student)
                                         <option value="{{ $student->id }}"
                                             {{ in_array($student->id, old('students', [])) ? 'selected' : null }}>
-                                            {{ $student->first_name }} {{ $student->last_name }}</option>
+                                            {{ $student->first_name }} {{ $student->last_name }}
+                                        </option>
                                     @empty
                                     @endforelse
                                 </select>

@@ -10,6 +10,8 @@ use DateTimeImmutable;
 use Illuminate\Http\Request;
 use illuminate\support\Str;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
+
 
 
 
@@ -70,10 +72,13 @@ class SponserController extends Controller
         $input['published_on']          = $published_on;
 
         if ($image  =  $request->file('logo')) {
+
             $file_name                  = Str::slug($request->name) . '_' . time() .  "." . $image->getClientOriginalExtension();
             $path                       = public_path('assets/sponsers/' . $file_name);
 
-            Image::make()->save($path, 100);
+            Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($path, 100);
 
             $input['logo'] = $file_name;
         }
@@ -138,6 +143,21 @@ class SponserController extends Controller
         $published_on                   = new DateTimeImmutable($published_on);
         $input['published_on']          = $published_on;
 
+
+        if ($image = $request->file('logo')) {
+            if ($sponser->logo != null && File::exists('assets/sponsers/' . $sponser->logo)) {
+                unlink('assets/sponsers/' . $sponser->logo);
+            }
+
+            $file_name = Str::slug($request->name) . '_' . time() .  "." . $image->getClientOriginalExtension();
+
+            $path = public_path('assets/sponsers/' . $file_name);
+            Image::make($image->getRealPath())->resize(500, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($path);
+
+            $input['logo'] = $file_name;
+        }
 
         $sponser->update($input);
 

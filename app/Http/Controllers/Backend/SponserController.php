@@ -178,7 +178,17 @@ class SponserController extends Controller
             return redirect('admin/index');
         }
 
-        $sponser = Sponser::where('id', $sponser)->first()->delete();
+        $sponser = Sponser::where('id', $sponser)->first();
+
+
+        if (File::exists('assets/sponsers/' . $sponser->logo)) {
+            unlink('assets/sponsers/' . $sponser->logo);
+        }
+
+        $sponser->deleted_by = auth()->user()->full_name;
+        $sponser->save();
+
+        $sponser->delete();
 
         if ($sponser) {
             return redirect()->route('admin.sponsers.index')->with([
@@ -191,5 +201,26 @@ class SponserController extends Controller
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
+    }
+
+    public function remove_image(Request $request)
+    {
+
+        if (!auth()->user()->ability('admin', 'delete_sponsers')) {
+            return redirect('admin/index');
+        }
+
+        $sponser = Sponser::findOrFail($request->sponser_id);
+        if (File::exists('assets/sponser/' . $sponser->logo)) {
+            unlink('assets/sponser/' . $sponser->logo);
+            $sponser->logo = null;
+            $sponser->save();
+        }
+        if ($sponser->logo != null) {
+            $sponser->logo = null;
+            $sponser->save();
+        }
+
+        return true;
     }
 }

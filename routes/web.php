@@ -270,7 +270,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         // ==============   sponsers Tab   ==============  //
+        Route::post('sponsers/remove-image', [SponserController::class, 'remove_image'])->name('sponsers.remove_image');
         Route::resource('sponsers', SponserController::class);
+
 
         // ==============  Teach Requests      ==============  //
         Route::resource('teach_requests', TeachRequestController::class);

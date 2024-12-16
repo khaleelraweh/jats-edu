@@ -323,6 +323,7 @@ return [
     // ........... commons in Sponsers ....... //
     'sponser_name'                              =>  'Sponser Name',
     'sponser_address'                           =>  'Sponser Address',
+    'sponser_logo'                              =>  'Sponser Logo',
     'coordinator_name'                          =>  'Coordinator Name',
     'coordinator_phone'                         =>  'Coordinator Phone',
     'coordinator_email'                         =>  'Coordinator Email',

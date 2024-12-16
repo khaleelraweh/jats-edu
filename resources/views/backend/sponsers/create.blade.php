@@ -214,6 +214,21 @@
                         </div>
 
                         <hr>
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="logo"> {{ __('panel.sponser_logo') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="file-loading">
+                                    <input type="file" name="logo" id="logo" value="{{ old('logo') }}"
+                                        class="file-input-overview ">
+                                    @error('logo')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
 
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row ">
@@ -341,6 +356,15 @@
 @section('script')
     <script>
         $(function() {
+            $("#logo").fileinput({
+                theme: "fa5",
+                maxFileCount: 1,
+                allowedFileTypes: ['image'],
+                showCancel: true,
+                showRemove: false,
+                showUpload: false,
+                overwriteInitial: false
+            })
 
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',

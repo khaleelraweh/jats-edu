@@ -329,6 +329,7 @@ return [
     // ........... commons in Sponsers ....... //
     'sponser_name'                              =>  'إسم الجهة',
     'sponser_address'                           =>  'عنوان الجهة',
+    'sponser_logo'                              =>  'شعار الجهة',
     'coordinator_name'                          =>  'إسم المنسق',
     'coordinator_phone'                         =>  'رقم المنسق',
     'coordinator_email'                         =>  'بريد المنسق',

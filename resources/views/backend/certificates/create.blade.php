@@ -83,25 +83,7 @@
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
 
-                        {{-- <div class="row">
-                            <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="students"> {{ __('panel.student_account') }} </label>
 
-                            </div>
-                            <div class="col-sm-12 col-md-10 pt-3">
-
-                                <select name="students" class="form-control select2 child">
-                                    @forelse ($students as $student)
-                                        <option value="{{ $student->id }}"
-                                            {{ in_array($student->id, old('students', [])) ? 'selected' : null }}>
-                                            {{ $student->first_name }} {{ $student->last_name }}
-                                        </option>
-                                    @empty
-                                    @endforelse
-                                </select>
-                            </div>
-
-                        </div> --}}
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
@@ -143,6 +125,18 @@
 
                         <hr>
 
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="course_id">Courses</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <select name="course_id" id="course_id" class="form-control">
+                                </select>
+                                @error('course_id')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
 
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
@@ -277,6 +271,51 @@
 
                 clear: ''
             });
+
+
+            $("#user_id").change(function() {
+                populateCourses();
+                return false;
+            });
+
+
+            // function populateCourses() {
+            //     let userIdVal = $("#user_id").val() != null ? $("#user_id").val() :
+            //         '{{ old('user_id') }}';
+            //     $.get("{{ route('admin.courses.get_courses') }}", {
+            //         user_id: userIdVal
+            //     }, function(data) {
+            //         $('option', $("#course_id")).remove();
+            //         $("#course_id").append($('<option></option>').val('').html('---'));
+            //         $.each(data, function(val, text) {
+            //             let selectVal = text.id == '{{ old('course_id') }}' ? "selected" : "";
+            //             $("#course_id").append($('<option' + selectVal + '></option>').val(text.id)
+            //                 .html(text.title));
+            //         });
+            //     }, "json");
+
+            // }
+
+            function populateCourses() {
+                const userId = $('#user_id').val() || '{{ old('user_id') }}';
+                if (!userId) return;
+
+                $.get("{{ route('admin.courses.get_courses') }}", {
+                        user_id: userId
+                    })
+                    .done(function(data) {
+                        $('#course_id').empty().append('<option value="">---</option>');
+                        data.forEach(function(course) {
+                            const isSelected = course.id == '{{ old('course_id') }}' ? 'selected' : '';
+                            $('#course_id').append(
+                                `<option value="${course.id}" ${isSelected}>${course.title}</option>`
+                            );
+                        });
+                    });
+            }
+
+
+
         });
     </script>
 

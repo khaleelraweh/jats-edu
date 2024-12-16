@@ -463,4 +463,23 @@ class CourseController extends Controller
             'alert-type' => 'danger'
         ]);
     }
+
+    public function get_courses(Request $request)
+    {
+        $user = User::where('id', $request->user_id);
+        if ($user) {
+            $orders = $user->orders()->where('order_status', 3)->get();
+
+            $courses = [];
+
+            foreach ($orders as $order) {
+                $courses = array_merge($courses, $order->courses()->get(['id', 'title'])->toArray());
+            }
+        }
+
+        $courses = array_merge($courses, $order->courses()->get(['id', 'title'])->toArray());
+
+
+        return response()->json($courses);
+    }
 }

@@ -261,6 +261,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('course_categories', CourseCategoriesController::class);
 
         Route::post('courses/remove-image', [CourseController::class, 'remove_image'])->name('courses.remove_image');
+        Route::get('courses/get_courses', [CourseController::class, 'get_courses'])->name('courses.get_courses');
         Route::resource('courses', CourseController::class);
 
         Route::match(['put', 'patch'], 'admin/courses/{course}/status', [CourseController::class, 'updateStatus'])

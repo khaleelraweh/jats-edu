@@ -466,20 +466,26 @@ class CourseController extends Controller
 
     public function get_courses(Request $request)
     {
-        $user = User::where('id', $request->user_id);
-        if ($user) {
-            $orders = $user->orders()->where('order_status', 3)->get();
+        // Fetch the user by ID
+        $user = User::find($request->user_id);
 
-            $courses = [];
-
-            foreach ($orders as $order) {
-                $courses = array_merge($courses, $order->courses()->get(['id', 'title'])->toArray());
-            }
+        if (!$user) {
+            return response()->json([], 404); // Return empty response if user not found
         }
 
-        $courses = array_merge($courses, $order->courses()->get(['id', 'title'])->toArray());
+        // Initialize an empty array to hold the courses
+        $courses = [];
 
+        // Retrieve all orders with status 3 related to the user
+        $orders = $user->orders()->where('order_status', 3)->get();
 
+        // Loop through the orders and merge their courses into the courses array
+        foreach ($orders as $order) {
+            $orderCourses = $order->courses()->get(['id', 'title']);
+            $courses = array_merge($courses, $orderCourses->toArray());
+        }
+
+        // Return the courses as JSON response
         return response()->json($courses);
     }
 }

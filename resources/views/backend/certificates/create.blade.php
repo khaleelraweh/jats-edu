@@ -279,40 +279,24 @@
             });
 
 
-            // function populateCourses() {
-            //     let userIdVal = $("#user_id").val() != null ? $("#user_id").val() :
-            //         '{{ old('user_id') }}';
-            //     $.get("{{ route('admin.courses.get_courses') }}", {
-            //         user_id: userIdVal
-            //     }, function(data) {
-            //         $('option', $("#course_id")).remove();
-            //         $("#course_id").append($('<option></option>').val('').html('---'));
-            //         $.each(data, function(val, text) {
-            //             let selectVal = text.id == '{{ old('course_id') }}' ? "selected" : "";
-            //             $("#course_id").append($('<option' + selectVal + '></option>').val(text.id)
-            //                 .html(text.title));
-            //         });
-            //     }, "json");
-
-            // }
-
             function populateCourses() {
-                const userId = $('#user_id').val() || '{{ old('user_id') }}';
-                if (!userId) return;
-
+                let userIdVal = $("#user_id").val() != null ? $("#user_id").val() :
+                    '{{ old('user_id') }}';
                 $.get("{{ route('admin.courses.get_courses') }}", {
-                        user_id: userId
-                    })
-                    .done(function(data) {
-                        $('#course_id').empty().append('<option value="">---</option>');
-                        data.forEach(function(course) {
-                            const isSelected = course.id == '{{ old('course_id') }}' ? 'selected' : '';
-                            $('#course_id').append(
-                                `<option value="${course.id}" ${isSelected}>${course.title}</option>`
-                            );
-                        });
+                    user_id: userIdVal
+                }, function(data) {
+                    $('option', $("#course_id")).remove();
+                    $("#course_id").append($('<option></option>').val('').html('---'));
+                    $.each(data, function(val, text) {
+                        let selectVal = text.id == '{{ old('course_id') }}' ? "selected" : "";
+                        $("#course_id").append($('<option' + selectVal + '></option>').val(text.id)
+                            .html(text.title));
                     });
+                }, "json");
+
             }
+
+
 
 
 

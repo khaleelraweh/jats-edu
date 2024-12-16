@@ -87,6 +87,7 @@ class SponserRequest extends FormRequest
     {
         $attr = [
             'status'    =>  '( ' . __('panel.status') . ' )',
+            'logo'    =>  '( ' . __('panel.sponser_logo') . ' )',
         ];
 
         foreach (config('locales.languages') as $key => $val) {

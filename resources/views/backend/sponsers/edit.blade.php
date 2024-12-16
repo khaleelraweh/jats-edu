@@ -44,7 +44,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.sponsers.update', $sponser->id) }}" method="post">
+            <form action="{{ route('admin.sponsers.update', $sponser->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 

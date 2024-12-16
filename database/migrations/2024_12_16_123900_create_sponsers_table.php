@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('pox')->nullable();
             $table->string('website')->nullable();
             $table->integer('views')->nullable()->default(0);
+            $table->string('logo')->nullable();
+
 
 
             $table->json('coordinator_name');

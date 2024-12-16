@@ -104,109 +104,108 @@
                         </div> --}}
 
                         <div class="row">
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <label for="user_id">Customer</label>
-                                    <input type="text" class="form-control typeahead" name="customer_name"
-                                        id="customer_name"
-                                        value="{{ old('customer_name', request()->input('customer_name')) }}"
-                                        placeholder="Start">
-                                    <input type="hidden" class="form-control" name="user_id" id="user_id"
-                                        value="{{ old('user_id', request()->input('user_id')) }}" readonly>
-                                    @error('user_id')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="user_id">{{ __('panel.student_account') }}</label>
                             </div>
-
-                            <hr>
-
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="row ">
-                                    <div class="col-sm-12 col-md-2 pt-3">
-                                        <label for="full_name[{{ $key }}]">
-                                            {{ __('panel.full_name') }}
-                                            {{ __('panel.in') }} ({{ __('panel.' . $key) }})
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-12 col-md-10 pt-3">
-                                        <input type="text" name="full_name[{{ $key }}]"
-                                            id="full_name[{{ $key }}]" value="{{ old('full_name.' . $key) }}"
-                                            class="form-control">
-                                        @error('full_name.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-
-                                    </div>
-                                </div>
-                            @endforeach
-
-                            <hr>
-
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" class="form-control typeahead" name="customer_name" id="customer_name"
+                                    value="{{ old('customer_name', request()->input('customer_name')) }}"
+                                    placeholder="{{ __('panel.type_student_name_or_email') }}">
+                                <input type="hidden" class="form-control" name="user_id" id="user_id"
+                                    value="{{ old('user_id', request()->input('user_id')) }}" readonly>
+                                @error('user_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
 
-                        <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
+                        <hr>
 
-                            <div class="row">
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
                                 <div class="col-sm-12 col-md-2 pt-3">
-                                    <label for="published_on"> {{ __('panel.published_date') }}</label>
+                                    <label for="full_name[{{ $key }}]">
+                                        {{ __('panel.full_name') }}
+                                        {{ __('panel.in') }} ({{ __('panel.' . $key) }})
+                                    </label>
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
-                                    <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
-                                    @error('published_on')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-12 col-md-2 pt-3">
-                                    <label for="published_on_time"> {{ __('panel.published_time') }}</label>
-                                </div>
-                                <div class="col-sm-12 col-md-10 pt-3">
-                                    <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', now()->format('h:m A')) }}"
+                                    <input type="text" name="full_name[{{ $key }}]"
+                                        id="full_name[{{ $key }}]" value="{{ old('full_name.' . $key) }}"
                                         class="form-control">
-                                    @error('published_on_time')
+                                    @error('full_name.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div>
 
+                                </div>
                             </div>
+                        @endforeach
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-2 pt-3">
-                                    <label for="status"> {{ __('panel.status') }}</label>
-                                </div>
-                                <div class="col-sm-12 col-md-10 pt-3">
-                                    <select name="status" class="form-control">
-                                        <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
-                                            {{ __('panel.status_active') }}
-                                        </option>
-                                        <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
-                                            {{ __('panel.status_inactive') }}
-                                        </option>
-                                    </select>
-                                    @error('status')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                        <hr>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="published_on"> {{ __('panel.published_date') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="published_on" name="published_on"
+                                    value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
+                                @error('published_on')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="published_on_time"> {{ __('panel.published_time') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="published_on_time" name="published_on_time"
+                                    value="{{ old('published_on_time', now()->format('h:m A')) }}" class="form-control">
+                                @error('published_on_time')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                         </div>
 
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group pt-3 ">
-                                    <button type="submit" name="submit" class="btn btn-primary">
-                                        {{ __('panel.save_data') }}
-                                    </button>
-                                </div>
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="status"> {{ __('panel.status') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <select name="status" class="form-control">
+                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
+                                        {{ __('panel.status_active') }}
+                                    </option>
+                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
+                                        {{ __('panel.status_inactive') }}
+                                    </option>
+                                </select>
+                                @error('status')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group pt-3 ">
+                                <button type="submit" name="submit" class="btn btn-primary">
+                                    {{ __('panel.save_data') }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
             </form>
 
@@ -226,12 +225,12 @@
             $(".typeahead").typeahead({
                 autoSelect: true,
                 minLength: 3,
-                delay: 400,
+                // delay: 400,
+                delay: 200,
                 displayText: function(item) {
                     return item.full_name + ' - ' + item.email;
                 },
                 source: function(query, process) {
-                    // قم بالبحث في الرابط التالي الكويري التالي القادم من الحقل كاستمر اندرسكور نيم فقوق
                     return $.get("{{ route('admin.customers.get_customers') }}", {
                         'query': query
                     }, function(data) {
@@ -239,7 +238,6 @@
                     });
                 },
 
-                //  من الداتا المعادة قم باعطاء قيمة اي دي للحقل يوزر ايدي
                 afterSelect: function(data) {
                     $('#user_id').val(data.id);
                 }

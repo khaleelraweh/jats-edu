@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    {{-- main holder page  --}}
+    {{-- main holder sponser  --}}
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -10,7 +10,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_page') }}
+                    {{ __('panel.edit_existing_sponser') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -22,8 +22,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.pages.index') }}">
-                            {{ __('panel.show_pages') }}
+                        <a href="{{ route('admin.sponsers.index') }}">
+                            {{ __('panel.show_sponsers') }}
                         </a>
                     </li>
                 </ul>
@@ -44,7 +44,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.pages.update', $page->id) }}" method="post">
+            <form action="{{ route('admin.sponsers.update', $sponser->id) }}" method="post">
                 @csrf
                 @method('PATCH')
 
@@ -68,48 +68,156 @@
 
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
-                                    <div class="form-group">
-                                        <label for="title[{{ $key }}]">
-                                            {{ __('panel.title') }}
-                                            {{ __('panel.in') }}
-                                            ({{ __('panel.' . $key) }})
-                                        </label>
-                                        <input type="text" name="title[{{ $key }}]"
-                                            id="title[{{ $key }}]"
-                                            value="{{ old('title.' . $key, $page->getTranslation('title', $key)) }}"
-                                            class="form-control">
-                                        @error('title.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-2 pt-3">
+                                    <label for="name[{{ $key }}]">
+                                        {{ __('panel.sponser_name') }}
+                                        {{ __('panel.in') }} ({{ __('panel.' . $key) }})
+                                    </label>
                                 </div>
-                            @endforeach
+                                <div class="col-sm-12 col-md-10 pt-3">
+                                    <input type="text" name="name[{{ $key }}]" id="name[{{ $key }}]"
+                                        value="{{ old('name.' . $key, $sponser->getTranslation('name', $key)) }}"
+                                        class="form-control">
+                                    @error('name.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <hr>
+
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-2 pt-3">
+                                    <label for="address[{{ $key }}]">
+                                        {{ __('panel.sponser_address') }}
+                                        {{ __('panel.in') }} ({{ __('panel.' . $key) }})
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 col-md-10 pt-3">
+                                    <input type="text" name="address[{{ $key }}]"
+                                        id="address[{{ $key }}]"
+                                        value="{{ old('address.' . $key, $sponser->getTranslation('address', $key)) }}"
+                                        class="form-control">
+                                    @error('address.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="phone"> {{ __('panel.phone_number') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="phone" name="phone"
+                                    value="{{ old('phone', $sponser->phone) }}" class="form-control">
+                                @error('phone')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
 
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
-                                    <div class="form-group">
-                                        <label for="content[{{ $key }}]">
-                                            {{ __('panel.f_content') }}
-                                            {{ __('panel.in') }}
-                                            ({{ __('panel.' . $key) }})
-                                        </label>
-                                        <textarea id="tinymceExample" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $page->getTranslation('content', $key)) !!}</textarea>
-
-
-
-                                        @error('content.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            @endforeach
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="email"> {{ __('panel.email_address') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="email" id="email" name="email"
+                                    value="{{ old('email', $sponser->email) }}" class="form-control">
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="pox"> {{ __('panel.pox') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="pox" name="pox" value="{{ old('pox', $sponser->pox) }}"
+                                    class="form-control">
+                                @error('pox')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="website"> {{ __('panel.website') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="url" id="website" name="website"
+                                    value="{{ old('website', $sponser->website) }}" class="form-control">
+                                @error('website')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-2 pt-3">
+                                    <label for="coordinator_name[{{ $key }}]">
+                                        {{ __('panel.coordinator_name') }}
+                                        {{ __('panel.in') }} ({{ __('panel.' . $key) }})
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 col-md-10 pt-3">
+                                    <input type="text" name="coordinator_name[{{ $key }}]"
+                                        id="coordinator_name[{{ $key }}]"
+                                        value="{{ old('coordinator_name.' . $key, $sponser->getTranslation('coordinator_name', $key)) }}"
+                                        class="form-control">
+                                    @error('coordinator_name.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="coordinator_phone"> {{ __('panel.coordinator_phone') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="coordinator_phone" name="coordinator_phone"
+                                    value="{{ old('coordinator_phone', $sponser->coordinator_phone) }}"
+                                    class="form-control">
+                                @error('coordinator_phone')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="coordinator_email"> {{ __('panel.coordinator_email') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="coordinator_email" name="coordinator_email"
+                                    value="{{ old('coordinator_email', $sponser->coordinator_email) }}"
+                                    class="form-control">
+                                @error('coordinator_email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <hr>
+
 
                     </div>
 

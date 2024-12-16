@@ -54,7 +54,6 @@ class SponserController extends Controller
         $input['email']                 = $request->email;
         $input['pox']                   = $request->pox;
         $input['website']               = $request->website;
-        $input['views']                 = 0;
         $input['coordinator_name']      = $request->coordinator_name;
         $input['coordinator_phone']     = $request->coordinator_phone;
         $input['coordinator_email']     = $request->coordinator_email;
@@ -92,35 +91,44 @@ class SponserController extends Controller
         return view('backend.sponsers.show');
     }
 
-    public function edit($page)
+    public function edit($sponser)
     {
         if (!auth()->user()->ability('admin', 'update_sponsers')) {
             return redirect('admin/index');
         }
 
 
-        $page = Page::where('id', $page)->first();
+        $sponser = Sponser::where('id', $sponser)->first();
 
-        return view('backend.sponsers.edit', compact('page'));
+        return view('backend.sponsers.edit', compact('sponser'));
     }
 
-    public function update(PageRequest $request, $page)
+    public function update(SponserRequest $request, $sponser)
     {
 
-        $page = Page::where('id', $page)->first();
+        $sponser = Sponser::where('id', $sponser)->first();
 
-        $input['title'] = $request->title;
-        $input['content'] = $request->content;
+        $input['name']                  = $request->name;
+        $input['address']               = $request->address;
+        $input['phone']                 = $request->phone;
+        $input['email']                 = $request->email;
+        $input['pox']                   = $request->pox;
+        $input['website']               = $request->website;
+        $input['coordinator_name']      = $request->coordinator_name;
+        $input['coordinator_phone']     = $request->coordinator_phone;
+        $input['coordinator_email']     = $request->coordinator_email;
 
-        $input['status']            =   $request->status;
-        $input['created_by'] = auth()->user()->full_name;
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
-        $input['published_on'] = $published_on;
+        $input['status']                =   $request->status;
+        $input['created_by']            = auth()->user()->full_name;
 
-        $page->update($input);
+        $published_on                   = $request->published_on . ' ' . $request->published_on_time;
+        $published_on                   = new DateTimeImmutable($published_on);
+        $input['published_on']          = $published_on;
 
-        if ($page) {
+
+        $sponser->update($input);
+
+        if ($sponser) {
             return redirect()->route('admin.sponsers.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -134,15 +142,15 @@ class SponserController extends Controller
     }
 
 
-    public function destroy($page)
+    public function destroy($sponser)
     {
         if (!auth()->user()->ability('admin', 'delete_sponsers')) {
             return redirect('admin/index');
         }
 
-        $page = Page::where('id', $page)->first()->delete();
+        $sponser = Sponser::where('id', $sponser)->first()->delete();
 
-        if ($page) {
+        if ($sponser) {
             return redirect()->route('admin.sponsers.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'

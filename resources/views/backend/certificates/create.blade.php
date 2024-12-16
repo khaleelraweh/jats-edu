@@ -51,7 +51,7 @@
 
 @section('content')
 
-    {{-- main holder page  --}}
+    {{-- main holder certificate  --}}
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -60,7 +60,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_page') }}
+                    {{ __('panel.add_new_certificate') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -72,8 +72,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.pages.index') }}">
-                            {{ __('panel.show_pages') }}
+                        <a href="{{ route('admin.certificates.index') }}">
+                            {{ __('panel.show_certificates') }}
                         </a>
                     </li>
                 </ul>
@@ -94,7 +94,7 @@
             @endif
 
 
-            <form action="{{ route('admin.pages.store') }}" method="post">
+            <form action="{{ route('admin.certificates.store') }}" method="post">
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -118,44 +118,29 @@
 
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
-                                    <div class="form-group">
-                                        <label for="title[{{ $key }}]">
-                                            {{ __('panel.title') }}
-                                            {{ __('panel.in') }} ({{ __('panel.' . $key) }})
-                                        </label>
-                                        <input type="text" name="title[{{ $key }}]"
-                                            id="title[{{ $key }}]" value="{{ old('title.' . $key) }}"
-                                            class="form-control">
-                                        @error('title.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-2 pt-3">
+                                    <label for="full_name[{{ $key }}]">
+                                        {{ __('panel.full_name') }}
+                                        {{ __('panel.in') }} ({{ __('panel.' . $key) }})
+                                    </label>
                                 </div>
-                            @endforeach
-                        </div>
+                                <div class="col-sm-12 col-md-10 pt-3">
+                                    <input type="text" name="full_name[{{ $key }}]"
+                                        id="full_name[{{ $key }}]" value="{{ old('full_name.' . $key) }}"
+                                        class="form-control">
+                                    @error('full_name.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
 
-
-
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
-                                    <div class="form-group">
-                                        <label for="content[{{ $key }}]">
-                                            {{ __('panel.f_content') }}
-                                            {{ __('panel.in') }} ({{ __('panel.' . $key) }})
-                                        </label>
-
-                                        <textarea id="tinymceExample" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key) !!}</textarea>
-                                        @error('content.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
+
+                        <hr>
+
+
 
                     </div>
 

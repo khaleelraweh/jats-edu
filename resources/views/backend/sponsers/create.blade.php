@@ -314,6 +314,8 @@
                             </div>
                         </div>
 
+                        <hr>
+
                     </div>
 
                     <div class="row">

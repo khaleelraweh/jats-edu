@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\PageRequest;
+use App\Models\Certifications;
 use App\Models\Page;
 use App\Models\WebMenu;
 use DateTimeImmutable;
@@ -14,11 +15,11 @@ class CertificateController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_pages , show_pages')) {
+        if (!auth()->user()->ability('admin', 'manage_certificates , show_certificates')) {
             return redirect('admin/index');
         }
 
-        $pages = Page::query()
+        $certificates = Certifications::query()
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -28,24 +29,22 @@ class CertificateController extends Controller
             ->orderBy(\request()->sort_by ?? 'published_on', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
 
-
-
-        return view('backend.pages.index', compact('pages'));
+        return view('backend.certificates.index', compact('certificates'));
     }
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_pages')) {
+        if (!auth()->user()->ability('admin', 'create_certificates')) {
             return redirect('admin/index');
         }
 
 
-        return view('backend.pages.create');
+        return view('backend.certificates.create');
     }
 
     public function store(PageRequest $request)
     {
-        if (!auth()->user()->ability('admin', 'create_pages')) {
+        if (!auth()->user()->ability('admin', 'create_certificates')) {
             return redirect('admin/index');
         }
 
@@ -64,13 +63,13 @@ class CertificateController extends Controller
 
 
         if ($page) {
-            return redirect()->route('admin.pages.index')->with([
+            return redirect()->route('admin.certificates.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.pages.index')->with([
+        return redirect()->route('admin.certificates.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -80,22 +79,22 @@ class CertificateController extends Controller
 
     public function show($id)
     {
-        if (!auth()->user()->ability('admin', 'display_pages')) {
+        if (!auth()->user()->ability('admin', 'display_certificates')) {
             return redirect('admin/index');
         }
-        return view('backend.pages.show');
+        return view('backend.certificates.show');
     }
 
     public function edit($page)
     {
-        if (!auth()->user()->ability('admin', 'update_pages')) {
+        if (!auth()->user()->ability('admin', 'update_certificates')) {
             return redirect('admin/index');
         }
 
 
         $page = Page::where('id', $page)->first();
 
-        return view('backend.pages.edit', compact('page'));
+        return view('backend.certificates.edit', compact('page'));
     }
 
     public function update(PageRequest $request, $page)
@@ -115,13 +114,13 @@ class CertificateController extends Controller
         $page->update($input);
 
         if ($page) {
-            return redirect()->route('admin.pages.index')->with([
+            return redirect()->route('admin.certificates.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.pages.index')->with([
+        return redirect()->route('admin.certificates.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -130,20 +129,20 @@ class CertificateController extends Controller
 
     public function destroy($page)
     {
-        if (!auth()->user()->ability('admin', 'delete_pages')) {
+        if (!auth()->user()->ability('admin', 'delete_certificates')) {
             return redirect('admin/index');
         }
 
         $page = Page::where('id', $page)->first()->delete();
 
         if ($page) {
-            return redirect()->route('admin.pages.index')->with([
+            return redirect()->route('admin.certificates.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.pages.index')->with([
+        return redirect()->route('admin.certificates.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);

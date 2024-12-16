@@ -35,6 +35,8 @@ class SponserRequest extends FormRequest
                         'coordinator_name.*' =>  'nullable',
                         'coordinator_phone' =>  'nullable',
                         'coordinator_email' =>  'nullable',
+                        'logo'              => 'nullable|mimes:jpg,jpeg,png,svg,gif,webp|max:3000',
+
 
                         // used always 
                         'status'             =>  'required',
@@ -61,6 +63,9 @@ class SponserRequest extends FormRequest
                         'coordinator_name.*' =>  'nullable',
                         'coordinator_phone' =>  'nullable',
                         'coordinator_email' =>  'nullable',
+
+                        'logo'              => 'nullable|mimes:jpg,jpeg,png,svg,gif,webp|max:3000',
+
 
                         // used always 
                         'status'             =>  'required',

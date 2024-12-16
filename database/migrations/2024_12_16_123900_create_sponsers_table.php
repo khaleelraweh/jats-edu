@@ -25,9 +25,9 @@ return new class extends Migration
 
 
 
-            $table->json('coordinator_name');
-            $table->string('coordinator_phone');
-            $table->string('coordinator_email');
+            $table->json('coordinator_name')->nullable();
+            $table->string('coordinator_phone')->nullable();
+            $table->string('coordinator_email')->nullable();
 
 
 

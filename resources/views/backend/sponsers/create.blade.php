@@ -94,7 +94,7 @@
             @endif
 
 
-            <form action="{{ route('admin.sponsers.store') }}" method="post">
+            <form action="{{ route('admin.sponsers.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">

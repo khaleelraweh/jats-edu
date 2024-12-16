@@ -12,9 +12,6 @@ use illuminate\support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 
-
-
-
 class SponserController extends Controller
 {
 

@@ -167,6 +167,23 @@
 
                         <hr>
 
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="logo"> {{ __('panel.sponser_logo') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="file-loading">
+                                    <input type="file" name="logo" id="logo" value="{{ old('logo') }}"
+                                        class="file-input-overview ">
+                                    @error('logo')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row ">
                                 <div class="col-sm-12 col-md-2 pt-3">
@@ -302,6 +319,34 @@
 @section('script')
     <script>
         $(function() {
+            $("#logo").fileinput({
+                theme: "fa5",
+                maxFileCount: 1,
+                allowedFileTypes: ['image'],
+                showCancel: true,
+                showRemove: false,
+                showUpload: false,
+                overwriteInitial: false,
+                initialPreview: [
+                    @if ($sponser->logo != '')
+                        "{{ asset('assets/sponsers/' . $sponser->logo) }}",
+                    @endif
+                ],
+                initialPreviewAsData: true,
+                initialPreviewFileType: 'image',
+                initialPreviewConfig: [
+                    @if ($sponser->logo != '')
+                        {
+                            caption: "{{ $sponser->logo }}",
+                            size: '1111',
+                            width: "120px",
+                            url: "{{ route('admin.sponsers.remove_image', ['sponser_id' => $sponser->id, '_token' => csrf_token()]) }}",
+                            key: {{ $sponser->id }}
+                        }
+                    @endif
+                ]
+            });
+
             $('.summernote').summernote({
                 tabSize: 2,
                 height: 200,

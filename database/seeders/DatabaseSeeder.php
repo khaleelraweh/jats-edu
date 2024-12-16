@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(WorldSeeder::class);
         // $this->call(WorldStatusSeeder::class);
 
-        $this->call(WorldTableSeeder::class);
+        // $this->call(WorldTableSeeder::class);
 
         $this->call(SpecializationSeeder::class);
         $this->call(EntrustSeeder::class);
@@ -77,8 +77,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StudentEvaluationSeeder::class);
         $this->call(StudentAnswerSeeder::class);
 
-        $this->call(CompanyRequestSeeder::class);
-        $this->call(CertificateIssueSeeder::class);
+        // $this->call(CompanyRequestSeeder::class);
         $this->call(InstPageVisitSeeder::class);
     }
 }

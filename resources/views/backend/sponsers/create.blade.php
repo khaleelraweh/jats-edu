@@ -51,7 +51,7 @@
 
 @section('content')
 
-    {{-- main holder page  --}}
+    {{-- main holder sponser  --}}
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -60,7 +60,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_page') }}
+                    {{ __('panel.add_new_sponser') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -72,8 +72,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.pages.index') }}">
-                            {{ __('panel.show_pages') }}
+                        <a href="{{ route('admin.sponsers.index') }}">
+                            {{ __('panel.show_sponsers') }}
                         </a>
                     </li>
                 </ul>
@@ -94,7 +94,7 @@
             @endif
 
 
-            <form action="{{ route('admin.pages.store') }}" method="post">
+            <form action="{{ route('admin.sponsers.store') }}" method="post">
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\PageRequest;
 use App\Models\Certifications;
 use App\Models\Page;
+use App\Models\User;
 use App\Models\WebMenu;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
@@ -38,8 +39,10 @@ class CertificateController extends Controller
             return redirect('admin/index');
         }
 
+        // Get active instructor
+        $students = User::WhereHasRoles('customer')->active()->get(['id', 'first_name', 'last_name']);
 
-        return view('backend.certificates.create');
+        return view('backend.certificates.create', compact('students'));
     }
 
     public function store(PageRequest $request)

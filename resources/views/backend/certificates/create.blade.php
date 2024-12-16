@@ -2,49 +2,13 @@
 
 @section('style')
     <style>
-        ul,
-        #myUL {
-            list-style-type: none;
+        .note-editor.note-airframe,
+        .note-editor.note-frame {
+            margin-bottom: 0;
         }
 
-        #myUL {
-            margin: 0;
-            padding: 0;
-        }
-
-        .caret {
-            cursor: pointer;
-            -webkit-user-select: none;
-            /* Safari 3.1+ */
-            -moz-user-select: none;
-            /* Firefox 2+ */
-            -ms-user-select: none;
-            /* IE 10+ */
-            user-select: none;
-        }
-
-        .caret::before {
-            content: "\25B6";
-            color: black;
-            display: inline-block;
-            margin-right: 6px;
-        }
-
-        .caret-down::before {
-            -ms-transform: rotate(90deg);
-            /* IE 9 */
-            -webkit-transform: rotate(90deg);
-            /* Safari */
-            '
-     transform: rotate(90deg);
-        }
-
-        .nested {
-            display: none;
-        }
-
-        .active {
-            display: block;
+        #offer_ends_group .picker--opened .picker__holder {
+            transform: translateY(-342px) perspective(600px) rotateX(0);
         }
     </style>
 @endsection
@@ -118,6 +82,24 @@
 
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
+
+                        <div class="row pt-4">
+
+                            <div class="col-md-12 col-sm-12 ">
+
+                                <label for="students"> {{ __('panel.students') }} </label>
+                                <select name="students" class="form-control select2 child">
+                                    @forelse ($students as $student)
+                                        <option value="{{ $student->id }}"
+                                            {{ in_array($student->id, old('students', [])) ? 'selected' : null }}>
+                                            {{ $student->first_name }} {{ $student->last_name }}</option>
+                                    @empty
+                                    @endforelse
+                                </select>
+                            </div>
+
+                        </div>
+
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row ">
                                 <div class="col-sm-12 col-md-2 pt-3">
@@ -139,8 +121,6 @@
                         @endforeach
 
                         <hr>
-
-
 
                     </div>
 

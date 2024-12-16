@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\CallActionsController;
 use App\Http\Controllers\Backend\CardCategoriesController;
 use App\Http\Controllers\Backend\CardCodeController;
 use App\Http\Controllers\Backend\CardController;
+use App\Http\Controllers\Backend\CertificateController;
 use App\Http\Controllers\Backend\CertificateIssuesController;
 use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\CommonQuestionController;
@@ -272,6 +273,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // ==============   sponsers Tab   ==============  //
         Route::post('sponsers/remove-image', [SponserController::class, 'remove_image'])->name('sponsers.remove_image');
         Route::resource('sponsers', SponserController::class);
+
+        // ==============   certificate Tab   ==============  //
+        Route::resource('certificates', CertificateController::class);
 
 
         // ==============  Teach Requests      ==============  //

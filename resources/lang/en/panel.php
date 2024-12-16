@@ -323,6 +323,9 @@ return [
     // ........... commons in Sponsers ....... //
     'sponser_name'                              =>  'Sponser Name',
     'sponser_address'                           =>  'Sponser Address',
+    'coordinator_name'                          =>  'Coordinator Name',
+    'coordinator_phone'                         =>  'Coordinator Phone',
+    'coordinator_email'                         =>  'Coordinator Email',
 
 
 
@@ -424,6 +427,7 @@ return [
     'location'      =>  'Location',
     'zip_code'      =>  'Zip Code',
     'po_box'        =>  'Po Box',
+    'pox'           =>  'Po Box',
 
 
     // =============  Manage Reviews ===============//

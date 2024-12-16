@@ -329,6 +329,9 @@ return [
     // ........... commons in Sponsers ....... //
     'sponser_name'                              =>  'إسم الجهة',
     'sponser_address'                           =>  'عنوان الجهة',
+    'coordinator_name'                          =>  'إسم المنسق',
+    'coordinator_phone'                         =>  'رقم المنسق',
+    'coordinator_email'                         =>  'بريد المنسق',
 
 
 
@@ -429,6 +432,7 @@ return [
     'location'                      =>  'الموقع',
     'zip_code'                      =>  'الرمز البريدي',
     'po_box'                        =>  'الصندوق البريدي',
+    'pox'                           =>  'الصندوق البريدي',
 
 
     // =============  Manage Reviews ===============//

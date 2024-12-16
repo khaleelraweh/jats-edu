@@ -23,8 +23,8 @@ return new class extends Migration
 
 
             $table->json('coordinator_name');
-            $table->json('coordinator_phone');
-            $table->json('coordinator_email');
+            $table->string('coordinator_phone');
+            $table->string('coordinator_email');
 
 
 

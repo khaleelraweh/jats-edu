@@ -179,13 +179,41 @@
                                 <label for="email"> {{ __('panel.email_address') }}</label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <input type="text" id="email" name="email" value="{{ old('email') }}"
+                                <input type="email" id="email" name="email" value="{{ old('email') }}"
                                     class="form-control">
                                 @error('email')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="pox"> {{ __('panel.pox') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="pox" name="pox" value="{{ old('pox') }}"
+                                    class="form-control">
+                                @error('pox')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="website"> {{ __('panel.website') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="website" name="website" value="{{ old('website') }}"
+                                    class="form-control">
+                                @error('website')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <hr>
 
 
 

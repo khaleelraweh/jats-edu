@@ -8,6 +8,10 @@ use App\Http\Requests\Backend\SponserRequest;
 use App\Models\Sponser;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
+use illuminate\support\Str;
+use Intervention\Image\Facades\Image;
+
+
 
 class SponserController extends Controller
 {
@@ -58,12 +62,21 @@ class SponserController extends Controller
         $input['coordinator_phone']     = $request->coordinator_phone;
         $input['coordinator_email']     = $request->coordinator_email;
 
-        $input['status']                =   $request->status;
+        $input['status']                = $request->status;
         $input['created_by']            = auth()->user()->full_name;
 
         $published_on                   = $request->published_on . ' ' . $request->published_on_time;
         $published_on                   = new DateTimeImmutable($published_on);
         $input['published_on']          = $published_on;
+
+        if ($image  =  $request->file('logo')) {
+            $file_name                  = Str::slug($request->name) . '_' . time() .  "." . $image->getClientOriginalExtension();
+            $path                       = public_path('assets/sponsers/' . $file_name);
+
+            Image::make()->save($path, 100);
+
+            $input['logo'] = $file_name;
+        }
 
         $sponser = Sponser::create($input);
 

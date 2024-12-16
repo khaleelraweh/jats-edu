@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('certifications', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name')->nullable();
+            $table->json('full_name')->nullable();
             $table->string('cert_file')->nullable(); // اسم الشهادة تكون برقم الاصدار
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('course_id')->constrained()->onDelete('cascade'); // Add this line to define the course_id column

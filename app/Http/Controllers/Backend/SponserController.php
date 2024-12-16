@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\PageRequest;
+use App\Http\Requests\Backend\SponserRequest;
 use App\Models\Sponser;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
@@ -41,26 +42,34 @@ class SponserController extends Controller
         return view('backend.sponsers.create');
     }
 
-    public function store(PageRequest $request)
+    public function store(SponserRequest $request)
     {
         if (!auth()->user()->ability('admin', 'create_sponsers')) {
             return redirect('admin/index');
         }
 
+        $input['name']                  = $request->name;
+        $input['address']               = $request->address;
+        $input['phone']                 = $request->phone;
+        $input['email']                 = $request->email;
+        $input['pox']                   = $request->pox;
+        $input['website']               = $request->website;
+        $input['views']                 = $request->views;
+        $input['coordinator_name']      = $request->coordinator_name;
+        $input['coordinator_phone']     = $request->coordinator_phone;
+        $input['coordinator_email']     = $request->coordinator_email;
 
-        $input['title'] = $request->title;
-        $input['content'] = $request->content;
+        $input['status']                =   $request->status;
+        $input['created_by']            = auth()->user()->full_name;
 
-        $input['status']            =   $request->status;
-        $input['created_by'] = auth()->user()->full_name;
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
-        $input['published_on'] = $published_on;
+        $published_on                   = $request->published_on . ' ' . $request->published_on_time;
+        $published_on                   = new DateTimeImmutable($published_on);
+        $input['published_on']          = $published_on;
 
-        $page = Page::create($input);
+        $sponser = Sponser::create($input);
 
 
-        if ($page) {
+        if ($sponser) {
             return redirect()->route('admin.sponsers.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'

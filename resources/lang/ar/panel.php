@@ -327,6 +327,9 @@ return [
     'edit_existing_sponser'                    => 'تعديل بيانات الجهة التعليمية',
 
     // ........... commons in Sponsers ....... //
+    'sponser_name'                              =>  'إسم الجهة',
+    'sponser_address'                           =>  'عنوان الجهة',
+
 
 
 

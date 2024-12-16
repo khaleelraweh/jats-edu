@@ -321,6 +321,8 @@ return [
     'edit_existing_sponser'                    => 'Edit Existing Sponser',
 
     // ........... commons in Sponsers ....... //
+    'sponser_name'                              =>  'Sponser Name',
+    'sponser_address'                           =>  'Sponser Address',
 
 
 

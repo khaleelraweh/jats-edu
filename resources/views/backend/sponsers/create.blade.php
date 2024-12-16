@@ -118,24 +118,24 @@
 
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
-                                    <div class="form-group">
-                                        <label for="title[{{ $key }}]">
-                                            {{ __('panel.title') }}
-                                            {{ __('panel.in') }} ({{ __('panel.' . $key) }})
-                                        </label>
-                                        <input type="text" name="title[{{ $key }}]"
-                                            id="title[{{ $key }}]" value="{{ old('title.' . $key) }}"
-                                            class="form-control">
-                                        @error('title.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-2 pt-3">
+                                    <label for="name[{{ $key }}]">
+                                        {{ __('panel.sponser_name') }}
+                                        {{ __('panel.in') }} ({{ __('panel.' . $key) }})
+                                    </label>
                                 </div>
-                            @endforeach
-                        </div>
+                                <div class="col-sm-12 col-md-10 pt-3">
+                                    <input type="text" name="name[{{ $key }}]" id="name[{{ $key }}]"
+                                        value="{{ old('name.' . $key) }}" class="form-control">
+                                    @error('name.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                </div>
+                            </div>
+                        @endforeach
 
 
 

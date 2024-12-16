@@ -8,7 +8,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_pages') }}
+                    {{ __('panel.manage_sponsers') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -20,13 +20,13 @@
                         @endif
                     </li>
                     <li>
-                        {{ __('panel.show_pages') }}
+                        {{ __('panel.show_sponsers') }}
                     </li>
                 </ul>
             </div>
             <div class="ml-auto">
-                @ability('admin', 'create_pages')
-                    <a href="{{ route('admin.pages.create') }}" class="btn btn-primary">
+                @ability('admin', 'create_sponsers')
+                    <a href="{{ route('admin.sponsers.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        {{-- @include('backend.pages.filter.filter') --}}
+        {{-- @include('backend.sponsers.filter.filter') --}}
 
         <div class="card-body">
 
@@ -56,47 +56,47 @@
 
 
                 <tbody>
-                    @forelse ($pages as $page)
+                    @forelse ($sponsers as $sponser)
                         <tr>
                             <td>
-                                {{ $page->title }}
+                                {{ $sponser->title }}
                                 <br>
-                                @if ($page->parent != null)
+                                @if ($sponser->parent != null)
                                     <small
                                         style="background: #17a2b8;color:white;padding:1px 3px;border-radius: 5px; font-size:11px">
                                         {{-- تابع للقائمة: --}}
-                                        <span>{{ $page->parent?->title }}</span> </small>
+                                        <span>{{ $sponser->parent?->title }}</span> </small>
                                 @endif
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $page->created_by }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $sponser->created_by }}</td>
                             <td>
-                                <span class="btn btn-round rounded-pill btn-success btn-xs">{{ $page->status() }}</span>
+                                <span class="btn btn-round rounded-pill btn-success btn-xs">{{ $sponser->status() }}</span>
                             </td>
                             <td>
-                                {{ $page->views }}
+                                {{ $sponser->views }}
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $page->created_at }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $sponser->created_at }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.pages.edit', $page->id) }}" class="btn btn-primary"
-                                        title="Edit the page">
+                                    <a href="{{ route('admin.sponsers.edit', $sponser->id) }}" class="btn btn-primary"
+                                        title="Edit the sponser">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                        data-copy-text="pages/{{ $page->slug }}" title="Copy the link">
+                                        data-copy-text="sponsers/{{ $sponser->slug }}" title="Copy the link">
                                         <i class="far fa-copy"></i>
                                     </a>
                                     <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
 
                                     <a href="javascript:void(0);"
-                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $page->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger" title="Delete the page">
+                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $sponser->id }}').submit();}else{return false;}"
+                                        class="btn btn-danger" title="Delete the sponser">
                                         <i class="fa fa-trash"></i>
                                     </a>
 
                                 </div>
-                                <form action="{{ route('admin.pages.destroy', $page->id) }}" method="post" class="d-none"
-                                    id="delete-product-category-{{ $page->id }}">
+                                <form action="{{ route('admin.sponsers.destroy', $sponser->id) }}" method="post"
+                                    class="d-none" id="delete-product-category-{{ $sponser->id }}">
                                     @csrf
                                     @method('DELETE')
                                 </form>

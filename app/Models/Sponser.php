@@ -69,4 +69,9 @@ class Sponser extends Model
     {
         return $this->status ? __('panel.status_active') : __('panel.status_inactive');
     }
+
+    public function certificates()
+    {
+        return $this->hasMany(Sponser::class);
+    }
 }

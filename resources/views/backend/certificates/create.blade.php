@@ -240,6 +240,10 @@
 
                 afterSelect: function(data) {
                     $('#user_id').val(data.id);
+                    // Update full_name fields for each language
+                    @foreach (config('locales.languages') as $key => $val)
+                        $('#full_name\\[{{ $key }}\\]').val(data.full_name);
+                    @endforeach
                 }
 
             });

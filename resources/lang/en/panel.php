@@ -310,6 +310,19 @@ return [
     // ........... commons in Pages ....... //
 
 
+    ########################### Manage Sponsers  ##################################
+
+    // =============  Manage Sponsers  ===============//
+    'manage_sponsers'                          => 'Manage Pages',
+
+    // --------------- Sponsers  --------------//
+    'show_sponsers'                            => 'Sponsers',
+    'add_new_sponser'                          => 'Add New Sponser',
+    'edit_existing_sponser'                    => 'Edit Existing Sponser',
+
+    // ........... commons in Sponsers ....... //
+
+
 
 
     ##############################################################

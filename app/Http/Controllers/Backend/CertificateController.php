@@ -8,6 +8,7 @@ use App\Http\Requests\Backend\PageRequest;
 use App\Models\Certifications;
 use App\Models\Course;
 use App\Models\Page;
+use App\Models\Sponser;
 use App\Models\User;
 use App\Models\WebMenu;
 use Carbon\Carbon;
@@ -47,8 +48,9 @@ class CertificateController extends Controller
         }
 
         $courses = Course::query()->active()->get(['id', 'title']);
+        $sponsers = Sponser::query()->active()->get(['id', 'name']);
 
-        return view('backend.certificates.create', compact('courses'));
+        return view('backend.certificates.create', compact('courses', 'sponsers'));
     }
 
     public function store(CertificateRequest $request)

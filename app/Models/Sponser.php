@@ -74,4 +74,9 @@ class Sponser extends Model
     {
         return $this->hasMany(Sponser::class);
     }
+
+    public function scopeActive($query)
+    {
+        return $query->whereStatus(true);
+    }
 }

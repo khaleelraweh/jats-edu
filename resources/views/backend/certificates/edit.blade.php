@@ -131,7 +131,8 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="input-group flatpickr" id="flatpickr-datetime">
-                                    <input type="text" name="date_of_issue" value="{{ old('date_of_issue') }}"
+                                    <input type="text" name="date_of_issue"
+                                        value="{{ old('date_of_issue', $certificate->date_of_issue ? \Carbon\Carbon::parse($certificate->date_of_issue)->format('Y/m/d h:i A') : '') }}"
                                         class="form-control" placeholder="Select date" data-input>
                                     <span class="input-group-text input-group-addon" data-toggle>
                                         <i class="fas fa-calendar"></i>
@@ -151,7 +152,7 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="text" class="form-control " name="cert_code" id="cert_code"
-                                    value="{{ old('cert_code') }}">
+                                    value="{{ old('cert_code', $certificate->cert_code) }}">
                                 @error('cert_code')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -181,7 +182,8 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="input-group flatpickr" id="flatpickr-datetime">
-                                    <input type="text" name="published_on" value="{{ old('published_on') }}"
+                                    <input type="text" name="published_on"
+                                        value="{{ old('published_on', $certificate->published_on ? \Carbon\Carbon::parse($certificate->published_on)->format('Y/m/d h:i A') : '') }}"
                                         class="form-control" placeholder="Select date" data-input>
                                     <span class="input-group-text input-group-addon" data-toggle>
                                         <i data-feather="calendar"></i>
@@ -202,14 +204,14 @@
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="status" id="status_active"
-                                        value="1" {{ old('status', '1') == '1' ? 'checked' : '' }}>
+                                        value="1" {{ old('status', $certificate->status) == '1' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="status_active">
                                         {{ __('panel.status_active') }}
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="status" id="status_inactive"
-                                        value="0" {{ old('status') == '0' ? 'checked' : '' }}>
+                                        value="0" {{ old('status', $certificate->status) == '0' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="status_inactive">
                                         {{ __('panel.status_inactive') }}
                                     </label>
@@ -251,50 +253,4 @@
         </div>
 
     </div>
-@endsection
-
-
-@section('script')
-    <script>
-        $(function() {
-            $('.summernote').summernote({
-                tabSize: 2,
-                height: 200,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
-
-            $('#published_on').pickadate({
-                format: 'yyyy-mm-dd',
-                min: new Date(),
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
-                clear: 'Clear',
-                close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
-            });
-
-            var publishedOn = $('#published_on').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
-
-            // when change date 
-            $('#published_on').change(function() {
-                selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
-
-            });
-
-            $('#published_on_time').pickatime({
-                clear: ''
-            });
-
-        });
-    </script>
 @endsection

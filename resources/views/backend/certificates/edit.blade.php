@@ -105,7 +105,6 @@
                         <hr>
 
                         <div class="row">
-
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="course_id"> {{ __('panel.course_name') }} </label>
                             </div>
@@ -115,14 +114,16 @@
                                     <option value="">{{ __('panel.select_course') }}</option>
                                     @forelse ($courses as $course)
                                         <option value="{{ $course->id }}"
-                                            {{ in_array($course->id, old('course_id', [])) ? 'selected' : null }}>
-                                            {{ $course->title }}</option>
+                                            {{ old('course_id', $certificate->course_id) == $course->id ? 'selected' : '' }}>
+                                            {{ $course->title }}
+                                        </option>
                                     @empty
+                                        <option value="">{{ __('panel.no_courses_available') }}</option>
                                     @endforelse
                                 </select>
                             </div>
-
                         </div>
+
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">

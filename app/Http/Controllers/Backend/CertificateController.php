@@ -125,6 +125,8 @@ class CertificateController extends Controller
         $certificate = Certifications::where('id', $certificate)->first();
         $courses = Course::query()->active()->get(['id', 'title']);
 
+
+
         return view('backend.certificates.edit', compact('certificate', 'courses'));
     }
 

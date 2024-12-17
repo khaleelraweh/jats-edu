@@ -181,7 +181,8 @@ class SponserController extends Controller
         $sponser = Sponser::where('id', $sponser)->first();
 
 
-        if (File::exists('assets/sponsers/' . $sponser->logo)) {
+        if (!empty($sponser->logo) && File::exists('assets/sponsers/' . $sponser->logo)) {
+
             unlink('assets/sponsers/' . $sponser->logo);
         }
 

@@ -161,9 +161,10 @@ class CertificateController extends Controller
             $file_name = Str::slug($request->cert_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
 
             $path = public_path('assets/certifications/' . $file_name);
-            Image::make($image->getRealPath())->resize(500, null, function ($constraint) {
+
+            Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save($path);
+            })->save($path, 100);
 
             $input['cert_file'] = $file_name;
         }
@@ -190,30 +191,26 @@ class CertificateController extends Controller
             return redirect('admin/index');
         }
 
-        $certificate = Certifications::where('id', $certificate)->first();
+        $certificate = Certifications::findOrFail($certificate);
 
-
-        if (File::exists('assets/certifications/' . $certificate->cert_file)) {
+        // Check if `cert_file` is not empty and the file exists
+        if (!empty($certificate->cert_file) && File::exists('assets/certifications/' . $certificate->cert_file)) {
             unlink('assets/certifications/' . $certificate->cert_file);
         }
 
+        // Mark as deleted by the current user
         $certificate->deleted_by = auth()->user()->full_name;
         $certificate->save();
 
+        // Soft delete the record
         $certificate->delete();
 
-        if ($certificate) {
-            return redirect()->route('admin.certificates.index')->with([
-                'message' => __('panel.deleted_successfully'),
-                'alert-type' => 'success'
-            ]);
-        }
-
         return redirect()->route('admin.certificates.index')->with([
-            'message' => __('panel.something_was_wrong'),
-            'alert-type' => 'danger'
+            'message' => __('panel.deleted_successfully'),
+            'alert-type' => 'success'
         ]);
     }
+
 
     public function remove_image(Request $request)
     {

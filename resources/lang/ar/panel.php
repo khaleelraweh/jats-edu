@@ -1022,6 +1022,8 @@ return [
     'edit_existing_certificate_request'            => 'تعديل طلب شهادة',
 
     // ---------------- common in certificate requests ------------///
+    'whatsup_phone'                                 =>  'تلفون الواتس اب',
+
 
 
 

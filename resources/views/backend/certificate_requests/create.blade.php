@@ -179,7 +179,36 @@
                             </div>
                         </div>
 
+                        <hr>
 
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="nationality">
+                                    {{ __('panel.phone_number') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" class="form-control " name="phone" id="phone"
+                                    value="{{ old('phone') }}" placeholder="{{ __('panel.phone') }}">
+                                @error('phone')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="nationality">
+                                    {{ __('panel.whatsup_phone') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" class="form-control " name="whatsup_phone" id="whatsup_phone"
+                                    value="{{ old('whatsup_phone') }}" placeholder="{{ __('panel.whatsup_phone') }}">
+                                @error('whatsup_phone')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <hr>
 

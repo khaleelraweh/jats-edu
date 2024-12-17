@@ -1031,6 +1031,7 @@ return [
     'edit_existing_certificate_request'            => 'Edit Existing Certificate Request',
 
     // ---------------- common in certificate requests ------------///
+    'whatsup_phone'                                 =>  'Whatsup phone',
 
 
     ##############################################################

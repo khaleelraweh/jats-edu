@@ -45,7 +45,7 @@ class CertificateRequestController extends Controller
 
         $courses = Course::query()->active()->get(['id', 'title']);
         $sponsers = Sponser::query()->active()->get(['id', 'name']);
-        $countries = Country::query()->active()->get(['id', 'name']);
+        $countries = Country::query()->active()->get(['id', 'name', 'translations']);
 
         return view('backend.certificate_requests.create', compact('courses', 'sponsers', 'countries'));
     }

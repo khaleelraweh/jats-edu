@@ -149,7 +149,9 @@
                                             @forelse ($countries as $country)
                                                 <option value="{{ $country->id }}"
                                                     {{ old('country_id') == $country->id ? 'selected' : null }}>
-                                                    {{ $country->name }}</option>
+                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
+
+                                                </option>
                                             @empty
                                             @endforelse
                                         </select>

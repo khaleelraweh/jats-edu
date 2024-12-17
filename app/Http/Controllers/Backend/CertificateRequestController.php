@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Altwaireb\World\Models\Country;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\CertificateRequest;
 use App\Models\Certifications;
@@ -44,8 +45,9 @@ class CertificateRequestController extends Controller
 
         $courses = Course::query()->active()->get(['id', 'title']);
         $sponsers = Sponser::query()->active()->get(['id', 'name']);
+        $countries = Country::query()->active()->get(['id', 'name']);
 
-        return view('backend.certificate_requests.create', compact('courses', 'sponsers'));
+        return view('backend.certificate_requests.create', compact('courses', 'sponsers', 'countries'));
     }
 
     public function store(CertificateRequest $request)

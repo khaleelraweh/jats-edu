@@ -144,18 +144,19 @@
                                     </div>
                                     <div class="col-sm-12 col-md-3">
 
-                                        <select id="country" name="country" class="form-control">
+                                        <select name="country_id" id="country_id" class="form-control">
                                             <option value="">{{ __('panel.country') }}</option>
-                                            @foreach (getCountries() as $country)
+                                            @forelse ($countries as $country)
                                                 <option value="{{ $country->id }}"
-                                                    {{ old('country') == $country->id ? 'selected' : '' }}>
-                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
-                                                </option>
-                                            @endforeach
+                                                    {{ old('country_id') == $country->id ? 'selected' : null }}>
+                                                    {{ $country->name }}</option>
+                                            @empty
+                                            @endforelse
                                         </select>
-                                        @error('country')
-                                            <span class="text-danger">{{ $message }}</span>
+                                        @error('country_id')
+                                            <div class="text-danger">{{ $message }}</div>
                                         @enderror
+
                                     </div>
                                     <div class="col-sm-12 col-md-3">
 

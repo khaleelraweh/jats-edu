@@ -116,16 +116,16 @@ class CertificateController extends Controller
         return view('backend.certificates.show');
     }
 
-    public function edit($page)
+    public function edit($certificate)
     {
         if (!auth()->user()->ability('admin', 'update_certificates')) {
             return redirect('admin/index');
         }
 
+        $certificate = Certifications::where('id', $certificate)->first();
+        $courses = Course::query()->active()->get(['id', 'title']);
 
-        $page = Page::where('id', $page)->first();
-
-        return view('backend.certificates.edit', compact('page'));
+        return view('backend.certificates.edit', compact('certificate', 'courses'));
     }
 
     public function update(PageRequest $request, $page)

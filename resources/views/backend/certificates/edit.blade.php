@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    {{-- main holder page  --}}
+    {{-- main holder certificate  --}}
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -10,7 +10,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_page') }}
+                    {{ __('panel.edit_existing_certificate') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -22,8 +22,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.pages.index') }}">
-                            {{ __('panel.show_pages') }}
+                        <a href="{{ route('admin.certificates.index') }}">
+                            {{ __('panel.show_certificates') }}
                         </a>
                     </li>
                 </ul>
@@ -44,7 +44,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.pages.update', $page->id) }}" method="post">
+            <form action="{{ route('admin.certificates.update', $certificate->id) }}" method="post">
                 @csrf
                 @method('PATCH')
 
@@ -52,14 +52,8 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
                             type="button" role="tab" aria-controls="content"
-                            aria-selected="true">{{ __('panel.content_tab') }}</button>
-                    </li>
-
-
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
-                            type="button" role="tab" aria-controls="published"
-                            aria-selected="false">{{ __('panel.published_tab') }}</button>
+                            aria-selected="true">{{ __('panel.content_tab') }}
+                        </button>
                     </li>
 
                 </ul>
@@ -69,118 +63,188 @@
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
 
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
-                                    <div class="form-group">
-                                        <label for="title[{{ $key }}]">
-                                            {{ __('panel.title') }}
-                                            {{ __('panel.in') }}
-                                            ({{ __('panel.' . $key) }})
-                                        </label>
-                                        <input type="text" name="title[{{ $key }}]"
-                                            id="title[{{ $key }}]"
-                                            value="{{ old('title.' . $key, $page->getTranslation('title', $key)) }}"
-                                            class="form-control">
-                                        @error('title.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
-                                    <div class="form-group">
-                                        <label for="content[{{ $key }}]">
-                                            {{ __('panel.f_content') }}
-                                            {{ __('panel.in') }}
-                                            ({{ __('panel.' . $key) }})
-                                        </label>
-                                        <textarea id="tinymceExample" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $page->getTranslation('content', $key)) !!}</textarea>
-
-
-
-                                        @error('content.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-
-                    </div>
-
-                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <div class="form-group">
-                                    <label for="published_on"> {{ __('panel.published_date') }}</label>
-                                    <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
-                                    @error('published_on')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="user_id">{{ __('panel.student_account') }}</label>
                             </div>
-
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" class="form-control typeahead" name="customer_name" id="customer_name"
+                                    value="{{ old('customer_name', $certificate->user->full_name) }}"
+                                    placeholder="{{ __('panel.type_student_name_or_email') }}" readonly>
+                                <input type="hidden" class="form-control" name="user_id" id="user_id"
+                                    value="{{ old('user_id', $certificate->user_id) }}" readonly>
+                                @error('user_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <div class="form-group">
-                                    <label for="published_on_time"> {{ __('panel.published_time') }}</label>
-                                    <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', now()->format('h:m A')) }}"
+                        <hr>
+
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-2 pt-3">
+                                    <label for="full_name[{{ $key }}]">
+                                        {{ __('panel.full_name') }}
+                                        {{ __('panel.in') }} ({{ __('panel.' . $key) }})
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 col-md-10 pt-3">
+                                    <input type="text" name="full_name[{{ $key }}]"
+                                        id="full_name[{{ $key }}]"
+                                        value="{{ old('full_name.' . $key, $certificate->getTranslation('full_name', $key)) }}"
                                         class="form-control">
-                                    @error('published_on_time')
+                                    @error('full_name.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
+
                                 </div>
+                            </div>
+                        @endforeach
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="course_id"> {{ __('panel.course_name') }} </label>
+                            </div>
+
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <select name="course_id" id="course_id" class="form-control select2 child">
+                                    <option value="">{{ __('panel.select_course') }}</option>
+                                    @forelse ($courses as $course)
+                                        <option value="{{ $course->id }}"
+                                            {{ in_array($course->id, old('course_id', [])) ? 'selected' : null }}>
+                                            {{ $course->title }}</option>
+                                    @empty
+                                    @endforelse
+                                </select>
                             </div>
 
                         </div>
 
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="flatpickr-datetime"> {{ __('panel.date_of_issue') }} </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="date_of_issue" value="{{ old('date_of_issue') }}"
+                                        class="form-control" placeholder="Select date" data-input>
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i class="fas fa-calendar"></i>
+                                    </span>
+                                </div>
+                                @error('date_of_issue')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
 
+                        <hr>
 
                         <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                <label for="status" class="control-label col-md-2 col-sm-12 ">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="cert_code">{{ __('panel.certificate_code') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" class="form-control " name="cert_code" id="cert_code"
+                                    value="{{ old('cert_code') }}">
+                                @error('cert_code')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="cert_file"> {{ __('panel.certification_file') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="file-loading">
+                                    <input type="file" name="cert_file" id="cert_file" value="{{ old('cert_file') }}"
+                                        class="file-input-overview ">
+                                    @error('cert_file')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                {{ __('panel.published_on') }}
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="published_on" value="{{ old('published_on') }}"
+                                        class="form-control" placeholder="Select date" data-input>
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                                @error('published_on')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="status" class="control-label">
                                     <span>{{ __('panel.status') }}</span>
                                 </label>
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_active"
+                                        value="1" {{ old('status', '1') == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_active">
                                         {{ __('panel.status_active') }}
-                                    </option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_inactive"
+                                        value="0" {{ old('status') == '0' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_inactive">
                                         {{ __('panel.status_inactive') }}
-                                    </option>
-                                </select>
+                                    </label>
+                                </div>
                                 @error('status')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
 
+                        <hr>
 
                     </div>
 
 
+
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group pt-3">
-                                <button type="submit" name="submit" class="btn btn-primary">
-                                    {{ __('panel.update_data') }}
-                                </button>
-                            </div>
+                        <div class="col-sm-12 col-md-2 pt-3 d-none d-md-block">
+                        </div>
+                        <div class="col-sm-12 col-md-10 pt-3">
+
+                            <button type="submit" name="submit" class="btn btn-primary">
+                                <i class="icon-lg  me-2" data-feather="corner-down-left"></i>
+                                {{ __('panel.save_data') }}
+                            </button>
+
+                            <a href="{{ route('admin.certificates.index') }}" name="submit"
+                                class=" btn btn-outline-danger">
+                                <i class="icon-lg  me-2" data-feather="x"></i>
+                                {{ __('panel.cancel') }}
+                            </a>
+
                         </div>
                     </div>
 
                 </div>
-
-
 
             </form>
         </div>

@@ -193,17 +193,20 @@
                             </div>
                         </div>
 
-                    </div>
-
-                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
+                        <hr>
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="published_on"> {{ __('panel.published_date') }}</label>
+                                {{ __('panel.published_on') }}
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <input type="text" id="published_on" name="published_on"
-                                    value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="published_on" value="{{ old('published_on') }}"
+                                        class="form-control" placeholder="Select date" data-input>
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
                                 @error('published_on')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -212,46 +215,53 @@
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="published_on_time"> {{ __('panel.published_time') }}</label>
+                                <label for="status" class="control-label">
+                                    <span>{{ __('panel.status') }}</span>
+                                </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <input type="text" id="published_on_time" name="published_on_time"
-                                    value="{{ old('published_on_time', now()->format('h:m A')) }}" class="form-control">
-                                @error('published_on_time')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="status"> {{ __('panel.status') }}</label>
-                            </div>
-                            <div class="col-sm-12 col-md-10 pt-3">
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_active"
+                                        value="1" {{ old('status', '1') == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_active">
                                         {{ __('panel.status_active') }}
-                                    </option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_inactive"
+                                        value="0" {{ old('status') == '0' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_inactive">
                                         {{ __('panel.status_inactive') }}
-                                    </option>
-                                </select>
+                                    </label>
+                                </div>
                                 @error('status')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
 
+                        <hr>
+
                     </div>
 
+
+
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group pt-3 ">
-                                <button type="submit" name="submit" class="btn btn-primary">
-                                    {{ __('panel.save_data') }}
-                                </button>
-                            </div>
+                        <div class="col-sm-12 col-md-2 pt-3 d-none d-md-block">
+                        </div>
+                        <div class="col-sm-12 col-md-10 pt-3">
+
+                            <button type="submit" name="submit" class="btn btn-primary">
+                                <i class="icon-lg  me-2" data-feather="corner-down-left"></i>
+                                {{ __('panel.save_data') }}
+                            </button>
+
+                            <a href="{{ route('admin.certificates.index') }}" name="submit"
+                                class=" btn btn-outline-danger">
+                                <i class="icon-lg  me-2" data-feather="x"></i>
+                                {{ __('panel.cancel') }}
+                            </a>
+
                         </div>
                     </div>
 

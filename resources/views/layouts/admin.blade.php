@@ -51,15 +51,15 @@
         href="{{ asset('backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css') }}" />
     <link
         href="{{ asset('backend/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                                                                                                                                type="text/css') }}" />
+                                                                                                                                                                                                                                                                                                                                                                                type="text/css') }}" />
     <link
         href="{{ asset('backend/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                                                                                                                                type="text/css') }}" />
+                                                                                                                                                                                                                                                                                                                                                                                type="text/css') }}" />
 
     <!-- Responsive datatable examples -->
     <link
         href="{{ asset('backend/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                                                                                                                                type="text/css') }}" />
+                                                                                                                                                                                                                                                                                                                                                                                type="text/css') }}" />
 
     {{-- end  new  --}}
 
@@ -70,6 +70,14 @@
 
     <!-- Icons Css -->
     <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{{ asset('backend/fonts/feather-font/css/iconfont.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/vendor/flag-icon-css/css/flag-icon.min.css') }}">
+    <!-- endinject -->
+
+
     <!-- App Css-->
     <link href="<?php echo asset('backend/css/app' . $dark . $rtl . '.min.css'); ?>" id="app-style" rel="stylesheet" type="text/css">
 
@@ -192,6 +200,12 @@
     <script src="{{ asset('backend/js/flatpickr.js') }}"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ar.js"></script>
     <!-- End plugin js for this page -->
+
+
+    <!-- inject:js -->
+    <script src="{{ asset('backend/vendor/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('backend/js/template.js') }}"></script>
+    <!-- endinject -->
 
 
 

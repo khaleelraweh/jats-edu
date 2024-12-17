@@ -127,16 +127,20 @@
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="course_id">Courses</label>
+                                <label for="course_id">{{ __('panel.courses') }}</label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <select name="course_id" id="course_id" class="form-control">
-                                </select>
+                                <input type="text" class="form-control typeahead2" name="course_name" id="course_name"
+                                    value="{{ old('course_name', request()->input('course_name')) }}"
+                                    placeholder="{{ __('panel.type_student_name_or_email') }}">
+                                <input type="hidden" class="form-control" name="course_id" id="course_id"
+                                    value="{{ old('course_id', request()->input('course_id')) }}" readonly>
                                 @error('course_id')
-                                    <div class="text-danger">{{ $message }}</div>
+                                    <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
+
                     </div>
 
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
@@ -242,6 +246,29 @@
 
             });
 
+            $(".typeahead2").typeahead({
+                autoSelect: true,
+                minLength: 3,
+                // delay: 400,
+                delay: 200,
+                displayText: function(item) {
+                    return item.full_name + ' - ' + item.email;
+                },
+                source: function(query, process) {
+                    return $.get("{{ route('admin.courses.get_courses') }}", {
+                        'query': query
+                    }, function(data) {
+                        return process(data);
+                    });
+                },
+
+                afterSelect: function(data) {
+                    $('#course_id').val(data.id);
+
+                }
+
+            });
+
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
                 min: new Date(),
@@ -273,28 +300,6 @@
             });
 
 
-            $("#user_id").change(function() {
-                populateCourses();
-                return false;
-            });
-
-
-            function populateCourses() {
-                let userIdVal = $("#user_id").val() != null ? $("#user_id").val() :
-                    '{{ old('user_id') }}';
-                $.get("{{ route('admin.courses.get_courses') }}", {
-                    user_id: userIdVal
-                }, function(data) {
-                    $('option', $("#course_id")).remove();
-                    $("#course_id").append($('<option></option>').val('').html('---'));
-                    $.each(data, function(val, text) {
-                        let selectVal = text.id == '{{ old('course_id') }}' ? "selected" : "";
-                        $("#course_id").append($('<option' + selectVal + '></option>').val(text.id)
-                            .html(text.title));
-                    });
-                }, "json");
-
-            }
 
 
 

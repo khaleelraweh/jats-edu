@@ -1020,6 +1020,17 @@ return [
     'certificate_not_found'             =>  'Certificate not found',
 
 
+    ##############################################################
+
+    // =============  Manage Certificate requests  ===============//
+    'manage_certificate_requests'                => 'Manage Certificate Requests',
+
+    // --------------- Certificate requests  --------------//
+    'show_certificate_requests'                   => 'Certificate Requests',
+    'add_new_certificate_request'                  => 'Add New Certificate',
+    'edit_existing_certificate_request'            => 'Edit Existing Certificate Request',
+
+    // ---------------- common in certificate requests ------------///
 
 
     ##############################################################

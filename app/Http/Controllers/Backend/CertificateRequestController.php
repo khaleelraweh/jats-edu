@@ -19,11 +19,11 @@ class CertificateRequestController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_certificates , show_certificates')) {
+        if (!auth()->user()->ability('admin', 'manage_certificate_requests , show_certificate_requests')) {
             return redirect('admin/index');
         }
 
-        $certificates = Certifications::query()
+        $certificate_requests = Certifications::query()
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -33,12 +33,12 @@ class CertificateRequestController extends Controller
             ->orderBy(\request()->sort_by ?? 'published_on', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
 
-        return view('backend.certificates.index', compact('certificates'));
+        return view('backend.certificate_requests.index', compact('certificate_requests'));
     }
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_certificates')) {
+        if (!auth()->user()->ability('admin', 'create_certificate_requests')) {
             return redirect('admin/index');
         }
 
@@ -50,7 +50,7 @@ class CertificateRequestController extends Controller
 
     public function store(CertificateRequest $request)
     {
-        if (!auth()->user()->ability('admin', 'create_certificates')) {
+        if (!auth()->user()->ability('admin', 'create_certificate_requests')) {
             return redirect('admin/index');
         }
 
@@ -108,7 +108,7 @@ class CertificateRequestController extends Controller
 
     public function show($id)
     {
-        if (!auth()->user()->ability('admin', 'display_certificates')) {
+        if (!auth()->user()->ability('admin', 'display_certificate_requests')) {
             return redirect('admin/index');
         }
         return view('backend.certificates.show');
@@ -116,7 +116,7 @@ class CertificateRequestController extends Controller
 
     public function edit($certificate)
     {
-        if (!auth()->user()->ability('admin', 'update_certificates')) {
+        if (!auth()->user()->ability('admin', 'update_certificate_requests')) {
             return redirect('admin/index');
         }
 
@@ -188,7 +188,7 @@ class CertificateRequestController extends Controller
 
     public function destroy($certificate)
     {
-        if (!auth()->user()->ability('admin', 'delete_certificates')) {
+        if (!auth()->user()->ability('admin', 'delete_certificate_requests')) {
             return redirect('admin/index');
         }
 
@@ -216,7 +216,7 @@ class CertificateRequestController extends Controller
     public function remove_image(Request $request)
     {
 
-        if (!auth()->user()->ability('admin', 'delete_certificates')) {
+        if (!auth()->user()->ability('admin', 'delete_certificate_requests')) {
             return redirect('admin/index');
         }
 

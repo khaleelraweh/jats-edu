@@ -72,7 +72,12 @@ class Sponser extends Model
 
     public function certificates()
     {
-        return $this->hasMany(Sponser::class);
+        return $this->hasMany(Certifications::class);
+    }
+
+    public function certificate_requests()
+    {
+        return $this->hasMany(CertificateRequest::class);
     }
 
     public function scopeActive($query)

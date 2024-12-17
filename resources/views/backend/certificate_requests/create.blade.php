@@ -2,7 +2,7 @@
 
 @section('content')
 
-    {{-- main holder certificate  --}}
+    {{-- main holder certificate_request  --}}
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -11,7 +11,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_certificate') }}
+                    {{ __('panel.add_new_certificate_request') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -23,8 +23,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.certificates.index') }}">
-                            {{ __('panel.show_certificates') }}
+                        <a href="{{ route('admin.certificate_requests.index') }}">
+                            {{ __('panel.show_certificate_requests') }}
                         </a>
                     </li>
                 </ul>
@@ -45,7 +45,7 @@
             @endif
 
 
-            <form action="{{ route('admin.certificates.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.certificate_requests.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -101,47 +101,28 @@
                             </div>
                         @endforeach
 
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                {{ __('panel.place_of_birth') }}
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="place_of_birth" value="{{ old('place_of_birth') }}"
+                                        class="form-control" placeholder="Select date" data-input>
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                                @error('place_of_birth')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <hr>
 
-                        {{-- <div class="row">
 
-                            <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="course_id"> {{ __('panel.course_name') }} </label>
-                            </div>
 
-                            <div class="col-sm-12 col-md-10 pt-3">
-                                <select name="course_id" id="course_id" class="form-control select2 child">
-                                    <option value="">{{ __('panel.select_course') }}</option>
-                                    @forelse ($courses as $course)
-                                        <option value="{{ $course->id }}"
-                                            {{ in_array($course->id, old('course_id', [])) ? 'selected' : null }}>
-                                            {{ $course->title }}</option>
-                                    @empty
-                                    @endforelse
-                                </select>
-                            </div>
-
-                        </div> --}}
-
-                        {{-- <div class="row">
-                            <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="course_id"> {{ __('panel.course_name') }} </label>
-                            </div>
-
-                            <div class="col-sm-12 col-md-10 pt-3">
-                                <select name="course_id" id="course_id" class="form-control select2 child">
-                                    <option value="">{{ __('panel.select_course') }}</option>
-                                    @forelse ($courses as $course)
-                                        <option value="{{ $course->id }}"
-                                            {{ old('course_id', $certificate->course_id ?? '') == $course->id ? 'selected' : '' }}>
-                                            {{ $course->title }}
-                                        </option>
-                                    @empty
-                                        <option value="">{{ __('panel.no_courses_available') }}</option>
-                                    @endforelse
-                                </select>
-                            </div>
-                        </div> --}}
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
@@ -153,7 +134,7 @@
                                     <option value="">{{ __('panel.select_course') }}</option>
                                     @forelse ($courses as $course)
                                         <option value="{{ $course->id }}"
-                                            {{ (old('course_id') ?? ($certificate->course_id ?? '')) == $course->id ? 'selected' : '' }}>
+                                            {{ (old('course_id') ?? ($certificate_request->course_id ?? '')) == $course->id ? 'selected' : '' }}>
                                             {{ $course->title }}
                                         </option>
                                     @empty
@@ -208,7 +189,7 @@
                                     <option value="">{{ __('panel.select_sponser') }}</option>
                                     @forelse ($sponsers as $sponser)
                                         <option value="{{ $sponser->id }}"
-                                            {{ (old('sponser_id') ?? ($certificate->sponser_id ?? '')) == $sponser->id ? 'selected' : '' }}>
+                                            {{ (old('sponser_id') ?? ($certificate_request->sponser_id ?? '')) == $sponser->id ? 'selected' : '' }}>
                                             {{ $sponser->name }}
                                         </option>
                                     @empty
@@ -285,7 +266,6 @@
                     </div>
 
 
-
                     <div class="row">
                         <div class="col-sm-12 col-md-2 pt-3 d-none d-md-block">
                         </div>
@@ -296,7 +276,7 @@
                                 {{ __('panel.save_data') }}
                             </button>
 
-                            <a href="{{ route('admin.certificates.index') }}" name="submit"
+                            <a href="{{ route('admin.certificate_requests.index') }}" name="submit"
                                 class=" btn btn-outline-danger">
                                 <i class="icon-lg  me-2" data-feather="x"></i>
                                 {{ __('panel.cancel') }}

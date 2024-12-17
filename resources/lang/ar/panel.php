@@ -1011,6 +1011,17 @@ return [
 
 
 
+    ##############################################################
+
+    // =============  Manage Certificate requests  ===============//
+    'manage_certificate_requests'                => 'إدارة طلبات الشهائد',
+
+    // --------------- Certificate requests  --------------//
+    'show_certificate_requests'                   => 'طلبات الشهائد',
+    'add_new_certificate_request'                  => 'إضافة طلب شهادة جديد',
+    'edit_existing_certificate_request'            => 'تعديل طلب شهادة',
+
+    // ---------------- common in certificate requests ------------///
 
 
 

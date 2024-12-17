@@ -8,7 +8,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_certificates') }}
+                    {{ __('panel.manage_certificate_requests') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -20,13 +20,13 @@
                         @endif
                     </li>
                     <li>
-                        {{ __('panel.show_certificates') }}
+                        {{ __('panel.show_certificate_requests') }}
                     </li>
                 </ul>
             </div>
             <div class="ml-auto">
-                @ability('admin', 'create_certificates')
-                    <a href="{{ route('admin.certificates.create') }}" class="btn btn-primary">
+                @ability('admin', 'create_certificate_requests')
+                    <a href="{{ route('admin.certificate_requests.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        {{-- @include('backend.certificates.filter.filter') --}}
+        {{-- @include('backend.certificate_requests.filter.filter') --}}
 
         <div class="card-body">
 
@@ -55,40 +55,42 @@
 
 
                 <tbody>
-                    @forelse ($certificates as $certificate)
+                    @forelse ($certificate_requests as $certificate_request)
                         <tr>
                             <td>
-                                {{ $certificate->full_name }}
+                                {{ $certificate_request->full_name }}
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $certificate->course->title }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $certificate_request->course->title }}</td>
                             <td>
                                 <span class="btn btn-round rounded-pill btn-success btn-xs">
-                                    {{ $certificate->status() }}
+                                    {{ $certificate_request->status() }}
                                 </span>
                             </td>
 
-                            <td class="d-none d-sm-table-cell">{{ $certificate->created_at }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $certificate_request->created_at }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.certificates.edit', $certificate->id) }}"
-                                        class="btn btn-primary" title="Edit the certificate">
+                                    <a href="{{ route('admin.certificate_requests.edit', $certificate_request->id) }}"
+                                        class="btn btn-primary" title="Edit the certificate_request">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                        data-copy-text="certificates/{{ $certificate->slug }}" title="Copy the link">
+                                        data-copy-text="certificate_requests/{{ $certificate_request->slug }}"
+                                        title="Copy the link">
                                         <i class="far fa-copy"></i>
                                     </a>
                                     <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
 
                                     <a href="javascript:void(0);"
-                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $certificate->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger" title="Delete the certificate">
+                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $certificate_request->id }}').submit();}else{return false;}"
+                                        class="btn btn-danger" title="Delete the certificate_request">
                                         <i class="fa fa-trash"></i>
                                     </a>
 
                                 </div>
-                                <form action="{{ route('admin.certificates.destroy', $certificate->id) }}" method="post"
-                                    class="d-none" id="delete-product-category-{{ $certificate->id }}">
+                                <form action="{{ route('admin.certificate_requests.destroy', $certificate_request->id) }}"
+                                    method="post" class="d-none"
+                                    id="delete-product-category-{{ $certificate_request->id }}">
                                     @csrf
                                     @method('DELETE')
                                 </form>

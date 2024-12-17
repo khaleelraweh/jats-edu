@@ -146,6 +146,24 @@
 
                         </div>
 
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                {{ __('panel.date_of_issue') }}
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="date_of_issue" value="{{ old('date_of_issue') }}"
+                                        class="form-control" placeholder="Select date" data-input>
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i class="fas fa-calendar"></i>
+                                    </span>
+                                </div>
+                                @error('date_of_issue')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
@@ -295,5 +313,29 @@
                 this.classList.toggle("caret-down");
             });
         }
+    </script>
+
+    <script>
+        $(function() {
+            'use strict';
+
+            const locale = "{{ app()->getLocale() }}";
+
+            // datetime picker
+            if ($('#flatpickr-datetime').length) {
+                const defaultDate = "{{ old('published_on') }}" ?
+                    "{{ old('published_on') }}" :
+                    new Date(); // Set to now if no old date exists
+
+                flatpickr("#flatpickr-datetime", {
+                    enableTime: true,
+                    wrap: true,
+                    dateFormat: "Y/m/d h:i K",
+                    minDate: "today", // Prevent dates before today
+                    locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+                    defaultDate: defaultDate,
+                });
+            }
+        });
     </script>
 @endsection

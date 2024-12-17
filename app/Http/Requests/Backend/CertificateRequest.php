@@ -25,7 +25,7 @@ class CertificateRequest extends FormRequest
             case 'POST': {
                     return [
                         'full_name.ar'          =>  'required|max:255',
-                        'cert_code'             =>  'nullable',
+                        'cert_code'             =>  'required',
                         'user_id'               =>  'nullable',
                         'course_id'             =>  'nullable',
 
@@ -44,7 +44,7 @@ class CertificateRequest extends FormRequest
             case 'PATCH': {
                     return [
                         'full_name.ar'          =>  'required|max:255',
-                        'cert_code'             =>  'nullable',
+                        'cert_code'             =>  'required',
                         'user_id'               =>  'nullable',
                         'course_id'             =>  'nullable',
 

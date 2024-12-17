@@ -69,13 +69,6 @@
                         </button>
                     </li>
 
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
-                            type="button" role="tab" aria-controls="published"
-                            aria-selected="false">{{ __('panel.published_tab') }}
-                        </button>
-                    </li>
-
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
@@ -184,8 +177,8 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="file-loading">
-                                    <input type="file" name="cert_file" id="cert_file"
-                                        value="{{ old('cert_file') }}" class="file-input-overview ">
+                                    <input type="file" name="cert_file" id="cert_file" value="{{ old('cert_file') }}"
+                                        class="file-input-overview ">
                                     @error('cert_file')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

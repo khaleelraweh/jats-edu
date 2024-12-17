@@ -254,3 +254,38 @@
 
     </div>
 @endsection
+
+@section('script')
+    <script>
+        $(function() {
+            $("#cert_file").fileinput({
+                theme: "fa5",
+                maxFileCount: 1,
+                allowedFileTypes: ['image'],
+                showCancel: true,
+                showRemove: false,
+                showUpload: false,
+                overwriteInitial: false,
+                initialPreview: [
+                    @if ($certificate->cert_file != '')
+                        "{{ asset('assets/certifications/' . $certificate->cert_file) }}",
+                    @endif
+                ],
+                initialPreviewAsData: true,
+                initialPreviewFileType: 'image',
+                initialPreviewConfig: [
+                    @if ($certificate->cert_file != '')
+                        {
+                            caption: "{{ $certificate->cert_file }}",
+                            size: '1111',
+                            width: "120px",
+                            url: "{{ route('admin.certificates.remove_image', ['certificate_id' => $certificate->id, '_token' => csrf_token()]) }}",
+                            key: {{ $certificate->id }}
+                        }
+                    @endif
+                ]
+            });
+
+        });
+    </script>
+@endsection

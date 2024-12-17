@@ -276,6 +276,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('sponsers', SponserController::class);
 
         // ==============   certificate Tab   ==============  //
+        Route::post('certificates/remove-image', [CertificateController::class, 'remove_image'])->name('certificates.remove_image');
         Route::resource('certificates', CertificateController::class);
 
 

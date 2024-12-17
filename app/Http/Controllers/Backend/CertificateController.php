@@ -180,4 +180,25 @@ class CertificateController extends Controller
             'alert-type' => 'danger'
         ]);
     }
+
+    public function remove_image(Request $request)
+    {
+
+        if (!auth()->user()->ability('admin', 'delete_certificates')) {
+            return redirect('admin/index');
+        }
+
+        $certificate = Certifications::findOrFail($request->certificate_id);
+        if (File::exists('assets/certifications/' . $certificate->cert_file)) {
+            unlink('assets/certifications/' . $certificate->cert_file);
+            $certificate->cert_file = null;
+            $certificate->save();
+        }
+        if ($certificate->cert_file != null) {
+            $certificate->cert_file = null;
+            $certificate->save();
+        }
+
+        return true;
+    }
 }

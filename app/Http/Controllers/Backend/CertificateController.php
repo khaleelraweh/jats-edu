@@ -142,6 +142,7 @@ class CertificateController extends Controller
         $input['user_id']                   = $request->user_id;
         $input['full_name']                 = $request->full_name;
         $input['course_id']                 = $request->course_id;
+        $input['sponser_id']                = $request->sponser_id;
 
         $date_of_issue                      = str_replace(['ص', 'م'], ['AM', 'PM'], $request->date_of_issue);
         $DateOfIssue                        = Carbon::createFromFormat('Y/m/d h:i A', $date_of_issue)->format('Y-m-d H:i:s');

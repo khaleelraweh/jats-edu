@@ -212,7 +212,7 @@
                                             {{ $sponser->name }}
                                         </option>
                                     @empty
-                                        <option value="">{{ __('panel.no_courses_available') }}</option>
+                                        <option value="">{{ __('panel.no_sponsers_available') }}</option>
                                     @endforelse
                                 </select>
                             </div>

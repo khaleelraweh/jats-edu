@@ -63,6 +63,7 @@ class CertificateController extends Controller
         $input['user_id']                   = $request->user_id;
         $input['full_name']                 = $request->full_name;
         $input['course_id']                 = $request->course_id;
+        $input['sponser_id']                 = $request->sponser_id;
 
         $date_of_issue                      = str_replace(['ص', 'م'], ['AM', 'PM'], $request->date_of_issue);
         $DateOfIssue                        = Carbon::createFromFormat('Y/m/d h:i A', $date_of_issue)->format('Y-m-d H:i:s');
@@ -127,7 +128,9 @@ class CertificateController extends Controller
         $certificate = Certifications::where('id', $certificate)->first();
         $courses = Course::query()->active()->get(['id', 'title']);
 
-        return view('backend.certificates.edit', compact('certificate', 'courses'));
+        $sponsers = Sponser::query()->active()->get(['id', 'name']);
+
+        return view('backend.certificates.edit', compact('certificate', 'courses', 'sponsers'));
     }
 
     public function update(CertificateRequest $request, $certificate)

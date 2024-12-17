@@ -159,14 +159,34 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="sponser_id"> {{ __('panel.sponser_name') }} </label>
+                            </div>
+
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <select name="sponser_id" id="sponser_id" class="form-control select2 child">
+                                    <option value="">{{ __('panel.select_sponser') }}</option>
+                                    @forelse ($sponsers as $sponser)
+                                        <option value="{{ $sponser->id }}"
+                                            {{ old('sponser_id', $certificate->sponser_id) == $sponser->id ? 'selected' : '' }}>
+                                            {{ $sponser->name }}
+                                        </option>
+                                    @empty
+                                        <option value="">{{ __('panel.no_sponsers_available') }}</option>
+                                    @endforelse
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="row ">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="cert_file"> {{ __('panel.certification_file') }}</label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="file-loading">
-                                    <input type="file" name="cert_file" id="cert_file" value="{{ old('cert_file') }}"
-                                        class="file-input-overview ">
+                                    <input type="file" name="cert_file" id="cert_file"
+                                        value="{{ old('cert_file') }}" class="file-input-overview ">
                                     @error('cert_file')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

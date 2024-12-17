@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\PageRequest;
 use App\Models\Certifications;
+use App\Models\Course;
 use App\Models\Page;
 use App\Models\User;
 use App\Models\WebMenu;
@@ -42,7 +43,12 @@ class CertificateController extends Controller
         // Get active instructor
         $students = User::WhereHasRoles('customer')->active()->get(['id', 'first_name', 'last_name']);
 
-        return view('backend.certificates.create', compact('students'));
+
+        // Get active instructor
+        $courses = Course::query()->active()->get(['id', 'title']);
+
+
+        return view('backend.certificates.create', compact('courses'));
     }
 
     public function store(PageRequest $request)

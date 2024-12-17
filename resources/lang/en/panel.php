@@ -990,6 +990,7 @@ return [
     'certificates'                      =>  'Certificates',
     'student_account'                   =>  'Student Account',
     'type_student_name_or_email'        =>  'Type Student Name or Email',
+    'select_course'                     =>  'Select Course',
 
     // sertificate status
     'under_review'                       =>  'Under Review',

@@ -975,6 +975,8 @@ return [
     'certificates'                      =>  'الشهادات',
     'student_account'                   =>  'حساب الطالب',
     'type_student_name_or_email'        =>  'إدخل اسم او بريد الطالب',
+    'select_course'                     =>  'أختر الدورة',
+
 
 
 

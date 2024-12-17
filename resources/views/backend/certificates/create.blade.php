@@ -125,20 +125,25 @@
 
                         <hr>
 
+
                         <div class="row">
+
                             <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="course_id">{{ __('panel.courses') }}</label>
+                                <label for="courses"> {{ __('panel.course_name') }} </label>
                             </div>
+
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <input type="text" class="form-control typeahead2" name="course_name" id="course_name"
-                                    value="{{ old('course_name', request()->input('course_name')) }}"
-                                    placeholder="{{ __('panel.type_student_name_or_email') }}">
-                                <input type="hidden" class="form-control" name="course_id" id="course_id"
-                                    value="{{ old('course_id', request()->input('course_id')) }}" readonly>
-                                @error('course_id')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                <select name="course_id" class="form-control select2 child">
+                                    <option value="">{{ __('panel.select_course') }}</option>
+                                    @forelse ($courses as $course)
+                                        <option value="{{ $course->id }}"
+                                            {{ in_array($course->id, old('course_id', [])) ? 'selected' : null }}>
+                                            {{ $course->title }}</option>
+                                    @empty
+                                    @endforelse
+                                </select>
                             </div>
+
                         </div>
 
                     </div>
@@ -246,28 +251,7 @@
 
             });
 
-            $(".typeahead2").typeahead({
-                autoSelect: true,
-                minLength: 3,
-                // delay: 400,
-                delay: 200,
-                displayText: function(item) {
-                    return item.first_name;
-                },
-                source: function(query, process) {
-                    return $.get("{{ route('admin.courses.get_courses') }}", {
-                        'query': query
-                    }, function(data) {
-                        return process(data);
-                    });
-                },
 
-                afterSelect: function(data) {
-                    $('#course_id').val(data.id);
-
-                }
-
-            });
 
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',

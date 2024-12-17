@@ -463,16 +463,4 @@ class CourseController extends Controller
             'alert-type' => 'danger'
         ]);
     }
-
-    public function get_courses()
-    {
-        //get user where has relation with roles and this role its name is customer
-        $courses = User::query()
-            ->when(\request()->input('query') != '', function ($query) {
-                $query->search(\request()->input('query'));
-            })
-            ->get(['id', 'first_name'])->toArray();
-
-        return response()->json($courses);
-    }
 }

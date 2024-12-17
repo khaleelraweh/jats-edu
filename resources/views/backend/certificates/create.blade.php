@@ -103,7 +103,7 @@
 
                         <hr>
 
-                        <div class="row">
+                        {{-- <div class="row">
 
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="course_id"> {{ __('panel.course_name') }} </label>
@@ -121,7 +121,49 @@
                                 </select>
                             </div>
 
+                        </div> --}}
+
+                        {{-- <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="course_id"> {{ __('panel.course_name') }} </label>
+                            </div>
+
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <select name="course_id" id="course_id" class="form-control select2 child">
+                                    <option value="">{{ __('panel.select_course') }}</option>
+                                    @forelse ($courses as $course)
+                                        <option value="{{ $course->id }}"
+                                            {{ old('course_id', $certificate->course_id ?? '') == $course->id ? 'selected' : '' }}>
+                                            {{ $course->title }}
+                                        </option>
+                                    @empty
+                                        <option value="">{{ __('panel.no_courses_available') }}</option>
+                                    @endforelse
+                                </select>
+                            </div>
+                        </div> --}}
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="course_id"> {{ __('panel.course_name') }} </label>
+                            </div>
+
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <select name="course_id" id="course_id" class="form-control select2 child">
+                                    <option value="">{{ __('panel.select_course') }}</option>
+                                    @forelse ($courses as $course)
+                                        <option value="{{ $course->id }}"
+                                            {{ (old('course_id') ?? ($certificate->course_id ?? '')) == $course->id ? 'selected' : '' }}>
+                                            {{ $course->title }}
+                                        </option>
+                                    @empty
+                                        <option value="">{{ __('panel.no_courses_available') }}</option>
+                                    @endforelse
+                                </select>
+                            </div>
                         </div>
+
+
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">

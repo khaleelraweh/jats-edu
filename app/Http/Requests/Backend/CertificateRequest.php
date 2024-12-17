@@ -26,12 +26,12 @@ class CertificateRequest extends FormRequest
                     return [
                         'full_name.ar'          =>  'required|max:255',
                         'cert_code'             =>  'required',
-                        'user_id'               =>  'nullable',
-                        'course_id'             =>  'nullable',
+                        'user_id'               =>  'required',
+                        'course_id'             =>  'required',
 
                         // used always 
                         'status'                =>  'required',
-                        'date_of_issue'         =>  'nullable',
+                        'date_of_issue'         =>  'required',
                         'published_on'          =>  'nullable',
                         'created_by'            =>  'nullable',
                         'updated_by'            =>  'nullable',
@@ -45,8 +45,8 @@ class CertificateRequest extends FormRequest
                     return [
                         'full_name.ar'          =>  'required|max:255',
                         'cert_code'             =>  'required',
-                        'user_id'               =>  'nullable',
-                        'course_id'             =>  'nullable',
+                        'user_id'               =>  'required',
+                        'course_id'             =>  'required',
 
                         // used always 
                         'status'                =>  'required',

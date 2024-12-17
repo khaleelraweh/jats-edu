@@ -144,11 +144,11 @@
                                     </div>
                                     <div class="col-sm-12 col-md-3">
 
-                                        <select name="country_id" id="country_id" class="form-control">
+                                        <select name="country" id="country" class="form-control">
                                             <option value="">{{ __('panel.country') }}</option>
                                             @forelse ($countries as $country)
                                                 <option value="{{ $country->id }}"
-                                                    {{ old('country_id') == $country->id ? 'selected' : null }}>
+                                                    {{ old('country') == $country->id ? 'selected' : null }}>
                                                     {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
 
                                                 </option>
@@ -161,30 +161,15 @@
 
                                     </div>
                                     <div class="col-sm-12 col-md-3">
-
-                                        <select id="state" name="state" class="form-control">
-                                            <option value="">{{ __('panel.state') }}</option>
-                                            @foreach (getCountries() as $country)
-                                                <option value="{{ $country->id }}"
-                                                    {{ old('state') == $country->id ? 'selected' : '' }}>
-                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
+                                        <input type="text" class="form-control " name="state" id="state"
+                                            value="{{ old('state') }}" placeholder="{{ __('panel.state') }}">
                                         @error('state')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="col-sm-12 col-md-3">
-                                        <select id="city" name="city" class="form-control">
-                                            <option value="">{{ __('panel.city') }}</option>
-                                            @foreach (getCountries() as $country)
-                                                <option value="{{ $country->id }}"
-                                                    {{ old('city') == $country->id ? 'selected' : '' }}>
-                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
+                                        <input type="text" class="form-control " name="city" id="city"
+                                            value="{{ old('city') }}" placeholder="{{ __('panel.city') }}">
                                         @error('city')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror

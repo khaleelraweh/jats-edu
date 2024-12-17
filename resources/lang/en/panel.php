@@ -992,6 +992,7 @@ return [
     'type_student_name_or_email'        =>  'Type Student Name or Email',
     'select_course'                     =>  'Select Course',
     'date_of_issue'                     =>  'Date of Issue',
+    'certification_file'                =>  'Certification File',
 
     // sertificate status
     'under_review'                       =>  'Under Review',

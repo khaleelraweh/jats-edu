@@ -125,7 +125,6 @@
 
                         <hr>
 
-
                         <div class="row">
 
                             <div class="col-sm-12 col-md-2 pt-3">
@@ -161,6 +160,36 @@
                                 @error('date_of_issue')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="cert_code">{{ __('panel.certificate_code') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" class="form-control " name="cert_code" id="cert_code"
+                                    value="{{ old('cert_code') }}">
+                                @error('cert_code')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="cert_file"> {{ __('panel.certification_file') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="file-loading">
+                                    <input type="file" name="cert_file" id="cert_file"
+                                        value="{{ old('cert_file') }}" class="file-input-overview ">
+                                    @error('cert_file')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
 
@@ -242,6 +271,16 @@
 
     <script>
         $(function() {
+
+            $("#cert_file").fileinput({
+                theme: "fa5",
+                maxFileCount: 1,
+                allowedFileTypes: ['image'],
+                showCancel: true,
+                showRemove: false,
+                showUpload: false,
+                overwriteInitial: false
+            })
 
             $(".typeahead").typeahead({
                 autoSelect: true,

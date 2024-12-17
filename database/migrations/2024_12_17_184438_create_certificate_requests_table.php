@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->json('full_name');
             $table->dateTime('date_of_birth')->nullable();
-            $table->dateTime('place_of_birth')->nullable();
             $table->string('nationality')->nullable();
             $table->string('country')->nullable();
             $table->string('state')->nullable();

@@ -45,7 +45,7 @@ class CertificateRequestController extends Controller
         $courses = Course::query()->active()->get(['id', 'title']);
         $sponsers = Sponser::query()->active()->get(['id', 'name']);
 
-        return view('backend.certificates.create', compact('courses', 'sponsers'));
+        return view('backend.certificate_requests.create', compact('courses', 'sponsers'));
     }
 
     public function store(CertificateRequest $request)
@@ -92,13 +92,13 @@ class CertificateRequestController extends Controller
 
 
         if ($certificate) {
-            return redirect()->route('admin.certificates.index')->with([
+            return redirect()->route('admin.certificate_requests.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.certificates.index')->with([
+        return redirect()->route('admin.certificate_requests.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -111,7 +111,7 @@ class CertificateRequestController extends Controller
         if (!auth()->user()->ability('admin', 'display_certificate_requests')) {
             return redirect('admin/index');
         }
-        return view('backend.certificates.show');
+        return view('backend.certificate_requests.show');
     }
 
     public function edit($certificate)
@@ -125,7 +125,7 @@ class CertificateRequestController extends Controller
 
         $sponsers = Sponser::query()->active()->get(['id', 'name']);
 
-        return view('backend.certificates.edit', compact('certificate', 'courses', 'sponsers'));
+        return view('backend.certificate_requests.edit', compact('certificate', 'courses', 'sponsers'));
     }
 
     public function update(CertificateRequest $request, $certificate)
@@ -173,13 +173,13 @@ class CertificateRequestController extends Controller
         $certificate->update($input);
 
         if ($certificate) {
-            return redirect()->route('admin.certificates.index')->with([
+            return redirect()->route('admin.certificate_requests.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.certificates.index')->with([
+        return redirect()->route('admin.certificate_requests.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -206,7 +206,7 @@ class CertificateRequestController extends Controller
         // Soft delete the record
         $certificate->delete();
 
-        return redirect()->route('admin.certificates.index')->with([
+        return redirect()->route('admin.certificate_requests.index')->with([
             'message' => __('panel.deleted_successfully'),
             'alert-type' => 'success'
         ]);

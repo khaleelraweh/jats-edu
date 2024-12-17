@@ -103,21 +103,95 @@
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                {{ __('panel.place_of_birth') }}
+                                {{ __('panel.date_of_birth') }}
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="input-group flatpickr" id="flatpickr-datetime">
-                                    <input type="text" name="place_of_birth" value="{{ old('place_of_birth') }}"
+                                    <input type="text" name="date_of_birth" value="{{ old('date_of_birth') }}"
                                         class="form-control" placeholder="Select date" data-input>
                                     <span class="input-group-text input-group-addon" data-toggle>
                                         <i data-feather="calendar"></i>
                                     </span>
                                 </div>
-                                @error('place_of_birth')
+                                @error('date_of_birth')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="nationality">
+                                    {{ __('panel.address_of_residence') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-3">
+                                        <select id="nationality" name="nationality" class="form-control">
+                                            <option value="">{{ __('panel.nationality') }}</option>
+                                            @foreach (getCountries() as $country)
+                                                <option value="{{ $country->id }}"
+                                                    {{ old('nationality') == $country->id ? 'selected' : '' }}>
+                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('nationality')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-sm-12 col-md-3">
+
+                                        <select id="country" name="country" class="form-control">
+                                            <option value="">{{ __('panel.country') }}</option>
+                                            @foreach (getCountries() as $country)
+                                                <option value="{{ $country->id }}"
+                                                    {{ old('country') == $country->id ? 'selected' : '' }}>
+                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('country')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-sm-12 col-md-3">
+
+                                        <select id="state" name="state" class="form-control">
+                                            <option value="">{{ __('panel.state') }}</option>
+                                            @foreach (getCountries() as $country)
+                                                <option value="{{ $country->id }}"
+                                                    {{ old('state') == $country->id ? 'selected' : '' }}>
+                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('state')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-sm-12 col-md-3">
+                                        <select id="city" name="city" class="form-control">
+                                            <option value="">{{ __('panel.city') }}</option>
+                                            @foreach (getCountries() as $country)
+                                                <option value="{{ $country->id }}"
+                                                    {{ old('city') == $country->id ? 'selected' : '' }}>
+                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('city')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
 
                         <hr>
 

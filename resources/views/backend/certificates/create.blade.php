@@ -1,18 +1,5 @@
 @extends('layouts.admin')
 
-@section('style')
-    <style>
-        .note-editor.note-airframe,
-        .note-editor.note-frame {
-            margin-bottom: 0;
-        }
-
-        #offer_ends_group .picker--opened .picker__holder {
-            transform: translateY(-342px) perspective(600px) rotateX(0);
-        }
-    </style>
-@endsection
-
 @section('content')
 
     {{-- main holder certificate  --}}
@@ -74,8 +61,6 @@
                 <div class="tab-content" id="myTabContent">
 
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
-
-
 
 
                         <div class="row">

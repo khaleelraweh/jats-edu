@@ -252,7 +252,7 @@
                 // delay: 400,
                 delay: 200,
                 displayText: function(item) {
-                    return item.full_name + ' - ' + item.email;
+                    return item.first_name;
                 },
                 source: function(query, process) {
                     return $.get("{{ route('admin.courses.get_courses') }}", {

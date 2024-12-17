@@ -467,14 +467,12 @@ class CourseController extends Controller
     public function get_courses()
     {
         //get user where has relation with roles and this role its name is customer
-        $customers = User::whereHas('roles', function ($query) {
-            $query->where('name', 'customer');
-        })
+        $courses = User::query()
             ->when(\request()->input('query') != '', function ($query) {
                 $query->search(\request()->input('query'));
             })
-            ->get(['id', 'first_name', 'last_name', 'email'])->toArray();
+            ->get(['id', 'first_name'])->toArray();
 
-        return response()->json($customers);
+        return response()->json($courses);
     }
 }

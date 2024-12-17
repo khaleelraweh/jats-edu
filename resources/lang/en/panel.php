@@ -991,8 +991,11 @@ return [
     'student_account'                   =>  'Student Account',
     'type_student_name_or_email'        =>  'Type Student Name or Email',
     'select_course'                     =>  'Select Course',
+    'select_sponser'                    =>  'Select Sponser',
     'date_of_issue'                     =>  'Date of Issue',
     'certification_file'                =>  'Certification File',
+    'no_courses_available'              =>  'No Courses Available',
+    'no_sponsers_available'             =>  'No Sponsers Available',
 
     // sertificate status
     'under_review'                       =>  'Under Review',

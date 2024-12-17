@@ -975,9 +975,12 @@ return [
     'certificates'                      =>  'الشهادات',
     'student_account'                   =>  'حساب الطالب',
     'type_student_name_or_email'        =>  'إدخل اسم او بريد الطالب',
-    'select_course'                     =>  'أختر الدورة',
+    'select_course'                     =>  'إختر الدورة',
+    'select_sponser'                    =>  'إختر الجهة المصدرة للشهادة',
     'date_of_issue'                     =>  'تاريخ الإصدار',
     'certification_file'                =>  'ملف الشهادة',
+    'no_courses_available'              =>  'لا يوجد دورات',
+    'no_sponsers_available'             =>  'لا يوجد جهات',
 
 
 

@@ -23,15 +23,16 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('whatsup_phone')->nullable();
 
-            $table->string('identity_type')->nullable();
+            $table->tinyInteger('identity_type')->nullable()->default(0); // 0 personal card , 1 passport 
             $table->string('identity_number')->nullable();
+            $table->dateTime('identity_expiration_date')->nullable();
             $table->string('identity_attachment')->nullable();
 
             $table->json('certificate_name');
-            $table->tinyInteger('certificate_status')->nullable()->default(0); //قيد المراجعة 0 تحت المعالجة 1 تم الاصدار 2
             $table->string('certificate_code')->nullable();
             $table->dateTime('certificate_release_date')->nullable();
             $table->string('certificate_file')->nullable();
+            $table->tinyInteger('certificate_status')->nullable()->default(0); //قيد المراجعة 0 تحت المعالجة 1 تم الاصدار 2
 
             $table->foreignId('sponser_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');

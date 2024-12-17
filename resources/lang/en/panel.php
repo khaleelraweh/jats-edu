@@ -998,6 +998,7 @@ return [
     'no_sponsers_available'             =>  'No Sponsers Available',
 
     // sertificate status
+    'certificate_status'                =>  'certificate_status',
     'under_review'                       =>  'Under Review',
     'under_treatment'                    =>  'Under Treatment',
     'released'                           =>  'Released',
@@ -1032,6 +1033,17 @@ return [
 
     // ---------------- common in certificate requests ------------///
     'whatsup_phone'                                 =>  'Whatsup phone',
+    'identity_type'                                 =>  'Identity Type',
+    'identity_type_personal_card'                   =>  'Personal Card',
+    'identity_type_passport'                        =>  'PassPort',
+    'identity_number'                               =>  'Identity Number',
+    'identity_expiration_date'                      =>  'Identity Expiration Date',
+    'identity_attachment'                           =>  'Identity Attachment',
+
+    'certificate_release_date'                      =>  'Certificate Release Date',
+    'certificate_name'                              =>  'Certificate Name',
+
+
 
 
     ##############################################################

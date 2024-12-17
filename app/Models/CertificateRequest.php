@@ -30,6 +30,14 @@ class CertificateRequest extends Model
     {
         return $this->status ? __('panel.status_active') : __('panel.status_inactive');
     }
+    public function identityTtype()
+    {
+        if ($this->identity_type == 0) {
+            return __('panel.identity_type_personal_card');
+        } elseif ($this->identity_type == 1) {
+            return __('panel.identity_type_passport');
+        }
+    }
 
     public function user()
     {

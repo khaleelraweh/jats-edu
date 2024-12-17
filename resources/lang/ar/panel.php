@@ -988,6 +988,7 @@ return [
 
 
     // sertificate status
+    'certificate_status'                 =>  'حالة الشهادة',
     'under_review'                       =>  'قيد المراجعة',
     'under_treatment'                    =>  'تحت المعالجة',
     'released'                           =>  'تم الاصدار',
@@ -1023,6 +1024,17 @@ return [
 
     // ---------------- common in certificate requests ------------///
     'whatsup_phone'                                 =>  'تلفون الواتس اب',
+    'identity_type'                                 =>  'نوع الهوية',
+    'identity_type_personal_card'                   =>  'بطاقة شخصية',
+    'identity_type_passport'                        =>  'جواز سفر',
+    'identity_number'                               =>  'رقم الهوية',
+    'identity_expiration_date'                      =>  'تاريخ انتهاء الهوية',
+    'identity_attachment'                           =>  'مرفق الهوية',
+    'certificate_release_date'                      =>  'تاريخ إصدار الشهادة',
+    'certificate_name'                              =>  'إسم الشهادة',
+
+
+
 
 
 

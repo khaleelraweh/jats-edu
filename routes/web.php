@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\CardCodeController;
 use App\Http\Controllers\Backend\CardController;
 use App\Http\Controllers\Backend\CertificateController;
 use App\Http\Controllers\Backend\CertificateIssuesController;
+use App\Http\Controllers\Backend\CertificateRequestController;
 use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\CommonQuestionController;
 use App\Http\Controllers\Backend\CompanyMenuController;
@@ -278,6 +279,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // ==============   certificate Tab   ==============  //
         Route::post('certificates/remove-image', [CertificateController::class, 'remove_image'])->name('certificates.remove_image');
         Route::resource('certificates', CertificateController::class);
+
+        // ==============   certificate requests Tab   ==============  //
+        Route::post('certificate-requests/remove-image', [CertificateRequestController::class, 'remove_image'])->name('certificate_requests.remove_image');
+        Route::resource('certificate_requests', CertificateRequestController::class);
 
 
         // ==============  Teach Requests      ==============  //

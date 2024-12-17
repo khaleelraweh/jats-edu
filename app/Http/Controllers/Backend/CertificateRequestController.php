@@ -14,7 +14,7 @@ use illuminate\support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 
-class CertificateController extends Controller
+class CertificateRequestController extends Controller
 {
 
     public function index()

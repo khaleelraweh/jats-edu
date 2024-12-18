@@ -213,13 +213,13 @@ class CertificateRequestController extends Controller
 
 
         if ($image = $request->file('certificate_file')) {
-            if ($certificate_request->certificate_file != null && File::exists('assets/certifications/' . $certificate_request->certificate_file)) {
-                unlink('assets/certifications/' . $certificate_request->certificate_file);
+            if ($certificate_request->certificate_file != null && File::exists('assets/certificate_requests/' . $certificate_request->certificate_file)) {
+                unlink('assets/certificate_requests/' . $certificate_request->certificate_file);
             }
 
             $file_name = Str::slug($request->cert_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
 
-            $path = public_path('assets/certifications/' . $file_name);
+            $path = public_path('assets/certificate_requests/' . $file_name);
 
             Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
@@ -229,13 +229,13 @@ class CertificateRequestController extends Controller
         }
 
         if ($image = $request->file('identity_attachment')) {
-            if ($certificate_request->identity_attachment != null && File::exists('assets/certifications/' . $certificate_request->identity_attachment)) {
-                unlink('assets/certifications/' . $certificate_request->identity_attachment);
+            if ($certificate_request->identity_attachment != null && File::exists('assets/certificate_requests/' . $certificate_request->identity_attachment)) {
+                unlink('assets/certificate_requests/' . $certificate_request->identity_attachment);
             }
 
             $file_name = Str::slug($request->cert_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
 
-            $path = public_path('assets/certifications/' . $file_name);
+            $path = public_path('assets/certificate_requests/' . $file_name);
 
             Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
@@ -269,8 +269,8 @@ class CertificateRequestController extends Controller
         $certificate = Certifications::findOrFail($certificate);
 
         // Check if `cert_file` is not empty and the file exists
-        if (!empty($certificate_request->cert_file) && File::exists('assets/certifications/' . $certificate_request->cert_file)) {
-            unlink('assets/certifications/' . $certificate_request->cert_file);
+        if (!empty($certificate_request->cert_file) && File::exists('assets/certificate_requests/' . $certificate_request->cert_file)) {
+            unlink('assets/certificate_requests/' . $certificate_request->cert_file);
         }
 
         // Mark as deleted by the current user
@@ -295,8 +295,8 @@ class CertificateRequestController extends Controller
         }
 
         $certificate_request = CertificateRequest::findOrFail($request->certificate_request_id);
-        if (File::exists('assets/certifications/' . $certificate_request->certificate_file)) {
-            unlink('assets/certifications/' . $certificate_request->certificate_file);
+        if (File::exists('assets/certificate_requests/' . $certificate_request->certificate_file)) {
+            unlink('assets/certificate_requests/' . $certificate_request->certificate_file);
             $certificate_request->certificate_file = null;
             $certificate_request->save();
         }
@@ -316,8 +316,8 @@ class CertificateRequestController extends Controller
         }
 
         $certificate_request = CertificateRequest::findOrFail($request->certificate_request_id);
-        if (File::exists('assets/certifications/' . $certificate_request->identity_attachment)) {
-            unlink('assets/certifications/' . $certificate_request->identity_attachment);
+        if (File::exists('assets/certificate_requests/' . $certificate_request->identity_attachment)) {
+            unlink('assets/certificate_requests/' . $certificate_request->identity_attachment);
             $certificate_request->identity_attachment = null;
             $certificate_request->save();
         }

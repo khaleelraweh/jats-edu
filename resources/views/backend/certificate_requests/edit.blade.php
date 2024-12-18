@@ -69,10 +69,10 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="text" class="form-control typeahead" name="customer_name" id="customer_name"
-                                    value="{{ old('customer_name', request()->input('customer_name')) }}"
-                                    placeholder="{{ __('panel.type_student_name_or_email') }}">
+                                    value="{{ old('customer_name', $certificate_request->user->full_name) }}"
+                                    placeholder="{{ __('panel.type_student_name_or_email') }}" readonly>
                                 <input type="hidden" class="form-control" name="user_id" id="user_id"
-                                    value="{{ old('user_id', request()->input('user_id')) }}" readonly>
+                                    value="{{ old('user_id', $certificate_request->user_id) }}" readonly>
                                 @error('user_id')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -91,7 +91,8 @@
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
                                     <input type="text" name="full_name[{{ $key }}]"
-                                        id="full_name[{{ $key }}]" value="{{ old('full_name.' . $key) }}"
+                                        id="full_name[{{ $key }}]"
+                                        value="{{ old('full_name.' . $key, $certificate_request->getTranslation('full_name', $key)) }}"
                                         class="form-control">
                                     @error('full_name.' . $key)
                                         <span class="text-danger">{{ $message }}</span>

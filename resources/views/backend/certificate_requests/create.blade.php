@@ -696,7 +696,6 @@
                     enableTime: false,
                     wrap: true,
                     dateFormat: "Y/m/d",
-                    minDate: "today", // Prevent dates before today
                     locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
                     defaultDate: defaultDate,
                 });

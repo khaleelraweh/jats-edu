@@ -4,24 +4,24 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\PageRequest;
-use App\Http\Requests\Backend\SponserRequest;
-use App\Models\Sponser;
+use App\Http\Requests\Backend\SponsorRequest;
+use App\Models\Sponsor;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
 use illuminate\support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 
-class SponserController extends Controller
+class SponsorController extends Controller
 {
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_sponsers , show_sponsers')) {
+        if (!auth()->user()->ability('admin', 'manage_sponsors , show_sponsors')) {
             return redirect('admin/index');
         }
 
-        $sponsers = Sponser::query()
+        $sponsors = Sponsor::query()
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -33,21 +33,21 @@ class SponserController extends Controller
 
 
 
-        return view('backend.sponsers.index', compact('sponsers'));
+        return view('backend.sponsors.index', compact('sponsors'));
     }
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_sponsers')) {
+        if (!auth()->user()->ability('admin', 'create_sponsors')) {
             return redirect('admin/index');
         }
 
-        return view('backend.sponsers.create');
+        return view('backend.sponsors.create');
     }
 
-    public function store(SponserRequest $request)
+    public function store(SponsorRequest $request)
     {
-        if (!auth()->user()->ability('admin', 'create_sponsers')) {
+        if (!auth()->user()->ability('admin', 'create_sponsors')) {
             return redirect('admin/index');
         }
 
@@ -71,7 +71,7 @@ class SponserController extends Controller
         if ($image  =  $request->file('logo')) {
 
             $file_name                  = Str::slug($request->name['en']) . '_' . time() .  "." . $image->getClientOriginalExtension();
-            $path                       = public_path('assets/sponsers/' . $file_name);
+            $path                       = public_path('assets/sponsors/' . $file_name);
 
             Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
@@ -80,17 +80,17 @@ class SponserController extends Controller
             $input['logo'] = $file_name;
         }
 
-        $sponser = Sponser::create($input);
+        $sponsor = Sponsor::create($input);
 
 
-        if ($sponser) {
-            return redirect()->route('admin.sponsers.index')->with([
+        if ($sponsor) {
+            return redirect()->route('admin.sponsors.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.sponsers.index')->with([
+        return redirect()->route('admin.sponsors.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -100,28 +100,28 @@ class SponserController extends Controller
 
     public function show($id)
     {
-        if (!auth()->user()->ability('admin', 'display_sponsers')) {
+        if (!auth()->user()->ability('admin', 'display_sponsors')) {
             return redirect('admin/index');
         }
-        return view('backend.sponsers.show');
+        return view('backend.sponsors.show');
     }
 
-    public function edit($sponser)
+    public function edit($sponsor)
     {
-        if (!auth()->user()->ability('admin', 'update_sponsers')) {
+        if (!auth()->user()->ability('admin', 'update_sponsors')) {
             return redirect('admin/index');
         }
 
 
-        $sponser = Sponser::where('id', $sponser)->first();
+        $sponsor = Sponsor::where('id', $sponsor)->first();
 
-        return view('backend.sponsers.edit', compact('sponser'));
+        return view('backend.sponsors.edit', compact('sponsor'));
     }
 
-    public function update(SponserRequest $request, $sponser)
+    public function update(SponsorRequest $request, $sponsor)
     {
 
-        $sponser = Sponser::where('id', $sponser)->first();
+        $sponsor = Sponsor::where('id', $sponsor)->first();
 
         $input['name']                  = $request->name;
         $input['address']               = $request->address;
@@ -142,13 +142,13 @@ class SponserController extends Controller
 
 
         if ($image = $request->file('logo')) {
-            if ($sponser->logo != null && File::exists('assets/sponsers/' . $sponser->logo)) {
-                unlink('assets/sponsers/' . $sponser->logo);
+            if ($sponsor->logo != null && File::exists('assets/sponsors/' . $sponsor->logo)) {
+                unlink('assets/sponsors/' . $sponsor->logo);
             }
 
             $file_name = Str::slug($request->name['en']) . '_' . time() .  "." . $image->getClientOriginalExtension();
 
-            $path = public_path('assets/sponsers/' . $file_name);
+            $path = public_path('assets/sponsors/' . $file_name);
             Image::make($image->getRealPath())->resize(500, null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save($path);
@@ -156,49 +156,49 @@ class SponserController extends Controller
             $input['logo'] = $file_name;
         }
 
-        $sponser->update($input);
+        $sponsor->update($input);
 
-        if ($sponser) {
-            return redirect()->route('admin.sponsers.index')->with([
+        if ($sponsor) {
+            return redirect()->route('admin.sponsors.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.sponsers.index')->with([
+        return redirect()->route('admin.sponsors.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
     }
 
 
-    public function destroy($sponser)
+    public function destroy($sponsor)
     {
-        if (!auth()->user()->ability('admin', 'delete_sponsers')) {
+        if (!auth()->user()->ability('admin', 'delete_sponsors')) {
             return redirect('admin/index');
         }
 
-        $sponser = Sponser::where('id', $sponser)->first();
+        $sponsor = Sponsor::where('id', $sponsor)->first();
 
 
-        if (!empty($sponser->logo) && File::exists('assets/sponsers/' . $sponser->logo)) {
+        if (!empty($sponsor->logo) && File::exists('assets/sponsors/' . $sponsor->logo)) {
 
-            unlink('assets/sponsers/' . $sponser->logo);
+            unlink('assets/sponsors/' . $sponsor->logo);
         }
 
-        $sponser->deleted_by = auth()->user()->full_name;
-        $sponser->save();
+        $sponsor->deleted_by = auth()->user()->full_name;
+        $sponsor->save();
 
-        $sponser->delete();
+        $sponsor->delete();
 
-        if ($sponser) {
-            return redirect()->route('admin.sponsers.index')->with([
+        if ($sponsor) {
+            return redirect()->route('admin.sponsors.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.sponsers.index')->with([
+        return redirect()->route('admin.sponsors.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -207,19 +207,19 @@ class SponserController extends Controller
     public function remove_image(Request $request)
     {
 
-        if (!auth()->user()->ability('admin', 'delete_sponsers')) {
+        if (!auth()->user()->ability('admin', 'delete_sponsors')) {
             return redirect('admin/index');
         }
 
-        $sponser = Sponser::findOrFail($request->sponser_id);
-        if (File::exists('assets/sponser/' . $sponser->logo)) {
-            unlink('assets/sponser/' . $sponser->logo);
-            $sponser->logo = null;
-            $sponser->save();
+        $sponsor = Sponsor::findOrFail($request->sponsor_id);
+        if (File::exists('assets/sponsor/' . $sponsor->logo)) {
+            unlink('assets/sponsor/' . $sponsor->logo);
+            $sponsor->logo = null;
+            $sponsor->save();
         }
-        if ($sponser->logo != null) {
-            $sponser->logo = null;
-            $sponser->save();
+        if ($sponsor->logo != null) {
+            $sponsor->logo = null;
+            $sponsor->save();
         }
 
         return true;

@@ -341,4 +341,9 @@ class Course extends Model
             ->withPivot('certificate_cost')
             ->withTimestamps();
     }
+
+    public function certificateRequests()
+    {
+        return $this->hasMany(CertificateRequest::class);
+    }
 }

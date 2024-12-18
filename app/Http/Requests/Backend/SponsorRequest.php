@@ -4,7 +4,7 @@ namespace App\Http\Requests\Backend;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SponserRequest extends FormRequest
+class SponsorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

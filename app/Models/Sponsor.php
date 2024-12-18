@@ -10,7 +10,7 @@ use Spatie\Sluggable\HasTranslatableSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
-class Sponser extends Model
+class Sponsor extends Model
 {
     use HasFactory, HasTranslations, HasTranslatableSlug, SearchableTrait;
 
@@ -75,10 +75,6 @@ class Sponser extends Model
         return $this->hasMany(Certifications::class);
     }
 
-    public function certificate_requests()
-    {
-        return $this->hasMany(CertificateRequest::class);
-    }
 
     public function scopeActive($query)
     {
@@ -92,5 +88,10 @@ class Sponser extends Model
             ->using(CourseSponsor::class)
             ->withPivot('certificate_cost')
             ->withTimestamps();
+    }
+
+    public function certificateRequests()
+    {
+        return $this->hasMany(CertificateRequest::class);
     }
 }

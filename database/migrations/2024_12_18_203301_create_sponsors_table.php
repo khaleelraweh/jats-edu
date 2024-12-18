@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sponsers', function (Blueprint $table) {
+        Schema::create('sponsors', function (Blueprint $table) {
             $table->id();
             $table->json('name');
             $table->json('slug');
@@ -40,7 +40,6 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
             // end of will be use always
-
         });
     }
 
@@ -49,6 +48,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sponsers');
+        Schema::dropIfExists('sponsors');
     }
 };

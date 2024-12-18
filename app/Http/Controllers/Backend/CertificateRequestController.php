@@ -8,7 +8,7 @@ use App\Http\Requests\Backend\CertificateRequestRequest;
 use App\Models\CertificateRequest;
 use App\Models\Certifications;
 use App\Models\Course;
-use App\Models\Sponser;
+use App\Models\Sponsor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -45,10 +45,10 @@ class CertificateRequestController extends Controller
         }
 
         $courses = Course::query()->active()->get(['id', 'title']);
-        $sponsers = Sponser::query()->active()->get(['id', 'name']);
+        $sponsors = Sponsor::query()->active()->get(['id', 'name']);
         $countries = Country::query()->active()->get(['id', 'name', 'translations']);
 
-        return view('backend.certificate_requests.create', compact('courses', 'sponsers', 'countries'));
+        return view('backend.certificate_requests.create', compact('courses', 'sponsors', 'countries'));
     }
 
     public function store(CertificateRequestRequest $request)
@@ -84,7 +84,7 @@ class CertificateRequestController extends Controller
         $input['certificate_file']          =   $request->certificate_file;
         $input['certificate_status']        =   $request->certificate_status;
 
-        $input['sponser_id']                =   $request->sponser_id;
+        $input['sponsor_id']                =   $request->sponsor_id;
         $input['user_id']                   =   $request->user_id;
         $input['course_id']                 =   $request->course_id;
 
@@ -159,10 +159,10 @@ class CertificateRequestController extends Controller
         $certificate_request = CertificateRequest::where('id', $certificate_request)->first();
 
         $courses = Course::query()->active()->get(['id', 'title']);
-        $sponsers = Sponser::query()->active()->get(['id', 'name']);
+        $sponsors = Sponsor::query()->active()->get(['id', 'name']);
         $countries = Country::query()->active()->get(['id', 'name', 'translations']);
 
-        return view('backend.certificate_requests.edit', compact('certificate_request', 'courses', 'sponsers', 'countries'));
+        return view('backend.certificate_requests.edit', compact('certificate_request', 'courses', 'sponsors', 'countries'));
     }
 
     public function update(CertificateRequestRequest $request, $certificate_request)
@@ -184,7 +184,7 @@ class CertificateRequestController extends Controller
         $input['certificate_code'] = $request->certificate_code;
         $input['certificate_release_date'] = Carbon::createFromFormat('Y/m/d', $request->certificate_release_date)->format('Y-m-d');
         $input['certificate_status'] = $request->certificate_status;
-        $input['sponser_id'] = $request->sponser_id;
+        $input['sponsor_id'] = $request->sponsor_id;
         $input['user_id'] = $request->user_id;
         $input['course_id'] = $request->course_id;
 

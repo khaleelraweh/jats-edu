@@ -42,7 +42,7 @@ use App\Http\Controllers\Backend\ReviewsController;
 use App\Http\Controllers\Backend\ShippingCompanyController;
 use App\Http\Controllers\Backend\SiteSettingsController;
 use App\Http\Controllers\Backend\SpecializationController;
-use App\Http\Controllers\Backend\SponserController;
+use App\Http\Controllers\Backend\SponsorController;
 use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\SupportMenuController;
@@ -272,9 +272,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('events', EventController::class);
 
 
-        // ==============   sponsers Tab   ==============  //
-        Route::post('sponsers/remove-image', [SponserController::class, 'remove_image'])->name('sponsers.remove_image');
-        Route::resource('sponsers', SponserController::class);
+        // ==============   sponsors Tab   ==============  //
+        Route::post('sponsors/remove-image', [SponsorController::class, 'remove_image'])->name('sponsors.remove_image');
+        Route::resource('sponsors', SponsorController::class);
 
         // ==============   certificate Tab   ==============  //
         Route::post('certificates/remove-image', [CertificateController::class, 'remove_image'])->name('certificates.remove_image');

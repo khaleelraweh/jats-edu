@@ -310,20 +310,20 @@ return [
     // ........... commons in Pages ....... //
 
 
-    ########################### Manage Sponsers  ##################################
+    ########################### Manage Sponsors  ##################################
 
-    // =============  Manage Sponsers  ===============//
-    'manage_sponsers'                          => 'Manage Pages',
+    // =============  Manage Sponsors  ===============//
+    'manage_sponsors'                          => 'Manage Pages',
 
-    // --------------- Sponsers  --------------//
-    'show_sponsers'                            => 'Sponsers',
-    'add_new_sponser'                          => 'Add New Sponser',
-    'edit_existing_sponser'                    => 'Edit Existing Sponser',
+    // --------------- Sponsors  --------------//
+    'show_sponsors'                            => 'Sponsors',
+    'add_new_sponsor'                          => 'Add New Sponsor',
+    'edit_existing_sponsor'                    => 'Edit Existing Sponsor',
 
-    // ........... commons in Sponsers ....... //
-    'sponser_name'                              =>  'Sponser Name',
-    'sponser_address'                           =>  'Sponser Address',
-    'sponser_logo'                              =>  'Sponser Logo',
+    // ........... commons in Sponsors ....... //
+    'sponsor_name'                              =>  'Sponsor Name',
+    'sponsor_address'                           =>  'Sponsor Address',
+    'sponsor_logo'                              =>  'Sponsor Logo',
     'coordinator_name'                          =>  'Coordinator Name',
     'coordinator_phone'                         =>  'Coordinator Phone',
     'coordinator_email'                         =>  'Coordinator Email',
@@ -991,11 +991,11 @@ return [
     'student_account'                   =>  'Student Account',
     'type_student_name_or_email'        =>  'Type Student Name or Email',
     'select_course'                     =>  'Select Course',
-    'select_sponser'                    =>  'Select Sponser',
+    'select_sponsor'                    =>  'Select Sponsor',
     'date_of_issue'                     =>  'Date of Issue',
     'certification_file'                =>  'Certification File',
     'no_courses_available'              =>  'No Courses Available',
-    'no_sponsers_available'             =>  'No Sponsers Available',
+    'no_sponsors_available'             =>  'No Sponsors Available',
 
     // sertificate status
     'certificate_status'                =>  'certificate_status',

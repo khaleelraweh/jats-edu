@@ -50,8 +50,8 @@ class CertificateRequest extends Model
         return $this->belongsTo(Course::class);
     }
 
-    public function sponser()
+    public function sponsor()
     {
-        return $this->belongsTo(Sponser::class, 'sponser_id', 'id');
+        return $this->belongsTo(Sponsor::class, 'sponsor_id', 'id');
     }
 }

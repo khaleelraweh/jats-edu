@@ -8,7 +8,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_sponsers') }}
+                    {{ __('panel.manage_sponsors') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -20,13 +20,13 @@
                         @endif
                     </li>
                     <li>
-                        {{ __('panel.show_sponsers') }}
+                        {{ __('panel.show_sponsors') }}
                     </li>
                 </ul>
             </div>
             <div class="ml-auto">
-                @ability('admin', 'create_sponsers')
-                    <a href="{{ route('admin.sponsers.create') }}" class="btn btn-primary">
+                @ability('admin', 'create_sponsors')
+                    <a href="{{ route('admin.sponsors.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        {{-- @include('backend.sponsers.filter.filter') --}}
+        {{-- @include('backend.sponsors.filter.filter') --}}
 
         <div class="card-body">
 
@@ -56,40 +56,40 @@
 
 
                 <tbody>
-                    @forelse ($sponsers as $sponser)
+                    @forelse ($sponsors as $sponsor)
                         <tr>
                             <td>
-                                {{ $sponser->name }}
+                                {{ $sponsor->name }}
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $sponser->created_by }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $sponsor->created_by }}</td>
                             <td>
-                                <span class="btn btn-round rounded-pill btn-success btn-xs">{{ $sponser->status() }}</span>
+                                <span class="btn btn-round rounded-pill btn-success btn-xs">{{ $sponsor->status() }}</span>
                             </td>
                             <td>
-                                {{ $sponser->views }}
+                                {{ $sponsor->views }}
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $sponser->created_at }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $sponsor->created_at }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.sponsers.edit', $sponser->id) }}" class="btn btn-primary"
-                                        title="Edit the sponser">
+                                    <a href="{{ route('admin.sponsors.edit', $sponsor->id) }}" class="btn btn-primary"
+                                        title="Edit the sponsor">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                        data-copy-text="sponsers/{{ $sponser->slug }}" title="Copy the link">
+                                        data-copy-text="sponsors/{{ $sponsor->slug }}" title="Copy the link">
                                         <i class="far fa-copy"></i>
                                     </a>
                                     <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
 
                                     <a href="javascript:void(0);"
-                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $sponser->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger" title="Delete the sponser">
+                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $sponsor->id }}').submit();}else{return false;}"
+                                        class="btn btn-danger" title="Delete the sponsor">
                                         <i class="fa fa-trash"></i>
                                     </a>
 
                                 </div>
-                                <form action="{{ route('admin.sponsers.destroy', $sponser->id) }}" method="post"
-                                    class="d-none" id="delete-product-category-{{ $sponser->id }}">
+                                <form action="{{ route('admin.sponsors.destroy', $sponsor->id) }}" method="post"
+                                    class="d-none" id="delete-product-category-{{ $sponsor->id }}">
                                     @csrf
                                     @method('DELETE')
                                 </form>

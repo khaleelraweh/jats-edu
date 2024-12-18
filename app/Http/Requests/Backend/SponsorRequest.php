@@ -87,11 +87,11 @@ class SponsorRequest extends FormRequest
     {
         $attr = [
             'status'    =>  '( ' . __('panel.status') . ' )',
-            'logo'    =>  '( ' . __('panel.sponser_logo') . ' )',
+            'logo'    =>  '( ' . __('panel.sponsor_logo') . ' )',
         ];
 
         foreach (config('locales.languages') as $key => $val) {
-            $attr += ['name.' . $key       =>  "( " . __('panel.sponser_name')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+            $attr += ['name.' . $key       =>  "( " . __('panel.sponsor_name')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
         }
 
 

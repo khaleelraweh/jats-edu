@@ -51,7 +51,7 @@ class CertificateRequestRequest extends FormRequest
                         'certificate_file'          =>      'nullable|mimes:jpg,jpeg,png,svg,gif,webp|max:3000',
                         'certificate_status'        =>      'nullable',
 
-                        'sponser_id'                =>      'nullable',
+                        'sponsor_id'                =>      'nullable',
                         'user_id'                   =>      'required',
                         'course_id'                 =>      'required',
 
@@ -94,7 +94,7 @@ class CertificateRequestRequest extends FormRequest
                         'certificate_file'          =>      'nullable|mimes:jpg,jpeg,png,svg,gif,webp|max:3000',
                         'certificate_status'        =>      'nullable',
 
-                        'sponser_id'                =>      'nullable',
+                        'sponsor_id'                =>      'nullable',
                         'user_id'                   =>      'required',
                         'course_id'                 =>      'required',
 

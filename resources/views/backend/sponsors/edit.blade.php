@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    {{-- main holder sponser  --}}
+    {{-- main holder sponsor  --}}
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -10,7 +10,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_sponser') }}
+                    {{ __('panel.edit_existing_sponsor') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -22,8 +22,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.sponsers.index') }}">
-                            {{ __('panel.show_sponsers') }}
+                        <a href="{{ route('admin.sponsors.index') }}">
+                            {{ __('panel.show_sponsors') }}
                         </a>
                     </li>
                 </ul>
@@ -44,7 +44,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.sponsers.update', $sponser->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.sponsors.update', $sponsor->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -72,13 +72,13 @@
                             <div class="row ">
                                 <div class="col-sm-12 col-md-2 pt-3">
                                     <label for="name[{{ $key }}]">
-                                        {{ __('panel.sponser_name') }}
+                                        {{ __('panel.sponsor_name') }}
                                         {{ __('panel.in') }} ({{ __('panel.' . $key) }})
                                     </label>
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
                                     <input type="text" name="name[{{ $key }}]" id="name[{{ $key }}]"
-                                        value="{{ old('name.' . $key, $sponser->getTranslation('name', $key)) }}"
+                                        value="{{ old('name.' . $key, $sponsor->getTranslation('name', $key)) }}"
                                         class="form-control">
                                     @error('name.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -94,14 +94,14 @@
                             <div class="row ">
                                 <div class="col-sm-12 col-md-2 pt-3">
                                     <label for="address[{{ $key }}]">
-                                        {{ __('panel.sponser_address') }}
+                                        {{ __('panel.sponsor_address') }}
                                         {{ __('panel.in') }} ({{ __('panel.' . $key) }})
                                     </label>
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
                                     <input type="text" name="address[{{ $key }}]"
                                         id="address[{{ $key }}]"
-                                        value="{{ old('address.' . $key, $sponser->getTranslation('address', $key)) }}"
+                                        value="{{ old('address.' . $key, $sponsor->getTranslation('address', $key)) }}"
                                         class="form-control">
                                     @error('address.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -119,7 +119,7 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="text" id="phone" name="phone"
-                                    value="{{ old('phone', $sponser->phone) }}" class="form-control">
+                                    value="{{ old('phone', $sponsor->phone) }}" class="form-control">
                                 @error('phone')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -132,7 +132,7 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="email" id="email" name="email"
-                                    value="{{ old('email', $sponser->email) }}" class="form-control">
+                                    value="{{ old('email', $sponsor->email) }}" class="form-control">
                                 @error('email')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -144,7 +144,7 @@
                                 <label for="pox"> {{ __('panel.pox') }}</label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <input type="text" id="pox" name="pox" value="{{ old('pox', $sponser->pox) }}"
+                                <input type="text" id="pox" name="pox" value="{{ old('pox', $sponsor->pox) }}"
                                     class="form-control">
                                 @error('pox')
                                     <span class="text-danger">{{ $message }}</span>
@@ -158,7 +158,7 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="url" id="website" name="website"
-                                    value="{{ old('website', $sponser->website) }}" class="form-control">
+                                    value="{{ old('website', $sponsor->website) }}" class="form-control">
                                 @error('website')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -169,7 +169,7 @@
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="logo"> {{ __('panel.sponser_logo') }}</label>
+                                <label for="logo"> {{ __('panel.sponsor_logo') }}</label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="file-loading">
@@ -195,7 +195,7 @@
                                 <div class="col-sm-12 col-md-10 pt-3">
                                     <input type="text" name="coordinator_name[{{ $key }}]"
                                         id="coordinator_name[{{ $key }}]"
-                                        value="{{ old('coordinator_name.' . $key, $sponser->getTranslation('coordinator_name', $key)) }}"
+                                        value="{{ old('coordinator_name.' . $key, $sponsor->getTranslation('coordinator_name', $key)) }}"
                                         class="form-control">
                                     @error('coordinator_name.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -211,7 +211,7 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="text" id="coordinator_phone" name="coordinator_phone"
-                                    value="{{ old('coordinator_phone', $sponser->coordinator_phone) }}"
+                                    value="{{ old('coordinator_phone', $sponsor->coordinator_phone) }}"
                                     class="form-control">
                                 @error('coordinator_phone')
                                     <span class="text-danger">{{ $message }}</span>
@@ -225,7 +225,7 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="text" id="coordinator_email" name="coordinator_email"
-                                    value="{{ old('coordinator_email', $sponser->coordinator_email) }}"
+                                    value="{{ old('coordinator_email', $sponsor->coordinator_email) }}"
                                     class="form-control">
                                 @error('coordinator_email')
                                     <span class="text-danger">{{ $message }}</span>
@@ -245,7 +245,7 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="text" id="published_on" name="published_on"
-                                    value="{{ old('published_on', \Carbon\Carbon::parse($sponser->published_on)->Format('Y-m-d')) }}"
+                                    value="{{ old('published_on', \Carbon\Carbon::parse($sponsor->published_on)->Format('Y-m-d')) }}"
                                     class="form-control">
                                 @error('published_on')
                                     <span class="text-danger">{{ $message }}</span>
@@ -259,7 +259,7 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="text" id="published_on_time" name="published_on_time"
-                                    value="{{ old('published_on_time', \Carbon\Carbon::parse($sponser->published_on)->Format('h:i A')) }}"
+                                    value="{{ old('published_on_time', \Carbon\Carbon::parse($sponsor->published_on)->Format('h:i A')) }}"
                                     class="form-control">
                                 @error('published_on_time')
                                     <span class="text-danger">{{ $message }}</span>
@@ -275,11 +275,11 @@
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <select name="status" class="form-control">
                                     <option value="1"
-                                        {{ old('status', $sponser->status) == '1' ? 'selected' : null }}>
+                                        {{ old('status', $sponsor->status) == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}
                                     </option>
                                     <option value="0"
-                                        {{ old('status', $sponser->status) == '0' ? 'selected' : null }}>
+                                        {{ old('status', $sponsor->status) == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
@@ -328,20 +328,20 @@
                 showUpload: false,
                 overwriteInitial: false,
                 initialPreview: [
-                    @if ($sponser->logo != '')
-                        "{{ asset('assets/sponsers/' . $sponser->logo) }}",
+                    @if ($sponsor->logo != '')
+                        "{{ asset('assets/sponsors/' . $sponsor->logo) }}",
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($sponser->logo != '')
+                    @if ($sponsor->logo != '')
                         {
-                            caption: "{{ $sponser->logo }}",
+                            caption: "{{ $sponsor->logo }}",
                             size: '1111',
                             width: "120px",
-                            url: "{{ route('admin.sponsers.remove_image', ['sponser_id' => $sponser->id, '_token' => csrf_token()]) }}",
-                            key: {{ $sponser->id }}
+                            url: "{{ route('admin.sponsors.remove_image', ['sponsor_id' => $sponsor->id, '_token' => csrf_token()]) }}",
+                            key: {{ $sponsor->id }}
                         }
                     @endif
                 ]

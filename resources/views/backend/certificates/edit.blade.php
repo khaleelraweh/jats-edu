@@ -161,19 +161,19 @@
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="sponser_id"> {{ __('panel.sponser_name') }} </label>
+                                <label for="sponsor_id"> {{ __('panel.sponsor_name') }} </label>
                             </div>
 
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <select name="sponser_id" id="sponser_id" class="form-control select2 child">
-                                    <option value="">{{ __('panel.select_sponser') }}</option>
-                                    @forelse ($sponsers as $sponser)
-                                        <option value="{{ $sponser->id }}"
-                                            {{ old('sponser_id', $certificate->sponser_id) == $sponser->id ? 'selected' : '' }}>
-                                            {{ $sponser->name }}
+                                <select name="sponsor_id" id="sponsor_id" class="form-control select2 child">
+                                    <option value="">{{ __('panel.select_sponsor') }}</option>
+                                    @forelse ($sponsors as $sponsor)
+                                        <option value="{{ $sponsor->id }}"
+                                            {{ old('sponsor_id', $certificate->sponsor_id) == $sponsor->id ? 'selected' : '' }}>
+                                            {{ $sponsor->name }}
                                         </option>
                                     @empty
-                                        <option value="">{{ __('panel.no_sponsers_available') }}</option>
+                                        <option value="">{{ __('panel.no_sponsors_available') }}</option>
                                     @endforelse
                                 </select>
                             </div>

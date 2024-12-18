@@ -316,20 +316,20 @@ return [
     // ........... commons in Pages ....... //
 
 
-    ########################### Manage Sponsers  ##################################
+    ########################### Manage Sponsors  ##################################
 
-    // =============  Manage Sponsers  ===============//
-    'manage_sponsers'                          => 'إدارة الجهات التعليمية',
+    // =============  Manage Sponsors  ===============//
+    'manage_sponsors'                          => 'إدارة الجهات التعليمية',
 
-    // --------------- Sponsers  --------------//
-    'show_sponsers'                            => 'الجهات التعليمية',
-    'add_new_sponser'                          => 'إضافة جهة تعليمية',
-    'edit_existing_sponser'                    => 'تعديل بيانات الجهة التعليمية',
+    // --------------- Sponsors  --------------//
+    'show_sponsors'                            => 'الجهات التعليمية',
+    'add_new_sponsor'                          => 'إضافة جهة تعليمية',
+    'edit_existing_sponsor'                    => 'تعديل بيانات الجهة التعليمية',
 
-    // ........... commons in Sponsers ....... //
-    'sponser_name'                              =>  'إسم الجهة',
-    'sponser_address'                           =>  'عنوان الجهة',
-    'sponser_logo'                              =>  'شعار الجهة',
+    // ........... commons in Sponsors ....... //
+    'sponsor_name'                              =>  'إسم الجهة',
+    'sponsor_address'                           =>  'عنوان الجهة',
+    'sponsor_logo'                              =>  'شعار الجهة',
     'coordinator_name'                          =>  'إسم المنسق',
     'coordinator_phone'                         =>  'رقم المنسق',
     'coordinator_email'                         =>  'بريد المنسق',
@@ -976,11 +976,11 @@ return [
     'student_account'                   =>  'حساب الطالب',
     'type_student_name_or_email'        =>  'إدخل اسم او بريد الطالب',
     'select_course'                     =>  'إختر الدورة',
-    'select_sponser'                    =>  'إختر الجهة المصدرة للشهادة',
+    'select_sponsor'                    =>  'إختر الجهة المصدرة للشهادة',
     'date_of_issue'                     =>  'تاريخ الإصدار',
     'certification_file'                =>  'ملف الشهادة',
     'no_courses_available'              =>  'لا يوجد دورات',
-    'no_sponsers_available'             =>  'لا يوجد جهات',
+    'no_sponsors_available'             =>  'لا يوجد جهات',
 
 
 

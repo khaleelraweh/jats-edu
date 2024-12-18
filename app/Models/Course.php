@@ -334,9 +334,9 @@ class Course extends Model
     }
 
 
-    public function sponsers()
+    public function sponsors()
     {
-        return $this->belongsToMany(Sponser::class, 'course_sponser')
+        return $this->belongsToMany(Sponsor::class, 'course_sponsor')
             ->using(CourseSponsor::class)
             ->withPivot('certificate_cost')
             ->withTimestamps();

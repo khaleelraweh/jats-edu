@@ -22,9 +22,9 @@ class Sponsor extends Model
     // searchable lab 
     protected $searchable = [
         'columns' => [
-            'sponsers.name' => 10,
-            'sponsers.address' => 10,
-            'sponsers.coordinator_name' => 10,
+            'sponsors.name' => 10,
+            'sponsors.address' => 10,
+            'sponsors.coordinator_name' => 10,
         ]
     ];
 
@@ -84,7 +84,7 @@ class Sponsor extends Model
 
     public function courses()
     {
-        return $this->belongsToMany(Course::class, 'course_sponser')
+        return $this->belongsToMany(Course::class, 'course_sponsor')
             ->using(CourseSponsor::class)
             ->withPivot('certificate_cost')
             ->withTimestamps();

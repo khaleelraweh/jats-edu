@@ -51,7 +51,7 @@
 
 @section('content')
 
-    {{-- main holder sponser  --}}
+    {{-- main holder sponsor  --}}
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -60,7 +60,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_sponser') }}
+                    {{ __('panel.add_new_sponsor') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -72,8 +72,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.sponsers.index') }}">
-                            {{ __('panel.show_sponsers') }}
+                        <a href="{{ route('admin.sponsors.index') }}">
+                            {{ __('panel.show_sponsors') }}
                         </a>
                     </li>
                 </ul>
@@ -94,7 +94,7 @@
             @endif
 
 
-            <form action="{{ route('admin.sponsers.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.sponsors.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -122,7 +122,7 @@
                             <div class="row ">
                                 <div class="col-sm-12 col-md-2 pt-3">
                                     <label for="name[{{ $key }}]">
-                                        {{ __('panel.sponser_name') }}
+                                        {{ __('panel.sponsor_name') }}
                                         {{ __('panel.in') }} ({{ __('panel.' . $key) }})
                                     </label>
                                 </div>
@@ -143,7 +143,7 @@
                             <div class="row ">
                                 <div class="col-sm-12 col-md-2 pt-3">
                                     <label for="address[{{ $key }}]">
-                                        {{ __('panel.sponser_address') }}
+                                        {{ __('panel.sponsor_address') }}
                                         {{ __('panel.in') }} ({{ __('panel.' . $key) }})
                                     </label>
                                 </div>
@@ -216,7 +216,7 @@
                         <hr>
                         <div class="row ">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="logo"> {{ __('panel.sponser_logo') }}</label>
+                                <label for="logo"> {{ __('panel.sponsor_logo') }}</label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="file-loading">

@@ -595,7 +595,7 @@
                             caption: "{{ $certificate_request->certificate_file }}",
                             size: '1111',
                             width: "120px",
-                            url: "{{ route('admin.certificate_requests.remove_image', ['certificate_id' => $certificate_request->id, '_token' => csrf_token()]) }}",
+                            url: "{{ route('admin.certificate_requests.remove_certificate_file_image', ['certificate_request_id' => $certificate_request->id, '_token' => csrf_token()]) }}",
                             key: {{ $certificate_request->id }}
                         }
                     @endif
@@ -623,7 +623,7 @@
                             caption: "{{ $certificate_request->identity_attachment }}",
                             size: '1111',
                             width: "120px",
-                            url: "{{ route('admin.certificate_requests.remove_image', ['certificate_id' => $certificate_request->id, '_token' => csrf_token()]) }}",
+                            url: "{{ route('admin.certificate_requests.remove_identity_attachment_image', ['certificate_request_id' => $certificate_request->id, '_token' => csrf_token()]) }}",
                             key: {{ $certificate_request->id }}
                         }
                     @endif

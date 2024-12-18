@@ -267,22 +267,43 @@ class CertificateRequestController extends Controller
     }
 
 
-    public function remove_image(Request $request)
+    public function remove_certificate_file_image(Request $request)
     {
 
         if (!auth()->user()->ability('admin', 'delete_certificate_requests')) {
             return redirect('admin/index');
         }
 
-        $certificate = Certifications::findOrFail($request->certificate_id);
-        if (File::exists('assets/certifications/' . $certificate->cert_file)) {
-            unlink('assets/certifications/' . $certificate->cert_file);
-            $certificate->cert_file = null;
-            $certificate->save();
+        $certificate_request = CertificateRequest::findOrFail($request->certificate_request_id);
+        if (File::exists('assets/certifications/' . $certificate_request->certificate_file)) {
+            unlink('assets/certifications/' . $certificate_request->certificate_file);
+            $certificate_request->certificate_file = null;
+            $certificate_request->save();
         }
-        if ($certificate->cert_file != null) {
-            $certificate->cert_file = null;
-            $certificate->save();
+        if ($certificate_request->certificate_file != null) {
+            $certificate_request->certificate_file = null;
+            $certificate_request->save();
+        }
+
+        return true;
+    }
+
+    public function remove_identity_attachment_image(Request $request)
+    {
+
+        if (!auth()->user()->ability('admin', 'delete_certificate_requests')) {
+            return redirect('admin/index');
+        }
+
+        $certificate_request = CertificateRequest::findOrFail($request->certificate_request_id);
+        if (File::exists('assets/certifications/' . $certificate_request->identity_attachment)) {
+            unlink('assets/certifications/' . $certificate_request->identity_attachment);
+            $certificate_request->identity_attachment = null;
+            $certificate_request->save();
+        }
+        if ($certificate_request->identity_attachment != null) {
+            $certificate_request->identity_attachment = null;
+            $certificate_request->save();
         }
 
         return true;

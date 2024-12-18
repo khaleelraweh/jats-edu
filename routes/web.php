@@ -281,7 +281,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('certificates', CertificateController::class);
 
         // ==============   certificate requests Tab   ==============  //
-        Route::post('certificate-requests/remove-image', [CertificateRequestController::class, 'remove_image'])->name('certificate_requests.remove_image');
+        Route::post('certificate-requests/remove-certificate-file-image', [CertificateRequestController::class, 'remove_certificate_file_image'])->name('certificate_requests.remove_certificate_file_image');
+        Route::post('certificate-requests/remove-identity-attachment-image', [CertificateRequestController::class, 'remove_identity_attachment_image'])->name('certificate_requests.remove_identity_attachment_image');
         Route::resource('certificate_requests', CertificateRequestController::class);
 
 

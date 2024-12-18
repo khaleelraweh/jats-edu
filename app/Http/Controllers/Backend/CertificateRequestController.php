@@ -11,7 +11,7 @@ use App\Models\Course;
 use App\Models\Sponser;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use illuminate\support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
@@ -57,85 +57,112 @@ class CertificateRequestController extends Controller
             return redirect('admin/index');
         }
 
-        $input['full_name']                 =   $request->full_name;
+        DB::beginTransaction();
 
-        $input['date_of_birth']             = Carbon::createFromFormat('Y/m/d', $request->date_of_birth)->format('Y-m-d');
+        try {
 
+            $input['full_name']                 =   $request->full_name;
 
-        $input['nationality']               =   $request->nationality;
-        $input['country']                   =   $request->country;
-        $input['state']                     =   $request->state;
-        $input['city']                      =   $request->city;
-        $input['phone']                     =   $request->phone;
-        $input['whatsup_phone']             =   $request->whatsup_phone;
-        $input['identity_type']             =   $request->identity_type;
-        $input['identity_number']           =   $request->identity_number;
-        $input['identity_expiration_date']  =   $request->identity_expiration_date;
-
-        $input['identity_expiration_date']  = Carbon::createFromFormat('Y/m/d', $request->identity_expiration_date)->format('Y-m-d');
-
-        $input['identity_attachment']       =   $request->identity_attachment;
-        $input['certificate_name']          =   $request->certificate_name;
-        $input['certificate_code']          =   $request->certificate_code;
-
-        $input['certificate_release_date']  = Carbon::createFromFormat('Y/m/d', $request->certificate_release_date)->format('Y-m-d');
-
-        $input['certificate_file']          =   $request->certificate_file;
-        $input['certificate_status']        =   $request->certificate_status;
-
-        $input['sponser_id']                =   $request->sponser_id;
-        $input['user_id']                   =   $request->user_id;
-        $input['course_id']                 =   $request->course_id;
+            $input['date_of_birth']             = Carbon::createFromFormat('Y/m/d', $request->date_of_birth)->format('Y-m-d');
 
 
-        $published_on                       = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
-        $publishedOn                        = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
-        $input['published_on']              = $publishedOn;
+            $input['nationality']               =   $request->nationality;
+            $input['country']                   =   $request->country;
+            $input['state']                     =   $request->state;
+            $input['city']                      =   $request->city;
+            $input['phone']                     =   $request->phone;
+            $input['whatsup_phone']             =   $request->whatsup_phone;
+            $input['identity_type']             =   $request->identity_type;
+            $input['identity_number']           =   $request->identity_number;
+            $input['identity_expiration_date']  =   $request->identity_expiration_date;
+
+            $input['identity_expiration_date']  = Carbon::createFromFormat('Y/m/d', $request->identity_expiration_date)->format('Y-m-d');
+
+            $input['identity_attachment']       =   $request->identity_attachment;
+            $input['certificate_name']          =   $request->certificate_name;
+            $input['certificate_code']          =   $request->certificate_code;
+
+            $input['certificate_release_date']  = Carbon::createFromFormat('Y/m/d', $request->certificate_release_date)->format('Y-m-d');
+
+            $input['certificate_file']          =   $request->certificate_file;
+            $input['certificate_status']        =   $request->certificate_status;
+
+            $input['sponser_id']                =   $request->sponser_id;
+            $input['user_id']                   =   $request->user_id;
+            $input['course_id']                 =   $request->course_id;
 
 
-        $input['status']                    = $request->status;
-        $input['created_by']                = auth()->user()->full_name;
+            $published_on                       = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
+            $publishedOn                        = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
+            $input['published_on']              = $publishedOn;
 
 
-        if ($image =  $request->file('certificate_file')) {
-
-            $file_name                      = Str::slug($request->certificate_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
-            $path                           = public_path('assets/certifications/' . $file_name);
-
-            Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($path, 100);
-
-            $input['certificate_file'] = $file_name;
-        }
-
-        if ($image =  $request->file('identity_attachment')) {
-
-            $file_name                      = Str::slug($request->identity_number) . '_' . time() .  "." . $image->getClientOriginalExtension();
-            $path                           = public_path('assets/certifications/' . $file_name);
-
-            Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($path, 100);
-
-            $input['identity_attachment'] = $file_name;
-        }
+            $input['status']                    = $request->status;
+            $input['created_by']                = auth()->user()->full_name;
 
 
-        $certificate = Certifications::create($input);
+            if ($image =  $request->file('certificate_file')) {
+
+                $file_name                      = Str::slug($request->certificate_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
+                $path                           = public_path('assets/certifications/' . $file_name);
+
+                Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($path, 100);
+
+                $input['certificate_file'] = $file_name;
+            }
+
+            if ($image =  $request->file('identity_attachment')) {
+
+                $file_name                      = Str::slug($request->identity_number) . '_' . time() .  "." . $image->getClientOriginalExtension();
+                $path                           = public_path('assets/certifications/' . $file_name);
+
+                Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($path, 100);
+
+                $input['identity_attachment'] = $file_name;
+            }
 
 
-        if ($certificate) {
+            $certificate = Certifications::create($input);
+
+            DB::commit();
+
+
+            // if ($certificate) {
+            //     return redirect()->route('admin.certificate_requests.index')->with([
+            //         'message' => __('panel.created_successfully'),
+            //         'alert-type' => 'success'
+            //     ]);
+            // }
+
+            // return redirect()->route('admin.certificate_requests.index')->with([
+            //     'message' => __('panel.something_was_wrong'),
+            //     'alert-type' => 'danger'
+            // ]);
+
             return redirect()->route('admin.certificate_requests.index')->with([
                 'message' => __('panel.created_successfully'),
-                'alert-type' => 'success'
+                'alert-type' => 'success',
+            ]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            // Clean up saved files if any
+            if (!empty($input['certificate_file'])) {
+                @unlink(public_path('assets/certifications/' . $input['certificate_file']));
+            }
+            if (!empty($input['identity_attachment'])) {
+                @unlink(public_path('assets/certifications/' . $input['identity_attachment']));
+            }
+
+            return redirect()->route('admin.certificate_requests.index')->with([
+                'message' => __('panel.something_was_wrong'),
+                'alert-type' => 'danger',
             ]);
         }
-
-        return redirect()->route('admin.certificate_requests.index')->with([
-            'message' => __('panel.something_was_wrong'),
-            'alert-type' => 'danger'
-        ]);
     }
 
 

@@ -27,7 +27,7 @@ class CertificateRequestRequest extends FormRequest
                     return [
 
 
-                        'full_name.*'               =>      'required|max:255',
+                        'full_name.ar'               =>      'required|max:255',
                         'date_of_birth'             =>      'nullable',
 
                         'nationality'               =>      'nullable',
@@ -43,7 +43,7 @@ class CertificateRequestRequest extends FormRequest
                         'identity_expiration_date'  =>      'required',
                         'identity_attachment'       =>      'required',
 
-                        'certificate_name.*'        =>      'nullable',
+                        'certificate_name.ar'        =>      'nullable',
                         'certificate_code'          =>      'nullable',
                         'certificate_release_date'  =>      'nullable',
                         'certificate_file'          =>      'nullable',
@@ -68,7 +68,7 @@ class CertificateRequestRequest extends FormRequest
             case 'PATCH': {
                     return [
 
-                        'full_name.*'               =>      'required|max:255',
+                        'full_name.ar'               =>      'required|max:255',
                         'date_of_birth'             =>      'nullable',
 
                         'nationality'               =>      'nullable',
@@ -84,7 +84,7 @@ class CertificateRequestRequest extends FormRequest
                         'identity_expiration_date'  =>      'required',
                         'identity_attachment'       =>      'required',
 
-                        'certificate_name.*'        =>      'nullable',
+                        'certificate_name.ar'        =>      'nullable',
                         'certificate_code'          =>      'nullable',
                         'certificate_release_date'  =>      'nullable',
                         'certificate_file'          =>      'nullable',

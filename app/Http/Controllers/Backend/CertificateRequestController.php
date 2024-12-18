@@ -84,6 +84,7 @@ class CertificateRequestController extends Controller
 
         $input['certificate_file']          =   $request->certificate_file;
         $input['certificate_status']        =   $request->certificate_status;
+
         $input['sponser_id']                =   $request->sponser_id;
         $input['user_id']                   =   $request->user_id;
         $input['course_id']                 =   $request->course_id;
@@ -98,16 +99,28 @@ class CertificateRequestController extends Controller
         $input['created_by']                = auth()->user()->full_name;
 
 
-        if ($image =  $request->file('cert_file')) {
+        if ($image =  $request->file('certificate_file')) {
 
-            $file_name                      = Str::slug($request->cert_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
+            $file_name                      = Str::slug($request->certificate_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
             $path                           = public_path('assets/certifications/' . $file_name);
 
             Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save($path, 100);
 
-            $input['cert_file'] = $file_name;
+            $input['certificate_file'] = $file_name;
+        }
+
+        if ($image =  $request->file('identity_attachment')) {
+
+            $file_name                      = Str::slug($request->certificate_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
+            $path                           = public_path('assets/certifications/' . $file_name);
+
+            Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($path, 100);
+
+            $input['identity_attachment'] = $file_name;
         }
 
 
@@ -177,9 +190,9 @@ class CertificateRequestController extends Controller
         $input['created_by']                = auth()->user()->full_name;
 
 
-        if ($image = $request->file('cert_file')) {
-            if ($certificate->cert_file != null && File::exists('assets/certifications/' . $certificate->cert_file)) {
-                unlink('assets/certifications/' . $certificate->cert_file);
+        if ($image = $request->file('certificate_file')) {
+            if ($certificate->certificate_file != null && File::exists('assets/certifications/' . $certificate->certificate_file)) {
+                unlink('assets/certifications/' . $certificate->certificate_file);
             }
 
             $file_name = Str::slug($request->cert_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
@@ -190,7 +203,23 @@ class CertificateRequestController extends Controller
                 $constraint->aspectRatio();
             })->save($path, 100);
 
-            $input['cert_file'] = $file_name;
+            $input['certificate_file'] = $file_name;
+        }
+
+        if ($image = $request->file('identity_attachment')) {
+            if ($certificate->identity_attachment != null && File::exists('assets/certifications/' . $certificate->identity_attachment)) {
+                unlink('assets/certifications/' . $certificate->identity_attachment);
+            }
+
+            $file_name = Str::slug($request->cert_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
+
+            $path = public_path('assets/certifications/' . $file_name);
+
+            Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($path, 100);
+
+            $input['identity_attachment'] = $file_name;
         }
 
         $certificate->update($input);

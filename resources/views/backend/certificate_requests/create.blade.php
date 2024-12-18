@@ -108,7 +108,7 @@
                                 </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                <div class="input-group flatpickr" id="flatpickr-datebirth">
                                     <input type="text" name="date_of_birth" value="{{ old('date_of_birth') }}"
                                         class="form-control" placeholder="Select date" data-input>
                                     <span class="input-group-text input-group-addon" data-toggle>
@@ -266,7 +266,7 @@
                                 </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                <div class="input-group flatpickr" id="flatpickr-identityExpirationDate">
                                     <input type="text" name="identity_expiration_date"
                                         value="{{ old('identity_expiration_date') }}" class="form-control"
                                         placeholder="Select date" data-input>
@@ -653,6 +653,35 @@
                     wrap: true,
                     dateFormat: "Y/m/d h:i K",
                     minDate: "today", // Prevent dates before today
+                    locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+                    defaultDate: defaultDate,
+                });
+            }
+            // datebirth picker
+            if ($('#flatpickr-datebirth').length) {
+                const defaultDate = "{{ old('date_of_birth') }}" ?
+                    "{{ old('date_of_birth') }}" :
+                    new Date(); // Set to now if no old date exists
+
+                flatpickr("#flatpickr-datebirth", {
+                    enableTime: false,
+                    wrap: true,
+                    dateFormat: "Y/m/d",
+                    maxDate: "today", // Prevent dates before today
+                    locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+                    defaultDate: defaultDate,
+                });
+            }
+            // datebirth picker
+            if ($('#flatpickr-identityExpirationDate').length) {
+                const defaultDate = "{{ old('identity_expiration_date') }}" ?
+                    "{{ old('identity_expiration_date') }}" :
+                    new Date(); // Set to now if no old date exists
+
+                flatpickr("#flatpickr-identityExpirationDate", {
+                    enableTime: false,
+                    wrap: true,
+                    dateFormat: "Y/m/d",
                     locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
                     defaultDate: defaultDate,
                 });

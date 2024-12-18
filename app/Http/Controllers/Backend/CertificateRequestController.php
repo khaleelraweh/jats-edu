@@ -57,7 +57,10 @@ class CertificateRequestController extends Controller
         }
 
         $input['full_name']                 =   $request->full_name;
-        $input['date_of_birth']             =   $request->date_of_birth;
+        $dateOfBirth             = Carbon::createFromFormat('Y/m/d', $request->date_of_birth)->format('Y-m-d');
+        $input['date_of_birth']             = $dateOfBirth;
+
+
         $input['nationality']               =   $request->nationality;
         $input['country']                   =   $request->country;
         $input['state']                     =   $request->state;

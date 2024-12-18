@@ -12,7 +12,7 @@ class CertificateRequest extends Model
     use HasFactory, HasTranslations, SearchableTrait;
     protected $guarded = [];
 
-    public $translatable = ['full_name'];
+    public $translatable = ['full_name', 'certificate_name'];
 
     protected $searchable = [
         'columns' => [

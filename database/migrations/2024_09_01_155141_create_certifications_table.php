@@ -22,7 +22,7 @@ return new class extends Migration
             $table->dateTime('date_of_issue')->nullable();
             $table->integer('cert_code')->nullable();
 
-            $table->foreignId('sponser_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('sponsor_id')->nullable()->constrained()->cascadeOnDelete();
 
 
             // will be use always

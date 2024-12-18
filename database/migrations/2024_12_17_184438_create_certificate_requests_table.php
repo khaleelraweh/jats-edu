@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('certificate_file')->nullable();
             $table->tinyInteger('certificate_status')->nullable()->default(0); //قيد المراجعة 0 تحت المعالجة 1 تم الاصدار 2
 
-            $table->foreignId('sponser_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('sponsor_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('course_id')->nullable()->constrained()->cascadeOnDelete();
 

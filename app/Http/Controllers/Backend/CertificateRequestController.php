@@ -56,15 +56,35 @@ class CertificateRequestController extends Controller
             return redirect('admin/index');
         }
 
+        $input['full_name']                 =   $request->full_name;
+        $input['date_of_birth']             =   $request->date_of_birth;
+        $input['nationality']               =   $request->nationality;
+        $input['country']                   =   $request->country;
+        $input['state']                     =   $request->state;
+        $input['city']                      =   $request->city;
+        $input['phone']                     =   $request->phone;
+        $input['whatsup_phone']             =   $request->whatsup_phone;
+        $input['identity_type']             =   $request->identity_type;
+        $input['identity_number']           =   $request->identity_number;
+        $input['identity_expiration_date']  =   $request->identity_expiration_date;
+        $input['identity_attachment']       =   $request->identity_attachment;
+        $input['certificate_name']          =   $request->certificate_name;
+        $input['certificate_code']          =   $request->certificate_code;
 
-        $input['user_id']                   = $request->user_id;
-        $input['full_name']                 = $request->full_name;
-        $input['course_id']                 = $request->course_id;
-        $input['sponser_id']                 = $request->sponser_id;
 
-        $date_of_issue                      = str_replace(['ص', 'م'], ['AM', 'PM'], $request->date_of_issue);
-        $DateOfIssue                        = Carbon::createFromFormat('Y/m/d h:i A', $date_of_issue)->format('Y-m-d H:i:s');
-        $input['date_of_issue']             = $DateOfIssue;
+        $certificate_release_date           = str_replace(['ص', 'م'], ['AM', 'PM'], $request->certificate_release_date);
+        $certificateReleaseDate             = Carbon::createFromFormat('Y/m/d h:i A', $certificate_release_date)->format('Y-m-d H:i:s');
+        $input['certificate_release_date']             = $certificateReleaseDate;
+
+        $input['certificate_file']          =   $request->certificate_file;
+        $input['certificate_status']        =   $request->certificate_status;
+        $input['sponser_id']                =   $request->sponser_id;
+        $input['user_id']                   =   $request->user_id;
+        $input['course_id']                 =   $request->course_id;
+
+
+
+
 
         $input['cert_code']                 = $request->cert_code;
 

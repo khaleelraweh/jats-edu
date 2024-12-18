@@ -158,11 +158,12 @@ class CertificateRequestController extends Controller
         }
 
         $certificate = Certifications::where('id', $certificate)->first();
+
         $courses = Course::query()->active()->get(['id', 'title']);
-
         $sponsers = Sponser::query()->active()->get(['id', 'name']);
+        $countries = Country::query()->active()->get(['id', 'name', 'translations']);
 
-        return view('backend.certificate_requests.edit', compact('certificate', 'courses', 'sponsers'));
+        return view('backend.certificate_requests.edit', compact('certificate', 'courses', 'sponsers', 'countries'));
     }
 
     public function update(CertificateRequest $request, $certificate)

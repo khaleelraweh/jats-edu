@@ -217,7 +217,7 @@ class CertificateRequestController extends Controller
                 unlink('assets/certificate_requests/' . $certificate_request->certificate_file);
             }
 
-            $file_name = Str::slug($request->cert_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
+            $file_name = Str::slug($request->certificate_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
 
             $path = public_path('assets/certificate_requests/' . $file_name);
 
@@ -233,7 +233,7 @@ class CertificateRequestController extends Controller
                 unlink('assets/certificate_requests/' . $certificate_request->identity_attachment);
             }
 
-            $file_name = Str::slug($request->cert_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
+            $file_name = Str::slug($request->identity_number) . '_' . time() .  "." . $image->getClientOriginalExtension();
 
             $path = public_path('assets/certificate_requests/' . $file_name);
 
@@ -246,7 +246,7 @@ class CertificateRequestController extends Controller
 
         $certificate_request->update($input);
 
-        if ($certificate) {
+        if ($certificate_request) {
             return redirect()->route('admin.certificate_requests.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -260,17 +260,20 @@ class CertificateRequestController extends Controller
     }
 
 
-    public function destroy($certificate)
+    public function destroy($certificate_request)
     {
         if (!auth()->user()->ability('admin', 'delete_certificate_requests')) {
             return redirect('admin/index');
         }
 
-        $certificate = Certifications::findOrFail($certificate);
+        $certificate_request = CertificateRequest::findOrFail($certificate_request);
 
-        // Check if `cert_file` is not empty and the file exists
-        if (!empty($certificate_request->cert_file) && File::exists('assets/certificate_requests/' . $certificate_request->cert_file)) {
-            unlink('assets/certificate_requests/' . $certificate_request->cert_file);
+        if (!empty($certificate_request->certificate_file) && File::exists('assets/certificate_requests/' . $certificate_request->certificate_file)) {
+            unlink('assets/certificate_requests/' . $certificate_request->certificate_file);
+        }
+
+        if (!empty($certificate_request->identity_attachment) && File::exists('assets/certificate_requests/' . $certificate_request->identity_attachment)) {
+            unlink('assets/certificate_requests/' . $certificate_request->identity_attachment);
         }
 
         // Mark as deleted by the current user

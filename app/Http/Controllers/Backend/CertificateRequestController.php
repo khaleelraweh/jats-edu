@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Altwaireb\World\Models\Country;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\CertificateRequest;
+use App\Http\Requests\Backend\CertificateRequestRequest;
 use App\Models\Certifications;
 use App\Models\Course;
 use App\Models\Sponser;
@@ -50,7 +51,7 @@ class CertificateRequestController extends Controller
         return view('backend.certificate_requests.create', compact('courses', 'sponsers', 'countries'));
     }
 
-    public function store(CertificateRequest $request)
+    public function store(CertificateRequestRequest $request)
     {
         if (!auth()->user()->ability('admin', 'create_certificate_requests')) {
             return redirect('admin/index');

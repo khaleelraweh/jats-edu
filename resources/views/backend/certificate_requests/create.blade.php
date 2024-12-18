@@ -357,7 +357,7 @@
                                 <label for="flatpickr-datetime"> {{ __('panel.certificate_release_date') }} </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                <div class="input-group flatpickr" id="flatpickr-certificateReleaseDate">
                                     <input type="text" name="certificate_release_date"
                                         value="{{ old('certificate_release_date') }}" class="form-control"
                                         placeholder="Select date" data-input>
@@ -672,7 +672,7 @@
                     defaultDate: defaultDate,
                 });
             }
-            // datebirth picker
+            // identityExpirationDate picker
             if ($('#flatpickr-identityExpirationDate').length) {
                 const defaultDate = "{{ old('identity_expiration_date') }}" ?
                     "{{ old('identity_expiration_date') }}" :
@@ -682,6 +682,21 @@
                     enableTime: false,
                     wrap: true,
                     dateFormat: "Y/m/d",
+                    locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+                    defaultDate: defaultDate,
+                });
+            }
+            // certificateReleaseDate picker
+            if ($('#flatpickr-certificateReleaseDate').length) {
+                const defaultDate = "{{ old('certificate_release_date') }}" ?
+                    "{{ old('certificate_release_date') }}" :
+                    new Date(); // Set to now if no old date exists
+
+                flatpickr("#flatpickr-certificateReleaseDate", {
+                    enableTime: false,
+                    wrap: true,
+                    dateFormat: "Y/m/d",
+                    minDate: "today", // Prevent dates before today
                     locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
                     defaultDate: defaultDate,
                 });

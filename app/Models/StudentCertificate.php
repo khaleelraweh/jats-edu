@@ -5,16 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CourseSponsor extends Model
+class StudentCertificate extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
+        'student_id',
         'course_id',
         'sponsor_id',
         'certificate_cost',
     ];
+
+
+    public function student()
+    {
+        return $this->belongsTo(User::class, 'student_id');
+    }
 
     public function course()
     {

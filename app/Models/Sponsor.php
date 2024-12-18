@@ -70,17 +70,16 @@ class Sponsor extends Model
         return $this->status ? __('panel.status_active') : __('panel.status_inactive');
     }
 
-    public function certificates()
-    {
-        return $this->hasMany(Certifications::class);
-    }
-
 
     public function scopeActive($query)
     {
         return $query->whereStatus(true);
     }
 
+    // public function certificates()
+    // {
+    //     return $this->hasMany(Certifications::class);
+    // }
 
     public function courses()
     {
@@ -93,5 +92,11 @@ class Sponsor extends Model
     public function certificateRequests()
     {
         return $this->hasMany(CertificateRequest::class);
+    }
+
+
+    public function certificates()
+    {
+        return $this->hasMany(StudentCertificate::class);
     }
 }

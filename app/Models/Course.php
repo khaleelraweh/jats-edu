@@ -334,12 +334,25 @@ class Course extends Model
     }
 
 
+
+
+    public function students()
+    {
+        return $this->belongsToMany(User::class, 'student_course')
+            ->withPivot('completed', 'wants_certificate')
+            ->withTimestamps();
+    }
+
     public function sponsors()
     {
         return $this->belongsToMany(Sponsor::class, 'course_sponsor')
-            ->using(CourseSponsor::class)
             ->withPivot('certificate_cost')
             ->withTimestamps();
+    }
+
+    public function certificates()
+    {
+        return $this->hasMany(StudentCertificate::class);
     }
 
     public function certificateRequests()

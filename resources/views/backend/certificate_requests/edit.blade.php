@@ -233,7 +233,7 @@
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="identity_type"
                                         id="identity_type_passport" value="1"
-                                        {{ old('identity_type', '1') == '1' ? 'checked' : '' }}>
+                                        {{ old('identity_type', $certificate_request->identity_type) == '1' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="identity_type_passport">
                                         {{ __('panel.identity_type_passport') }}
                                     </label>
@@ -241,7 +241,7 @@
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="identity_type"
                                         id="identity_type_personal_card" value="0"
-                                        {{ old('identity_type') == '0' ? 'checked' : '' }}>
+                                        {{ old('identity_type', $certificate_request->identity_type) == '0' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="identity_type_personal_card">
                                         {{ __('panel.identity_type_personal_card') }}
                                     </label>
@@ -260,7 +260,7 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="text" class="form-control " name="identity_number" id="identity_number"
-                                    value="{{ old('identity_number') }}"
+                                    value="{{ old('identity_number', $certificate_request->identity_number) }}"
                                     placeholder="{{ __('panel.identity_number') }}">
                                 @error('identity_number')
                                     <span class="text-danger">{{ $message }}</span>
@@ -277,8 +277,8 @@
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="input-group flatpickr" id="flatpickr-identityExpirationDate">
                                     <input type="text" name="identity_expiration_date"
-                                        value="{{ old('identity_expiration_date') }}" class="form-control"
-                                        placeholder="Select date" data-input>
+                                        value="{{ old('identity_expiration_date', $certificate_request->identity_expiration_date ? \Carbon\Carbon::parse($certificate_request->identity_expiration_date)->format('Y/m/d') : '') }}"
+                                        class="form-control" placeholder="Select date" data-input>
                                     <span class="input-group-text input-group-addon" data-toggle>
                                         <i data-feather="calendar"></i>
                                     </span>
@@ -340,7 +340,8 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="text" class="form-control " name="certificate_name"
-                                    id="certificate_name" value="{{ old('certificate_name') }}"
+                                    id="certificate_name"
+                                    value="{{ old('certificate_name', $certificate_request->certificate_name) }}"
                                     placeholder="{{ __('panel.certificate_name') }}">
                                 @error('certificate_name')
                                     <span class="text-danger">{{ $message }}</span>
@@ -354,7 +355,8 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="text" class="form-control " name="certificate_code"
-                                    id="certificate_code" value="{{ old('certificate_code') }}">
+                                    id="certificate_code"
+                                    value="{{ old('certificate_code', $certificate_request->certificate_code) }}">
                                 @error('certificate_code')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -368,8 +370,8 @@
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="input-group flatpickr" id="flatpickr-certificateReleaseDate">
                                     <input type="text" name="certificate_release_date"
-                                        value="{{ old('certificate_release_date') }}" class="form-control"
-                                        placeholder="Select date" data-input>
+                                        value="{{ old('certificate_release_date', $certificate_request->certificate_release_date ? \Carbon\Carbon::parse($certificate_request->certificate_release_date)->format('Y/m/d') : '') }}"
+                                        class="form-control" placeholder="Select date" data-input>
                                     <span class="input-group-text input-group-addon" data-toggle>
                                         <i class="fas fa-calendar"></i>
                                     </span>
@@ -427,7 +429,7 @@
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="certificate_status"
                                         id="under_review" value="0"
-                                        {{ old('certificate_status') == '0' ? 'checked' : '' }}>
+                                        {{ old('certificate_status', $certificate_request->certificate_status) == '0' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="under_review">
                                         {{ __('panel.under_review') }}
                                     </label>
@@ -435,7 +437,7 @@
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="certificate_status"
                                         id="under_treatment" value="1"
-                                        {{ old('certificate_status', '1') == '1' ? 'checked' : '' }}>
+                                        {{ old('certificate_status', $certificate_request->certificate_status) == '1' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="under_treatment">
                                         {{ __('panel.under_treatment') }}
                                     </label>
@@ -443,7 +445,7 @@
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="certificate_status"
                                         id="released" value="2"
-                                        {{ old('certificate_status', '2') == '2' ? 'checked' : '' }}>
+                                        {{ old('certificate_status', $certificate_request->certificate_status) == '2' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="released">
                                         {{ __('panel.released') }}
                                     </label>
@@ -451,7 +453,7 @@
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="certificate_status"
                                         id="rejected" value="3"
-                                        {{ old('certificate_status', '3') == '3' ? 'checked' : '' }}>
+                                        {{ old('certificate_status', $certificate_request->certificate_status) == '3' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="rejected">
                                         {{ __('panel.rejected') }}
                                     </label>
@@ -473,7 +475,8 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="input-group flatpickr" id="flatpickr-datetime">
-                                    <input type="text" name="published_on" value="{{ old('published_on') }}"
+                                    <input type="text" name="published_on"
+                                        value="{{ old('published_on', $certificate_request->published_on ? \Carbon\Carbon::parse($certificate_request->published_on)->format('Y/m/d') : '') }}"
                                         class="form-control" placeholder="Select date" data-input>
                                     <span class="input-group-text input-group-addon" data-toggle>
                                         <i data-feather="calendar"></i>
@@ -494,14 +497,16 @@
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="status" id="status_active"
-                                        value="1" {{ old('status', '1') == '1' ? 'checked' : '' }}>
+                                        value="1"
+                                        {{ old('status', $certificate_request->status) == '1' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="status_active">
                                         {{ __('panel.status_active') }}
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="status" id="status_inactive"
-                                        value="0" {{ old('status') == '0' ? 'checked' : '' }}>
+                                        value="0"
+                                        {{ old('status', $certificate_request->status) == '0' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="status_inactive">
                                         {{ __('panel.status_inactive') }}
                                     </label>

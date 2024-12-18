@@ -418,7 +418,7 @@
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="certificate_status"
                                         id="under_review" value="0"
-                                        {{ old('certificate_status') == '0' ? 'checked' : '' }}>
+                                        {{ old('certificate_status', '0') == '0' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="under_review">
                                         {{ __('panel.under_review') }}
                                     </label>
@@ -426,7 +426,7 @@
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="certificate_status"
                                         id="under_treatment" value="1"
-                                        {{ old('certificate_status', '1') == '1' ? 'checked' : '' }}>
+                                        {{ old('certificate_status') == '1' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="under_treatment">
                                         {{ __('panel.under_treatment') }}
                                     </label>
@@ -434,7 +434,7 @@
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="certificate_status"
                                         id="released" value="2"
-                                        {{ old('certificate_status', '2') == '2' ? 'checked' : '' }}>
+                                        {{ old('certificate_status') == '2' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="released">
                                         {{ __('panel.released') }}
                                     </label>
@@ -442,7 +442,7 @@
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="certificate_status"
                                         id="rejected" value="3"
-                                        {{ old('certificate_status', '3') == '3' ? 'checked' : '' }}>
+                                        {{ old('certificate_status') == '3' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="rejected">
                                         {{ __('panel.rejected') }}
                                     </label>

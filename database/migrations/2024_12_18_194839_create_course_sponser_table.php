@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('course_id')->constrained()->cascadeOnDelete();
             $table->foreignId('sponser_id')->constrained()->cascadeOnDelete();
+            $table->decimal('certificate_cost', 8, 2)->nullable();
             $table->timestamps();
         });
     }

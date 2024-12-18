@@ -85,8 +85,12 @@ class Sponser extends Model
         return $query->whereStatus(true);
     }
 
+
     public function courses()
     {
-        return $this->belongsToMany(Course::class, 'course_sponser')->using(CourseSponsor::class);
+        return $this->belongsToMany(Course::class, 'course_sponser')
+            ->using(CourseSponsor::class)
+            ->withPivot('certificate_cost')
+            ->withTimestamps();
     }
 }

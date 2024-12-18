@@ -333,8 +333,12 @@ class Course extends Model
             ->count('user_id'); // Count the distinct users
     }
 
+
     public function sponsers()
     {
-        return $this->belongsToMany(Sponser::class, 'course_sponser')->using(CourseSponsor::class);
+        return $this->belongsToMany(Sponser::class, 'course_sponser')
+            ->using(CourseSponsor::class)
+            ->withPivot('certificate_cost')
+            ->withTimestamps();
     }
 }

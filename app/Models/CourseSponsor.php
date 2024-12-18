@@ -13,4 +13,6 @@ class CourseSponsor extends  Pivot
     protected $table = 'course_sponser';
 
     protected $guarded = [];
+    // protected $fillable = ['course_id', 'sponser_id', 'certificate_cost'];
+
 }

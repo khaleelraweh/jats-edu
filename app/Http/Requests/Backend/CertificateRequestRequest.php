@@ -113,12 +113,12 @@ class CertificateRequestRequest extends FormRequest
     public function attributes(): array
     {
         $attr = [
-            'content'      => '( ' . __('panel.f_content') . ' )',
+            'phone'      => '( ' . __('panel.f_phone') . ' )',
             'status'    =>  '( ' . __('panel.status') . ' )',
         ];
 
         foreach (config('locales.languages') as $key => $val) {
-            $attr += ['title.' . $key       =>  "( " . __('panel.title')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+            $attr += ['full_name.' . $key       =>  "( " . __('panel.full_name')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
         }
 
 

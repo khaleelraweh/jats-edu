@@ -584,7 +584,7 @@
                 overwriteInitial: false,
                 initialPreview: [
                     @if ($certificate_request->certificate_file != '')
-                        "{{ asset('assets/certifications/' . $certificate_request->certificate_file) }}",
+                        "{{ asset('assets/certificate_requests/' . $certificate_request->certificate_file) }}",
                     @endif
                 ],
                 initialPreviewAsData: true,
@@ -612,7 +612,7 @@
                 overwriteInitial: false,
                 initialPreview: [
                     @if ($certificate_request->identity_attachment != '')
-                        "{{ asset('assets/certifications/' . $certificate_request->identity_attachment) }}",
+                        "{{ asset('assets/certificate_requests/' . $certificate_request->identity_attachment) }}",
                     @endif
                 ],
                 initialPreviewAsData: true,

@@ -102,7 +102,7 @@ class CertificateRequestController extends Controller
         if ($image =  $request->file('certificate_file')) {
 
             $file_name                      = Str::slug($request->certificate_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
-            $path                           = public_path('assets/certifications/' . $file_name);
+            $path                           = public_path('assets/certificate_requests/' . $file_name);
 
             Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
@@ -114,7 +114,7 @@ class CertificateRequestController extends Controller
         if ($image =  $request->file('identity_attachment')) {
 
             $file_name                      = Str::slug($request->identity_number) . '_' . time() .  "." . $image->getClientOriginalExtension();
-            $path                           = public_path('assets/certifications/' . $file_name);
+            $path                           = public_path('assets/certificate_requests/' . $file_name);
 
             Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
@@ -166,22 +166,42 @@ class CertificateRequestController extends Controller
         return view('backend.certificate_requests.edit', compact('certificate_request', 'courses', 'sponsers', 'countries'));
     }
 
-    public function update(CertificateRequest $request, $certificate)
+    public function update(CertificateRequest $request, $certificate_request)
     {
 
-        $certificate = Certifications::where('id', $certificate)->first();
+        $certificate_request = CertificateRequest::where('id', $certificate_request)->first();
 
 
-        $input['user_id']                   = $request->user_id;
-        $input['full_name']                 = $request->full_name;
-        $input['course_id']                 = $request->course_id;
-        $input['sponser_id']                = $request->sponser_id;
+        $input['full_name']                 =   $request->full_name;
 
-        $date_of_issue                      = str_replace(['ص', 'م'], ['AM', 'PM'], $request->date_of_issue);
-        $DateOfIssue                        = Carbon::createFromFormat('Y/m/d h:i A', $date_of_issue)->format('Y-m-d H:i:s');
-        $input['date_of_issue']             = $DateOfIssue;
+        $input['date_of_birth']             = Carbon::createFromFormat('Y/m/d', $request->date_of_birth)->format('Y-m-d');
 
-        $input['cert_code']                 = $request->cert_code;
+
+        $input['nationality']               =   $request->nationality;
+        $input['country']                   =   $request->country;
+        $input['state']                     =   $request->state;
+        $input['city']                      =   $request->city;
+        $input['phone']                     =   $request->phone;
+        $input['whatsup_phone']             =   $request->whatsup_phone;
+        $input['identity_type']             =   $request->identity_type;
+        $input['identity_number']           =   $request->identity_number;
+        $input['identity_expiration_date']  =   $request->identity_expiration_date;
+
+        $input['identity_expiration_date']  = Carbon::createFromFormat('Y/m/d', $request->identity_expiration_date)->format('Y-m-d');
+
+        $input['identity_attachment']       =   $request->identity_attachment;
+        $input['certificate_name']          =   $request->certificate_name;
+        $input['certificate_code']          =   $request->certificate_code;
+
+        $input['certificate_release_date']  = Carbon::createFromFormat('Y/m/d', $request->certificate_release_date)->format('Y-m-d');
+
+        $input['certificate_file']          =   $request->certificate_file;
+        $input['certificate_status']        =   $request->certificate_status;
+
+        $input['sponser_id']                =   $request->sponser_id;
+        $input['user_id']                   =   $request->user_id;
+        $input['course_id']                 =   $request->course_id;
+
 
         $published_on                       = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
         $publishedOn                        = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
@@ -193,8 +213,8 @@ class CertificateRequestController extends Controller
 
 
         if ($image = $request->file('certificate_file')) {
-            if ($certificate->certificate_file != null && File::exists('assets/certifications/' . $certificate->certificate_file)) {
-                unlink('assets/certifications/' . $certificate->certificate_file);
+            if ($certificate_request->certificate_file != null && File::exists('assets/certifications/' . $certificate_request->certificate_file)) {
+                unlink('assets/certifications/' . $certificate_request->certificate_file);
             }
 
             $file_name = Str::slug($request->cert_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
@@ -209,8 +229,8 @@ class CertificateRequestController extends Controller
         }
 
         if ($image = $request->file('identity_attachment')) {
-            if ($certificate->identity_attachment != null && File::exists('assets/certifications/' . $certificate->identity_attachment)) {
-                unlink('assets/certifications/' . $certificate->identity_attachment);
+            if ($certificate_request->identity_attachment != null && File::exists('assets/certifications/' . $certificate_request->identity_attachment)) {
+                unlink('assets/certifications/' . $certificate_request->identity_attachment);
             }
 
             $file_name = Str::slug($request->cert_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
@@ -224,7 +244,7 @@ class CertificateRequestController extends Controller
             $input['identity_attachment'] = $file_name;
         }
 
-        $certificate->update($input);
+        $certificate_request->update($input);
 
         if ($certificate) {
             return redirect()->route('admin.certificate_requests.index')->with([
@@ -249,16 +269,16 @@ class CertificateRequestController extends Controller
         $certificate = Certifications::findOrFail($certificate);
 
         // Check if `cert_file` is not empty and the file exists
-        if (!empty($certificate->cert_file) && File::exists('assets/certifications/' . $certificate->cert_file)) {
-            unlink('assets/certifications/' . $certificate->cert_file);
+        if (!empty($certificate_request->cert_file) && File::exists('assets/certifications/' . $certificate_request->cert_file)) {
+            unlink('assets/certifications/' . $certificate_request->cert_file);
         }
 
         // Mark as deleted by the current user
-        $certificate->deleted_by = auth()->user()->full_name;
-        $certificate->save();
+        $certificate_request->deleted_by = auth()->user()->full_name;
+        $certificate_request->save();
 
         // Soft delete the record
-        $certificate->delete();
+        $certificate_request->delete();
 
         return redirect()->route('admin.certificate_requests.index')->with([
             'message' => __('panel.deleted_successfully'),

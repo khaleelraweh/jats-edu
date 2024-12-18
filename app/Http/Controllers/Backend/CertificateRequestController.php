@@ -113,7 +113,7 @@ class CertificateRequestController extends Controller
 
         if ($image =  $request->file('identity_attachment')) {
 
-            $file_name                      = Str::slug($request->certificate_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
+            $file_name                      = Str::slug($request->identity_number) . '_' . time() .  "." . $image->getClientOriginalExtension();
             $path                           = public_path('assets/certifications/' . $file_name);
 
             Image::make($image->getRealPath())->resize(300, null, function ($constraint) {

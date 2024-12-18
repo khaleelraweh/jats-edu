@@ -41,7 +41,9 @@ class CertificateRequestRequest extends FormRequest
                         'identity_type'             =>      'required',
                         'identity_number'           =>      'required',
                         'identity_expiration_date'  =>      'required',
-                        'identity_attachment'       =>      'required',
+                        // 'identity_attachment'       =>      'required',
+                        'identity_attachment'        => 'nullable|file|mimes:jpeg,jpg,png|max:2048', // Allow optional file uploads
+
 
                         'certificate_name.ar'        =>      'nullable',
                         'certificate_code'          =>      'nullable',
@@ -82,7 +84,9 @@ class CertificateRequestRequest extends FormRequest
                         'identity_type'             =>      'required',
                         'identity_number'           =>      'required',
                         'identity_expiration_date'  =>      'required',
-                        'identity_attachment'       =>      'required',
+                        // 'identity_attachment'       =>      'required',
+                        'identity_attachment'        => 'nullable|file|mimes:jpeg,jpg,png|max:2048', // Allow optional file uploads
+
 
                         'certificate_name.ar'        =>      'nullable',
                         'certificate_code'          =>      'nullable',

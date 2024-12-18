@@ -72,7 +72,6 @@ class CertificateRequestController extends Controller
         $input['whatsup_phone']             =   $request->whatsup_phone;
         $input['identity_type']             =   $request->identity_type;
         $input['identity_number']           =   $request->identity_number;
-        $input['identity_expiration_date']  =   $request->identity_expiration_date;
 
         $input['identity_expiration_date']  = Carbon::createFromFormat('Y/m/d', $request->identity_expiration_date)->format('Y-m-d');
 
@@ -186,7 +185,6 @@ class CertificateRequestController extends Controller
         $input['whatsup_phone']             =   $request->whatsup_phone;
         $input['identity_type']             =   $request->identity_type;
         $input['identity_number']           =   $request->identity_number;
-        $input['identity_expiration_date']  =   $request->identity_expiration_date;
 
         $input['identity_expiration_date']  = Carbon::createFromFormat('Y/m/d', $request->identity_expiration_date)->format('Y-m-d');
 
@@ -229,12 +227,28 @@ class CertificateRequestController extends Controller
             $input['certificate_file'] = $file_name;
         }
 
+        // if ($image = $request->file('identity_attachment')) {
+        //     if ($certificate_request->identity_attachment != null && File::exists('assets/certificate_requests/' . $certificate_request->identity_attachment)) {
+        //         unlink('assets/certificate_requests/' . $certificate_request->identity_attachment);
+        //     }
+
+        //     $file_name = Str::slug($request->identity_number) . '_' . time() .  "." . $image->getClientOriginalExtension();
+
+        //     $path = public_path('assets/certificate_requests/' . $file_name);
+
+        //     Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
+        //         $constraint->aspectRatio();
+        //     })->save($path, 100);
+
+        //     $input['identity_attachment'] = $file_name;
+        // }
+
         if ($image = $request->file('identity_attachment')) {
             if ($certificate_request->identity_attachment != null && File::exists('assets/certificate_requests/' . $certificate_request->identity_attachment)) {
                 unlink('assets/certificate_requests/' . $certificate_request->identity_attachment);
             }
 
-            $file_name = Str::slug($request->identity_number) . '_' . time() .  "." . $image->getClientOriginalExtension();
+            $file_name = Str::slug($request->identity_number) . '_' . time() . "." . $image->getClientOriginalExtension();
 
             $path = public_path('assets/certificate_requests/' . $file_name);
 
@@ -244,6 +258,7 @@ class CertificateRequestController extends Controller
 
             $input['identity_attachment'] = $file_name;
         }
+
 
         $certificate_request->update($input);
 

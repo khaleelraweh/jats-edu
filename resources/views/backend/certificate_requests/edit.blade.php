@@ -602,6 +602,34 @@
                 ]
             });
 
+            // $("#identity_attachment").fileinput({
+            //     theme: "fa5",
+            //     maxFileCount: 1,
+            //     allowedFileTypes: ['image'],
+            //     showCancel: true,
+            //     showRemove: false,
+            //     showUpload: false,
+            //     overwriteInitial: false,
+            //     initialPreview: [
+            //         @if ($certificate_request->identity_attachment != '')
+            //             "{{ asset('assets/certificate_requests/' . $certificate_request->identity_attachment) }}",
+            //         @endif
+            //     ],
+            //     initialPreviewAsData: true,
+            //     initialPreviewFileType: 'image',
+            //     initialPreviewConfig: [
+            //         @if ($certificate_request->identity_attachment != '')
+            //             {
+            //                 caption: "{{ $certificate_request->identity_attachment }}",
+            //                 size: '1111',
+            //                 width: "120px",
+            //                 url: "{{ route('admin.certificate_requests.remove_identity_attachment_image', ['certificate_request_id' => $certificate_request->id, '_token' => csrf_token()]) }}",
+            //                 key: {{ $certificate_request->id }}
+            //             }
+            //         @endif
+            //     ]
+            // });
+
             $("#identity_attachment").fileinput({
                 theme: "fa5",
                 maxFileCount: 1,
@@ -629,6 +657,7 @@
                     @endif
                 ]
             });
+
 
         });
     </script>

@@ -137,7 +137,7 @@
                                             <option value="">{{ __('panel.nationality') }}</option>
                                             @foreach (getCountries() as $country)
                                                 <option value="{{ $country->id }}"
-                                                    {{ old('nationality') == $country->id ? 'selected' : '' }}>
+                                                    {{ old('nationality', $certificate_request->nationality) == $country->id ? 'selected' : null }}>
                                                     {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
                                                 </option>
                                             @endforeach
@@ -154,7 +154,10 @@
                                                 <option value="{{ $country->id }}"
                                                     {{ old('country') == $country->id ? 'selected' : null }}>
                                                     {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
-
+                                                </option>
+                                                <option value="{{ $country->id }}"
+                                                    {{ old('country', $certificate_request->country) == $country->id ? 'selected' : null }}>
+                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
                                                 </option>
                                             @empty
                                             @endforelse
@@ -166,14 +169,16 @@
                                     </div>
                                     <div class="col-sm-12 col-md-3">
                                         <input type="text" class="form-control " name="state" id="state"
-                                            value="{{ old('state') }}" placeholder="{{ __('panel.state') }}">
+                                            value="{{ old('state', $certificate_request->state) }}"
+                                            placeholder="{{ __('panel.state') }}">
                                         @error('state')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="col-sm-12 col-md-3">
                                         <input type="text" class="form-control " name="city" id="city"
-                                            value="{{ old('city') }}" placeholder="{{ __('panel.city') }}">
+                                            value="{{ old('city', $certificate_request->city) }}"
+                                            placeholder="{{ __('panel.city') }}">
                                         @error('city')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -193,7 +198,8 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="text" class="form-control " name="phone" id="phone"
-                                    value="{{ old('phone') }}" placeholder="{{ __('panel.phone') }}">
+                                    value="{{ old('phone', $certificate_request->phone) }}"
+                                    placeholder="{{ __('panel.phone') }}">
                                 @error('phone')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -207,7 +213,8 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="text" class="form-control " name="whatsup_phone" id="whatsup_phone"
-                                    value="{{ old('whatsup_phone') }}" placeholder="{{ __('panel.whatsup_phone') }}">
+                                    value="{{ old('whatsup_phone', $certificate_request->whatsup_phone) }}"
+                                    placeholder="{{ __('panel.whatsup_phone') }}">
                                 @error('whatsup_phone')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror

@@ -41,13 +41,13 @@ class CertificateRequestRequest extends FormRequest
                         'identity_type'             =>      'required',
                         'identity_number'           =>      'required',
                         'identity_expiration_date'  =>      'required',
-                        'identity_attachment'        => 'nullable',
+                        'identity_attachment'       =>      'nullable',
 
 
-                        'certificate_name.ar'        =>      'nullable',
+                        'certificate_name.ar'       =>     'nullable',
                         'certificate_code'          =>      'nullable',
                         'certificate_release_date'  =>      'nullable',
-                        'certificate_file'          =>      'nullable',
+                        'certificate_file'          =>      'nullable|mimes:jpg,jpeg,png,svg,gif,webp|max:3000',
                         'certificate_status'        =>      'nullable',
 
                         'sponser_id'                =>      'nullable',
@@ -89,7 +89,7 @@ class CertificateRequestRequest extends FormRequest
                         'certificate_name.ar'        =>      'nullable',
                         'certificate_code'          =>      'nullable',
                         'certificate_release_date'  =>      'nullable',
-                        'certificate_file'          =>      'nullable',
+                        'certificate_file'          =>      'nullable|mimes:jpg,jpeg,png,svg,gif,webp|max:3000',
                         'certificate_status'        =>      'nullable',
 
                         'sponser_id'                =>      'nullable',

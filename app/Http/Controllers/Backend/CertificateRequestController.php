@@ -193,27 +193,24 @@ class CertificateRequestController extends Controller
         $input['status'] = $request->status;
         $input['created_by'] = auth()->user()->full_name;
 
-        // Handle certificate file
         if ($image = $request->file('certificate_file')) {
-            if ($certificate_request->certificate_file && File::exists('assets/certificate_requests/' . $certificate_request->certificate_file)) {
+            if ($certificate_request->certificate_file != null && File::exists('assets/certificate_requests/' . $certificate_request->certificate_file)) {
                 unlink('assets/certificate_requests/' . $certificate_request->certificate_file);
             }
 
-            $file_name = Str::slug($request->certificate_code) . '_' . time() . "." . $image->getClientOriginalExtension();
-            $path = public_path('assets/certificate_requests/' . $file_name);
+            $file_name = Str::slug($request->certificate_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
 
-            Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
+            $path = public_path('assets/certificate_requests/' . $file_name);
+            Image::make($image->getRealPath())->resize(500, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save($path, 100);
+            })->save($path);
 
             $input['certificate_file'] = $file_name;
-        } else {
-            unset($input['certificate_file']);
         }
 
         // Handle identity attachment
         if ($image = $request->file('identity_attachment')) {
-            if ($certificate_request->identity_attachment && File::exists('assets/certificate_requests/' . $certificate_request->identity_attachment)) {
+            if ($certificate_request->identity_attachment != null && File::exists('assets/certificate_requests/' . $certificate_request->identity_attachment)) {
                 unlink('assets/certificate_requests/' . $certificate_request->identity_attachment);
             }
 

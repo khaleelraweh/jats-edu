@@ -44,7 +44,8 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.certificate_requests.update', $certificate_request->id) }}" method="post">
+            <form action="{{ route('admin.certificate_requests.update', $certificate_request->id) }}" method="post"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -301,6 +302,8 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+
+
                             </div>
                         </div>
 
@@ -389,7 +392,7 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="file-loading">
-                                    <input type="file" name="certificate_file" id="certificate_file"
+                                    <input type="file" name="certificate_file" id="customer_image"
                                         value="{{ old('certificate_file') }}" class="file-input-overview ">
                                     @error('certificate_file')
                                         <span class="text-danger">{{ $message }}</span>
@@ -574,7 +577,7 @@
 @section('script')
     <script>
         $(function() {
-            $("#certificate_file").fileinput({
+            $("#customer_image").fileinput({
                 theme: "fa5",
                 maxFileCount: 1,
                 allowedFileTypes: ['image'],
@@ -602,34 +605,10 @@
                 ]
             });
 
-            // $("#identity_attachment").fileinput({
-            //     theme: "fa5",
-            //     maxFileCount: 1,
-            //     allowedFileTypes: ['image'],
-            //     showCancel: true,
-            //     showRemove: false,
-            //     showUpload: false,
-            //     overwriteInitial: false,
-            //     initialPreview: [
-            //         @if ($certificate_request->identity_attachment != '')
-            //             "{{ asset('assets/certificate_requests/' . $certificate_request->identity_attachment) }}",
-            //         @endif
-            //     ],
-            //     initialPreviewAsData: true,
-            //     initialPreviewFileType: 'image',
-            //     initialPreviewConfig: [
-            //         @if ($certificate_request->identity_attachment != '')
-            //             {
-            //                 caption: "{{ $certificate_request->identity_attachment }}",
-            //                 size: '1111',
-            //                 width: "120px",
-            //                 url: "{{ route('admin.certificate_requests.remove_identity_attachment_image', ['certificate_request_id' => $certificate_request->id, '_token' => csrf_token()]) }}",
-            //                 key: {{ $certificate_request->id }}
-            //             }
-            //         @endif
-            //     ]
-            // });
 
+
+
+            // for small light 
             $("#identity_attachment").fileinput({
                 theme: "fa5",
                 maxFileCount: 1,
@@ -639,14 +618,14 @@
                 showUpload: false,
                 overwriteInitial: false,
                 initialPreview: [
-                    @if ($certificate_request->identity_attachment != '')
+                    @if ($certificate_request->identity_attachment != null)
                         "{{ asset('assets/certificate_requests/' . $certificate_request->identity_attachment) }}",
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($certificate_request->identity_attachment != '')
+                    @if ($certificate_request->identity_attachment != null)
                         {
                             caption: "{{ $certificate_request->identity_attachment }}",
                             size: '1111',

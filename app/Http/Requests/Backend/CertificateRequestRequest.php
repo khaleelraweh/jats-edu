@@ -41,7 +41,8 @@ class CertificateRequestRequest extends FormRequest
                         'identity_type'             =>      'required',
                         'identity_number'           =>      'required',
                         'identity_expiration_date'  =>      'required',
-                        'identity_attachment'       =>      'nullable',
+                        'identity_attachment'       =>      'nullable|mimes:jpg,jpeg,png,svg,gif,webp|max:3000',
+
 
 
                         'certificate_name.ar'       =>     'nullable',
@@ -69,7 +70,7 @@ class CertificateRequestRequest extends FormRequest
             case 'PATCH': {
                     return [
 
-                        'full_name.ar'               =>      'required|max:255',
+                        'full_name.ar'              =>      'required|max:255',
                         'date_of_birth'             =>      'nullable',
 
                         'nationality'               =>      'nullable',
@@ -83,10 +84,11 @@ class CertificateRequestRequest extends FormRequest
                         'identity_type'             =>      'required',
                         'identity_number'           =>      'required',
                         'identity_expiration_date'  =>      'required',
-                        'identity_attachment'        => 'nullable',
+                        'identity_attachment'       =>      'nullable|mimes:jpg,jpeg,png,svg,gif,webp|max:3000',
 
 
-                        'certificate_name.ar'        =>      'nullable',
+
+                        'certificate_name.ar'       =>      'nullable',
                         'certificate_code'          =>      'nullable',
                         'certificate_release_date'  =>      'nullable',
                         'certificate_file'          =>      'nullable|mimes:jpg,jpeg,png,svg,gif,webp|max:3000',

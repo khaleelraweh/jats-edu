@@ -208,22 +208,19 @@ class CertificateRequestController extends Controller
             $input['certificate_file'] = $file_name;
         }
 
-        // Handle identity attachment
         if ($image = $request->file('identity_attachment')) {
             if ($certificate_request->identity_attachment != null && File::exists('assets/certificate_requests/' . $certificate_request->identity_attachment)) {
                 unlink('assets/certificate_requests/' . $certificate_request->identity_attachment);
             }
 
-            $file_name = Str::slug($request->identity_number) . '_' . time() . "." . $image->getClientOriginalExtension();
-            $path = public_path('assets/certificate_requests/' . $file_name);
+            $file_name = Str::slug($request->certificate_code) . '_' . time() .  "." . $image->getClientOriginalExtension();
 
-            Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
+            $path = public_path('assets/certificate_requests/' . $file_name);
+            Image::make($image->getRealPath())->resize(500, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save($path, 100);
+            })->save($path);
 
             $input['identity_attachment'] = $file_name;
-        } else {
-            unset($input['identity_attachment']);
         }
 
         // Update the certificate request

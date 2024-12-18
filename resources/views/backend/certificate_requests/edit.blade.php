@@ -402,26 +402,6 @@
                         </div>
 
 
-                        {{-- <div class="row">
-                            <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="sponser_id"> {{ __('panel.sponser_name') }} </label>
-                            </div>
-
-                            <div class="col-sm-12 col-md-10 pt-3">
-                                <select name="sponser_id" id="sponser_id" class="form-control select2 child">
-                                    <option value="">{{ __('panel.select_sponser') }}</option>
-                                    @forelse ($sponsers as $sponser)
-                                        <option value="{{ $sponser->id }}"
-                                            {{ (old('sponser_id') ?? ($certificate_request->sponser_id ?? '')) == $sponser->id ? 'selected' : '' }}>
-                                            {{ $sponser->name }}
-                                        </option>
-                                    @empty
-                                        <option value="">{{ __('panel.no_sponsers_available') }}</option>
-                                    @endforelse
-                                </select>
-                            </div>
-                        </div> --}}
-
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="sponser_id"> {{ __('panel.sponser_name') }} </label>
@@ -606,9 +586,6 @@
             });
 
 
-
-
-            // for small light 
             $("#identity_attachment").fileinput({
                 theme: "fa5",
                 maxFileCount: 1,
@@ -618,14 +595,14 @@
                 showUpload: false,
                 overwriteInitial: false,
                 initialPreview: [
-                    @if ($certificate_request->identity_attachment != null)
+                    @if ($certificate_request->identity_attachment != '')
                         "{{ asset('assets/certificate_requests/' . $certificate_request->identity_attachment) }}",
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($certificate_request->identity_attachment != null)
+                    @if ($certificate_request->identity_attachment != '')
                         {
                             caption: "{{ $certificate_request->identity_attachment }}",
                             size: '1111',
@@ -636,6 +613,9 @@
                     @endif
                 ]
             });
+
+
+
 
 
         });

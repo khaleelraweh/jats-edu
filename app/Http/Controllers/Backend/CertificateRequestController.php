@@ -59,8 +59,7 @@ class CertificateRequestController extends Controller
 
         $input['full_name']                 =   $request->full_name;
 
-        $dateOfBirth                        = Carbon::createFromFormat('Y/m/d', $request->date_of_birth)->format('Y-m-d');
-        $input['date_of_birth']             = $dateOfBirth;
+        $input['date_of_birth']             = Carbon::createFromFormat('Y/m/d', $request->date_of_birth)->format('Y-m-d');
 
 
         $input['nationality']               =   $request->nationality;
@@ -73,15 +72,13 @@ class CertificateRequestController extends Controller
         $input['identity_number']           =   $request->identity_number;
         $input['identity_expiration_date']  =   $request->identity_expiration_date;
 
-        $identityExpirationDate             = Carbon::createFromFormat('Y/m/d', $request->identity_expiration_date)->format('Y-m-d');
-        $input['identity_expiration_date']  = $identityExpirationDate;
+        $input['identity_expiration_date']  = Carbon::createFromFormat('Y/m/d', $request->identity_expiration_date)->format('Y-m-d');
 
         $input['identity_attachment']       =   $request->identity_attachment;
         $input['certificate_name']          =   $request->certificate_name;
         $input['certificate_code']          =   $request->certificate_code;
 
-        $certificateReleaseDate             = Carbon::createFromFormat('Y/m/d', $request->certificate_release_date)->format('Y-m-d');
-        $input['certificate_release_date']  = $certificateReleaseDate;
+        $input['certificate_release_date']  = Carbon::createFromFormat('Y/m/d', $request->certificate_release_date)->format('Y-m-d');
 
         $input['certificate_file']          =   $request->certificate_file;
         $input['certificate_status']        =   $request->certificate_status;

@@ -166,13 +166,14 @@ class CertificateRequestController extends Controller
         return view('backend.certificate_requests.edit', compact('certificate_request', 'courses', 'sponsers', 'countries'));
     }
 
-    public function update(CertificateRequest $request, $certificate_request)
+    public function update(CertificateRequestRequest $request, $certificate_request)
     {
 
         $certificate_request = CertificateRequest::where('id', $certificate_request)->first();
 
 
         $input['full_name']                 =   $request->full_name;
+
 
         $input['date_of_birth']             = Carbon::createFromFormat('Y/m/d', $request->date_of_birth)->format('Y-m-d');
 

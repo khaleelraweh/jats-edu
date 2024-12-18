@@ -7,13 +7,13 @@ $(function() {
   const locale = "{{ app()->getLocale() }}";
 
   // date picker
-  if ($('#flatpickr-date').length) {
-    flatpickr("#flatpickr-date", {
-      wrap: true,
-      dateFormat: "Y-m-d",
-      minDate: "today", // Prevent dates before today
-    });
-  }
+  // if ($('#flatpickr-date').length) {
+  //   flatpickr("#flatpickr-date", {
+  //     wrap: true,
+  //     dateFormat: "Y-m-d",
+  //     minDate: "today", // Prevent dates before today
+  //   });
+  // }
 
   // time picker
   if ($('#flatpickr-time').length) {
@@ -33,6 +33,16 @@ $(function() {
       dateFormat: "Y/m/d h:i K",
       minDate: "today", // Prevent dates before today
       locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+    });
+  }
+
+  if ($('#flatpickr-date').length) {
+    flatpickr("#flatpickr-date", {
+      enableTime: false,
+      wrap: true,
+      dateFormat: "Y/m/d",
+      locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+
     });
   }
 });

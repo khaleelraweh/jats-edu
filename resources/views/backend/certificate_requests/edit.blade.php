@@ -109,7 +109,7 @@
                                 </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <div class="input-group flatpickr" id="flatpickr-datebirth">
+                                <div class="input-group flatpickr" id="flatpickr-date">
                                     <input type="text" name="date_of_birth"
                                         value="{{ old('date_of_birth', $certificate_request->date_of_birth ? \Carbon\Carbon::parse($certificate_request->date_of_birth)->format('Y/m/d') : '') }}"
                                         class="form-control" placeholder="Select date" data-input>

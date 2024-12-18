@@ -332,4 +332,9 @@ class Course extends Model
             ->finished() // Filter only the orders with finished status
             ->count('user_id'); // Count the distinct users
     }
+
+    public function sponsers()
+    {
+        return $this->belongsToMany(Sponser::class, 'course_sponser')->using(CourseSponsor::class);
+    }
 }

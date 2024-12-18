@@ -151,19 +151,19 @@ class CertificateRequestController extends Controller
         return view('backend.certificate_requests.show');
     }
 
-    public function edit($certificate)
+    public function edit($certificate_request)
     {
         if (!auth()->user()->ability('admin', 'update_certificate_requests')) {
             return redirect('admin/index');
         }
 
-        $certificate = Certifications::where('id', $certificate)->first();
+        $certificate_request = CertificateRequest::where('id', $certificate_request)->first();
 
         $courses = Course::query()->active()->get(['id', 'title']);
         $sponsers = Sponser::query()->active()->get(['id', 'name']);
         $countries = Country::query()->active()->get(['id', 'name', 'translations']);
 
-        return view('backend.certificate_requests.edit', compact('certificate', 'courses', 'sponsers', 'countries'));
+        return view('backend.certificate_requests.edit', compact('certificate_request', 'courses', 'sponsers', 'countries'));
     }
 
     public function update(CertificateRequest $request, $certificate)

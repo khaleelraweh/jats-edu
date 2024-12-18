@@ -22,7 +22,7 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.certificates.index') }}">
+                        <a href="{{ route('admin.certificate_requests.index') }}">
                             {{ __('panel.show_certificates') }}
                         </a>
                     </li>
@@ -44,7 +44,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.certificates.update', $certificate->id) }}" method="post">
+            <form action="{{ route('admin.certificate_requests.update', $certificate_request->id) }}" method="post">
                 @csrf
                 @method('PATCH')
 
@@ -69,10 +69,10 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <input type="text" class="form-control typeahead" name="customer_name" id="customer_name"
-                                    value="{{ old('customer_name', $certificate->user->full_name) }}"
-                                    placeholder="{{ __('panel.type_student_name_or_email') }}" readonly>
+                                    value="{{ old('customer_name', request()->input('customer_name')) }}"
+                                    placeholder="{{ __('panel.type_student_name_or_email') }}">
                                 <input type="hidden" class="form-control" name="user_id" id="user_id"
-                                    value="{{ old('user_id', $certificate->user_id) }}" readonly>
+                                    value="{{ old('user_id', request()->input('user_id')) }}" readonly>
                                 @error('user_id')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -91,8 +91,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
                                     <input type="text" name="full_name[{{ $key }}]"
-                                        id="full_name[{{ $key }}]"
-                                        value="{{ old('full_name.' . $key, $certificate->getTranslation('full_name', $key)) }}"
+                                        id="full_name[{{ $key }}]" value="{{ old('full_name.' . $key) }}"
                                         class="form-control">
                                     @error('full_name.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -102,7 +101,205 @@
                             </div>
                         @endforeach
 
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="date_of_birth">
+                                    {{ __('panel.date_of_birth') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datebirth">
+                                    <input type="text" name="date_of_birth" value="{{ old('date_of_birth') }}"
+                                        class="form-control" placeholder="Select date" data-input>
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                                @error('date_of_birth')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="nationality">
+                                    {{ __('panel.address_of_residence') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-3">
+                                        <select id="nationality" name="nationality" class="form-control">
+                                            <option value="">{{ __('panel.nationality') }}</option>
+                                            @foreach (getCountries() as $country)
+                                                <option value="{{ $country->id }}"
+                                                    {{ old('nationality') == $country->id ? 'selected' : '' }}>
+                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('nationality')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-sm-12 col-md-3">
+
+                                        <select name="country" id="country" class="form-control">
+                                            <option value="">{{ __('panel.country') }}</option>
+                                            @forelse ($countries as $country)
+                                                <option value="{{ $country->id }}"
+                                                    {{ old('country') == $country->id ? 'selected' : null }}>
+                                                    {{ app()->getLocale() == 'ar' ? $country->translations['ar'] : $country->name }}
+
+                                                </option>
+                                            @empty
+                                            @endforelse
+                                        </select>
+                                        @error('country_id')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+
+                                    </div>
+                                    <div class="col-sm-12 col-md-3">
+                                        <input type="text" class="form-control " name="state" id="state"
+                                            value="{{ old('state') }}" placeholder="{{ __('panel.state') }}">
+                                        @error('state')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-sm-12 col-md-3">
+                                        <input type="text" class="form-control " name="city" id="city"
+                                            value="{{ old('city') }}" placeholder="{{ __('panel.city') }}">
+                                        @error('city')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
                         <hr>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="nationality">
+                                    {{ __('panel.phone_number') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" class="form-control " name="phone" id="phone"
+                                    value="{{ old('phone') }}" placeholder="{{ __('panel.phone') }}">
+                                @error('phone')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="nationality">
+                                    {{ __('panel.whatsup_phone') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" class="form-control " name="whatsup_phone" id="whatsup_phone"
+                                    value="{{ old('whatsup_phone') }}" placeholder="{{ __('panel.whatsup_phone') }}">
+                                @error('whatsup_phone')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="status" class="control-label">
+                                    <span>{{ __('panel.identity_type') }}</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="identity_type"
+                                        id="identity_type_passport" value="1"
+                                        {{ old('identity_type', '1') == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="identity_type_passport">
+                                        {{ __('panel.identity_type_passport') }}
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="identity_type"
+                                        id="identity_type_personal_card" value="0"
+                                        {{ old('identity_type') == '0' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="identity_type_personal_card">
+                                        {{ __('panel.identity_type_personal_card') }}
+                                    </label>
+                                </div>
+                                @error('identity_type')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="nationality">
+                                    {{ __('panel.identity_number') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" class="form-control " name="identity_number" id="identity_number"
+                                    value="{{ old('identity_number') }}"
+                                    placeholder="{{ __('panel.identity_number') }}">
+                                @error('identity_number')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="identity_expiration_date" class="control-label">
+                                    <span>{{ __('panel.identity_expiration_date') }}</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-identityExpirationDate">
+                                    <input type="text" name="identity_expiration_date"
+                                        value="{{ old('identity_expiration_date') }}" class="form-control"
+                                        placeholder="Select date" data-input>
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                                @error('identity_expiration_date')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="identity_attachment"> {{ __('panel.identity_attachment') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="file-loading">
+                                    <input type="file" name="identity_attachment" id="identity_attachment"
+                                        value="{{ old('identity_attachment') }}" class="file-input-overview ">
+                                    @error('identity_attachment')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <hr>
+
+
+
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
@@ -114,7 +311,7 @@
                                     <option value="">{{ __('panel.select_course') }}</option>
                                     @forelse ($courses as $course)
                                         <option value="{{ $course->id }}"
-                                            {{ old('course_id', $certificate->course_id) == $course->id ? 'selected' : '' }}>
+                                            {{ (old('course_id') ?? ($certificate_request->course_id ?? '')) == $course->id ? 'selected' : '' }}>
                                             {{ $course->title }}
                                         </option>
                                     @empty
@@ -124,40 +321,72 @@
                             </div>
                         </div>
 
-
-                        <div class="row">
-                            <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="flatpickr-datetime"> {{ __('panel.date_of_issue') }} </label>
-                            </div>
-                            <div class="col-sm-12 col-md-10 pt-3">
-                                <div class="input-group flatpickr" id="flatpickr-datetime">
-                                    <input type="text" name="date_of_issue"
-                                        value="{{ old('date_of_issue', $certificate->date_of_issue ? \Carbon\Carbon::parse($certificate->date_of_issue)->format('Y/m/d h:i A') : '') }}"
-                                        class="form-control" placeholder="Select date" data-input>
-                                    <span class="input-group-text input-group-addon" data-toggle>
-                                        <i class="fas fa-calendar"></i>
-                                    </span>
-                                </div>
-                                @error('date_of_issue')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
                         <hr>
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="cert_code">{{ __('panel.certificate_code') }}</label>
+                                <label for="certificate_name">
+                                    {{ __('panel.certificate_name') }}
+                                </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <input type="text" class="form-control " name="cert_code" id="cert_code"
-                                    value="{{ old('cert_code', $certificate->cert_code) }}">
-                                @error('cert_code')
+                                <input type="text" class="form-control " name="certificate_name"
+                                    id="certificate_name" value="{{ old('certificate_name') }}"
+                                    placeholder="{{ __('panel.certificate_name') }}">
+                                @error('certificate_name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="certificate_code">{{ __('panel.certificate_code') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" class="form-control " name="certificate_code"
+                                    id="certificate_code" value="{{ old('certificate_code') }}">
+                                @error('certificate_code')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="flatpickr-datetime"> {{ __('panel.certificate_release_date') }} </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-certificateReleaseDate">
+                                    <input type="text" name="certificate_release_date"
+                                        value="{{ old('certificate_release_date') }}" class="form-control"
+                                        placeholder="Select date" data-input>
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i class="fas fa-calendar"></i>
+                                    </span>
+                                </div>
+                                @error('certificate_release_date')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="certificate_file"> {{ __('panel.certification_file') }}</label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="file-loading">
+                                    <input type="file" name="certificate_file" id="certificate_file"
+                                        value="{{ old('certificate_file') }}" class="file-input-overview ">
+                                    @error('certificate_file')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
@@ -169,7 +398,7 @@
                                     <option value="">{{ __('panel.select_sponser') }}</option>
                                     @forelse ($sponsers as $sponser)
                                         <option value="{{ $sponser->id }}"
-                                            {{ old('sponser_id', $certificate->sponser_id) == $sponser->id ? 'selected' : '' }}>
+                                            {{ (old('sponser_id') ?? ($certificate_request->sponser_id ?? '')) == $sponser->id ? 'selected' : '' }}>
                                             {{ $sponser->name }}
                                         </option>
                                     @empty
@@ -179,31 +408,63 @@
                             </div>
                         </div>
 
-                        <div class="row ">
+                        <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="cert_file"> {{ __('panel.certification_file') }}</label>
+                                <label for="certificate_status" class="control-label">
+                                    <span>{{ __('panel.certificate_status') }}</span>
+                                </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <div class="file-loading">
-                                    <input type="file" name="cert_file" id="cert_file"
-                                        value="{{ old('cert_file') }}" class="file-input-overview ">
-                                    @error('cert_file')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="certificate_status"
+                                        id="under_review" value="0"
+                                        {{ old('certificate_status') == '0' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="under_review">
+                                        {{ __('panel.under_review') }}
+                                    </label>
                                 </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="certificate_status"
+                                        id="under_treatment" value="1"
+                                        {{ old('certificate_status', '1') == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="under_treatment">
+                                        {{ __('panel.under_treatment') }}
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="certificate_status"
+                                        id="released" value="2"
+                                        {{ old('certificate_status', '2') == '2' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="released">
+                                        {{ __('panel.released') }}
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="certificate_status"
+                                        id="rejected" value="3"
+                                        {{ old('certificate_status', '3') == '3' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="rejected">
+                                        {{ __('panel.rejected') }}
+                                    </label>
+                                </div>
+                                @error('certificate_status')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
+
 
                         <hr>
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                {{ __('panel.published_on') }}
+                                <label for="published_on" class="control-label">
+                                    <span>{{ __('panel.published_on') }}</span>
+                                </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="input-group flatpickr" id="flatpickr-datetime">
-                                    <input type="text" name="published_on"
-                                        value="{{ old('published_on', $certificate->published_on ? \Carbon\Carbon::parse($certificate->published_on)->format('Y/m/d h:i A') : '') }}"
+                                    <input type="text" name="published_on" value="{{ old('published_on') }}"
                                         class="form-control" placeholder="Select date" data-input>
                                     <span class="input-group-text input-group-addon" data-toggle>
                                         <i data-feather="calendar"></i>
@@ -224,14 +485,14 @@
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="status" id="status_active"
-                                        value="1" {{ old('status', $certificate->status) == '1' ? 'checked' : '' }}>
+                                        value="1" {{ old('status', '1') == '1' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="status_active">
                                         {{ __('panel.status_active') }}
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input" name="status" id="status_inactive"
-                                        value="0" {{ old('status', $certificate->status) == '0' ? 'checked' : '' }}>
+                                        value="0" {{ old('status') == '0' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="status_inactive">
                                         {{ __('panel.status_inactive') }}
                                     </label>
@@ -247,7 +508,6 @@
                     </div>
 
 
-
                     <div class="row">
                         <div class="col-sm-12 col-md-2 pt-3 d-none d-md-block">
                         </div>
@@ -258,7 +518,7 @@
                                 {{ __('panel.save_data') }}
                             </button>
 
-                            <a href="{{ route('admin.certificates.index') }}" name="submit"
+                            <a href="{{ route('admin.certificate_requests.index') }}" name="submit"
                                 class=" btn btn-outline-danger">
                                 <i class="icon-lg  me-2" data-feather="x"></i>
                                 {{ __('panel.cancel') }}
@@ -278,7 +538,7 @@
 @section('script')
     <script>
         $(function() {
-            $("#cert_file").fileinput({
+            $("#certificate_file").fileinput({
                 theme: "fa5",
                 maxFileCount: 1,
                 allowedFileTypes: ['image'],
@@ -287,20 +547,48 @@
                 showUpload: false,
                 overwriteInitial: false,
                 initialPreview: [
-                    @if ($certificate->cert_file != '')
-                        "{{ asset('assets/certifications/' . $certificate->cert_file) }}",
+                    @if ($certificate_request->certificate_file != '')
+                        "{{ asset('assets/certifications/' . $certificate_request->certificate_file) }}",
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($certificate->cert_file != '')
+                    @if ($certificate_request->certificate_file != '')
                         {
-                            caption: "{{ $certificate->cert_file }}",
+                            caption: "{{ $certificate_request->certificate_file }}",
                             size: '1111',
                             width: "120px",
-                            url: "{{ route('admin.certificates.remove_image', ['certificate_id' => $certificate->id, '_token' => csrf_token()]) }}",
-                            key: {{ $certificate->id }}
+                            url: "{{ route('admin.certificate_requests.remove_image', ['certificate_id' => $certificate_request->id, '_token' => csrf_token()]) }}",
+                            key: {{ $certificate_request->id }}
+                        }
+                    @endif
+                ]
+            });
+
+            $("#identity_attachment").fileinput({
+                theme: "fa5",
+                maxFileCount: 1,
+                allowedFileTypes: ['image'],
+                showCancel: true,
+                showRemove: false,
+                showUpload: false,
+                overwriteInitial: false,
+                initialPreview: [
+                    @if ($certificate_request->identity_attachment != '')
+                        "{{ asset('assets/certifications/' . $certificate_request->identity_attachment) }}",
+                    @endif
+                ],
+                initialPreviewAsData: true,
+                initialPreviewFileType: 'image',
+                initialPreviewConfig: [
+                    @if ($certificate_request->identity_attachment != '')
+                        {
+                            caption: "{{ $certificate_request->identity_attachment }}",
+                            size: '1111',
+                            width: "120px",
+                            url: "{{ route('admin.certificate_requests.remove_image', ['certificate_id' => $certificate_request->id, '_token' => csrf_token()]) }}",
+                            key: {{ $certificate_request->id }}
                         }
                     @endif
                 ]

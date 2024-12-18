@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use Altwaireb\World\Models\Country;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\CertificateRequest;
 use App\Http\Requests\Backend\CertificateRequestRequest;
-use App\Models\CertificateRequest as ModelsCertificateRequest;
+use App\Models\CertificateRequest;
 use App\Models\Certifications;
 use App\Models\Course;
 use App\Models\Sponser;
@@ -26,7 +25,7 @@ class CertificateRequestController extends Controller
             return redirect('admin/index');
         }
 
-        $certificate_requests = Certifications::query()
+        $certificate_requests = CertificateRequest::query()
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -125,7 +124,7 @@ class CertificateRequestController extends Controller
         }
 
 
-        $certificate_request = ModelsCertificateRequest::create($input);
+        $certificate_request = CertificateRequest::create($input);
 
 
 

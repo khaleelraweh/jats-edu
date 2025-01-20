@@ -186,7 +186,7 @@
                     @endif
                 @endforeach --}}
 
-                @foreach ($web_menus->where('section', 1) as $menu)
+                {{-- @foreach ($web_menus->where('section', 1) as $menu)
                     @if (!(Str::contains($menu->link, ['register', 'login']) && Auth::check()))
                         @if (count($menu->appearedChildren) == false)
                             <li class="">
@@ -222,6 +222,57 @@
                                                             @foreach ($sub_menu->appearedChildren as $sub_menu_2)
                                                                 <a class="dropdown-item"
                                                                     href="{{ $sub_menu_2->link }}">
+                                                                    {{ $sub_menu_2->title }}
+                                                                </a>
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @endif
+                    @endif
+                @endforeach --}}
+
+                @foreach ($web_menus->where('section', 1) as $menu)
+                    @if (!(Str::contains($menu->link, ['register', 'login']) && Auth::check()))
+                        @if (count($menu->appearedChildren) == false)
+                            <li class="">
+                                <a class="nav-link dropdown px-xl-4 text-uppercase" id="navbarShop"
+                                    href="{{ url($menu->link) }}" aria-haspopup="true" aria-expanded="false">
+                                    {{ $menu->title }}
+                                </a>
+                            </li>
+                        @else
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle px-xl-4 text-uppercase" id="navbarBlog"
+                                    data-bs-toggle="dropdown" href="{{ url($menu->link) }}" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    {{ $menu->title }}
+                                </a>
+                                @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
+                                    <ul class="dropdown-menu border-xl shadow-none" aria-labelledby="navbarBlog">
+                                        @foreach ($menu->appearedChildren as $sub_menu)
+                                            @if (count($sub_menu->appearedChildren) == false)
+                                                <li class="dropdown-item">
+                                                    <a class="dropdown-link" href="{{ url($sub_menu->link) }}">
+                                                        {{ $sub_menu->title }}
+                                                    </a>
+                                                </li>
+                                            @else
+                                                <li class="dropdown-item dropright">
+                                                    <a class="dropdown-link dropdown-toggle" data-bs-toggle="dropdown"
+                                                        href="{{ url($sub_menu->link) }}">
+                                                        {{ $sub_menu->title }}
+                                                    </a>
+                                                    @if ($sub_menu->appearedChildren !== null && count($sub_menu->appearedChildren) > 0)
+                                                        <div class="dropdown-menu border-xl shadow-none">
+                                                            @foreach ($sub_menu->appearedChildren as $sub_menu_2)
+                                                                <a class="dropdown-item"
+                                                                    href="{{ url($sub_menu_2->link) }}">
                                                                     {{ $sub_menu_2->title }}
                                                                 </a>
                                                             @endforeach

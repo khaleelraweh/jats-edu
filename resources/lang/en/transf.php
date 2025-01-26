@@ -445,6 +445,7 @@ return [
 
     'requirement'                                   =>  'Requirement',
     'requirements'                                  =>  'Requirements',
+    'course_requirements'                           =>  'Course Requirements',
     'add_another_requirement'                       =>  'Add Another Requirement',
     'example:no_programming_experience_needed.you_will_learn_everything_you_need_to_know'   =>  'Example:No programming experience needed. You will learn everything you need to know',
 

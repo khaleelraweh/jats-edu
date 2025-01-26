@@ -456,6 +456,7 @@ return [
 
     'requirement'                                   =>  'متطلب',
     'requirements'                                  =>  'المتطلبات',
+    'course_requirements'                           =>  'متطلبات الدورة',
     'add_another_requirement'                       =>  'إضافة مطلب آخر',
     'example:no_programming_experience_needed.you_will_learn_everything_you_need_to_know'   =>  'مثال: لا حاجة إلى خبرة في البرمجة. سوف تتعلم كل ما تحتاج إلى معرفته',
 

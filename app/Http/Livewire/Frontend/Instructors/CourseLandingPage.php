@@ -170,6 +170,7 @@ class CourseLandingPage extends Component
             'certificate.required' => __('transf.certificate.required'),
             'certificate.boolean' => __('transf.certificate.boolean'),
             'deadline.date_format' => __('transf.deadline.date_format'),
+
         ];
     }
 

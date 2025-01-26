@@ -178,10 +178,11 @@
 
                             </div>
 
-                            @error('images')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
+
                         </div>
+                        @error('images')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
 
 
                         {{-- video promo   --}}

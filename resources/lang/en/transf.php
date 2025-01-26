@@ -432,6 +432,7 @@ return [
     'what_will_students_learn_tips'                 =>  'You must enter at least 4 learning objectives or outcomes that learners can expect to achieve after completing your course.',
 
     'objective'                                     =>  'Objective',
+    'objectives'                                    =>  'Objectives',
     'add_another_objective'                         =>  'Add Another Objective',
     'save_objective'                                =>  'Save Objective',
     'save'                                          =>  'Save',

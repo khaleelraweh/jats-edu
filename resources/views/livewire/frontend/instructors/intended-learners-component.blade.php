@@ -37,8 +37,11 @@
                 <table class="table" id="products_table">
                     <thead>
                         <tr>
-                            <th>{{ __('transf.objective') }} </th>
-                            <th></th>
+                            <th>
+                                {{ __('transf.objectives') }}
+                                <span style="color: #cc1818;">*</span>
+                            </th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>

@@ -442,6 +442,8 @@ return [
     'what_will_students_learn_tips'                 =>  'يجب عليك إدخال ما لا يقل عن 4 أهداف أو نتائج تعليمية يمكن للمتعلمين توقع تحقيقها بعد إكمال الدورة التدريبية الخاصة بك.',
 
     'objective'                                     =>  'الهدف',
+    'objectives'                                    =>  'الاهداف',
+
     'add_another_objective'                         =>  'أضف هدفًا آخر',
     'save_objective'                                =>  'حفظ الهدف',
     'save'                                          =>  'حفظ',

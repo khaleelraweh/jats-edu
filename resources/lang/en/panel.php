@@ -1426,6 +1426,7 @@ return [
     'f_account_number_in'                               =>  'Account number in',
     'f_account_name_in'                                 =>  'Account name in',
 
+    'bank_receipt_data'                                 =>  'Bank receipt data',
 
     'f_customer_bank_account_number'                   =>  'Customer bank account number',
     'student’s_bank_account_or_bank_transfer_receipt_number' =>  'The student’s bank account or bank transfer receipt number',

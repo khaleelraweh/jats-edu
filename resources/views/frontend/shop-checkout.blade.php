@@ -171,7 +171,8 @@
                                                     data-bs-target="#CurriculumcollapseThree" aria-expanded="false"
                                                     aria-controls="CurriculumcollapseThree">
                                                 <i class="fas fa-credit-card mx-2"></i>
-                                                {{ __('transf.Kurima Bank') }}
+                                                {{-- {{ __('transf.Kurima Bank') }} --}}
+                                                {{ __('panel.bank_receipt_data') }}
                                             </label>
                                             <label class="payment-card-icons">
                                                 {{-- <i class="fab fa-cc-visa"></i> --}}

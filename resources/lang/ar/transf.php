@@ -455,6 +455,7 @@ return [
     'what_are_the_requirements_tips'                =>  'قم بإدراج المهارات أو الخبرة أو الأدوات أو المعدات المطلوبة التي يجب أن يمتلكها المتعلمون قبل بدء الدورة التدريبية الخاصة بك. إذا لم تكن هناك متطلبات، استخدم هذه المساحة كفرصة لخفض حاجز المبتدئين.',
 
     'requirement'                                   =>  'متطلب',
+    'requirements'                                  =>  'المتطلبات',
     'add_another_requirement'                       =>  'إضافة مطلب آخر',
     'example:no_programming_experience_needed.you_will_learn_everything_you_need_to_know'   =>  'مثال: لا حاجة إلى خبرة في البرمجة. سوف تتعلم كل ما تحتاج إلى معرفته',
 

@@ -109,7 +109,10 @@
                 <table class="table" id="products_table">
                     <thead>
                         <tr>
-                            <th>{{ __('transf.requirement') }} </th>
+                            <th>
+                                {{ __('transf.requirement') }}
+                                <span style="color: #cc1818;">*</span>
+                            </th>
                             <th></th>
                         </tr>
                     </thead>

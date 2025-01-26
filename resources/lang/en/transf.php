@@ -444,6 +444,7 @@ return [
     'what_are_the_requirements_tips'                =>  'List the required skills, experience, tools or equipment learners should have prior to taking your course. If there are no requirements, use this space as an opportunity to lower the barrier for beginners.',
 
     'requirement'                                   =>  'Requirement',
+    'requirements'                                  =>  'Requirements',
     'add_another_requirement'                       =>  'Add Another Requirement',
     'example:no_programming_experience_needed.you_will_learn_everything_you_need_to_know'   =>  'Example:No programming experience needed. You will learn everything you need to know',
 

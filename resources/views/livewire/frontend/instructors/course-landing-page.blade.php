@@ -168,10 +168,12 @@
                                 </p>
                                 <input type="file" wire:model="images" id="images" class="form-control" multiple
                                     style="height: 39px !important;">
-                                @error('images.*')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+
                             </div>
+
+                            @error('images')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
 

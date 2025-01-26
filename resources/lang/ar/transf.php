@@ -646,6 +646,32 @@ return [
 
 
 
+    // lang/ar/transf.php
+    'title.required' => 'حقل العنوان مطلوب.',
+    'title.min' => 'يجب أن يكون العنوان على الأقل :min أحرف.',
+    'title.max' => 'يجب ألا يزيد العنوان عن :max حرفًا.',
+    'subtitle.required' => 'حقل العنوان الفرعي مطلوب.',
+    'subtitle.min' => 'يجب أن يكون العنوان الفرعي على الأقل :min أحرف.',
+    'subtitle.max' => 'يجب ألا يزيد العنوان الفرعي عن :max حرفًا.',
+    'images.required' => 'مطلوب تحميل صورة واحدة على الأقل.',
+    'images.image' => 'يجب أن يكون الملف صورة.',
+    'images.max' => 'يجب ألا يتجاوز حجم الصورة :max كيلوبايت.',
+    'video_promo.url' => 'يجب أن يكون رابط الفيديو الترويجي صالحًا.',
+    'video_promo.max' => 'يجب ألا يتجاوز رابط الفيديو الترويجي :max حرفًا.',
+    'video_description.url' => 'يجب أن يكون رابط وصف الفيديو صالحًا.',
+    'video_description.max' => 'يجب ألا يتجاوز رابط وصف الفيديو :max حرفًا.',
+    'language.required' => 'حقل اللغة مطلوب.',
+    'language.in' => 'اللغة المحددة غير صالحة.',
+    'skill_level.required' => 'حقل مستوى المهارة مطلوب.',
+    'skill_level.in' => 'مستوى المهارة المحدد غير صالح.',
+    'course_type.required' => 'حقل نوع الدورة مطلوب.',
+    'course_type.in' => 'نوع الدورة المحدد غير صالح.',
+    'course_category_id.required' => 'حقل فئة الدورة مطلوب.',
+    'course_category_id.exists' => 'فئة الدورة المحددة غير صالحة.',
+    'certificate.required' => 'حقل الشهادة مطلوب.',
+    'certificate.boolean' => 'يجب أن يكون حقل الشهادة صحيحًا أو خاطئًا.',
+    'deadline.date_format' => 'يجب أن يكون الموعد النهائي تاريخًا ووقتًا صالحين.',
+
 
 
 

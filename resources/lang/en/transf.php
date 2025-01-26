@@ -626,6 +626,32 @@ return [
     'Professor'                                         =>  'Professor',
 
 
+    // ================ This is for courseLanding page 
+    'title.required' => 'The title field is required.',
+    'title.min' => 'The title must be at least :min characters.',
+    'title.max' => 'The title may not be greater than :max characters.',
+    'subtitle.required' => 'The subtitle field is required.',
+    'subtitle.min' => 'The subtitle must be at least :min characters.',
+    'subtitle.max' => 'The subtitle may not be greater than :max characters.',
+    'images.required' => 'At least one image is required.',
+    'images.image' => 'The file must be an image.',
+    'images.max' => 'The image may not be greater than :max kilobytes.',
+    'video_promo.url' => 'The promo video must be a valid URL.',
+    'video_promo.max' => 'The promo video may not be greater than :max characters.',
+    'video_description.url' => 'The video description must be a valid URL.',
+    'video_description.max' => 'The video description may not be greater than :max characters.',
+    'language.required' => 'The language field is required.',
+    'language.in' => 'The selected language is invalid.',
+    'skill_level.required' => 'The skill level field is required.',
+    'skill_level.in' => 'The selected skill level is invalid.',
+    'course_type.required' => 'The course type field is required.',
+    'course_type.in' => 'The selected course type is invalid.',
+    'course_category_id.required' => 'The course category field is required.',
+    'course_category_id.exists' => 'The selected course category is invalid.',
+    'certificate.required' => 'The certificate field is required.',
+    'certificate.boolean' => 'The certificate field must be true or false.',
+    'deadline.date_format' => 'The deadline must be a valid date and time.',
+
 
 
 

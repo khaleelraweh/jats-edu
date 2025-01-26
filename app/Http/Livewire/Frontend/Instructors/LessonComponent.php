@@ -148,7 +148,8 @@ class LessonComponent extends Component
 
         // lesson total more than 5 lectures 
         $totalLessonsValid = true;
-        if ($course->totalLessonsCount() < 5) {
+        // if ($course->totalLessonsCount() < 5) {
+        if ($course->totalLessonsCount() < 1) {
             $totalLessonsValid = false;
         }
 

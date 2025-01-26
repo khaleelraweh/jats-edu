@@ -174,7 +174,7 @@
                                                 {{ __('transf.Kurima Bank') }}
                                             </label>
                                             <label class="payment-card-icons">
-                                                <i class="fab fa-cc-visa"></i>
+                                                {{-- <i class="fab fa-cc-visa"></i> --}}
                                             </label>
                                         </label>
                                     </h5>

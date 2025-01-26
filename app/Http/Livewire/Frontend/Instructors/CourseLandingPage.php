@@ -51,7 +51,7 @@ class CourseLandingPage extends Component
         // 'description' => 'required|string|min_words:100',
         'description' => 'nullable',
         'images.*' => 'required|image|max:2048',
-        'video_promo' => 'required|url|max:255',
+        'video_promo' => 'nullable|url|max:255',
         'video_description' => 'nullable|url|max:255',
         'language' => 'required|in:1,2',
         'skill_level' => 'required|in:1,2,3,4',

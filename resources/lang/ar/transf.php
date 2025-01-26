@@ -432,7 +432,8 @@ return [
     // Course Update Items 
     //section 1 
     'plan_your_course'                              =>  'خطط للدورة الخاصة بك',
-    'intended_learners'                              =>  'اهداف الدورة',
+    'intended_learners'                             =>  'اهداف الدورة',
+    'target_groups_of_the_course'                   =>  'الفئات المستهدفة من الدورة',
     'intended_description'                          =>  'ستكون الأوصاف التالية مرئية بشكل عام على الصفحة المقصودة للدورة التدريبية الخاصة بك وسيكون لها تأثير مباشر على أداء الدورة التدريبية الخاصة بك. ستساعد هذه الأوصاف المتعلمين على تحديد ما إذا كانت الدورة التدريبية الخاصة بك مناسبة لهم أم لا.',
     'submitted_successfully!'                       =>  'تم الإرسال بنجاح!',
     'completed_successfully!'                       =>  'تم بنجاح!',

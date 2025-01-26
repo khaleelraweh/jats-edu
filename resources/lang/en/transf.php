@@ -423,6 +423,7 @@ return [
     //section 1 
     'plan_your_course'                              =>  'Plan your course',
     'intended_learners'                             =>  'Course objectives',
+    'target_groups_of_the_course'                   =>  'Target groups of the course',
     'intended_description'                          =>  'The following descriptions will be publicly visible on your Course Landing Page and will have a direct impact on your course performance. These descriptions will help learners decide if your course is right for them.',
     'submitted_successfully!'                       =>  'submitted successfully!',
     'completed_successfully!'                       =>  'completed successfully!',

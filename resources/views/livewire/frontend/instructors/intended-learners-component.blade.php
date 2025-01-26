@@ -184,7 +184,10 @@
                 <table class="table" id="products_table">
                     <thead>
                         <tr>
-                            <th>{{ __('transf.intended_learner') }} </th>
+                            <th>
+                                {{-- {{ __('transf.intended_learner') }}  --}}
+                                {{ __('transf.target_groups_of_the_course') }}
+                            </th>
                             <th></th>
                         </tr>
                     </thead>

@@ -187,6 +187,7 @@
                             <th>
                                 {{-- {{ __('transf.intended_learner') }}  --}}
                                 {{ __('transf.target_groups_of_the_course') }}
+                                <span style="color: #cc1818;">*</span>
                             </th>
                             <th></th>
                         </tr>

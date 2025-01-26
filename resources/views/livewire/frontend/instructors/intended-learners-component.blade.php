@@ -110,7 +110,7 @@
                     <thead>
                         <tr>
                             <th>
-                                {{ __('transf.requirement') }}
+                                {{ __('transf.course_requirements') }}
                                 <span style="color: #cc1818;">*</span>
                             </th>
                             <th></th>

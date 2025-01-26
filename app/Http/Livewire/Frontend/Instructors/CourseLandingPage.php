@@ -279,7 +279,8 @@ class CourseLandingPage extends Component
         $course = Course::with('photos', 'firstMedia')->findOrFail($this->courseId);
 
         if (!$this->existingImageExists($course) && empty($this->images)) {
-            $this->addError('images', __('At least one image is required!'));
+            // $this->addError('images', __('At least one image is required!'));
+            $this->addError('image', __('transf.image.required')); // Use the translation key
             return;
         }
 

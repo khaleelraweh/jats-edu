@@ -180,7 +180,7 @@
 
 
                         </div>
-                        @error('images')
+                        @error('image')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
 

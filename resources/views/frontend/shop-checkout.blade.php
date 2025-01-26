@@ -34,6 +34,16 @@
                     <div class="woocommerce-billing-fields">
                         <h3>{{ __('transf.billing_details') }}</h3>
 
+                        <p>
+                            يمكنك الدفع عبر البنوك والمصارف التالية :-
+
+                        <ul>
+                            <li>
+                                حساب بنك الكريمي دولار (3081865457)
+                            </li>
+                        </ul>
+
+                        </p>
                         <div id="accordionCurriculum">
                             <!-- Accordion panel 1 -->
                             <div class="border rounded mb-1 overflow-hidden d-none">

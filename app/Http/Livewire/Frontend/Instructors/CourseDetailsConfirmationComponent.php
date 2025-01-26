@@ -218,7 +218,8 @@ class CourseDetailsConfirmationComponent extends Component
         // }, 0) >= 30;
         // $this->duration_30_minutes_Valid = $duration_30_minutes_Valid;
 
-        $this->totalLessonsValid = $course->totalLessonsCount() >= 5;
+        // $this->totalLessonsValid = $course->totalLessonsCount() >= 5;
+        $this->totalLessonsValid = $course->totalLessonsCount() >= 1;
 
         // duration validation more than or equal to 30 minutes 
         $duration_30_minutes_Valid = true;

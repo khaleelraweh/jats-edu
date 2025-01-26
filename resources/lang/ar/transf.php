@@ -630,6 +630,7 @@ return [
     // order 
     'Kurima Bank'                                       =>  'بنك الكريمي',
 
+
     // request to teach 
     'Diploma'                                           =>  'دبلوم',
     'Higher Diploma'                                    =>  'دبلوم عالى',

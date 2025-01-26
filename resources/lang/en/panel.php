@@ -1428,6 +1428,7 @@ return [
 
 
     'f_customer_bank_account_number'                   =>  'Customer bank account number',
+    'student’s_bank_account_or_bank_transfer_receipt_number' =>  'The student’s bank account or bank transfer receipt number',
     'f_copy_of_the_transfer_receipt'                   =>  'A copy of the transfer receipt',
 
     'f_choose_the_transfer_method'                      =>  'Choose the bank transfer method by which payment will be made',

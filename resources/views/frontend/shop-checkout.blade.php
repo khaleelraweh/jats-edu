@@ -191,7 +191,8 @@
                                                     <p class="form-row form-row-last validate-required validate-email"
                                                         id="billing_email_field" data-priority="110">
                                                         <label for="billing_number" class="">
-                                                            {{ __('panel.f_customer_bank_account_number') }}
+                                                            {{-- {{ __('panel.f_customer_bank_account_number') }} --}}
+                                                            {{ __('panel.student’s_bank_account_or_bank_transfer_receipt_number') }}
                                                             <abbr class="required" title="required">*</abbr>
                                                         </label>
                                                         <input type="text" class="input-text " name="bankAccNumber"

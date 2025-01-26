@@ -1434,6 +1434,7 @@ return [
 
 
     'f_customer_bank_account_number'                   =>  'رقم الحساب البنكي للطالب',
+    'student’s_bank_account_or_bank_transfer_receipt_number' =>  'رقم الحساب البنكي للطالب او رقم وصل التحويل البنكي',
     'f_copy_of_the_transfer_receipt'                   =>  'صورة من وصل التحويل ',
 
 

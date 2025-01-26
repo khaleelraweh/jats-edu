@@ -79,6 +79,7 @@
                                         <div class="form-group">
                                             <label for="title">
                                                 {{ __('transf.course_title') }}
+                                                <span style="color: #cc1818;">*</span>
                                             </label>
 
                                             <div class="input-group">
@@ -106,7 +107,7 @@
                                         <div class="form-group">
                                             <label for="subtitle">
                                                 {{ __('transf.Course subtitle') }}
-
+                                                <span style="color: #cc1818;">*</span>
                                             </label>
                                             <div class="input-group">
                                                 <input type="text" name="subtitle" id="subtitle"
@@ -134,7 +135,10 @@
                                 {{--  description field --}}
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 pt-4">
-                                        <label for="description">{{ __('transf.Course description') }}</label>
+                                        <label for="description">
+                                            {{ __('transf.Course description') }}
+                                            <span style="color: #cc1818;">*</span>
+                                        </label>
                                         <textarea name="description" id="tinymceExample" rows="10" class="form-control" wire:model.defer="description"
                                             placeholder="{{ __('transf.Insert your course description.') }}"></textarea>
                                         @error('tinymceExample')
@@ -153,7 +157,10 @@
 
                                 <div class="row">
                                     <div class="col-12 pt-4">
-                                        <label for="images">{{ __('transf.Course Image') }}</label>
+                                        <label for="images">
+                                            {{ __('transf.Course Image') }}
+                                            <span style="color: #cc1818;">*</span>
+                                        </label>
 
                                         <img src="{{ $currentImage }}" style="display: block;width:100%;height:200px;"
                                             alt="{{ $course->title }}">
@@ -166,8 +173,8 @@
                                 <p>
                                     {{ __('transf.Course Image tip.') }}
                                 </p>
-                                <input type="file" wire:model="images" id="images" class="form-control" multiple
-                                    style="height: 39px !important;">
+                                <input type="file" wire:model="images" id="images" class="form-control"
+                                    multiple style="height: 39px !important;">
 
                             </div>
 

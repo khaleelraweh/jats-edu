@@ -118,9 +118,10 @@ class CourseLandingPage extends Component
         $this->titleValid = $this->validateField('title', $course->title);
         $this->subtitleValid = $this->validateField('subtitle', $course->subtitle);
         $this->descriptionValid = $this->validateField('description', $course->description);
-        $this->videopromoValid = $this->validateField('video_promo', $course->video_promo);
+        // $this->videopromoValid = $this->validateField('video_promo', $course->video_promo);
 
-        $this->databaseDataValid = $this->titleValid && $this->subtitleValid && $this->descriptionValid && $this->videopromoValid;
+        // $this->databaseDataValid = $this->titleValid && $this->subtitleValid && $this->descriptionValid && $this->videopromoValid;
+        $this->databaseDataValid = $this->titleValid && $this->subtitleValid && $this->descriptionValid;
     }
 
     private function validateField(string $field, ?string $value): bool

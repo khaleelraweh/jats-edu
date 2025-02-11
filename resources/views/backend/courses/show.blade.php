@@ -406,7 +406,8 @@
                                                         <div class="mt-2">
                                                             <a href="{{ $lesson->url }}"
                                                                 class="btn btn-outline-primary btn-sm" target="_blank">
-                                                                <i class="fa fa-play-circle mr-1"></i> Watch Video
+                                                                <i class="fa fa-play-circle mr-1"></i>
+                                                                {{ __('panel.watch_video') }}
                                                             </a>
                                                         </div>
                                                     </div>

@@ -1535,6 +1535,8 @@ return [
     'operation_delete'                                        =>  'حذف',
     'operation_copy_link'                                     =>  'نسخ الرابط',
 
+    'watch_video'                                             =>  'مشاهدة الفيديو',
+
 
 
 

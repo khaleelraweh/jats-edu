@@ -123,7 +123,7 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-8">
-                <textarea name="description" rows="10" class="form-control">{!! old('description', $course->description) !!}</textarea>
+                <textarea name="description" id="tinymceExample" rows="10" class="form-control">{!! old('description', $course->description) !!}</textarea>
             </div>
             <div class="col-xs-12 col-sm-4">
                 <div class="row">

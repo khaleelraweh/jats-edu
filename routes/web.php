@@ -385,6 +385,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('update-currency-status', [CurrenciesController::class, 'updateCurrencyStatus'])->name('currencies.update_currency_status');
 
 
+        Route::get('/download-pdf/{filename}', function ($filename) {
+            $pathToFile = public_path('assets/document_archives/' . $filename);
+
+            if (!file_exists($pathToFile)) {
+                abort(404, 'File not found');
+            }
+
+            // Customize the download name
+            $downloadName = 'custom_' . $filename;
+
+            return response()->download($pathToFile, $downloadName);
+        });
+
 
         // ######################################################### //
         // ###################    Working on      ################## //
@@ -405,18 +418,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // });
 
 
-    });
-
-    Route::get('/download-pdf/{filename}', function ($filename) {
-        $pathToFile = public_path('assets/document_archives/' . $filename);
-
-        if (!file_exists($pathToFile)) {
-            abort(404, 'File not found');
-        }
-
-        // Customize the download name
-        $downloadName = 'custom_' . $filename;
-
-        return response()->download($pathToFile, $downloadName);
     });
 });

@@ -401,7 +401,8 @@
                                                         class="list-group-item list-group-item-action flex-column align-items-start">
                                                         <div class="d-flex w-100 justify-content-between">
                                                             <h5 class="mb-1">{{ $lesson->title }}</h5>
-                                                            <small>{{ $lesson->duration_minutes }} mins</small>
+                                                            <small>{{ $lesson->duration_minutes }}
+                                                                {{ __('panel.mins') }}</small>
                                                         </div>
                                                         <div class="mt-2">
                                                             <a href="{{ $lesson->url }}"

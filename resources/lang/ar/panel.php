@@ -1536,6 +1536,7 @@ return [
     'operation_copy_link'                                     =>  'نسخ الرابط',
 
     'watch_video'                                             =>  'مشاهدة الفيديو',
+    'mins'                                                    =>  'دقيقة',
 
 
 

@@ -152,7 +152,8 @@
 
                                                 <a href="javascript:void(0);"
                                                     class="dropdown-item d-flex align-items-center btn btn-success copyButton"
-                                                    data-copy-text="https://ibbuniv.era-t.com/document_archives/{{ $document_archive->slug }}"
+                                                    {{-- data-copy-text="https://ibbuniv.era-t.com/document_archives/{{ $document_archive->slug }}" --}}
+                                                    data-copy-text="document_archives/{{ $document_archive->slug }}"
                                                     data-id="{{ $document_archive->id }}" title="Copy the link">
                                                     <i data-feather="copy" class="icon-sm me-2"></i>
                                                     <span class="">{{ __('panel.operation_copy_link') }}</span>

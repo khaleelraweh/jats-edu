@@ -403,5 +403,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // Route::group(['middleware' => 'web'], function (){
         // });
+
+
+    });
+
+    Route::get('/download-pdf/{filename}', function ($filename) {
+        $pathToFile = public_path('assets/document_archives/' . $filename);
+
+        if (!file_exists($pathToFile)) {
+            abort(404, 'File not found');
+        }
+
+        // Customize the download name
+        $downloadName = 'custom_' . $filename;
+
+        return response()->download($pathToFile, $downloadName);
     });
 });

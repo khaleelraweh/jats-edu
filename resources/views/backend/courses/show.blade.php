@@ -369,44 +369,61 @@
         </div>
 
 
+
+
         <div class="row">
             <div class="col-xs-12 col-sm-12">
-
                 @if ($course->sections != null && $course->sections->isNotEmpty())
-                    @foreach ($course->sections as $section)
-                        <div class="card-naving pt-3">
-                            <h3 class="font-weight-bold text-primary h4">
-                                <i class="fa fa-edit"></i>
-                                {{ $section->title }}
-                            </h3>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <th>Title</th>
-                                    <th>Url</th>
-                                    <th>Duration</th>
-                                </thead>
-                                <tbody>
-                                    @if ($section->lessons != null && $section->lessons->isNotEmpty())
-                                        @foreach ($section->lessons as $lesson)
-                                            <tr>
-                                                <th>{{ $lesson->title }}</th>
-                                                <td> <a href="{{ $lesson->url }}">click here to see video</a></td>
-                                                <td> {{ $lesson->duration_minutes }}</td>
-                                            </tr>
-                                        @endforeach
-                                    @endif
+                    <div class="accordion" id="courseSectionsAccordion">
+                        @foreach ($course->sections as $index => $section)
+                            <div class="card mb-3">
+                                <div class="card-header" id="sectionHeading{{ $index }}">
+                                    <h3 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left text-primary font-weight-bold"
+                                            type="button" data-toggle="collapse"
+                                            data-target="#sectionCollapse{{ $index }}" aria-expanded="true"
+                                            aria-controls="sectionCollapse{{ $index }}">
+                                            <i class="fa fa-edit mr-2"></i>
+                                            {{ $section->title }}
+                                        </button>
+                                    </h3>
+                                </div>
 
-                                </tbody>
-                            </table>
-                        </div>
-                    @endforeach
+                                <div id="sectionCollapse{{ $index }}"
+                                    class="collapse {{ $index === 0 ? 'show' : '' }}"
+                                    aria-labelledby="sectionHeading{{ $index }}"
+                                    data-parent="#courseSectionsAccordion">
+                                    <div class="card-body">
+                                        @if ($section->lessons != null && $section->lessons->isNotEmpty())
+                                            <div class="list-group">
+                                                @foreach ($section->lessons as $lesson)
+                                                    <div
+                                                        class="list-group-item list-group-item-action flex-column align-items-start">
+                                                        <div class="d-flex w-100 justify-content-between">
+                                                            <h5 class="mb-1">{{ $lesson->title }}</h5>
+                                                            <small>{{ $lesson->duration_minutes }} mins</small>
+                                                        </div>
+                                                        <div class="mt-2">
+                                                            <a href="{{ $lesson->url }}"
+                                                                class="btn btn-outline-primary btn-sm" target="_blank">
+                                                                <i class="fa fa-play-circle mr-1"></i> Watch Video
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        @else
+                                            <p class="text-muted">No lessons available in this section.</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <p class="text-muted">No sections available for this course.</p>
                 @endif
-
-
             </div>
-
         </div>
 
 

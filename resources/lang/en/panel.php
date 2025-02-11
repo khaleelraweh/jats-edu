@@ -1507,5 +1507,27 @@ return [
     'application_form_to_apply_as_a_trainer'        =>  'Application form to apply as a trainer',
 
 
+    // --------------- Document Archive  --------------//
+    'manage_document_archive'                               =>  'Manage Document Archive',
+    'show_document_archives'                               => 'Document Archives',
+    'add_new_document_archive'                             => 'New Document Archive',
+    'edit_existing_document_archive'                       => 'Edit Existing Document Archive',
+    'document_format_message'                               =>  'The document must be of the following formats .PDF , .docx',
+
+
+    // ........... commons in Archive   ....... //
+    'document_archive_data'                                =>  'Document Archive Data',
+    'document_archive_name'                                =>  'Document Archive Name',
+    'attach_the_document'                                   =>  'Attach the document',
+
+
+    'operation_options'                                       =>  'Options',
+    'operation_edit'                                          =>  'Edit',
+    'operation_show'                                          =>  'Show',
+    'operation_delete'                                        =>  'Delete',
+    'operation_copy_link'                                     =>  'Copy Link',
+
+
+
 
 ];

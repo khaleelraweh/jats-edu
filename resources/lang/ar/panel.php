@@ -1516,6 +1516,28 @@ return [
     'application_form_to_apply_as_a_trainer'        =>  'استمارة طلب تقديم كمدرب /ة',
 
 
+    // --------------- Document Archive  --------------//
+    'manage_document_archive'                               =>  'إدارة ارشيف الوثائق',
+    'show_document_archives'                               => 'إرشيف الوثائق',
+    'add_new_document_archive'                             => 'إرشيف مستند جديد',
+    'edit_existing_document_archive'                       => 'تعديل بيانات مستند موجود',
+
+
+    // ........... commons in Archive   ....... //
+    'document_archive_data'                                =>  'بيانات ارشيف مستند',
+    'document_archive_name'                                =>  'إسم ارشيف الوثيقة',
+    'attach_the_document'                                   =>  'ارفاق المستند',
+    'document_format_message'                               =>  'يجب أن تكون الوثيقة بالتنسيقات التالية ( PDF - Docx ) ',
+    'download_pdf'                                          =>  'تنزيل PDF',
+
+    'operation_options'                                       =>  'خيارات',
+    'operation_edit'                                          =>  'تعديل',
+    'operation_delete'                                        =>  'حذف',
+    'operation_copy_link'                                     =>  'نسخ الرابط',
+
+
+
+
 
 
 

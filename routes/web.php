@@ -21,6 +21,7 @@ use App\Http\Controllers\Backend\CourseReviewController;
 use App\Http\Controllers\Backend\CurrenciesController;
 use App\Http\Controllers\Backend\CustomerAddressController;
 use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Backend\DocumentArchivesController;
 use App\Http\Controllers\Backend\EventController;
 use App\Http\Controllers\Backend\InstPageVisitController;
 use App\Http\Controllers\Backend\InstructorController;
@@ -334,6 +335,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   Coupons Tab   ==============  //
         Route::resource('coupons', CouponController::class);
+
+        // ==============   Document Archive Tab   ==============  //
+        Route::post('document_archives/update-document-archive-status', [DocumentArchivesController::class, 'updateDocumentArchiveStatus'])->name('document_archives.update_document_archive_status');
+        Route::resource('document_archives', DocumentArchivesController::class);
+
 
 
         // ==============   Countries Tab   ==============  //

@@ -29,6 +29,7 @@ return [
     'finished_orders'           =>  'Finished Orders',
     'rejected_orders'           =>  'Rejected Orders',
     'canceled_orders'           =>  'Canceled Orders',
+    'watch_video'               =>  'Watch Video',
 
 
     ############################ Manage Web Menus #################################

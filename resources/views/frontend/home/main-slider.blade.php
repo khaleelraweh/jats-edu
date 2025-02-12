@@ -38,18 +38,24 @@
                                     </p>
 
                                     <!-- Buttons -->
-                                    <a href="{{ route('frontend.courses') }}"
-                                        class="btn text-white-alone btn-slide slide-white btn-wide shadow mb-4 mb-md-0 me-md-5 text-uppercase"
-                                        data-aos-duration="200" data-aos="fade-up">
-                                        {{-- {{ __('transf.btn_get_started') }} --}}
-                                        {{ $main_slider->btn_one_name }}
-                                    </a>
-                                    <a href="{{ route('frontend.courses') }}"
-                                        class="btn text-white-all btn-coral btn-wide d-none d-lg-inline-block"
-                                        data-aos-duration="200" data-aos="fade-up">
-                                        {{-- {{ __('transf.btn_view_courses') }} --}}
-                                        {{ $main_slider->btn_two_name }}
-                                    </a>
+                                    @if ($main_slider->btn_one_show == 1)
+                                        <a href="{{ route('frontend.courses') }}"
+                                            class="btn text-white-alone btn-slide slide-white btn-wide shadow mb-4 mb-md-0 me-md-5 text-uppercase"
+                                            data-aos-duration="200" data-aos="fade-up">
+                                            {{-- {{ __('transf.btn_get_started') }} --}}
+                                            {{ $main_slider->btn_one_name }}
+                                        </a>
+                                    @endif
+
+                                    @if ($main_slider->btn_two_show == 1)
+                                        <a href="{{ route('frontend.courses') }}"
+                                            class="btn text-white-all btn-coral btn-wide d-none d-lg-inline-block"
+                                            data-aos-duration="200" data-aos="fade-up">
+                                            {{-- {{ __('transf.btn_view_courses') }} --}}
+                                            {{ $main_slider->btn_two_name }}
+                                        </a>
+                                    @endif
+
                                 </div>
                             </div>
                         </div>

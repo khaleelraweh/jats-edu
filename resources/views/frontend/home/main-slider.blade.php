@@ -39,7 +39,7 @@
 
                                     <!-- Buttons -->
                                     @if ($main_slider->btn_one_show == 1)
-                                        <a href="{{ route('frontend.courses') }}"
+                                        <a href="{{ url($main_slider->btn_one_url) }}"
                                             class="btn text-white-alone btn-slide slide-white btn-wide shadow mb-4 mb-md-0 me-md-5 text-uppercase"
                                             data-aos-duration="200" data-aos="fade-up">
                                             {{-- {{ __('transf.btn_get_started') }} --}}
@@ -48,7 +48,7 @@
                                     @endif
 
                                     @if ($main_slider->btn_two_show == 1)
-                                        <a href="{{ route('frontend.courses') }}"
+                                        <a href="{{ url($main_slider->btn_two_url) }}"
                                             class="btn text-white-all btn-coral btn-wide d-none d-lg-inline-block"
                                             data-aos-duration="200" data-aos="fade-up">
                                             {{-- {{ __('transf.btn_view_courses') }} --}}

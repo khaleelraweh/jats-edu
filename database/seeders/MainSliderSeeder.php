@@ -28,8 +28,16 @@ class MainSliderSeeder extends Seeder
                     'slug'          => json_encode(['ar' => $faker->unique()->slug(3), 'en' => $faker->unique()->slug(3)]),
                     'description'   => json_encode(['ar' => ' التكنولوجيا تجلب موجة ناجحة من التعلم في العديد من المناحي المختلفة ', 'en' => ' Technology Is Brining A Missave Wave Of Education On Learning Thinks On Different Ways ']),
 
-                    'url'           =>  'https://' . $faker->slug(2) . '.com',
-                    'target'        =>  Arr::random($target),
+                    'btn_one_name'  => json_encode(['ar' => 'المزيد', 'en' => 'More']),
+                    'btn_one_url'   => 'https://' . $faker->slug(2) . '.com',
+                    'btn_one_target' => Arr::random($target),
+
+                    'btn_two_name'  => json_encode(['ar' => 'التسجيل', 'en' => 'Register']),
+                    'btn_two_url'   => 'https://' . $faker->slug(2) . '.com',
+                    'btn_two_target' => Arr::random($target),
+
+                    // 'url'           =>  'https://' . $faker->slug(2) . '.com',
+                    // 'target'        =>  Arr::random($target),
                     'published_on'  =>  $faker->dateTime(),
                     'created_by'    =>  $faker->realTextBetween(10, 12),
                     'updated_by'   =>  $faker->realTextBetween(10, 12),

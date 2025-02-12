@@ -40,12 +40,16 @@
                                     <!-- Buttons -->
                                     <a href="{{ route('frontend.courses') }}"
                                         class="btn text-white-alone btn-slide slide-white btn-wide shadow mb-4 mb-md-0 me-md-5 text-uppercase"
-                                        data-aos-duration="200"
-                                        data-aos="fade-up">{{ __('transf.btn_get_started') }}</a>
+                                        data-aos-duration="200" data-aos="fade-up">
+                                        {{-- {{ __('transf.btn_get_started') }} --}}
+                                        {{ $main_slider->btn_one_name }}
+                                    </a>
                                     <a href="{{ route('frontend.courses') }}"
                                         class="btn text-white-all btn-coral btn-wide d-none d-lg-inline-block"
-                                        data-aos-duration="200"
-                                        data-aos="fade-up">{{ __('transf.btn_view_courses') }}</a>
+                                        data-aos-duration="200" data-aos="fade-up">
+                                        {{-- {{ __('transf.btn_view_courses') }} --}}
+                                        {{ $main_slider->btn_two_name }}
+                                    </a>
                                 </div>
                             </div>
                         </div>

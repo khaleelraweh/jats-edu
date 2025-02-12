@@ -55,8 +55,20 @@ class MainSliderController extends Controller
 
         $input['title']          =   $request->title;
         $input['description']        =   $request->description;
-        $input['url']            =   $request->url;
-        $input['target']         =   $request->target;
+        // $input['url']            =   $request->url;
+        // $input['target']         =   $request->target;
+
+
+        $input['btn_one_name'] = $request->btn_one_name;
+        $input['btn_one_url'] = $request->btn_one_url;
+        $input['btn_one_target'] = $request->btn_one_target;
+        $input['btn_one_show'] = $request->btn_one_show;
+
+        $input['btn_two_name'] = $request->btn_two_name;
+        $input['btn_two_url'] = $request->btn_two_url;
+        $input['btn_two_target'] = $request->btn_two_target;
+        $input['btn_two_show'] = $request->btn_two_show;
+
         $input['section']        =   1;
 
         $input['showInfo']            =   $request->showInfo;

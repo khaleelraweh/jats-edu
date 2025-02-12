@@ -21,8 +21,20 @@ return new class extends Migration
             $table->json('description');
             $table->string('icon')->nullable();
 
-            $table->string('url')->nullable();
-            $table->string('target')->default('_self');
+            $table->json('btn_one_name')->nullable();
+            $table->string('btn_one_url')->nullable();
+            $table->string('btn_one_target')->default('_self');
+            $table->boolean('btn_one_show')->default(true);
+
+            $table->json('btn_two_name')->nullable();
+            $table->string('btn_two_url')->nullable();
+            $table->string('btn_two_target')->default('_self');
+            $table->boolean('btn_two_show')->default(true);
+
+
+
+
+
             $table->unsignedBigInteger('section')->default(1);
 
             $table->boolean('showInfo')->default(true); // عرض العنوان والتصفاصيل 

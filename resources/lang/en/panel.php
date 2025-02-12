@@ -99,6 +99,17 @@ return [
     'in_the_same_tab'               => 'In The Same Tab',
     'in_new_tab'                    =>  'In New Tab',
 
+    'btn_one_name'                  =>  'Btn One Name',
+    'btn_one_url'                   =>  'Btn One Url',
+    'btn_one_target'                =>  'Btn One Target',
+    'btn_one_show'                  =>  'Btn One Show',
+
+
+    'btn_one_name'                  =>  'Btn Two Name',
+    'btn_one_url'                   =>  'Btn Two Url',
+    'btn_one_target'                =>  'Btn Two Target',
+    'btn_one_show'                  =>  'Btn Two Show',
+
 
     ########################### Manage Categories  ##################################
 

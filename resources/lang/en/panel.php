@@ -1079,7 +1079,7 @@ return [
     'featured'                      =>  'Featured',
     'qty'                           =>  'Quantity',
     'price'                         =>  'Price',
-    'price_tip'                     =>  'Please enter the course price in Saudi Riyals',
+    'price_tip'                     =>  'Please enter the course price in US dollar',
     'views'                         =>  'Views',
     'email'                         =>  'Email',
     'user_email'                    =>  'User Email',

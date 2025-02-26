@@ -128,8 +128,10 @@
                                         <div class="form-group">
                                             <label for="start_date"> {{ __('panel.coupon_start_date') }} </label>
                                             <input type="text" id="start_date" name="start_date"
-                                                value="{{ old('start_date', $coupon->start_date->format('Y-m-d')) }}"
+                                                value="{{ old('start_date', \Carbon\Carbon::parse($coupon->start_date)->format('Y-m-d')) }}"
                                                 class="form-control">
+
+
                                             @error('start_date')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -139,7 +141,7 @@
                                         <div class="form-group">
                                             <label for="expire_date"> {{ __('panel.coupon_expire_date') }} </label>
                                             <input type="text" id="expire_date" name="expire_date"
-                                                value="{{ old('expire_date', $coupon->expire_date->format('Y-m-d')) }}"
+                                                value="{{ old('expire_date', \Carbon\Carbon::parse($coupon->expire_date)->format('Y-m-d')) }}"
                                                 class="form-control">
                                             @error('expire_date')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -319,7 +321,7 @@
             // ======= start pickadate codeing ===========
             $('#start_date').pickadate({
                 format: 'yyyy-mm-dd',
-                min: new Date(),
+                //min: new Date(),
                 selectMonths: true, // Creates a dropdown to control month
                 selectYears: true, // creates a dropdown to control years
                 clear: 'Clear',
@@ -329,7 +331,7 @@
 
             $('#expire_date').pickadate({
                 format: 'yyyy-mm-dd',
-                min: new Date(),
+                //min: new Date(),
                 selectMonths: true, // Creates a dropdoen to control month
                 selectYears: true, // Creates a dropdown to control month 
                 clear: 'Clear',
@@ -365,7 +367,7 @@
             // ======= start pickadate codeing  for start and end date ===========
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
-                min: new Date(),
+                //min: new Date(),
                 selectMonths: true, // Creates a dropdown to control month
                 selectYears: true, // creates a dropdown to control years
                 clear: 'Clear',

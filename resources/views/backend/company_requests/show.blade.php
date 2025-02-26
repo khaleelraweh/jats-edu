@@ -77,7 +77,8 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('transf.Course Landing Page') }}
+                    {{-- {{ __('transf.Course Landing Page') }} --}}
+                    {{ __('panel.show_company_requests') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>

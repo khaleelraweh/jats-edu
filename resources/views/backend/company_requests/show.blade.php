@@ -137,9 +137,9 @@
                                     <h1 class="text-success m-0" style="
         font-family: Times New Roman, sans-serif;">
                                         معهد خطوة شباب</h1>
-                                    <h2 class="text-warning" style="
+                                    <h3 class="text-warning" style="
         font-family: Times New Roman, sans-serif;">
-                                        للتدريب واللغات</h2>
+                                        للتدريب واللغات</h3>
                                 </div>
                                 <div class="col-sm-4 d-flex align-items-center justify-content-center">
                                     <img style="width: 250px; padding-top: 10px; z-index: 4"
@@ -149,9 +149,10 @@
                                     <h1 class="text-success m-0" style="
         font-family: Times New Roman, sans-serif;">
                                         Youth Step Institute</h1>
-                                    <h2 class="text-warning" style=" font-family: Times New Roman, sans-serif;">For Training
+                                    <h3 class="text-warning" style=" font-family: Times New Roman, sans-serif;">For Training
+                                        &
                                         Languages
-                                    </h2>
+                                    </h3>
                                 </div>
                             </div>
                         </div>

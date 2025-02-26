@@ -624,7 +624,7 @@ return [
     'order_new_order'           =>      'New Order',
     'order_paid'                =>      'Paid',
     'order_under_process'       =>      'Under Process',
-    'order_finished'            =>      'Finished',
+    'order_finished'            =>      'Accepted',
     'order_rejected'            =>      'Rejected',
     'order_canceled'            =>      'Canceled',
     'order_refund_requested'    =>      'Refund Requested',

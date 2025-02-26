@@ -254,20 +254,35 @@
                                     </div>
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="place-of-birth ww"> {{ __('panel.place_of_birth') }} : </span>
-                                        <span class="place-of-birth-value">{{ $teach_request->place_of_birth }}</span>
+                                        {{-- <span class="place-of-birth-value">{{ $teach_request->place_of_birth }}</span> --}}
+                                        <?php $placeOfBirth = Altwaireb\World\Models\Country::where('id', $teach_request->place_of_birth)->first(); ?>
+                                        <span class="place-of-birth-value">
+                                            {{ app()->getLocale() == 'ar' ? $placeOfBirth->translations['ar'] : $placeOfBirth->name }}
+                                        </span>
                                     </div>
+
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="nationality ww">{{ __('panel.nationality') }} : </span>
-                                        <span class="nationality-value">{{ $teach_request->nationality }}</span>
+                                        {{-- <span class="nationality-value">{{ $teach_request->nationality }}</span> --}}
+                                        <?php $nationality = Altwaireb\World\Models\Country::where('id', $teach_request->nationality)->first(); ?>
+                                        <span class="nationality-value">
+                                            {{ app()->getLocale() == 'ar' ? $nationality->translations['ar'] : $nationality->name }}
+                                        </span>
                                     </div>
                                 </div>
 
                                 <div class="row">
+
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="residence-address ww"> {{ __('panel.address_of_residence') }} :
                                         </span>
-                                        <span
-                                            class="residence-address-value">{{ $teach_request->residence_address }}</span>
+                                        {{-- <span class="residence-address-value">
+                                                {{ $teach_request->residence_address }}
+                                            </span> --}}
+                                        <?php $residenceAddress = Altwaireb\World\Models\Country::where('id', $teach_request->residence_address)->first(); ?>
+                                        <span class="residence-address-value">
+                                            {{ app()->getLocale() == 'ar' ? $residenceAddress->translations['ar'] : $residenceAddress->name }}
+                                        </span>
                                     </div>
 
                                     <div class="col-sm-12 pt-3 col-md-4">

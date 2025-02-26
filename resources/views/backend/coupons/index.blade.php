@@ -64,7 +64,9 @@
                                 <td>{{ $coupon->value }} {{ $coupon->type == 'fixed' ? '$' : '%' }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $coupon->used_times . '/' . $coupon->use_times }}
                                 </td>
-                                <td>{{ $coupon->start_date != '' ? $coupon->start_date->format('Y-m-d') . '  -  ' . $coupon->expire_date->format('Y-m-d') : '-' }}
+                                <td>
+                                    {{ $coupon->start_date != '' ? $coupon->start_date . '  -  ' . $coupon->expire_date : '-' }}
+
                                 </td>
                                 <td class="d-none d-sm-table-cell">{{ $coupon->greater_than ?? '-' }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $coupon->status() }}</td>

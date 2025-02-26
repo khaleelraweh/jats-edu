@@ -234,6 +234,8 @@ return [
     'course_status'                             =>  'Course Status',
     'company_status'                             =>  'Company Status',
     'course_choose_appropriate_event'           =>  'Choose the appropriate event',
+    'show'                                      =>  'Show',
+    'hide'                                      =>  'Hide',
 
 
 

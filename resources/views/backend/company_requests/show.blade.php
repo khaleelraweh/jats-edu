@@ -291,13 +291,20 @@
                     ">
                         </div>
                         <div class="footer-content" style="margin-top: 10px;">
-                            <div class="footer-item">
+                            {{-- <div class="footer-item">
                                 <i class="fa fa-home"></i>
                                 <span>محافظة عدن-المنصورة-شارع القصر-فوق انيس فون</span>
-                            </div>
-                            <div class="footer-item">
+                            </div> --}}
+                            {{-- <div class="footer-item">
                                 <i class="fa fa-phone"></i>
                                 <span> 02-350347 \ 734208108</span>
+                            </div> --}}
+                            <div class="footer-item">
+                                <i class="fa fa-phone"></i>
+                                <span>
+                                    {{ $siteSettings['site_phone']->value ?? '' }} \
+                                    {{ $siteSettings['site_mobile']->value ?? '' }}
+                                </span>
                             </div>
                         </div>
                     </footer>

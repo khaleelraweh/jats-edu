@@ -330,6 +330,7 @@
                 locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
 
             });
+
             // for deadline
             flatpickr('.flatpickr_deadline', {
                 enableTime: true,

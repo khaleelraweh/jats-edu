@@ -200,7 +200,7 @@ class CourseDetailsConfirmationComponent extends Component
     {
         $course = $this->course;
 
-        $this->objectivesValid = $this->validateCollection($course->objectives, 'title', ['required', 'string', 'min:10', 'max:160'], 4);
+        $this->objectivesValid = $this->validateCollection($course->objectives, 'title', ['required', 'string', 'min:10', 'max:160'], 1); // instead of 4 objecteve we change it to 1
         $this->requirementsValid = $this->validateCollection($course->requirements, 'title', ['required', 'string', 'min:10', 'max:160'], 1);
         $this->intendedsValid = $this->validateCollection($course->intendeds, 'title', ['required', 'string', 'min:10', 'max:160'], 1);
 

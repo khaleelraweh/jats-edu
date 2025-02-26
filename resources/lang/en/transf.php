@@ -459,7 +459,7 @@ return [
     'example:beginner_python_developers_curious_about_data_science' =>  'Example: Beginner python developers curious about data science',
 
     //Intended validation 
-    'At least four objectives are required.'            =>  'At least four objectives are required.',
+    'At least four objectives are required.'            =>  'At least one objective is required.',
     'The objective field is required.'                  =>  'The objective field is required.',
     'The objective must be a string.'                   =>  'The objective must be a string.',
     'The objective must be at least ten characters.'    =>  'The objective must be at least ten characters.',

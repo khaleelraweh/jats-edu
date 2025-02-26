@@ -42,9 +42,6 @@ class IntendedLearnersComponent extends Component
         } else {
             $this->objectives = [
                 ['title' => ''],
-                ['title' => ''],
-                ['title' => ''],
-                ['title' => ''],
             ];
         }
 
@@ -80,7 +77,7 @@ class IntendedLearnersComponent extends Component
         $objectivesValid = true;
         $course = Course::where('id', $this->courseId)->first();
         $objectivesCount = $course->objectives->count();
-        if ($objectivesCount >= 4) {
+        if ($objectivesCount >= 1) { // in the past was 4 objective 
             foreach ($course->objectives as $item) {
                 $validator = Validator::make(['title' => $item->title], [
                     'title' => ['required', 'string', 'min:10', 'max:160'],
@@ -197,7 +194,7 @@ class IntendedLearnersComponent extends Component
     {
         // Validate objectives and requirements
         $this->validate([
-            'objectives' => ['required', 'array', 'min:4'],
+            'objectives' => ['required', 'array', 'min:1'],
             'objectives.*.title' => ['required', 'string', 'min:10', 'max:160'],
             'requirements' => ['required', 'array', 'min:1'],
             'requirements.*.title' => ['required', 'string', 'min:10', 'max:160'],

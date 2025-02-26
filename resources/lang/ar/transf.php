@@ -470,7 +470,7 @@ return [
     'example:beginner_python_developers_curious_about_data_science' =>  'مثال: مطورو لغة بايثون المبتدئون مهتمون بعلم البيانات',
 
     //Intended validation 
-    'At least four objectives are required.'            =>  'مطلوب أربعة أهداف على الأقل.',
+    'At least four objectives are required.'            =>  'مطلوب هدف واحد على الأقل.',
     'The objective field is required.'                  =>  'حقل الهدف مطلوب.',
     'The objective must be a string.'                   =>  'يجب أن يكون الهدف سلسلة نصية.',
     'The objective must be at least ten characters.'    =>  'يجب أن يكون الهدف عشرة أحرف على الأقل.',

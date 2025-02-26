@@ -19,20 +19,20 @@ class SiteSettingSeeder extends Seeder
         $faker = Factory::create();
 
         // site infos
-        SiteSetting::create(['key'    =>  'site_name',          'value' =>  ['ar' => 'اكاديمية جاتس', 'en' => 'Jats edu'],       'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_short_name',    'value' =>  ['ar' => 'جاتس', 'en' => 'Jats'],           'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_name',          'value' =>  ['ar' => 'خطوة شباب', 'en' => 'Youth Step Institute'],       'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_short_name',    'value' =>  ['ar' => 'خطوة شباب', 'en' => 'Youth Step'],           'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_description',   'value' =>  ['ar' => 'التعليم كما تحلم به', 'en' => 'Education as your dreams'],   'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_link',          'value' =>  'https://jats-edu.com',                     'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_link',          'value' =>  'https://ysi-ye.com',                     'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_img',           'value' =>  '1.jpg',   'status'    =>  true,            'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
 
         // site contacts
-        SiteSetting::create(['key'    =>  'site_address',   'value' =>  ['ar' => 'المملكة العربية السعودية', 'en' => 'Kingdom of Saudi Arabia'],   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_phone',     'value' =>  '772036131',                    'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_mobile',    'value' =>  '436285',                       'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_address',   'value' =>  ['ar' => 'الجمهورية اليمنية', 'en' => 'Republic of Yemen'],   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_phone',     'value' =>  '777282953',                    'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_mobile',    'value' =>  '000000',                       'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_fax',       'value' =>  'fx',                           'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_po_box',    'value' =>  '985',                          'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_email1',    'value' =>  'support1.jats-edu@gmail.com',           'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_email2',    'value' =>  'support2.jats-edu2@gmail.com',          'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_po_box',    'value' =>  '00000',                          'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_email1',    'value' =>  'support1.ysi-ye@gmail.com',           'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_email2',    'value' =>  'support2.ysi-ye2@gmail.com',          'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_workTime',  'value' =>   ['ar' => 'طوال ايام الاسبوع', 'en' => 'Every Day In The Week'],   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
 
         // site socials
@@ -47,7 +47,7 @@ class SiteSettingSeeder extends Seeder
         SiteSetting::create(['key'    =>  'site_linkedin',      'value' =>  'linkedin.com',     'status'    =>  true,   'section'   =>  3,   'published_on'  =>  $faker->dateTime()]);
 
         // site seo
-        SiteSetting::create(['key'    =>  'site_name_meta',         'value' =>  ['ar' => 'اكاديمية جاتس', 'en' => 'Jats-edu'],   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_name_meta',         'value' =>  ['ar' => 'معهد خطوة شباب', 'en' => 'Youth Step Institute'],   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_description_meta',  'value' =>  ['ar' => 'موقع يوفر اقوي كورسات رائعة في مختلف المجالات', 'en' => 'A site that provides multi courses in various fields '],   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_link_meta',         'value' =>  'jats-edu.com',   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_keywords_meta',     'value' =>  ['ar' => 'ورش عمل , دروس , دورات', 'en' => 'Courses , Lessons'],   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);

@@ -73,7 +73,7 @@
                 enableTime: true,
                 dateFormat: "Y/m/d h:i K",
                 defaultDate: '{{ $offer_ends ?? now()->format('Y/m/d h:i A') }}',
-                minDate: "today",
+                //minDate: "today",
                 locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
 
             }).on('change', function(selectedDates, dateStr, instance) {

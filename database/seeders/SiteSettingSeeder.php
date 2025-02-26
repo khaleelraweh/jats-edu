@@ -28,7 +28,7 @@ class SiteSettingSeeder extends Seeder
         // site contacts
         SiteSetting::create(['key'    =>  'site_address',   'value' =>  ['ar' => 'الجمهورية اليمنية', 'en' => 'Republic of Yemen'],   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_phone',     'value' =>  '777282953',                    'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_mobile',    'value' =>  '000000',                       'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_mobile',    'value' =>  '02-350347',                       'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_fax',       'value' =>  'fx',                           'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_po_box',    'value' =>  '00000',                          'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_email1',    'value' =>  'support1.ysi-ye@gmail.com',           'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);

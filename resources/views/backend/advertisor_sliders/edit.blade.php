@@ -173,26 +173,7 @@
                             </div>
                         </div> --}}
 
-                        {{-- slider btn_one name field --}}
-                        @foreach (config('locales.languages') as $key => $val)
-                            <div class="row ">
-                                <div class="col-sm-12 pt-3">
-                                    <div class="form-group">
-                                        <label for="btn_one_name[{{ $key }}]">
-                                            {{ __('panel.btn_one_name') }}
-                                            {{ __('panel.in') }} {{ __('panel.' . $key) }}
-                                        </label>
-                                        <input type="text" name="btn_one_name[{{ $key }}]"
-                                            id="btn_one_name[{{ $key }}]"
-                                            value="{{ old('btn_one_name.' . $key, $advertisorSlider->getTranslation('btn_one_name', $key)) }}"
-                                            class="form-control">
-                                        @error('btn_one_name.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+
 
                         {{-- Button One URL --}}
                         <div class="row">
@@ -227,25 +208,7 @@
                             </div>
                         </div>
 
-                        {{-- Button One Show --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4">
-                                <label for="btn_one_show">{{ __('panel.btn_one_show') }}</label>
-                                <select name="btn_one_show" class="form-control">
-                                    <option value="1"
-                                        {{ old('btn_one_show', $advertisorSlider->btn_one_show ?? 1) == 1 ? 'selected' : null }}>
-                                        {{ __('panel.show') }}
-                                    </option>
-                                    <option value="0"
-                                        {{ old('btn_one_show', $advertisorSlider->btn_one_show ?? 1) == 0 ? 'selected' : null }}>
-                                        {{ __('panel.hide') }}
-                                    </option>
-                                </select>
-                                @error('btn_one_show')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+
                     </div>
 
 

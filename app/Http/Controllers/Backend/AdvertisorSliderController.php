@@ -60,10 +60,8 @@ class AdvertisorSliderController extends Controller
         // $input['url']            =   $request->url;
         // $input['target']         =   $request->target;
 
-        $input['btn_one_name'] = $request->btn_one_name;
         $input['btn_one_url'] = $request->btn_one_url;
         $input['btn_one_target'] = $request->btn_one_target;
-        $input['btn_one_show'] = $request->btn_one_show;
 
 
         $input['section']        =   2;
@@ -131,10 +129,8 @@ class AdvertisorSliderController extends Controller
         // $input['url']            =   $request->url;
         // $input['target']         =   $request->target;
 
-        $input['btn_one_name'] = $request->btn_one_name;
         $input['btn_one_url'] = $request->btn_one_url;
         $input['btn_one_target'] = $request->btn_one_target;
-        $input['btn_one_show'] = $request->btn_one_show;
 
         $input['section']        =   2;
 

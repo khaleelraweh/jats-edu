@@ -150,7 +150,7 @@
                         {{-- Button One URL --}}
                         <div class="row">
                             <div class="col-md-12 col-sm-12 pt-4">
-                                <label for="btn_one_url">{{ __('panel.btn_one_url') }}</label>
+                                <label for="btn_one_url">{{ __('panel.btn_one_url_adv') }}</label>
                                 <input type="text" name="btn_one_url" id="btn_one_url"
                                     value="{{ old('btn_one_url', $data->btn_one_url ?? '') }}" class="form-control"
                                     placeholder="http://example.com">

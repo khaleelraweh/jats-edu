@@ -105,10 +105,12 @@ return [
     'btn_one_show'                  =>  'Btn One Show',
 
 
-    'btn_one_name'                  =>  'Btn Two Name',
-    'btn_one_url'                   =>  'Btn Two Url',
-    'btn_one_target'                =>  'Btn Two Target',
-    'btn_one_show'                  =>  'Btn Two Show',
+    'btn_two_name'                  =>  'Btn Two Name',
+    'btn_two_url'                   =>  'Btn Two Url',
+    'btn_two_target'                =>  'Btn Two Target',
+    'btn_two_show'                  =>  'Btn Two Show',
+
+    'btn_one_url_adv'               =>  'Url of the Link',
 
 
     ########################### Manage Categories  ##################################

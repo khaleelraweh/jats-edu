@@ -497,7 +497,7 @@ return [
 
     'curriculum_need'                                   =>  'To complete this tab, you need to',
     'curriculum_need_lessons'                           =>  'Create at least one lesson',
-    'curriculum_need_video_records'                     =>  'Total lessons must contain at least 30 minutes of video recordings',
+    'curriculum_need_video_records'                     =>  'Total lessons must contain at least 1 minute of video recordings',
 
     'enter_a_title'                                     =>  'Enter a Title',
     'enter_a_learning_objective'                        =>  'Enter a Learning Objective',

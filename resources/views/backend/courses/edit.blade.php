@@ -776,7 +776,7 @@
 
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
-                min: new Date(),
+                //min: new Date(),
                 selectMonths: true, // Creates a dropdown to control month
                 selectYears: true, // creates a dropdown to control years
                 clear: 'Clear',
@@ -798,7 +798,7 @@
             // deadline start 
             $('#deadline').pickadate({
                 format: 'yyyy-mm-dd',
-                min: new Date(),
+                //min: new Date(),
                 selectMonths: true, // Creates a dropdown to control month
                 selectYears: true, // creates a dropdown to control years
                 clear: 'Clear',

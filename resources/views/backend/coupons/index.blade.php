@@ -65,8 +65,8 @@
                                 <td class="d-none d-sm-table-cell">{{ $coupon->used_times . '/' . $coupon->use_times }}
                                 </td>
                                 <td>
-                                    {{ $coupon->start_date != '' ? $coupon->start_date . '  -  ' . $coupon->expire_date : '-' }}
 
+                                    {{ $coupon->start_date != '' ? \Carbon\Carbon::parse($coupon->start_date)->format('d/m/Y') . '  -  ' . \Carbon\Carbon::parse($coupon->expire_date)->format('d/m/Y') : '-' }}
                                 </td>
                                 <td class="d-none d-sm-table-cell">{{ $coupon->greater_than ?? '-' }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $coupon->status() }}</td>

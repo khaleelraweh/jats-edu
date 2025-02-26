@@ -232,6 +232,7 @@ return [
     'coure_rejected'                            =>  'Rejected',
 
     'course_status'                             =>  'Course Status',
+    'company_status'                             =>  'Company Status',
     'course_choose_appropriate_event'           =>  'Choose the appropriate event',
 
 

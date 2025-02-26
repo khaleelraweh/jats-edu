@@ -107,7 +107,7 @@
                         <label class="sr-only" for="inlineFormInputGroupOrderStatus">Username</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <div class="input-group-text">{{ __('panel.course_status') }}</div>
+                                <div class="input-group-text">{{ __('panel.company_status') }}</div>
                             </div>
                             <select name="status" style="outline-style:none;" onchange="this.form.submit()"
                                 class="form-control">

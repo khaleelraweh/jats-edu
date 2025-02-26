@@ -237,6 +237,7 @@ return [
     'coure_rejected'                =>  'مرفوض',
 
     'course_status'                             =>  'حالة الدورة',
+    'company_status'                             =>  'حالة طلب الشركة',
     'course_choose_appropriate_event'           =>  'اختر الحدث المناسب',
 
 

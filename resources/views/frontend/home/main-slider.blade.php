@@ -76,14 +76,18 @@
                     <li class="col-lg-auto mb-5 mb-lg-0 nav-item">
                         <div class="d-flex align-items-center">
                             <div class="me-4 text-white icon-md">
-
-                                <i class="{{ $adv_slider->icon }}" style="font-size: 60px"></i>
+                                <a href="{{ url($adv_slider->btn_one_url) }}" style="color: white;">
+                                    <i class="{{ $adv_slider->icon }}" style="font-size: 60px"></i>
+                                </a>
 
                             </div>
                             <div class="media-body">
-                                <h4 class="text-white mb-0 text-uppercase">{{ $adv_slider->title }}</h4>
-                                <p class="text-white mb-0">{{ $adv_slider->description }} </p>
+                                <a href="{{ url($adv_slider->btn_one_url) }}">
+                                    <h4 class="text-white mb-0 text-uppercase">{{ $adv_slider->title }}</h4>
+                                    <p class="text-white mb-0">{!! $adv_slider->description !!} </p>
+                                </a>
                             </div>
+
                         </div>
                     </li>
                 @endforeach

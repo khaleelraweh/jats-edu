@@ -1,5 +1,5 @@
 <div class="mx-n4 bg-is-selected"
-    data-flickity='{"pageDots": true, "prevNextButtons": false, "cellAlign": "center", "wrapAround": true, "imagesLoaded": true}'>
+    data-flickity='{"pageDots": true, "prevNextButtons": false, "cellAlign": "center", "wrapAround": true, "imagesLoaded": true , "autoPlay": true, "pauseAutoPlayOnHover": false, "adaptiveHeight": true}'>
 
     @foreach ($callActions as $index => $callAction)
         @php

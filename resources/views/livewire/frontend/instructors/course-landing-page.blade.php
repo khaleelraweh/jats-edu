@@ -351,9 +351,13 @@
                             <div id="deadline-field" style="display: none" wire:ignore class="col-md-6  pt-3">
                                 <div class="form-group">
                                     <label for="deadline">{{ __('transf.deadline_of_the_course') }}</label>
-                                    <input type="text" name="deadline" wire:model.defer="deadline"
+                                    {{-- <input type="text" name="deadline" wire:model.defer="deadline"
                                         value="{{ old('deadline', \Carbon\Carbon::parse($course->deadline)->translatedFormat('Y-m-d h:i A')) }}"
-                                        class="form-control flatpickr_deadLine">
+                                        class="form-control flatpickr_deadLine"> --}}
+
+                                    <input type="text" name="deadline" class="form-control flatpickr_deadline"
+                                        wire:model.defer="deadline" readonly>
+
 
                                     @error('deadline')
                                         <span class="text-danger">{{ $message }}</span>
@@ -507,3 +511,27 @@
         });
     }
 </script>
+
+@push('scripts')
+    <script>
+        var tinymceLanguage = '{{ app()->getLocale() }}'; // Get the current locale from Laravel config
+        var flatPickrLanguage = '{{ app()->getLocale() }}';
+    </script>
+
+    <script>
+        document.addEventListener('livewire:load', function() {
+            flatpickr('.flatpickr_deadline', {
+                enableTime: true,
+                dateFormat: "Y/m/d h:i K",
+                defaultDate: '{{ $published_on ?? now()->format('Y/m/d h:i A') }}',
+                // minDate: "today",
+                locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+
+                onChange: function(selectedDates, dateStr, instance) {
+                    @this.set('published_on',
+                        dateStr); // Update Livewire component's published_on property
+                }
+            });
+        });
+    </script>
+@endpush

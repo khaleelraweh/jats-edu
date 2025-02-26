@@ -330,6 +330,14 @@
                 locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
 
             });
+            // for deadline
+            flatpickr('.flatpickr_deadline', {
+                enableTime: true,
+                dateFormat: "Y/m/d h:i K",
+                // minDate: "today",
+                locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+
+            });
 
 
 

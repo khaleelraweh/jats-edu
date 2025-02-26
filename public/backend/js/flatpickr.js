@@ -31,7 +31,7 @@ $(function() {
       enableTime: true,
       wrap: true,
       dateFormat: "Y/m/d h:i K",
-      minDate: "today", // Prevent dates before today
+      //minDate: "today", // Prevent dates before today
       locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
     });
   }

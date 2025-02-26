@@ -142,7 +142,7 @@ class LessonComponent extends Component
                 'duration_minutes',
             );
         }
-        if ($totalDurations < 30) {
+        if ($totalDurations < 1) { // Total duration is at lees one munite 
             $duration_30_minutes_Valid = false;
         }
 

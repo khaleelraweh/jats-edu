@@ -229,7 +229,7 @@ class CourseDetailsConfirmationComponent extends Component
                 'duration_minutes',
             );
         }
-        if ($totalDurations < 30) {
+        if ($totalDurations < 1) { // total durations at least one munite instead of thrity minutes
             $duration_30_minutes_Valid = false;
         }
         $this->duration_30_minutes_Valid = $duration_30_minutes_Valid;

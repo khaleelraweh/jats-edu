@@ -309,7 +309,7 @@
             // ======= start pickadate codeing ===========
             $('#start_date').pickadate({
                 format: 'yyyy-mm-dd',
-                min: new Date(),
+                //min: new Date(),
                 selectMonths: true, // Creates a dropdown to control month
                 selectYears: true, // creates a dropdown to control years
                 clear: 'Clear',
@@ -319,7 +319,7 @@
 
             $('#expire_date').pickadate({
                 format: 'yyyy-mm-dd',
-                min: new Date(),
+                //min: new Date(),
                 selectMonths: true, // Creates a dropdoen to control month
                 selectYears: true, // Creates a dropdown to control month 
                 clear: 'Clear',
@@ -354,7 +354,7 @@
 
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
-                min: new Date(),
+                //min: new Date(),
                 selectMonths: true, // Creates a dropdown to control month
                 selectYears: true, // creates a dropdown to control years
                 clear: 'Clear',

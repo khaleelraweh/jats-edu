@@ -67,7 +67,7 @@
                 enableTime: true,
                 dateFormat: "Y/m/d h:i K",
                 defaultDate: '{{ $published_on ?? now()->format('Y/m/d h:i A') }}',
-                minDate: "today",
+                // minDate: "today",
                 locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
 
                 onChange: function(selectedDates, dateStr, instance) {

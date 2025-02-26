@@ -326,7 +326,7 @@
             flatpickr('.flatpickr_publihsed_on', {
                 enableTime: true,
                 dateFormat: "Y/m/d h:i K",
-                minDate: "today",
+                // minDate: "today",
                 locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
 
             });

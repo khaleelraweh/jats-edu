@@ -127,8 +127,15 @@ class AdvertisorSliderController extends Controller
         $input['icon']         =   $request->icon;
         $input['title']          =   $request->title;
         $input['description']        =   $request->description;
-        $input['url']            =   $request->url;
-        $input['target']         =   $request->target;
+
+        // $input['url']            =   $request->url;
+        // $input['target']         =   $request->target;
+
+        $input['btn_one_name'] = $request->btn_one_name;
+        $input['btn_one_url'] = $request->btn_one_url;
+        $input['btn_one_target'] = $request->btn_one_target;
+        $input['btn_one_show'] = $request->btn_one_show;
+
         $input['section']        =   2;
 
         $input['showInfo']            =   $request->showInfo;

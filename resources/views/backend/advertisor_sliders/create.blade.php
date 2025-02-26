@@ -146,32 +146,74 @@
                     {{-- url Tab --}}
                     <div class="tab-pane fade" id="url" role="tabpanel" aria-labelledby="url-tab">
 
-                        {{-- url fields --}}
+                        {{-- slider btn_one name field --}}
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 pt-3">
+                                    <div class="form-group">
+                                        <label for="btn_one_name[{{ $key }}]">
+                                            {{ __('panel.btn_one_name') }}
+                                            {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                        </label>
+                                        <input type="text" name="btn_one_name[{{ $key }}]"
+                                            id="btn_one_name[{{ $key }}]"
+                                            value="{{ old('btn_one_name.' . $key) }}" class="form-control">
+                                        @error('btn_one_name.' . $key)
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                        {{-- Button One URL --}}
                         <div class="row">
-                            {{-- url field --}}
                             <div class="col-md-12 col-sm-12 pt-4">
-                                <label for="url">{{ __('panel.url_link') }}</label>
-                                <input type="text" name="url" id="url" value="{{ old('url') }}"
-                                    class="form-control" placeholder="http://youtlinks.com ">
-                                @error('url')
+                                <label for="btn_one_url">{{ __('panel.btn_one_url') }}</label>
+                                <input type="text" name="btn_one_url" id="btn_one_url"
+                                    value="{{ old('btn_one_url', $data->btn_one_url ?? '') }}" class="form-control"
+                                    placeholder="http://example.com">
+                                @error('btn_one_url')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
 
-                        {{--  target  fields --}}
+                        {{-- Button One Target --}}
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4 pt-4">
-                                <label for="target">{{ __('panel.url_target') }} </label>
-                                <select name="target" class="form-control">
-                                    <option value="_self" {{ old('target') == '1' ? 'selected' : null }}>
+                            <div class="col-sm-12 col-md-12 pt-4">
+                                <label for="btn_one_target">{{ __('panel.btn_one_target') }}</label>
+                                <select name="btn_one_target" class="form-control">
+                                    <option value="_self"
+                                        {{ old('btn_one_target', $data->btn_one_target ?? '_self') == '_self' ? 'selected' : null }}>
                                         {{ __('panel.in_the_same_tab') }}
                                     </option>
-                                    <option value="_blanck" {{ old('target') == '0' ? 'selected' : null }}>
+                                    <option value="_blank"
+                                        {{ old('btn_one_target', $data->btn_one_target ?? '_self') == '_blank' ? 'selected' : null }}>
                                         {{ __('panel.in_new_tab') }}
                                     </option>
                                 </select>
-                                @error('target')
+                                @error('btn_one_target')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- Button One Show --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 pt-4">
+                                <label for="btn_one_show">{{ __('panel.btn_one_show') }}</label>
+                                <select name="btn_one_show" class="form-control">
+                                    <option value="1"
+                                        {{ old('btn_one_show', $data->btn_one_show ?? 1) == 1 ? 'selected' : null }}>
+                                        {{ __('panel.show') }}
+                                    </option>
+                                    <option value="0"
+                                        {{ old('btn_one_show', $data->btn_one_show ?? 1) == 0 ? 'selected' : null }}>
+                                        {{ __('panel.hide') }}
+                                    </option>
+                                </select>
+                                @error('btn_one_show')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

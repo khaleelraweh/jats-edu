@@ -30,7 +30,7 @@ class AdvertisorSliderRequest extends FormRequest
                         'title.*'       =>  'required|max:255|unique_translation:sliders',
                         'description.*'       =>  'nullable',
                         'url'           =>  'nullable',
-                        'target'        =>  'required',
+                        'target'        =>  'nullable',
                         'icon'        =>  'nullable',
                         'section'       =>  'nullable',
                         'showInfo'      => 'required',
@@ -52,7 +52,7 @@ class AdvertisorSliderRequest extends FormRequest
                         'title.*'           =>  'required|max:255|unique_translation:sliders,title,' . $this->route()->advertisor_slider,
                         'description'           =>  'nullable',
                         'url'               =>  'nullable',
-                        'target'            =>  'required',
+                        'target'            =>  'nullable',
                         'section'           =>  'nullable',
                         'showInfo'      => 'required',
 

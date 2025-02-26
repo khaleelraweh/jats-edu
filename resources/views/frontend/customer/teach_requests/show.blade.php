@@ -102,7 +102,7 @@
                                         <h1 class="m-0" style="color: green">
                                             Youth Step Institute</h1>
                                         <h2 style="color:gold">For
-                                            Training
+                                            Training &
                                             Languages
                                         </h2>
                                     </div>

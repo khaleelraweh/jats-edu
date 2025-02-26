@@ -274,8 +274,7 @@
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="video_description">{{ __('panel.video_description') }}</label>
                                 <input type="text" name="video_description" id="video_description"
-                                    value="{{ old('video_description') }}" class="form-control"
-                                    placeholder="https://video-link">
+                                    value="{{ old('video_description') }}" class="form-control" placeholder="">
                                 @error('video_description')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -734,7 +733,7 @@
 
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
-                min: new Date(),
+                //min: new Date(),
                 selectMonths: true, // Creates a dropdown to control month
                 selectYears: true, // creates a dropdown to control years
                 clear: 'Clear',
@@ -766,7 +765,7 @@
             // start deadline 
             $('#deadline').pickadate({
                 format: 'yyyy-mm-dd',
-                min: new Date(),
+                //min: new Date(),
                 selectMonths: true, // Creates a dropdown to control month
                 selectYears: true, // creates a dropdown to control years
                 clear: 'Clear',
@@ -825,7 +824,7 @@
 
             $('#end_date').pickadate({
                 format: 'yyyy-mm-dd',
-                min: new Date(),
+                //min: new Date(),
                 selectMonths: true, // Creates a dropdoen to control month
                 selectYears: true, // Creates a dropdown to control month 
                 clear: 'Clear',

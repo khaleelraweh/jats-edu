@@ -523,13 +523,13 @@
             flatpickr('.flatpickr_deadline', {
                 enableTime: true,
                 dateFormat: "Y/m/d h:i K",
-                defaultDate: '{{ $published_on ?? now()->format('Y/m/d h:i A') }}',
+                defaultDate: '{{ $deadline ?? now()->format('Y/m/d h:i A') }}',
                 // minDate: "today",
                 locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
 
-                onChange: function(selectedDates, dateStr, instance) {
-                    @this.set('published_on',
-                        dateStr); // Update Livewire component's published_on property
+                onChange: function(deadline, dateStr, instance) {
+                    @this.set('deadline',
+                        dateStr); // Update Livewire component's deadline property
                 }
             });
         });

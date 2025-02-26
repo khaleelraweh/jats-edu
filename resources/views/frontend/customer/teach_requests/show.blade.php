@@ -91,8 +91,8 @@
                                     <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
                                         <h1 class="m-0" style="color:green;">
                                             معهد خطوة شباب</h1>
-                                        <h2 style="color: gold" style="font-family: Times New Roman, sans-serif;">
-                                            للتدريب واللغات</h2>
+                                        <h3 style="color: gold" style="font-family: Times New Roman, sans-serif;">
+                                            للتدريب واللغات</h3>
                                     </div>
                                     <div class="col-sm-4 d-flex align-items-center justify-content-center">
                                         <img style="width: 250px; padding-top: 10px; z-index: 4"

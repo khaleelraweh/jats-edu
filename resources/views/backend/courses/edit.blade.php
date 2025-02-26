@@ -811,6 +811,15 @@
             });
             //deadline end 
 
+            // $('#offer_ends').pickadate({
+            //     format: 'yyyy-mm-dd',
+            //     selectMonths: true, // Creates a dropdown to control month
+            //     selectYears: true, // creates a dropdown to control years
+            //     clear: 'Clear',
+            //     close: 'OK',
+            //     colseOnSelect: true // Close Upon Selecting a date
+            // });
+
             $('#offer_ends').pickadate({
                 format: 'yyyy-mm-dd',
                 selectMonths: true, // Creates a dropdown to control month
@@ -819,26 +828,27 @@
                 close: 'OK',
                 colseOnSelect: true // Close Upon Selecting a date
             });
-            var startdate = $('#offer_ends').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #publish_date elemet
 
-            // when change date 
-            $('#offer_ends').change(function() {
-                selected_ci_date = "";
-                selected_ci_date = $('#publish_date')
-                    .val(); // make selected start date in picker = publish_date value
-                if (selected_ci_date != null) {
-                    var cidate = new Date(
-                        selected_ci_date
-                    ); // make cidate(start date ) = current date you selected in selected ci date (selected start date )
-                    min_codate = "";
-                    min_codate = new Date();
-                    min_codate.setDate(cidate.getDate() +
-                        1); // minimum selected date to be expired shoud be current date plus one 
-                    enddate.set('min', min_codate);
-                }
+            // var startdate = $('#offer_ends').pickadate(
+            //     'picker'); // set startdate in the picker to the start date in the #publish_date elemet
 
-            });
+            // // when change date 
+            // $('#offer_ends').change(function() {
+            //     selected_ci_date = "";
+            //     selected_ci_date = $('#publish_date')
+            //         .val(); // make selected start date in picker = publish_date value
+            //     if (selected_ci_date != null) {
+            //         var cidate = new Date(
+            //             selected_ci_date
+            //         ); // make cidate(start date ) = current date you selected in selected ci date (selected start date )
+            //         min_codate = "";
+            //         min_codate = new Date();
+            //         min_codate.setDate(cidate.getDate() +
+            //             1); // minimum selected date to be expired shoud be current date plus one 
+            //         enddate.set('min', min_codate);
+            //     }
+
+            // });
 
             $('.summernote').summernote({
                 tabSize: 2,

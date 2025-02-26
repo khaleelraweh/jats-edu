@@ -59,7 +59,7 @@ class CourseLandingPage extends Component
         'course_type' => 'required|in:1,2',
         'course_category_id' => 'required|exists:course_categories,id',
         'certificate' => 'required|boolean',
-        // 'deadline' => 'nullable|date_format:Y-m-d H:i:s',
+        'deadline' => 'nullable',
     ];
 
 

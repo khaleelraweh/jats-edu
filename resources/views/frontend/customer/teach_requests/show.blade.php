@@ -160,220 +160,221 @@
                                             @endif
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="row">
-                                        <div class="col-sm-12 pt-3">
-                                            <span class="arabic-name ww">
-                                                {{-- {{ __('panel.full_name') }} {{ __('panel.in') }}
+                                <div class="row">
+                                    <div class="col-sm-12 pt-3">
+                                        <span class="arabic-name ww">
+                                            {{-- {{ __('panel.full_name') }} {{ __('panel.in') }}
                                                 {{ __('panel.ar') }} : --}}
-                                                الإسم الكامل (باللغة العربية ) :
+                                            الإسم الكامل (باللغة العربية ) :
 
+                                        </span>
+                                        <span
+                                            class="arabic-name-value">{{ $teach_request->getTranslation('full_name', 'ar') }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 pt-3 text-end">
+                                        <bdo dir="ltr">
+                                            <span class="english-name ww">
+                                                {{-- {{ __('panel.full_name') }} {{ __('panel.in') }}
+                                                    {{ __('panel.en') }} : --}}
+                                                Full Name ( In English ) :
                                             </span>
                                             <span
-                                                class="arabic-name-value">{{ $teach_request->getTranslation('full_name', 'ar') }}</span>
-                                        </div>
+                                                class="english-name-value">{{ $teach_request->getTranslation('full_name', 'en') }}
+                                            </span>
+                                        </bdo>
                                     </div>
+                                </div>
 
-                                    <div class="row">
-                                        <div class="col-sm-12 pt-3 text-end">
-                                            <bdo dir="ltr">
-                                                <span class="english-name ww">
-                                                    {{-- {{ __('panel.full_name') }} {{ __('panel.in') }}
-                                                    {{ __('panel.en') }} : --}}
-                                                    Full Name ( In English ) :
-                                                </span>
-                                                <span
-                                                    class="english-name-value">{{ $teach_request->getTranslation('full_name', 'en') }}
-                                                </span>
-                                            </bdo>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="date-of-birth ww"> {{ __('panel.date_of_birth') }} : </span>
+                                        <span class="date-of-birth-value">
+                                            {{ optional($teach_request->date_of_birth)->format('Y/m/d') }}
+                                        </span>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="date-of-birth ww"> {{ __('panel.date_of_birth') }} : </span>
-                                            <span class="date-of-birth-value">
-                                                {{ optional($teach_request->date_of_birth)->format('Y/m/d') }}
-                                            </span>
-                                        </div>
-                                        <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="place-of-birth ww"> {{ __('panel.place_of_birth') }} : </span>
-                                            {{-- <span class="place-of-birth-value">{{ $teach_request->place_of_birth }}</span> --}}
-                                            <?php $placeOfBirth = Altwaireb\World\Models\Country::where('id', $teach_request->place_of_birth)->first(); ?>
-                                            <span class="place-of-birth-value">
-                                                {{ app()->getLocale() == 'ar' ? $placeOfBirth->translations['ar'] : $placeOfBirth->name }}
-                                            </span>
-                                        </div>
-                                        <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="nationality ww">{{ __('panel.nationality') }} : </span>
-                                            {{-- <span class="nationality-value">{{ $teach_request->nationality }}</span> --}}
-                                            <?php $nationality = Altwaireb\World\Models\Country::where('id', $teach_request->nationality)->first(); ?>
-                                            <span class="nationality-value">
-                                                {{ app()->getLocale() == 'ar' ? $nationality->translations['ar'] : $nationality->name }}
-                                            </span>
-                                        </div>
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="place-of-birth ww"> {{ __('panel.place_of_birth') }} : </span>
+                                        {{-- <span class="place-of-birth-value">{{ $teach_request->place_of_birth }}</span> --}}
+                                        <?php $placeOfBirth = Altwaireb\World\Models\Country::where('id', $teach_request->place_of_birth)->first(); ?>
+                                        <span class="place-of-birth-value">
+                                            {{ app()->getLocale() == 'ar' ? $placeOfBirth->translations['ar'] : $placeOfBirth->name }}
+                                        </span>
                                     </div>
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="nationality ww">{{ __('panel.nationality') }} : </span>
+                                        {{-- <span class="nationality-value">{{ $teach_request->nationality }}</span> --}}
+                                        <?php $nationality = Altwaireb\World\Models\Country::where('id', $teach_request->nationality)->first(); ?>
+                                        <span class="nationality-value">
+                                            {{ app()->getLocale() == 'ar' ? $nationality->translations['ar'] : $nationality->name }}
+                                        </span>
+                                    </div>
+                                </div>
 
-                                    <div class="row">
-                                        <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="residence-address ww"> {{ __('panel.address_of_residence') }} :
-                                            </span>
-                                            {{-- <span class="residence-address-value">
+                                <div class="row">
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="residence-address ww"> {{ __('panel.address_of_residence') }} :
+                                        </span>
+                                        {{-- <span class="residence-address-value">
                                                 {{ $teach_request->residence_address }}
                                             </span> --}}
-                                            <?php $residenceAddress = Altwaireb\World\Models\Country::where('id', $teach_request->residence_address)->first(); ?>
-                                            <span class="residence-address-value">
-                                                {{ app()->getLocale() == 'ar' ? $residenceAddress->translations['ar'] : $residenceAddress->name }}
-                                            </span>
-                                        </div>
-
-                                        <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="phone ww"> {{ __('panel.f_phone_number') }} :</span>
-                                            <span class="phone-value"> {{ $teach_request->phone }} </span>
-                                        </div>
-                                        <div class="col-sm-12 col-md-4"></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="educational_qualification ww">
-                                                {{ __('panel.academic_qualification') }} :
-                                            </span>
-                                            <span
-                                                class="educational-qualification-value">{{ $teach_request->educational_qualification() }}</span>
-                                        </div>
-                                        <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="specialization ww ">{{ __('panel.specialization') }} : </span>
-                                            <span class="specialization-value"> {{ $teach_request->specialization->name }}
-                                            </span>
-                                        </div>
-                                        <div class="col-sm-12 pt-3 col-md-4">
-                                            <span class="years_of_training_experience ww">
-                                                {{ __('panel.years_of_experience') }} :
-                                            </span>
-                                            <span class="years_of_training_experience-value">
-                                                {{ $teach_request->years_of_training_experience }} {{ __('panel.year') }}
-                                                / {{ __('panel.years') }}
-                                            </span>
-                                        </div>
+                                        <?php $residenceAddress = Altwaireb\World\Models\Country::where('id', $teach_request->residence_address)->first(); ?>
+                                        <span class="residence-address-value">
+                                            {{ app()->getLocale() == 'ar' ? $residenceAddress->translations['ar'] : $residenceAddress->name }}
+                                        </span>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-sm-12 pt-3">
-                                            <div class="motivation ww">
-                                                {{ __('panel.motivation') }}:
-                                            </div>
-                                            <div class="motivation-value">
-                                                {!! $teach_request->motivation !!}
-                                            </div>
-                                        </div>
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="phone ww"> {{ __('panel.f_phone_number') }} :</span>
+                                        <span class="phone-value"> {{ $teach_request->phone }} </span>
                                     </div>
-
-                                    <div class="row">
-                                        <!-- Identity Image or File -->
-                                        <div class="col-sm-12 pt-3 col-md-4 text-center">
-                                            <span class="identity ww d-block"> {{ __('panel.personal_identity_photo') }} :
-                                            </span>
-                                            <span class="identity-value">
-                                                @if ($teach_request->identity)
-                                                    @php
-                                                        $identityExtension = strtolower(
-                                                            pathinfo($teach_request->identity, PATHINFO_EXTENSION),
-                                                        );
-                                                        $imageExtensions = ['jpg', 'jpeg', 'png'];
-                                                    @endphp
-                                                    @if (in_array($identityExtension, $imageExtensions))
-                                                        <!-- Display as an image -->
-                                                        <a href="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
-                                                            data-fancybox data-width="1400" data-height="900">
-                                                            <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
-                                                                class="img-fluid" alt="Identity Image"
-                                                                style="width: 8em;height: 4em;">
-                                                        </a>
-                                                    @else
-                                                        <!-- Display as a link (for PDF or Word) -->
-                                                        <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->identity, PATHINFO_FILENAME)) }}"
-                                                            target="_blank">
-                                                            {{ pathinfo($teach_request->identity, PATHINFO_FILENAME) }}
-                                                        </a>
-                                                    @endif
-                                                @else
-                                                    <p>No identity file available.</p>
-                                                @endif
-                                            </span>
-                                        </div>
-
-                                        <!-- Biography PDF/Word or Image -->
-                                        <div class="col-sm-12 pt-3 col-md-4 text-center">
-                                            <span class="biography ww d-block"> {{ __('panel.the_biography') }} :</span>
-                                            <span class="biography-value">
-                                                @if ($teach_request->biography && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
-                                                    @php
-                                                        $biographyExtension = strtolower(
-                                                            pathinfo($teach_request->biography, PATHINFO_EXTENSION),
-                                                        );
-                                                    @endphp
-                                                    @if (in_array($biographyExtension, $imageExtensions))
-                                                        <!-- Display as an image -->
-                                                        <a href="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
-                                                            data-fancybox data-width="1400" data-height="900">
-                                                            <img src="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
-                                                                class="img-fluid" alt="Biography Image"
-                                                                style="width: 8em;height: 4em;">
-                                                        </a>
-                                                    @else
-                                                        <!-- Display as a link (for PDF or Word) -->
-                                                        <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->biography, PATHINFO_FILENAME)) }}"
-                                                            target="_blank">
-                                                            {{ pathinfo($teach_request->biography, PATHINFO_FILENAME) }}
-                                                        </a>
-                                                    @endif
-                                                @else
-                                                    <p>No biography found.</p>
-                                                @endif
-                                            </span>
-                                        </div>
-
-                                        <!-- Certificates PDF/Word or Image -->
-                                        <div class="col-sm-12 pt-3 col-md-4 text-center">
-                                            <span class="Certificates ww d-block"> {{ __('panel.certificates') }} :</span>
-                                            <span class="Certificates-value">
-                                                @if ($teach_request->Certificates && file_exists(public_path('assets/teach_requests/' . $teach_request->Certificates)))
-                                                    @php
-                                                        $certificatesExtension = strtolower(
-                                                            pathinfo($teach_request->Certificates, PATHINFO_EXTENSION),
-                                                        );
-                                                    @endphp
-                                                    @if (in_array($certificatesExtension, $imageExtensions))
-                                                        <!-- Display as an image -->
-                                                        <a href="{{ asset('assets/teach_requests/' . $teach_request->Certificates) }}"
-                                                            data-fancybox data-width="1400" data-height="900">
-                                                            <img src="{{ asset('assets/teach_requests/' . $teach_request->Certificates) }}"
-                                                                class="img-fluid" alt="Certificates Image"
-                                                                style="width: 8em;height: 4em;">
-                                                        </a>
-                                                    @else
-                                                        <!-- Display as a link (for PDF or Word) -->
-                                                        <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->Certificates, PATHINFO_FILENAME)) }}"
-                                                            target="_blank">
-                                                            {{ pathinfo($teach_request->Certificates, PATHINFO_FILENAME) }}
-                                                        </a>
-                                                    @endif
-                                                @else
-                                                    <p>No certificates found. </p>
-                                                @endif
-                                            </span>
-                                        </div>
+                                    <div class="col-sm-12 col-md-4"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="educational_qualification ww">
+                                            {{ __('panel.academic_qualification') }} :
+                                        </span>
+                                        <span
+                                            class="educational-qualification-value">{{ $teach_request->educational_qualification() }}</span>
                                     </div>
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="specialization ww ">{{ __('panel.specialization') }} : </span>
+                                        <span class="specialization-value"> {{ $teach_request->specialization->name }}
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-12 pt-3 col-md-4">
+                                        <span class="years_of_training_experience ww">
+                                            {{ __('panel.years_of_experience') }} :
+                                        </span>
+                                        <span class="years_of_training_experience-value">
+                                            {{ $teach_request->years_of_training_experience }} {{ __('panel.year') }}
+                                            / {{ __('panel.years') }}
+                                        </span>
+                                    </div>
+                                </div>
 
-
-                                    <div class="row" style="margin-top: 60px; margin-bottom: -10px;">
-                                        <div class="col-sm-12 pt-3">
-                                            <p>
-                                                {{ __('panel.note:_your_request_will_be_reviewed_and_responded_to_within_three_days_from_today’s_date') }}
-                                            </p>
+                                <div class="row">
+                                    <div class="col-sm-12 pt-3">
+                                        <div class="motivation ww">
+                                            {{ __('panel.motivation') }}:
+                                        </div>
+                                        <div class="motivation-value">
+                                            {!! $teach_request->motivation !!}
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <!-- Identity Image or File -->
+                                    <div class="col-sm-12 pt-3 col-md-4 text-center">
+                                        <span class="identity ww d-block"> {{ __('panel.personal_identity_photo') }} :
+                                        </span>
+                                        <span class="identity-value">
+                                            @if ($teach_request->identity)
+                                                @php
+                                                    $identityExtension = strtolower(
+                                                        pathinfo($teach_request->identity, PATHINFO_EXTENSION),
+                                                    );
+                                                    $imageExtensions = ['jpg', 'jpeg', 'png'];
+                                                @endphp
+                                                @if (in_array($identityExtension, $imageExtensions))
+                                                    <!-- Display as an image -->
+                                                    <a href="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
+                                                        data-fancybox data-width="1400" data-height="900">
+                                                        <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
+                                                            class="img-fluid" alt="Identity Image"
+                                                            style="width: 8em;height: 4em;">
+                                                    </a>
+                                                @else
+                                                    <!-- Display as a link (for PDF or Word) -->
+                                                    <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->identity, PATHINFO_FILENAME)) }}"
+                                                        target="_blank">
+                                                        {{ pathinfo($teach_request->identity, PATHINFO_FILENAME) }}
+                                                    </a>
+                                                @endif
+                                            @else
+                                                <p>No identity file available.</p>
+                                            @endif
+                                        </span>
+                                    </div>
+
+                                    <!-- Biography PDF/Word or Image -->
+                                    <div class="col-sm-12 pt-3 col-md-4 text-center">
+                                        <span class="biography ww d-block"> {{ __('panel.the_biography') }} :</span>
+                                        <span class="biography-value">
+                                            @if ($teach_request->biography && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
+                                                @php
+                                                    $biographyExtension = strtolower(
+                                                        pathinfo($teach_request->biography, PATHINFO_EXTENSION),
+                                                    );
+                                                @endphp
+                                                @if (in_array($biographyExtension, $imageExtensions))
+                                                    <!-- Display as an image -->
+                                                    <a href="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
+                                                        data-fancybox data-width="1400" data-height="900">
+                                                        <img src="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
+                                                            class="img-fluid" alt="Biography Image"
+                                                            style="width: 8em;height: 4em;">
+                                                    </a>
+                                                @else
+                                                    <!-- Display as a link (for PDF or Word) -->
+                                                    <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->biography, PATHINFO_FILENAME)) }}"
+                                                        target="_blank">
+                                                        {{ pathinfo($teach_request->biography, PATHINFO_FILENAME) }}
+                                                    </a>
+                                                @endif
+                                            @else
+                                                <p>No biography found.</p>
+                                            @endif
+                                        </span>
+                                    </div>
+
+                                    <!-- Certificates PDF/Word or Image -->
+                                    <div class="col-sm-12 pt-3 col-md-4 text-center">
+                                        <span class="Certificates ww d-block"> {{ __('panel.certificates') }} :</span>
+                                        <span class="Certificates-value">
+                                            @if ($teach_request->Certificates && file_exists(public_path('assets/teach_requests/' . $teach_request->Certificates)))
+                                                @php
+                                                    $certificatesExtension = strtolower(
+                                                        pathinfo($teach_request->Certificates, PATHINFO_EXTENSION),
+                                                    );
+                                                @endphp
+                                                @if (in_array($certificatesExtension, $imageExtensions))
+                                                    <!-- Display as an image -->
+                                                    <a href="{{ asset('assets/teach_requests/' . $teach_request->Certificates) }}"
+                                                        data-fancybox data-width="1400" data-height="900">
+                                                        <img src="{{ asset('assets/teach_requests/' . $teach_request->Certificates) }}"
+                                                            class="img-fluid" alt="Certificates Image"
+                                                            style="width: 8em;height: 4em;">
+                                                    </a>
+                                                @else
+                                                    <!-- Display as a link (for PDF or Word) -->
+                                                    <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->Certificates, PATHINFO_FILENAME)) }}"
+                                                        target="_blank">
+                                                        {{ pathinfo($teach_request->Certificates, PATHINFO_FILENAME) }}
+                                                    </a>
+                                                @endif
+                                            @else
+                                                <p>No certificates found. </p>
+                                            @endif
+                                        </span>
+                                    </div>
+                                </div>
+
+
+                                <div class="row" style="margin-top: 60px; margin-bottom: -10px;">
+                                    <div class="col-sm-12 pt-3">
+                                        <p>
+                                            {{ __('panel.note:_your_request_will_be_reviewed_and_responded_to_within_three_days_from_today’s_date') }}
+                                        </p>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 

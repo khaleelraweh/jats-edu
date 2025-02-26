@@ -182,7 +182,7 @@
                                 <div class="col-4"
                                     style="
                             border: 4px solid green;
-                            padding: 5px;
+                            padding: 0.375em;
                             margin-top: 20px;
                             display: inline-block;
                             justify-content: center;
@@ -193,10 +193,11 @@
                                     <h1
                                         style="
                               margin: 0;
-                              font-size: 30px;
+                              font-size: 1.4em;
                               border: 1px solid green;
                               border-radius: 4px;
                               color:black;
+                              padding:0.2em;
                             ">
                                         {{ __('panel.application_form_to_apply_as_a_trainer') }}
                                     </h1>

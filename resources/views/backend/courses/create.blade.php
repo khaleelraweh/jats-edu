@@ -269,8 +269,7 @@
                             <div class="col-sm-12 col-md-6 pt-3">
                                 <label for="video_description">{{ __('panel.video_description') }}</label>
                                 <input type="text" name="video_description" id="video_description"
-                                    value="{{ old('video_description') }}" class="form-control"
-                                    placeholder="https://video-link">
+                                    value="{{ old('video_description') }}" class="form-control" placeholder="">
                                 @error('video_description')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -706,7 +705,7 @@
 
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
-                min: new Date(),
+                // min: new Date(),
                 selectMonths: true, // Creates a dropdown to control month
                 selectYears: true, // creates a dropdown to control years
                 clear: 'Clear',
@@ -721,13 +720,13 @@
             $('#published_on').change(function() {
                 selected_ci_date = "";
                 selected_ci_date = $('#published_on').val();
-                if (selected_ci_date != null) {
-                    var cidate = new Date(selected_ci_date);
-                    min_codate = "";
-                    min_codate = new Date();
-                    min_codate.setDate(cidate.getDate() + 1);
-                    enddate.set('min', min_codate);
-                }
+                // if (selected_ci_date != null) {
+                //     var cidate = new Date(selected_ci_date);
+                //     min_codate = "";
+                //     min_codate = new Date();
+                //     min_codate.setDate(cidate.getDate() + 1);
+                //     enddate.set('min', min_codate);
+                // }
             });
 
             $('#published_on_time').pickatime({
@@ -737,7 +736,7 @@
             // start deadline 
             $('#deadline').pickadate({
                 format: 'yyyy-mm-dd',
-                min: new Date(),
+                // min: new Date(),
                 selectMonths: true, // Creates a dropdown to control month
                 selectYears: true, // creates a dropdown to control years
                 clear: 'Clear',
@@ -752,13 +751,13 @@
             $('#deadline').change(function() {
                 selected_ci_date = "";
                 selected_ci_date = $('#deadline').val();
-                if (selected_ci_date != null) {
-                    var cidate = new Date(selected_ci_date);
-                    min_codate = "";
-                    min_codate = new Date();
-                    min_codate.setDate(cidate.getDate() + 1);
-                    enddate.set('min', min_codate);
-                }
+                // if (selected_ci_date != null) {
+                //     var cidate = new Date(selected_ci_date);
+                //     min_codate = "";
+                //     min_codate = new Date();
+                //     min_codate.setDate(cidate.getDate() + 1);
+                //     enddate.set('min', min_codate);
+                // }
 
             });
             // end deadline 

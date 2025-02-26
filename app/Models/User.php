@@ -125,10 +125,10 @@ class User extends Authenticatable implements MustVerifyEmail
     //     return $this->roles()->where('name', $role)->exists();
     // }
 
-    // public function hasRole($role)
-    // {
-    //     return $this->roles()->where('name', $role);
-    // }
+    public function hasRole($role)
+    {
+        return $this->roles()->where('name', $role);
+    }
 
 
     // to return the the user who has role lake lectures or admin or customer 

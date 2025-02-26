@@ -412,7 +412,7 @@
                                                     </a>
                                                 @else
                                                     <!-- Display as a link (for PDF or Word) -->
-                                                    <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->Certificates, PATHINFO_FILENAME)) }}"
+                                                    <a href="{{ route('admin.view_file', pathinfo($teach_request->Certificates, PATHINFO_FILENAME)) }}"
                                                         target="_blank">
                                                         {{ pathinfo($teach_request->Certificates, PATHINFO_FILENAME) }}
                                                     </a>

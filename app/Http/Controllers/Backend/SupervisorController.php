@@ -23,7 +23,7 @@ class SupervisorController extends Controller
 
         //get users where has roles 
         $supervisors = User::whereHas('roles', function ($query) {
-            $query->where('name', 'supervisor');
+            $query->where('name', 'admin');
         })
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
@@ -79,7 +79,7 @@ class SupervisorController extends Controller
 
         $supervisor = User::create($input);
         $supervisor->markEmailAsVerified();
-        $supervisor->attachRole(Role::whereName('supervisor')->first()->id);
+        $supervisor->attachRole(Role::whereName('admin')->first()->id);
         $supervisor->attachRole(Role::whereName('instructor')->first()->id);
 
         //add permissions

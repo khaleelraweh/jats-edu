@@ -18,7 +18,7 @@ class PartnerController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_partners , show_partners')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_partners , show_partners')) {
             return redirect('admin/index');
         }
 
@@ -157,7 +157,7 @@ class PartnerController extends Controller
         $partner = Partner::where('id', $partner)->first();
 
 
-        // first: delete image from users path 
+        // first: delete image from users path
         if ($partner->partner_image && File::exists('assets/partners/' . $partner->partner_image)) {
             unlink('assets/partners/' . $partner->partner_image);
         }

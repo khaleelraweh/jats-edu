@@ -82,17 +82,20 @@
                                         </a> --}}
 
 
-                                        <a href="{{ route('admin.partners.edit', $partner->id) }}" class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
+                                        @ability('admin', 'update_partners')
+                                            <a href="{{ route('admin.partners.edit', $partner->id) }}" class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        @endability
 
 
-
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-{{ $partner->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        @ability('admin', 'delete_partners')
+                                            <a href="javascript:void(0);"
+                                                onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-{{ $partner->id }}').submit();}else{return false;}"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @endability
                                     </div>
                                     <form action="{{ route('admin.partners.destroy', $partner->id) }}" method="post"
                                         class="d-none" id="delete-product-{{ $partner->id }}">

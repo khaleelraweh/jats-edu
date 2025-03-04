@@ -16,7 +16,7 @@ class TeachRequestController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_teach_requests , show_teach_requests')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_teach_requests , show_teach_requests')) {
             return redirect('admin/index');
         }
 

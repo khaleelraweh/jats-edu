@@ -57,15 +57,19 @@
 
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.teach_requests.show', $teach_request->id) }}"
-                                            class="btn btn-primary">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-teach_request-{{ $teach_request->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        @ability('admin','show_teach_requests')
+                                            <a href="{{ route('admin.teach_requests.show', $teach_request->id) }}"
+                                                class="btn btn-primary">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        @endability
+                                        @ability('admin','delete_teach_requests')
+                                            <a href="javascript:void(0);"
+                                                onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-teach_request-{{ $teach_request->id }}').submit();}else{return false;}"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @endability
                                     </div>
                                     <form action="{{ route('admin.teach_requests.destroy', $teach_request->id) }}"
                                         method="post" class="d-none" id="delete-teach_request-{{ $teach_request->id }}">

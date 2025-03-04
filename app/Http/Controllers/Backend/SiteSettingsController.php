@@ -134,11 +134,17 @@ class SiteSettingsController extends Controller
     // =============== start social site ===============//
     public function show_socail_informations()
     {
+        if (!auth()->user()->ability(['admin','supervisor'], 'display_site_socials')) {
+            return redirect('admin/index');
+        }
         return view('backend.site_socials.index');
     }
 
     public function update_social_informations(Request $request, $id)
     {
+        if (!auth()->user()->ability('admin', 'update_site_socials')) {
+            return redirect('admin/index');
+        }
 
         $data = $request->except('_token', 'submit');
 

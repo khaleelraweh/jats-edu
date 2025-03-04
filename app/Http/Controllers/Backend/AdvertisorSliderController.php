@@ -16,9 +16,10 @@ class AdvertisorSliderController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_advertisor_sliders , show_advertisor_sliders')) {
+        if (!auth()->user()->ability(['admin', 'supervisor'], 'manage_advertisor_sliders , show_advertisor_sliders')) {
             return redirect('admin/index');
         }
+
 
         $advertisorSliders = Slider::with('firstMedia')
             ->AdvertisorSliders()

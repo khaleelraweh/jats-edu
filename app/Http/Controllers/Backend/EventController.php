@@ -18,7 +18,7 @@ class EventController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_events , show_events')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_events , show_events')) {
             return redirect('admin/index');
         }
 
@@ -117,7 +117,7 @@ class EventController extends Controller
             $event->users()->sync([$loggedInUser->id]);
         }
 
-        // course objective start 
+        // course objective start
         if ($request->course_objective != null) {
 
             $topics_list = [];
@@ -128,10 +128,10 @@ class EventController extends Controller
             // dd($topics_list);
             $topics = $event->objectives()->createMany($topics_list);
         }
-        // course topics start 
+        // course topics start
 
 
-        // course requirement start 
+        // course requirement start
         if ($request->course_requirement != null) {
 
             $requirements_list = [];
@@ -141,7 +141,7 @@ class EventController extends Controller
             // dd($requirements_list);
             $requirements = $event->requirements()->createMany($requirements_list);
         }
-        // course topics start 
+        // course topics start
 
 
 
@@ -280,7 +280,7 @@ class EventController extends Controller
             $event->users()->sync([$loggedInUser->id]);
         }
 
-        // event topics start 
+        // event topics start
         $event->objectives()->delete();
         if ($request->course_objective != null) {
             $topics_list = [];
@@ -290,10 +290,10 @@ class EventController extends Controller
             // dd($topics_list);
             $topics = $event->objectives()->createMany($topics_list);
         }
-        // event topics start 
+        // event topics start
 
 
-        // event requirement start 
+        // event requirement start
         $event->requirements()->delete();
         if ($request->course_requirement != null) {
             $requirements_list = [];
@@ -303,7 +303,7 @@ class EventController extends Controller
             // dd($requirements_list);
             $requirements = $event->requirements()->createMany($requirements_list);
         }
-        // event topics start 
+        // event topics start
 
         if ($request->images && count($request->images) > 0) {
 

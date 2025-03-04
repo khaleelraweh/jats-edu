@@ -109,15 +109,19 @@
                                         <td>
 
                                             <div class="btn-group btn-group-sm">
-                                                <a href="{{ route('admin.course_categories.edit', $category->id) }}"
-                                                    class="btn btn-primary">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a href="javascript:void(0);"
-                                                    onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-card-{{ $category->id }}').submit();}else{return false;}"
-                                                    class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
+                                                @ability('admin', 'update_course_categories')
+                                                    <a href="{{ route('admin.course_categories.edit', $category->id) }}"
+                                                        class="btn btn-primary">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                @endability
+                                                @ability('admin', 'delete_course_categories')
+                                                    <a href="javascript:void(0);"
+                                                        onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-card-{{ $category->id }}').submit();}else{return false;}"
+                                                        class="btn btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                @endability
                                             </div>
                                             <form action="{{ route('admin.course_categories.destroy', $category->id) }}"
                                                 method="post" class="d-none" id="delete-card-{{ $category->id }}">

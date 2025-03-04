@@ -96,11 +96,18 @@ class SiteSettingsController extends Controller
     // =============== start contact site ===============//
     public function show_contact_informations()
     {
+        if (!auth()->user()->ability(['admin','supervisor'], 'display_site_contacts')) {
+            return redirect('admin/index');
+        }
         return view('backend.site_contacts.index');
     }
 
     public function update_contact_informations(Request $request, $id)
     {
+
+        if (!auth()->user()->ability('admin', 'update_site_contacts')) {
+            return redirect('admin/index');
+        }
 
         $data = $request->except('_token', 'submit');
 

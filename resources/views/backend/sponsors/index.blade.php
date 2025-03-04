@@ -78,7 +78,7 @@
                                         </a>
                                     @endability
                                     <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                        data-copy-text="sponsors/{{ $sponsor->slug }}" title="Copy the link">
+                                        data-copy-text="{{ config('app.url') }}/sponsors/{{ $sponsor->slug }}" title="Copy the link">
                                         <i class="far fa-copy"></i>
                                     </a>
                                     <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>

@@ -12,7 +12,7 @@ class StateController extends Controller
 {
     public function index()
     {
-        if(!auth()->user()->ability('admin','manage_states , show_states')){
+        if(!auth()->user()->ability(['admin','supervisor'],'manage_states , show_states')){
             return redirect('admin/index');
         }
 
@@ -25,9 +25,9 @@ class StateController extends Controller
         })
         ->orderBy(\request()->sort_by ?? 'id' , \request()->order_by ?? 'desc')
         ->paginate(\request()->limit_by ?? 10);
-        
+
         return view('backend.states.index',compact('states'));
-        
+
     }
 
     public function create()
@@ -60,7 +60,7 @@ class StateController extends Controller
             'alert-type' => 'success'
         ]);
     }
-    
+
     public function show(State $state)
     {
         if(!auth()->user()->ability('admin','display_states')){
@@ -79,7 +79,7 @@ class StateController extends Controller
 
         return view('backend.states.edit',compact( 'countries','state'));
     }
-    
+
     public function update(StateRequest $request, State $state)
     {
         if(!auth()->user()->ability('admin','update_states')){

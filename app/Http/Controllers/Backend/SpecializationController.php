@@ -12,7 +12,7 @@ class SpecializationController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_specializations , show_specializations')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_specializations , show_specializations')) {
             return redirect('admin/index');
         }
 

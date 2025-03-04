@@ -64,15 +64,19 @@
                                 <td class="d-none d-sm-table-cell">{{ $specialization->created_at }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.specializations.edit', $specialization->id) }}"
-                                            class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-specialization-{{ $specialization->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        @ability('admin', 'update_specializations')
+                                            <a href="{{ route('admin.specializations.edit', $specialization->id) }}"
+                                                class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        @endability
+                                        @ability('admin', 'delete_specializations')
+                                            <a href="javascript:void(0);"
+                                                onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-specialization-{{ $specialization->id }}').submit();}else{return false;}"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @endability
                                     </div>
                                     <form action="{{ route('admin.specializations.destroy', $specialization->id) }}"
                                         method="post" class="d-none" id="delete-specialization-{{ $specialization->id }}">

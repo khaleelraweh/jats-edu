@@ -244,11 +244,17 @@ class SiteSettingsController extends Controller
     // =============== start payment method site ===============//
     public function show_site_counter_informations()
     {
+        if (!auth()->user()->ability(['admin','supervisor'], 'display_site_counters')) {
+            return redirect('admin/index');
+        }
         return view('backend.site_counters.index');
     }
 
     public function update_site_counter_informations(Request $request, $id)
     {
+        if (!auth()->user()->ability('admin', 'update_site_counters')) {
+            return redirect('admin/index');
+        }
         $data = $request->except('_token', 'submit');
 
         foreach ($data as $key => $value) {

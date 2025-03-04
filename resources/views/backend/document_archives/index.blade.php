@@ -130,18 +130,22 @@
                                                 </svg>
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item d-flex align-items-center"
-                                                    href="{{ route('admin.document_archives.edit', $document_archive->id) }}">
-                                                    <i data-feather="edit-2" class="icon-sm me-2"></i>
-                                                    <span class="">{{ __('panel.operation_edit') }}</span>
-                                                </a>
+                                                @ability('admin', 'update_document_archives')
+                                                    <a class="dropdown-item d-flex align-items-center"
+                                                        href="{{ route('admin.document_archives.edit', $document_archive->id) }}">
+                                                        <i data-feather="edit-2" class="icon-sm me-2"></i>
+                                                        <span class="">{{ __('panel.operation_edit') }}</span>
+                                                    </a>
+                                                @endability
 
+                                                @ability('admin', 'delete_document_archives')
                                                 <a href="javascript:void(0);"
                                                     onclick="confirmDelete('delete-document_archive-{{ $document_archive->id }}', '{{ __('panel.confirm_delete_message') }}', '{{ __('panel.yes_delete') }}', '{{ __('panel.cancel') }}')"
                                                     class="dropdown-item d-flex align-items-center">
                                                     <i data-feather="trash" class="icon-sm me-2"></i>
                                                     <span class="">{{ __('panel.operation_delete') }}</span>
                                                 </a>
+                                                @endability
                                                 <form
                                                     action="{{ route('admin.document_archives.destroy', $document_archive->id) }}"
                                                     method="post" class="d-none"

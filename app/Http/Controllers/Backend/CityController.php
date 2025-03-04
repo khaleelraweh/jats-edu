@@ -12,7 +12,7 @@ class CityController extends Controller
 {
     public function index()
     {
-        if(!auth()->user()->ability('admin','manage_cities , show_cities')){
+        if(!auth()->user()->ability(['admin','supervisor'],'manage_cities , show_cities')){
             return redirect('admin/index');
         }
 
@@ -25,9 +25,9 @@ class CityController extends Controller
         })
         ->orderBy(\request()->sort_by ?? 'id' , \request()->order_by ?? 'desc')
         ->paginate(\request()->limit_by ?? 10);
-        
+
         return view('backend.cities.index',compact('cities'));
-        
+
     }
 
     public function create()
@@ -36,7 +36,7 @@ class CityController extends Controller
             return redirect('admin/index');
         }
 
-        
+
         $states = State::get(['id','name']);
         return view('backend.cities.create',compact('states'));
     }
@@ -60,7 +60,7 @@ class CityController extends Controller
             'alert-type' => 'success'
         ]);
     }
-    
+
     public function show(City $city)
     {
         if(!auth()->user()->ability('admin','display_cities')){
@@ -79,7 +79,7 @@ class CityController extends Controller
 
         return view('backend.cities.edit',compact( 'states','city'));
     }
-    
+
     public function update(CityRequest $request, City $city)
     {
         if(!auth()->user()->ability('admin','update_cities')){

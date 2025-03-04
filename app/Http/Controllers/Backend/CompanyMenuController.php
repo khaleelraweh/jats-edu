@@ -13,7 +13,7 @@ class CompanyMenuController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_company_menus , show_company_menus')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_company_menus , show_company_menus')) {
             return redirect('admin/index');
         }
 
@@ -51,7 +51,7 @@ class CompanyMenuController extends Controller
 
         // $input['parent_id'] = $request->parent_id;
 
-        $input['section']    = $request->section; // company menu 
+        $input['section']    = $request->section; // company menu
         $input['status']     =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
         $published_on = $request->published_on . ' ' . $request->published_on_time;

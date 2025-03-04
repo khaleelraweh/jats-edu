@@ -12,7 +12,7 @@ class TagController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_tags , show_tags')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_tags , show_tags')) {
             return redirect('admin/index');
         }
 

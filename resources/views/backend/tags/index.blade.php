@@ -64,14 +64,18 @@
                                 <td class="d-none d-sm-table-cell">{{ $tag->created_at }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.tags.edit', $tag->id) }}" class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-tag-{{ $tag->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        @ability('admin', 'update_tags')
+                                            <a href="{{ route('admin.tags.edit', $tag->id) }}" class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        @endability
+                                        @ability('admin', 'delete_tags')
+                                            <a href="javascript:void(0);"
+                                                onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-tag-{{ $tag->id }}').submit();}else{return false;}"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @endability
                                     </div>
                                     <form action="{{ route('admin.tags.destroy', $tag->id) }}" method="post"
                                         class="d-none" id="delete-tag-{{ $tag->id }}">

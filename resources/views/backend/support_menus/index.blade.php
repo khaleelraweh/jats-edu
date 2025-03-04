@@ -77,15 +77,19 @@
                                         <td class="d-none d-sm-table-cell">{{ $menu->created_at }}</td>
                                         <td>
                                             <div class="btn-group btn-group-sm">
-                                                <a href="{{ route('admin.support_menus.edit', $menu->id) }}"
-                                                    class="btn btn-primary">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a href="javascript:void(0);"
-                                                    onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-category-{{ $menu->id }}').submit();}else{return false;}"
-                                                    class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
+                                                @ability('admin', 'update_support_menus')
+                                                    <a href="{{ route('admin.support_menus.edit', $menu->id) }}"
+                                                        class="btn btn-primary">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                @endability
+                                                @ability('admin', 'delete_support_menus')
+                                                    <a href="javascript:void(0);"
+                                                        onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-category-{{ $menu->id }}').submit();}else{return false;}"
+                                                        class="btn btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                @endability
                                             </div>
                                             <form action="{{ route('admin.support_menus.destroy', $menu->id) }}"
                                                 method="post" class="d-none"

@@ -13,7 +13,7 @@ class SupportMenuController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_support_menus , show_support_menus')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_support_menus , show_support_menus')) {
             return redirect('admin/index');
         }
 
@@ -50,7 +50,7 @@ class SupportMenuController extends Controller
         $input['icon'] = $request->icon;
 
 
-        $input['section']    = $request->section; // company menu 
+        $input['section']    = $request->section; // company menu
         $input['status']     =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
         $published_on = $request->published_on . ' ' . $request->published_on_time;

@@ -17,7 +17,7 @@ class SponsorController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_sponsors , show_sponsors')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_sponsors , show_sponsors')) {
             return redirect('admin/index');
         }
 

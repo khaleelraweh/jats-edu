@@ -71,21 +71,25 @@
                             <td class="d-none d-sm-table-cell">{{ $sponsor->created_at }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.sponsors.edit', $sponsor->id) }}" class="btn btn-primary"
-                                        title="Edit the sponsor">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+                                    @ability('admin', 'update_sponsors')
+                                        <a href="{{ route('admin.sponsors.edit', $sponsor->id) }}" class="btn btn-primary"
+                                            title="Edit the sponsor">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    @endability
                                     <a href="javascript:void(0);" class="btn btn-success copyButton"
                                         data-copy-text="sponsors/{{ $sponsor->slug }}" title="Copy the link">
                                         <i class="far fa-copy"></i>
                                     </a>
                                     <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
 
-                                    <a href="javascript:void(0);"
-                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $sponsor->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger" title="Delete the sponsor">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                                    @ability('admin', 'delete_sponsors')
+                                        <a href="javascript:void(0);"
+                                            onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $sponsor->id }}').submit();}else{return false;}"
+                                            class="btn btn-danger" title="Delete the sponsor">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    @endability
 
                                 </div>
                                 <form action="{{ route('admin.sponsors.destroy', $sponsor->id) }}" method="post"

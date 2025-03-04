@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Intervention\Image\Facades\Image;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 use illuminate\support\Str;
 use App\Models\Role;
 use Illuminate\Support\Facades\File;
@@ -17,13 +18,14 @@ class SupervisorController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_supervisors , show_supervisors')) {
+
+        if (!auth()->user()->ability(['admin', 'supervisor'], 'manage_supervisors , show_supervisors')) {
             return redirect('admin/index');
         }
 
-        //get users where has roles 
+        //get users where has roles
         $supervisors = User::whereHas('roles', function ($query) {
-            $query->where('name', 'admin');
+            $query->where('name', 'supervisor');
         })
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
@@ -50,11 +52,10 @@ class SupervisorController extends Controller
 
     public function store(SupervisorRequest $request)
     {
+
         if (!auth()->user()->ability('admin', 'create_supervisors')) {
             return redirect('admin/index');
         }
-
-        // dd($request);
 
         $input['first_name'] = $request->first_name;
         $input['last_name'] = $request->last_name;
@@ -67,25 +68,22 @@ class SupervisorController extends Controller
 
 
         if ($image = $request->file('user_image')) {
-            $file_name = Str::slug($request->username) . '_' . time() .  "." . $image->getClientOriginalExtension();
 
-            $path = public_path('assets/users/' . $file_name);
-            Image::make($image->getRealPath())->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($path, 100);
+            $manager = new ImageManager(new Driver());
+            $file_name = Str::slug($request->username) . '_' . time() .  "." . $image->getClientOriginalExtension();
+            $img = $manager->read($request->file('user_image'));
+            // $img = $img->resize(370, 246);
+            $img->toJpeg(80)->save(base_path('public/assets/users/' . $file_name));
+
 
             $input['user_image'] = $file_name;
         }
 
         $supervisor = User::create($input);
         $supervisor->markEmailAsVerified();
-        $supervisor->attachRole(Role::whereName('admin')->first()->id);
-        $supervisor->attachRole(Role::whereName('instructor')->first()->id);
+        $supervisor->attachRole(Role::whereName('supervisor')->first()->id);
 
-        //add permissions
-        // if(isset($request->permissions) && count($request->permissions) > 0){
-        //     $supervisor->permissions()->sync($request->permissions);
-        // }
+
 
         if (isset($request->all_permissions)) {
             $permissions = Permission::get(['id']);
@@ -105,7 +103,7 @@ class SupervisorController extends Controller
 
     public function show(User $supervisor)
     {
-        if (!auth()->user()->ability('admin', 'display_supervisors')) {
+        if (!auth()->user()->ability(['admin', 'supervisor'], 'display_supervisors')) {
             return redirect('admin/index');
         }
         return view('backend.supervisors.show', compact('supervisor'));
@@ -113,6 +111,7 @@ class SupervisorController extends Controller
 
     public function edit(User $supervisor)
     {
+
         if (!auth()->user()->ability('admin', 'update_supervisors')) {
             return redirect('admin/index');
         }
@@ -125,7 +124,7 @@ class SupervisorController extends Controller
 
     public function update(SupervisorRequest $request, User $supervisor)
     {
-        if (!auth()->user()->ability('admin', 'update_supervisors')) {
+        if (!auth()->user()->ability(['admin', 'supervisor'], 'update_supervisors')) {
             return redirect('admin/index');
         }
 
@@ -147,19 +146,18 @@ class SupervisorController extends Controller
                 unlink('assets/users/' . $supervisor->user_image);
             }
 
+            $manager = new ImageManager(new Driver());
             $file_name = Str::slug($request->username) . '_' . time() .  "." . $image->getClientOriginalExtension();
+            $img = $manager->read($request->file('user_image'));
+            // $img = $img->resize(370, 246);
+            $img->toJpeg(80)->save(base_path('public/assets/users/' . $file_name));
 
-            $path = public_path('assets/users/' . $file_name);
-            Image::make($image->getRealPath())->resize(500, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($path);
 
             $input['user_image'] = $file_name;
         }
 
         $supervisor->update($input);
-        //update permission
-        //add permissions
+
 
         if (isset($request->all_permissions)) {
             $permissions = Permission::get(['id']);
@@ -176,15 +174,15 @@ class SupervisorController extends Controller
 
     public function destroy(User $supervisor)
     {
-        if (!auth()->user()->ability('admin', 'delete_supervisors')) {
+        if (!auth()->user()->ability(['admin', 'supervisor'], 'delete_supervisors')) {
             return redirect('admin/index');
         }
 
-        // first: delete image from users path 
+        // first: delete image from users path
         if (File::exists('assets/users/' . $supervisor->user_image)) {
             unlink('assets/users/' . $supervisor->user_image);
         }
-        //second : delete supervisor from users table 
+        //second : delete supervisor from users table
         $supervisor->delete();
 
         return redirect()->route('admin.supervisors.index')->with([
@@ -196,7 +194,7 @@ class SupervisorController extends Controller
     public function remove_image(Request $request)
     {
 
-        if (!auth()->user()->ability('admin', 'delete_supervisors')) {
+        if (!auth()->user()->ability(['admin', 'supervisor'], 'delete_supervisors')) {
             return redirect('admin/index');
         }
 
@@ -212,5 +210,19 @@ class SupervisorController extends Controller
         }
 
         return true;
+    }
+
+    public function updateSupervisorStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            User::where('id', $data['supervisor_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'supervisor_id' => $data['supervisor_id']]);
+        }
     }
 }

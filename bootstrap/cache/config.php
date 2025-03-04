@@ -1183,7 +1183,7 @@
   'debugbar' => 
   array (
     'enabled' => NULL,
-    'hide_empty_tabs' => false,
+    'hide_empty_tabs' => true,
     'except' => 
     array (
       0 => 'telescope*',
@@ -1208,11 +1208,12 @@
     'add_ajax_timing' => false,
     'ajax_handler_auto_show' => true,
     'ajax_handler_enable_tab' => true,
+    'defer_datasets' => false,
     'error_handler' => false,
     'clockwork' => false,
     'collectors' => 
     array (
-      'phpinfo' => true,
+      'phpinfo' => false,
       'messages' => true,
       'time' => true,
       'memory' => true,
@@ -1220,13 +1221,13 @@
       'log' => true,
       'db' => true,
       'views' => true,
-      'route' => true,
+      'route' => false,
       'auth' => false,
       'gate' => true,
-      'session' => true,
+      'session' => false,
       'symfony_request' => true,
       'mail' => true,
-      'laravel' => false,
+      'laravel' => true,
       'events' => false,
       'default_request' => false,
       'logs' => false,
@@ -1284,12 +1285,12 @@
       ),
       'mail' => 
       array (
-        'timeline' => false,
+        'timeline' => true,
         'show_body' => true,
       ),
       'views' => 
       array (
-        'timeline' => false,
+        'timeline' => true,
         'data' => false,
         'group' => 50,
         'exclude_paths' => 
@@ -1309,6 +1310,7 @@
       ),
       'symfony_request' => 
       array (
+        'label' => true,
         'hiddens' => 
         array (
         ),

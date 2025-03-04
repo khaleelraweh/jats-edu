@@ -15,7 +15,11 @@ class CourseCategoriesController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_course_categories , show_course_categories')) {
+        // if (!auth()->user()->ability('admin', 'manage_course_categories , show_course_categories')) {
+        //     return redirect('admin/index');
+        // }
+
+        if (!auth()->user()->ability(['admin', 'supervisor'], 'manage_course_categories , show_course_categories')) {
             return redirect('admin/index');
         }
 
@@ -67,12 +71,12 @@ class CourseCategoriesController extends Controller
         // add images to media db and to path : public/assets/products
         if ($request->images && count($request->images) > 0) {
 
-            $i = 1; // $i is used for making sort to image 
+            $i = 1; // $i is used for making sort to image
 
             foreach ($request->images as $image) {
 
                 // $file_name = Str::slug($request->name).".".$image->getClientOriginalExtension(); // will not used because product already created to db and slug is there by steps upove
-                $file_name = $courseCategory->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $courseCategory->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/course_categories/' . $file_name);
@@ -88,7 +92,7 @@ class CourseCategoriesController extends Controller
                     'file_sort' => $i,
                 ]);
 
-                $i++; // step ahead by one for sort new image 
+                $i++; // step ahead by one for sort new image
             }
         }
 
@@ -155,12 +159,12 @@ class CourseCategoriesController extends Controller
         // edit images in media db and in path : public/assets/products
         if ($request->images && count($request->images) > 0) {
 
-            $i = $courseCategory->photo()->count() + 1; // $i is used for making sort to image 
+            $i = $courseCategory->photo()->count() + 1; // $i is used for making sort to image
 
             foreach ($request->images as $image) {
 
                 // $file_name = Str::slug($request->name).".".$image->getClientOriginalExtension(); // will not used because product already created to db and slug is there by steps upove
-                $file_name = $courseCategory->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $courseCategory->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/course_categories/' . $file_name);
@@ -176,7 +180,7 @@ class CourseCategoriesController extends Controller
                     'file_sort' => $i,
                 ]);
 
-                $i++; // step ahead by one for sort new image 
+                $i++; // step ahead by one for sort new image
             }
         }
 
@@ -246,7 +250,7 @@ class CourseCategoriesController extends Controller
 
         $courseCategory = CourseCategory::findOrFail($request->course_category_id);
 
-        //find media image from media table 
+        //find media image from media table
         $image = $courseCategory->photo()->whereId($request->image_id)->first();
 
         if (File::exists('assets/course_categories/' . $image->file_name)) {

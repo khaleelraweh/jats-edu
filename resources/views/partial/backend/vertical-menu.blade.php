@@ -43,39 +43,85 @@
                     {{ __('panel.menu') }}
                 </li>
 
-                @foreach ($admin_side_menu as $menu)
-                    @if (count($menu->appearedChildren) == 0)
-                        <li>
-                            <a href="{{ route('admin.' . $menu->as) }}" class="waves-effect">
-                                <i class="{{ $menu->icon != null ? $menu->icon : 'fas fa-home' }}"></i>
-                                <span><b>{{ $menu->display_name }}</b></span>
+                @role(['admin'])
+                    @foreach ($admin_side_menu as $menu)
+                    @permission($menu->name)
+                        @if (count($menu->appearedChildren) == 0)
+                            <li>
+                                <a href="{{ route('admin.' . $menu->as) }}" class="waves-effect">
+                                    <i class="{{ $menu->icon != null ? $menu->icon : 'fas fa-home' }}"></i>
+                                    <span><b>{{ $menu->display_name }}</b></span>
 
-                            </a>
-                        </li>
-                    @else
-                        {{-- sup menu title --}}
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="{{ $menu->icon != null ? $menu->icon : 'fas fa-home' }}"></i>
-                                <span><b>{{ $menu->display_name }}</b></span>
-                            </a>
-                            {{-- sup menu item  --}}
-                            @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
-                                <ul class="sub-menu" aria-expanded="false">
-                                    @foreach ($menu->appearedChildren as $sub_menu)
-                                        <li>
-                                            <a href="{{ route('admin.' . $sub_menu->as) }}">
-                                                <i
-                                                    class="{{ $sub_menu->icon != null ? $sub_menu->icon : 'fas fa-home' }}"></i>
-                                                <span><b> {{ $sub_menu->display_name }}</b></span>
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            @endif
-                        </li>
-                    @endif
-                @endforeach
+                                </a>
+                            </li>
+                        @else
+                            {{-- sup menu title --}}
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="{{ $menu->icon != null ? $menu->icon : 'fas fa-home' }}"></i>
+                                    <span><b>{{ $menu->display_name }}</b></span>
+                                </a>
+                                {{-- sup menu item  --}}
+                                @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        @foreach ($menu->appearedChildren as $sub_menu)
+                                        @permission($sub_menu->name)
+                                            <li>
+                                                <a href="{{ route('admin.' . $sub_menu->as) }}">
+                                                    <i
+                                                        class="{{ $sub_menu->icon != null ? $sub_menu->icon : 'fas fa-home' }}"></i>
+                                                    <span><b> {{ $sub_menu->display_name }}</b></span>
+                                                </a>
+                                            </li>
+                                            @endpermission
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @endif
+                    @endpermission
+                    @endforeach
+                @endrole
+
+                @role(['supervisor'])
+                    @foreach ($admin_side_menu as $menu)
+                    @permission($menu->name)
+                        @if (count($menu->appearedChildren) == 0)
+                            <li>
+                                <a href="{{ route('admin.' . $menu->as) }}" class="waves-effect">
+                                    <i class="{{ $menu->icon != null ? $menu->icon : 'fas fa-home' }}"></i>
+                                    <span><b>{{ $menu->display_name }}</b></span>
+
+                                </a>
+                            </li>
+                        @else
+                            {{-- sup menu title --}}
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="{{ $menu->icon != null ? $menu->icon : 'fas fa-home' }}"></i>
+                                    <span><b>{{ $menu->display_name }}</b></span>
+                                </a>
+                                {{-- sup menu item  --}}
+                                @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        @foreach ($menu->appearedChildren as $sub_menu)
+                                        @permission($sub_menu->name)
+                                            <li>
+                                                <a href="{{ route('admin.' . $sub_menu->as) }}">
+                                                    <i
+                                                        class="{{ $sub_menu->icon != null ? $sub_menu->icon : 'fas fa-home' }}"></i>
+                                                    <span><b> {{ $sub_menu->display_name }}</b></span>
+                                                </a>
+                                            </li>
+                                            @endpermission
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @endif
+                    @endpermission
+                    @endforeach
+                @endrole
             </ul>
         </div>
         <!-- Sidebar -->

@@ -15,20 +15,20 @@ class EntrustSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     * 
-     * Dictionary : 
-     *              01- Roles 
+     *
+     * Dictionary :
+     *              01- Roles
      *              02- Users
      *              03- AttachRoles To  Users
      *              04- Create random customer and  AttachRole to customerRole
-     * 
-     * 
+     *
+     *
      * @return void
      */
     public function run()
     {
 
-        //create fake information  using faker factory lab 
+        //create fake information  using faker factory lab
         $faker = Factory::create();
         $specializations = Specialization::query()->pluck('id');
 
@@ -200,7 +200,7 @@ class EntrustSeeder extends Seeder
         //         'twitter'           =>  'www.twitter.com',
         //         'instagram'         =>  'www.instagram.com',
         //         'linkedin'          =>  'www.linkedin.com',
-        //         //for instructor info end 
+        //         //for instructor info end
         //     ]);
 
         //     //Add instructorRole to Randominstructor
@@ -228,7 +228,7 @@ class EntrustSeeder extends Seeder
         $updateCourseCategories  =  Permission::create(['name' => 'update_course_categories', 'display_name'     =>    ['ar'   =>  'تعديل تصنيف الدورة',   'en'    =>  'Edit Course Category'],    'route' => 'course_categories', 'module' => 'course_categories', 'as' => 'course_categories.edit', 'icon' => null, 'parent' => $manageCourseCategories->id, 'parent_original' => $manageCourseCategories->id, 'parent_show' => $manageCourseCategories->id, 'sidebar_link' => '0', 'appear' => '0']);
         $deleteCourseCategories  =  Permission::create(['name' => 'delete_course_categories', 'display_name'     =>    ['ar'   =>  'حذف تصنيف الدورة',   'en'    =>  'Delete Course Category'],    'route' => 'course_categories', 'module' => 'course_categories', 'as' => 'course_categories.destroy', 'icon' => null, 'parent' => $manageCourseCategories->id, 'parent_original' => $manageCourseCategories->id, 'parent_show' => $manageCourseCategories->id, 'sidebar_link' => '0', 'appear' => '0']);
 
-        //Manage courses 
+        //Manage courses
         $manageCourses = Permission::create(['name' => 'manage_courses', 'display_name' => ['ar'    =>  'الدورات', 'en'    =>  'Courses'], 'route' => 'courses', 'module' => 'courses', 'as' => 'courses.index', 'icon' => 'fas fa-book-open', 'parent' => $manageCourseCategories->id, 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '10',]);
         $manageCourses->parent_show = $manageCourses->id;
         $manageCourses->save();
@@ -238,7 +238,7 @@ class EntrustSeeder extends Seeder
         $updateCourses =  Permission::create(['name' => 'update_courses',   'display_name'    =>  ['ar'   =>  'تعديل دورة',   'en'       =>  'Edit Course'],   'route'     => 'courses', 'module'   => 'courses', 'as' =>  'courses.edit', 'icon' => null, 'parent' => $manageCourses->id, 'parent_original' => $manageCourses->id, 'parent_show' => $manageCourses->id, 'sidebar_link' => '0', 'appear' => '0']);
         $deleteCourses =  Permission::create(['name' => 'delete_courses',   'display_name'    =>  ['ar'   =>  'حذف دورة',   'en'         =>  'Delete Course'],   'route'     => 'courses', 'module'   => 'courses', 'as' =>  'courses.destroy', 'icon' => null, 'parent' => $manageCourses->id, 'parent_original' => $manageCourses->id, 'parent_show' => $manageCourses->id, 'sidebar_link' => '0', 'appear' => '0']);
 
-        //Manage events 
+        //Manage events
         $manageEvents = Permission::create(['name' => 'manage_events', 'display_name' => ['ar'    =>  'الاحداث', 'en'    =>  'Events'], 'route' => 'events', 'module' => 'events', 'as' => 'events.index', 'icon' => 'far fa-calendar-alt', 'parent' => $manageCourseCategories->id, 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '15',]);
         $manageEvents->parent_show = $manageEvents->id;
         $manageEvents->save();
@@ -405,7 +405,7 @@ class EntrustSeeder extends Seeder
 
 
 
-        //web menus 
+        //web menus
         $manageWebMenus = Permission::create(['name' => 'manage_web_menus', 'display_name' => ['ar' => 'إدارة القوائم', 'en' => 'Manage Menus'], 'route' => 'web_menus', 'module' => 'web_menus', 'as' => 'web_menus.index', 'icon' => 'fa fa-list-ul', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '85',]);
         $manageWebMenus->parent_show = $manageWebMenus->id;
         $manageWebMenus->save();
@@ -466,7 +466,7 @@ class EntrustSeeder extends Seeder
         $updateWebMenuHelps  =  Permission::create(['name' => 'update_web_menu_helps', 'display_name'  => ['ar'  =>  'تعديل قائمة مساعدة',   'en'    =>  'Edit Help Menu Link'], 'route' => 'web_menu_helps', 'module' => 'web_menu_helps', 'as' => 'web_menu_helps.edit', 'icon' => null, 'parent' => $manageWebMenuHelps->id, 'parent_original' => $manageWebMenuHelps->id, 'parent_show' => $manageWebMenuHelps->id, 'sidebar_link' => '0', 'appear' => '0']);
         $deleteWebMenuHelps  =  Permission::create(['name' => 'delete_web_menu_helps', 'display_name'  => ['ar'  =>  'حذف قائمة مساعدة',   'en'    =>  'Delete Help Menu Link'], 'route' => 'web_menu_helps', 'module' => 'web_menu_helps', 'as' => 'web_menu_helps.destroy', 'icon' => null, 'parent' => $manageWebMenuHelps->id, 'parent_original' => $manageWebMenuHelps->id, 'parent_show' => $manageWebMenuHelps->id, 'sidebar_link' => '0', 'appear' => '0']);
 
-        //pages 
+        //pages
         $managePages = Permission::create(['name' => 'manage_pages', 'display_name' => ['ar' => 'إدارة الصفحات', 'en' => 'Manage Pages'], 'route' => 'pages', 'module' => 'pages', 'as' => 'pages.index', 'icon' => 'far fa-file-alt', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '115',]);
         $managePages->parent_show = $managePages->id;
         $managePages->save();
@@ -479,7 +479,7 @@ class EntrustSeeder extends Seeder
 
 
 
-        //Manage call_actions 
+        //Manage call_actions
         $manageCallActions = Permission::create(['name' => 'manage_call_actions', 'display_name' => ['ar'    =>  'إدارة الإعلانات', 'en'    =>  'Manage Advertisements'], 'route' => 'call_actions', 'module' => 'call_actions', 'as' => 'call_actions.index', 'icon' => 'far fa-calendar-alt', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '120',]);
         $manageCallActions->parent_show = $manageCallActions->id;
         $manageCallActions->save();
@@ -616,7 +616,7 @@ class EntrustSeeder extends Seeder
         $deletePaymentMethodOfflines  =  Permission::create(['name' => 'delete_payment_method_offlines', 'display_name'     =>  ['ar'   =>  'حذف طريقة الدفع',   'en'    =>  'Delete Payment Method'], 'route' => 'payment_method_offlines', 'module' => 'payment_method_offlines', 'as' => 'payment_method_offlines.destroy', 'icon' => null, 'parent' => $managePaymentMethodOfflines->id, 'parent_original' => $managePaymentMethodOfflines->id, 'parent_show' => $managePaymentMethodOfflines->id, 'sidebar_link' => '0', 'appear' => '0']);
 
 
-        //Site Settings Holder 
+        //Site Settings Holder
         $manageSiteSettings = Permission::create(['name' => 'manage_site_settings', 'display_name' => ['ar' =>  'الاعدادات العامة', 'en'    =>  'General Settings'], 'route' => 'settings', 'module' => 'settings', 'as' => 'settings.index', 'icon' => 'fa fa-cog', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '180',]);
         $manageSiteSettings->parent_show = $manageSiteSettings->id;
         $manageSiteSettings->save();
@@ -631,11 +631,11 @@ class EntrustSeeder extends Seeder
         $updateCurrencies  =  Permission::create(['name' => 'update_currencies', 'display_name'     =>  ['ar'   =>  'تعديل العملة',   'en'    =>  'Edit Currency'],  'route' => 'currencies', 'module' => 'currencies', 'as' => 'currencies.edit', 'icon' => null, 'parent' => $manageCurrencies->id, 'parent_original' => $manageCurrencies->id, 'parent_show' => $manageCurrencies->id, 'sidebar_link' => '0', 'appear' => '0']);
         $deleteCurrencies  =  Permission::create(['name' => 'delete_currencies', 'display_name'     =>  ['ar'   =>  'حذف العملة',   'en'    =>  'Delete Currency'],  'route' => 'currencies', 'module' => 'currencies', 'as' => 'currencies.destroy', 'icon' => null, 'parent' => $manageCurrencies->id, 'parent_original' => $manageCurrencies->id, 'parent_show' => $manageCurrencies->id, 'sidebar_link' => '0', 'appear' => '0']);
 
-        // Site Infos 
+        // Site Infos
         $displaySiteInfos =  Permission::create(['name' => 'display_site_infos', 'display_name'     => ['ar'   =>  'إدارة  بيانات الموقع', 'en'  =>  'Manage Site Infos'], 'route' => 'settings.site_main_infos', 'module' => 'settings.site_main_infos', 'as' => 'settings.site_main_infos.show', 'icon' => 'fa fa-info-circle', 'parent' => $manageSiteSettings->id, 'parent_original' => $manageSiteSettings->id, 'parent_show' => $manageSiteSettings->id, 'sidebar_link' => '1', 'appear' => '1']);
         $updateSiteInfos  =  Permission::create(['name' => 'update_site_infos', 'display_name'      => ['ar'    =>  'تعديل بيانات الموقع', 'en'    =>  'Edit Site Infos'], 'route' => 'settings.site_main_infos', 'module' => 'settings.site_main_infos', 'as' => 'settings.site_main_infos.edit', 'icon' => null, 'parent' => $manageSiteSettings->id, 'parent_original' => $manageSiteSettings->id, 'parent_show' => $manageSiteSettings->id, 'sidebar_link' => '0', 'appear' => '0']);
 
-        // Site Contacts  
+        // Site Contacts
         $displaySiteContacts =  Permission::create(['name' => 'display_site_contacts', 'display_name'   => ['ar'    =>  'إدارة  بيانات الإتصال ', 'en' =>  'Manage Site Contact '], 'route' => 'settings.site_contacts', 'module' => 'settings.site_contacts', 'as' => 'settings.site_contacts.show', 'icon' => 'fa fa-address-book', 'parent' => $manageSiteSettings->id, 'parent_original' => $manageSiteSettings->id, 'parent_show' => $manageSiteSettings->id, 'sidebar_link' => '1', 'appear' => '1']);
         $updateSiteContacts  =  Permission::create(['name' => 'update_site_contacts', 'display_name'    => ['ar'    =>  'تعديل بيانات الإتصال ', 'en'   =>  'Edit Site Contact '], 'route' => 'settings.site_contacts', 'module' => 'settings.site_contacts', 'as' => 'settings.site_contacts.edit', 'icon' => null, 'parent' => $manageSiteSettings->id, 'parent_original' => $manageSiteSettings->id, 'parent_show' => $manageSiteSettings->id, 'sidebar_link' => '0', 'appear' => '0']);
 
@@ -651,7 +651,7 @@ class EntrustSeeder extends Seeder
         // $displaySitePaymentMethods =  Permission::create(['name' => 'display_site_payment_methods', 'display_name'  =>  ['ar'   =>  'إدارة  طرق الدفع',   'en'    =>  'Manage Payment '], 'route' => 'settings.site_payment_methods', 'module' => 'settings.site_payment_methods', 'as' => 'settings.site_payment_methods.show', 'icon' => 'fas fa-dollar-sign', 'parent' => $manageSiteSettings->id, 'parent_original' => $manageSiteSettings->id, 'parent_show' => $manageSiteSettings->id, 'sidebar_link' => '1', 'appear' => '1']);
         // $updateSitePaymentMethods  =  Permission::create(['name' => 'update_site_payment_methods', 'display_name'   =>  ['ar'   =>  'تعديل طرق الدفع',   'en'    =>  'Edit Site Payment '], 'route' => 'settings.site_payment_methods', 'module' => 'settings.site_payment_methods', 'as' => 'settings.site_payment_methods.edit', 'icon' => null, 'parent' => $manageSiteSettings->id, 'parent_original' => $manageSiteSettings->id, 'parent_show' => $manageSiteSettings->id, 'sidebar_link' => '0', 'appear' => '0']);
 
-        // Site counters 
+        // Site counters
         // $displaySiteCounters =  Permission::create(['name' => 'display_site_counters', 'display_name'   =>  ['ar'   =>  'إدارة  عدادات الموقع',   'en'    =>  'Manage Counters'], 'route' => 'settings.site_counters', 'module' => 'settings.site_counters', 'as' => 'settings.site_counters.show', 'icon' => 'fas fa-calculator', 'parent' => $manageSiteSettings->id, 'parent_original' => $manageSiteSettings->id, 'parent_show' => $manageSiteSettings->id, 'sidebar_link' => '1', 'appear' => '1']);
         // $updateSiteCounters  =  Permission::create(['name' => 'update_site_counters', 'display_name'    =>  ['ar'   =>  'تعديل عدادات الموقع',   'en'    =>  'Edit Site Counters'], 'route' => 'settings.site_counters', 'module' => 'settings.site_counters', 'as' => 'settings.site_counters.edit', 'icon' => null, 'parent' => $manageSiteSettings->id, 'parent_original' => $manageSiteSettings->id, 'parent_show' => $manageSiteSettings->id, 'sidebar_link' => '0', 'appear' => '0']);
 
@@ -663,5 +663,9 @@ class EntrustSeeder extends Seeder
         $showAccountSettings    =  Permission::create(['name' => 'show_account_settings',  'display_name'       =>  ['ar'   =>  'إدارة حسابات المشرفين',   'en'    =>  'Supervisor Accounts'], 'route' => 'account_settings', 'module' => 'account_settings', 'as' => 'account_settings', 'icon' => 'fas fa-calculator', 'parent' => $manageAccountSettings->id, 'parent_original' => $manageAccountSettings->id, 'parent_show' => $manageAccountSettings->id, 'sidebar_link' => '1', 'appear' => '1']);
         $displayAccountSettings =  Permission::create(['name' => 'display_account_settings', 'display_name'     =>  ['ar'   =>  'عرض حسابات المشرفين ',   'en'    =>  'Dsiplay Supervisor Accounts'], 'route' => 'account_settings', 'module' => 'account_settings', 'as' => 'account_settings.show', 'icon' => null, 'parent' => $manageAccountSettings->id, 'parent_original' => $manageAccountSettings->id, 'parent_show' => $manageAccountSettings->id, 'sidebar_link' => '0', 'appear' => '0']);
         $updateAccountSettings  =  Permission::create(['name' => 'update_account_settings', 'display_name'      =>  ['ar'   =>  'تعديل حسابات المشرفين',   'en'    =>  'Edit Supervisor Accounts'], 'route' => 'account_settings', 'module' => 'account_settings', 'as' => 'update_account_settings', 'icon' => null, 'parent' => $manageAccountSettings->id, 'parent_original' => $manageAccountSettings->id, 'parent_show' => $manageAccountSettings->id, 'sidebar_link' => '0', 'appear' => '0']);
+
+         // Assign all permissions to the admin role
+         $permissions = Permission::all();
+         $adminRole->attachPermissions($permissions);
     }
 }

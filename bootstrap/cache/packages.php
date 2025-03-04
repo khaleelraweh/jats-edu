@@ -141,13 +141,13 @@
   ),
   'realrashid/sweet-alert' => 
   array (
-    'providers' => 
-    array (
-      0 => 'RealRashid\\SweetAlert\\SweetAlertServiceProvider',
-    ),
     'aliases' => 
     array (
       'Alert' => 'RealRashid\\SweetAlert\\Facades\\Alert',
+    ),
+    'providers' => 
+    array (
+      0 => 'RealRashid\\SweetAlert\\SweetAlertServiceProvider',
     ),
   ),
   'spatie/laravel-ignition' => 
@@ -170,13 +170,13 @@
   ),
   'srmklive/paypal' => 
   array (
-    'providers' => 
-    array (
-      0 => 'Srmklive\\PayPal\\Providers\\PayPalServiceProvider',
-    ),
     'aliases' => 
     array (
       'PayPal' => 'Srmklive\\PayPal\\Facades\\PayPal',
+    ),
+    'providers' => 
+    array (
+      0 => 'Srmklive\\PayPal\\Providers\\PayPalServiceProvider',
     ),
   ),
 );

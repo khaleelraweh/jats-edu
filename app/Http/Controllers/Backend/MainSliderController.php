@@ -16,7 +16,7 @@ class MainSliderController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_main_sliders , show_main_sliders')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_main_sliders , show_main_sliders')) {
             return redirect('admin/index');
         }
 
@@ -85,7 +85,7 @@ class MainSliderController extends Controller
         if ($request->images && count($request->images) > 0) {
             $i = 1;
             foreach ($request->images as $image) {
-                $file_name = $mainSlider->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $mainSlider->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/main_sliders/' . $file_name);

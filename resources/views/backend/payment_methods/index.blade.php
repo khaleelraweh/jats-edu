@@ -62,15 +62,19 @@
                             <td class="d-none d-sm-table-cell"> {{ $payment_method->created_at }} </td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.payment_methods.edit', $payment_method->id) }}"
-                                        class="btn btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="javascript:void(0);"
-                                        onclick=" if( confirm('Are you sure to delete this record?') ){ document.getElementById('delete-payment-method-{{ $payment_method->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                                    @ability('admin', 'update_payment_methods')
+                                        <a href="{{ route('admin.payment_methods.edit', $payment_method->id) }}"
+                                            class="btn btn-primary">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    @endability
+                                    @ability('admin', 'delete_payment_methods')
+                                        <a href="javascript:void(0);"
+                                            onclick=" if( confirm('Are you sure to delete this record?') ){ document.getElementById('delete-payment-method-{{ $payment_method->id }}').submit();}else{return false;}"
+                                            class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    @endability
                                 </div>
                                 <form action="{{ route('admin.payment_methods.destroy', $payment_method->id) }}"
                                     method="post" class="d-none" id="delete-payment-method-{{ $payment_method->id }}">

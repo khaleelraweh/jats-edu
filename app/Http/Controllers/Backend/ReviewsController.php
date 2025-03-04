@@ -11,7 +11,7 @@ class ReviewsController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_reviews , show_reviews')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_reviews , show_reviews')) {
             return redirect('admin/index');
         }
 

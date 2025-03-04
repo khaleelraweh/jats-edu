@@ -81,14 +81,18 @@
                             <td class="d-none d-sm-table-cell">{{ $review->created_at }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.reviews.edit', $review->id) }}" class="btn btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="javascript:void(0);"
-                                        onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-course-review-{{ $review->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                                    @ability('admin','update_reviews')
+                                        <a href="{{ route('admin.reviews.edit', $review->id) }}" class="btn btn-primary">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    @endability
+                                    @ability('admin','delete_reviews')
+                                        <a href="javascript:void(0);"
+                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-course-review-{{ $review->id }}').submit();}else{return false;}"
+                                            class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    @endability
                                 </div>
                                 <form action="{{ route('admin.reviews.destroy', $review->id) }}" method="post"
                                     class="d-none" id="delete-course-review-{{ $review->id }}">

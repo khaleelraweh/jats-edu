@@ -98,14 +98,18 @@
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-post-{{ $post->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        @ability('admin', 'update_posts')
+                                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        @endability
+                                        @ability('admin', 'delete_posts')
+                                            <a href="javascript:void(0);"
+                                                onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-post-{{ $post->id }}').submit();}else{return false;}"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @endability
                                     </div>
                                     <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post"
                                         class="d-none" id="delete-post-{{ $post->id }}">

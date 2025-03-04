@@ -17,7 +17,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_posts , show_posts')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_posts , show_posts')) {
             return redirect('admin/index');
         }
 
@@ -129,20 +129,20 @@ class PostController extends Controller
         $input['title']                         =   $request->title;
         $input['description']                   =   $request->description;
         $input['course_category_id']   =   $request->course_category_id;
-        // always added 
+        // always added
         $input['status']            =   $request->status;
         $input['created_by']        =   auth()->user()->full_name;
         $published_on = $request->published_on . ' ' . $request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
-        // end of always added 
+        // end of always added
         $post->update($input);
         $post->tags()->sync($request->tags);
         $post->users()->attach(Auth::user()->id);
         if ($request->images && count($request->images) > 0) {
             $i = $post->photos->count() + 1;
             foreach ($request->images as $image) {
-                $file_name = $post->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $post->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/posts/' . $file_name);

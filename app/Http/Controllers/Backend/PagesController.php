@@ -14,7 +14,7 @@ class PagesController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_pages , show_pages')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_pages , show_pages')) {
             return redirect('admin/index');
         }
 

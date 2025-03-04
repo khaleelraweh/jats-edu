@@ -172,17 +172,39 @@ class SupervisorController extends Controller
         ]);
     }
 
+    // public function destroy(User $supervisor)
+    // {
+    //     if (!auth()->user()->ability(['admin', 'supervisor'], 'delete_supervisors')) {
+    //         return redirect('admin/index');
+    //     }
+
+    //     // first: delete image from users path
+    //     if (File::exists('assets/users/' . $supervisor->user_image)) {
+    //         unlink('assets/users/' . $supervisor->user_image);
+    //     }
+    //     //second : delete supervisor from users table
+    //     $supervisor->delete();
+
+    //     return redirect()->route('admin.supervisors.index')->with([
+    //         'message' => 'Deleted successfully',
+    //         'alert-type' => 'success'
+    //     ]);
+    // }
+
     public function destroy(User $supervisor)
     {
         if (!auth()->user()->ability(['admin', 'supervisor'], 'delete_supervisors')) {
             return redirect('admin/index');
         }
 
-        // first: delete image from users path
-        if (File::exists('assets/users/' . $supervisor->user_image)) {
-            unlink('assets/users/' . $supervisor->user_image);
+        // first: delete image from users path if it's a file
+        $imagePath = 'assets/users/' . $supervisor->user_image;
+
+        if (File::exists($imagePath) && is_file($imagePath)) {
+            unlink($imagePath);
         }
-        //second : delete supervisor from users table
+
+        // second: delete supervisor from users table
         $supervisor->delete();
 
         return redirect()->route('admin.supervisors.index')->with([
@@ -190,6 +212,7 @@ class SupervisorController extends Controller
             'alert-type' => 'success'
         ]);
     }
+
 
     public function remove_image(Request $request)
     {

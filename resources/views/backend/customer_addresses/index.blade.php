@@ -81,15 +81,19 @@
                                 <td class="d-none d-sm-table-cell">{{ $address->po_box }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.customer_addresses.edit', $address->id) }}"
-                                            class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-address-{{ $address->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        @ability('admin', 'update_customer_addresses')
+                                            <a href="{{ route('admin.customer_addresses.edit', $address->id) }}"
+                                                class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        @endability
+                                        @ability('admin', 'delete_customer_addresses')
+                                            <a href="javascript:void(0);"
+                                                onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-address-{{ $address->id }}').submit();}else{return false;}"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @endability
                                     </div>
                                     <form action="{{ route('admin.customer_addresses.destroy', $address->id) }}"
                                         method="post" class="d-none" id="delete-address-{{ $address->id }}">

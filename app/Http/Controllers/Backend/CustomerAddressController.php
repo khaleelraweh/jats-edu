@@ -13,7 +13,7 @@ class CustomerAddressController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_customer_addresses , show_customer_addresses')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_customer_addresses , show_customer_addresses')) {
             return redirect('admin/index');
         }
 

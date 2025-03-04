@@ -17,11 +17,19 @@ class SiteSettingsController extends Controller
     // =============== start info site ===============//
     public function show_main_informations()
     {
+        if (!auth()->user()->ability(['admin','supervisor'], 'display_site_infos')) {
+            return redirect('admin/index');
+        }
+
         return view('backend.site_infos.index');
     }
 
     public function update_main_informations(Request $request, $id)
     {
+        if (!auth()->user()->ability('admin', 'update_site_infos')) {
+            return redirect('admin/index');
+        }
+
         $data = $request->except('_token', 'submit');
 
         foreach ($data as $key => $value) {
@@ -238,7 +246,7 @@ class SiteSettingsController extends Controller
     // =============== end payment method site ===============//
 
 
-    // To update cache with new data when updating fields to database because cache will take a day to updated automatacly 
+    // To update cache with new data when updating fields to database because cache will take a day to updated automatacly
     private function updateCache()
     {
         Cache::forget('siteSettings');

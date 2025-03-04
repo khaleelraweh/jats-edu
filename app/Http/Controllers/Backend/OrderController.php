@@ -14,7 +14,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_orders , show_orders')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_orders , show_orders')) {
             return redirect('admin/index');
         }
 

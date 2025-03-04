@@ -59,14 +59,18 @@
                                 <td class="d-none d-sm-table-cell">{{ $order->created_at->format('Y-m-d h:i a') }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-primary">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-order-{{ $order->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        @ability('admin', 'display_orders')
+                                            <a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-primary">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        @endability
+                                        @ability('admin', 'delete_orders')
+                                            <a href="javascript:void(0);"
+                                                onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-order-{{ $order->id }}').submit();}else{return false;}"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @endability
                                     </div>
                                     <form action="{{ route('admin.orders.destroy', $order->id) }}" method="post"
                                         class="d-none" id="delete-order-{{ $order->id }}">

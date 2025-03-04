@@ -171,11 +171,17 @@ class SiteSettingsController extends Controller
     // =============== end meta site ===============//
     public function show_meta_informations()
     {
+        if (!auth()->user()->ability(['admin','supervisor'], 'display_site_meta')) {
+            return redirect('admin/index');
+        }
         return view('backend.site_metas.index');
     }
 
     public function update_meta_informations(Request $request, $id)
     {
+        if (!auth()->user()->ability('admin', 'update_site_meta')) {
+            return redirect('admin/index');
+        }
 
         $data = $request->except('_token', 'submit');
 

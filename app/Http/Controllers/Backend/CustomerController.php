@@ -15,11 +15,11 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_customers , show_customers')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_customers , show_customers')) {
             return redirect('admin/index');
         }
 
-        //get users where has roles 
+        //get users where has roles
         $customers = User::whereHas('roles', function ($query) {
             //this roles its name is customer
             $query->where('name', 'customer');
@@ -145,7 +145,7 @@ class CustomerController extends Controller
             return redirect('admin/index');
         }
 
-        // first: delete image from users path 
+        // first: delete image from users path
         if (File::exists('assets/users/' . $customer->user_image)) {
             unlink('assets/users/' . $customer->user_image);
         }

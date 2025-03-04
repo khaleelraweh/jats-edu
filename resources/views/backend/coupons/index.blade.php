@@ -73,14 +73,18 @@
                                 <td class="d-none d-sm-table-cell">{{ $coupon->created_at->format('Y-m-d h:i a') }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.coupons.edit', $coupon->id) }}" class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-coupon-{{ $coupon->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        @ability('admin', 'update_coupons')
+                                            <a href="{{ route('admin.coupons.edit', $coupon->id) }}" class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        @endability
+                                        @ability('admin', 'delete_coupons')
+                                            <a href="javascript:void(0);"
+                                                onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-coupon-{{ $coupon->id }}').submit();}else{return false;}"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @endability
                                     </div>
                                     <form action="{{ route('admin.coupons.destroy', $coupon->id) }}" method="post"
                                         class="d-none" id="delete-product-coupon-{{ $coupon->id }}">

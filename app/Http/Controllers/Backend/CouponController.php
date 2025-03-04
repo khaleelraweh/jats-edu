@@ -14,7 +14,7 @@ class CouponController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_coupons , show_coupons')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_coupons , show_coupons')) {
             return redirect('admin/index');
         }
 
@@ -55,7 +55,7 @@ class CouponController extends Controller
         $input['expire_date']       =   $request->expire_date;
         $input['greater_than']      =   $request->greater_than;
 
-        // always added 
+        // always added
         $input['status']            =   $request->status;
         $input['published_on']      =   $request->published_on;
         $input['views']             =   0;
@@ -64,7 +64,7 @@ class CouponController extends Controller
         $published_on = $request->published_on . ' ' . $request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
-        // end of always added 
+        // end of always added
 
         // Coupon::create($request->validated());
         $coupon = Coupon::create($input);
@@ -117,7 +117,7 @@ class CouponController extends Controller
         $input['expire_date']       =   $request->expire_date;
         $input['greater_than']      =   $request->greater_than;
 
-        // always added 
+        // always added
         $input['status']            =   $request->status;
         $input['published_on']      =   $request->published_on;
         $input['views']             =   0;
@@ -126,7 +126,7 @@ class CouponController extends Controller
         $published_on = $request->published_on . ' ' . $request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
-        // end of always added 
+        // end of always added
 
         //    $coupon->update($request->validated());
         $coupon->update($input);

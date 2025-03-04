@@ -19,7 +19,7 @@ class WebMenuController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_web_menus , show_web_menus')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_web_menus , show_web_menus')) {
             return redirect('admin/index');
         }
 

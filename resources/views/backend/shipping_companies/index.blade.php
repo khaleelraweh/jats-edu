@@ -67,15 +67,19 @@
                             <td> {{ $shipping_company->status() }} </td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.shipping_companies.edit', $shipping_company->id) }}"
-                                        class="btn btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="javascript:void(0);"
-                                        onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-shipping-company-{{ $shipping_company->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                                    @ability('admin', 'update_shipping_companies')
+                                        <a href="{{ route('admin.shipping_companies.edit', $shipping_company->id) }}"
+                                            class="btn btn-primary">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    @endability
+                                    @ability('admin', 'delete_shipping_companies')
+                                        <a href="javascript:void(0);"
+                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-shipping-company-{{ $shipping_company->id }}').submit();}else{return false;}"
+                                            class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    @endability
                                 </div>
                                 <form action="{{ route('admin.shipping_companies.destroy', $shipping_company->id) }}"
                                     method="post" class="d-none" id="delete-shipping-company-{{ $shipping_company->id }}">

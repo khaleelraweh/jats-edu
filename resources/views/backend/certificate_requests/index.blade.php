@@ -70,10 +70,12 @@
                             <td class="d-none d-sm-table-cell">{{ $certificate_request->created_at }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.certificate_requests.edit', $certificate_request->id) }}"
-                                        class="btn btn-primary" title="Edit the certificate_request">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+                                    @ability('admin', 'update_certificate_requests')
+                                        <a href="{{ route('admin.certificate_requests.edit', $certificate_request->id) }}"
+                                            class="btn btn-primary" title="Edit the certificate_request">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    @endability
                                     <a href="javascript:void(0);" class="btn btn-success copyButton"
                                         data-copy-text="certificate_requests/{{ $certificate_request->slug }}"
                                         title="Copy the link">
@@ -81,11 +83,13 @@
                                     </a>
                                     <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
 
-                                    <a href="javascript:void(0);"
-                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $certificate_request->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger" title="Delete the certificate_request">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                                    @ability('admin', 'delete_certificate_requests')
+                                        <a href="javascript:void(0);"
+                                            onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $certificate_request->id }}').submit();}else{return false;}"
+                                            class="btn btn-danger" title="Delete the certificate_request">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    @endability
 
                                 </div>
                                 <form action="{{ route('admin.certificate_requests.destroy', $certificate_request->id) }}"

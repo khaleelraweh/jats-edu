@@ -11,7 +11,7 @@ class InstPageVisitController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_inst_page_visits , show_inst_page_visits')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_inst_page_visits , show_inst_page_visits')) {
             return redirect('admin/index');
         }
 

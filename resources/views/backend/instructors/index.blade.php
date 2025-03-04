@@ -110,39 +110,42 @@
                                 <td class="d-none d-sm-table-cell">{{ $customer->created_at->format('Y-m-d') }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.instructors.edit', $customer->id) }}"
-                                            class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-
-
-                                        @if ($customer->courses->count() > 0)
-                                            <a href="javascript:void(0);" onclick="showCoursesAlert()"
-                                                class="btn btn-danger">
-                                                <i class="fa fa-trash"></i>
+                                        @ability('admin', 'update_instructors')
+                                            <a href="{{ route('admin.instructors.edit', $customer->id) }}"
+                                                class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
                                             </a>
-                                        @else
-                                            @if (
-                                                $customer->hasRole('admin') &&
-                                                    \App\Models\User::whereHas('roles', function ($query) {
-                                                        $query->where('name', 'admin');
-                                                    })->count() === 1)
-                                                <a href="javascript:void(0);" onclick="showAdminAlert()"
+                                        @endability
+
+                                        @ability('admin', 'delete_instructors')
+                                            @if ($customer->courses->count() > 0)
+                                                <a href="javascript:void(0);" onclick="showCoursesAlert()"
                                                     class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             @else
-                                                <a href="javascript:void(0);" onclick="confirmDelete({{ $customer->id }})"
-                                                    class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
-                                                <form action="{{ route('admin.instructors.destroy', $customer->id) }}"
-                                                    method="post" class="d-none" id="delete-customer-{{ $customer->id }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form>
+                                                @if (
+                                                    $customer->hasRole('admin') &&
+                                                        \App\Models\User::whereHas('roles', function ($query) {
+                                                            $query->where('name', 'admin');
+                                                        })->count() === 1)
+                                                    <a href="javascript:void(0);" onclick="showAdminAlert()"
+                                                        class="btn btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="javascript:void(0);" onclick="confirmDelete({{ $customer->id }})"
+                                                        class="btn btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                    <form action="{{ route('admin.instructors.destroy', $customer->id) }}"
+                                                        method="post" class="d-none" id="delete-customer-{{ $customer->id }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                @endif
                                             @endif
-                                        @endif
+                                        @endability
 
                                     </div>
                                     <form action="{{ route('admin.instructors.destroy', $customer->id) }}" method="post"

@@ -16,11 +16,11 @@ class InstructorController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_instructors , show_instructors')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_instructors , show_instructors')) {
             return redirect('admin/index');
         }
 
-        //get users where has roles 
+        //get users where has roles
         $instructors = User::with('specializations')->whereHas('roles', function ($query) {
             //this roles its name is customer
             $query->where('name', 'instructor');

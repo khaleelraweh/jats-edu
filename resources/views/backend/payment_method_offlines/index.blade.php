@@ -77,10 +77,12 @@
                                 <td>{{ $payment_offline->status() }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.payment_method_offlines.edit', $payment_offline->id) }}"
-                                            class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
+                                        @ability('admin', 'update_payment_method_offlines')
+                                            <a href="{{ route('admin.payment_method_offlines.edit', $payment_offline->id) }}"
+                                                class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        @endability
                                         <a href="javascript:void(0);"
                                             onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-{{ $payment_offline->id }}').submit();}else{return false;}"
                                             class="btn btn-danger">

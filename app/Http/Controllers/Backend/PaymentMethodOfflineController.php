@@ -18,7 +18,7 @@ class PaymentMethodOfflineController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_payment_method_offlines , show_payment_method_offlines')) {
+        if (!auth()->user()->ability(['admin','superviosr'], 'manage_payment_method_offlines , show_payment_method_offlines')) {
             return redirect('admin/index');
         }
 
@@ -85,7 +85,7 @@ class PaymentMethodOfflineController extends Controller
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        //Add payment method  to db with save instance of it in $payment_method to use it later 
+        //Add payment method  to db with save instance of it in $payment_method to use it later
         $payment_method = PaymentMethodOffline::create($input);
 
 
@@ -96,7 +96,7 @@ class PaymentMethodOfflineController extends Controller
 
             foreach ($request->images as $image) {
 
-                $file_name = $payment_method->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $payment_method->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/payment_method_offlines/' . $file_name);
@@ -184,7 +184,7 @@ class PaymentMethodOfflineController extends Controller
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        //Add product to db with save instance of it in $product to use it later 
+        //Add product to db with save instance of it in $product to use it later
         $paymentMethodOffline->update($input);
 
         if ($request->images && count($request->images) > 0) {
@@ -193,7 +193,7 @@ class PaymentMethodOfflineController extends Controller
 
             foreach ($request->images as $image) {
 
-                $file_name = $paymentMethodOffline->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $paymentMethodOffline->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/payment_method_offlines/' . $file_name);
@@ -265,14 +265,14 @@ class PaymentMethodOfflineController extends Controller
             return redirect('admin/index');
         }
 
-        //find product from product table 
+        //find product from product table
         $PaymentMethodOffline = PaymentMethodOffline::findOrFail($request->payment_method_offline_id);
 
-        //find photos image from photos table 
+        //find photos image from photos table
         $image = $PaymentMethodOffline->photos()->where('id', $request->image_id)->first();
 
         if (File::exists('assets/payment_method_offlines/' . $image->file_name)) {
-            // delete image from path 
+            // delete image from path
             unlink('assets/payment_method_offlines/' . $image->file_name);
         }
         //delete image from db

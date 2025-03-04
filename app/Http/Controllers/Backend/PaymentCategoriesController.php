@@ -17,7 +17,7 @@ class PaymentCategoriesController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_payment_categories , show_payment_categories')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_payment_categories , show_payment_categories')) {
             return redirect('admin/index');
         }
 
@@ -67,12 +67,12 @@ class PaymentCategoriesController extends Controller
         // add images to media db and to path : public/assets/payments
         if ($request->images && count($request->images) > 0) {
 
-            $i = 1; // $i is used for making sort to image 
+            $i = 1; // $i is used for making sort to image
 
             foreach ($request->images as $image) {
 
                 // $file_name = Str::slug($request->name).".".$image->getClientOriginalExtension(); // will not used because product already created to db and slug is there by steps upove
-                $file_name = $paymentCategory->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $paymentCategory->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/payment_categories/' . $file_name);
@@ -91,7 +91,7 @@ class PaymentCategoriesController extends Controller
                     'file_sort' => $i,
                 ]);
 
-                $i++; // step ahead by one for sort new image 
+                $i++; // step ahead by one for sort new image
             }
         }
 
@@ -154,12 +154,12 @@ class PaymentCategoriesController extends Controller
         // edit images in photos db and in path : public/assets/products
         if ($request->images && count($request->images) > 0) {
 
-            $i = $paymentCategory->photos->count() + 1; // $i is used for making sort to image 
+            $i = $paymentCategory->photos->count() + 1; // $i is used for making sort to image
 
             foreach ($request->images as $image) {
 
                 // $file_name = Str::slug($request->name).".".$image->getClientOriginalExtension(); // will not used because product already created to db and slug is there by steps upove
-                $file_name = $paymentCategory->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $paymentCategory->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/payment_categories/' . $file_name);
@@ -178,7 +178,7 @@ class PaymentCategoriesController extends Controller
                     'file_sort' => $i,
                 ]);
 
-                $i++; // step ahead by one for sort new image 
+                $i++; // step ahead by one for sort new image
             }
         }
 
@@ -237,14 +237,14 @@ class PaymentCategoriesController extends Controller
             return redirect('admin/index');
         }
 
-        //find product from product table 
+        //find product from product table
         $paymentCategory = PaymentCategory::findOrFail($request->payment_category_id);
 
-        //find photos image from photos table 
+        //find photos image from photos table
         $image = $paymentCategory->photos()->where('id', $request->image_id)->first();
 
         if (File::exists('assets/payment_categories/' . $image->file_name)) {
-            // delete image from path 
+            // delete image from path
             unlink('assets/payment_categories/' . $image->file_name);
         }
         //delete image from db

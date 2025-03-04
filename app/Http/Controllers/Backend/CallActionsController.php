@@ -15,7 +15,7 @@ class CallActionsController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_call_actions , show_call_actions')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_call_actions , show_call_actions')) {
             return redirect('admin/index');
         }
 
@@ -70,7 +70,7 @@ class CallActionsController extends Controller
         if ($request->images && count($request->images) > 0) {
             $i = 1;
             foreach ($request->images as $image) {
-                $file_name = $callAction->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name 
+                $file_name = $callAction->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension(); // time() and $id used to avoid repeating image name
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
                 $path = public_path('assets/call_actions/' . $file_name);

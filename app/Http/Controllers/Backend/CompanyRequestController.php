@@ -10,7 +10,7 @@ class CompanyRequestController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_company_requests , show_company_requests')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_company_requests , show_company_requests')) {
             return redirect('admin/index');
         }
 

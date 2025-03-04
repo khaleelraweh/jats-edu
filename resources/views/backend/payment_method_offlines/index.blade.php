@@ -83,11 +83,13 @@
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                         @endability
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-{{ $payment_offline->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        @ability('admin', 'delete_payment_method_offlines')
+                                            <a href="javascript:void(0);"
+                                                onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-{{ $payment_offline->id }}').submit();}else{return false;}"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @endability
                                     </div>
                                     <form
                                         action="{{ route('admin.payment_method_offlines.destroy', $payment_offline->id) }}"

@@ -20,7 +20,7 @@ class CourseController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_courses , show_courses')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_courses , show_courses')) {
             return redirect('admin/index');
         }
 
@@ -114,7 +114,7 @@ class CourseController extends Controller
             $course->users()->sync([$loggedInUser->id]);
         }
 
-        // course objective start 
+        // course objective start
         if ($request->course_objective != null) {
 
             $topics_list = [];
@@ -125,10 +125,10 @@ class CourseController extends Controller
             // dd($topics_list);
             $topics = $course->objectives()->createMany($topics_list);
         }
-        // course topics start 
+        // course topics start
 
 
-        // course requirement start 
+        // course requirement start
         if ($request->course_requirement != null) {
 
             $requirements_list = [];
@@ -140,7 +140,7 @@ class CourseController extends Controller
         }
 
 
-        // course intended start 
+        // course intended start
         if ($request->course_intended != null) {
 
             $intendeds_list = [];
@@ -307,7 +307,7 @@ class CourseController extends Controller
             $course->users()->sync([$loggedInUser->id]);
         }
 
-        // course topics start 
+        // course topics start
         $course->objectives()->delete();
         if ($request->course_objective != null) {
             $topics_list = [];
@@ -317,10 +317,10 @@ class CourseController extends Controller
             // dd($topics_list);
             $topics = $course->objectives()->createMany($topics_list);
         }
-        // course topics start 
+        // course topics start
 
 
-        // course requirement start 
+        // course requirement start
         $course->requirements()->delete();
         if ($request->course_requirement != null) {
             $requirements_list = [];
@@ -332,7 +332,7 @@ class CourseController extends Controller
         }
 
 
-        // course intended start 
+        // course intended start
         $course->intendeds()->delete();
         if ($request->course_intended != null) {
             $intendeds_list = [];

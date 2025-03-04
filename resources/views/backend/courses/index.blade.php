@@ -121,33 +121,33 @@
                                 <td class="d-none d-sm-table-cell">{{ $course->status() }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.courses.show', $course->id) }}" class="btn btn-success">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-
-
-
-
-                                        @if ($course->users->first()->hasRole('admin') || $course->users->first()->hasRole('supervisor'))
-                                            <a href="{{ route('instructor.courses.edit', $course->id) }}"
-                                                class="btn btn-primary">
-                                                <i class="fa fa-edit"></i>
+                                        @ability('admin', 'display_courses')
+                                            <a href="{{ route('admin.courses.show', $course->id) }}" class="btn btn-success">
+                                                <i class="fa fa-eye"></i>
                                             </a>
-                                        @else
-                                            <a href="{{ route('admin.courses.edit', $course->id) }}"
-                                                class="btn btn-primary">
-                                                <i class="fa fa-edit"></i>
+                                        @endability
+
+                                        @ability('admin', 'update_courses')
+                                            @if ($course->users->first()->hasRole('admin') || $course->users->first()->hasRole('supervisor'))
+                                                <a href="{{ route('instructor.courses.edit', $course->id) }}"
+                                                    class="btn btn-primary">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            @else
+                                                <a href="{{ route('admin.courses.edit', $course->id) }}"
+                                                    class="btn btn-primary">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            @endif
+                                        @endability
+
+                                        @ability('admin', 'delete_courses')
+                                            <a href="javascript:void(0);"
+                                                onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-{{ $course->id }}').submit();}else{return false;}"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
                                             </a>
-                                        @endif
-
-
-
-
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-{{ $course->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        @endability
                                     </div>
                                     <form action="{{ route('admin.courses.destroy', $course->id) }}" method="post"
                                         class="d-none" id="delete-product-{{ $course->id }}">

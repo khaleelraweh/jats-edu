@@ -19,7 +19,7 @@ class CertificateController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_certificates , show_certificates')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_certificates , show_certificates')) {
             return redirect('admin/index');
         }
 

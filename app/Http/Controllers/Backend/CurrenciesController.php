@@ -14,7 +14,7 @@ class CurrenciesController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_currencies , show_currencies')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_currencies , show_currencies')) {
             return redirect('admin/index');
         }
 
@@ -155,7 +155,7 @@ class CurrenciesController extends Controller
         ]);
     }
 
-    // in backend 
+    // in backend
     public function updateCurrencyStatus(Request $request)
     {
         if ($request->ajax()) {

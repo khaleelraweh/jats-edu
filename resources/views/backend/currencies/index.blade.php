@@ -76,15 +76,19 @@
                                 <td>
 
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.currencies.edit', $currency->id) }}"
-                                            class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-{{ $currency->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        @ability('admin', 'update_currencies')
+                                            <a href="{{ route('admin.currencies.edit', $currency->id) }}"
+                                                class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        @endability
+                                        @ability('admin', 'delete_currencies')
+                                            <a href="javascript:void(0);"
+                                                onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-{{ $currency->id }}').submit();}else{return false;}"
+                                                class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        @endability
 
                                         @if ($currency->status == 1)
                                             <a href="javascript:void(0);" class="updateCurrencyStatus btn"

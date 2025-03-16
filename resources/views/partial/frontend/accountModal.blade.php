@@ -88,8 +88,13 @@
                         <!-- Text -->
                         <p class="mb-0 font-size-sm text-center">
                             {{ __('transf.txt_dont_have_an_account') }}
-                            <a class="text-underline" data-bs-toggle="collapse" href="#collapseSignup" role="button"
-                                aria-expanded="false" aria-controls="collapseSignup">{{ __('transf.lnk_sign_up') }}</a>
+                            {{-- <a class="text-underline" data-bs-toggle="collapse" href="#collapseSignup" role="button"
+                                aria-expanded="false" aria-controls="collapseSignup">
+                                {{ __('transf.lnk_sign_up') }}
+                            </a> --}}
+                            <a class="text-underline" href="{{route('register')}}">
+                                {{ __('transf.lnk_sign_up') }}
+                            </a>
                         </p>
                     </div>
                 </div>

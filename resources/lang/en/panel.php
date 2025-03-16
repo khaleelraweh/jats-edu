@@ -130,6 +130,7 @@ return [
 
     // ........... commons in Categories ....... //
     'course_title'                     => 'Category Name',
+    'event_title'                     => 'Category Name',
     'category_card-count'               => 'Card Quintity',
 
 
@@ -211,6 +212,7 @@ return [
     'video_promo'                   =>  'Video Promo',
     'video_description'             =>  'Video Description',
     'course_type'                   =>  ' Type',
+    'event_type'                   =>  ' Type',
     'course_type_presence'          =>  'Presence',
     'course_type_enrolled'          =>  'Enrolled',
     'deadline'                      =>  'DeadLine',
@@ -225,7 +227,7 @@ return [
     'obtain_a_certificate_of_participation' =>  'Obtain a certificate of participation',
     'browse_the_certificate_of_participation'  =>  'Browse the certificate of participation',
 
-    // Course status 
+    // Course status
     'course_new_course'                         =>  'New',
     'course_completed'                          =>  ' Completed',
     'course_under_process'                      =>  'Under Proccess',
@@ -241,14 +243,18 @@ return [
 
 
 
-    // Course Topics  
+    // Course Topics
     'course_topics_tab'                         =>  'Course Topics',
-    'course_objectives_tab'                     =>  'Course Objectives',
+    'event_objectives_tab'                     =>  'Event Objectives',
     'txt_course_topics'                         =>  'Course Topics',
     'course_objective'                          =>  'Course Objective',
+    'event_objective'                          =>  'Event Objective',
     'course_objectives'                         =>  'Course Objectives',
+    'event_objectives'                         =>  'Event Objectives',
     'course_requirements'                       =>  'Course Requirements',
+    'event_requirements'                       =>  'Event Requirements',
     'course_requirement'                        =>  'Course Requirement',
+    'event_requirement'                        =>  'Event Requirement',
     'btn_add_another_topic'                     =>  'Add another topic',
     'topic_in_ar'                               =>  'Topic in arabic',
     'topic_in_en'                               =>  'Topic in english',
@@ -258,6 +264,7 @@ return [
 
     // Course Requirements
     'course_requirements_tab'                                   =>  'Course Requirements',
+    'event_requirements_tab'                                   =>  'Event Requirements',
     'txt_course_requiremnts'                                    =>  'Course Requirements',
     'btn_add_another_requirement'                               =>  'Add another Requirement',
     'requirement_in_ar'                                         =>  'Requirement in arabic',
@@ -736,7 +743,7 @@ return [
     'cc_codes_used_by_administration'           => 'Codes used by the administration',
     'cc_using_and_printing_codes'               => 'Using and printing codes',
 
-    // card codes tab add 
+    // card codes tab add
     'cc_add_direct_codes'                       =>  'Add Direct Codes',
     'cc_add_custom_codes'                       =>  'Add Custom Codes',
     'cc_add_custom_group_codes'                 =>  'Add Custom Group Codes',
@@ -1068,7 +1075,7 @@ return [
 
     // ============ common translate ==============//
 
-    // Languages 
+    // Languages
     'en'                    => 'English',
     'ar'                    => 'Arabic',
     'ca'                    => 'Spanish',
@@ -1106,7 +1113,7 @@ return [
     'type_to_filter'                =>  'Type To Filter',
     'icon'                          =>  'Icon',
 
-    // ======= display Add and Update Section =======// 
+    // ======= display Add and Update Section =======//
 
     // ------------ Tabs name -----------------/
     'content_tab'           => 'Content Data ',
@@ -1217,7 +1224,7 @@ return [
 
 
 
-    //messages 
+    //messages
     'f_m_item_removed_from_shop_cart'                       =>  'The item has been removed from your shopping cart',
     'f_m_item_removed_from_wishlist_cart'                   =>  'The item has been removed from your wishlist cart',
 
@@ -1233,14 +1240,14 @@ return [
     'f_m_some_thing_went_error'                             =>  'Somethig Went Error !',
 
 
-    // ========================  frontend Message =========================// 
+    // ========================  frontend Message =========================//
     'f_our_price_are_the_best'                                              => 'Our prices are the best',
     'f_strongest_offers'                                                    => 'Strongest offers',
     'f_outstanding_customer_service'                                        => 'Outstanding customer service',
     'f_packages_that_suit_your_needs'                                       => 'Packages that suit your needs',
 
 
-    // ========================  frontend Footer  =========================// 
+    // ========================  frontend Footer  =========================//
     'f_phone'                                       => 'Phone',
     'phone'                                         => 'Phone',
     'f_phone_number'                                =>  'Phone Number',
@@ -1317,7 +1324,7 @@ return [
     // ====================== card category page translation ===================================//
 
     // ====================== Blog page  translation ===================================//
-    // main blog page 
+    // main blog page
     'f_common_tags'                                      =>  'Common Tags',
     'f_we_chosed_for_you'                                =>  'We chosed for you',
     'f_topic'                                            => 'Topic',
@@ -1326,7 +1333,7 @@ return [
     'f_what_do_you_want_to_search_for'          =>  'What do you want to search for',
 
     // ========================== frontend header side panel translate ===============================================//
-    // user login guest 
+    // user login guest
     'f_close'                                           =>  'Close',
     'f_center_pay'                                      =>  'CenterPay',
     'f_login'                                           =>  'Login',
@@ -1344,7 +1351,7 @@ return [
 
     'f_account_type'                                    =>  'Account Type',
 
-    //user loged in 
+    //user loged in
     'f_welcome'                                         =>  'Welcome',
     'f_insure_user_email'                               =>  'Insure your email',
     'f_we_sent_link_insurent_to_your_email'             =>  'We had Sent you an insurent link to your email ',
@@ -1352,7 +1359,7 @@ return [
     'f_if_you_didnt_receive_an_email'                   =>  'If you did not receive an email',
     'f_click_here_to_get_another'                       =>  'Click here to get another',
 
-    //user control panel 
+    //user control panel
     'f_content'                                         =>  'Content',
     'f_profile'                                         =>  'Profile',
     'f_user_profile'                                    =>  'User Profile',
@@ -1369,14 +1376,14 @@ return [
     'f_logout'                                          =>  'Logout',
 
 
-    // Register 
+    // Register
     'f_create_new_account'                              => 'Create new account',
     'f_create_an_account'                               => 'Create an account',
     'f_register'                                        =>  'Register',
 
     'f_do_you_have_an_account'                          =>  'You have an account ?',
 
-    // Email reset password 
+    // Email reset password
     'f_reset_password'                                  =>  'Reset password',
     'f_we_have_sent_you_a_reset_link_to_your_email'     =>  'We have sent you a reset link to your email , please check it ',
     'f_send_reset_link'                                 =>  'Send reset Link',
@@ -1389,7 +1396,7 @@ return [
     // customer profile
     'f_delete_image'                                    =>  'Delete Image',
 
-    //customer control panel 
+    //customer control panel
     'f_general_information'                                    =>  'General Information',
 
     //customer addresses
@@ -1462,11 +1469,11 @@ return [
 
 
 
-    // added new 
+    // added new
     'username'                                     => 'username',
 
 
-    // Evaluations 
+    // Evaluations
     'add_evaluation'                                =>  'Add Evaluation',
     'evaluation_title'                              =>  'Evaluation Title',
 
@@ -1489,7 +1496,7 @@ return [
     'evaluation_saved_successfully'                 =>  'Evaluation Saved Successfully',
     'evaluation'                                    =>  'Evaluation',
 
-    // 
+    //
 
     'best_size'                                     =>  'Best Size',
     'Image_show_in_main_page'                       =>  'Image Show in Main Page',
@@ -1497,7 +1504,7 @@ return [
     'Image_show_in_blog_single'                     =>  'Image Show in blog single',
 
 
-    //teach_request 
+    //teach_request
     'application_form_to_apply_as_a_trainer'        =>  'Application form to apply as a trainer',
     'application_form'                              =>  'Note: The data will be approved upon completion of filling out and sending the data, so please , Enter all required data correctly and accurately.',
     'address_of_residence'                          =>  'Address of residence',

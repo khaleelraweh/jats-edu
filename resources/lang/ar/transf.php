@@ -3,7 +3,7 @@
 return [
 
     ############################  Home page  ################################
-    // Menu 
+    // Menu
     'courses'                                       => 'الدورات',
     'txt_what_do_you_want_to_learn?'                => 'ماذا تريد أن تتعلم؟',
     'btn_get_started'                               =>  'لنبداء',
@@ -138,11 +138,11 @@ return [
 
     'lnk_home'                                          =>  'الرئيسية',
 
-    // index page 
+    // index page
     'more_than'                                         =>  'أكثر من ',
     'course'                                           =>  'دورة',
 
-    //course single 
+    //course single
     'btn_buy_now'                                       =>  'سجل الآن',
     'btn_add_to_cart'                                   =>   'إضافة الى السلة',
     'btn_go_to_cart'                                    =>   'الذهاب الى السلة',
@@ -197,19 +197,19 @@ return [
     'hr'                                                =>  'س',
     'min'                                               =>  'د',
 
-    // Instructors-single 
+    // Instructors-single
     'Bio'                                              =>   'السيرة الذاتية',
     'instructors'                                       =>  'المحاضرون',
     'home'                                              =>  'الرئيسية',
 
 
-    //event list 
+    //event list
     'get_ticket'                                        => 'احصل على تذكرة',
     'events'                                            =>  'الاحداث',
     'load_more'                                         =>  'استعراض عناصر اكثر',
     'load_less'                                         =>  'استعراض عناصر اقل',
 
-    //event single 
+    //event single
     'txt_title'                                         =>  'العنوان',
     'event_description'                                 =>  'وصف الحدث',
     'txt_what_is_it_like_to_event'                      =>  'ما هو تقييمك للحدث !',
@@ -221,7 +221,7 @@ return [
     'total_slot'                                        =>  'التكلفة الإجمالية',
     'booked_slot'                                       =>  'تكلفة الحجز',
 
-    //event single timer 
+    //event single timer
     'days'                                              =>  'ايام',
     'hours'                                              =>  'ساعات',
     'minutes'                                              =>  'دقائق',
@@ -232,7 +232,7 @@ return [
     'recent_posts'                                      =>  'المقالات الحديثة',
     'tags'                                              =>  'الكلمات مفتاحية',
 
-    //blog single 
+    //blog single
     'btn_share_this_post'                             =>  'مشاركة هذا المقال ',
     'browse_all'                                      =>    'تصفح الكل',
     'txt_description'                                   =>  'الوصف',
@@ -279,7 +279,7 @@ return [
     'type'                                          =>  'النوع',
     'by'                                            =>  'بواسطة',
 
-    // sored by  
+    // sored by
     'sort_by'                                       =>  'ترتيب حسب',
     'sort_default'                                  =>  'الافتراضي',
     'sort_popularity'                               =>  'الشهرة',
@@ -294,7 +294,7 @@ return [
 
 
 
-    // Category 
+    // Category
     'categories'                                    =>  'القسم',
     'instructors'                                   =>  'المدربون',
     'search'                                        =>  'بحث',
@@ -310,7 +310,7 @@ return [
     '&_up'                                          =>  'و اعلى',
     'reset_filter'                                  =>  'إعادة تعيين المرشحات',
 
-    // Shop Cart 
+    // Shop Cart
     'shop_cart'                                     =>  'الدورات التدريبية المختارة',
     'courses_in_cart'                               =>  'الدورات في سلة التسوق',
     'courses_in_wishlist'                           =>  'الدورات في قائمة المفضلات',
@@ -352,7 +352,7 @@ return [
     'of_courses'                                    =>  'من الدورات',
     'txt_related_to_you'                            =>  'تابعة لحاسبك',
 
-    // instructor dashboard 
+    // instructor dashboard
     'instructor_courses'                            =>  'دورات المدربين',
     'edit_manage_your_courses_here'                 =>  'تحرير وإدارة الدورات الخاصة بك هنا',
     'edit_manage_your_course'                       =>  'تحرير/إدارة الدورة التدريبية الخاصة بك',
@@ -371,7 +371,7 @@ return [
     'words'                                         =>  'كلمات',
     'Remaining words to reach the minimum number of words for the description field' =>  'الكلمات المتبقية للوصول إلى الحد الأدنى من كلمات حقل الوصف',
 
-    //coupon 
+    //coupon
     'Coupon is invalid !'                           =>  'القسيمة غير صالحة!',
     'coupon is applied successfully'                =>  'تم تطبيق القسيمة بنجاح',
     'Course coupon is invalid or expired !'         =>  'قسيمة الدورة غير صالحة أو منتهية الصلاحية !',
@@ -393,13 +393,13 @@ return [
     'course_generators'                             =>  'خطوات إنشاء الدورة ',
 
 
-    //generators Message 
+    //generators Message
     'Course Updated Successfully!'                  =>  'تم تحديث الدورة بنجاح!',
     'Price Updated Successfully!'                   =>  'تم تحديث السعر بنجاح!',
     'PublishData Updated Successfully!'             =>  'تم تحديث بيانات النشر بنجاح!',
 
 
-    // Step2 : Course Title 
+    // Step2 : Course Title
     'how_about_working_title'                       =>  'ماذا عن عنوان العمل؟',
 
     'ex_learn_photoshop_cs6_from_scratch'           =>  'على سبيل المثال, تعلم فوتوشوب من الصفر',
@@ -408,11 +408,12 @@ return [
 
     'its_ok_if_you_cant_think_of_a_good_title_now_you_can_change_it_later'  =>  'لا بأس إذا كنت لا تستطيع التفكير في عنوان جيد الآن. يمكنك تغييره لاحقا.',
     'course_title'                                  =>  'عنوان الدورة',
+    'event_title'                                  =>  'عنوان الحدث',
     'in_language'                                  =>  'في اللغة',
     'ar'                                            =>  'العربية',
     'en'                                            =>  'الإنجليزية',
 
-    // Step2 : Course Category Title 
+    // Step2 : Course Category Title
     'category_title'                         =>  'عنوان الفئة',
     'course_category_title'                         =>  'عنوان فئة الدورة',
     'what_category_best_fits_the_knowledge_you_will_shire'                  =>  'ما هي الفئة التي تناسب المعرفة التي ستشاركها',
@@ -429,8 +430,8 @@ return [
     'next'                                          =>  'التالي',
 
 
-    // Course Update Items 
-    //section 1 
+    // Course Update Items
+    //section 1
     'plan_your_course'                              =>  'خطط للدورة الخاصة بك',
     'intended_learners'                             =>  'اهداف الدورة',
     'target_groups_of_the_course'                   =>  'الفئات المستهدفة من الدورة',
@@ -469,7 +470,7 @@ return [
     'add_more_to_your_response'                     =>  'أضف المزيد إلى ردك',
     'example:beginner_python_developers_curious_about_data_science' =>  'مثال: مطورو لغة بايثون المبتدئون مهتمون بعلم البيانات',
 
-    //Intended validation 
+    //Intended validation
     'At least four objectives are required.'            =>  'مطلوب هدف واحد على الأقل.',
     'The objective field is required.'                  =>  'حقل الهدف مطلوب.',
     'The objective must be a string.'                   =>  'يجب أن يكون الهدف سلسلة نصية.',
@@ -531,7 +532,7 @@ return [
     'Save Lessons'                                      =>  'حفظ الدروس',
 
 
-    // Course Landing Page 
+    // Course Landing Page
     'Course Landing Page'                               =>  'معلومات الدورة',
     'Course Landing Page Description'                   =>  'تعد الصفحة المقصودة لدورتك التدريبية أمرًا بالغ الأهمية لنجاحك على Jats. إذا تم ذلك بشكل صحيح، فيمكن أن يساعدك أيضًا في الحصول على ظهور في محركات البحث مثل Google. أثناء إكمال هذا القسم، فكر في إنشاء صفحة مقصودة جذابة للدورة التدريبية توضح سبب رغبة شخص ما في التسجيل في الدورة التدريبية الخاصة بك. تعرف على المزيد حول إنشاء الصفحة المقصودة للدورة التدريبية ومعايير عنوان الدورة التدريبية.',
 
@@ -543,6 +544,7 @@ return [
     'Insert your course title tip.'                     =>  'يجب أن يكون عنوانك عبارة عن مزيج من العناصر الملفتة للانتباه والغنية بالمعلومات والمحسّنة للبحث',
 
     'Course subtitle'                                   =>  'العنوان الفرعي للدورة',
+    'Event subtitle'                                   =>  'العنوان الفرعي للحدث',
     'Insert your course subtitle.'                      =>  'أدخل العنوان الفرعي للدورة التدريبية الخاصة بك.',
     'Course subtitle tip.'                              =>  'استخدم كلمة أو كلمتين رئيسيتين مرتبطتين، واذكر 3-4 من أهم المجالات التي قمت بتغطيتها خلال الدورة التدريبية الخاصة بك.',
 
@@ -585,7 +587,7 @@ return [
     'Save changes'                                      =>  'حفظ التغييرات',
 
 
-    // Pricing section 
+    // Pricing section
     'Pricing'                                           =>  'التسعير',
 
     //Evaluation
@@ -598,7 +600,7 @@ return [
 
 
 
-    // Instructor Profile 
+    // Instructor Profile
     'instructor_profile_tab'                            =>  'ملف المعلم',
     'social_tab'                                        =>  'مواقع التواصل',
     'Username'                                          =>  'إسم المستخدم',
@@ -609,7 +611,7 @@ return [
     'Biography'                                         =>  'السيرة الذاتية',
     'Biography_tips'                                    =>  'To help learners learn more about you, your bio should reflect your Credibility, Empathy, Passion, and Personality. Your biography should have at least 50 words, links and coupon codes are not permitted.',
 
-    // Confirmation tab 
+    // Confirmation tab
     'Details Confirmation'                              =>  'تاكيد التفاصيل',
     'Course Data Confirmed successfully'                =>  'تم تأكيد بيانات الدورة بنجاح',
     'Course Data Confirmed successfully tips'           =>  'تم التحقق من كافة الحقول التي يجب إدخال البيانات فيها وفقاً للقواعد المطبقة على هذه الحقول',
@@ -632,11 +634,11 @@ return [
     'switch_to_instructor_dashboard_here'               =>  'قم بالتبديل إلى لوحة تحكم المدرب هنا - ارجع إلى الدورات التدريبية التي تقوم بتدريسها.',
 
 
-    // order 
+    // order
     'Kurima Bank'                                       =>  'بنك الكريمي',
 
 
-    // request to teach 
+    // request to teach
     'Diploma'                                           =>  'دبلوم',
     'Higher Diploma'                                    =>  'دبلوم عالى',
     'Bachelor'                                          =>  'بكلوريوس',

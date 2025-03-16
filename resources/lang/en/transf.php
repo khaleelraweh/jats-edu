@@ -3,7 +3,7 @@
 return [
 
     ############################  Home page  ################################
-    // Menu 
+    // Menu
     'courses'                                       => 'Courses',
     'txt_what_do_you_want_to_learn?'                => 'What do you want to learn ?',
     'btn_get_started'                               =>  'Get Started',
@@ -137,11 +137,11 @@ return [
     'txt_all_courses'                                   =>  'All Courses',
     'lnk_home'                                          =>  'Home',
 
-    // index page 
+    // index page
     'more_than'                                         =>  'More than',
     'courses'                                           =>  'courses',
 
-    //course single 
+    //course single
     'btn_buy_now'                                       =>   'Enroll Now',
     'btn_add_to_cart'                                   =>   'Add To Cart',
     'btn_go_to_cart'                                    =>   'Go To Cart',
@@ -196,19 +196,19 @@ return [
     'hr'                                                =>  'hr',
     'min'                                               =>  'min',
 
-    // Instructors-single 
+    // Instructors-single
     'Bio'                                              =>   'Bio',
     'instructors'                                       =>  'Instructors',
     'home'                                              =>  'Home',
 
 
-    //event list 
+    //event list
     'get_ticket'                                        => 'GET TICKET',
     'events'                                            =>  'Events',
     'load_more'                                         =>  'LOAD MORE',
     'load_less'                                         =>  'LOAD LESS',
 
-    //event single 
+    //event single
     'txt_title'                                         =>  'Title',
     'event_description'                                 =>  'Event Description',
     'txt_what_is_it_like_to_event'                      =>  'What is it like to event',
@@ -220,7 +220,7 @@ return [
     'total_slot'                                        =>  'Total Slot',
     'booked_slot'                                       =>  'Booked Slot',
 
-    //event single timer 
+    //event single timer
     'days'                                              =>  'DAYS',
     'hours'                                              =>  'HOURS',
     'minutes'                                              =>  'MINUTES',
@@ -232,7 +232,7 @@ return [
     'recent_posts'                                      =>  'Recent Posts',
     'tags'                                              =>  'Tags',
 
-    //blog single 
+    //blog single
     'btn_share_this_post'                             =>  'Share This Post',
     'browse_all'                                      =>    'Browse All',
     'txt_description'                               =>  'Description',
@@ -280,7 +280,7 @@ return [
     'type'                                          =>  'Type',
     'by'                                            =>  'By',
 
-    // sored by  
+    // sored by
     'sort_by'                                       =>  'Sort by',
     'sort_default'                                  =>  'Default',
     'sort_popularity'                               =>  'Popularity',
@@ -291,7 +291,7 @@ return [
 
     'sort_time_new_to_old'                         =>  'Time: New To Old',
     'sort_time_old_to_new'                         =>  'Time: Old To New',
-    // Category 
+    // Category
     'categories'                                    =>  'Categories',
     'instructors'                                   =>  'Instructors',
     'search'                                        =>  'Search',
@@ -307,7 +307,7 @@ return [
     '&_up'                                          =>  '& up',
     'reset_filter'                                  =>  'Reset Filter',
 
-    // Shop Cart 
+    // Shop Cart
     'shop_cart'                                     =>  'Selected Training Courses',
     'courses_in_cart'                               =>  'Courses in Cart',
     'courses_in_wishlist'                           =>  'Courses in Wishlist',
@@ -353,7 +353,7 @@ return [
     'of_courses'                                    =>  'of Courses',
     'txt_related_to_you'                            =>  'Related To You',
 
-    // instructor dashboard 
+    // instructor dashboard
     'instructor_courses'                            =>  'Instructor Courses',
     'edit_manage_your_courses_here'                 =>  'Edit and Manage Your Courses here',
     'edit_manage_your_course'                       =>  'Edit/Manage your Course',
@@ -363,7 +363,7 @@ return [
 
     'course_generators'                             =>  'Course Generators',
 
-    //generators Message 
+    //generators Message
     'Course Updated Successfully!'                  =>  'Course Updated Successfully!',
     'Price Updated Successfully!'                   =>  'Price Updated Successfully!',
     'PublishData Updated Successfully!'             =>  'PublishData Updated Successfully!',
@@ -390,7 +390,7 @@ return [
     'No Courses available in your cart'             =>  'No Courses available in your cart !',
     'Coupon is removed'                             =>  'Coupon is removed !',
 
-    //step1 : course Title 
+    //step1 : course Title
     'how_about_working_title'                       =>  'How About a Working Title?',
 
     'ex_learn_photoshop_cs6_from_scratch'           =>  'ex. Learn Photoshop Cs6 From Scratch',
@@ -400,11 +400,12 @@ return [
     'its_ok_if_you_cant_think_of_a_good_title_now_you_can_change_it_later'  =>  'It\'s ok if you can\'t think of a good title now. You can change it later.',
 
     'course_title'                                  =>  'Course title',
+    'event_title'                                  =>  'Event title',
     'in_language'                                   =>  'in',
     'ar'                                            =>  'Arabic',
     'en'                                            =>  'English',
 
-    // Step2 : Course Category title 
+    // Step2 : Course Category title
     'category_title'                                =>  'Category Title',
     'course_category_title'                         =>  'Course category title',
     'what_category_best_fits_the_knowledge_you_will_shire'                  =>  'What category best fits the knowledge you will shire',
@@ -419,8 +420,8 @@ return [
     'previous'                                      =>  'Previous',
     'next'                                          =>  'Next',
 
-    // Course Update Items 
-    //section 1 
+    // Course Update Items
+    //section 1
     'plan_your_course'                              =>  'Plan your course',
     'intended_learners'                             =>  'Course objectives',
     'target_groups_of_the_course'                   =>  'Target groups of the course',
@@ -458,7 +459,7 @@ return [
     'add_more_to_your_response'                     =>  'Add more to your response',
     'example:beginner_python_developers_curious_about_data_science' =>  'Example: Beginner python developers curious about data science',
 
-    //Intended validation 
+    //Intended validation
     'At least four objectives are required.'            =>  'At least one objective is required.',
     'The objective field is required.'                  =>  'The objective field is required.',
     'The objective must be a string.'                   =>  'The objective must be a string.',
@@ -518,7 +519,7 @@ return [
     'Save Lessons'                                      =>  'Save Lessons',
 
 
-    // Course Landing Page 
+    // Course Landing Page
     'Course Landing Page'                               =>  'Course Landing Page',
     'Course Landing Page Description'                   =>  'Your course landing page is crucial to your success on Jats. If it’s done right, it can also help you gain visibility in search engines like Google. As you complete this section, think about creating a compelling Course Landing Page that demonstrates why someone would want to enroll in your course. Learn more about creating your course landing page and course title standards.',
 
@@ -530,6 +531,7 @@ return [
 
 
     'Course subtitle'                                   =>  'Course subtitle',
+    'Event subtitle'                                   =>  'Event subtitle',
     'Insert your course subtitle.'                      =>  'Insert your course subtitle.',
     'Course subtitle tip.'                              =>  'Use 1 or 2 related keywords, and mention 3-4 of the most important areas that you\'ve covered during your course.',
 
@@ -570,18 +572,18 @@ return [
     'Update Data'                                       =>  'Update Data',
     'Save changes'                                      =>  'Save Changes',
 
-    // Pricing section 
+    // Pricing section
     'Pricing'                                           =>  'Pricing',
 
 
     // publish Data
     'Publish Data'                                      =>  'Publish Data',
 
-    //Evaluation 
+    //Evaluation
     'evaluation'                                        =>  'Evaluation',
     'evaluations'                                        =>  'Evaluations',
 
-    // Instructor Profile 
+    // Instructor Profile
     'instructor_profile_tab'                            =>  'Instructor Profile',
     'social_tab'                                        =>  'Social',
     'Username'                                          =>  'Username',
@@ -592,7 +594,7 @@ return [
     'Biography'                                         =>  'Biography',
     'Biography_tips'                                    =>  'To help learners learn more about you, your bio should reflect your Credibility, Empathy, Passion, and Personality. Your biography should have at least 50 words, links and coupon codes are not permitted.',
 
-    // Confirmation tab 
+    // Confirmation tab
     'Details Confirmation'                              =>  'Details Confirmation ',
     'Course Data Confirmed successfully'                =>  'Course Data Confirmed successfully',
     'Course Data Confirmed successfully tips'           =>  'All fields in which data must be entered have been verified in accordance with the rules applied to these fields',
@@ -613,11 +615,11 @@ return [
     'switch_to_instructor_dashboard_here'               =>  'Switch to the Instructor dashboard here - get back to the courses you’re teaching.',
 
 
-    // order 
+    // order
     'Kurima Bank'                                       =>  'Kurima Bank',
 
 
-    // request to teach 
+    // request to teach
     'Diploma'                                           =>  'Diploma',
     'Higher Diploma'                                    =>  'Higher Diploma',
     'Bachelor'                                          =>  'Bachelor',
@@ -626,7 +628,7 @@ return [
     'Professor'                                         =>  'Professor',
 
 
-    // ================ This is for courseLanding page 
+    // ================ This is for courseLanding page
     'title.required' => 'The title field is required.',
     'title.min' => 'The title must be at least :min characters.',
     'title.max' => 'The title may not be greater than :max characters.',

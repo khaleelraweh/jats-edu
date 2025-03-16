@@ -53,17 +53,17 @@ class EventRequest extends FormRequest
                         'tags.*'                =>  'required',
                         'featured'              =>  'required',
                         'images'                =>  'required',
-                        'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+                        'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp',
                         'views'                 =>  'nullable', // عدد مرات العرض
 
-                        // used always 
+                        // used always
                         'status'             =>  'required',
                         'published_on'       =>  'nullable',
                         'published_on_time'  =>  'nullable',
                         'created_by'         =>  'nullable',
                         'updated_by'         =>  'nullable',
                         'deleted_by'         =>  'nullable',
-                        // end of used always 
+                        // end of used always
                     ];
                 }
             case 'PUT':
@@ -89,17 +89,17 @@ class EventRequest extends FormRequest
                         'tags.*'                =>  'required',
                         'featured'              =>  'required',
                         'images'                =>  'nullable',
-                        'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+                        'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp',
                         'views'                 =>  'nullable', // عدد مرات العرض
 
-                        // used always 
+                        // used always
                         'status'             =>  'required',
                         'published_on'       =>  'nullable',
                         'published_on_time'  =>  'nullable',
                         'created_by'         =>  'nullable',
                         'updated_by'         =>  'nullable',
                         'deleted_by'         =>  'nullable',
-                        // end of used always 
+                        // end of used always
                     ];
                 }
 

@@ -73,7 +73,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="course_info-tab" data-bs-toggle="tab" data-bs-target="#course_info"
                             type="button" role="tab" aria-controls="course_info"
-                            aria-selected="true">{{ __('panel.course_info_tab') }}
+                            aria-selected="true">{{ __('panel.event_info_tab') }}
                         </button>
                     </li>
 
@@ -86,7 +86,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="course_objectives-tab" data-bs-toggle="tab"
                             data-bs-target="#course_objectives" type="button" role="tab"
-                            aria-controls="course_objectives" aria-selected="true">{{ __('panel.course_objectives_tab') }}
+                            aria-controls="course_objectives" aria-selected="true">{{ __('panel.event_objectives_tab') }}
                         </button>
                     </li>
 
@@ -94,7 +94,7 @@
                         <button class="nav-link" id="course_requirements-tab" data-bs-toggle="tab"
                             data-bs-target="#course_requirements" type="button" role="tab"
                             aria-controls="course_requirements"
-                            aria-selected="true">{{ __('panel.course_requirements_tab') }}
+                            aria-selected="true">{{ __('panel.event_requirements_tab') }}
                         </button>
                     </li>
 
@@ -135,7 +135,7 @@
                                     <div class="col-sm-12 pt-3">
                                         <div class="form-group">
                                             <label for="title">
-                                                {{ __('transf.course_title') }}
+                                                {{ __('transf.event_title') }}
                                             </label>
 
                                             <div class="input-group">
@@ -294,7 +294,7 @@
                         {{-- course type  --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="course_type">{{ __('panel.course_type') }}</label>
+                                <label for="course_type">{{ __('panel.event_type') }}</label>
                                 <select name="course_type" class="form-control">
                                     <option value="1"
                                         {{ old('course_type', $event->course_type) == '1' ? 'selected' : null }}>
@@ -312,7 +312,7 @@
 
                             </div>
                             <div class="col-sm-12 col-md-6 pt-4">
-                                <label for="category_id"> {{ __('panel.course_title') }}</label>
+                                <label for="category_id"> {{ __('panel.event_title') }}</label>
                                 <select name="course_category_id" class="form-control">
                                     <option value=""> {{ __('panel.main_category') }} __ </option>
                                     @forelse ($course_categories as $course_category)
@@ -418,7 +418,7 @@
                                     <tr class="pt-4">
                                         <th width="30px">{{ __('panel.act') }}</th>
                                         <th width="160px">{{ __('panel.type') }}</th>
-                                        <th>{{ __('panel.course_objectives') }}</th>
+                                        <th>{{ __('panel.event_objectives') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -432,7 +432,7 @@
                                                             class="fa fa-minus"></i></button>
                                                 @endif
                                             </td>
-                                            <td>{{ __('panel.course_objective') }} ({{ $index }})</td>
+                                            <td>{{ __('panel.event_objective') }} ({{ $index }})</td>
                                             <td>
                                                 <div class="input-group">
                                                     <input type="text" name="course_objective[{{ $index }}]"
@@ -488,7 +488,7 @@
                                                             class="fa fa-minus"></i></button>
                                                 @endif
                                             </td>
-                                            <td>{{ __('panel.course_requirement') }} ({{ $index }})</td>
+                                            <td>{{ __('panel.event_requirement') }} ({{ $index }})</td>
                                             <td>
                                                 <div class="input-group">
                                                     <input type="text" name="course_requirement[{{ $index }}]"
@@ -773,8 +773,8 @@
                 showUpload: false,
                 overwriteInitial: false,
                 // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
-                // delete images from photos and assets/products 
-                // because there are maybe more than one image we will go for each image and show them in the edit page 
+                // delete images from photos and assets/products
+                // because there are maybe more than one image we will go for each image and show them in the edit page
                 initialPreview: [
                     @if ($event->photos()->count() > 0)
                         @foreach ($event->photos as $media)
@@ -816,7 +816,7 @@
                 'picker'); // set startdate in the picker to the start date in the #start_date elemet
             $('#published_on').change(function() {
                 selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
+                selected_ci_date = now() // make selected start date in picker = start_date value
 
             });
 
@@ -824,7 +824,7 @@
                 clear: ''
             });
 
-            // deadline start 
+            // deadline start
             $('#deadline').pickadate({
                 format: 'yyyy-mm-dd',
                 //min: new Date(),
@@ -838,10 +838,10 @@
                 'picker'); // set startdate in the picker to the start date in the #start_date elemet
             $('#deadline').change(function() {
                 selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
+                selected_ci_date = now() // make selected start date in picker = start_date value
 
             });
-            //deadline end 
+            //deadline end
 
             // ===== start start_date and end_date field picker  =====//
             $('#start_date').pickadate({
@@ -856,7 +856,7 @@
             var startdate = $('#start_date').pickadate('picker');
             var enddate = $('#expire_date').pickadate('picker');
 
-            // when change date 
+            // when change date
             $('#start_date').change(function() {
                 selected_ci_date = "";
                 selected_ci_date = $('#start_date')
@@ -868,7 +868,7 @@
                     min_codate = "";
                     min_codate = new Date();
                     min_codate.setDate(cidate.getDate() +
-                        1); // minimum selected date to be expired shoud be current date plus one 
+                        1); // minimum selected date to be expired shoud be current date plus one
                     enddate.set('min', min_codate);
                 }
 
@@ -878,14 +878,14 @@
                 format: 'yyyy-mm-dd',
                 //min: new Date(),
                 selectMonths: true, // Creates a dropdoen to control month
-                selectYears: true, // Creates a dropdown to control month 
+                selectYears: true, // Creates a dropdown to control month
                 clear: 'Clear',
                 close: 'OK',
                 colseOnSelect: true // Close upon selecting a date ,
             });
             // end  start_date and end_date field picker
 
-            // start start_time and end_time field picker 
+            // start start_time and end_time field picker
             $('#start_time').pickatime({
                 clear: ''
             });
@@ -908,7 +908,7 @@
                 'picker'); // set startdate in the picker to the start date in the #publish_date elemet
 
 
-            // when change date 
+            // when change date
             $('#offer_ends').change(function() {
                 selected_ci_date = "";
                 selected_ci_date = $('#publish_date')
@@ -920,7 +920,7 @@
                     min_codate = "";
                     min_codate = new Date();
                     min_codate.setDate(cidate.getDate() +
-                        1); // minimum selected date to be expired shoud be current date plus one 
+                        1); // minimum selected date to be expired shoud be current date plus one
                     enddate.set('min', min_codate);
                 }
 
@@ -940,7 +940,7 @@
                 ]
             });
 
-            //select2: code to search in data 
+            //select2: code to search in data
             function matchStart(params, data) {
                 // If there are no search terms, return all of the data
                 if ($.trim(params.term) === '') {
@@ -1074,7 +1074,7 @@
                 var newRow = $('<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
-                    '<td>{{ __('panel.course_objective') }} (' + numberIncr + ')</td>' +
+                    '<td>{{ __('panel.event_objective') }} (' + numberIncr + ')</td>' +
                     '<td>' +
                     '<div class="input-group">' +
                     '<input type="text" name="course_objective[' + numberIncr +
@@ -1168,7 +1168,7 @@
                 var newRow = $('<tr class="cloning_row" id="' + numberIncr + '">' +
                     '<td>' +
                     '<button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
-                    '<td>{{ __('panel.course_requirement') }} (' + numberIncr + ')</td>' +
+                    '<td>{{ __('panel.event_requirement') }} (' + numberIncr + ')</td>' +
                     '<td>' +
                     '<div class="input-group">' +
                     '<input type="text" name="course_requirement[' + numberIncr +

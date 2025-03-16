@@ -317,7 +317,7 @@
 
             </div>
 
-            <div class="col-lg-4">
+            {{-- <div class="col-lg-4">
                 <!-- SIDEBAR -->
                 <div class="rounded border p-2 shadow mb-6">
                     <div class="pt-5 pb-4 px-5 px-lg-3 px-xl-5">
@@ -420,7 +420,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection

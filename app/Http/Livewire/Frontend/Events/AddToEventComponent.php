@@ -13,6 +13,8 @@ class AddToEventComponent extends Component
 
     public $courseId;
 
+
+
     protected $listeners = [
         'updateCartCount' => 'render'
     ];

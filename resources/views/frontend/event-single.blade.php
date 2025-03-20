@@ -419,12 +419,12 @@
 
                             @if ($event->price > 0)
                             @if ($event->price == $event->offer_price)
-                                @livewire('frontend.events.enroll-free-event-component', ['eventId' => $event->id])
+                                @livewire('frontend.events.enroll-free-event-component', ['courseId' => $event->id])
                             @else
-                                @livewire('frontend.events.add-to-event-component', ['eventId' => $event->id])
+                                @livewire('frontend.events.add-to-event-component', ['courseId' => $event->id])
                             @endif
                         @else
-                            @livewire('frontend.events.enroll-free-event-component', ['eventId' => $event->id])
+                            @livewire('frontend.events.enroll-free-event-component', ['courseId' => $event->id])
                         @endif
 
                         <div class="text-center">

@@ -317,15 +317,41 @@
 
             </div>
 
-            {{-- <div class="col-lg-4">
+            <div class="col-lg-4">
                 <!-- SIDEBAR -->
                 <div class="rounded border p-2 shadow mb-6">
                     <div class="pt-5 pb-4 px-5 px-lg-3 px-xl-5">
                         <div class="d-flex align-items-center mb-2">
-                            <ins class="h2 mb-0">$89.99</ins>
-                            <del class="ms-3">339.99</del>
-                            <div class="badge badge-lg badge-purple text-white ms-auto fw-normal">91%
-                                {{ __('transf.off') }}</div>
+                            @if ($event->offer_price > 0)
+                            @if ($event->offer_price == $event->price)
+                                <ins class="h3 mb-0">
+                                    {{ __('transf.free') }}
+                                </ins>
+                                <del class="ms-3">
+                                    {{ currency_converter($event->price) }}
+                                </del>
+                            @else
+                                <ins class="h3 mb-0">
+                                    {{ currency_converter($event->price - $event->offer_price) }}
+                                </ins>
+                                <del class="ms-3">
+                                    {{ currency_converter($event->price) }}
+                                </del>
+                            @endif
+
+                            <div class="badge badge-lg badge-purple text-white ms-auto fw-normal">
+                                {{ number_format(($event->offer_price / $event->price) * 100, 0, '.', ',') }}%
+                                {{ __('transf.off') }}
+                            </div>
+                        @else
+                            <ins class="h2 mb-0">
+                                @if ($event->price == 0)
+                                    {{ __('transf.free') }}
+                                @else
+                                    {{ currency_converter($event->price) }}
+                                @endif
+                            </ins>
+                        @endif
                         </div>
 
                         <div class="d-flex align-items-center text-alizarin mb-6">
@@ -354,7 +380,7 @@
                             <span class="ms-2">2 {{ __('transf.days left at this price!') }}</span>
                         </div>
 
-                        <ul class="list-group list-group-flush mb-6">
+                        {{-- <ul class="list-group list-group-flush mb-6">
                             <li class="list-group-item d-flex align-items-center py-3">
                                 <div class="text-secondary d-flex">
                                     <!-- Icon -->
@@ -389,7 +415,17 @@
                         </ul>
 
                         <button class="btn btn-primary btn-block mb-3" type="button"
-                            name="button">{{ __('transf.book_now') }}</button>
+                            name="button">{{ __('transf.book_now') }}</button> --}}
+
+                            @if ($event->price > 0)
+                            @if ($event->price == $event->offer_price)
+                                @livewire('frontend.courses.enroll-free-course-component', ['courseId' => $event->id])
+                            @else
+                                @livewire('frontend.courses.add-to-cart-component', ['courseId' => $event->id])
+                            @endif
+                        @else
+                            @livewire('frontend.courses.enroll-free-course-component', ['courseId' => $event->id])
+                        @endif
 
                         <div class="text-center">
                             <a href="{{ $whatsappShareUrl }}" target="_blank"
@@ -420,7 +456,7 @@
                     </div>
                 </div>
 
-            </div> --}}
+            </div>
         </div>
     </div>
 @endsection

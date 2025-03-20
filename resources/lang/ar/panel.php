@@ -642,7 +642,7 @@ return [
     'order_new_order'               =>  'طلب جديد',
     'order_paid'                    =>  'تم الدفع',
     'order_under_process'           =>  'تحت المعالجة',
-    'order_finished'                =>  'تم قبول من الطلب',
+    'order_finished'                =>  'تم قبول الطلب',
     'order_rejected'                =>  'مرفوض',
     'order_canceled'                =>  'الغيت',
     'order_refund_requested'        =>  'استرداد الطلب',

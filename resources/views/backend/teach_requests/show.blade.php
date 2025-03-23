@@ -342,12 +342,12 @@
                                                 @endphp
                                                 @if (in_array($identityExtension, $imageExtensions))
                                                     <!-- Display as an image -->
-                                                    <a href="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
-                                                        data-fancybox data-width="1400" data-height="900">
+                                                    <a href="#" data-toggle="modal" data-target="#identityModal2">
                                                         <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}"
                                                             class="img-fluid" alt="Identity Image"
                                                             style="width: 50px; height: 50px;">
                                                     </a>
+
                                                 @else
                                                     <!-- Display as a link (for PDF or Word) -->
                                                     <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->identity, PATHINFO_FILENAME)) }}"
@@ -508,6 +508,27 @@
                     </div>
                     <div class="modal-body">
                         <img src="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}" alt="Identity Image"
+                            class="img-fluid modal-image">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Identity image -->
+        <div class="modal fade" id="identityModal2" tabindex="-1" role="dialog" aria-labelledby="identityModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-custom" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="identityModalLabel">Identity Image</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}" alt="Identity Image"
                             class="img-fluid modal-image">
                     </div>
                     <div class="modal-footer">

@@ -507,7 +507,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <img src="{{ asset('assets/teach_requests/' . $teach_request->identity) }}" alt="Identity Image"
+                        <img src="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}" alt="Identity Image"
                             class="img-fluid modal-image">
                     </div>
                     <div class="modal-footer">

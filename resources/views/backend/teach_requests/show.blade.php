@@ -365,6 +365,33 @@
                                     <div class="col-sm-12 pt-3 col-md-4">
                                         <span class="biography ww"> {{ __('panel.the_biography') }} :</span>
                                         <span class="biography-value">
+
+
+                                            {{-- @if ($teach_request->biography && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
+                                                @php
+                                                    $biographyExtension = strtolower(
+                                                        pathinfo($teach_request->biography, PATHINFO_EXTENSION),
+                                                    );
+                                                @endphp
+                                                @if (in_array($biographyExtension, $imageExtensions))
+                                                    <!-- Display as an image -->
+                                                    <a href="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
+                                                        data-fancybox data-width="1400" data-height="900">
+                                                        <img src="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
+                                                            class="img-fluid" alt="Biography Image"
+                                                            style="width: 50px; height: 50px;">
+                                                    </a>
+                                                @else
+                                                    <!-- Display as a link (for PDF or Word) -->
+                                                    <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->biography, PATHINFO_FILENAME)) }}"
+                                                        target="_blank">
+                                                        {{ pathinfo($teach_request->biography, PATHINFO_FILENAME) }}
+                                                    </a>
+                                                @endif
+                                            @else
+                                                <p>No biography found.</p>
+                                            @endif --}}
+
                                             @if ($teach_request->biography && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
                                             @php
                                                 $biographyExtension = strtolower(

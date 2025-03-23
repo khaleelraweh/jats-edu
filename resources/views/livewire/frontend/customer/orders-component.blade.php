@@ -153,7 +153,7 @@
                                     <td>{{ $transaction->status($transaction->transaction) }}</td>
                                     <td>{{ $transaction->created_at->format('Y-m-d') }}</td>
                                     {{-- <td>{{ \Carbon\Carbon::now()->addDays(5)->diffInDays($transaction->created_at->format('Y-m-d')) }}</td> --}}
-                                    <td>
+                                    {{-- <td>
                                         @if (
                                             $loop->last &&
                                                 $transaction->transaction == \App\Models\OrderTransaction::FINISHED &&
@@ -165,7 +165,7 @@
                                                 {{ 5 - $transaction->created_at->diffInDays() }} days
                                             </button>
                                         @endif
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         @endif

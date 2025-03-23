@@ -188,7 +188,7 @@
                             justify-content: center;
                             text-align: center;
                             height: 50%;
-                         
+
                           ">
                                     <h1
                                         style="
@@ -205,8 +205,8 @@
                                 <div class="col-4">
                                     <input type="file" id="file-input"
                                         style="display: none;
-        
-                              
+
+
                               " />
                                     <div id="image-container" class="col-4">
 
@@ -366,29 +366,29 @@
                                         <span class="biography ww"> {{ __('panel.the_biography') }} :</span>
                                         <span class="biography-value">
                                             @if ($teach_request->biography && file_exists(public_path('assets/teach_requests/' . $teach_request->biography)))
-                                                @php
-                                                    $biographyExtension = strtolower(
-                                                        pathinfo($teach_request->biography, PATHINFO_EXTENSION),
-                                                    );
-                                                @endphp
-                                                @if (in_array($biographyExtension, $imageExtensions))
-                                                    <!-- Display as an image -->
-                                                    <a href="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
-                                                        data-fancybox data-width="1400" data-height="900">
-                                                        <img src="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
-                                                            class="img-fluid" alt="Biography Image"
-                                                            style="width: 50px; height: 50px;">
-                                                    </a>
-                                                @else
-                                                    <!-- Display as a link (for PDF or Word) -->
-                                                    <a href="{{ route('frontend.customer.teach_requests.view_file', pathinfo($teach_request->biography, PATHINFO_FILENAME)) }}"
-                                                        target="_blank">
-                                                        {{ pathinfo($teach_request->biography, PATHINFO_FILENAME) }}
-                                                    </a>
-                                                @endif
+                                            @php
+                                                $biographyExtension = strtolower(
+                                                    pathinfo($teach_request->biography, PATHINFO_EXTENSION),
+                                                );
+                                            @endphp
+                                            @if (in_array($biographyExtension, $imageExtensions))
+                                                <!-- Display as an image -->
+                                                <a href="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
+                                                    data-fancybox data-width="1400" data-height="900">
+                                                    <img src="{{ asset('assets/teach_requests/' . $teach_request->biography) }}"
+                                                        class="img-fluid" alt="biography Image"
+                                                        style="width: 50px; height: 50px;">
+                                                </a>
                                             @else
-                                                <p>No biography found.</p>
+                                                <!-- Display as a link (for PDF or Word) -->
+                                                <a href="{{ route('admin.view_file', pathinfo($teach_request->biography, PATHINFO_FILENAME)) }}"
+                                                    target="_blank">
+                                                    {{ pathinfo($teach_request->biography, PATHINFO_FILENAME) }}
+                                                </a>
                                             @endif
+                                        @else
+                                            <p>No biography found. </p>
+                                        @endif
                                         </span>
                                     </div>
 
@@ -446,7 +446,7 @@
           margin-top: auto;
        width: 75.5%;
           position: absolute
-        
+
                     ">
                         </div>
                         <div class="footer-content" style="margin-top: 10px;">

@@ -24,6 +24,10 @@
                 <div class="form-group">
                     <select name="sort_by" class="form-control">
                         {{-- <option value="">---</option> --}}
+                        <option value="published_on"
+                            {{ old('sort_by', request()->input('sort_by')) == 'published_on' ? 'selected' : '' }}>
+                            {{ __('panel.published_on') }}
+                        </option>
                         <option value="id"
                             {{ old('sort_by', request()->input('sort_by')) == 'id' ? 'selected' : '' }}>
                             {{ __('panel.id') }}
@@ -36,10 +40,7 @@
                             {{ old('sort_by', request()->input('sort_by')) == 'created_at' ? 'selected' : '' }}>
                             {{ __('panel.created_at') }}
                         </option>
-                        <option value="published_on"
-                            {{ old('sort_by', request()->input('sort_by')) == 'published_on' ? 'selected' : '' }}>
-                            {{ __('panel.published_on') }}
-                        </option>
+
 
                     </select>
                 </div>
@@ -48,14 +49,15 @@
                 <div class="form-group">
                     <select name="order_by" class="form-control">
                         {{-- <option value="">---</option> --}}
-                        <option value="asc"
-                            {{ old('order_by', request()->input('order_by')) == 'asc' ? 'selected' : '' }}>
-                            {{ __('panel.asc') }}
-                        </option>
                         <option value="desc"
                             {{ old('order_by', request()->input('order_by')) == 'desc' ? 'selected' : '' }}>
                             {{ __('panel.desc') }}
                         </option>
+                        <option value="asc"
+                            {{ old('order_by', request()->input('order_by')) == 'asc' ? 'selected' : '' }}>
+                            {{ __('panel.asc') }}
+                        </option>
+
                     </select>
                 </div>
             </div>

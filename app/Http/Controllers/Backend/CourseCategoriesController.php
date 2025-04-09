@@ -30,7 +30,8 @@ class CourseCategoriesController extends Controller
             ->when(\request()->status != null, function ($query) {
                 $query->where('status', \request()->status);
             })
-            ->orderBy(\request()->sort_by ?? 'created_at', \request()->order_by ?? 'desc')
+            // ->orderBy(\request()->sort_by ?? 'created_at', \request()->order_by ?? 'desc')
+            ->orderBy(\request()->sort_by ?? 'published_on', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
 
         return view('backend.course_categories.index', compact('categories'));

@@ -25,6 +25,7 @@ class OrderController extends Controller
             ->when(\request()->status != null, function ($query) {
                 $query->whereOrderStatus(\request()->status);
             })
+            ->withTrashed()
             ->orderBy(\request()->sort_by ?? 'id', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
 
@@ -49,13 +50,13 @@ class OrderController extends Controller
         //
     }
 
-    public function show(Order $order)
+    // public function show(Order $order)
+    public function show($orderID)
     {
         if (!auth()->user()->ability('admin', 'display_orders')) {
             return redirect('admin/index');
         }
-
-
+        $order = Order::withTrashed()->find($orderID);
         $order_status_array = [
             '0' =>  __('panel.order_new_order'),
             '1' =>  __('panel.order_paid'),
@@ -101,6 +102,12 @@ class OrderController extends Controller
         $customer = User::find($order->user_id);
 
         $order->update(['order_status' => $request->order_status]);
+
+        if($request->order_status>=4){
+            $order->update([
+                'deleted_at'=> now()
+            ]);
+        }
 
         $order->transactions()->create([
             'transaction' => $request->order_status,

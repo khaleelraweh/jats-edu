@@ -10,16 +10,17 @@
             })
             ->get();
 
-        $hasActiveEnrollment = $orders->contains('order_status', App\Models\Order::FINISHED);
+
+        $hasActiveEnrollment = $orders->contains('order_status', App\Models\Order::FINISHED); // 3
         $hasPendingEnrollment = $orders->contains(function ($order) {
             return in_array($order->order_status, [
-                App\Models\Order::PAYMENT_COMPLETED,
-                App\Models\Order::UNDER_PROCESS
+                App\Models\Order::PAYMENT_COMPLETED, // 1
+                App\Models\Order::UNDER_PROCESS // 2
             ]);
         });
         $hasRejectedEnrollment = $orders->contains(function ($order) {
             return in_array($order->order_status, [
-                App\Models\Order::REJECTED,
+                App\Models\Order::REJECTED, //4
                 App\Models\Order::CANCELED,
                 App\Models\Order::REFUNDED_REQUEST,
                 App\Models\Order::RETURNED,
@@ -27,6 +28,7 @@
             ]);
         });
     @endphp
+
 
     @if ($course->isInstructor($userId))
         <a href="{{ route('instructor.courses.edit', $course->id) }}"
@@ -66,6 +68,8 @@
                 <span class="ms-2"> {{ __('transf.This proccess may takes from 2 to 3 days !') }}</span>
             </div>
         @else
+
+
             {{-- User has no enrollment or has rejected enrollment (status 4-8) --}}
             @php
                 $duplicates = Cart::instance('default')->search(function ($cartItem, $rowId) use ($courseId) {
@@ -73,7 +77,10 @@
                 });
             @endphp
 
+
+
             @if ($duplicates->isNotEmpty())
+
                 <a href="{{ route('frontend.shop_cart') }}" class="btn btn-primary btn-block mb-3">
                     {{ __('transf.btn_go_to_cart') }}
                 </a>
@@ -81,6 +88,7 @@
                     class=" btn btn-teal btn-block text-white mb-3">{{ __('transf.btn_buy_now') }}</a>
             @else
                 {{-- Add to cart --}}
+
                 <button wire:click.prevent="addToCart()" class="btn btn-primary btn-block mb-3" type="button"
                     name="button">
                     {{ __('transf.btn_add_to_cart') }}

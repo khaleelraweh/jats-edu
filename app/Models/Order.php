@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Order extends Model
 {
-    use HasFactory, SearchableTrait;
+    use HasFactory, SearchableTrait,SoftDeletes;
 
     protected $guarded = [];
 
@@ -212,7 +214,7 @@ class Order extends Model
     //     return $result;
     // }
 
-    // To get the the order is finished 
+    // To get the the order is finished
     public function scopeFinished($query)
     {
         return $query->where('order_status', self::FINISHED);

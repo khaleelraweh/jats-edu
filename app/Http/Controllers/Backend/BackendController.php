@@ -53,7 +53,7 @@ class BackendController extends Controller
             $query->where('name', 'instructor');
         })->count();
 
-        // for courses 
+        // for courses
         $total_courses = Course::count();
         $total_new_courses = Course::query()->where('course_status', '=', 0)->count();
         $total_courses_completed = Course::query()->where('course_status', '=', 1)->count();
@@ -62,15 +62,17 @@ class BackendController extends Controller
         $total_courses_published = Course::query()->where('course_status', '=', 4)->count();
         $total_courses_rejected = Course::query()->where('course_status', '=', 5)->count();
 
-        $total_orders = Order::count();
-        $total_new_orders = Order::query()->where('order_status', '=', 0)->count();
-        $total_completed_orders = Order::query()->where('order_status', '=', 1)->count();
-        $total_under_proccess_orders = Order::query()->where('order_status', '=', 2)->count();
-        $total_finished_orders = Order::query()->where('order_status', '=', 3)->count();
-        $total_rejected_orders = Order::query()->where('order_status', '=', 4)->count();
-        $total_canceled_orders = Order::query()->where('order_status', '=', 5)->count();
+        // for orders
+        $total_orders = Order::withTrashed()->count();
+        // $total_new_orders = Order::query()->where('order_status', '=', 0)->count();
+        $total_new_orders = Order::withTrashed()->where('order_status', '=', 0)->count();
+        $total_completed_orders = Order::withTrashed()->where('order_status', '=', 1)->count();
+        $total_under_proccess_orders = Order::withTrashed()->where('order_status', '=', 2)->count();
+        $total_finished_orders = Order::withTrashed()->where('order_status', '=', 3)->count();
+        $total_rejected_orders = Order::withTrashed()->where('order_status', '=', 4)->count();
+        $total_canceled_orders = Order::withTrashed()->where('order_status', '=', 5)->count();
 
-        //end for courses 
+        //end for courses
 
         $total_company_requests = CompanyRequest::count();
 

@@ -205,7 +205,7 @@
                                 <label for="website"> {{ __('panel.website') }}</label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <input type="url" id="website" name="website" value="{{ old('website') }}"
+                                <input type="text" id="website" name="website" value="{{ old('website') }}"
                                     class="form-control">
                                 @error('website')
                                     <span class="text-danger">{{ $message }}</span>

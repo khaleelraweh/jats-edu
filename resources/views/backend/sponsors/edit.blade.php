@@ -157,7 +157,7 @@
                                 <label for="website"> {{ __('panel.website') }}</label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <input type="url" id="website" name="website"
+                                <input type="text" id="website" name="website"
                                     value="{{ old('website', $sponsor->website) }}" class="form-control">
                                 @error('website')
                                     <span class="text-danger">{{ $message }}</span>
@@ -374,10 +374,10 @@
             var publishedOn = $('#published_on').pickadate(
                 'picker'); // set startdate in the picker to the start date in the #start_date elemet
 
-            // when change date 
+            // when change date
             $('#published_on').change(function() {
                 selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
+                selected_ci_date = now() // make selected start date in picker = start_date value
 
             });
 

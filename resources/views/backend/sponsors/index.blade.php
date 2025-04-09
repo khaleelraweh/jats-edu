@@ -77,11 +77,11 @@
                                             <i class="fa fa-edit"></i>
                                         </a>
                                     @endability
-                                    <a href="javascript:void(0);" class="btn btn-success copyButton"
+                                    {{-- <a href="javascript:void(0);" class="btn btn-success copyButton"
                                         data-copy-text="{{ config('app.url') }}/sponsors/{{ $sponsor->slug }}" title="Copy the link">
                                         <i class="far fa-copy"></i>
                                     </a>
-                                    <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
+                                    <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span> --}}
 
                                     @ability('admin', 'delete_sponsors')
                                         <a href="javascript:void(0);"

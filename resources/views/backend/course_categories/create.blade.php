@@ -268,7 +268,7 @@
     <script>
         $(function() {
 
-            //Category image 
+            //Category image
             $("#category_image").fileinput({
                 theme: "fa5",
                 maxFileCount: 5,
@@ -291,7 +291,7 @@
             });
             var publishedOn = $('#published_on').pickadate(
                 'picker'); // set startdate in the picker to the start date in the #start_date elemet
-            // when change date 
+            // when change date
             $('#published_on').change(function() {
                 selected_ci_date = "";
                 selected_ci_date = $('#published_on').val();
@@ -311,7 +311,7 @@
 
 
 
-            //summernote for description 
+            //summernote for description
             $('.summernote').summernote({
                 tabSize: 2,
                 height: 150,

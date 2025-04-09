@@ -91,7 +91,7 @@
                                             التصنيف:
                                             {{$course->courseCategory->title}}
                                         </small>
-                                    </label class="text-muted">
+                                    </label>
                                 </td>
                                 <td>
 

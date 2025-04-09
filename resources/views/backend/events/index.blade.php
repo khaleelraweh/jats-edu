@@ -87,7 +87,16 @@
 
 
                                 </td>
-                                <td>{{ $event->title }}</td>
+                                <td>
+                                    {{ $event->title }}
+                                    <br>
+                                    <label class="bg-success text-white px-1 mt-2 rounded">
+                                        <small>
+                                            التصنيف:
+                                            {{$event->courseCategory->title}}
+                                        </small>
+                                    </label>
+                                </td>
                                 <td>{{ $event->price }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $event->created_by }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $event->views }}</td>

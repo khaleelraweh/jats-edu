@@ -133,11 +133,14 @@ class OrderController extends Controller
         ]);
     }
 
-    public function destroy(Order $order)
+    // public function destroy(Order $order)
+    public function destroy($orderId)
     {
         if (!auth()->user()->ability('admin', 'delete_orders')) {
             return redirect('admin/index');
         }
+
+        $order = Order::withTrashed()->find($orderId);
 
         $order->delete();
 

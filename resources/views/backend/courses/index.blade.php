@@ -83,7 +83,16 @@
                                         alt="{{ $course->title }}">
 
                                 </td>
-                                <td>{{ $course->title }}</td>
+                                <td>
+                                    {{ $course->title }}
+                                    <br>
+                                    <label class="bg-success text-white px-1 mt-2 rounded">
+                                        <small>
+                                            التصنيف:
+                                            {{$course->courseCategory->title}}
+                                        </small>
+                                    </label class="text-muted">
+                                </td>
                                 <td>
 
                                     @if ($course->offer_price > 0)

@@ -72,6 +72,29 @@
                                 {{-- البيانات الاساسية --}}
                                 <div class=" {{ $loop->index == 0 ? 'col-md-7' : '' }} col-sm-12 ">
 
+                                    @if ($loop->first)
+                                        <div class="row ">
+                                            <div class="col-sm-12 pt-3">
+                                                <div class="form-group">
+                                                    <label for="icon"> {{ __('panel.choose_icon') }} </label>
+
+                                                    <div class="input-group iconpicker-container ">
+                                                        <input data-placement="bottomRight"
+                                                            class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
+                                                            value="{{ old('fas fa-archive', $courseCategory->icon) }}" type="text" name="icon">
+                                                        <span class="input-group-addon btn btn-primary">
+                                                            <i class="fas fa-archive"></i>
+                                                        </span>
+                                                    </div>
+
+                                                    @error('icon')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+
                                     {{-- category name field --}}
                                     <div class="row ">
                                         <div class="col-sm-12 pt-3">
@@ -104,24 +127,7 @@
                                         </div>
                                     </div>
 
-                                    @if ($loop->first)
-                                        {{-- fontawesome code --}}
-                                        <div class="row ">
-                                            <div
-                                                class="col-sm-12 col-md-12 pt-4 {{ $loop->index == 0 ? 'col-md-5' : 'd-none' }}">
-                                                <div class="form-group">
-                                                    <label for="fas_code">FontAwesome Code </label>
-                                                    <input type="text" id="fas_code" name="fas_code"
-                                                        value="{{ old('fas_code', $courseCategory->fas_code) }}"
-                                                        class="form-control">
-                                                    @error('fas_code')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @else
-                                    @endif
+
 
 
                                 </div>
@@ -300,7 +306,7 @@
                 'picker'); // set startdate in the picker to the start date in the #start_date elemet
             $('#published_on').change(function() {
                 selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
+                selected_ci_date = now() // make selected start date in picker = start_date value
 
             });
 

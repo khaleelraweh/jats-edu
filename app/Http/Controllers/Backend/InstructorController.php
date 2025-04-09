@@ -31,6 +31,10 @@ class InstructorController extends Controller
             ->when(\request()->status != null, function ($query) {
                 $query->where('status', \request()->status);
             })
+            ->where('username', '!=', 'yaser')
+            ->when(\request()->country != null, function ($query) {
+                $query->where('country_name', \request()->country);
+            })
             ->orderBy(\request()->sort_by ?? 'id', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
 

@@ -59,7 +59,6 @@
 
             <div class="col-lg-12">
                 <div class="container">
-
                     <livewire:frontend.customer.orders-component />
                 </div>
             </div>

@@ -28,7 +28,7 @@ class PaymentController extends Controller
         return view('frontend.checkout');
     }
 
-    // online 
+    // online
     public function checkout_now(Request $request)
     {
         if ($request->paymentMethod == 'paypal') {
@@ -155,7 +155,8 @@ class PaymentController extends Controller
 
 
 
-                toast(__('panel.f_your_recent_payment_successful_with_refrence_code') . '4', 'success');
+                // toast(__('panel.f_your_recent_payment_successful_with_refrence_code') . '4', 'success');
+                toast(__('panel.f_your_recent_payment_successful_with_refrence_code') , 'success');
 
                 return redirect()->route('frontend.index');
             }
@@ -184,12 +185,12 @@ class PaymentController extends Controller
 
             // ================= Start to finish the order request automaticly ========================//
 
-            // start under  proccess 
+            // start under  proccess
             $order->update(['order_status' => Order::UNDER_PROCESS]);
             $transfaction->update(['transaction' => OrderTransaction::UNDER_PROCESS]);
-            // end under  proccess 
+            // end under  proccess
 
-            // Start finish 
+            // Start finish
             $order->update(['order_status' => Order::FINISHED]);
             $transfaction->update(['transaction' => OrderTransaction::FINISHED]);
             // End finish
@@ -263,12 +264,12 @@ class PaymentController extends Controller
 
         // ================= Start to finish the order request automaticly ========================//
 
-        // start under  proccess 
+        // start under  proccess
         $order->update(['order_status' => Order::UNDER_PROCESS]);
         $transfaction->update(['transaction' => OrderTransaction::UNDER_PROCESS]);
-        // end under  proccess 
+        // end under  proccess
 
-        // Start finish 
+        // Start finish
         $order->update(['order_status' => Order::FINISHED]);
         $transfaction->update(['transaction' => OrderTransaction::FINISHED]);
         // End finish

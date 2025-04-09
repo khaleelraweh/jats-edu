@@ -1461,7 +1461,8 @@ return [
 
     'f_reservesion_proccess_completed'                  =>  'The reservation process was completed successfully. Your request will be reviewed and a notification of the request status will be sent soon.',
 
-    'f_your_recent_payment_successful_with_refrence_code'    =>  'Your recent payment is successful with reference code : ',
+    // 'f_your_recent_payment_successful_with_refrence_code'    =>  'Your recent payment is successful with reference code : ',
+    'f_your_recent_payment_successful_with_refrence_code'    =>  'Your recent payment is successfully',
 
     'f_you_have_cancelled_your_order_payment'           => 'You have cancelled your order payment!',
 

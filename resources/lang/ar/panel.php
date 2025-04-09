@@ -1471,7 +1471,8 @@ return [
 
     'f_reservesion_proccess_completed'                  =>  'تمت عملية الحجز بنجاح , سيتم مراجعة طلبك و ارسال إشعار بحالة الطلب قريبا .',
 
-    'f_your_recent_payment_successful_with_refrence_code'    =>  'عملية الدفع الأخيرة التي قمت بها قد تمت بنجاح , رقم المرجع هو : ',
+    // 'f_your_recent_payment_successful_with_refrence_code'    =>  'عملية الدفع الأخيرة التي قمت بها قد تمت بنجاح , رقم المرجع هو : ',
+    'f_your_recent_payment_successful_with_refrence_code'    =>  'عملية الدفع الأخيرة التي قمت بها قد تمت بنجاح',
 
     'f_you_have_cancelled_your_order_payment'           => 'لقد قمت بالغاء عملية إتمام الشراء !',
 

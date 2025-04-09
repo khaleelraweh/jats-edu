@@ -93,11 +93,14 @@ class OrderController extends Controller
         //return view('backend.orders.edit',compact( 'order'));
     }
 
-    public function update(Request $request, Order $order)
+    // public function update(Request $request, Order $order)
+    public function update(Request $request,  $orderId)
     {
         if (!auth()->user()->ability('admin', 'update_orders')) {
             return redirect('admin/index');
         }
+
+        $order = Order::withTrashed()->find($orderId);
 
         $customer = User::find($order->user_id);
 

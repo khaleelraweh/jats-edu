@@ -317,7 +317,7 @@
                                     @if ($teach_request->user_image && file_exists(public_path('assets/teach_requests/' . $teach_request->user_image)))
                                         <a href="#" data-toggle="modal" data-target="#identityModal">
                                             <img src="{{ asset('assets/teach_requests/' . $teach_request->user_image) }}"
-                                                alt="User Image">
+                                                alt="User Image" style="width: 8em;height:8em;">
                                         </a>
                                     @else
                                         <img src="{{ asset('image/not_found/placeholder.jpg') }}" alt="User Image">

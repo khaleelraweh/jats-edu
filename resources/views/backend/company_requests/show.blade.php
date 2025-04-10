@@ -166,7 +166,7 @@
             }
         }
 
-        @media (max-width: 577px) {
+        @media (max-width: 768px) {
             .header-line {
                 margin-top: auto;
                 margin-bottom: 3rem;

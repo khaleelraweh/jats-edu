@@ -55,7 +55,7 @@
 
         .institute-subtitle-en {
             color: gold;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 700;
             margin: 0.25em 0 0;
         }

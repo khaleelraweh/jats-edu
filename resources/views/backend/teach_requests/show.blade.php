@@ -135,10 +135,10 @@
                             <div class="row">
                                 <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
                                     <h1 class="text-success m-0" style="
-        font-family: Times New Roman, sans-serif;">
+        font-family: Times New Roman, sans-serif;font-size:1em;font-weight:800;">
                                         معهد خطوة شباب</h1>
                                     <h3 class="text-warning" style="
-        font-family: Times New Roman, sans-serif;">
+        font-family: Times New Roman, sans-serif;font-size:0.6em;font-weight:700;">
                                         للتدريب واللغات</h3>
                                 </div>
                                 <div class="col-sm-4 d-flex align-items-center justify-content-center">

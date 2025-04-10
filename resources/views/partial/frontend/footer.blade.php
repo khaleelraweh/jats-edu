@@ -77,8 +77,10 @@
             <div class="col-12 col-md-4 col-lg-4">
 
                 <!-- Brand -->
-                <img src="{{ asset('frontend/assets/img/brand-coral.svg') }}" alt="..."
-                    class="footer-brand img-fluid mb-4 h-60p">
+                <a href="{{route('frontend.index')}}">
+                    <img src="{{ asset('frontend/assets/img/brand-coral.svg') }}" alt="..."
+                        class="footer-brand img-fluid mb-4 h-60p">
+                </a>
 
                 <!-- Text -->
                 <p class="text-gray-800 mb-4 font-size-sm-alone">

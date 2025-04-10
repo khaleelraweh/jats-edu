@@ -2,18 +2,76 @@
 
 @section('style')
     <style>
-        .outer {
-            font-family: Times New Roman, sans-serif;
-            color: black;
+        /* Base Styles */
+        body {
+            font-family: "Times New Roman", Times, serif;
+            color: #000;
         }
 
-        .header-line {
-            display: block;
+        .outer {
+            background-color: white;
+            padding: 1rem;
+        }
+
+        .inner {
+            border: 1px solid #777;
         }
 
         .ww {
             font-weight: bold;
-            font-size: 21px;
+            font-size: 1.1rem;
+        }
+
+        /* Header Styles */
+        .header-content {
+            padding: 1rem 0;
+        }
+
+        .institute-name {
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+
+        .institute-name-ar {
+            color: green;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .institute-subtitle-ar {
+            color: gold;
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .institute-name-en {
+            color: green;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .institute-subtitle-en {
+            color: gold;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin: 0.25em 0 0;
+        }
+
+        .logo-img {
+            width: 100%;
+            max-width: 250px;
+            padding-top: 10px;
+            z-index: 4;
+        }
+
+        /* Header Lines */
+        .header-line {
+            position: relative;
+            margin: -2rem 0 2.5rem;
+            z-index: 2;
         }
 
         .gold-line,
@@ -24,31 +82,106 @@
         .gold-line {
             background-color: gold;
             width: 99%;
-            margin: auto;
-            margin-bottom: 3px;
+            margin: 0 auto 3px;
         }
 
         .gray-line {
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
             background-color: whitesmoke;
         }
 
-        #image-container {
-            /* border: 1px solid gray; */
-            margin-right: 100px;
-            width: 50%;
-            height: 181px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
+        /* Main Content */
+        .main-section {
+            border: 6px double green;
+            font-size: 1rem;
+            padding: 1rem;
         }
-    </style>
 
-    <!-- Custom CSS -->
-    <style>
+        .form-title {
+            border: 4px solid green;
+            padding: 0.375em;
+            display: inline-block;
+            text-align: center;
+            margin: 1rem auto;
+        }
+
+        .form-title h1 {
+            margin: 0;
+            font-size: 1.2rem;
+            border: 1px solid green;
+            border-radius: 4px;
+            color: black;
+            padding: 0.2em;
+        }
+
+        /* Status Section */
+        .status-section {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer-line {
+            height: 3px;
+            background-color: green;
+            width: 100%;
+            margin: 2rem auto;
+        }
+
+        .footer-content {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Modal Styles */
         .modal-custom {
-            max-width: 100%;
+            max-width: 95%;
+            margin: 1rem auto;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 576px) {
+            .header-line {
+                margin-top: -2.5rem;
+                margin-bottom: 3rem;
+            }
+
+            .ww {
+                font-size: 1.2rem;
+            }
+
+            .main-section {
+                font-size: 1.1rem;
+            }
+
+            .form-title h1 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .ww {
+                font-size: 1.3rem;
+            }
+
+            .main-section {
+                font-size: 1.2rem;
+            }
+
+            .form-title h1 {
+                font-size: 1.4rem;
+            }
+
+            .modal-custom {
+                max-width: 80%;
+            }
         }
 
         @media (min-width: 992px) {
@@ -57,27 +190,25 @@
             }
         }
 
-        .modal-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+        @media (min-width: 1200px) {
+            .ww {
+                font-size: 1.4rem;
+            }
+
+            .main-section {
+                font-size: 1.3rem;
+            }
         }
     </style>
 @endsection
 
 @section('content')
-    {{-- first section --}}
     <div class="card shadow mb-4">
-
-        {{-- breadcrumb part  --}}
+        {{-- breadcrumb part --}}
         <div class="card-header py-3 d-flex flex-column flex-sm-row justify-content-between">
-
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{-- {{ __('transf.Course Landing Page') }} --}}
                     {{ __('panel.show_company_requests') }}
                 </h3>
                 <ul class="breadcrumb">
@@ -97,10 +228,8 @@
                 </ul>
             </div>
 
-
             <div class="ml-auto mt-3 mt-sm-0">
-                <form action="{{ route('admin.company_requests.update_company_requests_status', $company_request->id) }}"
-                    method="post">
+                <form action="{{ route('admin.company_requests.update_company_requests_status', $company_request->id) }}" method="post">
                     @csrf
                     @method('PUT')
                     <div class="form-row align-items-center">
@@ -111,194 +240,119 @@
                             </div>
                             <select name="status" style="outline-style:none;" onchange="this.form.submit()"
                                 class="form-control">
-
-
                                 <option value=""> {{ __('panel.course_choose_appropriate_event') }} </option>
                                 @foreach ($company_request_status_array as $key => $value)
                                     <option value="{{ $key }}"> {{ $value }}</option>
                                 @endforeach
-
                             </select>
                         </div>
-
                     </div>
                 </form>
             </div>
         </div>
 
-
-        <div class="outer bg-white p-4">
-            <div class="inner" style="border: 1px solid #777777">
+        <div class="outer">
+            <div class="inner">
                 <header>
                     <div class="row">
-                        <div class="col-sm-10 offset-1 bg-white">
-                            <div class="row">
-                                <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
-                                    <h1 class="text-success m-0" style="
-        font-family: Times New Roman, sans-serif;">
-                                        معهد خطوة شباب</h1>
-                                    <h3 class="text-warning" style="
-        font-family: Times New Roman, sans-serif;">
-                                        للتدريب واللغات</h3>
+                        <div class="col-12 col-sm-10 offset-sm-1 bg-white">
+                            <div class="row align-items-center header-content">
+                                <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
+                                    <h1 class="institute-name-ar">معهد خطوة شباب</h1>
+                                    <h3 class="institute-subtitle-ar">للتدريب واللغات</h3>
                                 </div>
-                                <div class="col-sm-4 d-flex align-items-center justify-content-center">
-                                    <img style="width: 250px; padding-top: 10px; z-index: 4"
-                                        src="{{ asset('backend/images/logo.jpg') }}" alt="" />
+                                <div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
+                                    <img class="logo-img" src="{{ asset('backend/images/logo.jpg') }}" alt="Institute Logo" />
                                 </div>
-                                <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
-                                    <h1 class="text-success m-0" style="
-        font-family: Times New Roman, sans-serif;">
-                                        Youth Step Institute</h1>
-                                    <h3 class="text-warning" style=" font-family: Times New Roman, sans-serif;">For Training
-                                        &
-                                        Languages
-                                    </h3>
+                                <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
+                                    <h1 class="institute-name-en">Youth Step Institute</h1>
+                                    <h3 class="institute-subtitle-en">For Training & Languages</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="header-line"
-                        style="
-                      position: relative;
-                      margin-top: -40px;
-                      margin-bottom: 45px;
-                      z-index: 2;
-                    ">
+                    <div class="header-line">
                         <div class="gold-line"></div>
                         <div class="gray-line"></div>
                     </div>
                 </header>
 
-                <div class="section px-5 pb-3">
-                    <div class="row" style="border: 6px double green; font-size: 19px">
-                        <div class="col-sm-12 bg-white p-3">
-                            <div class="row pt-4">
-                                <div class="col-4 p-4">
-                                    <span><span class="ww">تاريخ الطلب :</span>
-                                        {{ $company_request->created_at->format('Y/m/d') }}
-                                    </span>
+                <div class="section px-3 px-sm-5 pb-3">
+                    <div class="main-section">
+                        <div class="row">
+                            <div class="col-12 col-md-4 p-2 p-sm-4">
+                                <span class="ww">تاريخ الطلب :</span>
+                                <span>{{ $company_request->created_at->format('Y/m/d') }}</span>
+                            </div>
+                            <div class="col-12 col-md-4 p-2 text-center">
+                                <div class="form-title">
+                                    <h1>استمارة طلب تدريب لشركة</h1>
                                 </div>
-                                <div class="col-4 p-2 text-center" style="border: 4px solid green;">
-                                    <h1 class="m-0 fs-2 p-2"
-                                        style="border: 1px solid green;border-radius: 4px;color:black;">
-                                        استمارة طلب تدريب لشركة
-                                    </h1>
-                                </div>
-                                <div class="col-4 p-4">
-                                    <p class="text-center p-0 m-0">
-                                        <span class="me-2 ww">حالة الطلب : </span>
-                                        {{ $company_request->status() }}
-                                    </p>
-                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 p-2 p-sm-4 status-section">
+                                <span class="ww me-2">حالة الطلب :</span>
+                                <span>{{ $company_request->status() }}</span>
+                            </div>
+                        </div>
 
-                                <div class="row">
-                                    <div class="col-sm-12 pt-5">
-                                        <span class="arabic-name ww">
-                                            إسم مقدم الطلب :
-                                        </span>
-                                        <span class="arabic-name-value">{{ $company_request->cp_user_name }}</span>
-                                    </div>
-                                </div>
+                        <div class="row">
+                            <div class="col-12 pt-3 pt-sm-5">
+                                <span class="ww">إسم مقدم الطلب :</span>
+                                <span>{{ $company_request->cp_user_name }}</span>
+                            </div>
+                        </div>
 
+                        <div class="row">
+                            <div class="col-12 col-md-6 pt-3">
+                                <span class="ww">البريد الإلكتروني :</span>
+                                <span>{{ $company_request->cp_user_email }}</span>
+                            </div>
+                            <div class="col-12 col-md-6 pt-3">
+                                <span class="ww">رقم الجوال :</span>
+                                <span>{{ $company_request->cp_user_phone }}</span>
+                            </div>
+                        </div>
 
+                        <div class="row">
+                            <div class="col-12 pt-3">
+                                <hr>
+                            </div>
+                        </div>
 
-                                <div class="row">
-                                    <div class="col-sm-12 pt-3 col-md-6">
-                                        <span class="date-of-birth ww"> البريد الإلكتروني : </span>
-                                        <span class="date-of-birth-value">
-                                            {{ $company_request->cp_user_email }}
-                                        </span>
-                                    </div>
-                                    <div class="col-sm-12 pt-3 col-md-6">
-                                        <span class="place-of-birth ww"> رقم الجوال : </span>
-                                        <span class="place-of-birth-value">{{ $company_request->cp_user_phone }}</span>
-                                    </div>
+                        <div class="row">
+                            <div class="col-12 pt-3">
+                                <span class="ww">إسم الشركة :</span>
+                                <span>{{ $company_request->cp_company_name }}</span>
+                            </div>
+                        </div>
 
-                                </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6 pt-3">
+                                <span class="ww">المسمي الوظيفي :</span>
+                                <span>{{ $company_request->cp_job_title }}</span>
+                            </div>
+                            <div class="col-12 col-md-6 pt-3">
+                                <span class="ww">حجم الشركة :</span>
+                                <span>{{ $company_request->cp_company_size }} شخص</span>
+                            </div>
+                        </div>
 
-                                <div class="row">
-                                    <div class="col-sm-12 pt-3">
-                                        <hr>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12  col-md-12 pt-3">
-                                        <span class="residence-address ww">
-                                            إسم الشركة :
-                                        </span>
-                                        <span class="residence-address-value">
-                                            {{ $company_request->cp_company_name }}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-6 pt-3">
-                                        <span class="residence-address ww">
-                                            المسمي الوظيفي :
-                                        </span>
-                                        <span class="residence-address-value">
-                                            {{ $company_request->cp_job_title }}
-                                        </span>
-                                    </div>
-                                    <div class="col-sm-12  col-md-6 pt-3">
-                                        <span class="educational_qualification ww">
-                                            حجم الشركة :
-                                        </span>
-                                        <span
-                                            class="educational-qualification-value">{{ $company_request->cp_company_size }}
-                                            شخص</span>
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-sm-12 pt-3 col-md-6">
-                                        <span class="specialization ww ">الدولة : </span>
-                                        <span class="specialization-value"> {{ $company_request->country->name }} (
-                                            {{ $company_request->country->name_native }} )
-                                        </span>
-                                    </div>
-                                    <div class="col-sm-12 pt-3 col-md-6">
-                                        <span class="years_of_training_experience ww">
-                                            المدينة :
-                                        </span>
-                                        <span class="years_of_training_experience-value">
-                                            {{ $company_request->cp_company_city }} </span>
-                                    </div>
-                                </div>
-
-
-
-
+                        <div class="row">
+                            <div class="col-12 col-md-6 pt-3">
+                                <span class="ww">الدولة :</span>
+                                <span>{{ $company_request->country->name }} ({{ $company_request->country->name_native }})</span>
+                            </div>
+                            <div class="col-12 col-md-6 pt-3">
+                                <span class="ww">المدينة :</span>
+                                <span>{{ $company_request->cp_company_city }}</span>
                             </div>
                         </div>
                     </div>
 
-                    <footer class="d-flex justify-content-center" style="text-align: center;margin-top: 50px;">
-                        <div class="footer-line"
-                            style="
-            height: 3px;
-          background-color: green;
-          margin-bottom: 20px;
-          margin-left: 20px;
-          margin-right: 20px;
-          margin-top: auto;
-       width: 75.5%;
-          position: absolute
-        
-                    ">
-                        </div>
-                        <div class="footer-content" style="margin-top: 10px;">
-                            {{-- <div class="footer-item">
-                                <i class="fa fa-home"></i>
-                                <span>محافظة عدن-المنصورة-شارع القصر-فوق انيس فون</span>
-                            </div> --}}
-                            {{-- <div class="footer-item">
-                                <i class="fa fa-phone"></i>
-                                <span> 02-350347 \ 734208108</span>
-                            </div> --}}
+                    <footer class="text-center mt-5">
+                        <div class="footer-line"></div>
+                        <div class="footer-content">
                             <div class="footer-item">
                                 <i class="fa fa-phone"></i>
                                 <span>
@@ -311,7 +365,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Modal Identity image -->
         <div class="modal fade" id="identityModal" tabindex="-1" role="dialog" aria-labelledby="identityModalLabel"
@@ -326,7 +379,7 @@
                     </div>
                     <div class="modal-body">
                         <img src="{{ asset('assets/company_requests/' . $company_request->identity) }}"
-                            alt="Identity Image" class="img-fluid modal-image">
+                            alt="Identity Image" class="modal-image">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -334,7 +387,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 @endsection
 

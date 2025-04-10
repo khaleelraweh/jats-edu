@@ -11,7 +11,7 @@
             display: block;
         }
 
-        @media (min-width: 769px) {
+        @media (min-width: 560px) {
             .header-line {
                 position: relative;
                 margin-top: -40px;

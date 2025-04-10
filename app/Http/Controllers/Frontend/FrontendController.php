@@ -45,6 +45,7 @@ class FrontendController extends Controller
         $instructors = User::whereHas('roles', function ($query) {
             $query->where('name', 'instructor');
         })
+            ->where('username', '!=', 'yaser')
             ->active()
             ->inRandomOrder()
             ->take(10)

@@ -13,11 +13,11 @@ class PolicyPrivacyController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability(['admin','supervisor'], 'manage_support_menus , show_support_menus')) {
+        if (!auth()->user()->ability(['admin','supervisor'], 'manage_policy_privacy_menus , show_policy_privacy_menus')) {
             return redirect('admin/index');
         }
 
-        $support_menus = WebMenu::query()->where('section', 5)
+        $policy_privacy_menus = WebMenu::query()->where('section', 6)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -27,12 +27,12 @@ class PolicyPrivacyController extends Controller
             ->orderBy(\request()->sort_by ?? 'published_on', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
 
-        return view('backend.support_menus.index', compact('support_menus'));
+        return view('backend.policy_privacy_menus.index', compact('policy_privacy_menus'));
     }
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_support_menus')) {
+        if (!auth()->user()->ability('admin', 'create_policy_privacy_menus')) {
             return redirect('admin/index');
         }
 
@@ -41,7 +41,7 @@ class PolicyPrivacyController extends Controller
 
     public function store(SupportMenuRequest $request)
     {
-        if (!auth()->user()->ability('admin', 'create_support_menus')) {
+        if (!auth()->user()->ability('admin', 'create_policy_privacy_menus')) {
             return redirect('admin/index');
         }
 
@@ -77,7 +77,7 @@ class PolicyPrivacyController extends Controller
 
     public function show($id)
     {
-        if (!auth()->user()->ability('admin', 'display_support_menus')) {
+        if (!auth()->user()->ability('admin', 'display_policy_privacy_menus')) {
             return redirect('admin/index');
         }
         return view('backend.support_menus.show');
@@ -86,7 +86,7 @@ class PolicyPrivacyController extends Controller
 
     public function edit($supportMenu)
     {
-        if (!auth()->user()->ability('admin', 'update_support_menus')) {
+        if (!auth()->user()->ability('admin', 'update_policy_privacy_menus')) {
             return redirect('admin/index');
         }
 
@@ -97,7 +97,7 @@ class PolicyPrivacyController extends Controller
 
     public function update(SupportMenuRequest $request,  $supportMenu)
     {
-        if (!auth()->user()->ability('admin', 'update_support_menus')) {
+        if (!auth()->user()->ability('admin', 'update_policy_privacy_menus')) {
             return redirect('admin/index');
         }
 
@@ -133,7 +133,7 @@ class PolicyPrivacyController extends Controller
     public function destroy($supportMenu)
     {
 
-        if (!auth()->user()->ability('admin', 'delete_support_menus')) {
+        if (!auth()->user()->ability('admin', 'delete_policy_privacy_menus')) {
             return redirect('admin/index');
         }
 

@@ -9,7 +9,7 @@
                     <div class="card-naving">
                         <h3 class="font-weight-bold text-primary">
                             <i class="fa fa-folder"></i>
-                            {{ __('panel.manage_support_menus') }}
+                            {{ __('panel.manage_policy_privacy_menus') }}
                         </h3>
                         <ul class="breadcrumb">
                             <li>
@@ -21,13 +21,13 @@
                                 @endif
                             </li>
                             <li>
-                                {{ __('panel.show_support_menus') }}
+                                {{ __('panel.show_policy_privacy_menus') }}
                             </li>
                         </ul>
                     </div>
                     <div class="ml-auto">
-                        @ability('admin', 'create_support_menus')
-                            <a href="{{ route('admin.support_menus.create') }}" class="btn btn-primary">
+                        @ability('admin', 'create_policy_privacy_menus')
+                            <a href="{{ route('admin.policy_privacy_menus.create') }}" class="btn btn-primary">
                                 <span class="icon text-white-50">
                                     <i class="fa fa-plus-square"></i>
                                 </span>
@@ -40,7 +40,7 @@
                 <div class="card-body">
 
                     {{-- filter form part  --}}
-                    @include('backend.support_menus.filter.filter')
+                    @include('backend.policy_privacy_menus.filter.filter')
 
                     {{-- table part --}}
                     <div class="table-responsive">
@@ -56,7 +56,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($support_menus as $menu)
+                                @forelse ($policy_privacy_menus as $menu)
                                     <tr>
                                         <td>
                                             {{ $menu->title }}
@@ -77,13 +77,13 @@
                                         <td class="d-none d-sm-table-cell">{{ $menu->created_at }}</td>
                                         <td>
                                             <div class="btn-group btn-group-sm">
-                                                @ability('admin', 'update_support_menus')
-                                                    <a href="{{ route('admin.support_menus.edit', $menu->id) }}"
+                                                @ability('admin', 'update_policy_privacy_menus')
+                                                    <a href="{{ route('admin.policy_privacy_menus.edit', $menu->id) }}"
                                                         class="btn btn-primary">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                 @endability
-                                                @ability('admin', 'delete_support_menus')
+                                                @ability('admin', 'delete_policy_privacy_menus')
                                                     <a href="javascript:void(0);"
                                                         onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-category-{{ $menu->id }}').submit();}else{return false;}"
                                                         class="btn btn-danger">
@@ -91,7 +91,7 @@
                                                     </a>
                                                 @endability
                                             </div>
-                                            <form action="{{ route('admin.support_menus.destroy', $menu->id) }}"
+                                            <form action="{{ route('admin.policy_privacy_menus.destroy', $menu->id) }}"
                                                 method="post" class="d-none"
                                                 id="delete-product-category-{{ $menu->id }}">
                                                 @csrf
@@ -111,7 +111,7 @@
                             <tr>
                                 <td colspan="6">
                                     <div class="float-right">
-                                        {!! $support_menus->appends(request()->all())->links() !!}
+                                        {!! $policy_privacy_menus->appends(request()->all())->links() !!}
                                     </div>
                                 </td>
                             </tr>

@@ -148,10 +148,10 @@
 
         /* Responsive Adjustments */
         @media (min-width: 576px) {
-            .header-line {
+            /* .header-line {
                 margin-top: -2.5rem;
                 margin-bottom: 3rem;
-            }
+            } */
 
             .ww {
                 font-size: 1.2rem;

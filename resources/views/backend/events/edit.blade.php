@@ -164,7 +164,7 @@
                                             <div class="input-group">
                                                 <input type="text" name="subtitle" id="subtitle"
                                                     value="{{ old('subtitle', $event->subtitle) }}" class="form-control"
-                                                    maxlength="60">
+                                                    maxlength="120">
                                                 <span class="input-group-text" id="charCountSubtitle">120</span>
                                             </div>
 

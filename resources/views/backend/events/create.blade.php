@@ -160,7 +160,7 @@
                                             </label>
                                             <div class="input-group">
                                                 <input type="text" name="subtitle" id="subtitle"
-                                                    value="{{ old('subtitle') }}" class="form-control" maxlength="60">
+                                                    value="{{ old('subtitle') }}" class="form-control" maxlength="120">
                                                 <span class="input-group-text" id="charCountSubtitle">120</span>
                                             </div>
 

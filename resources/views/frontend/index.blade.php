@@ -35,9 +35,10 @@
     {{--  d-none --}}
     @include('frontend.home.testimonial')
 
-    @include('frontend.home.events')
+    @include('frontend.home.events') <!-- البرامج التدريبية -->
 
-    @include('frontend.home.blog')
+    @include('frontend.home.blog') <!-- الاخبار -->
+
 
     @include('frontend.home.instructors')
 

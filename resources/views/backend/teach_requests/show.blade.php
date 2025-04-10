@@ -11,6 +11,14 @@
             display: block;
         }
 
+        @media (min-width: 769px) {
+            .header-line {
+                position: relative;
+                margin-top: -40px;
+                margin-bottom: 45px;
+            }
+        }
+
         .ww {
             font-weight: bold;
             font-size: 21px;
@@ -160,9 +168,7 @@
 
                     <div class="header-line"
                         style="
-                      position: relative;
-                      margin-top: -40px;
-                      margin-bottom: 45px;
+
                       z-index: 2;
                     ">
                         <div class="gold-line"></div>

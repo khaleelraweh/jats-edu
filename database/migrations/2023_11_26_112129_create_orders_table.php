@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('bankReceipt')->nullable();
 
             $table->unsignedTinyInteger('order_status')->default(0);
+            $table->dateTime('deleted_at')->nullable();
             $table->timestamps();
         });
     }

@@ -30,7 +30,8 @@
                         {{ __('panel.for_registration_or_inquiries_you_can_contact_us_via') }}
                     </span>
                     <br> {{ __('panel.whatsApp') }} :
-                    <span class="ltr">00967777282953</span>
+                    {{-- <span class="ltr">00967777282953</span> --}}
+                    <span class="ltr">{{$siteSettings['site_phone']->value}}</span>
                 </div>
                 <div class="part2">
                     <i class="fab fa-whatsapp fa-2x bi flex-shrink-0 me-2" width="30" height="30" role="img"
@@ -47,7 +48,9 @@
 
     <div class="alert alert-primary alert-dismissible fade show my-wrapper d-block d-md-none" role="alert">
 
-        <a href="https://api.whatsapp.com/send?phone=967777282953&text=هل يمكنك المساعدة" class="d-block text-white"
+        {{-- <a href="https://api.whatsapp.com/send?phone=967777282953&text=هل يمكنك المساعدة" class="d-block text-white"
+            target="_blank"> --}}
+        <a href="https://api.whatsapp.com/send?phone=967{{$siteSettings['site_phone']->value}}&text=هل يمكنك المساعدة" class="d-block text-white"
             target="_blank">
             <div class="alert-body d-flex justify-content-between align-items-center">
 

@@ -3,8 +3,11 @@
     <div class="container mb-6 mb-xl-8 z-index-2">
         <div class="d-lg-flex align-items-center mb-6 mb-xl-0">
 
-            <p class="mb-lg-0">{{ __('transf.txt_we_found') }} <span class="text-dark">{{ $courses->total() }}
-                    {{ __('transf.courses') }}</span>
+            <p class="mb-lg-0">{{ __('transf.txt_we_found') }} <span class="text-dark">
+                {{ $courses->total() }}
+                {{__('transf.of')}}
+                {{ __('transf.courses') }}
+            </span>
                 {{ __('transf.txt_available_for_you') }}
             </p>
             <div class="ms-lg-auto d-lg-flex flex-wrap">

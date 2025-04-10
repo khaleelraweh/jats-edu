@@ -217,6 +217,7 @@ return [
     'our_speakers'                                      =>  'المتحدثون',
     'book_now'                                          =>  'احجز الان',
     'off'                                               =>  'خصم',
+    'of'                                                =>  'من',
     'days left at this price!'                           =>  ' أيام مضت على هذا السعر!',
     'total_slot'                                        =>  'التكلفة الإجمالية',
     'booked_slot'                                       =>  'تكلفة الحجز',

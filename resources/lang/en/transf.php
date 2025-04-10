@@ -216,6 +216,7 @@ return [
     'our_speakers'                                      =>  'Our Speakers',
     'book_now'                                          =>  'BOOK NOW',
     'off'                                               =>  'Off',
+    'of'                                                =>  'Of',
     'days left at this price!'                          =>  'days left at this price!',
     'total_slot'                                        =>  'Total Slot',
     'booked_slot'                                       =>  'Booked Slot',

@@ -364,6 +364,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('posts/remove-image', [PostController::class, 'remove_image'])->name('posts.remove_image');
         Route::resource('posts', PostController::class);
 
+        Route::resource('settings', SiteSettingsController::class);
+
+
+
         // ==============   Site Setting  Tab   ==============  //
         Route::get('site_setting/site_infos', [SiteSettingsController::class, 'show_main_informations'])->name('settings.site_main_infos.show');
         Route::post('site_setting/update_site_info/{id?}', [SiteSettingsController::class, 'update_main_informations'])->name('settings.site_main_infos.update');

@@ -150,21 +150,37 @@ class SupervisorController extends Controller
         $input['updated_by'] = auth()->user()->full_name;
 
 
+        // if ($image = $request->file('user_image')) {
+
+        //     if ($supervisor->user_image != null && File::exists('assets/users/' . $supervisor->user_image)) {
+        //         unlink('assets/users/' . $supervisor->user_image);
+        //     }
+
+        //     $manager = new ImageManager(new Driver());
+        //     $file_name = Str::slug($request->username) . '_' . time() .  "." . $image->getClientOriginalExtension();
+        //     $img = $manager->read($request->file('user_image'));
+        //     // $img = $img->resize(370, 246);
+        //     $img->toJpeg(80)->save(base_path('public/assets/users/' . $file_name));
+
+
+        //     $input['user_image'] = $file_name;
+        // }
+
+
         if ($image = $request->file('user_image')) {
 
             if ($supervisor->user_image != null && File::exists('assets/users/' . $supervisor->user_image)) {
                 unlink('assets/users/' . $supervisor->user_image);
             }
 
-            $manager = new ImageManager(new Driver());
             $file_name = Str::slug($request->username) . '_' . time() .  "." . $image->getClientOriginalExtension();
-            $img = $manager->read($request->file('user_image'));
-            // $img = $img->resize(370, 246);
-            $img->toJpeg(80)->save(base_path('public/assets/users/' . $file_name));
 
+            $path = public_path('assets/users/' . $file_name);
+            Image::make($image->getRealPath())->save($path);
 
             $input['user_image'] = $file_name;
         }
+
 
         $supervisor->update($input);
 

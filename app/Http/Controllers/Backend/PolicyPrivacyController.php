@@ -95,19 +95,19 @@ class PolicyPrivacyController extends Controller
         return view('backend.policy_privacy_menus.edit', compact('policyPrivacyMenu'));
     }
 
-    public function update(SupportMenuRequest $request,  $supportMenu)
+    public function update(SupportMenuRequest $request,  $policyPrivacyMenu)
     {
         if (!auth()->user()->ability('admin', 'update_policy_privacy_menus')) {
             return redirect('admin/index');
         }
 
-        $supportMenu = WebMenu::where('id', $supportMenu)->first();
+        $policyPrivacyMenu = WebMenu::where('id', $policyPrivacyMenu)->first();
 
         $input['title']     = $request->title;
         $input['link']      = $request->link;
         $input['icon']      = $request->icon;
         // $input['section']    = $request->section;
-        $input['section']       = 5;
+        $input['section']       = 6;
 
         $input['status']    =   $request->status;
         $input['updated_by'] =   auth()->user()->full_name;
@@ -115,9 +115,9 @@ class PolicyPrivacyController extends Controller
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        $supportMenu->update($input);
+        $policyPrivacyMenu->update($input);
 
-        if ($supportMenu) {
+        if ($policyPrivacyMenu) {
             return redirect()->route('admin.policy_privacy_menus.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -130,18 +130,18 @@ class PolicyPrivacyController extends Controller
         ]);
     }
 
-    public function destroy($supportMenu)
+    public function destroy($policyPrivacyMenu)
     {
 
         if (!auth()->user()->ability('admin', 'delete_policy_privacy_menus')) {
             return redirect('admin/index');
         }
 
-        $supportMenu = WebMenu::where('id', $supportMenu)->first();
+        $policyPrivacyMenu = WebMenu::where('id', $policyPrivacyMenu)->first();
 
-        $supportMenu->delete();
+        $policyPrivacyMenu->delete();
 
-        if ($supportMenu) {
+        if ($policyPrivacyMenu) {
             return redirect()->route('admin.policy_privacy_menus.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'

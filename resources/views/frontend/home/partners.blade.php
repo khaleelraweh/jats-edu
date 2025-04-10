@@ -1,4 +1,5 @@
-<section class="py-5 py-md-11 bg-catskill">
+{{-- <section class="py-5 py-md-11 bg-catskill"> --}}
+<section class="py-5 py-md-7 bg-catskill">
     <div class="container">
         <div class="text-center mb-4 mb-md-7" data-aos="fade-up">
             <h1 class="mb-1">{{ __('panel.our_partners') }}</h1>
@@ -21,7 +22,7 @@
                         }
                     @endphp
                     {{-- <div class="flick-item" style="width:190px !important;height: 190px !important;"> --}}
-                        <div class="flick-item m-4 m-sm-1 ">
+                        <div class="flick-item m-8 m-sm-1 ">
                         <a href="{{ $partner->partner_link }}">
                             <img class="partner-img" src="{{ $partner_img }}"
                                 style="width:100%;height:100%;border-radius:50%;" class="img-fluid"

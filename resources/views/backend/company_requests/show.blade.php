@@ -62,7 +62,7 @@
 
         .logo-img {
             width: 100%;
-            max-width: 250px;
+            max-width: 11em;
             padding-top: 10px;
             z-index: 4;
         }
@@ -149,7 +149,7 @@
         /* Responsive Adjustments */
         @media (min-width: 576px) {
             .header-line {
-                margin-top: -2.5rem;
+                margin-top: auto;
                 margin-bottom: 3rem;
             }
 

@@ -147,9 +147,9 @@
                                 </div>
                                 <div class="col-sm-4 d-flex flex-column align-items-center justify-content-center">
                                     <h1 class="text-success m-0" style="
-        font-family: Times New Roman, sans-serif; font-size:1.4em; font-weight:700">
+        font-family: Times New Roman, sans-serif; font-size:1.43em; font-weight:800">
                                         Youth Step Institute</h1>
-                                    <h3 class="text-warning" style=" font-family: Times New Roman, sans-serif;font-size:1em;font-weight:700;margin-top:0.2em">For Training
+                                    <h3 class="text-warning" style=" font-family: Times New Roman, sans-serif;font-size:1em;font-weight:700;margin-top:0.25em">For Training
                                         &
                                         Languages
                                     </h3>

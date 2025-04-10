@@ -6,8 +6,10 @@
                 <p class="font-size-lg text-capitalize">{{ __('transf.txt_featured_courses_desc') }}</p>
             </div>
 
-            <div class="row mb-8 w-xl-80 mx-xl-auto">
-                <div class="col-md mb-4 mb-md-0 d-lg-flex align-items-center">
+            {{-- <div class="row mb-8 w-xl-80 mx-xl-auto"> --}}
+            <div class="row mb-8 w-xl-80 mx-xl-auto justify-content-between">
+                {{-- <div class="col-md mb-4 mb-md-0 d-lg-flex align-items-center"> --}}
+                <div class="col-md-auto mb-4 mb-md-0">
                     <label class="me-lg-4 mb-lg-0">{{ __('transf.txt_filter_by') }}</label>
                     <div class="row">
                         {{-- <div wire:ignore class="col-md-auto mb-4 mb-lg-0"> --}}
@@ -43,7 +45,8 @@
                     </div>
                 </div>
 
-                <div wire:ignore class="col-md-auto d-lg-flex align-items-center">
+                {{-- <div wire:ignore class="col-md-auto d-lg-flex align-items-center"> --}}
+                <div wire:ignore class="col-md-auto">
                     <label class="me-lg-4 mb-lg-0">{{ __('transf.txt_sort_by') }}</label>
                     <select wire:model="sortingBy" class="form-select form-select-sm ps-5 text-primary shadow fw-medium"
                         data-choices>

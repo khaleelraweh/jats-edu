@@ -35,6 +35,7 @@ use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\PaymentCategoriesController;
 use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\PaymentMethodOfflineController;
+use App\Http\Controllers\Backend\PolicyPrivacyController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
 use App\Http\Controllers\Backend\ProductController;
@@ -245,6 +246,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('topics_menus', TopicsMenuController::class);
         Route::resource('tracks_menus', TracksMenuController::class);
         Route::resource('support_menus', SupportMenuController::class);
+        Route::resource('policy_privacy_menus', PolicyPrivacyController::class);
+
 
         // ==============   Pages Tab   ==============  //
         Route::resource('pages', PagesController::class);

@@ -44,6 +44,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TopicsMenuSeeder::class);
         $this->call(TracksMenuSeeder::class);
         $this->call(SupportMenuSeeder::class);
+        $this->call(PolicyPrivacySeeder::class);
 
         $this->call(SiteSettingSeeder::class);
 
@@ -52,7 +53,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PostSeeder::class);
         $this->call(EventSeeder::class);
 
-        // last called 
+        // last called
         $this->call(TopicSeeder::class);
         $this->call(ObjectiveSeeder::class);
         $this->call(RequirementSeeder::class);

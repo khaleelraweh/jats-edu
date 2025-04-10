@@ -5,12 +5,13 @@
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
 
+
         {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_support_link') }}
+                    {{ __('panel.add_new_policy_privacy_link') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -22,8 +23,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.support_menus.index') }}">
-                            {{ __('panel.show_support_menus') }}
+                        <a href="{{ route('admin.policy_privacy_menus.index') }}">
+                            {{ __('panel.show_policy_privacy_menus') }}
                         </a>
                     </li>
                 </ul>
@@ -44,7 +45,7 @@
             @endif
 
 
-            <form action="{{ route('admin.support_menus.store') }}" method="post">
+            <form action="{{ route('admin.policy_privacy_menus.store') }}" method="post">
                 @csrf
 
                 {{-- links of tabs --}}

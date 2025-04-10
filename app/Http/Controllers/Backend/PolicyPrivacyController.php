@@ -36,7 +36,7 @@ class PolicyPrivacyController extends Controller
             return redirect('admin/index');
         }
 
-        return view('backend.support_menus.create');
+        return view('backend.policy_privacy_menus.create');
     }
 
     public function store(SupportMenuRequest $request)

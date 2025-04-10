@@ -351,7 +351,7 @@
                     class="border-top pb-5 pt-6 py-md-4 text-center text-xl-start d-flex flex-column d-md-block d-xl-flex flex-xl-row align-items-center">
                     <p
                         class="text-gray-800 font-size-sm-alone d-block mb-0 mb-md-2 mb-xl-0 order-1 order-md-0 px-9 px-md-0">
-                        {{ __('transf.txt_copyright') }} © {{ now()->year }} {{ __('transf.txt_CreativeLayers') }}
+                        {{ __('transf.txt_copyright') }} © {{ now()->year }} {{ $siteSettings['site_name']->value ?? '' }} ,
                         {{ __('transf.txt_all_right_reserved') }}</p>
 
                     <div

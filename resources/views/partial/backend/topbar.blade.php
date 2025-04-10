@@ -14,10 +14,12 @@
 
                 <a href="{{ route('admin.index') }}" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ asset('backend/images/logo-sm.png') }}" alt="logo-sm-light" height="22">
+                        {{-- <img src="{{ asset('backend/images/logo-sm.png') }}" alt="logo-sm-light" height="22"> --}}
+                        <img src="{{ asset('backend/images/logo-sm.png') }}" alt="logo-sm-light" height="45">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('backend/images/logo-light.png') }}" alt="logo-light" height="20">
+                        {{-- <img src="{{ asset('backend/images/logo-light.png') }}" alt="logo-light" height="20"> --}}
+                        <img src="{{ asset('backend/images/brand.svg') }}" alt="logo-light" style="height: 3.75em;">
                     </span>
                 </a>
             </div>

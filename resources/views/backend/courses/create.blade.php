@@ -159,7 +159,7 @@
                                             </label>
                                             <div class="input-group">
                                                 <input type="text" name="subtitle" id="subtitle"
-                                                    value="{{ old('subtitle') }}" class="form-control" maxlength="60">
+                                                    value="{{ old('subtitle') }}" class="form-control" maxlength="120">
                                                 <span class="input-group-text" id="charCountSubtitle">120</span>
                                             </div>
 
@@ -716,7 +716,7 @@
             var publishedOn = $('#published_on').pickadate(
                 'picker'); // set startdate in the picker to the start date in the #start_date elemet
 
-            // when change date 
+            // when change date
             $('#published_on').change(function() {
                 selected_ci_date = "";
                 selected_ci_date = $('#published_on').val();
@@ -733,7 +733,7 @@
                 clear: ''
             });
 
-            // start deadline 
+            // start deadline
             $('#deadline').pickadate({
                 format: 'yyyy-mm-dd',
                 // min: new Date(),
@@ -747,7 +747,7 @@
             var publishedOn = $('#deadline').pickadate(
                 'picker'); // set startdate in the picker to the start date in the #start_date elemet
 
-            // when change date 
+            // when change date
             $('#deadline').change(function() {
                 selected_ci_date = "";
                 selected_ci_date = $('#deadline').val();
@@ -760,7 +760,7 @@
                 // }
 
             });
-            // end deadline 
+            // end deadline
 
             // ======= start pickadate codeing ===========
             $('#publish_date').pickadate({

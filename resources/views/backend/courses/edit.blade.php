@@ -163,7 +163,7 @@
                                             <div class="input-group">
                                                 <input type="text" name="subtitle" id="subtitle"
                                                     value="{{ old('subtitle', $course->subtitle) }}" class="form-control"
-                                                    maxlength="60">
+                                                    maxlength="120">
                                                 <span class="input-group-text" id="charCountSubtitle">120</span>
                                             </div>
 
@@ -744,8 +744,8 @@
                 showUpload: false,
                 overwriteInitial: false,
                 // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
-                // delete images from photos and assets/products 
-                // because there are maybe more than one image we will go for each image and show them in the edit page 
+                // delete images from photos and assets/products
+                // because there are maybe more than one image we will go for each image and show them in the edit page
                 initialPreview: [
                     @if ($course->photos()->count() > 0)
                         @foreach ($course->photos as $media)
@@ -787,7 +787,7 @@
                 'picker'); // set startdate in the picker to the start date in the #start_date elemet
             $('#published_on').change(function() {
                 selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
+                selected_ci_date = now() // make selected start date in picker = start_date value
 
             });
 
@@ -795,7 +795,7 @@
                 clear: ''
             });
 
-            // deadline start 
+            // deadline start
             $('#deadline').pickadate({
                 format: 'yyyy-mm-dd',
                 //min: new Date(),
@@ -809,10 +809,10 @@
                 'picker'); // set startdate in the picker to the start date in the #start_date elemet
             $('#deadline').change(function() {
                 selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
+                selected_ci_date = now() // make selected start date in picker = start_date value
 
             });
-            //deadline end 
+            //deadline end
 
             // $('#offer_ends').pickadate({
             //     format: 'yyyy-mm-dd',
@@ -835,7 +835,7 @@
             // var startdate = $('#offer_ends').pickadate(
             //     'picker'); // set startdate in the picker to the start date in the #publish_date elemet
 
-            // // when change date 
+            // // when change date
             // $('#offer_ends').change(function() {
             //     selected_ci_date = "";
             //     selected_ci_date = $('#publish_date')
@@ -847,7 +847,7 @@
             //         min_codate = "";
             //         min_codate = new Date();
             //         min_codate.setDate(cidate.getDate() +
-            //             1); // minimum selected date to be expired shoud be current date plus one 
+            //             1); // minimum selected date to be expired shoud be current date plus one
             //         enddate.set('min', min_codate);
             //     }
 
@@ -867,7 +867,7 @@
                 ]
             });
 
-            //select2: code to search in data 
+            //select2: code to search in data
             function matchStart(params, data) {
                 // If there are no search terms, return all of the data
                 if ($.trim(params.term) === '') {

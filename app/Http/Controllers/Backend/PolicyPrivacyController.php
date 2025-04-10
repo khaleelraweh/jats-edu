@@ -56,19 +56,19 @@ class PolicyPrivacyController extends Controller
         $published_on = $request->published_on . ' ' . $request->published_on_time;
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
-        $input['section']       = 5;
+        $input['section']       = 6;
 
-        $company_menu = WebMenu::create($input);
+        $policy_privacy_menu = WebMenu::create($input);
 
 
-        if ($company_menu) {
-            return redirect()->route('admin.support_menus.index')->with([
+        if ($policy_privacy_menu) {
+            return redirect()->route('admin.policy_privacy_menus.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.support_menus.index')->with([
+        return redirect()->route('admin.policy_privacy_menus.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -80,7 +80,7 @@ class PolicyPrivacyController extends Controller
         if (!auth()->user()->ability('admin', 'display_policy_privacy_menus')) {
             return redirect('admin/index');
         }
-        return view('backend.support_menus.show');
+        return view('backend.policy_privacy_menus.show');
     }
 
 
@@ -92,7 +92,7 @@ class PolicyPrivacyController extends Controller
 
         $supportMenu = WebMenu::where('id', $supportMenu)->first();
 
-        return view('backend.support_menus.edit', compact('supportMenu'));
+        return view('backend.policy_privacy_menus.edit', compact('supportMenu'));
     }
 
     public function update(SupportMenuRequest $request,  $supportMenu)
@@ -118,13 +118,13 @@ class PolicyPrivacyController extends Controller
         $supportMenu->update($input);
 
         if ($supportMenu) {
-            return redirect()->route('admin.support_menus.index')->with([
+            return redirect()->route('admin.policy_privacy_menus.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.support_menus.index')->with([
+        return redirect()->route('admin.policy_privacy_menus.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -142,13 +142,13 @@ class PolicyPrivacyController extends Controller
         $supportMenu->delete();
 
         if ($supportMenu) {
-            return redirect()->route('admin.support_menus.index')->with([
+            return redirect()->route('admin.policy_privacy_menus.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.support_menus.index')->with([
+        return redirect()->route('admin.policy_privacy_menus.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);

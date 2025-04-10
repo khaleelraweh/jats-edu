@@ -8,9 +8,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="معهد خطوة شباب للتدريب واللغات">
+    <meta name="title" content="{{ $siteSettings['site_name_meta']->value ?? '' }}">
+    <meta name="description" content="{{ $siteSettings['site_description_meta']->value ?? '' }}">
+    <meta name="keywords" content="{{ $siteSettings['site_keywords_meta']->value ?? '' }}">
+    <meta name="author" content="{{ $siteSettings['site_name_meta']->value ?? '' }}">
     <meta name="robots" content="all,follow">
-    <meta name="author" content="معهد خطوة شباب للتدريب واللغات" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

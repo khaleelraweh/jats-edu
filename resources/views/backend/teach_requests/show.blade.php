@@ -95,7 +95,7 @@
         .form-title {
             border: 4px solid green;
             padding: 0.375em;
-            display: inline-block;
+            /* display: inline-block; */
             text-align: center;
             margin: 1rem auto;
         }
@@ -472,7 +472,7 @@
 
                         <div class="row mt-4 mb-2">
                             <div class="col-12">
-                                <p>{{ __('panel.note:_your_request_will_be_reviewed_and_responded_to_within_three_days_from_todays_date') }}</p>
+                                <p>{{ __('panel.note:_your_request_will_be_reviewed_and_responded_to_within_three_days_from_today’s_date') }}</p>
                             </div>
                         </div>
                     </div>

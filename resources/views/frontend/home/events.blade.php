@@ -34,7 +34,7 @@
                                 class="col-auto d-block mw-md-152" style="max-width: 120px;"> --}}
 
                             <a href="{{ route('frontend.event_single', $event->slug) }}"
-                                class="col-auto d-block mw-md-152" style="max-height:9.8em">
+                                class="col-auto d-block mw-md-152" style="max-height:9.5em; max-width:9.5em;">
                                 <img class="img-fluid rounded shadow-light-lg h-100 o-f-c" src="{{ $event_img }}"
                                     alt="...">
                             </a>

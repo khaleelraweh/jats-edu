@@ -149,7 +149,7 @@
         /* Responsive Adjustments */
         @media (min-width: 576px) {
             .header-line {
-                margin-top: auto;
+                margin-top: -2.5rem;
                 margin-bottom: 3rem;
             }
 
@@ -164,6 +164,14 @@
             .form-title h1 {
                 font-size: 1.3rem;
             }
+        }
+
+        @media (max-width: 577px) {
+            .header-line {
+                margin-top: auto;
+                margin-bottom: 3rem;
+            }
+
         }
 
         @media (min-width: 768px) {

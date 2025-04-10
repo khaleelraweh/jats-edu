@@ -66,7 +66,7 @@
 
         .institute-name-en {
             color: green;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 800;
             margin: 0;
         }

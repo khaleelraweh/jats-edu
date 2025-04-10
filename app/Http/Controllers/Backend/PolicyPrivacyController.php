@@ -84,15 +84,15 @@ class PolicyPrivacyController extends Controller
     }
 
 
-    public function edit($supportMenu)
+    public function edit($policyPrivacyMenu)
     {
         if (!auth()->user()->ability('admin', 'update_policy_privacy_menus')) {
             return redirect('admin/index');
         }
 
-        $supportMenu = WebMenu::where('id', $supportMenu)->first();
+        $policyPrivacyMenu = WebMenu::where('id', $policyPrivacyMenu)->first();
 
-        return view('backend.policy_privacy_menus.edit', compact('supportMenu'));
+        return view('backend.policy_privacy_menus.edit', compact('policyPrivacyMenu'));
     }
 
     public function update(SupportMenuRequest $request,  $supportMenu)

@@ -10,7 +10,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_support_menu_link') }}
+                    {{ __('panel.edit_existing_policy_privacy_menu_link') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -22,8 +22,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.support_menus.index') }}">
-                            {{ __('panel.show_support_menus') }}
+                        <a href="{{ route('admin.policy_privacy_menus.index') }}">
+                            {{ __('panel.show_policy_privacy_menus') }}
                         </a>
                     </li>
                 </ul>
@@ -43,7 +43,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.support_menus.update', $supportMenu->id) }}" method="post">
+            <form action="{{ route('admin.policy_privacy_menus.update', $policyPrivacyMenu->id) }}" method="post">
                 @csrf
                 @method('PATCH')
 
@@ -82,10 +82,10 @@
                                         <input data-placement="bottomRight"
                                             class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
                                             name="icon"
-                                            value="{{ old('icon', $supportMenu->icon) ?? 'fas fa-archive' }}"
+                                            value="{{ old('icon', $policyPrivacyMenu->icon) ?? 'fas fa-archive' }}"
                                             type="text">
                                         <span class="input-group-addon btn btn-primary">
-                                            <i class="{{ $webMenu->supportMenu ?? 'fas fa-archive' }}"></i>
+                                            <i class="{{ $webMenu->policyPrivacyMenu ?? 'fas fa-archive' }}"></i>
                                         </span>
                                     </div>
 
@@ -107,7 +107,7 @@
                                         </label>
                                         <input type="text" name="title[{{ $key }}]"
                                             id="title[{{ $key }}]"
-                                            value="{{ old('title.' . $key, $supportMenu->getTranslation('title', $key)) }}"
+                                            value="{{ old('title.' . $key, $policyPrivacyMenu->getTranslation('title', $key)) }}"
                                             class="form-control">
                                         @error('title.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
@@ -129,7 +129,7 @@
                                         </label>
                                         <input type="text" id="link[{{ $key }}]"
                                             name="link[{{ $key }}]"
-                                            value="{{ old('link.' . $key, $supportMenu->getTranslation('link', $key)) }}"
+                                            value="{{ old('link.' . $key, $policyPrivacyMenu->getTranslation('link', $key)) }}"
                                             class="form-control">
                                         @error('link.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
@@ -148,7 +148,7 @@
                                 <div class="form-group">
                                     <label for="published_on">{{ __('panel.published_date') }}</label>
                                     <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', \Carbon\Carbon::parse($supportMenu->published_on)->Format('Y-m-d')) }}"
+                                        value="{{ old('published_on', \Carbon\Carbon::parse($policyPrivacyMenu->published_on)->Format('Y-m-d')) }}"
                                         class="form-control">
                                     @error('published_on')
                                         <span class="text-danger">{{ $message }}</span>
@@ -162,7 +162,7 @@
                                 <div class="form-group">
                                     <label for="published_on_time">{{ __('panel.published_time') }}</label>
                                     <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', \Carbon\Carbon::parse($supportMenu->published_on)->Format('h:i A')) }}"
+                                        value="{{ old('published_on_time', \Carbon\Carbon::parse($policyPrivacyMenu->published_on)->Format('h:i A')) }}"
                                         class="form-control">
                                     @error('published_on_time')
                                         <span class="text-danger">{{ $message }}</span>
@@ -182,11 +182,11 @@
                                 <select name="status" class="form-control">
                                     <option value="">---</option>
                                     <option value="1"
-                                        {{ old('status', $supportMenu->status) == '1' ? 'selected' : null }}>
+                                        {{ old('status', $policyPrivacyMenu->status) == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}
                                     </option>
                                     <option value="0"
-                                        {{ old('status', $supportMenu->status) == '0' ? 'selected' : null }}>
+                                        {{ old('status', $policyPrivacyMenu->status) == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
@@ -237,7 +237,7 @@
 
             $('#published_on').change(function() {
                 selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
+                selected_ci_date = now() // make selected start date in picker = start_date value
 
             });
 

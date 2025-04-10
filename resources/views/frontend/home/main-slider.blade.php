@@ -69,13 +69,13 @@
     </div>
 
 
-    <div class="py-7 py-lg-0 mt-lg-n11 overlay-lg-none overlay overlay-primary overlay-90">
+    {{-- <div class="py-7 py-lg-0 mt-lg-n11 overlay-lg-none overlay overlay-primary overlay-90">
         <div class="container">
             <ul class="nav row justify-content-between">
                 @foreach ($main_sliders->where('section', 2)->take(3) as $adv_slider)
                     <li class="col-lg-auto mb-5 mb-lg-0 nav-item">
                         <div class="d-flex align-items-center">
-                            <div class="me-4 text-white icon-md">
+                            <div class="text-white icon-md">
                                 <a href="{{ url($adv_slider->btn_one_url ?? '#') }}" style="color: white;">
                                     <i class="{{ $adv_slider->icon }}" style="font-size: 60px"></i>
                                 </a>
@@ -92,6 +92,31 @@
                     </li>
                 @endforeach
 
+            </ul>
+        </div>
+    </div> --}}
+
+    <div class="py-7 py-lg-0 mt-lg-n11 overlay-lg-none overlay overlay-primary overlay-90">
+        <div class="container">
+            <!-- Use flex-nowrap on lg and md, flex-wrap on sm and below -->
+            <ul class="nav row flex-xlg-nowrap  flex-wrap justify-content-between align-items-center">
+                @foreach ($main_sliders->where('section', 2)->take(3) as $adv_slider)
+                    <li class="col-lg-4 col-md-12 col-12 mb-5 mb-lg-0 nav-item">
+                        <div class="d-flex align-items-center">
+                            <div class="text-white icon-md">
+                                <a href="{{ url($adv_slider->btn_one_url ?? '#') }}" style="color: white;">
+                                    <i class="{{ $adv_slider->icon }}" style="font-size: 60px"></i>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <a href="{{ url($adv_slider->btn_one_url ?? '#') }}">
+                                    <h4 class="text-white mb-0 text-uppercase">{{ $adv_slider->title }}</h4>
+                                    <p class="text-white mb-0">{!! $adv_slider->description !!}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </div>

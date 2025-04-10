@@ -66,7 +66,7 @@
 
         .institute-name-en {
             color: green;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 800;
             margin: 0;
         }
@@ -164,7 +164,7 @@
         }
 
         /* Responsive adjustments */
-        @media (min-width: 576px) {
+        @media (min-width: 768px) {
             .header-line {
                 margin-top: -40px;
                 margin-bottom: 45px;

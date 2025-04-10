@@ -42,11 +42,11 @@
                                     <p class="mb-1">{{ __('panel.a_new_order_with_amount') }}
                                         ({{ currency_converter($unreadNotification->data['amount']) }})
                                         {{ __('panel.from_customer') }}
-                                        ({{ $unreadNotification->data['customer_name'] }})
+                                        ({{ $unreadNotification->data['customer_name'] ?? ''}})
                                     </p>
                                     {{-- <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p> --}}
                                     <p class="mb-0"><i class="mdi mdi-clock-outline"></i>
-                                        {{ $unreadNotification->data['created_date'] }}</p>
+                                        {{ $unreadNotification->data['created_date'] ?? '' }}</p>
                                 </div>
                             </div>
                         @else

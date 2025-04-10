@@ -14,7 +14,7 @@ class AddPolicyPrivacyMenuSeeder extends Seeder
     public function run(): void
     {
           //Policies and privacy menu
-          $managePolicyPrivacyMenus = Permission::create(['name' => 'manage_policy_privacy_menus', 'display_name' => ['ar'    =>  'إدارة قائمة السياسات', 'en'   =>  'Policy Privacy Menu'], 'route' => 'policy_privacy_menus', 'module' => 'policy_privacy_menus', 'as' => 'policy_privacy_menus.index', 'icon' => 'fas fa-bars', 'parent' => $manageWebMenus->id, 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '105',]);
+          $managePolicyPrivacyMenus = Permission::create(['name' => 'manage_policy_privacy_menus', 'display_name' => ['ar'    =>  'إدارة قائمة السياسات', 'en'   =>  'Policy Privacy Menu'], 'route' => 'policy_privacy_menus', 'module' => 'policy_privacy_menus', 'as' => 'policy_privacy_menus.index', 'icon' => 'fas fa-bars', 'parent' => 98, 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '105',]);
           $managePolicyPrivacyMenus->parent_show = $managePolicyPrivacyMenus->id;
           $managePolicyPrivacyMenus->save();
           $showPolicyPrivacy    =  Permission::create(['name' => 'show_policy_privacy_menus',  'display_name' => ['ar'  =>  'إدارة قائمة السياسات',   'en'    =>  'Policy Privacy Menu'], 'route' => 'policy_privacy_menus', 'module' => 'policy_privacy_menus', 'as' => 'policy_privacy_menus.index', 'icon' => 'fas fa-bars', 'parent' => $managePolicyPrivacyMenus->id, 'parent_original' => $managePolicyPrivacyMenus->id, 'parent_show' => $managePolicyPrivacyMenus->id, 'sidebar_link' => '1', 'appear' => '1']);

@@ -36,6 +36,7 @@ return [
     'manage_company_menus'              => 'إدارة قوائم المؤسسة',
     'manage_topics_menus'               => 'إدارة قوائم الموضوعات',
     'manage_tracks_menus'               => 'إدارة قوائم المسارات',
+    'manage_policy_privacy_menus'       => 'إدارة قوائم السياسات والخصوصية',
 
 
 
@@ -69,6 +70,12 @@ return [
     'show_support_menus'        => 'قائمة المساعدة',
     'add_new_support_link'              => 'إضافة قائمة مساعدة جديدة',
     'edit_existing_support_menu_link'        => 'تعديل قائمة مساعدة موجودة',
+
+
+        // --------------- policy privacy Menu --------------//
+        'show_policy_privacy_menus'        => 'قائمة السياسات والخصوصية',
+        'add_new_policy_privacy_link'              => 'إضافة قائمة سياسة وخصوصية جديدة',
+        'edit_existing_policy_privacy_menu_link'        => 'تعديل قائمة سياسات وخصوصية موجودة',
 
 
     // ----------------- قائمة المساعدة -------------- //

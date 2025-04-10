@@ -39,6 +39,7 @@ return [
     'manage_topics_menus'       => 'Manage Topics Menus',
     'manage_tracks_menus'       => 'Manage Tracks Menus',
     'manage_support_menus'       => 'Manage Support Menus',
+    'manage_policy_privacy_menus'       => 'Manage Policy Privacy Menus',
 
 
     // --------------- Main Menu --------------//
@@ -67,6 +68,12 @@ return [
     'show_support_menus'        => 'Support Menus',
     'add_new_support_link'              => 'Add New Support Menu',
     'edit_existing_support_menu_link'        => 'Edit Existing Support Menu',
+
+
+    // --------------- policy privacy Menu --------------//
+    'show_policy_privacy_menus'        => 'Support Menus',
+    'add_new_policy_privacy_link'              => 'Add New Support Menu',
+    'edit_existing_policy_privacy_menu_link'        => 'Edit Existing Support Menu',
 
 
     // ------------- Helps Menu ------------- //

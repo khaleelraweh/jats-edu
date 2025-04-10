@@ -96,6 +96,46 @@
         </div>
     </div> --}}
 
+    <style>
+            /* Media Queries for Responsive Width */
+            @media (min-width: 576px) {
+                .adv-icon {
+                    font-size: 1em;
+                }
+                .adv-title {
+                    font-size: 1.2em;
+                }
+                .adv-description {
+                    font-size: 1em;
+                }
+            }
+
+            @media (min-width: 768px) {
+                .adv-icon {
+                    font-size: 1em;
+                }
+                .adv-title {
+                    font-size: 1.3em;
+                }
+                .adv-description {
+                    font-size: 1em;
+                }
+            }
+
+            @media (min-width: 992px) {
+                .adv-icon {
+                    font-size: 1em;
+                }
+                .adv-title {
+                    font-size: 1.1em;
+                    font-weight: 500;
+                }
+                .adv-description {
+                    font-size: 0.8em;
+                }
+            }
+    </style>
+
     <div class="py-7 py-lg-0 mt-lg-n11 overlay-lg-none overlay overlay-primary overlay-90">
         <div class="container">
             <!-- Use flex-nowrap on lg and md, flex-wrap on sm and below -->
@@ -103,15 +143,15 @@
                 @foreach ($main_sliders->where('section', 2)->take(3) as $adv_slider)
                     <li class="col-lg-4 col-md-12 col-12 mb-5 mb-lg-0 nav-item">
                         <div class="d-flex align-items-center">
-                            <div class="text-white icon-md">
+                            <div class="text-white icon-md adv-icon">
                                 <a href="{{ url($adv_slider->btn_one_url ?? '#') }}" style="color: white;">
                                     <i class="{{ $adv_slider->icon }}" style="font-size: 60px"></i>
                                 </a>
                             </div>
                             <div class="media-body">
                                 <a href="{{ url($adv_slider->btn_one_url ?? '#') }}">
-                                    <h4 class="text-white mb-0 text-uppercase">{{ $adv_slider->title }}</h4>
-                                    <p class="text-white mb-0">{!! $adv_slider->description !!}</p>
+                                    <h4 class="text-white mb-0 text-uppercase adv-title">{{ $adv_slider->title }}</h4>
+                                    <p class="text-white mb-0 adv-description">{!! $adv_slider->description !!}</p>
                                 </a>
                             </div>
                         </div>
